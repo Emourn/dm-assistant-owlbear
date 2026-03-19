@@ -1,0 +1,16 @@
+{
+  "name": "DM Assistant",
+  "version": "0.1.0",
+  "manifest_version": 1,
+  "author": "OpenAI Codex for Carlo",
+  "description": "Character sheets, token links, room sync, and combat for Owlbear Rodeo.",
+  "icon": "https://emourn.github.io/dm-assistant-owlbear/owlbear/icon.svg",
+  "background_url": "https://emourn.github.io/dm-assistant-owlbear/owlbear-background.html",
+  "action": {
+    "title": "DM Assistant",
+    "icon": "https://emourn.github.io/dm-assistant-owlbear/owlbear/icon.svg",
+    "popover": "https://emourn.github.io/dm-assistant-owlbear/owlbear.html",
+    "height": 680,
+    "width": 440
+  }
+}

@@ -78,6 +78,12 @@ The URL you will paste into Owlbear is the hosted manifest, for example:
 https://<your-host>/<path>/owlbear-manifest.json
 ```
 
+If a static host serves a stale cached manifest during rollout, a second manifest with absolute URLs can be imported directly from the repository:
+
+```text
+https://raw.githubusercontent.com/Emourn/dm-assistant-owlbear/codex/owlbear-extension/public/owlbear-manifest-raw.json
+```
+
 ## Recommended GitHub Pages flow
 
 1. Create a repository and push this project.
