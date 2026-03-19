@@ -1,6 +1,7 @@
 {
   "name": "DM Assistant",
   "version": "0.1.0",
+  "manifest_version": 1,
   "author": "OpenAI Codex for Carlo",
   "description": "Campaign management, character sheets, token linking, and combat automation for Owlbear Rodeo without replacing Owlbear's map stack.",
   "icon": "./owlbear/icon.svg",
