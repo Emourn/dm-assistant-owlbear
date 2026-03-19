@@ -7,7 +7,7 @@ export const OBR_NAMESPACE = 'com.antigravity.dm-assistant';
 export const ROOM_STATE_KEY = `${OBR_NAMESPACE}/room-state`;
 export const TOKEN_LINK_KEY = `${OBR_NAMESPACE}/token-link`;
 export const PENDING_IMPORT_KEY = `${OBR_NAMESPACE}:pending-token-import`;
-export const WORKBENCH_MODAL_ID = `${OBR_NAMESPACE}/workbench`;
+export const PANEL_POPOVER_ID = `${OBR_NAMESPACE}/panel`;
 export const IMPORT_CONTEXT_MENU_ID = `${OBR_NAMESPACE}/import-selection`;
 export const IMPORT_BROADCAST_CHANNEL = `${OBR_NAMESPACE}/import-selection`;
 
@@ -63,9 +63,17 @@ export interface OwlbearRoomState {
     };
 }
 
+export interface SmokeVisionProfile {
+    range: number;
+    greyscale: boolean;
+    falloff: number;
+    notes: string[];
+}
+
 export interface LinkedCharacterTokenData {
     characterId: string;
     snapshot: Character;
+    smokeVision?: SmokeVisionProfile;
     linkedAt: number;
     linkedBy: string;
 }

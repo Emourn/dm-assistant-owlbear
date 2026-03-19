@@ -1,7 +1,7 @@
 import OBR, { type Item } from '@owlbear-rodeo/sdk';
 import {
     PENDING_IMPORT_KEY,
-    WORKBENCH_MODAL_ID,
+    PANEL_POPOVER_ID,
     type PendingTokenImport,
 } from './shared';
 
@@ -10,15 +10,30 @@ function storageAvailable() {
 }
 
 export function getWorkbenchUrl(hash = '#/'): string {
-    const url = new URL('./owlbear-workbench.html', window.location.href);
+    const url = new URL('./owlbear.html', window.location.href);
     return `${url.toString()}${hash}`;
 }
 
 export async function openWorkbench(hash = '#/'): Promise<void> {
-    await OBR.modal.open({
-        id: WORKBENCH_MODAL_ID,
+    await OBR.popover.open({
+        id: PANEL_POPOVER_ID,
         url: getWorkbenchUrl(hash),
-        fullScreen: true,
+        width: 560,
+        height: 760,
+        anchorReference: 'POSITION',
+        anchorPosition: {
+            left: Math.max(24, window.innerWidth - 32),
+            top: 72,
+        },
+        anchorOrigin: {
+            horizontal: 'RIGHT',
+            vertical: 'TOP',
+        },
+        transformOrigin: {
+            horizontal: 'RIGHT',
+            vertical: 'TOP',
+        },
+        disableClickAway: true,
     });
 }
 

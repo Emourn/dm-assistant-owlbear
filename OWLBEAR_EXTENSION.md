@@ -14,13 +14,15 @@ Key build outputs:
 Core Owlbear-facing features implemented:
 
 - GM popover for quick room control
-- Full-screen DM workbench modal
+- Map-preserving DM command panel in Owlbear popovers
 - Owlbear background page with context menu import
 - Token-to-character linking using item metadata
 - Shared room state publishing using Owlbear room metadata
 - Player assignment registry for Owlbear room participants
 - Player-facing read-only sheet view from linked or assigned tokens
 - Combat token import that uses Owlbear selection and skips the internal map editor
+- Embers spell dispatch bridge for mapped sheet spells
+- Smoke-ready vision profiles stored on linked tokens and surfaced in the sync panel
 
 ## Compatibility posture
 

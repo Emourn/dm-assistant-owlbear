@@ -4,6 +4,7 @@ import { useCharacterStore } from '../store/characterStore';
 import { useCombatStore } from '../store/combatStore';
 import type { Character } from '../types/character';
 import type { Combatant } from '../types/combat';
+import { deriveSmokeVisionProfile } from './integrations';
 import {
     IMPORT_BROADCAST_CHANNEL,
     ROOM_STATE_KEY,
@@ -203,6 +204,7 @@ export async function linkCharacterToCurrentSelection(character: Character): Pro
             item.metadata[TOKEN_LINK_KEY] = {
                 characterId: character.id,
                 snapshot,
+                smokeVision: deriveSmokeVisionProfile(snapshot),
                 linkedAt: Date.now(),
                 linkedBy: playerId,
             };

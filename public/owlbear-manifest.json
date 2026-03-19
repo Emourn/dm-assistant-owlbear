@@ -10,7 +10,7 @@
     "title": "DM Assistant",
     "icon": "./owlbear/icon.svg",
     "popover": "./owlbear.html",
-    "height": 680,
-    "width": 440
+    "height": 760,
+    "width": 560
   }
 }

@@ -4,6 +4,7 @@ import { Link2, RadioTower, RefreshCw, Swords, Users } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { useCharacterStore } from '../store/characterStore';
 import { type OwlbearRoomState, getRoomStateFromMetadata } from './shared';
+import { deriveSmokeVisionProfile } from './integrations';
 import {
     getSelectedSceneItems,
     importCurrentSelectionIntoCombat,
@@ -22,6 +23,14 @@ export function OwlbearRoomPage() {
     const [isBusy, setIsBusy] = useState(false);
 
     const playerRows = useMemo(() => players.filter((player) => player.role === 'PLAYER'), [players]);
+    const selectedCharacter = useMemo(
+        () => characters.find((entry) => entry.id === selectedCharacterId) ?? null,
+        [characters, selectedCharacterId],
+    );
+    const smokeVisionProfile = useMemo(
+        () => (selectedCharacter ? deriveSmokeVisionProfile(selectedCharacter) : null),
+        [selectedCharacter],
+    );
 
     const refresh = useCallback(async () => {
         const [partyPlayers, metadata, selectedItems] = await Promise.all([
@@ -121,6 +130,21 @@ export function OwlbearRoomPage() {
         }
     };
 
+    const handleCopySmokeProfile = async () => {
+        if (!selectedCharacter || !smokeVisionProfile) {
+            await OBR.notification.show('Choose a character first.', 'WARNING');
+            return;
+        }
+
+        const notes = smokeVisionProfile.notes.length
+            ? ` | Notes: ${smokeVisionProfile.notes.join('; ')}`
+            : '';
+        await navigator.clipboard.writeText(
+            `${selectedCharacter.name}: range ${smokeVisionProfile.range} ft | greyscale ${smokeVisionProfile.greyscale ? 'yes' : 'no'} | falloff ${smokeVisionProfile.falloff}${notes}`,
+        );
+        await OBR.notification.show('Copied the Smoke vision profile.', 'SUCCESS');
+    };
+
     return (
         <div className="space-y-6 p-6 md:p-8">
             <header className="flex flex-col gap-4 rounded-[2rem] border border-stone-800 bg-stone-950/80 p-6 lg:flex-row lg:items-end lg:justify-between">
@@ -192,6 +216,41 @@ export function OwlbearRoomPage() {
                     <div className="mt-6 rounded-2xl border border-emerald-500/20 bg-emerald-500/5 p-4 text-sm leading-relaxed text-stone-300">
                         DM Assistant writes linked sheets under its own metadata namespace only. Visual and environmental extensions like Smoke &amp; Specter! and Embers can continue to manage their own scene metadata without collision.
                     </div>
+
+                    {selectedCharacter && smokeVisionProfile && (
+                        <div className="mt-4 rounded-2xl border border-sky-500/20 bg-sky-500/5 p-4">
+                            <div className="flex items-center justify-between gap-3">
+                                <div>
+                                    <div className="text-[11px] font-black uppercase tracking-[0.22em] text-sky-300">Smoke vision profile</div>
+                                    <div className="mt-1 text-sm font-semibold text-stone-100">{selectedCharacter.name}</div>
+                                </div>
+                                <button
+                                    type="button"
+                                    onClick={() => void handleCopySmokeProfile()}
+                                    className="rounded-full border border-stone-700 bg-stone-950 px-3 py-1.5 text-[11px] font-black uppercase tracking-[0.16em] text-stone-100 transition-colors hover:border-sky-400/40 hover:text-sky-200"
+                                >
+                                    Copy Profile
+                                </button>
+                            </div>
+                            <div className="mt-3 grid gap-2 text-sm text-stone-300 sm:grid-cols-3">
+                                <div className="rounded-xl border border-stone-800 bg-stone-950/70 px-3 py-2">Range: {smokeVisionProfile.range} ft</div>
+                                <div className="rounded-xl border border-stone-800 bg-stone-950/70 px-3 py-2">Greyscale: {smokeVisionProfile.greyscale ? 'Yes' : 'No'}</div>
+                                <div className="rounded-xl border border-stone-800 bg-stone-950/70 px-3 py-2">Falloff: {smokeVisionProfile.falloff}</div>
+                            </div>
+                            {smokeVisionProfile.notes.length > 0 && (
+                                <div className="mt-3 space-y-2">
+                                    {smokeVisionProfile.notes.map((note) => (
+                                        <div key={note} className="rounded-xl border border-stone-800 bg-stone-950/70 px-3 py-2 text-sm text-stone-300">
+                                            {note}
+                                        </div>
+                                    ))}
+                                </div>
+                            )}
+                            <p className="mt-3 text-xs leading-relaxed text-stone-500">
+                                DM Assistant stores this profile on the linked token so the vision intent stays attached to the sheet, even though Smoke &amp; Specter! does not publish a stable external write API.
+                            </p>
+                        </div>
+                    )}
                 </section>
 
                 <section className="rounded-3xl border border-stone-800 bg-stone-950/70 p-6">

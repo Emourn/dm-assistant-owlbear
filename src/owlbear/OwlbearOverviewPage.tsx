@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { BookOpen, Link2, Shield, Sparkles, Swords, Users } from 'lucide-react';
+import { BookOpen, Link2, Moon, Shield, Sparkles, Swords, Users } from 'lucide-react';
 import { useCampaignStore } from '../store/campaignStore';
 import { useCharacterStore } from '../store/characterStore';
 import { useCombatStore } from '../store/combatStore';
@@ -26,16 +26,16 @@ export function OwlbearOverviewPage() {
                         <div>
                             <h1 className="font-cinzel text-4xl font-bold text-parchment md:text-5xl">DM Assistant Workbench</h1>
                             <p className="mt-3 text-base leading-relaxed text-stone-300 md:text-lg">
-                                Character sheets, party management, rest automation, combat tracking, and Owlbear token linking in one place.
-                                Owlbear stays the map host; this workbench handles the DM burden around it.
+                                Character sheets, DM notes, rests, combat tracking, token linking, and cross-extension handoffs in one place.
+                                Owlbear stays the live map host; this panel handles the DM burden around it without taking the map away.
                             </p>
                         </div>
                         <div className="flex flex-wrap gap-3">
                             <Link to="/combat" className="rounded-xl bg-gold px-5 py-3 text-sm font-bold text-stone-950 transition-colors hover:bg-yellow-400">
-                                Open Combat Bridge
+                                Open Combat
                             </Link>
-                            <Link to="/room" className="rounded-xl border border-stone-700 bg-stone-900/80 px-5 py-3 text-sm font-semibold text-stone-100 transition-colors hover:border-gold/40 hover:text-gold">
-                                Link Tokens & Assign Players
+                            <Link to="/navigator" className="rounded-xl border border-stone-700 bg-stone-900/80 px-5 py-3 text-sm font-semibold text-stone-100 transition-colors hover:border-gold/40 hover:text-gold">
+                                Open Navigator
                             </Link>
                         </div>
                     </div>
@@ -47,7 +47,7 @@ export function OwlbearOverviewPage() {
                 </div>
             </section>
 
-            <section className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
+            <section className="grid gap-4 md:grid-cols-2 xl:grid-cols-5">
                 <ActionCard
                     title="Campaign vault"
                     description={activeCampaign ? `Active campaign: ${activeCampaign.title}` : 'Create campaigns, notes, NPCs, and locations.'}
@@ -68,9 +68,15 @@ export function OwlbearOverviewPage() {
                 />
                 <ActionCard
                     title="Combat automation"
-                    description="Import selected tokens into initiative, then use theater-of-the-mind combat or Owlbear maps."
+                    description="Import selected tokens into initiative while keeping Owlbear as the live combat map."
                     icon={Swords}
                     href="/combat"
+                />
+                <ActionCard
+                    title="Camp workflow"
+                    description="Run short rests, long rests, and resource recovery without leaving the table view."
+                    icon={Moon}
+                    href="/camp"
                 />
             </section>
 
