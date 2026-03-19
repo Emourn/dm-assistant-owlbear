@@ -2,6 +2,7 @@ import type { Player } from '@owlbear-rodeo/sdk';
 import { Crosshair, Layers3, MapPinned, ScrollText, Shield, Users } from 'lucide-react';
 import type { Phase1CharacterSheet, StructuredRollRequest, StructuredRollResult } from '../../features/dnd2024/domain/types';
 import type { StoredRoomRollState } from '../domain/roomRolls';
+import type { RoomRollPromptDraft } from '../domain/roomRolls';
 import { CURRENT_SLICE, NEXT_SLICES } from '../domain/phases';
 import {
     canManageSheetRuntime,
@@ -46,7 +47,7 @@ interface ExtensionShellProps {
     onLinkCharacter: (sheet: Phase1CharacterSheet) => Promise<void>;
     onUnlinkCharacter: () => Promise<void>;
     onAssignCharacter: (playerId: string, characterId: string | null) => Promise<void>;
-    onPromptInitiative: () => Promise<void>;
+    onOpenPrompt: (prompt: RoomRollPromptDraft) => Promise<void>;
     onClearPrompt: () => Promise<void>;
     onRespondToPrompt: () => Promise<void>;
     onSaveVisibilitySettings: (settings: StoredVisibilitySettings) => Promise<void>;
@@ -106,7 +107,7 @@ export function ExtensionShell({
     onLinkCharacter,
     onUnlinkCharacter,
     onAssignCharacter,
-    onPromptInitiative,
+    onOpenPrompt,
     onClearPrompt,
     onRespondToPrompt,
     onSaveVisibilitySettings,
@@ -278,12 +279,13 @@ export function ExtensionShell({
                         activePrompt: visiblePrompt,
                     }}
                     defaultRollVisibility={visibilitySettings.defaultRollVisibility}
+                    defaultPromptAudience={visibilitySettings.initiativePromptAudience}
                     isPublishing={isPublishingRoll}
                     isManagingPrompt={isManagingPrompt}
                     canPublishLastRoll={canPublishLastRoll}
                     canRespondToPrompt={canRespondVisiblePrompt}
                     onPublishLastRoll={onPublishLastRoll}
-                    onPromptInitiative={onPromptInitiative}
+                    onOpenPrompt={onOpenPrompt}
                     onClearPrompt={onClearPrompt}
                     onRespondToPrompt={onRespondToPrompt}
                 />

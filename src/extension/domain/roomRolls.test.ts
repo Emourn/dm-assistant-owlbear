@@ -4,9 +4,11 @@ import { rollStructuredD20 } from '../../features/dnd2024/domain/rolls';
 import { createSampleCharacterCollection } from './characterRecords';
 import {
     appendPublishedRoll,
-    createInitiativePrompt,
+    buildPromptRollRequest,
+    createRoomRollPrompt,
     createPublishedRollEntry,
     createEmptyRoomRollState,
+    describeRoomRollPrompt,
     parseStoredRoomRollState,
     setActivePrompt,
 } from './roomRolls';
@@ -37,12 +39,13 @@ describe('room roll state', () => {
         expect(updated.feed[0].result.total).toBe(result.total);
     });
 
-    it('stores and clears initiative prompts', () => {
-        const prompt = createInitiativePrompt(2000, 'GM', 'gm-1', 'assigned-only');
+    it('stores and clears prompts for multiple roll types', () => {
+        const prompt = createRoomRollPrompt({ kind: 'saving-throw', ability: 'dex' }, 2000, 'GM', 'gm-1', 'assigned-only');
         const updated = setActivePrompt(createEmptyRoomRollState(), prompt);
 
-        expect(updated.activePrompt?.kind).toBe('initiative');
+        expect(updated.activePrompt?.kind).toBe('saving-throw');
         expect(updated.activePrompt?.audience).toBe('assigned-only');
+        expect(updated.activePrompt?.label).toBe('Prompt Dexterity Saving Throw');
         expect(setActivePrompt(updated, null).activePrompt).toBeNull();
     });
 
@@ -59,10 +62,23 @@ describe('room roll state', () => {
                     characterName: null,
                 }, 'gm-only'),
             ],
-            activePrompt: createInitiativePrompt(2000, 'GM', null, 'room'),
+            activePrompt: createRoomRollPrompt({ kind: 'skill', skillId: 'perception' }, 2000, 'GM', null, 'room'),
         };
 
         expect(parseStoredRoomRollState(state)?.feed).toHaveLength(1);
+        expect(parseStoredRoomRollState(state)?.activePrompt?.kind).toBe('skill');
         expect(parseStoredRoomRollState({ version: 99, feed: [] })).toBeNull();
+    });
+
+    it('builds the correct roll request from a stored prompt', () => {
+        const sheet = createSampleCharacterCollection(1000).characters[0].sheet;
+        const request = buildPromptRollRequest(
+            sheet,
+            createRoomRollPrompt({ kind: 'ability', ability: 'wis' }, 2000, 'GM', null, 'room'),
+        );
+
+        expect(request.scope).toBe('ability');
+        expect(request.label).toBe('Wisdom Check');
+        expect(describeRoomRollPrompt({ kind: 'skill', skillId: 'perception' })).toBe('Prompt Perception');
     });
 });

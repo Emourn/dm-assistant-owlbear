@@ -16,6 +16,7 @@ import type {
     StructuredRollResult,
 } from '../../features/dnd2024/domain/types';
 import type { StoredRoomRollState } from '../domain/roomRolls';
+import { buildPromptRollRequest, type RoomRollPromptDraft } from '../domain/roomRolls';
 import {
     canManageSheetRuntime,
     canPublishManualRoll,
@@ -40,7 +41,7 @@ import {
 } from './characterRepository';
 import {
     clearRoomPrompt,
-    openInitiativePrompt,
+    openRoomPrompt,
     publishRoomRoll,
     readRoomRollState,
 } from './rollRepository';
@@ -414,10 +415,10 @@ export function PopoverApp({ surface = 'popover' }: { surface?: 'popover' | 'pan
         }
     }, [characterState]);
 
-    const handlePromptInitiative = useCallback(async () => {
+    const handleOpenPrompt = useCallback(async (prompt: RoomRollPromptDraft) => {
         setIsManagingPrompt(true);
         try {
-            const next = await openInitiativePrompt(visibilitySettings.initiativePromptAudience);
+            const next = await openRoomPrompt(prompt, visibilitySettings.initiativePromptAudience);
             setRoomRollState(next);
         } finally {
             setIsManagingPrompt(false);
@@ -445,11 +446,11 @@ export function PopoverApp({ surface = 'popover' }: { surface?: 'popover' | 'pan
                 audience: prompt.audience,
             })
             : false;
-        if (!sheet || prompt?.kind !== 'initiative' || !canRespond) {
+        if (!sheet || !prompt || !canRespond) {
             return;
         }
 
-        const result = rollStructuredD20(buildInitiativeRoll(sheet));
+        const result = rollStructuredD20(buildPromptRollRequest(sheet, prompt));
         setLastRoll(result);
         setIsPublishingRoll(true);
         try {
@@ -501,7 +502,7 @@ export function PopoverApp({ surface = 'popover' }: { surface?: 'popover' | 'pan
             onLinkCharacter={handleLinkCharacter}
             onUnlinkCharacter={handleUnlinkCharacter}
             onAssignCharacter={handleAssignCharacter}
-            onPromptInitiative={handlePromptInitiative}
+            onOpenPrompt={handleOpenPrompt}
             onClearPrompt={handleClearPrompt}
             onRespondToPrompt={handleRespondToPrompt}
             onSaveVisibilitySettings={handleSaveVisibilitySettings}

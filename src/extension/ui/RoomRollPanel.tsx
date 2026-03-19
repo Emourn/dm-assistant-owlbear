@@ -1,19 +1,22 @@
+import { useState } from 'react';
 import { RadioTower, ScrollText, Send, Siren } from 'lucide-react';
+import { ABILITY_DEFINITIONS, SKILL_DEFINITIONS } from '../../features/dnd2024/domain/constants';
 import type { StructuredRollResult } from '../../features/dnd2024/domain/types';
 import { formatSignedNumber } from '../../features/dnd2024/domain/sheet';
-import type { StoredRoomRollState } from '../domain/roomRolls';
+import { describeRoomRollPrompt, type RoomRollPromptDraft, type StoredRoomRollState } from '../domain/roomRolls';
 
 interface RoomRollPanelProps {
     role: 'GM' | 'PLAYER' | null;
     lastRoll: StructuredRollResult | null;
     roomRollState: StoredRoomRollState;
     defaultRollVisibility: 'room' | 'assigned-only' | 'gm-only';
+    defaultPromptAudience: 'room' | 'assigned-only';
     isPublishing: boolean;
     isManagingPrompt: boolean;
     canPublishLastRoll: boolean;
     canRespondToPrompt: boolean;
     onPublishLastRoll: () => Promise<void>;
-    onPromptInitiative: () => Promise<void>;
+    onOpenPrompt: (prompt: RoomRollPromptDraft) => Promise<void>;
     onClearPrompt: () => Promise<void>;
     onRespondToPrompt: () => Promise<void>;
 }
@@ -30,15 +33,17 @@ export function RoomRollPanel({
     lastRoll,
     roomRollState,
     defaultRollVisibility,
+    defaultPromptAudience,
     isPublishing,
     isManagingPrompt,
     canPublishLastRoll,
     canRespondToPrompt,
     onPublishLastRoll,
-    onPromptInitiative,
+    onOpenPrompt,
     onClearPrompt,
     onRespondToPrompt,
 }: RoomRollPanelProps) {
+    const [promptMode, setPromptMode] = useState<RoomRollPromptDraft['kind']>('initiative');
     const activePrompt = roomRollState.activePrompt;
 
     return (
@@ -54,20 +59,88 @@ export function RoomRollPanel({
                         A compact room feed for prompted and manually published results. This slice stays Owlbear-native and metadata-first.
                     </div>
                     <div className="mt-1 text-xs text-stone-500">
-                        Manual publication default: {defaultRollVisibility}.
+                        Manual publication default: {defaultRollVisibility}. Prompt audience default: {defaultPromptAudience}.
                     </div>
                 </div>
-                {role === 'GM' && (
-                    <button
-                        type="button"
-                        onClick={() => void onPromptInitiative()}
-                        disabled={isManagingPrompt}
-                        className="rounded-full border border-sky-400/35 bg-sky-500/10 px-3 py-1.5 text-xs font-semibold text-sky-200 transition hover:border-sky-300/60 disabled:cursor-not-allowed disabled:opacity-60"
-                    >
-                        {isManagingPrompt ? 'Updating...' : 'Prompt initiative'}
-                    </button>
-                )}
             </div>
+
+            {role === 'GM' && (
+                <div className="mt-4 rounded-2xl border border-stone-800 bg-stone-900/60 p-4">
+                    <div className="text-[11px] font-black uppercase tracking-[0.22em] text-stone-500">Quick prompts</div>
+                    <div className="mt-3 flex flex-wrap gap-2">
+                        {[
+                            { kind: 'initiative' as const, label: 'Initiative' },
+                            { kind: 'ability' as const, label: 'Ability' },
+                            { kind: 'saving-throw' as const, label: 'Save' },
+                            { kind: 'skill' as const, label: 'Skill' },
+                        ].map((option) => (
+                            <button
+                                key={option.kind}
+                                type="button"
+                                onClick={() => setPromptMode(option.kind)}
+                                className={`rounded-full border px-3 py-1.5 text-xs font-semibold transition ${
+                                    promptMode === option.kind
+                                        ? 'border-sky-400/35 bg-sky-500/10 text-sky-200'
+                                        : 'border-stone-700 bg-stone-950 text-stone-300 hover:border-stone-500'
+                                }`}
+                            >
+                                {option.label}
+                            </button>
+                        ))}
+                    </div>
+
+                    {promptMode === 'initiative' && (
+                        <div className="mt-3">
+                            <button
+                                type="button"
+                                onClick={() => void onOpenPrompt({ kind: 'initiative' })}
+                                disabled={isManagingPrompt}
+                                className="rounded-full border border-sky-400/35 bg-sky-500/10 px-3 py-1.5 text-xs font-semibold text-sky-200 transition hover:border-sky-300/60 disabled:cursor-not-allowed disabled:opacity-60"
+                            >
+                                {isManagingPrompt ? 'Updating...' : 'Prompt initiative'}
+                            </button>
+                        </div>
+                    )}
+
+                    {(promptMode === 'ability' || promptMode === 'saving-throw') && (
+                        <div className="mt-3 grid gap-2 sm:grid-cols-3">
+                            {ABILITY_DEFINITIONS.map((ability) => (
+                                <button
+                                    key={`${promptMode}:${ability.id}`}
+                                    type="button"
+                                    onClick={() =>
+                                        void onOpenPrompt(
+                                            promptMode === 'ability'
+                                                ? { kind: 'ability', ability: ability.id }
+                                                : { kind: 'saving-throw', ability: ability.id },
+                                        )
+                                    }
+                                    disabled={isManagingPrompt}
+                                    className="rounded-2xl border border-stone-700 bg-stone-950 px-3 py-2 text-left text-sm text-stone-200 transition hover:border-sky-400/40 hover:bg-stone-950/80 disabled:cursor-not-allowed disabled:opacity-60"
+                                >
+                                    {promptMode === 'ability' ? `${ability.name} Check` : `${ability.name} Save`}
+                                </button>
+                            ))}
+                        </div>
+                    )}
+
+                    {promptMode === 'skill' && (
+                        <div className="mt-3 grid max-h-52 gap-2 overflow-auto pr-1 sm:grid-cols-2">
+                            {SKILL_DEFINITIONS.map((skill) => (
+                                <button
+                                    key={`skill:${skill.id}`}
+                                    type="button"
+                                    onClick={() => void onOpenPrompt({ kind: 'skill', skillId: skill.id })}
+                                    disabled={isManagingPrompt}
+                                    className="rounded-2xl border border-stone-700 bg-stone-950 px-3 py-2 text-left text-sm text-stone-200 transition hover:border-sky-400/40 hover:bg-stone-950/80 disabled:cursor-not-allowed disabled:opacity-60"
+                                >
+                                    {skill.label}
+                                </button>
+                            ))}
+                        </div>
+                    )}
+                </div>
+            )}
 
             {activePrompt && (
                 <div className="mt-4 rounded-2xl border border-amber-400/20 bg-amber-500/10 p-4">
@@ -91,7 +164,7 @@ export function RoomRollPanel({
                                     disabled={isPublishing}
                                     className="rounded-full border border-amber-400/35 bg-amber-500/10 px-3 py-1.5 text-xs font-semibold text-amber-200 transition hover:border-amber-300/60 disabled:cursor-not-allowed disabled:opacity-60"
                                 >
-                                    {isPublishing ? 'Rolling...' : 'Roll and publish'}
+                                    {isPublishing ? 'Rolling...' : `Roll ${describeRoomRollPrompt(activePrompt).replace(/^Prompt /, '')}`}
                                 </button>
                             )}
                             {role === 'GM' && (

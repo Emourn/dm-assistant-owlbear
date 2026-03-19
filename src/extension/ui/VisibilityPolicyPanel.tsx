@@ -51,7 +51,7 @@ export function VisibilityPolicyPanel({
             <div className="text-[11px] font-black uppercase tracking-[0.22em] text-violet-300">Visibility policy</div>
             <div className="mt-2 text-lg font-semibold text-parchment">Room defaults for links and shared rolls</div>
             <div className="mt-1 text-sm text-stone-400">
-                Keep the public surface intentional. These defaults stay under the extension metadata namespace and control future links, roll publication, and initiative prompts.
+                Keep the public surface intentional. These defaults stay under the extension metadata namespace and control future links, roll publication, and roll prompts.
             </div>
 
             <div className="mt-4 grid gap-4 lg:grid-cols-2">
@@ -76,7 +76,7 @@ export function VisibilityPolicyPanel({
                     ]}
                 />
                 <SelectField
-                    label="Initiative prompt audience"
+                    label="Prompt audience"
                     value={settings.initiativePromptAudience}
                     onChange={(value) => void onSave({ ...settings, initiativePromptAudience: value as StoredVisibilitySettings['initiativePromptAudience'] })}
                     options={[

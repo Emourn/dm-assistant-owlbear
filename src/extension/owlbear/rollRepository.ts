@@ -3,12 +3,13 @@ import type { Phase1CharacterSheet, StructuredRollResult } from '../../features/
 import {
     appendPublishedRoll,
     createEmptyRoomRollState,
-    createInitiativePrompt,
     createPublishedRollEntry,
+    createRoomRollPrompt,
     parseStoredRoomRollState,
     setActivePrompt,
     type PublishedRollActor,
     type PublishedRollEntry,
+    type RoomRollPromptDraft,
     type StoredRoomRollState,
 } from '../domain/roomRolls';
 import type { PromptAudience, SharedVisibility } from '../domain/visibilitySettings';
@@ -62,7 +63,8 @@ export async function publishRoomRoll(
     return next;
 }
 
-export async function openInitiativePrompt(
+export async function openRoomPrompt(
+    prompt: RoomRollPromptDraft,
     audience: PromptAudience,
 ): Promise<StoredRoomRollState> {
     const metadata = await OBR.room.getMetadata();
@@ -71,7 +73,7 @@ export async function openInitiativePrompt(
         OBR.player.getId().catch(() => null),
         OBR.player.getName().catch(() => 'GM'),
     ]);
-    const next = setActivePrompt(current, createInitiativePrompt(Date.now(), playerName, playerId, audience));
+    const next = setActivePrompt(current, createRoomRollPrompt(prompt, Date.now(), playerName, playerId, audience));
     await writeRoomRollState(next);
     return next;
 }

@@ -1,4 +1,17 @@
-import type { StructuredRollResult } from '../../features/dnd2024/domain/types';
+import { ABILITY_BY_ID, SKILL_BY_ID } from '../../features/dnd2024/domain/constants';
+import {
+    buildAbilityCheckRoll,
+    buildInitiativeRoll,
+    buildSavingThrowRoll,
+    buildSkillCheckRoll,
+} from '../../features/dnd2024/domain/sheet';
+import type {
+    AbilityId,
+    Phase1CharacterSheet,
+    SkillId,
+    StructuredRollRequest,
+    StructuredRollResult,
+} from '../../features/dnd2024/domain/types';
 import type { PromptAudience, SharedVisibility } from './visibilitySettings';
 
 export const ROOM_ROLL_STATE_VERSION = 1;
@@ -21,15 +34,26 @@ export interface PublishedRollEntry {
     result: StructuredRollResult;
 }
 
-export interface RoomRollPrompt {
+export type RoomRollPromptDraft =
+    | { kind: 'initiative' }
+    | { kind: 'ability'; ability: AbilityId }
+    | { kind: 'saving-throw'; ability: AbilityId }
+    | { kind: 'skill'; skillId: SkillId };
+
+interface BaseRoomRollPrompt {
     id: string;
-    kind: 'initiative';
     label: string;
     audience: PromptAudience;
     createdAt: number;
     createdById: string | null;
     createdByName: string;
 }
+
+export type RoomRollPrompt =
+    | (BaseRoomRollPrompt & { kind: 'initiative' })
+    | (BaseRoomRollPrompt & { kind: 'ability'; ability: AbilityId })
+    | (BaseRoomRollPrompt & { kind: 'saving-throw'; ability: AbilityId })
+    | (BaseRoomRollPrompt & { kind: 'skill'; skillId: SkillId });
 
 export interface StoredRoomRollState {
     version: typeof ROOM_ROLL_STATE_VERSION;
@@ -104,7 +128,6 @@ function parseRoomRollPrompt(value: unknown): RoomRollPrompt | null {
     if (
         !isRecord(value)
         || typeof value.id !== 'string'
-        || value.kind !== 'initiative'
         || typeof value.label !== 'string'
         || typeof value.createdAt !== 'number'
         || (typeof value.createdById !== 'string' && value.createdById !== null)
@@ -113,14 +136,144 @@ function parseRoomRollPrompt(value: unknown): RoomRollPrompt | null {
         return null;
     }
 
-    return {
+    const audience: PromptAudience = value.audience === 'assigned-only' ? 'assigned-only' : 'room';
+    const base = {
         id: value.id,
-        kind: 'initiative',
         label: value.label,
-        audience: value.audience === 'assigned-only' ? 'assigned-only' : 'room',
+        audience,
         createdAt: value.createdAt,
         createdById: value.createdById,
         createdByName: value.createdByName,
+    };
+
+    if (value.kind === 'initiative') {
+        return {
+            ...base,
+            kind: 'initiative',
+        };
+    }
+
+    if (
+        value.kind === 'ability'
+        && typeof value.ability === 'string'
+        && value.ability in ABILITY_BY_ID
+    ) {
+        return {
+            ...base,
+            kind: 'ability',
+            ability: value.ability as AbilityId,
+        };
+    }
+
+    if (
+        value.kind === 'saving-throw'
+        && typeof value.ability === 'string'
+        && value.ability in ABILITY_BY_ID
+    ) {
+        return {
+            ...base,
+            kind: 'saving-throw',
+            ability: value.ability as AbilityId,
+        };
+    }
+
+    if (
+        value.kind === 'skill'
+        && typeof value.skillId === 'string'
+        && value.skillId in SKILL_BY_ID
+    ) {
+        return {
+            ...base,
+            kind: 'skill',
+            skillId: value.skillId as SkillId,
+        };
+    }
+
+    return null;
+}
+
+function describePromptLabel(prompt: RoomRollPromptDraft): string {
+    if (prompt.kind === 'initiative') {
+        return 'Prompt initiative';
+    }
+
+    if (prompt.kind === 'ability') {
+        return `Prompt ${ABILITY_BY_ID[prompt.ability].name} Check`;
+    }
+
+    if (prompt.kind === 'saving-throw') {
+        return `Prompt ${ABILITY_BY_ID[prompt.ability].name} Saving Throw`;
+    }
+
+    return `Prompt ${SKILL_BY_ID[prompt.skillId].label}`;
+}
+
+export function describeRoomRollPrompt(prompt: RoomRollPromptDraft | RoomRollPrompt): string {
+    return describePromptLabel(prompt);
+}
+
+export function buildPromptRollRequest(
+    sheet: Phase1CharacterSheet,
+    prompt: RoomRollPrompt,
+): StructuredRollRequest {
+    if (prompt.kind === 'initiative') {
+        return buildInitiativeRoll(sheet);
+    }
+
+    if (prompt.kind === 'ability') {
+        return buildAbilityCheckRoll(sheet, prompt.ability);
+    }
+
+    if (prompt.kind === 'saving-throw') {
+        return buildSavingThrowRoll(sheet, prompt.ability);
+    }
+
+    return buildSkillCheckRoll(sheet, prompt.skillId);
+}
+
+export function createRoomRollPrompt(
+    prompt: RoomRollPromptDraft,
+    createdAt: number,
+    createdByName: string,
+    createdById: string | null,
+    audience: PromptAudience,
+): RoomRollPrompt {
+    const base = {
+        id: `prompt:${prompt.kind}:${createdAt}`,
+        label: describePromptLabel(prompt),
+        audience,
+        createdAt,
+        createdById,
+        createdByName,
+    };
+
+    if (prompt.kind === 'initiative') {
+        return {
+            ...base,
+            kind: 'initiative',
+        };
+    }
+
+    if (prompt.kind === 'ability') {
+        return {
+            ...base,
+            kind: 'ability',
+            ability: prompt.ability,
+        };
+    }
+
+    if (prompt.kind === 'saving-throw') {
+        return {
+            ...base,
+            kind: 'saving-throw',
+            ability: prompt.ability,
+        };
+    }
+
+    return {
+        ...base,
+        kind: 'skill',
+        skillId: prompt.skillId,
     };
 }
 
@@ -170,23 +323,6 @@ export function appendPublishedRoll(
     return {
         ...state,
         feed: [entry, ...state.feed].slice(0, ROOM_ROLL_FEED_LIMIT),
-    };
-}
-
-export function createInitiativePrompt(
-    createdAt: number,
-    createdByName: string,
-    createdById: string | null,
-    audience: PromptAudience,
-): RoomRollPrompt {
-    return {
-        id: `prompt:initiative:${createdAt}`,
-        kind: 'initiative',
-        label: 'Prompt initiative',
-        audience,
-        createdAt,
-        createdById,
-        createdByName,
     };
 }
 
