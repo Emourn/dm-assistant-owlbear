@@ -1,0 +1,176 @@
+import type {
+    AbilityId,
+    Phase1ActionSummary,
+    Phase1CharacterSheet,
+    Phase1ResourceCounter,
+    Phase1Spellcasting,
+} from '../../features/dnd2024/domain/types';
+
+export interface EditableActionInput {
+    id?: string;
+    name: string;
+    kind: string;
+    source?: string;
+    description?: string;
+}
+
+export interface EditableSpellSlotInput {
+    id?: string;
+    name: string;
+    current: number;
+    max: number;
+    resetOn: Phase1ResourceCounter['resetOn'];
+    level?: number;
+    detail?: string;
+}
+
+export interface EditableSpellcastingInput {
+    ability: AbilityId;
+    attackBonus: number;
+    saveDc: number;
+    slots: EditableSpellSlotInput[];
+}
+
+function clampInteger(value: number, fallback: number, min: number, max: number): number {
+    if (!Number.isFinite(value)) {
+        return fallback;
+    }
+
+    return Math.min(max, Math.max(min, Math.trunc(value)));
+}
+
+function normalizeText(value: string | undefined): string | undefined {
+    const next = value?.trim();
+    return next ? next : undefined;
+}
+
+function normalizeKind(value: string, fallback: string): string {
+    const next = value.trim().toLowerCase();
+    return next || fallback;
+}
+
+function slugify(value: string): string {
+    return value
+        .trim()
+        .toLowerCase()
+        .replace(/[^a-z0-9]+/g, '-')
+        .replace(/^-+|-+$/g, '')
+        || 'entry';
+}
+
+function createUniqueChildId(
+    sheetId: string,
+    prefix: 'action' | 'slot',
+    name: string,
+    takenIds: Set<string>,
+): string {
+    const base = `${sheetId}:${prefix}:${slugify(name)}`;
+    let next = base;
+    let suffix = 2;
+
+    while (takenIds.has(next)) {
+        next = `${base}-${suffix}`;
+        suffix += 1;
+    }
+
+    takenIds.add(next);
+    return next;
+}
+
+function sanitizeAction(
+    sheetId: string,
+    input: EditableActionInput,
+    takenIds: Set<string>,
+): Phase1ActionSummary | null {
+    const name = input.name.trim();
+    if (!name) {
+        return null;
+    }
+
+    const existingId = input.id?.trim();
+    const id = existingId && !takenIds.has(existingId)
+        ? existingId
+        : createUniqueChildId(sheetId, 'action', name, takenIds);
+
+    takenIds.add(id);
+
+    return {
+        id,
+        name,
+        kind: normalizeKind(input.kind, 'action'),
+        source: normalizeText(input.source),
+        description: normalizeText(input.description),
+    };
+}
+
+function sanitizeSpellSlot(
+    sheetId: string,
+    input: EditableSpellSlotInput,
+    takenIds: Set<string>,
+): Phase1ResourceCounter | null {
+    const name = input.name.trim();
+    if (!name) {
+        return null;
+    }
+
+    const max = clampInteger(input.max, 0, 0, 99);
+    const existingId = input.id?.trim();
+    const id = existingId && !takenIds.has(existingId)
+        ? existingId
+        : createUniqueChildId(sheetId, 'slot', name, takenIds);
+
+    takenIds.add(id);
+
+    return {
+        id,
+        name,
+        current: clampInteger(input.current, max, 0, max),
+        max,
+        resetOn: input.resetOn,
+        kind: 'spell-slot',
+        level: clampInteger(input.level ?? 1, 1, 1, 9),
+        detail: normalizeText(input.detail),
+    };
+}
+
+export function updateSheetActions(
+    sheet: Phase1CharacterSheet,
+    actions: EditableActionInput[],
+): Phase1CharacterSheet {
+    const takenIds = new Set<string>();
+    const nextActions = actions
+        .map((action) => sanitizeAction(sheet.id, action, takenIds))
+        .filter((action): action is Phase1ActionSummary => Boolean(action));
+
+    return {
+        ...sheet,
+        actions: nextActions,
+    };
+}
+
+export function updateSheetSpellcasting(
+    sheet: Phase1CharacterSheet,
+    spellcasting: EditableSpellcastingInput | null,
+): Phase1CharacterSheet {
+    if (!spellcasting) {
+        return {
+            ...sheet,
+            spellcasting: null,
+        };
+    }
+
+    const takenIds = new Set<string>();
+    const nextSpellcasting: Phase1Spellcasting = {
+        ability: spellcasting.ability,
+        attackBonus: clampInteger(spellcasting.attackBonus, 0, -20, 40),
+        saveDc: clampInteger(spellcasting.saveDc, 8, 1, 40),
+        slots: spellcasting.slots
+            .map((slot) => sanitizeSpellSlot(sheet.id, slot, takenIds))
+            .filter((slot): slot is Phase1ResourceCounter => Boolean(slot)),
+    };
+
+    return {
+        ...sheet,
+        spellcasting: nextSpellcasting,
+    };
+}

@@ -12,6 +12,7 @@ import type {
     StructuredRollResult,
 } from '../../features/dnd2024/domain/types';
 import type { CharacterRepositorySnapshot } from '../owlbear/characterRepository';
+import { ActionSpellEditorPanel } from './ActionSpellEditorPanel';
 import { CharacterEditorPanel } from './CharacterEditorPanel';
 import { OverridePanel } from './OverridePanel';
 import { PlayerAssignmentPanel } from './PlayerAssignmentPanel';
@@ -388,6 +389,13 @@ export function CharacterSheetPanel({
             />
 
             <CharacterEditorPanel
+                sheet={sheet}
+                canEdit={canEdit}
+                isSaving={isSaving}
+                onSave={onSave}
+            />
+
+            <ActionSpellEditorPanel
                 sheet={sheet}
                 canEdit={canEdit}
                 isSaving={isSaving}
