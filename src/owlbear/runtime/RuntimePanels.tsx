@@ -22,7 +22,7 @@ import {
 } from 'lucide-react';
 import { useCampaignStore } from '../../store/campaignStore';
 import { useCharacterStore } from '../../store/characterStore';
-import type { Character } from '../../types/character';
+import type { Character, Condition } from '../../types/character';
 import { useCombatStore } from '../../store/combatStore';
 import type { Combatant } from '../../types/combat';
 import {
@@ -629,8 +629,15 @@ function CombatWorkspace() {
     const setInitiative = useCombatStore((state) => state.setInitiative);
     const damageCombatant = useCombatStore((state) => state.damageCombatant);
     const healCombatant = useCombatStore((state) => state.healCombatant);
+    const toggleCombatantResource = useCombatStore((state) => state.toggleCombatantResource);
+    const useSpellSlot = useCombatStore((state) => state.useSpellSlot);
+    const setConcentration = useCombatStore((state) => state.setConcentration);
+    const updateCombatant = useCombatStore((state) => state.updateCombatant);
     const [title, setTitle] = useState('');
     const [isBusy, setIsBusy] = useState(false);
+    const [selectedConcentrationSpell, setSelectedConcentrationSpell] = useState('');
+    const [selectedConditionName, setSelectedConditionName] = useState('Blessed');
+    const [conditionDuration, setConditionDuration] = useState('1');
 
     const activeCampaign = campaigns.find((campaign) => campaign.id === activeCampaignId) ?? null;
     const activeCombatant = activeEncounter?.combatants.find((combatant) => combatant.id === activeEncounter.activeCombatantId) ?? null;
@@ -642,11 +649,29 @@ function CombatWorkspace() {
         () => (activeCharacter?.spells ?? []).filter((spell) => Boolean(getEmbersSpellId(spell.name))),
         [activeCharacter],
     );
+    const concentrationSpells = useMemo(
+        () => (activeCharacter?.spells ?? []).filter((spell) => spell.concentration),
+        [activeCharacter],
+    );
     const partyLevel = activeCampaign
         ? characters
             .filter((character) => activeCampaign.partyIds.includes(character.id))
             .reduce((sum, character) => sum + character.level, 0)
         : 0;
+    const commonConditions = ['Blessed', 'Poisoned', 'Prone', 'Restrained', 'Stunned', 'Invisible'];
+
+    useEffect(() => {
+        if (concentrationSpells.length === 0) {
+            setSelectedConcentrationSpell('');
+            return;
+        }
+        setSelectedConcentrationSpell((current) => {
+            if (current && concentrationSpells.some((spell) => spell.name === current)) {
+                return current;
+            }
+            return concentrationSpells[0]?.name ?? '';
+        });
+    }, [concentrationSpells]);
 
     const handleCreateEncounter = async () => {
         const encounterTitle = title.trim() || 'Owlbear Encounter';
@@ -687,6 +712,73 @@ function CombatWorkspace() {
         } finally {
             setIsBusy(false);
         }
+    };
+
+    const handleToggleResource = async (resource: 'action' | 'bonus' | 'reaction') => {
+        if (!activeCombatant) {
+            return;
+        }
+        toggleCombatantResource(activeCombatant.id, resource);
+        await OBR.notification.show(`Toggled ${resource} for ${activeCombatant.name}.`, 'SUCCESS');
+    };
+
+    const handleUseSpellSlot = async (level: number) => {
+        if (!activeCombatant) {
+            return;
+        }
+        useSpellSlot(activeCombatant.id, level);
+        await OBR.notification.show(`Spent a level ${level} spell slot for ${activeCombatant.name}.`, 'SUCCESS');
+    };
+
+    const handleSetConcentration = async () => {
+        if (!activeCombatant || !selectedConcentrationSpell) {
+            return;
+        }
+
+        const spell = concentrationSpells.find((entry) => entry.name === selectedConcentrationSpell);
+        if (!spell) {
+            return;
+        }
+
+        setConcentration(activeCombatant.id, { spellId: spell.id, name: spell.name });
+        await OBR.notification.show(`${activeCombatant.name} is now concentrating on ${spell.name}.`, 'SUCCESS');
+    };
+
+    const handleClearConcentration = async () => {
+        if (!activeCombatant) {
+            return;
+        }
+        setConcentration(activeCombatant.id, null);
+        await OBR.notification.show(`Cleared concentration for ${activeCombatant.name}.`, 'SUCCESS');
+    };
+
+    const handleAddCondition = async () => {
+        if (!activeCombatant || !selectedConditionName.trim()) {
+            return;
+        }
+
+        const duration = Number(conditionDuration);
+        const nextCondition: Condition = {
+            id: crypto.randomUUID(),
+            name: selectedConditionName.trim(),
+            type: 'condition',
+            duration: Number.isFinite(duration) && duration > 0 ? duration : undefined,
+            description: 'Applied from the Owlbear compact combat panel.',
+        };
+        updateCombatant(activeCombatant.id, {
+            conditions: [...activeCombatant.conditions, nextCondition],
+        });
+        await OBR.notification.show(`Added ${nextCondition.name} to ${activeCombatant.name}.`, 'SUCCESS');
+    };
+
+    const handleRemoveCondition = async (conditionId: string, name: string) => {
+        if (!activeCombatant) {
+            return;
+        }
+        updateCombatant(activeCombatant.id, {
+            conditions: activeCombatant.conditions.filter((condition) => condition.id !== conditionId),
+        });
+        await OBR.notification.show(`Removed ${name} from ${activeCombatant.name}.`, 'SUCCESS');
     };
 
     if (!activeEncounter) {
@@ -804,6 +896,157 @@ function CombatWorkspace() {
                             </div>
                         </div>
                     )}
+                    <div className="mt-4 grid gap-4 xl:grid-cols-3">
+                        <div className="rounded-2xl border border-stone-800 bg-stone-950/70 p-3">
+                            <div className="text-[10px] font-black uppercase tracking-[0.18em] text-stone-500">Action economy</div>
+                            <div className="mt-3 flex flex-wrap gap-2">
+                                <button
+                                    type="button"
+                                    onClick={() => void handleToggleResource('action')}
+                                    className={`rounded-full border px-3 py-2 text-[11px] font-black uppercase tracking-[0.16em] transition-colors ${activeCombatant.hasAction ? 'border-emerald-400/30 bg-emerald-500/10 text-emerald-200' : 'border-stone-700 bg-stone-900 text-stone-300'}`}
+                                >
+                                    Action
+                                </button>
+                                <button
+                                    type="button"
+                                    onClick={() => void handleToggleResource('bonus')}
+                                    className={`rounded-full border px-3 py-2 text-[11px] font-black uppercase tracking-[0.16em] transition-colors ${activeCombatant.hasBonusAction ? 'border-emerald-400/30 bg-emerald-500/10 text-emerald-200' : 'border-stone-700 bg-stone-900 text-stone-300'}`}
+                                >
+                                    Bonus
+                                </button>
+                                <button
+                                    type="button"
+                                    onClick={() => void handleToggleResource('reaction')}
+                                    className={`rounded-full border px-3 py-2 text-[11px] font-black uppercase tracking-[0.16em] transition-colors ${activeCombatant.hasReaction ? 'border-emerald-400/30 bg-emerald-500/10 text-emerald-200' : 'border-stone-700 bg-stone-900 text-stone-300'}`}
+                                >
+                                    Reaction
+                                </button>
+                            </div>
+                        </div>
+
+                        <div className="rounded-2xl border border-stone-800 bg-stone-950/70 p-3">
+                            <div className="text-[10px] font-black uppercase tracking-[0.18em] text-stone-500">Concentration</div>
+                            {activeCombatant.concentratingOn ? (
+                                <div className="mt-3 space-y-3">
+                                    <div className="rounded-xl border border-sky-400/20 bg-sky-500/10 px-3 py-2 text-sm text-sky-100">
+                                        {activeCombatant.concentratingOn.name}
+                                    </div>
+                                    <button
+                                        type="button"
+                                        onClick={() => void handleClearConcentration()}
+                                        className="rounded-full border border-stone-700 bg-stone-900 px-3 py-2 text-[11px] font-black uppercase tracking-[0.16em] text-stone-100 transition-colors hover:border-red-400/30 hover:text-red-200"
+                                    >
+                                        Clear
+                                    </button>
+                                </div>
+                            ) : concentrationSpells.length > 0 ? (
+                                <div className="mt-3 space-y-3">
+                                    <select
+                                        value={selectedConcentrationSpell}
+                                        onChange={(event) => setSelectedConcentrationSpell(event.target.value)}
+                                        className="w-full rounded-xl border border-stone-700 bg-stone-900 px-3 py-2 text-sm text-stone-100 outline-none transition-colors focus:border-gold"
+                                    >
+                                        {concentrationSpells.map((spell) => (
+                                            <option key={spell.id} value={spell.name}>
+                                                {spell.name}
+                                            </option>
+                                        ))}
+                                    </select>
+                                    <button
+                                        type="button"
+                                        onClick={() => void handleSetConcentration()}
+                                        className="rounded-full border border-stone-700 bg-stone-900 px-3 py-2 text-[11px] font-black uppercase tracking-[0.16em] text-stone-100 transition-colors hover:border-sky-400/20 hover:text-sky-100"
+                                    >
+                                        Set
+                                    </button>
+                                </div>
+                            ) : (
+                                <div className="mt-3 text-sm text-stone-500">No concentration spells on the linked sheet.</div>
+                            )}
+                        </div>
+
+                        <div className="rounded-2xl border border-stone-800 bg-stone-950/70 p-3">
+                            <div className="text-[10px] font-black uppercase tracking-[0.18em] text-stone-500">Spell slots</div>
+                            {activeCombatant.spellSlots && activeCombatant.spellSlots.some((slot, index) => index > 0 && slot.max > 0) ? (
+                                <div className="mt-3 flex flex-wrap gap-2">
+                                    {activeCombatant.spellSlots.map((slot, index) => {
+                                        if (index === 0 || slot.max <= 0) {
+                                            return null;
+                                        }
+                                        return (
+                                            <button
+                                                key={index}
+                                                type="button"
+                                                onClick={() => void handleUseSpellSlot(index)}
+                                                className="rounded-full border border-stone-700 bg-stone-900 px-3 py-2 text-[11px] font-black uppercase tracking-[0.16em] text-stone-100 transition-colors hover:border-gold/30 hover:text-gold"
+                                            >
+                                                L{index} {slot.current}/{slot.max}
+                                            </button>
+                                        );
+                                    })}
+                                </div>
+                            ) : (
+                                <div className="mt-3 text-sm text-stone-500">No tracked spell slots for this combatant.</div>
+                            )}
+                        </div>
+                    </div>
+                    <div className="mt-4 grid gap-4 xl:grid-cols-[1.1fr_0.9fr]">
+                        <div className="rounded-2xl border border-stone-800 bg-stone-950/70 p-3">
+                            <div className="text-[10px] font-black uppercase tracking-[0.18em] text-stone-500">Conditions</div>
+                            <div className="mt-3 grid gap-2 lg:grid-cols-[minmax(0,1fr)_90px_auto]">
+                                <select
+                                    value={selectedConditionName}
+                                    onChange={(event) => setSelectedConditionName(event.target.value)}
+                                    className="rounded-xl border border-stone-700 bg-stone-900 px-3 py-2 text-sm text-stone-100 outline-none transition-colors focus:border-gold"
+                                >
+                                    {commonConditions.map((name) => (
+                                        <option key={name} value={name}>
+                                            {name}
+                                        </option>
+                                    ))}
+                                </select>
+                                <input
+                                    type="number"
+                                    min="0"
+                                    value={conditionDuration}
+                                    onChange={(event) => setConditionDuration(event.target.value)}
+                                    className="rounded-xl border border-stone-700 bg-stone-900 px-3 py-2 text-sm text-stone-100 outline-none transition-colors focus:border-gold"
+                                    placeholder="Rounds"
+                                />
+                                <button
+                                    type="button"
+                                    onClick={() => void handleAddCondition()}
+                                    className="rounded-xl border border-stone-700 bg-stone-900 px-3 py-2 text-sm font-semibold text-stone-100 transition-colors hover:border-sky-400/20 hover:text-sky-100"
+                                >
+                                    Add
+                                </button>
+                            </div>
+                            <div className="mt-3 flex flex-wrap gap-2">
+                                {activeCombatant.conditions.length === 0 && (
+                                    <div className="text-sm text-stone-500">No active conditions.</div>
+                                )}
+                                {activeCombatant.conditions.map((condition) => (
+                                    <button
+                                        key={condition.id}
+                                        type="button"
+                                        onClick={() => void handleRemoveCondition(condition.id, condition.name)}
+                                        className="rounded-full border border-stone-700 bg-stone-900 px-3 py-2 text-[11px] font-black uppercase tracking-[0.16em] text-stone-100 transition-colors hover:border-red-400/30 hover:text-red-200"
+                                    >
+                                        {condition.name}{condition.duration ? ` (${condition.duration})` : ''}
+                                    </button>
+                                ))}
+                            </div>
+                        </div>
+
+                        <div className="rounded-2xl border border-stone-800 bg-stone-950/70 p-3">
+                            <div className="text-[10px] font-black uppercase tracking-[0.18em] text-stone-500">Turn notes</div>
+                            <div className="mt-3 space-y-2 text-sm text-stone-400">
+                                <div>Use the action buttons above to mark spent economy on the current turn.</div>
+                                <div>Removing a condition from this panel clears it immediately from the combatant.</div>
+                                <div>Concentration and spell slot changes here sync against the combat encounter state.</div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             )}
 
