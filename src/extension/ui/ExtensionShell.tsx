@@ -36,6 +36,7 @@ interface ExtensionShellProps {
     onSaveCharacter: (sheet: Phase1CharacterSheet) => Promise<void>;
     onAdjustResource: (resourceId: string, delta: number) => Promise<void>;
     onAdjustDeathSave: (kind: 'successes' | 'failures', delta: number) => Promise<void>;
+    onSpendActionResource: (actionId: string) => Promise<void>;
     onSaveOverrides: (next: { proficiencyBonusOverride: number | null; initiativeAdjustment: number }) => Promise<void>;
     onLinkCharacter: (sheet: Phase1CharacterSheet) => Promise<void>;
     onUnlinkCharacter: () => Promise<void>;
@@ -90,6 +91,7 @@ export function ExtensionShell({
     onSaveCharacter,
     onAdjustResource,
     onAdjustDeathSave,
+    onSpendActionResource,
     onSaveOverrides,
     onLinkCharacter,
     onUnlinkCharacter,
@@ -245,6 +247,7 @@ export function ExtensionShell({
                     onSave={onSaveCharacter}
                     onAdjustResource={onAdjustResource}
                     onAdjustDeathSave={onAdjustDeathSave}
+                    onSpendActionResource={onSpendActionResource}
                     onSaveOverrides={onSaveOverrides}
                     onLink={onLinkCharacter}
                     onUnlink={onUnlinkCharacter}

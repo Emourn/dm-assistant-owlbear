@@ -1,5 +1,6 @@
 import type { Player } from '@owlbear-rodeo/sdk';
 import { BookOpenText, HeartPulse, Shield, Sparkles, Swords, WandSparkles } from 'lucide-react';
+import { buildActionRoll, canRollAction, getActionUseState } from '../../features/dnd2024/domain/actionAutomation';
 import {
     createCharacterSheetViewModel,
     formatSignedNumber,
@@ -36,6 +37,7 @@ interface CharacterSheetPanelProps {
     onSave: (sheet: Phase1CharacterSheet) => Promise<void>;
     onAdjustResource: (resourceId: string, delta: number) => Promise<void>;
     onAdjustDeathSave: (kind: 'successes' | 'failures', delta: number) => Promise<void>;
+    onSpendActionResource: (actionId: string) => Promise<void>;
     onSaveOverrides: (next: { proficiencyBonusOverride: number | null; initiativeAdjustment: number }) => Promise<void>;
     onLink: (sheet: Phase1CharacterSheet) => Promise<void>;
     onUnlink: () => Promise<void>;
@@ -116,6 +118,7 @@ export function CharacterSheetPanel({
     onSave,
     onAdjustResource,
     onAdjustDeathSave,
+    onSpendActionResource,
     onSaveOverrides,
     onLink,
     onUnlink,
@@ -311,6 +314,41 @@ export function CharacterSheetPanel({
                                         {(action.source || action.description) && (
                                             <div className="mt-2 text-sm text-stone-400">
                                                 {[action.source, action.description].filter(Boolean).join(' - ')}
+                                            </div>
+                                        )}
+                                        {(canRollAction(sheet, action) || getActionUseState(sheet, action).resource) && (
+                                            <div className="mt-3 flex flex-wrap gap-2">
+                                                {canRollAction(sheet, action) && (
+                                                    <button
+                                                        type="button"
+                                                        onClick={() => {
+                                                            const request = buildActionRoll(sheet, action);
+                                                            if (request) {
+                                                                onRoll(request);
+                                                            }
+                                                        }}
+                                                        className="rounded-full border border-amber-400/35 bg-amber-500/10 px-3 py-1.5 text-xs font-semibold text-amber-200 transition hover:border-amber-300/60"
+                                                    >
+                                                        Roll attack
+                                                    </button>
+                                                )}
+                                                {(() => {
+                                                    const useState = getActionUseState(sheet, action);
+                                                    if (!useState.resource) {
+                                                        return null;
+                                                    }
+
+                                                    return (
+                                                        <button
+                                                            type="button"
+                                                            onClick={() => void onSpendActionResource(action.id)}
+                                                            disabled={!canManageRuntime || isUpdatingRuntime || !useState.canSpend}
+                                                            className="rounded-full border border-sky-400/35 bg-sky-500/10 px-3 py-1.5 text-xs font-semibold text-sky-200 transition hover:border-sky-300/60 disabled:cursor-not-allowed disabled:opacity-50"
+                                                        >
+                                                            Spend {useState.amount} {useState.resource.name} ({useState.resource.current}/{useState.resource.max})
+                                                        </button>
+                                                    );
+                                                })()}
                                             </div>
                                         )}
                                     </div>

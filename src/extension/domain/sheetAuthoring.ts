@@ -12,6 +12,13 @@ export interface EditableActionInput {
     kind: string;
     source?: string;
     description?: string;
+    attackEnabled?: boolean;
+    attackSource?: AbilityId | 'spellcasting';
+    proficient?: boolean;
+    attackBonus?: number;
+    attackRange?: 'melee' | 'ranged' | 'other';
+    resourceCostId?: string;
+    resourceCostAmount?: number;
 }
 
 export interface EditableSpellSlotInput {
@@ -100,6 +107,21 @@ function sanitizeAction(
         kind: normalizeKind(input.kind, 'action'),
         source: normalizeText(input.source),
         description: normalizeText(input.description),
+        automation: input.attackEnabled
+            ? {
+                kind: 'attack-roll',
+                attackSource: input.attackSource ?? 'str',
+                proficient: Boolean(input.proficient),
+                bonus: clampInteger(input.attackBonus ?? 0, 0, -20, 40),
+                range: input.attackRange ?? 'other',
+                resourceCost: input.resourceCostId && clampInteger(input.resourceCostAmount ?? 1, 1, 1, 99) > 0
+                    ? {
+                        resourceId: input.resourceCostId,
+                        amount: clampInteger(input.resourceCostAmount ?? 1, 1, 1, 99),
+                    }
+                    : null,
+            }
+            : null,
     };
 }
 

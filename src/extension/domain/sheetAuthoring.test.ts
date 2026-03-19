@@ -15,6 +15,11 @@ describe('sheet authoring helpers', () => {
                 kind: ' Attack ',
                 source: ' Equipped weapon ',
                 description: '  Melee weapon attack. ',
+                attackEnabled: true,
+                attackSource: 'str',
+                proficient: true,
+                attackBonus: 1,
+                attackRange: 'melee',
             },
             {
                 name: 'Longsword',
@@ -32,6 +37,13 @@ describe('sheet authoring helpers', () => {
             kind: 'attack',
             source: 'Equipped weapon',
             description: 'Melee weapon attack.',
+        });
+        expect(updated.actions[0].automation).toMatchObject({
+            kind: 'attack-roll',
+            attackSource: 'str',
+            proficient: true,
+            bonus: 1,
+            range: 'melee',
         });
         expect(updated.actions[0].id).toBe(`${sheet.id}:action:longsword`);
         expect(updated.actions[1].id).toBe(`${sheet.id}:action:longsword-2`);

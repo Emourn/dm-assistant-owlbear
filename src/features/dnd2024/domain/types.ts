@@ -44,6 +44,19 @@ export interface Phase1ActionSummary {
     kind: string;
     source?: string;
     description?: string;
+    automation?: Phase1ActionAutomation | null;
+}
+
+export interface Phase1ActionAutomation {
+    kind: 'attack-roll';
+    attackSource: AbilityId | 'spellcasting';
+    proficient: boolean;
+    bonus: number;
+    range?: 'melee' | 'ranged' | 'other';
+    resourceCost?: {
+        resourceId: string;
+        amount: number;
+    } | null;
 }
 
 export interface Phase1ArmorClass {
@@ -110,7 +123,7 @@ export interface NumericBreakdown {
 export interface StructuredRollRequest {
     id: string;
     label: string;
-    scope: 'ability' | 'saving-throw' | 'skill' | 'initiative';
+    scope: 'ability' | 'saving-throw' | 'skill' | 'initiative' | 'attack';
     formula: string;
     totalModifier: number;
     breakdown: RollModifierPart[];

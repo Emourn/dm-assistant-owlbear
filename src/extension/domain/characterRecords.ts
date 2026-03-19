@@ -316,6 +316,14 @@ export function createSampleCharacterCollection(now = Date.now()): StoredCharact
                             kind: 'attack',
                             source: 'Equipped weapon',
                             description: 'Melee weapon attack using Strength. Damage automation is a later slice.',
+                            automation: {
+                                kind: 'attack-roll',
+                                attackSource: 'str',
+                                proficient: true,
+                                bonus: 0,
+                                range: 'melee',
+                                resourceCost: null,
+                            },
                         },
                         {
                             id: `${characterId}:sacred-flame`,
@@ -329,7 +337,18 @@ export function createSampleCharacterCollection(now = Date.now()): StoredCharact
                             name: 'Guiding Bolt',
                             kind: 'spell',
                             source: 'Prepared spell',
-                            description: 'Attack roll spell using Wisdom. Slot spend automation comes later.',
+                            description: 'Attack roll spell using the stored spellcasting bonus. Linked spell-slot spending is enabled; damage automation comes later.',
+                            automation: {
+                                kind: 'attack-roll',
+                                attackSource: 'spellcasting',
+                                proficient: false,
+                                bonus: 0,
+                                range: 'ranged',
+                                resourceCost: {
+                                    resourceId: `${characterId}:slot-1`,
+                                    amount: 1,
+                                },
+                            },
                         },
                     ),
                     notes: [

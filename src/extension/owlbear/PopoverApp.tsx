@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useState } from 'react';
 import OBR from '@owlbear-rodeo/sdk';
+import { spendActionResource } from '../../features/dnd2024/domain/actionAutomation';
 import { buildInitiativeRoll } from '../../features/dnd2024/domain/sheet';
 import {
     setInitiativeAdjustment,
@@ -15,6 +16,7 @@ import type {
 } from '../../features/dnd2024/domain/types';
 import type { StoredRoomRollState } from '../domain/roomRolls';
 import {
+    canManageSheetRuntime,
     canPublishManualRoll,
     canRespondToPrompt,
     createDefaultVisibilitySettings,
@@ -269,6 +271,37 @@ export function PopoverApp({ surface = 'popover' }: { surface?: 'popover' | 'pan
         }
     }, [characterState]);
 
+    const handleSpendActionResource = useCallback(async (actionId: string) => {
+        const activeSheet = characterState?.activeCharacter?.sheet;
+        const canManage = canManageSheetRuntime(
+            runtime?.role ?? null,
+            characterState?.assignedCharacterId ?? null,
+            activeSheet?.id ?? null,
+        );
+        if (!activeSheet || !canManage) {
+            return;
+        }
+
+        const action = activeSheet.actions.find((entry) => entry.id === actionId);
+        if (!action) {
+            return;
+        }
+
+        setIsUpdatingRuntime(true);
+        try {
+            const next = await updateCharacterSheetWith(
+                activeSheet.id,
+                (sheet) => spendActionResource(sheet, action),
+            );
+            if (next) {
+                setCharacterState(next);
+                setLastRoll(null);
+            }
+        } finally {
+            setIsUpdatingRuntime(false);
+        }
+    }, [characterState, runtime]);
+
     const handleSaveOverrides = useCallback(async (nextOverrides: {
         proficiencyBonusOverride: number | null;
         initiativeAdjustment: number;
@@ -372,6 +405,7 @@ export function PopoverApp({ surface = 'popover' }: { surface?: 'popover' | 'pan
             onSaveCharacter={handleSaveCharacter}
             onAdjustResource={handleAdjustResource}
             onAdjustDeathSave={handleAdjustDeathSave}
+            onSpendActionResource={handleSpendActionResource}
             onSaveOverrides={handleSaveOverrides}
             onLinkCharacter={handleLinkCharacter}
             onUnlinkCharacter={handleUnlinkCharacter}
