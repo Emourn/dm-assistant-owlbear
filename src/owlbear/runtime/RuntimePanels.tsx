@@ -88,6 +88,83 @@ export function RuntimeLine({ label, value }: { label: string; value: string }) 
     );
 }
 
+function WorkspaceCard({
+    children,
+    className = '',
+}: {
+    children: React.ReactNode;
+    className?: string;
+}) {
+    return <div className={`rounded-2xl border border-stone-800 bg-stone-900/70 p-4 ${className}`.trim()}>{children}</div>;
+}
+
+function SmallActionButton({
+    label,
+    icon,
+    onClick,
+    variant = 'neutral',
+    disabled,
+    className = '',
+}: {
+    label: string;
+    icon?: typeof Sparkles;
+    onClick: () => void;
+    variant?: 'neutral' | 'sky' | 'gold' | 'danger' | 'success';
+    disabled?: boolean;
+    className?: string;
+}) {
+    const Icon = icon;
+    const tone =
+        variant === 'gold'
+            ? 'border-gold/30 bg-gold/10 text-gold hover:border-gold/50 hover:bg-gold/15'
+            : variant === 'danger'
+                ? 'border-stone-700 bg-stone-950 text-stone-100 hover:border-red-400/30 hover:text-red-200'
+                : variant === 'success'
+                    ? 'border-stone-700 bg-stone-950 text-stone-100 hover:border-emerald-400/30 hover:text-emerald-200'
+                    : variant === 'sky'
+                        ? 'border-stone-700 bg-stone-950 text-stone-100 hover:border-sky-400/20 hover:text-sky-100'
+                        : 'border-stone-700 bg-stone-950 text-stone-100 hover:border-stone-600';
+
+    return (
+        <button
+            type="button"
+            onClick={onClick}
+            disabled={disabled}
+            className={`inline-flex items-center justify-center gap-2 rounded-full border px-3 py-2 text-[11px] font-black uppercase tracking-[0.16em] transition-colors disabled:cursor-not-allowed disabled:opacity-50 ${tone} ${className}`.trim()}
+        >
+            {Icon && <Icon size={12} />}
+            {label}
+        </button>
+    );
+}
+
+function PrimaryActionButton({
+    label,
+    icon,
+    onClick,
+    disabled,
+    className = '',
+}: {
+    label: string;
+    icon?: typeof Sparkles;
+    onClick: () => void;
+    disabled?: boolean;
+    className?: string;
+}) {
+    const Icon = icon;
+    return (
+        <button
+            type="button"
+            onClick={onClick}
+            disabled={disabled}
+            className={`inline-flex items-center justify-center gap-2 rounded-2xl bg-gold px-4 py-3 text-sm font-bold text-stone-950 transition-colors hover:bg-yellow-400 disabled:cursor-not-allowed disabled:opacity-50 ${className}`.trim()}
+        >
+            {Icon && <Icon size={16} />}
+            {label}
+        </button>
+    );
+}
+
 export function FirstRunPanel({
     onImport,
     onCreate,
@@ -195,7 +272,7 @@ export function RoomSnapshotCard({
                 <CompactStat label="Assignments" value={String(Object.keys(roomState?.playerAssignments ?? {}).length)} />
             </div>
             <div className="mt-4 rounded-2xl border border-stone-800 bg-stone-900/60 p-3 text-sm leading-relaxed text-stone-400">
-                DM Assistant keeps its metadata isolated so Owlbear's tabletop features and other extensions remain the owners of the live scene.
+                DM Assistant only stores its own metadata. Owlbear and other extensions stay in control of the scene.
             </div>
         </section>
     );
@@ -221,13 +298,7 @@ export function WorkspaceDrawer({
                     <div className="text-[10px] font-black uppercase tracking-[0.24em] text-stone-500">Secondary workspace</div>
                     <h3 className="mt-1 font-cinzel text-2xl font-bold text-parchment">{getPanelLabel(activePanel)}</h3>
                 </div>
-                <button
-                    type="button"
-                    onClick={onClose}
-                    className="rounded-full border border-stone-800 bg-stone-900/80 px-3 py-2 text-[11px] font-black uppercase tracking-[0.16em] text-stone-200 transition-colors hover:border-sky-400/20 hover:text-sky-100"
-                >
-                    Close
-                </button>
+                <SmallActionButton label="Close" onClick={onClose} />
             </div>
             <div className="max-h-[58vh] overflow-y-auto px-3 py-3">
                 {activePanel === 'roster' && (
@@ -295,28 +366,25 @@ function RosterWorkspace({
                     </div>
                 )}
                 {filteredCharacters.map((character) => (
-                    <div key={character.id} className="rounded-2xl border border-stone-800 bg-stone-900/70 p-4">
+                    <WorkspaceCard key={character.id}>
                         <div className="flex items-start justify-between gap-3">
                             <div>
                                 <div className="font-cinzel text-xl font-bold text-parchment">{character.name || 'Unnamed'}</div>
                                 <div className="mt-1 text-sm text-stone-400">
                                     Lv.{character.level} {character.className || 'Adventurer'}{character.race ? ` - ${character.race}` : ''}
                                 </div>
+                                {character.playerName && (
+                                    <div className="mt-1 text-[11px] uppercase tracking-[0.18em] text-stone-500">{character.playerName}</div>
+                                )}
                             </div>
-                            <button
-                                type="button"
-                                onClick={() => onEditCharacter(character.id)}
-                                className="rounded-full border border-stone-800 bg-stone-950/80 px-3 py-1.5 text-[11px] font-black uppercase tracking-[0.16em] text-stone-200 transition-colors hover:border-sky-400/20 hover:text-sky-100"
-                            >
-                                Edit
-                            </button>
+                            <SmallActionButton label="Edit" onClick={() => onEditCharacter(character.id)} />
                         </div>
                         <div className="mt-4 grid gap-2 sm:grid-cols-3">
                             <CompactStat label="HP" value={`${character.currentHp}/${character.maxHp}`} />
                             <CompactStat label="AC" value={String(character.ac)} />
                             <CompactStat label="Spells" value={String(character.spells.length)} />
                         </div>
-                    </div>
+                    </WorkspaceCard>
                 ))}
             </div>
         </div>
@@ -453,7 +521,7 @@ function SyncWorkspace() {
 
     return (
         <div className="space-y-4">
-            <div className="rounded-2xl border border-stone-800 bg-stone-900/70 p-4">
+            <WorkspaceCard>
                 <div className="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
                     <div>
                         <div className="flex items-center gap-2 text-gold">
@@ -467,16 +535,16 @@ function SyncWorkspace() {
                         <HeaderAction icon={Swords} label="To Combat" onClick={() => void handleImportToCombat()} disabled={isBusy} accent />
                     </div>
                 </div>
-                <div className="mt-4 grid gap-2 sm:grid-cols-4">
-                    <CompactStat label="Selection" value={`${selectionCount} token${selectionCount === 1 ? '' : 's'}`} />
-                    <CompactStat label="Players" value={String(playerRows.length)} />
-                    <CompactStat label="Published" value={String(roomState?.characters.length ?? characters.length)} />
-                    <CompactStat label="Assignments" value={String(Object.keys(roomState?.playerAssignments ?? {}).length)} />
-                </div>
-            </div>
+                    <div className="mt-4 grid gap-2 sm:grid-cols-4">
+                        <CompactStat label="Selection" value={`${selectionCount} token${selectionCount === 1 ? '' : 's'}`} />
+                        <CompactStat label="Players" value={String(playerRows.length)} />
+                        <CompactStat label="Published" value={String(roomState?.characters.length ?? characters.length)} />
+                        <CompactStat label="Assignments" value={String(Object.keys(roomState?.playerAssignments ?? {}).length)} />
+                    </div>
+            </WorkspaceCard>
 
             <div className="grid gap-4 xl:grid-cols-[1.05fr_0.95fr]">
-                <div className="rounded-2xl border border-stone-800 bg-stone-900/70 p-4">
+                <WorkspaceCard>
                     <div className="text-[11px] font-black uppercase tracking-[0.22em] text-emerald-300">Link selection</div>
                     <div className="mt-3 grid gap-3 lg:grid-cols-[minmax(0,1fr)_auto]">
                         <select
@@ -491,17 +559,15 @@ function SyncWorkspace() {
                                 </option>
                             ))}
                         </select>
-                        <button
-                            type="button"
+                        <PrimaryActionButton
+                            label="Link Selection"
                             onClick={() => void handleLinkSelection()}
                             disabled={!selectedCharacterId || isBusy}
-                            className="rounded-2xl bg-gold px-5 py-3 text-sm font-bold text-stone-950 transition-colors hover:bg-yellow-400 disabled:cursor-not-allowed disabled:opacity-50"
-                        >
-                            Link Selection
-                        </button>
+                            className="px-5"
+                        />
                     </div>
                     <div className="mt-4 rounded-2xl border border-emerald-500/20 bg-emerald-500/5 p-4 text-sm leading-relaxed text-stone-300">
-                        DM Assistant only writes under its own metadata namespace, so Smoke and Spectre!, Embers, and Owlbear map features stay isolated.
+                        DM Assistant only writes to its own metadata. Smoke, Embers, and Owlbear keep owning their own state.
                     </div>
 
                     {selectedCharacter && smokeVisionProfile && (
@@ -511,14 +577,12 @@ function SyncWorkspace() {
                                     <div className="text-[10px] font-black uppercase tracking-[0.22em] text-sky-300">Smoke profile</div>
                                     <div className="mt-2 text-sm font-semibold text-stone-100">{selectedCharacter.name}</div>
                                 </div>
-                                <button
-                                    type="button"
+                                <SmallActionButton
+                                    label="Copy"
+                                    icon={Copy}
                                     onClick={() => void handleCopySmokeProfile()}
-                                    className="inline-flex items-center gap-2 rounded-full border border-stone-700 bg-stone-950 px-3 py-1.5 text-[11px] font-black uppercase tracking-[0.16em] text-stone-100 transition-colors hover:border-sky-400/40 hover:text-sky-200"
-                                >
-                                    <Copy size={12} />
-                                    Copy
-                                </button>
+                                    variant="sky"
+                                />
                             </div>
                             <div className="mt-3 grid gap-2 sm:grid-cols-3">
                                 <CompactStat label="Range" value={`${smokeVisionProfile.range} ft`} />
@@ -526,7 +590,7 @@ function SyncWorkspace() {
                                 <CompactStat label="Falloff" value={String(smokeVisionProfile.falloff)} />
                             </div>
                             <div className="mt-3 rounded-2xl border border-stone-800 bg-stone-950/70 p-3 text-sm text-stone-300">
-                                Apply this in Smoke and Spectre! after linking the token. Use the selected token as the Smoke owner, set range to {smokeVisionProfile.range} ft, then match greyscale and falloff here.
+                                In Smoke and Spectre!, use the linked token as owner, set range to {smokeVisionProfile.range} ft, then match greyscale and falloff.
                             </div>
                             {selectedCharacter.senses && (
                                 <div className="mt-3 text-sm text-stone-400">
@@ -544,9 +608,9 @@ function SyncWorkspace() {
                             )}
                         </div>
                     )}
-                </div>
+                </WorkspaceCard>
 
-                <div className="rounded-2xl border border-stone-800 bg-stone-900/70 p-4">
+                <WorkspaceCard>
                     <div className="flex items-center gap-2 text-gold">
                         <Users size={16} />
                         <div className="text-[11px] font-black uppercase tracking-[0.22em]">Player assignments</div>
@@ -583,12 +647,12 @@ function SyncWorkspace() {
                             </div>
                         ))}
                     </div>
-                </div>
+                </WorkspaceCard>
             </div>
 
             <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-3">
                 {(roomState?.characters ?? []).map((character) => (
-                    <div key={character.id} className="rounded-2xl border border-stone-800 bg-stone-900/60 p-4">
+                    <WorkspaceCard key={character.id} className="bg-stone-900/60">
                         <div className="flex items-start justify-between gap-3">
                             <div>
                                 <div className="font-cinzel text-xl font-bold text-parchment">{character.name || 'Unnamed'}</div>
@@ -604,7 +668,7 @@ function SyncWorkspace() {
                             <span>HP {character.currentHp}/{character.maxHp}</span>
                             <span>AC {character.ac}</span>
                         </div>
-                    </div>
+                    </WorkspaceCard>
                 ))}
             </div>
         </div>
@@ -815,7 +879,7 @@ function CombatWorkspace({
     if (!activeEncounter) {
         return (
             <div className="space-y-4">
-                <div className="rounded-2xl border border-stone-800 bg-stone-900/70 p-4">
+                <WorkspaceCard>
                     <div className="flex items-center gap-2 text-gold">
                         <Swords size={16} />
                         <div className="text-[11px] font-black uppercase tracking-[0.22em]">Combat staging</div>
@@ -827,23 +891,18 @@ function CombatWorkspace({
                             placeholder="Encounter title"
                             className="rounded-2xl border border-stone-700 bg-stone-950 px-4 py-3 text-sm text-stone-100 outline-none transition-colors focus:border-gold"
                         />
-                        <button
-                            type="button"
+                        <PrimaryActionButton
+                            label="Start Empty"
                             onClick={() => void handleCreateEncounter()}
-                            className="rounded-2xl border border-stone-700 bg-stone-950 px-4 py-3 text-sm font-semibold text-stone-100 transition-colors hover:border-sky-400/20 hover:text-sky-100"
-                        >
-                            Start Empty
-                        </button>
-                        <button
-                            type="button"
+                            className="border border-stone-700 bg-stone-950 text-stone-100 hover:bg-stone-900"
+                        />
+                        <PrimaryActionButton
+                            label="Import Selected"
                             onClick={() => void handleImportSelection()}
                             disabled={isBusy}
-                            className="rounded-2xl bg-gold px-4 py-3 text-sm font-bold text-stone-950 transition-colors hover:bg-yellow-400 disabled:cursor-not-allowed disabled:opacity-50"
-                        >
-                            Import Selected
-                        </button>
+                        />
                     </div>
-                </div>
+                </WorkspaceCard>
                 <div className="grid gap-3 sm:grid-cols-3">
                     <CompactStat label="Active campaign" value={activeCampaign?.title || 'None'} />
                     <CompactStat label="Party level sum" value={String(partyLevel)} />
@@ -855,7 +914,7 @@ function CombatWorkspace({
 
     return (
         <div className="space-y-4">
-            <div className="rounded-2xl border border-stone-800 bg-stone-900/70 p-4">
+            <WorkspaceCard>
                 <div className="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
                     <div>
                         <div className="flex items-center gap-2 text-gold">
@@ -877,7 +936,7 @@ function CombatWorkspace({
                     <CompactStat label="State" value={activeEncounter.isActive ? 'Active' : 'Preparing'} />
                     <CompactStat label="Current turn" value={activeCombatant?.name || 'None'} />
                 </div>
-            </div>
+            </WorkspaceCard>
 
             {activeCombatant && (
                 <div className="rounded-2xl border border-sky-500/20 bg-sky-500/5 p-4">
@@ -891,28 +950,10 @@ function CombatWorkspace({
                         </div>
                         <div className="flex flex-wrap gap-2">
                             {activeCharacter && (
-                                <button
-                                    type="button"
-                                    onClick={() => onEditCharacter(activeCharacter.id)}
-                                    className="rounded-full border border-stone-700 bg-stone-950 px-3 py-2 text-[11px] font-black uppercase tracking-[0.16em] text-stone-100 transition-colors hover:border-sky-400/20 hover:text-sky-100"
-                                >
-                                    Open Sheet
-                                </button>
+                                <SmallActionButton label="Open Sheet" onClick={() => onEditCharacter(activeCharacter.id)} variant="sky" />
                             )}
-                            <button
-                                type="button"
-                                onClick={() => damageCombatant(activeCombatant.id, 5)}
-                                className="rounded-full border border-stone-700 bg-stone-950 px-3 py-2 text-[11px] font-black uppercase tracking-[0.16em] text-stone-100 transition-colors hover:border-red-400/30 hover:text-red-200"
-                            >
-                                Damage 5
-                            </button>
-                            <button
-                                type="button"
-                                onClick={() => healCombatant(activeCombatant.id, 5)}
-                                className="rounded-full border border-stone-700 bg-stone-950 px-3 py-2 text-[11px] font-black uppercase tracking-[0.16em] text-stone-100 transition-colors hover:border-emerald-400/30 hover:text-emerald-200"
-                            >
-                                Heal 5
-                            </button>
+                            <SmallActionButton label="Damage 5" onClick={() => damageCombatant(activeCombatant.id, 5)} variant="danger" />
+                            <SmallActionButton label="Heal 5" onClick={() => healCombatant(activeCombatant.id, 5)} variant="success" />
                         </div>
                     </div>
                     {activeCharacter && embersReadySpells.length > 0 && (
@@ -937,15 +978,13 @@ function CombatWorkspace({
                             </div>
                             <div className="mt-3 flex flex-wrap gap-2">
                                 {embersReadySpells.slice(0, 6).map((spell) => (
-                                    <button
+                                    <SmallActionButton
                                         key={spell.id}
-                                        type="button"
+                                        label={spell.name}
                                         onClick={() => void handleCastActiveSpell(spell.name)}
                                         disabled={isBusy}
-                                        className="rounded-full border border-gold/30 bg-gold/10 px-3 py-2 text-[11px] font-black uppercase tracking-[0.16em] text-gold transition-colors hover:border-gold/50 hover:bg-gold/15 disabled:cursor-not-allowed disabled:opacity-50"
-                                    >
-                                        {spell.name}
-                                    </button>
+                                        variant="gold"
+                                    />
                                 ))}
                             </div>
                         </div>
@@ -954,27 +993,9 @@ function CombatWorkspace({
                         <div className="rounded-2xl border border-stone-800 bg-stone-950/70 p-3">
                             <div className="text-[10px] font-black uppercase tracking-[0.18em] text-stone-500">Action economy</div>
                             <div className="mt-3 flex flex-wrap gap-2">
-                                <button
-                                    type="button"
-                                    onClick={() => void handleToggleResource('action')}
-                                    className={`rounded-full border px-3 py-2 text-[11px] font-black uppercase tracking-[0.16em] transition-colors ${activeCombatant.hasAction ? 'border-emerald-400/30 bg-emerald-500/10 text-emerald-200' : 'border-stone-700 bg-stone-900 text-stone-300'}`}
-                                >
-                                    Action
-                                </button>
-                                <button
-                                    type="button"
-                                    onClick={() => void handleToggleResource('bonus')}
-                                    className={`rounded-full border px-3 py-2 text-[11px] font-black uppercase tracking-[0.16em] transition-colors ${activeCombatant.hasBonusAction ? 'border-emerald-400/30 bg-emerald-500/10 text-emerald-200' : 'border-stone-700 bg-stone-900 text-stone-300'}`}
-                                >
-                                    Bonus
-                                </button>
-                                <button
-                                    type="button"
-                                    onClick={() => void handleToggleResource('reaction')}
-                                    className={`rounded-full border px-3 py-2 text-[11px] font-black uppercase tracking-[0.16em] transition-colors ${activeCombatant.hasReaction ? 'border-emerald-400/30 bg-emerald-500/10 text-emerald-200' : 'border-stone-700 bg-stone-900 text-stone-300'}`}
-                                >
-                                    Reaction
-                                </button>
+                                <SmallActionButton label="Action" onClick={() => void handleToggleResource('action')} variant={activeCombatant.hasAction ? 'success' : 'neutral'} />
+                                <SmallActionButton label="Bonus" onClick={() => void handleToggleResource('bonus')} variant={activeCombatant.hasBonusAction ? 'success' : 'neutral'} />
+                                <SmallActionButton label="Reaction" onClick={() => void handleToggleResource('reaction')} variant={activeCombatant.hasReaction ? 'success' : 'neutral'} />
                             </div>
                         </div>
 
@@ -985,13 +1006,7 @@ function CombatWorkspace({
                                     <div className="rounded-xl border border-sky-400/20 bg-sky-500/10 px-3 py-2 text-sm text-sky-100">
                                         {activeCombatant.concentratingOn.name}
                                     </div>
-                                    <button
-                                        type="button"
-                                        onClick={() => void handleClearConcentration()}
-                                        className="rounded-full border border-stone-700 bg-stone-900 px-3 py-2 text-[11px] font-black uppercase tracking-[0.16em] text-stone-100 transition-colors hover:border-red-400/30 hover:text-red-200"
-                                    >
-                                        Clear
-                                    </button>
+                                    <SmallActionButton label="Clear" onClick={() => void handleClearConcentration()} variant="danger" />
                                 </div>
                             ) : concentrationSpells.length > 0 ? (
                                 <div className="mt-3 space-y-3">
@@ -1006,13 +1021,7 @@ function CombatWorkspace({
                                             </option>
                                         ))}
                                     </select>
-                                    <button
-                                        type="button"
-                                        onClick={() => void handleSetConcentration()}
-                                        className="rounded-full border border-stone-700 bg-stone-900 px-3 py-2 text-[11px] font-black uppercase tracking-[0.16em] text-stone-100 transition-colors hover:border-sky-400/20 hover:text-sky-100"
-                                    >
-                                        Set
-                                    </button>
+                                    <SmallActionButton label="Set" onClick={() => void handleSetConcentration()} variant="sky" />
                                 </div>
                             ) : (
                                 <div className="mt-3 text-sm text-stone-500">No concentration spells on the linked sheet.</div>
@@ -1028,14 +1037,12 @@ function CombatWorkspace({
                                             return null;
                                         }
                                         return (
-                                            <button
+                                            <SmallActionButton
                                                 key={index}
-                                                type="button"
+                                                label={`L${index} ${slot.current}/${slot.max}`}
                                                 onClick={() => void handleUseSpellSlot(index)}
-                                                className="rounded-full border border-stone-700 bg-stone-900 px-3 py-2 text-[11px] font-black uppercase tracking-[0.16em] text-stone-100 transition-colors hover:border-gold/30 hover:text-gold"
-                                            >
-                                                L{index} {slot.current}/{slot.max}
-                                            </button>
+                                                variant="gold"
+                                            />
                                         );
                                     })}
                                 </div>
@@ -1067,13 +1074,7 @@ function CombatWorkspace({
                                     className="rounded-xl border border-stone-700 bg-stone-900 px-3 py-2 text-sm text-stone-100 outline-none transition-colors focus:border-gold"
                                     placeholder="Rounds"
                                 />
-                                <button
-                                    type="button"
-                                    onClick={() => void handleAddCondition()}
-                                    className="rounded-xl border border-stone-700 bg-stone-900 px-3 py-2 text-sm font-semibold text-stone-100 transition-colors hover:border-sky-400/20 hover:text-sky-100"
-                                >
-                                    Add
-                                </button>
+                                <SmallActionButton label="Add" onClick={() => void handleAddCondition()} variant="sky" className="rounded-xl" />
                             </div>
                             <div className="mt-2 grid gap-2 lg:grid-cols-[minmax(0,1fr)_repeat(4,auto)]">
                                 <input
@@ -1083,14 +1084,13 @@ function CombatWorkspace({
                                     className="rounded-xl border border-stone-700 bg-stone-900 px-3 py-2 text-sm text-stone-100 outline-none transition-colors focus:border-gold"
                                 />
                                 {[1, 3, 10, 60].map((rounds) => (
-                                    <button
+                                    <SmallActionButton
                                         key={rounds}
-                                        type="button"
+                                        label={`${rounds}r`}
                                         onClick={() => setConditionDuration(String(rounds))}
-                                        className={`rounded-xl border px-3 py-2 text-sm font-semibold transition-colors ${conditionDuration === String(rounds) ? 'border-gold/30 bg-gold/10 text-gold' : 'border-stone-700 bg-stone-900 text-stone-100 hover:border-sky-400/20 hover:text-sky-100'}`}
-                                    >
-                                        {rounds}r
-                                    </button>
+                                        variant={conditionDuration === String(rounds) ? 'gold' : 'neutral'}
+                                        className="rounded-xl"
+                                    />
                                 ))}
                             </div>
                             <div className="mt-3 flex flex-wrap gap-2">
@@ -1098,14 +1098,12 @@ function CombatWorkspace({
                                     <div className="text-sm text-stone-500">No active conditions.</div>
                                 )}
                                 {activeCombatant.conditions.map((condition) => (
-                                    <button
+                                    <SmallActionButton
                                         key={condition.id}
-                                        type="button"
+                                        label={`${condition.name}${condition.duration ? ` (${condition.duration})` : ''}`}
                                         onClick={() => void handleRemoveCondition(condition.id, condition.name)}
-                                        className="rounded-full border border-stone-700 bg-stone-900 px-3 py-2 text-[11px] font-black uppercase tracking-[0.16em] text-stone-100 transition-colors hover:border-red-400/30 hover:text-red-200"
-                                    >
-                                        {condition.name}{condition.duration ? ` (${condition.duration})` : ''}
-                                    </button>
+                                        variant="danger"
+                                    />
                                 ))}
                             </div>
                         </div>
@@ -1123,13 +1121,7 @@ function CombatWorkspace({
             )}
 
             <div className="flex justify-end">
-                <button
-                    type="button"
-                    onClick={clearCombatants}
-                    className="rounded-full border border-stone-700 bg-stone-950 px-3 py-2 text-[11px] font-black uppercase tracking-[0.16em] text-stone-100 transition-colors hover:border-red-400/30 hover:text-red-200"
-                >
-                    Clear Combatants
-                </button>
+                <SmallActionButton label="Clear Combatants" onClick={clearCombatants} variant="danger" />
             </div>
 
             <div className="space-y-3">
@@ -1155,27 +1147,9 @@ function CombatWorkspace({
                             <div className="rounded-xl border border-stone-800 bg-stone-950/70 px-3 py-2 text-sm text-stone-300">
                                 HP {combatant.currentHp}/{combatant.maxHp}
                             </div>
-                            <button
-                                type="button"
-                                onClick={() => damageCombatant(combatant.id, 5)}
-                                className="rounded-xl border border-stone-700 bg-stone-950 px-3 py-2 text-sm font-semibold text-stone-100 transition-colors hover:border-red-400/30 hover:text-red-200"
-                            >
-                                -5
-                            </button>
-                            <button
-                                type="button"
-                                onClick={() => healCombatant(combatant.id, 5)}
-                                className="rounded-xl border border-stone-700 bg-stone-950 px-3 py-2 text-sm font-semibold text-stone-100 transition-colors hover:border-emerald-400/30 hover:text-emerald-200"
-                            >
-                                +5
-                            </button>
-                            <button
-                                type="button"
-                                onClick={() => void handleRemoveCombatant(combatant)}
-                                className="rounded-xl border border-stone-700 bg-stone-950 px-3 py-2 text-sm font-semibold text-stone-100 transition-colors hover:border-red-400/30 hover:text-red-200"
-                            >
-                                Remove
-                            </button>
+                            <SmallActionButton label="-5" onClick={() => damageCombatant(combatant.id, 5)} variant="danger" className="rounded-xl" />
+                            <SmallActionButton label="+5" onClick={() => healCombatant(combatant.id, 5)} variant="success" className="rounded-xl" />
+                            <SmallActionButton label="Remove" onClick={() => void handleRemoveCombatant(combatant)} variant="danger" className="rounded-xl" />
                         </div>
                     </div>
                 ))}
@@ -1219,7 +1193,7 @@ function CampaignWorkspace() {
 
     return (
         <div className="space-y-4">
-            <div className="rounded-2xl border border-stone-800 bg-stone-900/70 p-4">
+            <WorkspaceCard>
                 <div className="flex items-center gap-2 text-gold">
                     <BookOpen size={16} />
                     <div className="text-[11px] font-black uppercase tracking-[0.22em]">Campaign staging</div>
@@ -1237,16 +1211,9 @@ function CampaignWorkspace() {
                         placeholder="Short description"
                         className="rounded-2xl border border-stone-700 bg-stone-950 px-4 py-3 text-sm text-stone-100 outline-none transition-colors focus:border-gold"
                     />
-                    <button
-                        type="button"
-                        onClick={() => void handleCreate()}
-                        className="inline-flex items-center justify-center gap-2 rounded-2xl bg-gold px-4 py-3 text-sm font-bold text-stone-950 transition-colors hover:bg-yellow-400"
-                    >
-                        <Plus size={16} />
-                        Create
-                    </button>
+                    <PrimaryActionButton label="Create" icon={Plus} onClick={() => void handleCreate()} />
                 </div>
-            </div>
+            </WorkspaceCard>
 
             <div className="grid gap-3 md:grid-cols-2">
                 {campaigns.length === 0 && (
@@ -1326,7 +1293,7 @@ function CampWorkspace() {
 
     return (
         <div className="space-y-4">
-            <div className="rounded-2xl border border-stone-800 bg-stone-900/70 p-4">
+            <WorkspaceCard>
                 <div className="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
                     <div>
                         <div className="flex items-center gap-2 text-gold">
@@ -1337,22 +1304,19 @@ function CampWorkspace() {
                             {activeCampaign?.title || 'No active campaign'}
                         </div>
                     </div>
-                    <button
-                        type="button"
+                    <PrimaryActionButton
+                        label="Long Rest Party"
+                        icon={SunMoon}
                         onClick={() => void handlePartyLongRest()}
                         disabled={party.length === 0}
-                        className="inline-flex items-center gap-2 rounded-2xl bg-gold px-4 py-3 text-sm font-bold text-stone-950 transition-colors hover:bg-yellow-400 disabled:cursor-not-allowed disabled:opacity-50"
-                    >
-                        <SunMoon size={16} />
-                        Long Rest Party
-                    </button>
+                    />
                 </div>
                 <div className="mt-4 grid gap-2 sm:grid-cols-3">
                     <CompactStat label="Members" value={String(party.length)} />
                     <CompactStat label="Party HP" value={`${totalCurrentHp}/${totalMaxHp || 0}`} />
                     <CompactStat label="Condition" value={party.length === 0 ? 'Idle' : totalMaxHp > 0 ? `${Math.round((totalCurrentHp / totalMaxHp) * 100)}%` : 'Ready'} />
                 </div>
-            </div>
+            </WorkspaceCard>
 
             {party.length === 0 ? (
                 <div className="rounded-2xl border border-dashed border-stone-800 p-4 text-sm text-stone-500">
@@ -1361,7 +1325,7 @@ function CampWorkspace() {
             ) : (
                 <div className="grid gap-3 md:grid-cols-2">
                     {party.map((character) => (
-                        <div key={character.id} className="rounded-2xl border border-stone-800 bg-stone-900/70 p-4">
+                        <WorkspaceCard key={character.id}>
                             <div className="flex items-start justify-between gap-3">
                                 <div>
                                     <div className="font-cinzel text-xl font-bold text-parchment">{character.name || 'Unnamed'}</div>
@@ -1384,24 +1348,10 @@ function CampWorkspace() {
                                     onChange={(event) => setHitDiceMap((current) => ({ ...current, [character.id]: Number(event.target.value) || 0 }))}
                                     className="rounded-2xl border border-stone-700 bg-stone-950 px-3 py-2.5 text-sm text-stone-100 outline-none transition-colors focus:border-gold"
                                 />
-                                <button
-                                    type="button"
-                                    onClick={() => void handleShortRest(character)}
-                                    className="inline-flex items-center justify-center gap-2 rounded-2xl border border-stone-700 bg-stone-950 px-4 py-2.5 text-sm font-semibold text-stone-100 transition-colors hover:border-sky-400/20 hover:text-sky-100"
-                                >
-                                    <Moon size={15} />
-                                    Short Rest
-                                </button>
-                                <button
-                                    type="button"
-                                    onClick={() => void handleLongRest(character)}
-                                    className="inline-flex items-center justify-center gap-2 rounded-2xl border border-gold/30 bg-gold/10 px-4 py-2.5 text-sm font-semibold text-gold transition-colors hover:border-gold/50 hover:bg-gold/15"
-                                >
-                                    <SunMoon size={15} />
-                                    Long Rest
-                                </button>
+                                <SmallActionButton label="Short Rest" icon={Moon} onClick={() => void handleShortRest(character)} variant="sky" className="rounded-xl py-2.5 text-sm normal-case tracking-[0.08em]" />
+                                <SmallActionButton label="Long Rest" icon={SunMoon} onClick={() => void handleLongRest(character)} variant="gold" className="rounded-xl py-2.5 text-sm normal-case tracking-[0.08em]" />
                             </div>
-                        </div>
+                        </WorkspaceCard>
                     ))}
                 </div>
             )}
@@ -1455,7 +1405,7 @@ function NotesWorkspace() {
 
     return (
         <div className="space-y-4">
-            <div className="rounded-2xl border border-stone-800 bg-stone-900/70 p-4">
+            <WorkspaceCard>
                 <div className="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
                     <div>
                         <div className="flex items-center gap-2 text-gold">
@@ -1465,27 +1415,9 @@ function NotesWorkspace() {
                         <div className="mt-2 font-cinzel text-2xl font-bold text-parchment">{activeCampaign?.title || 'No active campaign'}</div>
                     </div>
                     <div className="grid gap-2 sm:grid-cols-3">
-                        <button
-                            type="button"
-                            onClick={() => void handleAdvanceTime(10)}
-                            className="rounded-full border border-stone-700 bg-stone-950 px-3 py-2 text-[11px] font-black uppercase tracking-[0.18em] text-stone-100 transition-colors hover:border-sky-400/20 hover:text-sky-100"
-                        >
-                            +10 min
-                        </button>
-                        <button
-                            type="button"
-                            onClick={() => void handleAdvanceTime(60)}
-                            className="rounded-full border border-stone-700 bg-stone-950 px-3 py-2 text-[11px] font-black uppercase tracking-[0.18em] text-stone-100 transition-colors hover:border-sky-400/20 hover:text-sky-100"
-                        >
-                            +1 hour
-                        </button>
-                        <button
-                            type="button"
-                            onClick={() => void handleAdvanceTime(480)}
-                            className="rounded-full border border-stone-700 bg-stone-950 px-3 py-2 text-[11px] font-black uppercase tracking-[0.18em] text-stone-100 transition-colors hover:border-sky-400/20 hover:text-sky-100"
-                        >
-                            +8 hours
-                        </button>
+                        <SmallActionButton label="+10 min" onClick={() => void handleAdvanceTime(10)} variant="sky" />
+                        <SmallActionButton label="+1 hour" onClick={() => void handleAdvanceTime(60)} variant="sky" />
+                        <SmallActionButton label="+8 hours" onClick={() => void handleAdvanceTime(480)} variant="sky" />
                     </div>
                 </div>
                 <div className="mt-4 grid gap-2 sm:grid-cols-4">
@@ -1494,9 +1426,9 @@ function NotesWorkspace() {
                     <CompactStat label="NPCs" value={String(activeCampaign?.npcs.length ?? 0)} />
                     <CompactStat label="Locations" value={String(activeCampaign?.locations.length ?? 0)} />
                 </div>
-            </div>
+            </WorkspaceCard>
 
-            <div className="rounded-2xl border border-stone-800 bg-stone-900/70 p-4">
+            <WorkspaceCard>
                 <div className="text-[11px] font-black uppercase tracking-[0.22em] text-emerald-300">Quick DM note</div>
                 <div className="mt-3 grid gap-3">
                     <input
@@ -1511,16 +1443,9 @@ function NotesWorkspace() {
                         placeholder="Capture clue chains, improvised rulings, NPC intent, treasure, or anything you need to remember mid-session."
                         className="min-h-[140px] rounded-2xl border border-stone-700 bg-stone-950 px-4 py-3 text-sm text-stone-100 outline-none transition-colors focus:border-gold"
                     />
-                    <button
-                        type="button"
-                        onClick={() => void handleAddNote()}
-                        className="inline-flex items-center justify-center gap-2 rounded-2xl bg-gold px-4 py-3 text-sm font-bold text-stone-950 transition-colors hover:bg-yellow-400"
-                    >
-                        <ScrollText size={16} />
-                        Save Note
-                    </button>
+                    <PrimaryActionButton label="Save Note" icon={ScrollText} onClick={() => void handleAddNote()} />
                 </div>
-            </div>
+            </WorkspaceCard>
 
             <div className="grid gap-3">
                 {notes.length === 0 && (
@@ -1529,7 +1454,7 @@ function NotesWorkspace() {
                     </div>
                 )}
                 {notes.slice(0, 6).map((note) => (
-                    <div key={note.id} className="rounded-2xl border border-stone-800 bg-stone-900/70 p-4">
+                    <WorkspaceCard key={note.id}>
                         <div className="flex items-start justify-between gap-3">
                             <div>
                                 <div className="font-cinzel text-xl font-bold text-parchment">{note.title}</div>
@@ -1541,7 +1466,7 @@ function NotesWorkspace() {
                         <div className="mt-3 text-sm leading-relaxed text-stone-300 whitespace-pre-wrap">
                             {note.content}
                         </div>
-                    </div>
+                    </WorkspaceCard>
                 ))}
             </div>
         </div>
