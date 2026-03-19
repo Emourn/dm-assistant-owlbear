@@ -1,7 +1,6 @@
 import { useCallback, useEffect, useState } from 'react';
 import OBR from '@owlbear-rodeo/sdk';
 import { getActionUseState, spendActionResource } from '../../features/dnd2024/domain/actionAutomation';
-import { buildInitiativeRoll } from '../../features/dnd2024/domain/sheet';
 import {
     applyRestRecovery,
     setInitiativeAdjustment,

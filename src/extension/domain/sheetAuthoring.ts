@@ -1,10 +1,19 @@
 import type {
     AbilityId,
+    Phase1ActionOutcome,
     Phase1ActionSummary,
     Phase1CharacterSheet,
     Phase1ResourceCounter,
     Phase1Spellcasting,
 } from '../../features/dnd2024/domain/types';
+
+export interface EditableActionOutcomeInput {
+    label: string;
+    kind: 'damage' | 'healing' | 'effect';
+    formula?: string;
+    damageType?: string;
+    summary?: string;
+}
 
 export interface EditableActionInput {
     id?: string;
@@ -24,6 +33,7 @@ export interface EditableActionInput {
     effectSummary?: string;
     successSummary?: string;
     failureSummary?: string;
+    outcomes?: EditableActionOutcomeInput[];
     resourceCostId?: string;
     resourceCostAmount?: number;
 }
@@ -108,6 +118,10 @@ function sanitizeAction(
 
     takenIds.add(id);
 
+    const sanitizedOutcomes = (input.outcomes ?? [])
+        .map((outcome) => sanitizeOutcome(outcome))
+        .filter((outcome): outcome is Phase1ActionOutcome => Boolean(outcome));
+
     return {
         id,
         name,
@@ -121,6 +135,7 @@ function sanitizeAction(
                 proficient: Boolean(input.proficient),
                 bonus: clampInteger(input.attackBonus ?? 0, 0, -20, 40),
                 range: input.attackRange ?? 'other',
+                outcomes: sanitizedOutcomes,
                 resourceCost: input.resourceCostId && clampInteger(input.resourceCostAmount ?? 1, 1, 1, 99) > 0
                     ? {
                         resourceId: input.resourceCostId,
@@ -141,6 +156,7 @@ function sanitizeAction(
                     effectSummary: normalizeText(input.effectSummary),
                     successSummary: normalizeText(input.successSummary),
                     failureSummary: normalizeText(input.failureSummary),
+                    outcomes: sanitizedOutcomes,
                     resourceCost: input.resourceCostId && clampInteger(input.resourceCostAmount ?? 1, 1, 1, 99) > 0
                         ? {
                             resourceId: input.resourceCostId,
@@ -149,6 +165,24 @@ function sanitizeAction(
                         : null,
                 }
             : null,
+    };
+}
+
+function sanitizeOutcome(input: EditableActionOutcomeInput): Phase1ActionOutcome | null {
+    const label = input.label.trim();
+    const formula = normalizeText(input.formula);
+    const summary = normalizeText(input.summary);
+
+    if (!label || (!formula && !summary)) {
+        return null;
+    }
+
+    return {
+        label,
+        kind: input.kind,
+        formula,
+        damageType: normalizeText(input.damageType),
+        summary,
     };
 }
 

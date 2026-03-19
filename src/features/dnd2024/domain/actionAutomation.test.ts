@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { createSampleCharacterCollection } from '../../../extension/domain/characterRecords';
 import {
+    buildActionOutcomeSummaries,
     buildActionRoll,
     buildActionSaveDcSummary,
     canRollAction,
@@ -74,5 +75,27 @@ describe('action automation', () => {
         expect(summary?.saveAbility).toBe('dex');
         expect(summary?.dc).toBe(15);
         expect(summary?.failureSummary).toContain('1d8');
+    });
+
+    it('builds modeled outcome summaries for attack and save actions', () => {
+        const sheet = getSampleSheet();
+        const mace = sheet.actions.find((action) => action.name === 'Mace')!;
+        const sacredFlame = sheet.actions.find((action) => action.name === 'Sacred Flame')!;
+
+        const maceOutcomes = buildActionOutcomeSummaries(sheet, mace);
+        const sacredFlameOutcomes = buildActionOutcomeSummaries(sheet, sacredFlame);
+
+        expect(maceOutcomes[0]).toMatchObject({
+            label: 'On hit',
+            kind: 'damage',
+            formula: '1d6',
+            damageType: 'Bludgeoning',
+        });
+        expect(maceOutcomes[0].request?.label).toBe('Mace - On hit');
+        expect(sacredFlameOutcomes[0]).toMatchObject({
+            label: 'On failed save',
+            formula: '1d8',
+            damageType: 'Radiant',
+        });
     });
 });

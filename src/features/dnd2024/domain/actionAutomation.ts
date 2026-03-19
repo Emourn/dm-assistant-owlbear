@@ -2,8 +2,10 @@ import { ABILITY_BY_ID } from './constants';
 import { getPhase1ProficiencyBonus, getAbilityModifier, formatSignedNumber } from './sheet';
 import { updateSheetResourceCounter } from './mutations';
 import type {
+    ActionOutcomeRollRequest,
     AbilityId,
     NumericBreakdown,
+    Phase1ActionOutcome,
     Phase1ActionSummary,
     Phase1CharacterSheet,
     Phase1ResourceCounter,
@@ -24,6 +26,17 @@ export interface ActionSaveDcSummary {
     effectSummary?: string;
     successSummary?: string;
     failureSummary?: string;
+    audit: string[];
+}
+
+export interface ActionOutcomeSummary {
+    id: string;
+    label: string;
+    kind: Phase1ActionOutcome['kind'];
+    formula?: string;
+    damageType?: string;
+    summary?: string;
+    request: ActionOutcomeRollRequest | null;
     audit: string[];
 }
 
@@ -107,6 +120,29 @@ export function getActionUseState(
         resource,
         amount: cost.amount,
         canSpend: resource !== null && resource.current >= cost.amount,
+    };
+}
+
+function createOutcomeRequest(
+    sheet: Phase1CharacterSheet,
+    action: Phase1ActionSummary,
+    index: number,
+    outcome: Phase1ActionOutcome,
+    audit: string[],
+): ActionOutcomeRollRequest | null {
+    const formula = outcome.formula?.trim();
+    if (!formula) {
+        return null;
+    }
+
+    return {
+        id: `action-outcome:${sheet.id}:${action.id}:${index + 1}`,
+        label: `${action.name} - ${outcome.label}`,
+        kind: outcome.kind,
+        formula,
+        damageType: outcome.damageType,
+        summary: outcome.summary,
+        audit,
     };
 }
 
@@ -249,6 +285,42 @@ export function buildActionSaveDcSummary(
         failureSummary: action.automation.failureSummary,
         audit,
     };
+}
+
+export function buildActionOutcomeSummaries(
+    sheet: Phase1CharacterSheet,
+    action: Phase1ActionSummary,
+): ActionOutcomeSummary[] {
+    const outcomes = action.automation?.outcomes ?? [];
+    if (outcomes.length === 0) {
+        return [];
+    }
+
+    return outcomes.map((outcome, index) => {
+        const audit = [`Outcome ${outcome.label} is modeled on ${action.name}.`];
+        if (outcome.damageType) {
+            audit.push(`Typed as ${outcome.damageType}.`);
+        }
+        if (outcome.summary) {
+            audit.push(outcome.summary);
+        }
+        if (outcome.formula) {
+            audit.push(`Uses formula ${outcome.formula}.`);
+        } else {
+            audit.push('This outcome is descriptive only.');
+        }
+
+        return {
+            id: `${action.id}:outcome:${index + 1}`,
+            label: outcome.label,
+            kind: outcome.kind,
+            formula: outcome.formula?.trim() || undefined,
+            damageType: outcome.damageType,
+            summary: outcome.summary,
+            request: createOutcomeRequest(sheet, action, index, outcome, audit),
+            audit,
+        };
+    });
 }
 
 export function spendActionResource(sheet: Phase1CharacterSheet, action: Phase1ActionSummary): Phase1CharacterSheet {

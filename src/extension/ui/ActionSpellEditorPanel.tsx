@@ -10,6 +10,7 @@ import {
     updateSheetActions,
     updateSheetSpellcasting,
     type EditableActionInput,
+    type EditableActionOutcomeInput,
     type EditableSpellSlotInput,
 } from '../domain/sheetAuthoring';
 
@@ -27,6 +28,16 @@ interface ActionSpellEditorState {
     spellAttackBonus: string;
     spellSaveDc: string;
     slots: Array<EditableSpellSlotInput & { resetOn: Phase1ResourceCounter['resetOn'] }>;
+}
+
+function createEmptyOutcome(kind: EditableActionOutcomeInput['kind'] = 'damage'): EditableActionOutcomeInput {
+    return {
+        label: '',
+        kind,
+        formula: '',
+        damageType: '',
+        summary: '',
+    };
 }
 
 function clampNumber(value: string, fallback: number): number {
@@ -57,6 +68,13 @@ function createState(sheet: Phase1CharacterSheet): ActionSpellEditorState {
             effectSummary: action.automation?.kind === 'save-dc' ? action.automation.effectSummary ?? '' : '',
             successSummary: action.automation?.kind === 'save-dc' ? action.automation.successSummary ?? '' : '',
             failureSummary: action.automation?.kind === 'save-dc' ? action.automation.failureSummary ?? '' : '',
+            outcomes: action.automation?.outcomes?.map((outcome) => ({
+                label: outcome.label,
+                kind: outcome.kind,
+                formula: outcome.formula ?? '',
+                damageType: outcome.damageType ?? '',
+                summary: outcome.summary ?? '',
+            })) ?? [],
             resourceCostId: action.automation ? action.automation.resourceCost?.resourceId ?? '' : '',
             resourceCostAmount: action.automation ? action.automation.resourceCost?.amount ?? 1 : 1,
         })),
@@ -97,6 +115,111 @@ function TextField({
                 className="w-full rounded-xl border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-100 outline-none transition focus:border-amber-400/50"
             />
         </label>
+    );
+}
+
+function OutcomeEditor({
+    outcomes,
+    onChange,
+}: {
+    outcomes: EditableActionOutcomeInput[];
+    onChange: (outcomes: EditableActionOutcomeInput[]) => void;
+}) {
+    return (
+        <div className="lg:col-span-2 rounded-2xl border border-stone-800 bg-stone-900/60 p-4">
+            <div className="flex flex-wrap items-center justify-between gap-3">
+                <div>
+                    <div className="text-[10px] font-black uppercase tracking-[0.22em] text-stone-500">Modeled outcomes</div>
+                    <div className="mt-1 text-sm text-stone-400">Add damage, healing, or descriptive outcomes for the live action card.</div>
+                </div>
+                <button
+                    type="button"
+                    onClick={() => onChange([...outcomes, createEmptyOutcome()])}
+                    className="inline-flex items-center gap-2 rounded-full border border-amber-400/35 bg-amber-500/10 px-3 py-1.5 text-xs font-semibold text-amber-200 transition hover:border-amber-300/60"
+                >
+                    <Plus size={14} />
+                    Add outcome
+                </button>
+            </div>
+
+            <div className="mt-4 space-y-3">
+                {outcomes.length === 0 && (
+                    <div className="rounded-2xl border border-dashed border-stone-700 p-4 text-sm text-stone-500">
+                        No modeled outcomes yet.
+                    </div>
+                )}
+                {outcomes.map((outcome, index) => (
+                    <div key={`outcome-${index}`} className="rounded-2xl border border-stone-800 bg-stone-950/70 p-4">
+                        <div className="flex items-center justify-between gap-3">
+                            <div className="text-xs uppercase tracking-[0.22em] text-stone-500">Outcome {index + 1}</div>
+                            <button
+                                type="button"
+                                onClick={() => onChange(outcomes.filter((_, outcomeIndex) => outcomeIndex !== index))}
+                                className="inline-flex items-center gap-1 rounded-full border border-red-500/25 bg-red-500/10 px-2.5 py-1 text-[11px] font-semibold text-red-200 transition hover:border-red-400/45"
+                            >
+                                <Trash2 size={12} />
+                                Remove
+                            </button>
+                        </div>
+                        <div className="mt-3 grid gap-3 lg:grid-cols-2">
+                            <TextField
+                                label="Label"
+                                value={outcome.label}
+                                onChange={(value) =>
+                                    onChange(outcomes.map((entry, outcomeIndex) =>
+                                        outcomeIndex === index ? { ...entry, label: value } : entry))
+                                }
+                            />
+                            <label className="block">
+                                <div className="mb-1 text-[10px] font-black uppercase tracking-[0.22em] text-stone-500">Kind</div>
+                                <select
+                                    value={outcome.kind}
+                                    onChange={(event) =>
+                                        onChange(outcomes.map((entry, outcomeIndex) =>
+                                            outcomeIndex === index
+                                                ? { ...entry, kind: event.target.value as EditableActionOutcomeInput['kind'] }
+                                                : entry))
+                                    }
+                                    className="w-full rounded-xl border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-100 outline-none transition focus:border-amber-400/50"
+                                >
+                                    <option value="damage">Damage</option>
+                                    <option value="healing">Healing</option>
+                                    <option value="effect">Effect</option>
+                                </select>
+                            </label>
+                            <TextField
+                                label="Formula"
+                                value={outcome.formula ?? ''}
+                                onChange={(value) =>
+                                    onChange(outcomes.map((entry, outcomeIndex) =>
+                                        outcomeIndex === index ? { ...entry, formula: value } : entry))
+                                }
+                            />
+                            <TextField
+                                label="Type"
+                                value={outcome.damageType ?? ''}
+                                onChange={(value) =>
+                                    onChange(outcomes.map((entry, outcomeIndex) =>
+                                        outcomeIndex === index ? { ...entry, damageType: value } : entry))
+                                }
+                            />
+                            <label className="block lg:col-span-2">
+                                <div className="mb-1 text-[10px] font-black uppercase tracking-[0.22em] text-stone-500">Summary</div>
+                                <textarea
+                                    value={outcome.summary ?? ''}
+                                    onChange={(event) =>
+                                        onChange(outcomes.map((entry, outcomeIndex) =>
+                                            outcomeIndex === index ? { ...entry, summary: event.target.value } : entry))
+                                    }
+                                    rows={2}
+                                    className="w-full rounded-xl border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-100 outline-none transition focus:border-amber-400/50"
+                                />
+                            </label>
+                        </div>
+                    </div>
+                ))}
+            </div>
+        </div>
     );
 }
 
@@ -224,6 +347,7 @@ export function ActionSpellEditorPanel({
                                                 effectSummary: '',
                                                 successSummary: '',
                                                 failureSummary: '',
+                                                outcomes: [],
                                                 resourceCostId: '',
                                                 resourceCostAmount: 1,
                                             },
@@ -442,6 +566,16 @@ export function ActionSpellEditorPanel({
                                                         }))
                                                     }
                                                 />
+                                                <OutcomeEditor
+                                                    outcomes={action.outcomes ?? []}
+                                                    onChange={(outcomes) =>
+                                                        setForm((current) => ({
+                                                            ...current,
+                                                            actions: current.actions.map((entry, actionIndex) =>
+                                                                actionIndex === index ? { ...entry, outcomes } : entry),
+                                                        }))
+                                                    }
+                                                />
                                             </>
                                         )}
                                         {action.automationMode === 'save-dc' && (
@@ -611,6 +745,16 @@ export function ActionSpellEditorPanel({
                                                                 actionIndex === index
                                                                     ? { ...entry, resourceCostAmount: clampNumber(value, entry.resourceCostAmount ?? 1) }
                                                                     : entry),
+                                                        }))
+                                                    }
+                                                />
+                                                <OutcomeEditor
+                                                    outcomes={action.outcomes ?? []}
+                                                    onChange={(outcomes) =>
+                                                        setForm((current) => ({
+                                                            ...current,
+                                                            actions: current.actions.map((entry, actionIndex) =>
+                                                                actionIndex === index ? { ...entry, outcomes } : entry),
                                                         }))
                                                     }
                                                 />

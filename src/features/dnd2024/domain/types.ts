@@ -52,12 +52,21 @@ export interface Phase1ActionResourceCost {
     amount: number;
 }
 
+export interface Phase1ActionOutcome {
+    label: string;
+    kind: 'damage' | 'healing' | 'effect';
+    formula?: string;
+    damageType?: string;
+    summary?: string;
+}
+
 export interface Phase1AttackRollAutomation {
     kind: 'attack-roll';
     attackSource: AbilityId | 'spellcasting';
     proficient: boolean;
     bonus: number;
     range?: 'melee' | 'ranged' | 'other';
+    outcomes?: Phase1ActionOutcome[];
     resourceCost?: Phase1ActionResourceCost | null;
 }
 
@@ -71,6 +80,7 @@ export interface Phase1SaveDcAutomation {
     effectSummary?: string;
     successSummary?: string;
     failureSummary?: string;
+    outcomes?: Phase1ActionOutcome[];
     resourceCost?: Phase1ActionResourceCost | null;
 }
 
@@ -157,6 +167,31 @@ export interface StructuredRollResult extends StructuredRollRequest {
     metadata: {
         critical: boolean;
         fumble: boolean;
+        timestamp: number;
+    };
+}
+
+export interface ActionOutcomeRollRequest {
+    id: string;
+    label: string;
+    kind: 'damage' | 'healing' | 'effect';
+    formula: string;
+    damageType?: string;
+    summary?: string;
+    audit: string[];
+}
+
+export interface ActionOutcomeRollPart {
+    kind: 'dice' | 'modifier';
+    label: string;
+    value: number;
+    rolls?: number[];
+}
+
+export interface ActionOutcomeRollResult extends ActionOutcomeRollRequest {
+    total: number;
+    parts: ActionOutcomeRollPart[];
+    metadata: {
         timestamp: number;
     };
 }

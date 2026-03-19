@@ -20,6 +20,15 @@ describe('sheet authoring helpers', () => {
                 proficient: true,
                 attackBonus: 1,
                 attackRange: 'melee',
+                outcomes: [
+                    {
+                        label: ' On hit ',
+                        kind: 'damage',
+                        formula: ' 1d8 + 3 ',
+                        damageType: ' Slashing ',
+                        summary: ' Weapon damage. ',
+                    },
+                ],
             },
             {
                 name: 'Longsword',
@@ -44,6 +53,15 @@ describe('sheet authoring helpers', () => {
             proficient: true,
             bonus: 1,
             range: 'melee',
+            outcomes: [
+                {
+                    label: 'On hit',
+                    kind: 'damage',
+                    formula: '1d8 + 3',
+                    damageType: 'Slashing',
+                    summary: 'Weapon damage.',
+                },
+            ],
         });
         expect(updated.actions[0].id).toBe(`${sheet.id}:action:longsword`);
         expect(updated.actions[1].id).toBe(`${sheet.id}:action:longsword-2`);
@@ -63,6 +81,15 @@ describe('sheet authoring helpers', () => {
                 effectSummary: ' Target makes a Dexterity save. ',
                 successSummary: ' No damage. ',
                 failureSummary: ' Radiant damage. ',
+                outcomes: [
+                    {
+                        label: ' On failed save ',
+                        kind: 'damage',
+                        formula: ' 2d8 ',
+                        damageType: ' Radiant ',
+                        summary: ' Cantrip scaling damage. ',
+                    },
+                ],
             },
         ]);
 
@@ -74,6 +101,15 @@ describe('sheet authoring helpers', () => {
             effectSummary: 'Target makes a Dexterity save.',
             successSummary: 'No damage.',
             failureSummary: 'Radiant damage.',
+            outcomes: [
+                {
+                    label: 'On failed save',
+                    kind: 'damage',
+                    formula: '2d8',
+                    damageType: 'Radiant',
+                    summary: 'Cantrip scaling damage.',
+                },
+            ],
         });
     });
 

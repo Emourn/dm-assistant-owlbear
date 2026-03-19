@@ -1,18 +1,22 @@
+import { useEffect, useState } from 'react';
 import type { Player } from '@owlbear-rodeo/sdk';
 import { BookOpenText, HeartPulse, Shield, Sparkles, Swords, WandSparkles } from 'lucide-react';
 import {
+    buildActionOutcomeSummaries,
     buildActionRoll,
     buildActionSaveDcSummary,
     canRollAction,
     canUseActionSaveDc,
     getActionUseState,
 } from '../../features/dnd2024/domain/actionAutomation';
+import { rollActionOutcome } from '../../features/dnd2024/domain/rolls';
 import {
     createCharacterSheetViewModel,
     formatSignedNumber,
     getAbilityModifier,
 } from '../../features/dnd2024/domain/sheet';
 import type {
+    ActionOutcomeRollResult,
     Phase1CharacterSheet,
     RollableSheetRow,
     StructuredRollRequest,
@@ -145,6 +149,12 @@ export function CharacterSheetPanel({
     onAssign,
 }: CharacterSheetPanelProps) {
     const active = characterState?.activeCharacter;
+    const [lastOutcomeRoll, setLastOutcomeRoll] = useState<ActionOutcomeRollResult | null>(null);
+
+    useEffect(() => {
+        setLastOutcomeRoll(null);
+    }, [active?.sheet.id]);
+
     if (!active) {
         return (
             <div className="flex flex-col gap-4">
@@ -175,6 +185,9 @@ export function CharacterSheetPanel({
 
     const sheet = active.sheet;
     const model = createCharacterSheetViewModel(sheet);
+    const showOutcomePreview = Boolean(
+        lastOutcomeRoll && (!lastRoll || lastOutcomeRoll.metadata.timestamp >= lastRoll.metadata.timestamp),
+    );
 
     return (
         <div className="flex flex-col gap-4">
@@ -297,7 +310,7 @@ export function CharacterSheetPanel({
                                 </button>
                             </div>
 
-                            {lastRoll ? (
+                            {!showOutcomePreview && lastRoll ? (
                                 <div className="mt-4 space-y-3">
                                     <div className="flex items-baseline justify-between gap-3 rounded-2xl border border-stone-800 bg-stone-900/70 p-4">
                                         <div>
@@ -323,9 +336,36 @@ export function CharacterSheetPanel({
                                         ))}
                                     </div>
                                 </div>
+                            ) : lastOutcomeRoll ? (
+                                <div className="mt-4 space-y-3">
+                                    <div className="flex items-baseline justify-between gap-3 rounded-2xl border border-stone-800 bg-stone-900/70 p-4">
+                                        <div>
+                                            <div className="text-xs uppercase tracking-[0.22em] text-stone-500">{lastOutcomeRoll.formula}</div>
+                                            <div className="mt-2 text-3xl font-bold text-parchment">{lastOutcomeRoll.total}</div>
+                                        </div>
+                                        <div className="text-right text-sm text-stone-400">
+                                            <div>{lastOutcomeRoll.kind}</div>
+                                            {lastOutcomeRoll.damageType && <div>{lastOutcomeRoll.damageType}</div>}
+                                        </div>
+                                    </div>
+                                    <div className="space-y-2">
+                                        {lastOutcomeRoll.parts.map((part) => (
+                                            <div key={`${part.label}:${part.value}`} className="flex items-center justify-between text-sm text-stone-300">
+                                                <span>{part.kind === 'dice' && part.rolls ? `${part.label} [${part.rolls.join(', ')}]` : part.label}</span>
+                                                <span className="text-amber-300">{formatSignedNumber(part.value)}</span>
+                                            </div>
+                                        ))}
+                                    </div>
+                                    <div className="rounded-2xl border border-stone-800 bg-stone-900/70 p-4 text-sm text-stone-400">
+                                        {lastOutcomeRoll.summary && <div>{lastOutcomeRoll.summary}</div>}
+                                        {lastOutcomeRoll.audit.map((note) => (
+                                            <div key={note}>{note}</div>
+                                        ))}
+                                    </div>
+                                </div>
                             ) : (
                                 <p className="mt-3 text-sm text-stone-400">
-                                    This slice focuses on correct derived stats, auditable formulas, and fast sheet interactions inside Owlbear.
+                                    This slice focuses on auditable d20 rolls plus modeled action outcomes from the same compact runtime sheet.
                                 </p>
                             )}
                         </div>
@@ -336,71 +376,66 @@ export function CharacterSheetPanel({
                                 <span className="text-[11px] font-black uppercase tracking-[0.22em]">Actions</span>
                             </div>
                             <div className="mt-3 space-y-3">
-                                {sheet.actions.map((action) => (
-                                    <div key={action.id} className="rounded-2xl border border-stone-800 bg-stone-900/60 p-3">
-                                        <div className="flex items-center justify-between gap-3">
-                                            <div className="font-medium text-parchment">{action.name}</div>
-                                            <div className="text-xs uppercase tracking-[0.2em] text-stone-500">{action.kind}</div>
-                                        </div>
-                                        {(action.source || action.description) && (
-                                            <div className="mt-2 text-sm text-stone-400">
-                                                {[action.source, action.description].filter(Boolean).join(' - ')}
-                                            </div>
-                                        )}
-                                        {(canRollAction(sheet, action) || canUseActionSaveDc(sheet, action) || getActionUseState(sheet, action).resource) && (
-                                            <div className="mt-3 flex flex-wrap gap-2">
-                                                {canRollAction(sheet, action) && (
-                                                    <button
-                                                        type="button"
-                                                        onClick={() => {
-                                                            const request = buildActionRoll(sheet, action);
-                                                            if (request) {
-                                                                onRoll(request);
-                                                            }
-                                                        }}
-                                                        className="rounded-full border border-amber-400/35 bg-amber-500/10 px-3 py-1.5 text-xs font-semibold text-amber-200 transition hover:border-amber-300/60"
-                                                    >
-                                                        Roll attack
-                                                    </button>
-                                                )}
-                                                {canUseActionSaveDc(sheet, action) && (() => {
-                                                    const summary = buildActionSaveDcSummary(sheet, action);
-                                                    if (!summary) {
-                                                        return null;
-                                                    }
+                                {sheet.actions.map((action) => {
+                                    const saveSummary = canUseActionSaveDc(sheet, action)
+                                        ? buildActionSaveDcSummary(sheet, action)
+                                        : null;
+                                    const useState = getActionUseState(sheet, action);
+                                    const outcomeSummaries = buildActionOutcomeSummaries(sheet, action);
 
-                                                    return (
+                                    return (
+                                        <div key={action.id} className="rounded-2xl border border-stone-800 bg-stone-900/60 p-3">
+                                            <div className="flex items-center justify-between gap-3">
+                                                <div className="font-medium text-parchment">{action.name}</div>
+                                                <div className="text-xs uppercase tracking-[0.2em] text-stone-500">{action.kind}</div>
+                                            </div>
+                                            {(action.source || action.description) && (
+                                                <div className="mt-2 text-sm text-stone-400">
+                                                    {[action.source, action.description].filter(Boolean).join(' - ')}
+                                                </div>
+                                            )}
+                                            {(canRollAction(sheet, action) || saveSummary || useState.resource || outcomeSummaries.length > 0) && (
+                                                <div className="mt-3 flex flex-wrap gap-2">
+                                                    {canRollAction(sheet, action) && (
+                                                        <button
+                                                            type="button"
+                                                            onClick={() => {
+                                                                const request = buildActionRoll(sheet, action);
+                                                                if (request) {
+                                                                    onRoll(request);
+                                                                    setLastOutcomeRoll(null);
+                                                                }
+                                                            }}
+                                                            className="rounded-full border border-amber-400/35 bg-amber-500/10 px-3 py-1.5 text-xs font-semibold text-amber-200 transition hover:border-amber-300/60"
+                                                        >
+                                                            Roll attack
+                                                        </button>
+                                                    )}
+                                                    {saveSummary && (
                                                         <>
                                                             <button
                                                                 type="button"
                                                                 onClick={() => void onOpenPrompt({
                                                                     kind: 'saving-throw',
-                                                                    ability: summary.saveAbility,
-                                                                    label: `${action.name} - ${summary.dc} ${summary.saveAbility.toUpperCase()} save`,
+                                                                    ability: saveSummary.saveAbility,
+                                                                    label: `${action.name} - ${saveSummary.dc} ${saveSummary.saveAbility.toUpperCase()} save`,
                                                                     details: [
-                                                                        `Save DC ${summary.dc}.`,
-                                                                        ...(summary.effectSummary ? [summary.effectSummary] : []),
-                                                                        ...(summary.successSummary ? [`On success: ${summary.successSummary}`] : []),
-                                                                        ...(summary.failureSummary ? [`On failure: ${summary.failureSummary}`] : []),
+                                                                        `Save DC ${saveSummary.dc}.`,
+                                                                        ...(saveSummary.effectSummary ? [saveSummary.effectSummary] : []),
+                                                                        ...(saveSummary.successSummary ? [`On success: ${saveSummary.successSummary}`] : []),
+                                                                        ...(saveSummary.failureSummary ? [`On failure: ${saveSummary.failureSummary}`] : []),
                                                                     ],
                                                                 })}
                                                                 className="rounded-full border border-violet-400/35 bg-violet-500/10 px-3 py-1.5 text-xs font-semibold text-violet-200 transition hover:border-violet-300/60"
                                                             >
-                                                                Prompt DC {summary.dc} save
+                                                                Prompt DC {saveSummary.dc} save
                                                             </button>
                                                             <div className="rounded-full border border-stone-700 bg-stone-950 px-3 py-1.5 text-xs text-stone-300">
-                                                                {summary.saveAbility.toUpperCase()} save / DC {summary.dc}
+                                                                {saveSummary.saveAbility.toUpperCase()} save / DC {saveSummary.dc}
                                                             </div>
                                                         </>
-                                                    );
-                                                })()}
-                                                {(() => {
-                                                    const useState = getActionUseState(sheet, action);
-                                                    if (!useState.resource) {
-                                                        return null;
-                                                    }
-
-                                                    return (
+                                                    )}
+                                                    {useState.resource && (
                                                         <button
                                                             type="button"
                                                             onClick={() => void onSpendActionResource(action.id)}
@@ -409,26 +444,62 @@ export function CharacterSheetPanel({
                                                         >
                                                             Spend {useState.amount} {useState.resource.name} ({useState.resource.current}/{useState.resource.max})
                                                         </button>
-                                                    );
-                                                })()}
-                                            </div>
-                                        )}
-                                        {canUseActionSaveDc(sheet, action) && (() => {
-                                            const summary = buildActionSaveDcSummary(sheet, action);
-                                            if (!summary) {
-                                                return null;
-                                            }
-
-                                            return (
-                                                <div className="mt-3 rounded-2xl border border-stone-800 bg-stone-950/60 p-3 text-sm text-stone-300">
-                                                    {summary.effectSummary && <div>{summary.effectSummary}</div>}
-                                                    {summary.successSummary && <div className="mt-1 text-stone-400">On success: {summary.successSummary}</div>}
-                                                    {summary.failureSummary && <div className="mt-1 text-stone-400">On failure: {summary.failureSummary}</div>}
+                                                    )}
                                                 </div>
-                                            );
-                                        })()}
-                                    </div>
-                                ))}
+                                            )}
+                                            {saveSummary && (
+                                                <div className="mt-3 rounded-2xl border border-stone-800 bg-stone-950/60 p-3 text-sm text-stone-300">
+                                                    {saveSummary.effectSummary && <div>{saveSummary.effectSummary}</div>}
+                                                    {saveSummary.successSummary && <div className="mt-1 text-stone-400">On success: {saveSummary.successSummary}</div>}
+                                                    {saveSummary.failureSummary && <div className="mt-1 text-stone-400">On failure: {saveSummary.failureSummary}</div>}
+                                                </div>
+                                            )}
+                                            {outcomeSummaries.length > 0 && (
+                                                <div className="mt-3 space-y-2">
+                                                    {outcomeSummaries.map((outcome) => (
+                                                        <div key={outcome.id} className="rounded-2xl border border-stone-800 bg-stone-950/60 p-3">
+                                                            <div className="flex flex-wrap items-center justify-between gap-2">
+                                                                <div className="text-sm font-medium text-parchment">{outcome.label}</div>
+                                                                <div className="flex flex-wrap items-center gap-2">
+                                                                    <div className="rounded-full border border-stone-700 bg-stone-950 px-3 py-1 text-[11px] uppercase tracking-[0.2em] text-stone-300">
+                                                                        {outcome.kind}
+                                                                    </div>
+                                                                    {outcome.damageType && (
+                                                                        <div className="rounded-full border border-stone-700 bg-stone-950 px-3 py-1 text-[11px] uppercase tracking-[0.2em] text-stone-300">
+                                                                            {outcome.damageType}
+                                                                        </div>
+                                                                    )}
+                                                                    {outcome.request && (
+                                                                        <button
+                                                                            type="button"
+                                                                            onClick={() => {
+                                                                                const request = outcome.request;
+                                                                                if (!request) {
+                                                                                    return;
+                                                                                }
+                                                                                const result = rollActionOutcome(request);
+                                                                                if (result) {
+                                                                                    setLastOutcomeRoll(result);
+                                                                                }
+                                                                            }}
+                                                                            className="rounded-full border border-emerald-400/35 bg-emerald-500/10 px-3 py-1.5 text-xs font-semibold text-emerald-200 transition hover:border-emerald-300/60"
+                                                                        >
+                                                                            Roll {outcome.kind}
+                                                                        </button>
+                                                                    )}
+                                                                </div>
+                                                            </div>
+                                                            <div className="mt-2 space-y-1 text-sm text-stone-300">
+                                                                {outcome.formula && <div>{outcome.formula}</div>}
+                                                                {outcome.summary && <div className="text-stone-400">{outcome.summary}</div>}
+                                                            </div>
+                                                        </div>
+                                                    ))}
+                                                </div>
+                                            )}
+                                        </div>
+                                    );
+                                })}
                             </div>
                         </div>
 

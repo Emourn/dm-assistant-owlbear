@@ -7,16 +7,16 @@ export interface MilestoneSlice {
 
 export const CURRENT_SLICE: MilestoneSlice = {
     milestone: 'Phase 1 - Automated 2024 character sheet foundation',
-    scope: 'Save-DC and effect-oriented action automation, so actions like cantrips and save-based abilities can surface DC, effect notes, and direct save prompts from the sheet.',
+    scope: 'Richer action outcome automation for attacks and spells, so automated actions can model damage/effect outcomes and roll those formulas directly from the compact runtime sheet.',
     acceptanceCriteria: [
-        'An action can model a saving throw target, a computed or fixed DC, and effect summaries.',
-        'The sheet can prompt the correct saving throw directly from a save-based action card.',
-        'Save-DC actions remain auditable and can still link to modeled resource costs.',
-        'The demo character exposes at least one save-based action for immediate Owlbear testing.',
+        'Automated actions can model one or more outcomes with labels, formula text, type tags, and summaries.',
+        'Attack and save-based action cards can roll modeled outcomes directly in the runtime sheet.',
+        'Outcome automation stays separate from room-roll publication and from token HP mutation.',
+        'The demo character exposes attack and spell actions with modeled outcomes for Owlbear testing.',
     ],
     nonGoals: [
         'Per-player targeted prompts',
-        'Damage roll automation',
+        'Target HP mutation',
         'Full replay or undo tooling',
         'Token-link migration helpers',
         'Encounter or condition automation',
@@ -24,8 +24,8 @@ export const CURRENT_SLICE: MilestoneSlice = {
 };
 
 export const NEXT_SLICES = [
-    'Phase 1 Slice 15: richer action outcome automation for attacks and spells',
     'Phase 1 Slice 16: context-menu-first runtime shortcuts inspired by hp-tracker',
     'Phase 1 Slice 17: token- and selection-level batch runtime tools',
     'Phase 1 Slice 18: encounter ordering and active-turn integration',
+    'Phase 1 Slice 19: target-aware HP and condition application from action outcomes',
 ];

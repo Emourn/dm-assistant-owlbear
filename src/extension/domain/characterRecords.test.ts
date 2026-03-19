@@ -88,6 +88,7 @@ describe('extension character records', () => {
         expect(duplicated?.sheet.actions[2].automation?.resourceCost?.resourceId).toBe(
             duplicated?.sheet.spellcasting?.slots[0].id,
         );
+        expect(duplicated?.sheet.actions[0].automation?.outcomes?.[0]?.formula).toBe('1d6');
         expect(duplicated?.updatedAt).toBe(2000);
     });
 

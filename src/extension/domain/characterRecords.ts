@@ -251,6 +251,7 @@ function duplicateSheet(source: Phase1CharacterSheet, nextSheetId: string, nextN
         automation: action.automation
             ? {
                 ...action.automation,
+                outcomes: action.automation.outcomes?.map((outcome) => ({ ...outcome })) ?? [],
                 resourceCost: action.automation.resourceCost
                     ? {
                         ...action.automation.resourceCost,
@@ -578,7 +579,7 @@ export function importCharactersFromJson(
     return {
         collection: {
             ...next,
-            activeCharacterId: importedActiveCharacterId ?? next.characters.at(-1)?.sheet.id ?? null,
+            activeCharacterId: importedActiveCharacterId ?? next.characters[next.characters.length - 1]?.sheet.id ?? null,
         },
         importedCount: imported.records.length,
     };
@@ -720,6 +721,15 @@ export function createSampleCharacterCollection(now = Date.now()): StoredCharact
                                 proficient: true,
                                 bonus: 0,
                                 range: 'melee',
+                                outcomes: [
+                                    {
+                                        label: 'On hit',
+                                        kind: 'damage',
+                                        formula: '1d6',
+                                        damageType: 'Bludgeoning',
+                                        summary: 'One-handed melee weapon damage.',
+                                    },
+                                ],
                                 resourceCost: null,
                             },
                         },
@@ -739,6 +749,15 @@ export function createSampleCharacterCollection(now = Date.now()): StoredCharact
                                 effectSummary: 'Flame-like radiance descends on one creature you can see within range.',
                                 successSummary: 'The target takes no damage.',
                                 failureSummary: 'The target takes 1d8 Radiant damage.',
+                                outcomes: [
+                                    {
+                                        label: 'On failed save',
+                                        kind: 'damage',
+                                        formula: '1d8',
+                                        damageType: 'Radiant',
+                                        summary: 'Target takes radiant damage on a failed Dexterity save.',
+                                    },
+                                ],
                                 resourceCost: null,
                             },
                         },
@@ -754,6 +773,15 @@ export function createSampleCharacterCollection(now = Date.now()): StoredCharact
                                 proficient: false,
                                 bonus: 0,
                                 range: 'ranged',
+                                outcomes: [
+                                    {
+                                        label: 'On hit',
+                                        kind: 'damage',
+                                        formula: '4d6',
+                                        damageType: 'Radiant',
+                                        summary: 'The next attack roll made against the target before the end of your next turn has advantage.',
+                                    },
+                                ],
                                 resourceCost: {
                                     resourceId: `${characterId}:slot-1`,
                                     amount: 1,
