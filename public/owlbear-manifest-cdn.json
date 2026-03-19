@@ -4,12 +4,12 @@
   "manifest_version": 1,
   "author": "Carlo and OpenAI Codex",
   "description": "A brand-new Owlbear Rodeo Dungeons & Dragons extension rebuilt from scratch with a map-first, selection-first workflow.",
-  "icon": "https://rawcdn.githack.com/Emourn/dm-assistant-owlbear/b9fa42376c1f02e0c3924f1a777f9b4e891daef0/dist/owlbear/icon.svg?v=phase1-slice-6",
-  "background_url": "https://rawcdn.githack.com/Emourn/dm-assistant-owlbear/b9fa42376c1f02e0c3924f1a777f9b4e891daef0/dist/owlbear-background.html?v=phase1-slice-6",
+  "icon": "https://rawcdn.githack.com/Emourn/dm-assistant-owlbear/bc1d4601a4aa2340cda1b5c4d14889a3e8c974a3/dist/owlbear/icon.svg?v=phase1-slice-7",
+  "background_url": "https://rawcdn.githack.com/Emourn/dm-assistant-owlbear/bc1d4601a4aa2340cda1b5c4d14889a3e8c974a3/dist/owlbear-background.html?v=phase1-slice-7",
   "action": {
     "title": "D&D Assistant",
-    "icon": "https://rawcdn.githack.com/Emourn/dm-assistant-owlbear/b9fa42376c1f02e0c3924f1a777f9b4e891daef0/dist/owlbear/icon.svg?v=phase1-slice-6",
-    "popover": "https://rawcdn.githack.com/Emourn/dm-assistant-owlbear/b9fa42376c1f02e0c3924f1a777f9b4e891daef0/dist/owlbear.html?v=phase1-slice-6",
+    "icon": "https://rawcdn.githack.com/Emourn/dm-assistant-owlbear/bc1d4601a4aa2340cda1b5c4d14889a3e8c974a3/dist/owlbear/icon.svg?v=phase1-slice-7",
+    "popover": "https://rawcdn.githack.com/Emourn/dm-assistant-owlbear/bc1d4601a4aa2340cda1b5c4d14889a3e8c974a3/dist/owlbear.html?v=phase1-slice-7",
     "height": 720,
     "width": 460
   }
