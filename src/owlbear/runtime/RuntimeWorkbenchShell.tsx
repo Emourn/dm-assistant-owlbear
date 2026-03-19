@@ -109,12 +109,12 @@ function SelectionInspector({
 
     if (!selection) {
         return (
-            <section className="rounded-[1.7rem] border border-stone-800 bg-stone-950/90 p-5 shadow-[0_24px_60px_-36px_rgba(15,23,42,0.95)]">
+            <section className="overflow-hidden rounded-[1.35rem] border border-stone-800 bg-[linear-gradient(180deg,rgba(12,10,9,0.98),rgba(28,25,23,0.94))] p-5 shadow-[0_24px_60px_-36px_rgba(15,23,42,0.95)]">
                 <div className="flex items-center gap-2 text-emerald-300">
                     <Crosshair size={16} />
-                    <span className="text-[10px] font-black uppercase tracking-[0.26em]">Selection inspector</span>
+                    <span className="font-mono text-[10px] font-bold uppercase tracking-[0.26em]">Selection inspector</span>
                 </div>
-                <h2 className="mt-3 font-cinzel text-3xl font-bold text-parchment">Stay on the map</h2>
+                <h2 className="mt-3 text-2xl font-semibold tracking-tight text-parchment">Stay on the map</h2>
                 <p className="mt-3 max-w-2xl text-sm leading-relaxed text-stone-400">
                     Select a token in Owlbear to link it, open its sheet, assign a player, or push it into combat. The extension should react to the tabletop you are already using, not pull you into a separate dashboard.
                 </p>
@@ -122,27 +122,27 @@ function SelectionInspector({
                     <button
                         type="button"
                         onClick={onOpenImport}
-                        className="rounded-2xl border border-gold/30 bg-gold/10 px-4 py-4 text-left transition-colors hover:border-gold/50 hover:bg-gold/15"
+                        className="rounded-xl border border-gold/30 bg-gold/10 px-4 py-4 text-left transition-colors hover:border-gold/50 hover:bg-gold/15"
                     >
-                        <div className="text-[10px] font-black uppercase tracking-[0.2em] text-gold">Import</div>
+                        <div className="font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-gold">Import</div>
                         <div className="mt-2 text-base font-semibold text-parchment">Import a PDF sheet</div>
                         <div className="mt-2 text-sm text-stone-400">Start from a D&D Beyond or fillable PDF and save it to the roster.</div>
                     </button>
                     <button
                         type="button"
                         onClick={onOpenCreate}
-                        className="rounded-2xl border border-stone-800 bg-stone-900/70 px-4 py-4 text-left transition-colors hover:border-stone-700 hover:bg-stone-900"
+                        className="rounded-xl border border-stone-800 bg-stone-900/70 px-4 py-4 text-left transition-colors hover:border-stone-700 hover:bg-stone-900"
                     >
-                        <div className="text-[10px] font-black uppercase tracking-[0.2em] text-sky-300">Create</div>
+                        <div className="font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-sky-300">Create</div>
                         <div className="mt-2 text-base font-semibold text-parchment">Create a new sheet</div>
                         <div className="mt-2 text-sm text-stone-400">Open the full editor only when you need to author or revise a character.</div>
                     </button>
                     <button
                         type="button"
                         onClick={onOpenRoster}
-                        className="rounded-2xl border border-stone-800 bg-stone-900/70 px-4 py-4 text-left transition-colors hover:border-stone-700 hover:bg-stone-900"
+                        className="rounded-xl border border-stone-800 bg-stone-900/70 px-4 py-4 text-left transition-colors hover:border-stone-700 hover:bg-stone-900"
                     >
-                        <div className="text-[10px] font-black uppercase tracking-[0.2em] text-emerald-300">Roster</div>
+                        <div className="font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-emerald-300">Roster</div>
                         <div className="mt-2 text-base font-semibold text-parchment">Open saved characters</div>
                         <div className="mt-2 text-sm text-stone-400">Review your roster, edit imported sheets, and prepare characters before linking tokens.</div>
                     </button>
@@ -152,7 +152,7 @@ function SelectionInspector({
     }
 
     return (
-        <section className="rounded-[1.7rem] border border-stone-800 bg-stone-950/90 p-5 shadow-[0_24px_60px_-36px_rgba(15,23,42,0.95)]">
+        <section className="overflow-hidden rounded-[1.35rem] border border-stone-800 bg-[linear-gradient(180deg,rgba(12,10,9,0.98),rgba(28,25,23,0.94))] p-5 shadow-[0_24px_60px_-36px_rgba(15,23,42,0.95)]">
             <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
                 <div className="flex min-w-0 gap-4">
                     <div className="relative h-20 w-20 overflow-hidden rounded-[1.4rem] border border-stone-800 bg-stone-900">
@@ -166,12 +166,12 @@ function SelectionInspector({
                     </div>
                     <div className="min-w-0">
                         <div className="flex flex-wrap items-center gap-2">
-                            <span className="text-[10px] font-black uppercase tracking-[0.26em] text-emerald-300">Selection inspector</span>
+                            <span className="font-mono text-[10px] font-bold uppercase tracking-[0.26em] text-emerald-300">Selection inspector</span>
                             <span className={`rounded-full border px-2.5 py-1 text-[10px] font-black uppercase tracking-[0.18em] ${linkedCharacter ? 'border-emerald-400/30 bg-emerald-500/10 text-emerald-200' : 'border-amber-400/30 bg-amber-500/10 text-amber-200'}`}>
                                 {linkedCharacter ? 'Linked token' : 'Needs sheet link'}
                             </span>
                         </div>
-                        <h2 className="mt-2 truncate font-cinzel text-3xl font-bold text-parchment">{getItemDisplayName(selection.item)}</h2>
+                        <h2 className="mt-2 truncate text-2xl font-semibold tracking-tight text-parchment">{getItemDisplayName(selection.item)}</h2>
                         <p className="mt-2 max-w-2xl text-sm leading-relaxed text-stone-400">
                             {linkedCharacter
                                 ? `This token is connected to ${linkedCharacter.name || 'an unnamed character'}. Open the sheet, adjust assignments, or send the token into combat without leaving the map.`
@@ -200,11 +200,11 @@ function SelectionInspector({
                     {playerRows.length > 0 && (
                         <div className="mt-5 grid gap-3 md:grid-cols-2">
                             {playerRows.map((player) => (
-                                <div key={player.id} className="rounded-2xl border border-stone-800 bg-stone-900/70 p-3">
+                                <div key={player.id} className="rounded-xl border border-stone-800 bg-stone-900/70 p-3">
                                     <div className="flex items-center justify-between gap-3">
                                         <div className="min-w-0">
                                             <div className="truncate text-sm font-semibold text-stone-100">{player.name}</div>
-                                            <div className="mt-1 text-[11px] uppercase tracking-[0.18em] text-stone-500">Player link</div>
+                                            <div className="mt-1 font-mono text-[11px] uppercase tracking-[0.18em] text-stone-500">Player link</div>
                                         </div>
                                         <div className="h-3 w-3 rounded-full" style={{ backgroundColor: player.color }} />
                                     </div>
@@ -226,10 +226,10 @@ function SelectionInspector({
                         </div>
                     )}
                     {smokeProfile && (
-                        <div className="mt-5 rounded-2xl border border-sky-500/20 bg-sky-500/5 p-4">
+                        <div className="mt-5 rounded-xl border border-sky-500/20 bg-sky-500/5 p-4">
                             <div className="flex items-center justify-between gap-3">
                                 <div>
-                                    <div className="text-[10px] font-black uppercase tracking-[0.22em] text-sky-300">Smoke profile</div>
+                                    <div className="font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-sky-300">Smoke profile</div>
                                     <div className="mt-2 text-sm font-semibold text-stone-100">Stored alongside the token link for Smoke and Spectre!</div>
                                 </div>
                                 <div className="rounded-full border border-sky-400/20 bg-sky-500/10 px-3 py-1 text-[10px] font-black uppercase tracking-[0.18em] text-sky-100">
@@ -268,23 +268,23 @@ function SelectionInspector({
                             type="button"
                             onClick={onLinkSelection}
                             disabled={!selectedCharacterId || isBusy}
-                            className="rounded-2xl bg-gold px-5 py-3 text-sm font-bold text-stone-950 transition-colors hover:bg-yellow-400 disabled:cursor-not-allowed disabled:opacity-50"
+                            className="rounded-xl bg-gold px-5 py-3 text-sm font-bold text-stone-950 transition-colors hover:bg-yellow-400 disabled:cursor-not-allowed disabled:opacity-50"
                         >
                             Link token to sheet
                         </button>
                     </div>
                     {selectedCharacter ? (
-                        <div className="mt-4 rounded-2xl border border-stone-800 bg-stone-900/70 p-4">
+                        <div className="mt-4 rounded-xl border border-stone-800 bg-stone-900/70 p-4">
                             <div className="flex items-center justify-between gap-3">
                                 <div>
-                                    <div className="text-[10px] font-black uppercase tracking-[0.22em] text-gold">Ready to link</div>
-                                    <div className="mt-2 text-xl font-cinzel font-bold text-parchment">{selectedCharacter.name || 'Unnamed'}</div>
+                                    <div className="font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-gold">Ready to link</div>
+                                    <div className="mt-2 text-xl font-semibold tracking-tight text-parchment">{selectedCharacter.name || 'Unnamed'}</div>
                                     <div className="mt-1 text-sm text-stone-400">{describeCharacter(selectedCharacter)}</div>
                                 </div>
                                 <button
                                     type="button"
                                     onClick={() => onOpenSheet(selectedCharacter.id)}
-                                    className="rounded-full border border-stone-800 bg-stone-950/80 px-3 py-2 text-[11px] font-black uppercase tracking-[0.16em] text-stone-200 transition-colors hover:border-sky-400/20 hover:text-sky-100"
+                                    className="rounded-xl border border-stone-700 bg-stone-950/90 px-3 py-2 font-mono text-[10px] font-bold uppercase tracking-[0.16em] text-stone-200 transition-colors hover:border-sky-400/20 hover:text-sky-100"
                                 >
                                     Review Sheet
                                 </button>
@@ -295,17 +295,17 @@ function SelectionInspector({
                             <button
                                 type="button"
                                 onClick={onOpenImport}
-                                className="rounded-2xl border border-gold/30 bg-gold/10 px-4 py-4 text-left transition-colors hover:border-gold/50 hover:bg-gold/15"
+                                className="rounded-xl border border-gold/30 bg-gold/10 px-4 py-4 text-left transition-colors hover:border-gold/50 hover:bg-gold/15"
                             >
-                                <div className="text-[10px] font-black uppercase tracking-[0.2em] text-gold">Fastest path</div>
+                                <div className="font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-gold">Fastest path</div>
                                 <div className="mt-2 text-base font-semibold text-parchment">Import a sheet now</div>
                             </button>
                             <button
                                 type="button"
                                 onClick={onOpenCreate}
-                                className="rounded-2xl border border-stone-800 bg-stone-900/70 px-4 py-4 text-left transition-colors hover:border-stone-700 hover:bg-stone-900"
+                                className="rounded-xl border border-stone-800 bg-stone-900/70 px-4 py-4 text-left transition-colors hover:border-stone-700 hover:bg-stone-900"
                             >
-                                <div className="text-[10px] font-black uppercase tracking-[0.2em] text-sky-300">Manual authoring</div>
+                                <div className="font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-sky-300">Manual authoring</div>
                                 <div className="mt-2 text-base font-semibold text-parchment">Create a new sheet</div>
                             </button>
                         </div>
@@ -334,11 +334,11 @@ function EncounterStrip({
         : roomState?.activeEncounter;
 
     return (
-        <section className="rounded-[1.5rem] border border-stone-800 bg-stone-950/80 p-4">
+        <section className="rounded-[1.25rem] border border-stone-800 bg-[linear-gradient(180deg,rgba(12,10,9,0.96),rgba(28,25,23,0.92))] p-4">
             <div className="flex items-center justify-between gap-3">
                 <div>
-                    <div className="text-[10px] font-black uppercase tracking-[0.24em] text-gold">Encounter strip</div>
-                    <h2 className="mt-2 font-cinzel text-2xl font-bold text-parchment">
+                    <div className="font-mono text-[10px] font-bold uppercase tracking-[0.24em] text-gold">Encounter strip</div>
+                    <h2 className="mt-2 text-xl font-semibold tracking-tight text-parchment">
                         {encounter ? encounter.title : 'No active encounter'}
                     </h2>
                 </div>
@@ -353,7 +353,7 @@ function EncounterStrip({
                     </div>
                     <div className="mt-4 space-y-2">
                         {encounter.combatants.slice(0, 4).map((combatant) => (
-                            <div key={combatant.id} className="flex items-center justify-between rounded-2xl border border-stone-800 bg-stone-900/60 px-3 py-2 text-sm">
+                            <div key={combatant.id} className="flex items-center justify-between rounded-xl border border-stone-800 bg-stone-900/60 px-3 py-2 text-sm">
                                 <span className="font-semibold text-stone-100">{combatant.name}</span>
                                 <span className="text-stone-400">
                                     HP {combatant.currentHp}/{combatant.maxHp}
@@ -373,10 +373,10 @@ function EncounterStrip({
 
 function OverlayLoadingCard({ label }: { label: string }) {
     return (
-        <div className="flex min-h-[320px] items-center justify-center rounded-[1.6rem] border border-stone-800 bg-stone-950/95 px-6 py-10 text-center shadow-[0_24px_60px_-36px_rgba(15,23,42,0.95)]">
+        <div className="flex min-h-[320px] items-center justify-center rounded-[1.35rem] border border-stone-800 bg-[linear-gradient(180deg,rgba(12,10,9,0.98),rgba(28,25,23,0.94))] px-6 py-10 text-center shadow-[0_24px_60px_-36px_rgba(15,23,42,0.95)]">
             <div>
-                <div className="text-[10px] font-black uppercase tracking-[0.24em] text-stone-500">Loading</div>
-                <div className="mt-3 font-cinzel text-2xl font-bold text-parchment">{label}</div>
+                <div className="font-mono text-[10px] font-bold uppercase tracking-[0.24em] text-stone-500">Loading</div>
+                <div className="mt-3 text-xl font-semibold tracking-tight text-parchment">{label}</div>
                 <div className="mt-2 text-sm text-stone-400">Preparing the heavy editor surface only when it is actually needed.</div>
             </div>
         </div>
@@ -550,18 +550,18 @@ export function RuntimeWorkbenchShell() {
     }
 
     return (
-        <div className="min-h-screen bg-[radial-gradient(circle_at_top_left,_rgba(56,189,248,0.12),_transparent_32%),radial-gradient(circle_at_top_right,_rgba(245,158,11,0.12),_transparent_28%),linear-gradient(180deg,rgba(10,10,10,0.98),rgba(17,24,39,0.96))] p-4 text-stone-100 sm:p-5">
+        <div className="min-h-screen bg-[radial-gradient(circle_at_top_left,_rgba(56,189,248,0.08),_transparent_28%),radial-gradient(circle_at_top_right,_rgba(245,158,11,0.08),_transparent_24%),linear-gradient(180deg,rgba(12,10,9,0.99),rgba(17,24,39,0.94))] p-4 text-stone-100 sm:p-5">
             <div className="mx-auto flex max-w-6xl flex-col gap-4">
-                <section className="rounded-[1.7rem] border border-stone-800 bg-stone-950/90 p-4 shadow-[0_24px_60px_-36px_rgba(15,23,42,0.95)]">
+                <section className="overflow-hidden rounded-[1.35rem] border border-stone-800 bg-[linear-gradient(180deg,rgba(12,10,9,0.98),rgba(28,25,23,0.94))] p-4 shadow-[0_24px_60px_-36px_rgba(15,23,42,0.95)]">
                     <div className="flex flex-col gap-4 xl:flex-row xl:items-end xl:justify-between">
                         <div className="min-w-0">
                             <div className="flex flex-wrap items-center gap-2 text-emerald-300">
                                 <RadioTower size={16} />
-                                <span className="text-[10px] font-black uppercase tracking-[0.28em]">DM Assistant for Owlbear</span>
+                                <span className="font-mono text-[10px] font-bold uppercase tracking-[0.28em]">DM Assistant for Owlbear</span>
                             </div>
                             <div className="mt-3 flex flex-col gap-2 lg:flex-row lg:items-end lg:justify-between">
                                 <div>
-                                    <h1 className="font-cinzel text-3xl font-bold text-parchment">Runtime command panel</h1>
+                                    <h1 className="text-2xl font-semibold tracking-tight text-parchment">Runtime command panel</h1>
                                     <p className="mt-2 max-w-3xl text-sm leading-relaxed text-stone-400">
                                         Use the panel as a lightweight console beside the map. Token linking, sheet automation, rests, notes, and combat all stay close to Owlbear instead of taking over the tabletop.
                                     </p>

@@ -58,10 +58,10 @@ export function HeaderAction({
             type="button"
             onClick={onClick}
             disabled={disabled}
-            className={`inline-flex items-center gap-2 rounded-full border px-3 py-2 text-[11px] font-black uppercase tracking-[0.18em] transition-colors disabled:cursor-wait disabled:opacity-50 ${
+            className={`inline-flex items-center gap-2 rounded-xl border px-3 py-2 text-[10px] font-mono font-bold uppercase tracking-[0.18em] transition-colors disabled:cursor-wait disabled:opacity-50 ${
                 accent
-                    ? 'border-gold/30 bg-gold px-3 text-stone-950 hover:bg-yellow-400'
-                    : 'border-stone-800 bg-stone-900/80 text-stone-100 hover:border-sky-400/20 hover:text-sky-100'
+                    ? 'border-gold/40 bg-gold text-stone-950 shadow-[0_0_0_1px_rgba(245,158,11,0.18)] hover:bg-yellow-400'
+                    : 'border-stone-700 bg-stone-950/90 text-stone-100 hover:border-sky-400/20 hover:text-sky-100'
             }`}
         >
             <Icon size={14} />
@@ -72,9 +72,9 @@ export function HeaderAction({
 
 export function CompactStat({ label, value }: { label: string; value: string }) {
     return (
-        <div className="rounded-xl border border-stone-800 bg-stone-950/70 px-3 py-2">
-            <div className="text-[10px] font-black uppercase tracking-[0.18em] text-stone-500">{label}</div>
-            <div className="mt-1 text-sm font-semibold text-stone-100">{value}</div>
+        <div className="rounded-xl border border-stone-800 bg-[linear-gradient(180deg,rgba(28,25,23,0.94),rgba(12,10,9,0.96))] px-3 py-2 shadow-[inset_0_1px_0_rgba(255,255,255,0.03)]">
+            <div className="text-[10px] font-mono font-bold uppercase tracking-[0.18em] text-stone-500">{label}</div>
+            <div className="mt-1 text-sm font-semibold tracking-tight text-stone-100">{value}</div>
         </div>
     );
 }
@@ -82,7 +82,7 @@ export function CompactStat({ label, value }: { label: string; value: string }) 
 export function RuntimeLine({ label, value }: { label: string; value: string }) {
     return (
         <div className="flex items-center justify-between border-b border-stone-800/80 pb-2 text-sm">
-            <span className="text-stone-500">{label}</span>
+            <span className="font-mono text-[11px] uppercase tracking-[0.14em] text-stone-500">{label}</span>
             <span className="font-semibold text-stone-100">{value}</span>
         </div>
     );
@@ -95,7 +95,13 @@ function WorkspaceCard({
     children: React.ReactNode;
     className?: string;
 }) {
-    return <div className={`rounded-2xl border border-stone-800 bg-stone-900/70 p-4 ${className}`.trim()}>{children}</div>;
+    return (
+        <div
+            className={`relative overflow-hidden rounded-2xl border border-stone-800 bg-[linear-gradient(180deg,rgba(41,37,36,0.88),rgba(12,10,9,0.94))] p-4 shadow-[inset_0_1px_0_rgba(255,255,255,0.03)] before:pointer-events-none before:absolute before:inset-x-0 before:top-0 before:h-px before:bg-gradient-to-r before:from-transparent before:via-stone-500/20 before:to-transparent ${className}`.trim()}
+        >
+            {children}
+        </div>
+    );
 }
 
 function SmallActionButton({
@@ -130,7 +136,7 @@ function SmallActionButton({
             type="button"
             onClick={onClick}
             disabled={disabled}
-            className={`inline-flex items-center justify-center gap-2 rounded-full border px-3 py-2 text-[11px] font-black uppercase tracking-[0.16em] transition-colors disabled:cursor-not-allowed disabled:opacity-50 ${tone} ${className}`.trim()}
+            className={`inline-flex items-center justify-center gap-2 rounded-xl border px-3 py-2 text-[10px] font-mono font-bold uppercase tracking-[0.16em] transition-colors disabled:cursor-not-allowed disabled:opacity-50 ${tone} ${className}`.trim()}
         >
             {Icon && <Icon size={12} />}
             {label}
@@ -157,7 +163,7 @@ function PrimaryActionButton({
             type="button"
             onClick={onClick}
             disabled={disabled}
-            className={`inline-flex items-center justify-center gap-2 rounded-2xl bg-gold px-4 py-3 text-sm font-bold text-stone-950 transition-colors hover:bg-yellow-400 disabled:cursor-not-allowed disabled:opacity-50 ${className}`.trim()}
+            className={`inline-flex items-center justify-center gap-2 rounded-xl bg-gold px-4 py-3 text-sm font-bold text-stone-950 transition-colors hover:bg-yellow-400 disabled:cursor-not-allowed disabled:opacity-50 ${className}`.trim()}
         >
             {Icon && <Icon size={16} />}
             {label}
@@ -175,11 +181,11 @@ export function FirstRunPanel({
     onOpenCampaigns: () => void;
 }) {
     return (
-        <section className="rounded-[1.75rem] border border-gold/20 bg-[radial-gradient(circle_at_top_left,_rgba(245,158,11,0.16),_transparent_34%),linear-gradient(135deg,_rgba(17,24,39,0.94),_rgba(10,10,10,0.95))] p-5 shadow-[0_24px_60px_-34px_rgba(245,158,11,0.45)]">
+        <section className="rounded-[1.4rem] border border-gold/20 bg-[radial-gradient(circle_at_top_left,_rgba(245,158,11,0.14),_transparent_28%),linear-gradient(180deg,_rgba(28,25,23,0.98),_rgba(12,10,9,0.98))] p-5 shadow-[0_24px_60px_-34px_rgba(245,158,11,0.3)]">
             <div className="flex flex-col gap-4 lg:flex-row lg:items-center lg:justify-between">
                 <div className="max-w-2xl">
-                    <div className="text-[10px] font-black uppercase tracking-[0.26em] text-gold">First-time setup</div>
-                    <h2 className="mt-2 font-cinzel text-3xl font-bold text-parchment">Start with a sheet, then link it to a token</h2>
+                    <div className="text-[10px] font-mono font-bold uppercase tracking-[0.26em] text-gold">First-time setup</div>
+                    <h2 className="mt-2 text-2xl font-semibold tracking-tight text-parchment">Start with a sheet, then link it to a token</h2>
                     <p className="mt-3 text-sm leading-relaxed text-stone-300">
                         Import or create a sheet first, then connect it to a selected token and assign it to a player. This keeps the extension centered on Owlbear's token workflow instead of feeling like a separate app.
                     </p>
@@ -211,8 +217,8 @@ export function QuickActionRail({
     ];
 
     return (
-        <section className="rounded-[1.4rem] border border-stone-800 bg-stone-950/80 p-3">
-            <div className="flex flex-wrap gap-2">
+        <section className="rounded-[1.25rem] border border-stone-800 bg-[linear-gradient(180deg,rgba(12,10,9,0.96),rgba(28,25,23,0.92))] p-3">
+            <div className="grid gap-2 sm:grid-cols-2 xl:grid-cols-6">
                 {items.map((item) => {
                     const isActive = activePanel === item.id;
                     return (
@@ -220,18 +226,18 @@ export function QuickActionRail({
                             key={item.id}
                             type="button"
                             onClick={() => onOpenPanel(isActive ? 'none' : item.id)}
-                            className={`flex min-w-[120px] flex-1 items-center gap-3 rounded-2xl border px-3 py-3 text-left transition-colors ${
+                            className={`flex min-w-[120px] items-center gap-3 rounded-xl border px-3 py-3 text-left transition-colors ${
                                 isActive
-                                    ? 'border-sky-400/20 bg-sky-500/10 text-sky-100'
-                                    : 'border-stone-800 bg-stone-900/70 text-stone-200 hover:border-stone-700 hover:text-stone-50'
+                                    ? 'border-sky-400/20 bg-sky-500/10 text-sky-100 shadow-[inset_0_1px_0_rgba(125,211,252,0.08)]'
+                                    : 'border-stone-800 bg-stone-900/60 text-stone-200 hover:border-stone-700 hover:text-stone-50'
                             }`}
                         >
-                            <div className={`rounded-xl border p-2 ${isActive ? 'border-sky-400/20 bg-sky-500/10' : 'border-stone-800 bg-stone-950/70'}`}>
+                            <div className={`rounded-lg border p-2 ${isActive ? 'border-sky-400/20 bg-sky-500/10' : 'border-stone-800 bg-stone-950/70'}`}>
                                 <item.icon size={16} />
                             </div>
                             <div className="min-w-0">
-                                <div className="text-[11px] font-black uppercase tracking-[0.18em]">{item.label}</div>
-                                <div className="mt-1 text-xs text-stone-500">{item.description}</div>
+                                <div className="text-[10px] font-mono font-bold uppercase tracking-[0.18em]">{item.label}</div>
+                                <div className="mt-1 text-[11px] leading-snug text-stone-500">{item.description}</div>
                             </div>
                         </button>
                     );
@@ -255,11 +261,11 @@ export function RoomSnapshotCard({
     onOpenRoster: () => void;
 }) {
     return (
-        <section className="rounded-[1.5rem] border border-stone-800 bg-stone-950/80 p-4">
+        <section className="rounded-[1.25rem] border border-stone-800 bg-[linear-gradient(180deg,rgba(12,10,9,0.96),rgba(28,25,23,0.92))] p-4">
             <div className="flex items-center justify-between gap-3">
                 <div>
-                    <div className="text-[10px] font-black uppercase tracking-[0.24em] text-emerald-300">Room snapshot</div>
-                    <h2 className="mt-2 font-cinzel text-2xl font-bold text-parchment">Roster and sync posture</h2>
+                    <div className="text-[10px] font-mono font-bold uppercase tracking-[0.24em] text-emerald-300">Room snapshot</div>
+                    <h2 className="mt-2 text-xl font-semibold tracking-tight text-parchment">Roster and sync posture</h2>
                 </div>
                 <div className="flex gap-2">
                     <HeaderAction icon={Link2} label="Sync" onClick={onOpenSync} />
@@ -292,11 +298,11 @@ export function WorkspaceDrawer({
     onEditCharacter: (characterId: string) => void;
 }) {
     return (
-        <section className="rounded-[1.6rem] border border-stone-800 bg-stone-950/90 shadow-[0_24px_60px_-36px_rgba(15,23,42,0.95)]">
+        <section className="overflow-hidden rounded-[1.35rem] border border-stone-800 bg-[linear-gradient(180deg,rgba(12,10,9,0.98),rgba(28,25,23,0.94))] shadow-[0_24px_60px_-36px_rgba(15,23,42,0.95)]">
             <div className="flex items-center justify-between border-b border-stone-800/80 px-4 py-3">
                 <div>
-                    <div className="text-[10px] font-black uppercase tracking-[0.24em] text-stone-500">Secondary workspace</div>
-                    <h3 className="mt-1 font-cinzel text-2xl font-bold text-parchment">{getPanelLabel(activePanel)}</h3>
+                    <div className="text-[10px] font-mono font-bold uppercase tracking-[0.24em] text-stone-500">Secondary workspace</div>
+                    <h3 className="mt-1 text-xl font-semibold tracking-tight text-parchment">{getPanelLabel(activePanel)}</h3>
                 </div>
                 <SmallActionButton label="Close" onClick={onClose} />
             </div>
