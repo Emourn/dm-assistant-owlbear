@@ -809,6 +809,8 @@ export function RuntimeWorkbenchShell() {
                             <CharacterForm
                                 characterId={editorState.characterId}
                                 initialData={editorState.initialData}
+                                surface="owlbear"
+                                entryMode={editorState.characterId ? 'edit' : editorState.initialData ? 'import' : 'create'}
                                 onClose={() => {
                                     setEditorState(null);
                                     void refresh();

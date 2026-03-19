@@ -38,6 +38,8 @@ interface CharacterFormProps {
     characterId?: string | null;
     initialData?: Partial<Character>;
     onClose: () => void;
+    surface?: 'default' | 'owlbear';
+    entryMode?: 'create' | 'edit' | 'import';
 }
 
 type TabKey = 'core' | 'stats' | 'combat' | 'magic' | 'inventory' | 'features' | 'actions';
@@ -79,7 +81,13 @@ function normalizeSpellcastingAbility(
     return stat ?? fallback;
 }
 
-export function CharacterForm({ characterId, initialData, onClose }: CharacterFormProps) {
+export function CharacterForm({
+    characterId,
+    initialData,
+    onClose,
+    surface = 'default',
+    entryMode = characterId ? 'edit' : initialData ? 'import' : 'create',
+}: CharacterFormProps) {
     const { characters, addCharacter, updateCharacter, deleteCharacter } = useCharacterStore();
     const { addToast } = useToast();
     const [formData, setFormData] = useState<Character>(createEmptyCharacter());
@@ -514,12 +522,15 @@ export function CharacterForm({ characterId, initialData, onClose }: CharacterFo
         { key: 'inventory', label: 'Equipment' },
         { key: 'actions', label: 'Actions' }
     ];
+    const isOwlbearSurface = surface === 'owlbear';
+    const showImportBanner = isOwlbearSurface && entryMode === 'import' && !characterId;
+    const headerTitle = entryMode === 'import' ? 'Review imported sheet' : characterId ? 'Edit linked sheet' : 'Create sheet';
 
     return (
-        <div className="max-w-6xl mx-auto space-y-6 animate-in slide-in-from-bottom-4 duration-300 pb-20">
+        <div className={`max-w-6xl mx-auto animate-in slide-in-from-bottom-4 duration-300 pb-20 ${isOwlbearSurface ? 'space-y-4' : 'space-y-6'}`}>
 
             {/* Header / Identity Block */}
-            <header className="relative border-b border-stone-700/80 pb-4 sticky top-0 bg-stone-900/95 backdrop-blur-md z-20 pt-4 shadow-sm flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
+            <header className={`relative sticky top-0 z-20 border-b border-stone-700/80 bg-stone-900/95 backdrop-blur-md shadow-sm ${isOwlbearSurface ? 'pb-3 pt-3' : 'pb-4 pt-4'} flex flex-col md:flex-row items-start md:items-center justify-between gap-4`}>
                 {/* Left: Back Button + Portrait + Identity Ribbon */}
                 <div className="flex items-start gap-4 flex-1">
                     <button
@@ -534,7 +545,7 @@ export function CharacterForm({ characterId, initialData, onClose }: CharacterFo
                     >
                         <ArrowLeft size={20} />
                     </button>
-                    <div className="flex items-center gap-4 ml-2">
+                    <div className={`flex items-center gap-4 ${isOwlbearSurface ? '' : 'ml-2'}`}>
                         {formData.portraitUrl ? (
                             <div className="relative group w-12 h-12 rounded-full border-2 border-gold shadow-[0_0_10px_rgba(217,119,6,0.3)]">
                                 <img src={formData.portraitUrl} alt="Portrait" className="w-full h-full object-cover rounded-full" />
@@ -568,7 +579,12 @@ export function CharacterForm({ characterId, initialData, onClose }: CharacterFo
                                 />
                             </label>
                         )}
-                        <div className="flex flex-col gap-1 w-full max-w-2xl">
+                        <div className={`flex flex-col gap-1 w-full ${isOwlbearSurface ? 'max-w-none' : 'max-w-2xl'}`}>
+                            {isOwlbearSurface && (
+                                <div className="font-mono text-[10px] font-bold uppercase tracking-[0.18em] text-emerald-300">
+                                    {headerTitle}
+                                </div>
+                            )}
                             {/* Name Input */}
                             <div className="flex items-center gap-3">
                                 <input
@@ -576,11 +592,11 @@ export function CharacterForm({ characterId, initialData, onClose }: CharacterFo
                                     value={formData.name || ''}
                                     onChange={e => handleChange('name', e.target.value)}
                                     placeholder="New Hero"
-                                    className="bg-transparent border-none p-0 text-3xl md:text-4xl font-cinzel font-bold text-gold placeholder-stone-600 focus:ring-0 focus:outline-none w-full"
+                                    className={`bg-transparent border-none p-0 placeholder-stone-600 focus:ring-0 focus:outline-none w-full ${isOwlbearSurface ? 'text-2xl md:text-3xl font-semibold tracking-tight text-parchment' : 'text-3xl md:text-4xl font-cinzel font-bold text-gold'}`}
                                 />
                                 {hasUnsavedChanges && (
-                                    <span className="text-[10px] bg-gold/20 text-gold px-2 py-0.5 rounded-sm font-sans uppercase tracking-wider whitespace-nowrap border border-gold/30">
-                                        Unsaved
+                                    <span className={`px-2 py-0.5 whitespace-nowrap border border-gold/30 ${isOwlbearSurface ? 'rounded-md bg-gold/15 font-mono text-[10px] font-bold uppercase tracking-[0.16em] text-gold' : 'rounded-sm bg-gold/20 font-sans text-[10px] uppercase tracking-wider text-gold'}`}>
+                                        {showImportBanner ? 'Needs Save' : 'Unsaved'}
                                     </span>
                                 )}
                             </div>
@@ -595,7 +611,7 @@ export function CharacterForm({ characterId, initialData, onClose }: CharacterFo
                             </div>
 
                             {/* Core Metadata Ribbon (Class, Level, Race, Background) */}
-                            <div className="flex flex-wrap items-center gap-x-4 gap-y-1 text-sm text-stone-400 font-medium">
+                            <div className={`flex flex-wrap items-center gap-y-1 text-sm text-stone-400 font-medium ${isOwlbearSurface ? 'gap-x-3' : 'gap-x-4'}`}>
                                 <div className="flex items-center gap-1 group">
                                     <span className="text-stone-500 uppercase text-[10px] tracking-wider">Lvl</span>
                                     <input
@@ -654,11 +670,11 @@ export function CharacterForm({ characterId, initialData, onClose }: CharacterFo
                 </div>
 
                 {/* Right: Actions (Delete / Save) */}
-                <div className="flex items-center gap-3 absolute top-4 right-0">
+                <div className={`flex items-center gap-3 ${isOwlbearSurface ? 'w-full justify-end md:w-auto md:justify-start' : 'absolute top-4 right-0'}`}>
                     <button
                         type="button"
                         onClick={() => open5eToolsLibrary('Spells')}
-                        className="flex items-center gap-2 px-3 py-2 bg-indigo-500/10 hover:bg-indigo-500/20 text-indigo-200 border border-indigo-400/20 rounded-md text-sm transition-colors"
+                        className={`flex items-center gap-2 px-3 py-2 text-sm transition-colors ${isOwlbearSurface ? 'rounded-xl border border-indigo-400/20 bg-indigo-500/10 text-indigo-200' : 'rounded-md border border-indigo-400/20 bg-indigo-500/10 text-indigo-200'} hover:bg-indigo-500/20`}
                     >
                         Library
                     </button>
@@ -666,32 +682,38 @@ export function CharacterForm({ characterId, initialData, onClose }: CharacterFo
                         <button
                             type="button"
                             onClick={handleDeleteClick}
-                            className="flex items-center gap-2 px-3 py-2 bg-stone-800 hover:bg-blood/20 text-stone-400 hover:text-blood border border-stone-700 rounded-md text-sm transition-colors"
+                            className={`flex items-center gap-2 px-3 py-2 text-sm transition-colors ${isOwlbearSurface ? 'rounded-xl border border-stone-700 bg-stone-800' : 'rounded-md border border-stone-700 bg-stone-800'} hover:bg-blood/20 text-stone-400 hover:text-blood`}
                         >
                             <Trash2 size={16} /> Delete
                         </button>
                     )}
                     <button
                         onClick={handleSave}
-                        className={`flex items-center gap-2 px-4 py-2 font-bold rounded-md transition-all shadow-sm ${hasUnsavedChanges
+                        className={`flex items-center gap-2 px-4 py-2 font-bold transition-all shadow-sm ${isOwlbearSurface ? 'rounded-xl' : 'rounded-md'} ${hasUnsavedChanges
                             ? 'bg-gold/90 hover:bg-gold text-stone-900 shadow-gold/20'
                             : 'bg-stone-800 text-stone-400 border border-stone-700'
                             }`}
                     >
-                        <Save size={16} /> Save Hero
+                        <Save size={16} /> {isOwlbearSurface ? 'Save Sheet' : 'Save Hero'}
                     </button>
                 </div>
             </header>
 
+            {showImportBanner && (
+                <div className="rounded-xl border border-gold/20 bg-gold/10 px-4 py-3 text-sm text-stone-300">
+                    Imported data is loaded into a draft sheet. Save it first, then return to the Owlbear runtime panel to link it to the selected token.
+                </div>
+            )}
+
             {/* Tabs Navigation */}
-            <div className="flex flex-col gap-0 border-b-2 border-stone-800/80 bg-stone-900/30 rounded-t-xl px-2 pt-2">
+            <div className={`flex flex-col gap-0 border-b-2 border-stone-800/80 bg-stone-900/30 ${isOwlbearSurface ? 'rounded-t-2xl px-2 pt-2' : 'rounded-t-xl px-2 pt-2'}`}>
                 <div className="flex gap-1 overflow-x-auto custom-scrollbar">
                     {tabs.map(tab => (
                         <button
                             key={tab.key}
                             onClick={() => setActiveTab(tab.key)}
-                            className={`px-5 py-2.5 rounded-t-md font-cinzel text-sm font-bold whitespace-nowrap transition-all border border-b-0 ${activeTab === tab.key
-                                ? 'bg-stone-800 border-stone-700/70 text-gold shadow-[0_-2px_10px_rgba(0,0,0,0.2)] z-10'
+                            className={`whitespace-nowrap transition-all border border-b-0 ${isOwlbearSurface ? 'rounded-t-xl px-4 py-2 font-mono text-[10px] font-bold uppercase tracking-[0.14em]' : 'rounded-t-md px-5 py-2.5 font-cinzel text-sm font-bold'} ${activeTab === tab.key
+                                ? `${isOwlbearSurface ? 'bg-stone-800 border-stone-700/70 text-parchment shadow-[0_-2px_10px_rgba(0,0,0,0.2)]' : 'bg-stone-800 border-stone-700/70 text-gold shadow-[0_-2px_10px_rgba(0,0,0,0.2)]'} z-10`
                                 : 'bg-transparent border-transparent text-stone-500 hover:text-stone-300 hover:bg-stone-800/30'
                                 }`}
                             style={{ marginBottom: activeTab === tab.key ? '-2px' : '0' }}
@@ -703,7 +725,7 @@ export function CharacterForm({ characterId, initialData, onClose }: CharacterFo
             </div>
 
             {/* Tab Content Area */}
-            <div className="bg-stone-800/20 rounded-b-xl border border-t-0 border-stone-800/80 p-6 min-h-[600px] shadow-inner">
+            <div className={`bg-stone-800/20 border border-t-0 border-stone-800/80 shadow-inner ${isOwlbearSurface ? 'min-h-[540px] rounded-b-2xl p-5' : 'min-h-[600px] rounded-b-xl p-6'}`}>
                 {activeTab === 'core' && <CoreTab data={formData} onChange={handleChange} />}
                 {activeTab === 'stats' && <StatsTab data={formData} onChange={handleChange} addToast={addToast} />}
                 {activeTab === 'combat' && <CombatTab data={formData} onChange={handleChange} />}
