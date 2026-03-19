@@ -78,15 +78,13 @@ Then serve the `dist/` folder with any static host.
 
 Owlbear Rodeo imports extensions by manifest URL.
 
-The canonical repo-backed manifest for this project is the jsDelivr GitHub CDN URL:
+The canonical repo-backed manifest for this project is the raw.githack URL:
 
 ```text
-https://cdn.jsdelivr.net/gh/Emourn/dm-assistant-owlbear/public/owlbear-manifest-cdn.json
+https://raw.githack.com/Emourn/dm-assistant-owlbear/codex/owlbear-extension/public/owlbear-manifest-cdn.json
 ```
 
-This path serves directly from the Git repository and does not depend on GitHub Pages being enabled.
-
-GitHub Pages can still be enabled later if desired, but it is not required for extension installs.
+This path serves directly from the Git repository with correct MIME types for the Owlbear HTML entrypoints, and it does not depend on GitHub Pages being enabled.
 
 ## Recommended incremental testing loop
 
@@ -100,7 +98,7 @@ GitHub Pages can still be enabled later if desired, but it is not required for e
 For shared repo-backed testing, install from:
 
 ```text
-https://cdn.jsdelivr.net/gh/Emourn/dm-assistant-owlbear/public/owlbear-manifest-cdn.json
+https://raw.githack.com/Emourn/dm-assistant-owlbear/codex/owlbear-extension/public/owlbear-manifest-cdn.json
 ```
 
 ## Important constraints
