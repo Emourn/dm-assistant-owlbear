@@ -12,11 +12,18 @@ export interface EditableActionInput {
     kind: string;
     source?: string;
     description?: string;
+    automationMode?: 'none' | 'attack-roll' | 'save-dc';
     attackEnabled?: boolean;
     attackSource?: AbilityId | 'spellcasting';
     proficient?: boolean;
     attackBonus?: number;
     attackRange?: 'melee' | 'ranged' | 'other';
+    saveAbility?: AbilityId;
+    dcSource?: AbilityId | 'spellcasting' | 'fixed';
+    fixedDc?: number;
+    effectSummary?: string;
+    successSummary?: string;
+    failureSummary?: string;
     resourceCostId?: string;
     resourceCostAmount?: number;
 }
@@ -107,7 +114,7 @@ function sanitizeAction(
         kind: normalizeKind(input.kind, 'action'),
         source: normalizeText(input.source),
         description: normalizeText(input.description),
-        automation: input.attackEnabled
+        automation: (input.automationMode ?? (input.attackEnabled ? 'attack-roll' : 'none')) === 'attack-roll'
             ? {
                 kind: 'attack-roll',
                 attackSource: input.attackSource ?? 'str',
@@ -121,6 +128,26 @@ function sanitizeAction(
                     }
                     : null,
             }
+            : (input.automationMode ?? 'none') === 'save-dc'
+                ? {
+                    kind: 'save-dc',
+                    saveAbility: input.saveAbility ?? 'dex',
+                    dcSource: input.dcSource ?? 'spellcasting',
+                    proficient: Boolean(input.proficient),
+                    bonus: clampInteger(input.attackBonus ?? 0, 0, -20, 40),
+                    fixedDc: (input.dcSource ?? 'spellcasting') === 'fixed'
+                        ? clampInteger(input.fixedDc ?? 10, 10, 1, 40)
+                        : null,
+                    effectSummary: normalizeText(input.effectSummary),
+                    successSummary: normalizeText(input.successSummary),
+                    failureSummary: normalizeText(input.failureSummary),
+                    resourceCost: input.resourceCostId && clampInteger(input.resourceCostAmount ?? 1, 1, 1, 99) > 0
+                        ? {
+                            resourceId: input.resourceCostId,
+                            amount: clampInteger(input.resourceCostAmount ?? 1, 1, 1, 99),
+                        }
+                        : null,
+                }
             : null,
     };
 }

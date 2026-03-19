@@ -42,13 +42,23 @@ function createState(sheet: Phase1CharacterSheet): ActionSpellEditorState {
             kind: action.kind,
             source: action.source ?? '',
             description: action.description ?? '',
-            attackEnabled: action.automation?.kind === 'attack-roll',
+            automationMode: action.automation?.kind ?? 'none',
             attackSource: action.automation?.kind === 'attack-roll' ? action.automation.attackSource : 'str',
-            proficient: action.automation?.kind === 'attack-roll' ? action.automation.proficient : true,
-            attackBonus: action.automation?.kind === 'attack-roll' ? action.automation.bonus : 0,
+            proficient: action.automation?.kind === 'attack-roll' || action.automation?.kind === 'save-dc'
+                ? action.automation.proficient
+                : true,
+            attackBonus: action.automation?.kind === 'attack-roll' || action.automation?.kind === 'save-dc'
+                ? action.automation.bonus
+                : 0,
             attackRange: action.automation?.kind === 'attack-roll' ? action.automation.range ?? 'other' : 'other',
-            resourceCostId: action.automation?.kind === 'attack-roll' ? action.automation.resourceCost?.resourceId ?? '' : '',
-            resourceCostAmount: action.automation?.kind === 'attack-roll' ? action.automation.resourceCost?.amount ?? 1 : 1,
+            saveAbility: action.automation?.kind === 'save-dc' ? action.automation.saveAbility : 'dex',
+            dcSource: action.automation?.kind === 'save-dc' ? action.automation.dcSource : 'spellcasting',
+            fixedDc: action.automation?.kind === 'save-dc' ? action.automation.fixedDc ?? 10 : 10,
+            effectSummary: action.automation?.kind === 'save-dc' ? action.automation.effectSummary ?? '' : '',
+            successSummary: action.automation?.kind === 'save-dc' ? action.automation.successSummary ?? '' : '',
+            failureSummary: action.automation?.kind === 'save-dc' ? action.automation.failureSummary ?? '' : '',
+            resourceCostId: action.automation ? action.automation.resourceCost?.resourceId ?? '' : '',
+            resourceCostAmount: action.automation ? action.automation.resourceCost?.amount ?? 1 : 1,
         })),
         spellcastingEnabled: Boolean(sheet.spellcasting),
         spellAbility: sheet.spellcasting?.ability ?? 'wis',
@@ -203,11 +213,17 @@ export function ActionSpellEditorPanel({
                                                 kind: 'action',
                                                 source: '',
                                                 description: '',
-                                                attackEnabled: false,
+                                                automationMode: 'none',
                                                 attackSource: 'str',
                                                 proficient: true,
                                                 attackBonus: 0,
                                                 attackRange: 'other',
+                                                saveAbility: 'dex',
+                                                dcSource: 'spellcasting',
+                                                fixedDc: 10,
+                                                effectSummary: '',
+                                                successSummary: '',
+                                                failureSummary: '',
                                                 resourceCostId: '',
                                                 resourceCostAmount: 1,
                                             },
@@ -294,25 +310,27 @@ export function ActionSpellEditorPanel({
                                                 className="w-full rounded-xl border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-100 outline-none transition focus:border-amber-400/50"
                                             />
                                         </label>
-                                        <label className="flex items-center gap-3 rounded-2xl border border-stone-800 bg-stone-900/60 px-4 py-3 lg:col-span-2">
-                                            <input
-                                                type="checkbox"
-                                                checked={Boolean(action.attackEnabled)}
+                                        <label className="block lg:col-span-2">
+                                            <div className="mb-1 text-[10px] font-black uppercase tracking-[0.22em] text-stone-500">Automation mode</div>
+                                            <select
+                                                value={action.automationMode ?? 'none'}
                                                 onChange={(event) =>
                                                     setForm((current) => ({
                                                         ...current,
                                                         actions: current.actions.map((entry, actionIndex) =>
-                                                            actionIndex === index ? { ...entry, attackEnabled: event.target.checked } : entry),
+                                                            actionIndex === index
+                                                                ? { ...entry, automationMode: event.target.value as EditableActionInput['automationMode'] }
+                                                                : entry),
                                                     }))
                                                 }
-                                                className="h-4 w-4 rounded border-stone-600 bg-stone-950 text-amber-400"
-                                            />
-                                            <div>
-                                                <div className="text-sm font-medium text-parchment">Enable attack roll automation</div>
-                                                <div className="text-xs text-stone-500">Use this for weapon attacks or spell attacks that should generate a structured roll.</div>
-                                            </div>
+                                                className="w-full rounded-xl border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-100 outline-none transition focus:border-amber-400/50"
+                                            >
+                                                <option value="none">No automation</option>
+                                                <option value="attack-roll">Attack roll</option>
+                                                <option value="save-dc">Save DC and effect</option>
+                                            </select>
                                         </label>
-                                        {action.attackEnabled && (
+                                        {action.automationMode === 'attack-roll' && (
                                             <>
                                                 <label className="block">
                                                     <div className="mb-1 text-[10px] font-black uppercase tracking-[0.22em] text-stone-500">Attack source</div>
@@ -389,6 +407,178 @@ export function ActionSpellEditorPanel({
                                                         <div className="text-xs text-stone-500">Ignored when using the stored spellcasting attack bonus.</div>
                                                     </div>
                                                 </label>
+                                                <label className="block">
+                                                    <div className="mb-1 text-[10px] font-black uppercase tracking-[0.22em] text-stone-500">Linked resource</div>
+                                                    <select
+                                                        value={action.resourceCostId ?? ''}
+                                                        onChange={(event) =>
+                                                            setForm((current) => ({
+                                                                ...current,
+                                                                actions: current.actions.map((entry, actionIndex) =>
+                                                                    actionIndex === index ? { ...entry, resourceCostId: event.target.value } : entry),
+                                                            }))
+                                                        }
+                                                        className="w-full rounded-xl border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-100 outline-none transition focus:border-amber-400/50"
+                                                    >
+                                                        <option value="">No linked cost</option>
+                                                        {resourceOptions.map((resource) => (
+                                                            <option key={resource.id} value={resource.id}>
+                                                                {resource.name}
+                                                            </option>
+                                                        ))}
+                                                    </select>
+                                                </label>
+                                                <TextField
+                                                    label="Resource Cost"
+                                                    type="number"
+                                                    value={String(action.resourceCostAmount ?? 1)}
+                                                    onChange={(value) =>
+                                                        setForm((current) => ({
+                                                            ...current,
+                                                            actions: current.actions.map((entry, actionIndex) =>
+                                                                actionIndex === index
+                                                                    ? { ...entry, resourceCostAmount: clampNumber(value, entry.resourceCostAmount ?? 1) }
+                                                                    : entry),
+                                                        }))
+                                                    }
+                                                />
+                                            </>
+                                        )}
+                                        {action.automationMode === 'save-dc' && (
+                                            <>
+                                                <label className="block">
+                                                    <div className="mb-1 text-[10px] font-black uppercase tracking-[0.22em] text-stone-500">Target save</div>
+                                                    <select
+                                                        value={action.saveAbility ?? 'dex'}
+                                                        onChange={(event) =>
+                                                            setForm((current) => ({
+                                                                ...current,
+                                                                actions: current.actions.map((entry, actionIndex) =>
+                                                                    actionIndex === index
+                                                                        ? { ...entry, saveAbility: event.target.value as AbilityId }
+                                                                        : entry),
+                                                            }))
+                                                        }
+                                                        className="w-full rounded-xl border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-100 outline-none transition focus:border-amber-400/50"
+                                                    >
+                                                        {ABILITY_DEFINITIONS.map((ability) => (
+                                                            <option key={ability.id} value={ability.id}>
+                                                                {ability.name}
+                                                            </option>
+                                                        ))}
+                                                    </select>
+                                                </label>
+                                                <label className="block">
+                                                    <div className="mb-1 text-[10px] font-black uppercase tracking-[0.22em] text-stone-500">DC source</div>
+                                                    <select
+                                                        value={action.dcSource ?? 'spellcasting'}
+                                                        onChange={(event) =>
+                                                            setForm((current) => ({
+                                                                ...current,
+                                                                actions: current.actions.map((entry, actionIndex) =>
+                                                                    actionIndex === index
+                                                                        ? { ...entry, dcSource: event.target.value as EditableActionInput['dcSource'] }
+                                                                        : entry),
+                                                            }))
+                                                        }
+                                                        className="w-full rounded-xl border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-100 outline-none transition focus:border-amber-400/50"
+                                                    >
+                                                        <option value="spellcasting">Stored spell save DC</option>
+                                                        {ABILITY_DEFINITIONS.map((ability) => (
+                                                            <option key={`dc-${ability.id}`} value={ability.id}>
+                                                                8 + proficiency + {ability.name}
+                                                            </option>
+                                                        ))}
+                                                        <option value="fixed">Fixed DC</option>
+                                                    </select>
+                                                </label>
+                                                {action.dcSource === 'fixed' && (
+                                                    <TextField
+                                                        label="Fixed DC"
+                                                        type="number"
+                                                        value={String(action.fixedDc ?? 10)}
+                                                        onChange={(value) =>
+                                                            setForm((current) => ({
+                                                                ...current,
+                                                                actions: current.actions.map((entry, actionIndex) =>
+                                                                    actionIndex === index
+                                                                        ? { ...entry, fixedDc: clampNumber(value, entry.fixedDc ?? 10) }
+                                                                        : entry),
+                                                            }))
+                                                        }
+                                                    />
+                                                )}
+                                                <TextField
+                                                    label="DC Bonus"
+                                                    type="number"
+                                                    value={String(action.attackBonus ?? 0)}
+                                                    onChange={(value) =>
+                                                        setForm((current) => ({
+                                                            ...current,
+                                                            actions: current.actions.map((entry, actionIndex) =>
+                                                                actionIndex === index
+                                                                    ? { ...entry, attackBonus: clampNumber(value, entry.attackBonus ?? 0) }
+                                                                    : entry),
+                                                        }))
+                                                    }
+                                                />
+                                                {action.dcSource !== 'spellcasting' && (
+                                                    <label className="flex items-center gap-3 rounded-2xl border border-stone-800 bg-stone-900/60 px-4 py-3">
+                                                        <input
+                                                            type="checkbox"
+                                                            checked={Boolean(action.proficient)}
+                                                            onChange={(event) =>
+                                                                setForm((current) => ({
+                                                                    ...current,
+                                                                    actions: current.actions.map((entry, actionIndex) =>
+                                                                        actionIndex === index ? { ...entry, proficient: event.target.checked } : entry),
+                                                                }))
+                                                            }
+                                                            className="h-4 w-4 rounded border-stone-600 bg-stone-950 text-amber-400"
+                                                        />
+                                                        <div>
+                                                            <div className="text-sm font-medium text-parchment">Add proficiency to formula DC</div>
+                                                            <div className="text-xs text-stone-500">Ignored for spellcasting and fixed DC modes.</div>
+                                                        </div>
+                                                    </label>
+                                                )}
+                                                <label className="block lg:col-span-2">
+                                                    <div className="mb-1 text-[10px] font-black uppercase tracking-[0.22em] text-stone-500">Effect summary</div>
+                                                    <textarea
+                                                        value={action.effectSummary ?? ''}
+                                                        onChange={(event) =>
+                                                            setForm((current) => ({
+                                                                ...current,
+                                                                actions: current.actions.map((entry, actionIndex) =>
+                                                                    actionIndex === index ? { ...entry, effectSummary: event.target.value } : entry),
+                                                            }))
+                                                        }
+                                                        rows={2}
+                                                        className="w-full rounded-xl border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-100 outline-none transition focus:border-amber-400/50"
+                                                    />
+                                                </label>
+                                                <TextField
+                                                    label="On success"
+                                                    value={action.successSummary ?? ''}
+                                                    onChange={(value) =>
+                                                        setForm((current) => ({
+                                                            ...current,
+                                                            actions: current.actions.map((entry, actionIndex) =>
+                                                                actionIndex === index ? { ...entry, successSummary: value } : entry),
+                                                        }))
+                                                    }
+                                                />
+                                                <TextField
+                                                    label="On failure"
+                                                    value={action.failureSummary ?? ''}
+                                                    onChange={(value) =>
+                                                        setForm((current) => ({
+                                                            ...current,
+                                                            actions: current.actions.map((entry, actionIndex) =>
+                                                                actionIndex === index ? { ...entry, failureSummary: value } : entry),
+                                                        }))
+                                                    }
+                                                />
                                                 <label className="block">
                                                     <div className="mb-1 text-[10px] font-black uppercase tracking-[0.22em] text-stone-500">Linked resource</div>
                                                     <select

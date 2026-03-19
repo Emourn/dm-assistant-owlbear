@@ -47,17 +47,34 @@ export interface Phase1ActionSummary {
     automation?: Phase1ActionAutomation | null;
 }
 
-export interface Phase1ActionAutomation {
+export interface Phase1ActionResourceCost {
+    resourceId: string;
+    amount: number;
+}
+
+export interface Phase1AttackRollAutomation {
     kind: 'attack-roll';
     attackSource: AbilityId | 'spellcasting';
     proficient: boolean;
     bonus: number;
     range?: 'melee' | 'ranged' | 'other';
-    resourceCost?: {
-        resourceId: string;
-        amount: number;
-    } | null;
+    resourceCost?: Phase1ActionResourceCost | null;
 }
+
+export interface Phase1SaveDcAutomation {
+    kind: 'save-dc';
+    saveAbility: AbilityId;
+    dcSource: AbilityId | 'spellcasting' | 'fixed';
+    proficient: boolean;
+    bonus: number;
+    fixedDc?: number | null;
+    effectSummary?: string;
+    successSummary?: string;
+    failureSummary?: string;
+    resourceCost?: Phase1ActionResourceCost | null;
+}
+
+export type Phase1ActionAutomation = Phase1AttackRollAutomation | Phase1SaveDcAutomation;
 
 export interface Phase1ArmorClass {
     value: number;

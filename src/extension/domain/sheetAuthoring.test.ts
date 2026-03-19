@@ -15,7 +15,7 @@ describe('sheet authoring helpers', () => {
                 kind: ' Attack ',
                 source: ' Equipped weapon ',
                 description: '  Melee weapon attack. ',
-                attackEnabled: true,
+                automationMode: 'attack-roll',
                 attackSource: 'str',
                 proficient: true,
                 attackBonus: 1,
@@ -48,6 +48,33 @@ describe('sheet authoring helpers', () => {
         expect(updated.actions[0].id).toBe(`${sheet.id}:action:longsword`);
         expect(updated.actions[1].id).toBe(`${sheet.id}:action:longsword-2`);
         expect(updated.actions[1].kind).toBe('action');
+    });
+
+    it('sanitizes save DC actions and preserves effect summaries', () => {
+        const sheet = getSampleSheet();
+        const updated = updateSheetActions(sheet, [
+            {
+                name: ' Sacred Flame ',
+                kind: ' cantrip ',
+                automationMode: 'save-dc',
+                saveAbility: 'dex',
+                dcSource: 'spellcasting',
+                attackBonus: 1,
+                effectSummary: ' Target makes a Dexterity save. ',
+                successSummary: ' No damage. ',
+                failureSummary: ' Radiant damage. ',
+            },
+        ]);
+
+        expect(updated.actions[0].automation).toMatchObject({
+            kind: 'save-dc',
+            saveAbility: 'dex',
+            dcSource: 'spellcasting',
+            bonus: 1,
+            effectSummary: 'Target makes a Dexterity save.',
+            successSummary: 'No damage.',
+            failureSummary: 'Radiant damage.',
+        });
     });
 
     it('normalizes spellcasting values and slot counters', () => {

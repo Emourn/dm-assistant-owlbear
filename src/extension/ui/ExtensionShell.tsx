@@ -48,10 +48,10 @@ interface ExtensionShellProps {
     onApplyRest: (kind: 'short' | 'long') => Promise<void>;
     onSpendActionResource: (actionId: string) => Promise<void>;
     onSaveOverrides: (next: { proficiencyBonusOverride: number | null; initiativeAdjustment: number }) => Promise<void>;
+    onOpenPrompt: (prompt: RoomRollPromptDraft) => Promise<void>;
     onLinkCharacter: (sheet: Phase1CharacterSheet) => Promise<void>;
     onUnlinkCharacter: () => Promise<void>;
     onAssignCharacter: (playerId: string, characterId: string | null) => Promise<void>;
-    onOpenPrompt: (prompt: RoomRollPromptDraft) => Promise<void>;
     onClearPrompt: () => Promise<void>;
     onRespondToPrompt: () => Promise<void>;
     onSaveVisibilitySettings: (settings: StoredVisibilitySettings) => Promise<void>;
@@ -111,10 +111,10 @@ export function ExtensionShell({
     onApplyRest,
     onSpendActionResource,
     onSaveOverrides,
+    onOpenPrompt,
     onLinkCharacter,
     onUnlinkCharacter,
     onAssignCharacter,
-    onOpenPrompt,
     onClearPrompt,
     onRespondToPrompt,
     onSaveVisibilitySettings,
@@ -273,6 +273,7 @@ export function ExtensionShell({
                     onApplyRest={onApplyRest}
                     onSpendActionResource={onSpendActionResource}
                     onSaveOverrides={onSaveOverrides}
+                    onOpenPrompt={onOpenPrompt}
                     onLink={onLinkCharacter}
                     onUnlink={onUnlinkCharacter}
                     onAssign={onAssignCharacter}

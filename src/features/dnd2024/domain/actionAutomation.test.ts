@@ -1,6 +1,13 @@
 import { describe, expect, it } from 'vitest';
 import { createSampleCharacterCollection } from '../../../extension/domain/characterRecords';
-import { buildActionRoll, canRollAction, getActionUseState, spendActionResource } from './actionAutomation';
+import {
+    buildActionRoll,
+    buildActionSaveDcSummary,
+    canRollAction,
+    canUseActionSaveDc,
+    getActionUseState,
+    spendActionResource,
+} from './actionAutomation';
 
 function getSampleSheet() {
     return createSampleCharacterCollection(1000).characters[0].sheet;
@@ -55,5 +62,17 @@ describe('action automation', () => {
         };
 
         expect(spendActionResource(exhausted, guidingBolt)).toEqual(exhausted);
+    });
+
+    it('builds save DC summaries for effect-oriented actions', () => {
+        const sheet = getSampleSheet();
+        const sacredFlame = sheet.actions.find((action) => action.name === 'Sacred Flame')!;
+
+        const summary = buildActionSaveDcSummary(sheet, sacredFlame);
+
+        expect(canUseActionSaveDc(sheet, sacredFlame)).toBe(true);
+        expect(summary?.saveAbility).toBe('dex');
+        expect(summary?.dc).toBe(15);
+        expect(summary?.failureSummary).toContain('1d8');
     });
 });

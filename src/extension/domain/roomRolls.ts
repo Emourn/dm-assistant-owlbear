@@ -34,15 +34,21 @@ export interface PublishedRollEntry {
     result: StructuredRollResult;
 }
 
+interface PromptDraftMetadata {
+    label?: string;
+    details?: string[];
+}
+
 export type RoomRollPromptDraft =
-    | { kind: 'initiative' }
-    | { kind: 'ability'; ability: AbilityId }
-    | { kind: 'saving-throw'; ability: AbilityId }
-    | { kind: 'skill'; skillId: SkillId };
+    | ({ kind: 'initiative' } & PromptDraftMetadata)
+    | ({ kind: 'ability'; ability: AbilityId } & PromptDraftMetadata)
+    | ({ kind: 'saving-throw'; ability: AbilityId } & PromptDraftMetadata)
+    | ({ kind: 'skill'; skillId: SkillId } & PromptDraftMetadata);
 
 interface BaseRoomRollPrompt {
     id: string;
     label: string;
+    details: string[];
     audience: PromptAudience;
     createdAt: number;
     createdById: string | null;
@@ -140,6 +146,9 @@ function parseRoomRollPrompt(value: unknown): RoomRollPrompt | null {
     const base = {
         id: value.id,
         label: value.label,
+        details: Array.isArray(value.details)
+            ? value.details.filter((detail): detail is string => typeof detail === 'string')
+            : [],
         audience,
         createdAt: value.createdAt,
         createdById: value.createdById,
@@ -209,7 +218,9 @@ function describePromptLabel(prompt: RoomRollPromptDraft): string {
 }
 
 export function describeRoomRollPrompt(prompt: RoomRollPromptDraft | RoomRollPrompt): string {
-    return describePromptLabel(prompt);
+    return 'label' in prompt && typeof prompt.label === 'string' && prompt.label.trim()
+        ? prompt.label
+        : describePromptLabel(prompt);
 }
 
 export function buildPromptRollRequest(
@@ -240,7 +251,8 @@ export function createRoomRollPrompt(
 ): RoomRollPrompt {
     const base = {
         id: `prompt:${prompt.kind}:${createdAt}`,
-        label: describePromptLabel(prompt),
+        label: prompt.label?.trim() || describePromptLabel(prompt),
+        details: (prompt.details ?? []).filter(Boolean),
         audience,
         createdAt,
         createdById,

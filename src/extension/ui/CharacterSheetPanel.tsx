@@ -1,6 +1,12 @@
 import type { Player } from '@owlbear-rodeo/sdk';
 import { BookOpenText, HeartPulse, Shield, Sparkles, Swords, WandSparkles } from 'lucide-react';
-import { buildActionRoll, canRollAction, getActionUseState } from '../../features/dnd2024/domain/actionAutomation';
+import {
+    buildActionRoll,
+    buildActionSaveDcSummary,
+    canRollAction,
+    canUseActionSaveDc,
+    getActionUseState,
+} from '../../features/dnd2024/domain/actionAutomation';
 import {
     createCharacterSheetViewModel,
     formatSignedNumber,
@@ -13,6 +19,7 @@ import type {
     StructuredRollResult,
 } from '../../features/dnd2024/domain/types';
 import type { CharacterRepositorySnapshot } from '../owlbear/characterRepository';
+import type { RoomRollPromptDraft } from '../domain/roomRolls';
 import { ActionSpellEditorPanel } from './ActionSpellEditorPanel';
 import { CharacterCollectionPanel } from './CharacterCollectionPanel';
 import { CharacterEditorPanel } from './CharacterEditorPanel';
@@ -45,6 +52,7 @@ interface CharacterSheetPanelProps {
     onApplyRest: (kind: 'short' | 'long') => Promise<void>;
     onSpendActionResource: (actionId: string) => Promise<void>;
     onSaveOverrides: (next: { proficiencyBonusOverride: number | null; initiativeAdjustment: number }) => Promise<void>;
+    onOpenPrompt: (prompt: RoomRollPromptDraft) => Promise<void>;
     onLink: (sheet: Phase1CharacterSheet) => Promise<void>;
     onUnlink: () => Promise<void>;
     onAssign: (playerId: string, characterId: string | null) => Promise<void>;
@@ -131,6 +139,7 @@ export function CharacterSheetPanel({
     onApplyRest,
     onSpendActionResource,
     onSaveOverrides,
+    onOpenPrompt,
     onLink,
     onUnlink,
     onAssign,
@@ -338,7 +347,7 @@ export function CharacterSheetPanel({
                                                 {[action.source, action.description].filter(Boolean).join(' - ')}
                                             </div>
                                         )}
-                                        {(canRollAction(sheet, action) || getActionUseState(sheet, action).resource) && (
+                                        {(canRollAction(sheet, action) || canUseActionSaveDc(sheet, action) || getActionUseState(sheet, action).resource) && (
                                             <div className="mt-3 flex flex-wrap gap-2">
                                                 {canRollAction(sheet, action) && (
                                                     <button
@@ -354,6 +363,37 @@ export function CharacterSheetPanel({
                                                         Roll attack
                                                     </button>
                                                 )}
+                                                {canUseActionSaveDc(sheet, action) && (() => {
+                                                    const summary = buildActionSaveDcSummary(sheet, action);
+                                                    if (!summary) {
+                                                        return null;
+                                                    }
+
+                                                    return (
+                                                        <>
+                                                            <button
+                                                                type="button"
+                                                                onClick={() => void onOpenPrompt({
+                                                                    kind: 'saving-throw',
+                                                                    ability: summary.saveAbility,
+                                                                    label: `${action.name} - ${summary.dc} ${summary.saveAbility.toUpperCase()} save`,
+                                                                    details: [
+                                                                        `Save DC ${summary.dc}.`,
+                                                                        ...(summary.effectSummary ? [summary.effectSummary] : []),
+                                                                        ...(summary.successSummary ? [`On success: ${summary.successSummary}`] : []),
+                                                                        ...(summary.failureSummary ? [`On failure: ${summary.failureSummary}`] : []),
+                                                                    ],
+                                                                })}
+                                                                className="rounded-full border border-violet-400/35 bg-violet-500/10 px-3 py-1.5 text-xs font-semibold text-violet-200 transition hover:border-violet-300/60"
+                                                            >
+                                                                Prompt DC {summary.dc} save
+                                                            </button>
+                                                            <div className="rounded-full border border-stone-700 bg-stone-950 px-3 py-1.5 text-xs text-stone-300">
+                                                                {summary.saveAbility.toUpperCase()} save / DC {summary.dc}
+                                                            </div>
+                                                        </>
+                                                    );
+                                                })()}
                                                 {(() => {
                                                     const useState = getActionUseState(sheet, action);
                                                     if (!useState.resource) {
@@ -373,6 +413,20 @@ export function CharacterSheetPanel({
                                                 })()}
                                             </div>
                                         )}
+                                        {canUseActionSaveDc(sheet, action) && (() => {
+                                            const summary = buildActionSaveDcSummary(sheet, action);
+                                            if (!summary) {
+                                                return null;
+                                            }
+
+                                            return (
+                                                <div className="mt-3 rounded-2xl border border-stone-800 bg-stone-950/60 p-3 text-sm text-stone-300">
+                                                    {summary.effectSummary && <div>{summary.effectSummary}</div>}
+                                                    {summary.successSummary && <div className="mt-1 text-stone-400">On success: {summary.successSummary}</div>}
+                                                    {summary.failureSummary && <div className="mt-1 text-stone-400">On failure: {summary.failureSummary}</div>}
+                                                </div>
+                                            );
+                                        })()}
                                     </div>
                                 ))}
                             </div>

@@ -2,6 +2,7 @@ import { ABILITY_BY_ID } from './constants';
 import { getPhase1ProficiencyBonus, getAbilityModifier, formatSignedNumber } from './sheet';
 import { updateSheetResourceCounter } from './mutations';
 import type {
+    AbilityId,
     NumericBreakdown,
     Phase1ActionSummary,
     Phase1CharacterSheet,
@@ -14,6 +15,16 @@ export interface ActionUseState {
     resource: Phase1ResourceCounter | null;
     amount: number;
     canSpend: boolean;
+}
+
+export interface ActionSaveDcSummary {
+    label: string;
+    saveAbility: AbilityId;
+    dc: number;
+    effectSummary?: string;
+    successSummary?: string;
+    failureSummary?: string;
+    audit: string[];
 }
 
 function buildFormula(parts: RollModifierPart[]): string {
@@ -58,6 +69,22 @@ export function canRollAction(sheet: Phase1CharacterSheet, action: Phase1ActionS
     return action.automation.attackSource !== 'spellcasting' || Boolean(sheet.spellcasting);
 }
 
+export function canUseActionSaveDc(sheet: Phase1CharacterSheet, action: Phase1ActionSummary): boolean {
+    if (action.automation?.kind !== 'save-dc') {
+        return false;
+    }
+
+    if (action.automation.dcSource === 'spellcasting') {
+        return Boolean(sheet.spellcasting);
+    }
+
+    if (action.automation.dcSource === 'fixed') {
+        return typeof action.automation.fixedDc === 'number';
+    }
+
+    return true;
+}
+
 export function getActionUseState(
     sheet: Phase1CharacterSheet,
     action: Phase1ActionSummary,
@@ -80,6 +107,48 @@ export function getActionUseState(
         resource,
         amount: cost.amount,
         canSpend: resource !== null && resource.current >= cost.amount,
+    };
+}
+
+function computeSaveDc(sheet: Phase1CharacterSheet, action: Phase1ActionSummary): { dc: number; audit: string[] } | null {
+    if (action.automation?.kind !== 'save-dc') {
+        return null;
+    }
+
+    const audit: string[] = [];
+    let dc: number;
+
+    if (action.automation.dcSource === 'spellcasting') {
+        if (!sheet.spellcasting) {
+            return null;
+        }
+        dc = sheet.spellcasting.saveDc;
+        audit.push(`Uses stored spell save DC ${sheet.spellcasting.saveDc}.`);
+    } else if (action.automation.dcSource === 'fixed') {
+        if (typeof action.automation.fixedDc !== 'number') {
+            return null;
+        }
+        dc = action.automation.fixedDc;
+        audit.push(`Uses fixed DC ${action.automation.fixedDc}.`);
+    } else {
+        const ability = action.automation.dcSource;
+        const modifier = getAbilityModifier(sheet.abilities[ability]);
+        const proficiency = action.automation.proficient ? getPhase1ProficiencyBonus(sheet) : 0;
+        dc = 8 + modifier + proficiency;
+        audit.push(`Base DC 8 + ${ABILITY_BY_ID[ability].name} modifier ${formatSignedNumber(modifier)}.`);
+        if (action.automation.proficient) {
+            audit.push(`Adds proficiency bonus ${formatSignedNumber(proficiency)}.`);
+        }
+    }
+
+    if (action.automation.bonus !== 0) {
+        dc += action.automation.bonus;
+        audit.push(`Applies action DC adjustment ${formatSignedNumber(action.automation.bonus)}.`);
+    }
+
+    return {
+        dc,
+        audit,
     };
 }
 
@@ -146,6 +215,40 @@ export function buildActionRoll(sheet: Phase1CharacterSheet, action: Phase1Actio
         `${action.name} Attack`,
         buildBreakdown(parts, audit),
     );
+}
+
+export function buildActionSaveDcSummary(
+    sheet: Phase1CharacterSheet,
+    action: Phase1ActionSummary,
+): ActionSaveDcSummary | null {
+    if (action.automation?.kind !== 'save-dc') {
+        return null;
+    }
+
+    const resolved = computeSaveDc(sheet, action);
+    if (!resolved) {
+        return null;
+    }
+
+    const useState = getActionUseState(sheet, action);
+    const audit = [
+        ...resolved.audit,
+        `Targets a ${ABILITY_BY_ID[action.automation.saveAbility].name} saving throw.`,
+    ];
+
+    if (useState.resource) {
+        audit.push(`Can spend ${useState.amount} from ${useState.resource.name}.`);
+    }
+
+    return {
+        label: `${action.name} Save DC`,
+        saveAbility: action.automation.saveAbility,
+        dc: resolved.dc,
+        effectSummary: action.automation.effectSummary,
+        successSummary: action.automation.successSummary,
+        failureSummary: action.automation.failureSummary,
+        audit,
+    };
 }
 
 export function spendActionResource(sheet: Phase1CharacterSheet, action: Phase1ActionSummary): Phase1CharacterSheet {

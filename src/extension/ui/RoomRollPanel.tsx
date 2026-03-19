@@ -155,6 +155,13 @@ export function RoomRollPanel({
                                 Prompted by {activePrompt.createdByName} at {formatTime(activePrompt.createdAt)}.
                             </div>
                             <div className="mt-1 text-xs text-stone-500">Audience: {activePrompt.audience}</div>
+                            {activePrompt.details.length > 0 && (
+                                <div className="mt-2 space-y-1 text-sm text-stone-300">
+                                    {activePrompt.details.map((detail) => (
+                                        <div key={detail}>{detail}</div>
+                                    ))}
+                                </div>
+                            )}
                         </div>
                         <div className="flex flex-wrap gap-2">
                             {canRespondToPrompt && (
