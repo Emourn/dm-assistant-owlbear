@@ -19,15 +19,31 @@ function getItemName(item: Item): string {
 }
 
 export async function readRuntimeSnapshot(): Promise<OwlbearRuntimeSnapshot> {
-    const [role, player, players, selectionIds] = await Promise.all([
+    const [roleResult, playerResult, playersResult, selectionResult] = await Promise.allSettled([
         OBR.player.getRole(),
         OBR.player.getName(),
         OBR.party.getPlayers(),
         OBR.player.getSelection(),
     ]);
 
-    const selectedIds = selectionIds ?? [];
-    const selectedItems = selectedIds.length > 0 ? await OBR.scene.items.getItems(selectedIds) : [];
+    const role = roleResult.status === 'fulfilled' ? roleResult.value : null;
+    const player = playerResult.status === 'fulfilled' ? playerResult.value : 'Unknown Player';
+    const players = playersResult.status === 'fulfilled' && Array.isArray(playersResult.value)
+        ? playersResult.value
+        : [];
+    const selectedIds = selectionResult.status === 'fulfilled' && Array.isArray(selectionResult.value)
+        ? selectionResult.value
+        : [];
+
+    let selectedItems: Item[] = [];
+    if (selectedIds.length > 0) {
+        try {
+            const items = await OBR.scene.items.getItems(selectedIds);
+            selectedItems = Array.isArray(items) ? items : [];
+        } catch {
+            selectedItems = [];
+        }
+    }
 
     return {
         ready: true,
