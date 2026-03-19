@@ -274,11 +274,13 @@ export function RoomSnapshotCard({
             </div>
             <div className="mt-4 grid gap-2 sm:grid-cols-3">
                 <CompactStat label="Players" value={String(playerRows.length)} />
-                <CompactStat label="Published sheets" value={String(roomState?.characters.length ?? characters.length)} />
+                <CompactStat label="Published" value={String(roomState?.characters.length ?? characters.length)} />
                 <CompactStat label="Assignments" value={String(Object.keys(roomState?.playerAssignments ?? {}).length)} />
             </div>
-            <div className="mt-4 rounded-2xl border border-stone-800 bg-stone-900/60 p-3 text-sm leading-relaxed text-stone-400">
-                DM Assistant only stores its own metadata. Owlbear and other extensions stay in control of the scene.
+            <div className="mt-4 grid gap-2 sm:grid-cols-[minmax(0,1fr)_auto_auto] sm:items-center rounded-xl border border-stone-800 bg-stone-900/60 p-3 text-sm text-stone-400">
+                <div>DM Assistant stores only its own metadata. Owlbear and other extensions stay in control of the scene.</div>
+                <div className="font-mono text-[10px] uppercase tracking-[0.16em] text-stone-500">Sheets {roomState?.characters.length ?? characters.length}</div>
+                <div className="font-mono text-[10px] uppercase tracking-[0.16em] text-stone-500">Links {Object.keys(roomState?.playerAssignments ?? {}).length}</div>
             </div>
         </section>
     );
@@ -628,20 +630,20 @@ function SyncWorkspace() {
                             </div>
                         )}
                         {playerRows.map((player) => (
-                            <div key={player.id} className="rounded-2xl border border-stone-800 bg-stone-950/70 p-3">
-                                <div className="flex items-center justify-between gap-3">
+                            <div key={player.id} className="grid gap-2 rounded-xl border border-stone-800 bg-stone-950/70 px-3 py-2 md:grid-cols-[minmax(0,150px)_1fr] md:items-center">
+                                <div className="flex items-center gap-3 min-w-0">
+                                    <div className="h-2.5 w-2.5 shrink-0 rounded-full" style={{ backgroundColor: player.color }} />
                                     <div className="min-w-0">
                                         <div className="truncate text-sm font-semibold text-stone-100">{player.name}</div>
-                                        <div className="mt-1 text-[11px] uppercase tracking-[0.18em] text-stone-500">{player.id.slice(0, 8)}</div>
+                                        <div className="mt-0.5 font-mono text-[10px] uppercase tracking-[0.16em] text-stone-500">{player.id.slice(0, 8)}</div>
                                     </div>
-                                    <div className="h-3 w-3 rounded-full" style={{ backgroundColor: player.color }} />
                                 </div>
                                 <select
                                     value={roomState?.playerAssignments[player.id] ?? ''}
                                     onChange={(event) => {
                                         void handleAssign(player.id, event.target.value || null);
                                     }}
-                                    className="mt-3 w-full rounded-xl border border-stone-700 bg-stone-950 px-3 py-2.5 text-sm text-stone-100 outline-none focus:border-gold"
+                                    className="w-full rounded-xl border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-100 outline-none focus:border-gold"
                                 >
                                     <option value="">No assigned character</option>
                                     {characters.map((character) => (

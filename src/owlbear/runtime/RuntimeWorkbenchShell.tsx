@@ -241,21 +241,26 @@ function SelectionInspector({
                         </div>
                     </div>
                     {playerRows.length > 0 && (
-                        <div className="mt-5 grid gap-3 md:grid-cols-2">
+                        <div className="mt-5 rounded-xl border border-stone-800 bg-stone-950/55 p-3">
+                            <div className="flex items-center justify-between gap-3">
+                                <div className="font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-stone-500">Player assignments</div>
+                                <div className="text-[11px] text-stone-500">{playerRows.length} player{playerRows.length === 1 ? '' : 's'}</div>
+                            </div>
+                            <div className="mt-3 space-y-2">
                             {playerRows.map((player) => (
-                                <div key={player.id} className="rounded-xl border border-stone-800 bg-stone-900/70 p-3">
-                                    <div className="flex items-center justify-between gap-3">
+                                <div key={player.id} className="grid gap-2 rounded-xl border border-stone-800 bg-stone-900/70 px-3 py-2 md:grid-cols-[minmax(0,160px)_1fr] md:items-center">
+                                    <div className="flex items-center gap-3 min-w-0">
+                                        <div className="h-2.5 w-2.5 shrink-0 rounded-full" style={{ backgroundColor: player.color }} />
                                         <div className="min-w-0">
                                             <div className="truncate text-sm font-semibold text-stone-100">{player.name}</div>
-                                            <div className="mt-1 font-mono text-[11px] uppercase tracking-[0.18em] text-stone-500">Player link</div>
+                                            <div className="mt-0.5 font-mono text-[10px] uppercase tracking-[0.16em] text-stone-500">Player link</div>
                                         </div>
-                                        <div className="h-3 w-3 rounded-full" style={{ backgroundColor: player.color }} />
                                     </div>
                                     <select
                                         value={roomState?.playerAssignments[player.id] ?? ''}
                                         onChange={(event) => onAssignPlayer(player.id, event.target.value || null)}
                                         disabled={isBusy}
-                                        className="mt-3 w-full rounded-xl border border-stone-700 bg-stone-950 px-3 py-2.5 text-sm text-stone-100 outline-none transition-colors focus:border-gold disabled:opacity-50"
+                                        className="w-full rounded-xl border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-100 outline-none transition-colors focus:border-gold disabled:opacity-50"
                                     >
                                         <option value="">No assigned sheet</option>
                                         {characters.map((character) => (
@@ -266,6 +271,7 @@ function SelectionInspector({
                                     </select>
                                 </div>
                             ))}
+                            </div>
                         </div>
                     )}
                     {smokeProfile && (
@@ -399,15 +405,21 @@ function EncounterStrip({
                         <CompactStat label="Combatants" value={String(encounter.combatants.length)} />
                         <CompactStat label="Status" value={encounter.isActive ? 'Active' : 'Preparing'} />
                     </div>
-                    <div className="mt-4 space-y-2">
+                    <div className="mt-4 rounded-xl border border-stone-800 bg-stone-950/50 p-2">
+                        <div className="mb-2 px-2 font-mono text-[10px] font-bold uppercase tracking-[0.18em] text-stone-500">Visible order</div>
+                        <div className="space-y-1.5">
                         {encounter.combatants.slice(0, 4).map((combatant) => (
-                            <div key={combatant.id} className="flex items-center justify-between rounded-xl border border-stone-800 bg-stone-900/60 px-3 py-2 text-sm">
-                                <span className="font-semibold text-stone-100">{combatant.name}</span>
+                            <div key={combatant.id} className="grid grid-cols-[minmax(0,1fr)_auto] items-center gap-3 rounded-lg border border-stone-800 bg-stone-900/60 px-3 py-2 text-sm">
+                                <div className="min-w-0">
+                                    <div className="truncate font-semibold text-stone-100">{combatant.name}</div>
+                                    <div className="font-mono text-[10px] uppercase tracking-[0.16em] text-stone-500">{combatant.type}</div>
+                                </div>
                                 <span className="text-stone-400">
                                     HP {combatant.currentHp}/{combatant.maxHp}
                                 </span>
                             </div>
                         ))}
+                        </div>
                     </div>
                 </>
             ) : (
