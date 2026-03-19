@@ -181,7 +181,7 @@ export function CharacterSheetPanel({
                     </div>
                     <h2 className="mt-3 text-xl font-semibold tracking-tight text-parchment">No shared character yet</h2>
                     <p className="mt-2 text-sm leading-relaxed text-stone-400">
-                        This room has no active sheet right now. GMs can create a new record above; players only resolve sheets that exist in room metadata.
+                        GMs can create a room character above. Players only resolve sheets through assignment or visible linked tokens, so an empty room should stay empty for players.
                     </p>
                 </section>
             </div>

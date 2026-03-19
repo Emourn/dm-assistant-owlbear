@@ -6,24 +6,24 @@ export interface MilestoneSlice {
 }
 
 export const CURRENT_SLICE: MilestoneSlice = {
-    milestone: 'Phase 1 - Automated 2024 character sheet foundation',
-    scope: 'Hardening, bug fixes, and acceptance pass, so the rebuilt Owlbear extension can close Phase 1 on a stable, testable, room-usable character runtime foundation.',
+    milestone: 'Phase 2 - Token linkage, player assignment, and player-safe sheet viewing',
+    scope: 'Stabilize player-safe visibility by making sheet access explicit to the current viewer and inspectable for the GM from the same compact Owlbear runtime surface.',
     acceptanceCriteria: [
-        'The extension surfaces a concrete in-app Phase 1 readiness checklist for the current room state.',
-        'Known correctness issues in the current Phase 1 runtime flow are fixed without expanding scope.',
-        'The runtime UI copy matches the actual implemented Phase 1 feature set.',
-        'The acceptance pass is covered by tests, TypeScript validation, and a production Owlbear build.',
+        'The current viewer sees an explicit explanation for why the active sheet is visible or hidden.',
+        'The GM can preview which sheet each room player would resolve right now from assignment and selected token links.',
+        'The GM can inspect the current selected-token visibility audience without opening another surface.',
+        'The visibility explanation logic is covered by pure tests, TypeScript validation, and a production Owlbear build.',
     ],
     nonGoals: [
-        'New Phase 2 feature work',
-        'Major visual redesign beyond targeted cleanup',
-        'Owlbear visual badge syncing for conditions',
-        'Per-target spell or attack hit resolution',
-        'Automated round effects',
+        'New permission modes beyond room, assigned-only, and gm-only',
+        'Token badge or status icon syncing',
+        'Encounter or prompt behavior changes',
+        'Role-specific redesign outside the access preview surfaces',
+        'Phase 3 prompting or initiative workflow work',
     ],
 };
 
 export const NEXT_SLICES = [
-    'Phase 2: token linkage and player-safe viewing stabilization',
+    'Phase 2: player-assignment and token-link workflow polish',
     'Phase 3: broader prompting and initiative workflow polish',
 ];

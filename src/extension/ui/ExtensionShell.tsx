@@ -25,6 +25,7 @@ import type { OwlbearRuntimeSnapshot } from '../owlbear/runtime';
 import { CharacterSheetPanel } from './CharacterSheetPanel';
 import { EncounterPanel } from './EncounterPanel';
 import { Phase1ReadinessPanel } from './Phase1ReadinessPanel';
+import { PlayerSafeViewPanel } from './PlayerSafeViewPanel';
 import { RoomRollPanel } from './RoomRollPanel';
 import { RuntimeAuditPanel } from './RuntimeAuditPanel';
 import { VisibilityPolicyPanel } from './VisibilityPolicyPanel';
@@ -319,6 +320,12 @@ export function ExtensionShell({
                     onLink={onLinkCharacter}
                     onUnlink={onUnlinkCharacter}
                     onAssign={onAssignCharacter}
+                />
+
+                <PlayerSafeViewPanel
+                    role={runtime.role}
+                    players={runtime.players as Player[]}
+                    characterState={characterState}
                 />
 
                 <RoomRollPanel
