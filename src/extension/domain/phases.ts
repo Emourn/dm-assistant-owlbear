@@ -7,24 +7,23 @@ export interface MilestoneSlice {
 
 export const CURRENT_SLICE: MilestoneSlice = {
     milestone: 'Phase 1 - Automated 2024 character sheet foundation',
-    scope: 'Context-menu shortcuts for HP and condition application, so the GM can run fast token-first runtime updates from linked selections without reopening deeper sheet UI.',
+    scope: 'Hardening, bug fixes, and acceptance pass, so the rebuilt Owlbear extension can close Phase 1 on a stable, testable, room-usable character runtime foundation.',
     acceptanceCriteria: [
-        'The GM can apply fixed HP shortcut changes to linked selected targets from the Owlbear context menu.',
-        'The GM can apply and clear a small set of high-value conditions from the Owlbear context menu.',
-        'Shortcut mutations persist to the stored linked character records.',
-        'Shortcut mutations record to runtime audit with enough detail to explain what changed.',
+        'The extension surfaces a concrete in-app Phase 1 readiness checklist for the current room state.',
+        'Known correctness issues in the current Phase 1 runtime flow are fixed without expanding scope.',
+        'The runtime UI copy matches the actual implemented Phase 1 feature set.',
+        'The acceptance pass is covered by tests, TypeScript validation, and a production Owlbear build.',
     ],
     nonGoals: [
-        'Arbitrary numeric HP entry from the context menu',
+        'New Phase 2 feature work',
+        'Major visual redesign beyond targeted cleanup',
         'Owlbear visual badge syncing for conditions',
         'Per-target spell or attack hit resolution',
         'Automated round effects',
-        'Full encounter-state automation',
     ],
 };
 
 export const NEXT_SLICES = [
-    'Phase 1 Closeout B: hardening, bug fixes, and acceptance pass',
-    'Phase 2: token linking, player assignment, and player-safe sheet viewing stabilization',
+    'Phase 2: token linkage and player-safe viewing stabilization',
     'Phase 3: broader prompting and initiative workflow polish',
 ];

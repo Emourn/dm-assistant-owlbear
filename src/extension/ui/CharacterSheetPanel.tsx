@@ -371,7 +371,7 @@ export function CharacterSheetPanel({
                                 </div>
                             ) : (
                                 <p className="mt-3 text-sm text-stone-400">
-                                    This slice focuses on auditable d20 rolls plus modeled action outcomes from the same compact runtime sheet.
+                                    Phase 1 now covers auditable d20 rolls, modeled outcomes, prompting, encounter order, and linked-target application from the same compact sheet.
                                 </p>
                             )}
                         </div>

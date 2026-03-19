@@ -10,6 +10,7 @@ import type { StoredRoomRollState } from '../domain/roomRolls';
 import type { RoomRollPromptDraft } from '../domain/roomRolls';
 import type { StoredEncounterState } from '../domain/encounterTracker';
 import type { StoredRuntimeAuditState } from '../domain/runtimeAudit';
+import { createPhase1ReadinessChecks } from '../domain/phase1Readiness';
 import { CURRENT_SLICE, NEXT_SLICES } from '../domain/phases';
 import {
     canManageSheetRuntime,
@@ -23,6 +24,7 @@ import type { CharacterRepositorySnapshot } from '../owlbear/characterRepository
 import type { OwlbearRuntimeSnapshot } from '../owlbear/runtime';
 import { CharacterSheetPanel } from './CharacterSheetPanel';
 import { EncounterPanel } from './EncounterPanel';
+import { Phase1ReadinessPanel } from './Phase1ReadinessPanel';
 import { RoomRollPanel } from './RoomRollPanel';
 import { RuntimeAuditPanel } from './RuntimeAuditPanel';
 import { VisibilityPolicyPanel } from './VisibilityPolicyPanel';
@@ -216,6 +218,19 @@ export function ExtensionShell({
             audience: visiblePrompt.audience,
         })
         : false;
+    const readinessChecks = createPhase1ReadinessChecks({
+        hasActiveCharacter: Boolean(characterState?.activeCharacter),
+        characterCount: characterState?.collection.characters.length ?? 0,
+        hasResources: Boolean(
+            characterState?.activeCharacter?.sheet.resources.length
+            || characterState?.activeCharacter?.sheet.spellcasting?.slots.length,
+        ),
+        hasActions: (characterState?.activeCharacter?.sheet.actions.length ?? 0) > 0,
+        linkedCharacterCount: characterState?.selection.linkedCount ?? 0,
+        hasPromptOrFeed: Boolean(visiblePrompt) || visibleFeed.length > 0,
+        encounterParticipantCount: encounterState?.participants.length ?? 0,
+        auditEntryCount: runtimeAuditState?.entries.length ?? 0,
+    });
 
     return (
         <div className="min-h-screen bg-[radial-gradient(circle_at_top_left,_rgba(245,158,11,0.12),_transparent_28%),radial-gradient(circle_at_bottom_right,_rgba(56,189,248,0.10),_transparent_24%),linear-gradient(180deg,rgba(12,10,9,0.99),rgba(17,24,39,0.96))] p-4 text-stone-100">
@@ -343,6 +358,8 @@ export function ExtensionShell({
                     isSaving={isSavingVisibility}
                     onSave={onSaveVisibilitySettings}
                 />
+
+                <Phase1ReadinessPanel checks={readinessChecks} />
 
                 <RuntimeAuditPanel
                     role={runtime.role}

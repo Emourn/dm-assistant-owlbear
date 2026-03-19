@@ -32,15 +32,14 @@ export function CharacterCollectionPanel({
     const [exportText, setExportText] = useState('');
     const [importText, setImportText] = useState('');
     const [status, setStatus] = useState<string | null>(null);
+    const activeCharacter = useMemo(
+        () => collection?.characters.find((record) => record.sheet.id === activeCharacterId) ?? null,
+        [activeCharacterId, collection],
+    );
 
     if (!canEdit || !collection) {
         return null;
     }
-
-    const activeCharacter = useMemo(
-        () => collection.characters.find((record) => record.sheet.id === activeCharacterId) ?? null,
-        [activeCharacterId, collection.characters],
-    );
 
     const handleImport = async (mode: 'append' | 'replace') => {
         setStatus(null);

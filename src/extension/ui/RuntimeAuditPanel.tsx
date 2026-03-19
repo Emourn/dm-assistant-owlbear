@@ -56,7 +56,7 @@ export function RuntimeAuditPanel({
                     </div>
                     <div className="mt-2 text-lg font-semibold text-parchment">Recent metadata-driven actions</div>
                     <div className="mt-1 text-sm text-stone-400">
-                        Inspect what the extension changed during live play: counters, rests, prompt activity, and roll publication.
+                        Inspect what the extension changed during live play: counters, prompts, encounter turns, HP updates, conditions, and roll publication.
                     </div>
                 </div>
                 <button

@@ -56,7 +56,7 @@ export function RoomRollPanel({
                     </div>
                     <div className="mt-2 text-lg font-semibold text-parchment">Publish structured rolls to the table</div>
                     <div className="mt-1 text-sm text-stone-400">
-                        A compact room feed for prompted and manually published results. This slice stays Owlbear-native and metadata-first.
+                        A compact room feed for prompted and manually published results. Phase 1 keeps this Owlbear-native, metadata-first, and selection-friendly.
                     </div>
                     <div className="mt-1 text-xs text-stone-500">
                         Manual publication default: {defaultRollVisibility}. Prompt audience default: {defaultPromptAudience}.
