@@ -1,6 +1,6 @@
 import { Suspense, lazy, useCallback, useEffect, useMemo, useState } from 'react';
 import OBR, { type Item, type Player } from '@owlbear-rodeo/sdk';
-import { Crosshair, FileUp, Link2, PencilLine, RadioTower, Sparkles, Swords, Users } from 'lucide-react';
+import { Check, Crosshair, FileUp, Link2, PencilLine, RadioTower, Sparkles, Swords, Users, X } from 'lucide-react';
 import { useCampaignStore } from '../../store/campaignStore';
 import { useCharacterStore } from '../../store/characterStore';
 import { useCombatStore } from '../../store/combatStore';
@@ -443,6 +443,94 @@ function OverlayLoadingCard({ label }: { label: string }) {
     );
 }
 
+function WorkflowStep({
+    label,
+    active,
+    complete,
+}: {
+    label: string;
+    active?: boolean;
+    complete?: boolean;
+}) {
+    return (
+        <div className={`flex items-center gap-3 rounded-xl border px-3 py-2 ${active ? 'border-gold/30 bg-gold/10' : 'border-stone-800 bg-stone-950/60'}`}>
+            <div className={`flex h-6 w-6 items-center justify-center rounded-full border ${complete ? 'border-emerald-400/30 bg-emerald-500/10 text-emerald-200' : active ? 'border-gold/30 bg-gold/15 text-gold' : 'border-stone-700 bg-stone-900 text-stone-500'}`}>
+                {complete ? <Check size={12} /> : <span className="font-mono text-[10px] font-bold">{active ? '>' : '•'}</span>}
+            </div>
+            <div className={`font-mono text-[10px] font-bold uppercase tracking-[0.16em] ${active ? 'text-parchment' : 'text-stone-500'}`}>{label}</div>
+        </div>
+    );
+}
+
+function SheetWorkflowOverlay({
+    mode,
+    selectionLabel,
+    linkedSheetLabel,
+    onClose,
+    children,
+}: {
+    mode: 'import' | 'create' | 'edit';
+    selectionLabel: string;
+    linkedSheetLabel: string;
+    onClose: () => void;
+    children: React.ReactNode;
+}) {
+    const title = mode === 'import' ? 'Sheet import flow' : mode === 'create' ? 'New sheet flow' : 'Sheet review flow';
+    const subtitle =
+        mode === 'import'
+            ? 'Import first, then save and link the sheet back to the tabletop.'
+            : mode === 'create'
+                ? 'Author the sheet, save it, then return to token linking and player assignment.'
+                : 'Adjust the existing sheet, save changes, then return to sync or combat.';
+
+    const activeStep = mode === 'import' ? 0 : mode === 'create' ? 1 : 1;
+    const steps =
+        mode === 'import'
+            ? ['Import PDF', 'Review automation', 'Save sheet', 'Link token']
+            : mode === 'create'
+                ? ['Create shell', 'Author sheet', 'Save sheet', 'Link token']
+                : ['Open sheet', 'Edit details', 'Save changes', 'Return to map'];
+
+    return (
+        <div className="fixed inset-0 z-40 overflow-y-auto bg-stone-950/84 px-3 py-6 backdrop-blur-sm">
+            <div className="mx-auto grid max-w-7xl gap-4 xl:grid-cols-[300px_minmax(0,1fr)]">
+                <aside className="h-fit overflow-hidden rounded-[1.35rem] border border-stone-800 bg-[linear-gradient(180deg,rgba(12,10,9,0.98),rgba(28,25,23,0.94))] p-4 shadow-[0_24px_60px_-36px_rgba(15,23,42,0.95)]">
+                    <div className="flex items-start justify-between gap-3">
+                        <div>
+                            <div className="font-mono text-[10px] font-bold uppercase tracking-[0.24em] text-emerald-300">Sheet workflow</div>
+                            <h2 className="mt-2 text-xl font-semibold tracking-tight text-parchment">{title}</h2>
+                            <p className="mt-2 text-sm text-stone-400">{subtitle}</p>
+                        </div>
+                        <button
+                            type="button"
+                            onClick={onClose}
+                            className="rounded-xl border border-stone-700 bg-stone-950/90 p-2 text-stone-400 transition-colors hover:border-stone-600 hover:text-stone-100"
+                        >
+                            <X size={16} />
+                        </button>
+                    </div>
+                    <div className="mt-4 space-y-2">
+                        {steps.map((step, index) => (
+                            <WorkflowStep key={step} label={step} active={index === activeStep} complete={index < activeStep} />
+                        ))}
+                    </div>
+                    <div className="mt-4 rounded-xl border border-stone-800 bg-stone-950/60 p-3">
+                        <div className="font-mono text-[10px] font-bold uppercase tracking-[0.18em] text-stone-500">Table state</div>
+                        <div className="mt-3 space-y-2">
+                            <RuntimeLine label="Selection" value={selectionLabel} />
+                            <RuntimeLine label="Linked sheet" value={linkedSheetLabel} />
+                        </div>
+                    </div>
+                    <div className="mt-4 rounded-xl border border-gold/20 bg-gold/10 p-3 text-sm text-stone-300">
+                        Save closes this workflow and returns you to the runtime panel for linking, sync, and combat actions.
+                    </div>
+                </aside>
+                <div className="min-w-0">{children}</div>
+            </div>
+        </div>
+    );
+}
+
 export function RuntimeWorkbenchShell() {
     const characters = useCharacterStore((state) => state.characters);
     const campaigns = useCampaignStore((state) => state.campaigns);
@@ -472,6 +560,12 @@ export function RuntimeWorkbenchShell() {
         () => characters.find((character) => character.id === selectedCharacterId) ?? null,
         [characters, selectedCharacterId],
     );
+    const workflowMode = isImporting ? 'import' : editorState ? (editorState.characterId ? 'edit' : 'create') : null;
+    const workflowSelectionLabel = describeSelection(selectedItems.length, primarySelection);
+    const workflowLinkedSheetLabel =
+        primarySelection?.linkedCharacter?.snapshot?.name ||
+        selectedRosterCharacter?.name ||
+        'None';
 
     const refresh = useCallback(async () => {
         if (!OBR.isAvailable) {
@@ -700,9 +794,17 @@ export function RuntimeWorkbenchShell() {
                 )}
             </div>
 
-            {editorState && (
-                <div className="fixed inset-0 z-40 overflow-y-auto bg-stone-950/84 px-3 py-6 backdrop-blur-sm">
-                    <div className="mx-auto max-w-7xl">
+            {workflowMode && (
+                <SheetWorkflowOverlay
+                    mode={workflowMode}
+                    selectionLabel={workflowSelectionLabel}
+                    linkedSheetLabel={workflowLinkedSheetLabel}
+                    onClose={() => {
+                        setIsImporting(false);
+                        setEditorState(null);
+                    }}
+                >
+                    {editorState ? (
                         <Suspense fallback={<OverlayLoadingCard label="Character editor" />}>
                             <CharacterForm
                                 characterId={editorState.characterId}
@@ -713,20 +815,21 @@ export function RuntimeWorkbenchShell() {
                                 }}
                             />
                         </Suspense>
-                    </div>
-                </div>
-            )}
-
-            {isImporting && (
-                <Suspense fallback={<OverlayLoadingCard label="PDF importer" />}>
-                    <PdfImportModal
-                        onClose={() => setIsImporting(false)}
-                        onImportSuccess={(data) => {
-                            setIsImporting(false);
-                            setEditorState({ initialData: data });
-                        }}
-                    />
-                </Suspense>
+                    ) : (
+                        <div className="mx-auto max-w-3xl">
+                            <Suspense fallback={<OverlayLoadingCard label="PDF importer" />}>
+                                <PdfImportModal
+                                    embedded
+                                    onClose={() => setIsImporting(false)}
+                                    onImportSuccess={(data) => {
+                                        setIsImporting(false);
+                                        setEditorState({ initialData: data });
+                                    }}
+                                />
+                            </Suspense>
+                        </div>
+                    )}
+                </SheetWorkflowOverlay>
             )}
         </div>
     );

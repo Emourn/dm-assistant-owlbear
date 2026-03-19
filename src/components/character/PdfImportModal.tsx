@@ -6,9 +6,10 @@ import { Character } from '../../types/character';
 interface PdfImportModalProps {
     onClose: () => void;
     onImportSuccess: (extractedData: Partial<Character>) => void;
+    embedded?: boolean;
 }
 
-export function PdfImportModal({ onClose, onImportSuccess }: PdfImportModalProps) {
+export function PdfImportModal({ onClose, onImportSuccess, embedded = false }: PdfImportModalProps) {
     const [isDragging, setIsDragging] = useState(false);
     const [isProcessing, setIsProcessing] = useState(false);
     const [progressText, setProgressText] = useState<string | null>(null);
@@ -54,12 +55,11 @@ export function PdfImportModal({ onClose, onImportSuccess }: PdfImportModalProps
         setIsDragging(false);
     };
 
-    return (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-in fade-in duration-200">
-            <div
-                className="bg-stone-900 border border-stone-700/50 rounded-lg shadow-2xl w-full max-w-lg overflow-hidden animate-in zoom-in-95 duration-200"
-                onClick={(e) => e.stopPropagation()}
-            >
+    const content = (
+        <div
+            className={`bg-stone-900 border border-stone-700/50 rounded-lg shadow-2xl w-full max-w-lg overflow-hidden animate-in zoom-in-95 duration-200 ${embedded ? 'max-w-none shadow-none' : ''}`.trim()}
+            onClick={(e) => e.stopPropagation()}
+        >
                 {/* Header */}
                 <div className="flex items-center justify-between p-5 border-b border-stone-800 bg-[radial-gradient(circle_at_top_left,_rgba(217,119,6,0.16),_transparent_45%),linear-gradient(180deg,rgba(28,25,23,0.96),rgba(17,24,39,0.92))]">
                     <div>
@@ -152,7 +152,16 @@ export function PdfImportModal({ onClose, onImportSuccess }: PdfImportModalProps
                         </div>
                     </div>
                 </div>
-            </div>
+        </div>
+    );
+
+    if (embedded) {
+        return content;
+    }
+
+    return (
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-in fade-in duration-200">
+            {content}
         </div>
     );
 }
