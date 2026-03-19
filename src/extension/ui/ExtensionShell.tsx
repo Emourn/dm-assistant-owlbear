@@ -10,9 +10,12 @@ interface ExtensionShellProps {
     characterState: CharacterRepositorySnapshot | null;
     lastRoll: StructuredRollResult | null;
     isSavingCharacter: boolean;
+    isLinkingCharacter: boolean;
     onRoll: (request: StructuredRollRequest) => void;
     onSelectCharacter: (characterId: string) => void;
     onSaveCharacter: (sheet: Phase1CharacterSheet) => Promise<void>;
+    onLinkCharacter: (sheet: Phase1CharacterSheet) => Promise<void>;
+    onUnlinkCharacter: () => Promise<void>;
     loadState: 'loading' | 'ready' | 'error';
     error: string | null;
     surface: 'popover' | 'panel';
@@ -45,9 +48,12 @@ export function ExtensionShell({
     characterState,
     lastRoll,
     isSavingCharacter,
+    isLinkingCharacter,
     onRoll,
     onSelectCharacter,
     onSaveCharacter,
+    onLinkCharacter,
+    onUnlinkCharacter,
     loadState,
     error,
     surface,
@@ -144,12 +150,16 @@ export function ExtensionShell({
 
                 <CharacterSheetPanel
                     characterState={characterState}
+                    role={runtime.role}
                     canEdit={runtime.role === 'GM'}
                     isSaving={isSavingCharacter}
+                    isLinking={isLinkingCharacter}
                     lastRoll={lastRoll}
                     onRoll={onRoll}
                     onSelectCharacter={onSelectCharacter}
                     onSave={onSaveCharacter}
+                    onLink={onLinkCharacter}
+                    onUnlink={onUnlinkCharacter}
                 />
 
                 <section className="grid gap-4 lg:grid-cols-[1.15fr_0.85fr]">

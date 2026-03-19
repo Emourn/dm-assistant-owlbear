@@ -12,15 +12,20 @@ import type {
 } from '../../features/dnd2024/domain/types';
 import type { CharacterRepositorySnapshot } from '../owlbear/characterRepository';
 import { CharacterEditorPanel } from './CharacterEditorPanel';
+import { TokenLinkPanel } from './TokenLinkPanel';
 
 interface CharacterSheetPanelProps {
     characterState: CharacterRepositorySnapshot | null;
+    role: 'GM' | 'PLAYER' | null;
     canEdit: boolean;
     isSaving: boolean;
+    isLinking: boolean;
     lastRoll: StructuredRollResult | null;
     onRoll: (request: StructuredRollRequest) => void;
     onSelectCharacter: (characterId: string) => void;
     onSave: (sheet: Phase1CharacterSheet) => Promise<void>;
+    onLink: (sheet: Phase1CharacterSheet) => Promise<void>;
+    onUnlink: () => Promise<void>;
 }
 
 function SummaryCard({
@@ -82,12 +87,16 @@ function sourceLabel(source: CharacterRepositorySnapshot['source']): string {
 
 export function CharacterSheetPanel({
     characterState,
+    role,
     canEdit,
     isSaving,
+    isLinking,
     lastRoll,
     onRoll,
     onSelectCharacter,
     onSave,
+    onLink,
+    onUnlink,
 }: CharacterSheetPanelProps) {
     const active = characterState?.activeCharacter;
     if (!active) {
@@ -324,6 +333,15 @@ export function CharacterSheetPanel({
                     </div>
                 </div>
             </section>
+
+            <TokenLinkPanel
+                sheet={sheet}
+                role={role}
+                characterState={characterState}
+                isLinking={isLinking}
+                onLink={onLink}
+                onUnlink={onUnlink}
+            />
 
             <CharacterEditorPanel
                 sheet={sheet}

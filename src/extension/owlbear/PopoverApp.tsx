@@ -8,8 +8,10 @@ import type {
 } from '../../features/dnd2024/domain/types';
 import { ExtensionShell } from '../ui/ExtensionShell';
 import {
+    linkActiveCharacterToSelection,
     readCharacterRepositorySnapshot,
     setActiveCharacterRecord,
+    unlinkSelectionCharacters,
     updateCharacterSheet,
     type CharacterRepositorySnapshot,
 } from './characterRepository';
@@ -20,6 +22,7 @@ export function PopoverApp({ surface = 'popover' }: { surface?: 'popover' | 'pan
     const [characterState, setCharacterState] = useState<CharacterRepositorySnapshot | null>(null);
     const [lastRoll, setLastRoll] = useState<StructuredRollResult | null>(null);
     const [isSavingCharacter, setIsSavingCharacter] = useState(false);
+    const [isLinkingCharacter, setIsLinkingCharacter] = useState(false);
     const [loadState, setLoadState] = useState<'loading' | 'ready' | 'error'>('loading');
     const [error, setError] = useState<string | null>(null);
 
@@ -108,15 +111,42 @@ export function PopoverApp({ surface = 'popover' }: { surface?: 'popover' | 'pan
         }
     }, []);
 
+    const handleLinkCharacter = useCallback(async (sheet: Phase1CharacterSheet) => {
+        setIsLinkingCharacter(true);
+        try {
+            const next = await linkActiveCharacterToSelection(sheet);
+            if (next) {
+                setCharacterState(next);
+            }
+        } finally {
+            setIsLinkingCharacter(false);
+        }
+    }, []);
+
+    const handleUnlinkCharacter = useCallback(async () => {
+        setIsLinkingCharacter(true);
+        try {
+            const next = await unlinkSelectionCharacters();
+            if (next) {
+                setCharacterState(next);
+            }
+        } finally {
+            setIsLinkingCharacter(false);
+        }
+    }, []);
+
     return (
         <ExtensionShell
             runtime={runtime}
             characterState={characterState}
             lastRoll={lastRoll}
             isSavingCharacter={isSavingCharacter}
+            isLinkingCharacter={isLinkingCharacter}
             onRoll={handleRoll}
             onSelectCharacter={handleSelectCharacter}
             onSaveCharacter={handleSaveCharacter}
+            onLinkCharacter={handleLinkCharacter}
+            onUnlinkCharacter={handleUnlinkCharacter}
             loadState={loadState}
             error={error}
             surface={surface}
