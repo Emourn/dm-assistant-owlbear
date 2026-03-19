@@ -216,6 +216,7 @@ export function CombatSidebar({
                         <div className="animate-in fade-in slide-in-from-right-2 duration-200">
                             <ActionPanel
                                 combatant={combatant}
+                                selectedTarget={selectedCombatant}
                                 onActionClick={(a) => onActionClick(a, combatant)}
                                 onActionHover={onActionHover}
                             />

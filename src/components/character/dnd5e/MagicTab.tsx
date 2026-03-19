@@ -1,9 +1,11 @@
+import OBR from '@owlbear-rodeo/sdk';
 import { Character, Spell, StatBlock } from '../../../types/character';
 import { BookOpen, Plus, Trash2, Search, Sparkles } from 'lucide-react';
 import { useState } from 'react';
 import { FiveEToolsModal } from '../../common/FiveEToolsModal';
 import { InlineModifierToggle } from '../../common/InlineModifierToggle';
 import { getSpellSaveDc, getSpellAttackMod } from '../../../engine/statCalculations';
+import { getEmbersSpellId, triggerEmbersSpellFromCharacter } from '../../../owlbear/integrations';
 
 interface Props {
     data: Character;
@@ -19,6 +21,8 @@ const ABILITIES: { value: keyof StatBlock | 'none'; label: string }[] = [
 
 export function MagicTab({ data, onChange }: Props) {
     const [isSearchOpen, setIsSearchOpen] = useState(false);
+    const [castingSpellId, setCastingSpellId] = useState<string | null>(null);
+    const owlbearAvailable = OBR.isAvailable;
 
     const addSpell = () => {
         const newSpell: Spell = {
@@ -55,6 +59,15 @@ export function MagicTab({ data, onChange }: Props) {
     const handleResetAllSlots = () => {
         const newSlots = data.spellSlots.map(slot => ({ ...slot, current: slot.max }));
         onChange('spellSlots', newSlots);
+    };
+
+    const handleTriggerEmbers = async (spell: Spell) => {
+        setCastingSpellId(spell.id);
+        try {
+            await triggerEmbersSpellFromCharacter(data, spell.name);
+        } finally {
+            setCastingSpellId(current => current === spell.id ? null : current);
+        }
     };
 
     const spellsByLevel = Array.from({ length: 10 }, (_, i) => data.spells.filter(s => s.level === i));
@@ -202,7 +215,7 @@ export function MagicTab({ data, onChange }: Props) {
                                         <p className="text-xs text-stone-600 italic px-2">No spells added.</p>
                                     ) : (
                                         list.map(spell => (
-                                            <div key={spell.id} className="bg-transparent border-b border-stone-800/40 relative group focus-within:bg-stone-900/40 hover:bg-stone-900/40 transition-colors py-1.5 pl-1 pr-8 text-sm">
+                                            <div key={spell.id} className="bg-transparent border-b border-stone-800/40 relative group focus-within:bg-stone-900/40 hover:bg-stone-900/40 transition-colors py-1.5 pl-1 pr-10 text-sm">
 
                                                 <div className="flex gap-2 items-center">
                                                     {/* Prepared Toggle (Not for Cantrips) */}
@@ -224,11 +237,25 @@ export function MagicTab({ data, onChange }: Props) {
                                                             className="w-full bg-transparent text-parchment font-bold text-sm border-none focus:text-gold outline-none flex-1 truncate transition-colors"
                                                             placeholder="Spell Name"
                                                         />
-                                                        {spell.is2024 && (
-                                                            <span className="text-[8px] bg-gold/20 text-gold-light px-1 py-0.5 rounded border border-gold/40 flex items-center gap-0.5 flex-shrink-0">
-                                                                <Sparkles size={8} /> 2024
-                                                            </span>
-                                                        )}
+                                                        <div className="flex items-center gap-1.5 flex-shrink-0">
+                                                            {owlbearAvailable && getEmbersSpellId(spell.name) && (
+                                                                <button
+                                                                    type="button"
+                                                                    onClick={() => void handleTriggerEmbers(spell)}
+                                                                    disabled={castingSpellId === spell.id}
+                                                                    className="inline-flex items-center gap-1 rounded-md border border-arcane/40 bg-arcane/10 px-2 py-1 text-[9px] font-black uppercase tracking-widest text-arcane-light transition-colors hover:border-arcane hover:bg-arcane/20 disabled:cursor-wait disabled:opacity-60"
+                                                                    title={`Send ${spell.name} to Embers`}
+                                                                >
+                                                                    <Sparkles size={10} />
+                                                                    {castingSpellId === spell.id ? 'Casting' : 'Embers'}
+                                                                </button>
+                                                            )}
+                                                            {spell.is2024 && (
+                                                                <span className="text-[8px] bg-gold/20 text-gold-light px-1 py-0.5 rounded border border-gold/40 flex items-center gap-0.5 flex-shrink-0">
+                                                                    <Sparkles size={8} /> 2024
+                                                                </span>
+                                                            )}
+                                                        </div>
                                                     </div>
                                                 </div>
 

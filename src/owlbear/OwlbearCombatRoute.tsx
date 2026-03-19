@@ -53,7 +53,8 @@ export function OwlbearCombatRoute() {
                         <p className="mt-2 max-w-3xl text-sm text-stone-400">
                             Use Owlbear for maps and effects, then pull selected tokens into the DM Assistant combat engine.
                             Smoke & Specter!, Embers, and similar extensions remain untouched because this bridge only reads selection
-                            and writes to DM Assistant&apos;s own metadata namespace.
+                            and writes to DM Assistant&apos;s own metadata namespace. Spell actions with an Embers button can now dispatch
+                            mapped visual effects straight from the combat panel.
                         </p>
                     </div>
                     <div className="flex flex-wrap gap-3">

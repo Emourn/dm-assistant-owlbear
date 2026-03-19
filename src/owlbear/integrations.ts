@@ -1,5 +1,6 @@
 import OBR, { type Image, isImage } from '@owlbear-rodeo/sdk';
 import type { Character } from '../types/character';
+import type { Combatant } from '../types/combat';
 import { getLinkedCharacterData, type SmokeVisionProfile } from './shared';
 
 const EMBERS_APP_KEY = 'eu.armindo.embers';
@@ -116,6 +117,10 @@ function normalizeSpellName(spellName: string): string {
         .replace(/\s+/g, ' ');
 }
 
+export function isOwlbearIntegrationAvailable(): boolean {
+    return OBR.isAvailable;
+}
+
 export function getEmbersSpellId(spellName: string): string | null {
     const normalized = normalizeSpellName(spellName);
     const alias = EMBERS_ALIASES[normalized];
@@ -169,6 +174,16 @@ async function getSelectedImageItems(): Promise<Image[]> {
     return items.filter((item): item is Image => isImage(item));
 }
 
+async function getSceneImageById(itemId?: string): Promise<Image | null> {
+    if (!itemId) {
+        return null;
+    }
+
+    const items = await OBR.scene.items.getItems([itemId]);
+    const image = items.find((item): item is Image => isImage(item));
+    return image ?? null;
+}
+
 async function findLinkedCasterToken(characterId: string): Promise<Image | null> {
     const selected = await getSelectedImageItems();
     const selectedCaster = selected.find((item) => getLinkedCharacterData(item)?.characterId === characterId);
@@ -181,31 +196,48 @@ async function findLinkedCasterToken(characterId: string): Promise<Image | null>
     return linked && isImage(linked) ? linked : null;
 }
 
-export async function triggerEmbersSpellFromCharacter(character: Character, spellName: string): Promise<boolean> {
-    const embersSpellId = getEmbersSpellId(spellName);
-    if (!embersSpellId) {
-        await OBR.notification.show(`No Embers mapping found for ${spellName}.`, 'WARNING');
-        return false;
+async function findTokenForCombatant(combatant?: Combatant | null): Promise<Image | null> {
+    if (!combatant) {
+        return null;
     }
 
-    const caster = await findLinkedCasterToken(character.id);
-    const selected = await getSelectedImageItems();
-    const selectedTarget = selected.find((item) => item.id !== caster?.id) ?? selected[0] ?? caster ?? null;
+    const directItem = await getSceneImageById(combatant.monsterData?.owlbearItemId);
+    if (directItem) {
+        return directItem;
+    }
 
-    if (!caster && !selectedTarget) {
+    if (combatant.type === 'player' && combatant.sourceId) {
+        return findLinkedCasterToken(combatant.sourceId);
+    }
+
+    if (combatant.sourceId?.startsWith('owlbear:')) {
+        return getSceneImageById(combatant.sourceId.slice('owlbear:'.length));
+    }
+
+    return null;
+}
+
+async function sendEmbersEffect(
+    spellName: string,
+    embersSpellId: string,
+    caster: Image | null,
+    target: Image | null,
+): Promise<boolean> {
+    if (!caster && !target) {
         await OBR.notification.show('Select a target token or link this character to a token before sending an Embers effect.', 'WARNING');
         return false;
     }
 
     const playerId = await OBR.player.getId();
-    const effectProperties = caster && selectedTarget && caster.id !== selectedTarget.id
+    const anchor = target ?? caster;
+    const effectProperties = caster && target && caster.id !== target.id
         ? {
             copies: 1,
             source: caster.position,
-            destination: selectedTarget.position,
+            destination: target.position,
         }
         : {
-            position: (selectedTarget ?? caster)!.position,
+            position: anchor!.position,
         };
 
     await OBR.broadcast.sendMessage(
@@ -228,4 +260,49 @@ export async function triggerEmbersSpellFromCharacter(character: Character, spel
 
     await OBR.notification.show(`Sent ${spellName} to Embers.`, 'SUCCESS');
     return true;
+}
+
+export async function triggerEmbersSpellFromCharacter(character: Character, spellName: string): Promise<boolean> {
+    if (!OBR.isAvailable) {
+        return false;
+    }
+
+    const embersSpellId = getEmbersSpellId(spellName);
+    if (!embersSpellId) {
+        await OBR.notification.show(`No Embers mapping found for ${spellName}.`, 'WARNING');
+        return false;
+    }
+
+    const caster = await findLinkedCasterToken(character.id);
+    const selected = await getSelectedImageItems();
+    const selectedTarget = selected.find((item) => item.id !== caster?.id) ?? selected[0] ?? caster ?? null;
+
+    return sendEmbersEffect(spellName, embersSpellId, caster, selectedTarget);
+}
+
+export async function triggerEmbersSpellFromCombatant(
+    combatant: Combatant,
+    spellName: string,
+    targetCombatant?: Combatant | null,
+): Promise<boolean> {
+    if (!OBR.isAvailable) {
+        return false;
+    }
+
+    const embersSpellId = getEmbersSpellId(spellName);
+    if (!embersSpellId) {
+        await OBR.notification.show(`No Embers mapping found for ${spellName}.`, 'WARNING');
+        return false;
+    }
+
+    const caster = await findTokenForCombatant(combatant);
+    const explicitTarget = await findTokenForCombatant(targetCombatant);
+    const selected = await getSelectedImageItems();
+    const selectedTarget = explicitTarget
+        ?? selected.find((item) => item.id !== caster?.id)
+        ?? selected[0]
+        ?? caster
+        ?? null;
+
+    return sendEmbersEffect(spellName, embersSpellId, caster, selectedTarget);
 }

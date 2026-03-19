@@ -1,3 +1,4 @@
+import OBR from '@owlbear-rodeo/sdk';
 import { useState, useMemo, useEffect, useRef } from 'react';
 import { createPortal } from 'react-dom';
 import { useCombatStore } from '../../store/combatStore';
@@ -14,6 +15,7 @@ import { getSourceBadgeColor } from '../common/InfoTooltip';
 import { useAltKey } from '../../hooks/useAltKey';
 import { SpellSlotTracker } from './SpellSlotTracker';
 import { getMasteryProperty, hasMastery } from '../../engine/weaponMasteryEngine';
+import { getEmbersSpellId, triggerEmbersSpellFromCombatant } from '../../owlbear/integrations';
 
 // Tab icons map
 const TAB_ICONS: Record<string, any> = {
@@ -49,16 +51,18 @@ const ECONOMY_LABELS: Record<string, string> = {
 
 interface ActionPanelProps {
     combatant: Combatant;
+    selectedTarget?: Combatant | null;
     onActionClick?: (action: CombatAction) => void;
     onActionHover?: (action: CombatAction | null) => void;
 }
 
-export function ActionPanel({ combatant, onActionClick, onActionHover }: ActionPanelProps) {
+export function ActionPanel({ combatant, selectedTarget = null, onActionClick, onActionHover }: ActionPanelProps) {
     const characters = useCharacterStore(s => s.characters);
     const activeEncounter = useCombatStore(s => s.activeEncounter);
 
     const [activeTab, setActiveTab] = useState<string>('');
     const [hoveredAction, setHoveredAction] = useState<CombatAction | null>(null);
+    const [castingActionId, setCastingActionId] = useState<string | null>(null);
 
     const [dmOverride, setDmOverride] = useState(false);
     const hoveredElementRef = useRef<HTMLDivElement | null>(null);
@@ -69,6 +73,7 @@ export function ActionPanel({ combatant, onActionClick, onActionHover }: ActionP
 
         setHoveredAction(null);
         hoveredElementRef.current = null;
+        setCastingActionId(null);
     }, [combatant.id]);
 
     useEffect(() => {
@@ -136,6 +141,15 @@ export function ActionPanel({ combatant, onActionClick, onActionHover }: ActionP
     // ---- Handlers ----
     const handleActionClick = (action: CombatAction) => {
         onActionClick?.(action);
+    };
+
+    const handleTriggerEmbers = async (action: CombatAction) => {
+        setCastingActionId(action.id);
+        try {
+            await triggerEmbersSpellFromCombatant(combatant, action.name, selectedTarget);
+        } finally {
+            setCastingActionId((current) => current === action.id ? null : current);
+        }
     };
 
     const handleSavingThrow = (ability: string) => {
@@ -358,6 +372,12 @@ export function ActionPanel({ combatant, onActionClick, onActionHover }: ActionP
                 {/* Action Cards Grid */}
                 <div className="p-4">
                     {activeTab === 'Spells' && <SpellSlotTracker combatant={combatant} />}
+                    {activeTab === 'Spells' && OBR.isAvailable && (
+                        <div className="mb-3 rounded-lg border border-arcane/30 bg-arcane/8 px-3 py-2 text-[11px] text-stone-300">
+                            Spell actions with an <span className="font-black uppercase tracking-wider text-arcane-light">Embers</span> button can send their mapped visual effect to Owlbear.
+                            {selectedTarget ? ` ${selectedTarget.name} is the current combat target.` : ' Select a target token on the map, or target another combatant, before casting.'}
+                        </div>
+                    )}
                     {currentActions.length === 0 ? (
                         <div className="text-center text-stone-500 text-sm italic py-8">No actions in this category.</div>
                     ) : (
@@ -415,6 +435,12 @@ export function ActionPanel({ combatant, onActionClick, onActionHover }: ActionP
                                     }
                                 }
 
+                                const embersSpellId = OBR.isAvailable && action.category === 'Spells'
+                                    ? getEmbersSpellId(action.name)
+                                    : null;
+                                const canTriggerEmbers = Boolean(embersSpellId);
+                                const embersDisabled = (isRestricted && !dmOverride) || castingActionId === action.id;
+
                                 return (
                                     <div
                                         key={action.id}
@@ -434,77 +460,92 @@ export function ActionPanel({ combatant, onActionClick, onActionHover }: ActionP
                                             }
                                         }}
                                     >
-                                        <button
-                                            onClick={() => handleActionClick(action)}
-                                            disabled={isRestricted && !dmOverride}
-                                            className={`w-full text-left p-3 rounded-lg border transition-all duration-200 ${isRestricted
-                                                ? 'bg-stone-900/10 border-stone-800/50'
-                                                : 'bg-stone-800/30 backdrop-blur-md border-stone-700/50 hover:border-gold/50 hover:bg-stone-800/50 hover:shadow-[0_0_15px_rgba(217,119,6,0.1)] hover:-translate-y-0.5 active:translate-y-0'
-                                                }`}
-                                        >
-                                            <div className="flex items-start justify-between gap-2 mb-1">
-                                                <div className="flex items-center gap-2.5 truncate">
-                                                    <span className="text-lg">{action.icon}</span>
-                                                    <span className={`font-bold text-base leading-tight ${isRestricted ? 'text-stone-500' : 'text-parchment'}`}>{action.name}</span>
+                                        <div className="flex flex-col gap-2 sm:flex-row">
+                                            <button
+                                                onClick={() => handleActionClick(action)}
+                                                disabled={isRestricted && !dmOverride}
+                                                className={`w-full text-left p-3 rounded-lg border transition-all duration-200 ${isRestricted
+                                                    ? 'bg-stone-900/10 border-stone-800/50'
+                                                    : 'bg-stone-800/30 backdrop-blur-md border-stone-700/50 hover:border-gold/50 hover:bg-stone-800/50 hover:shadow-[0_0_15px_rgba(217,119,6,0.1)] hover:-translate-y-0.5 active:translate-y-0'
+                                                    }`}
+                                            >
+                                                <div className="flex items-start justify-between gap-2 mb-1">
+                                                    <div className="flex items-center gap-2.5 truncate">
+                                                        <span className="text-lg">{action.icon}</span>
+                                                        <span className={`font-bold text-base leading-tight ${isRestricted ? 'text-stone-500' : 'text-parchment'}`}>{action.name}</span>
+                                                    </div>
+                                                    <div className="flex items-center gap-1.5 flex-shrink-0">
+                                                        {isRestricted && (
+                                                            <span className="text-[8px] px-1.5 py-0.5 rounded bg-blood/10 text-blood border border-blood/30 font-black uppercase tracking-tighter">
+                                                                {restrictionReason}
+                                                            </span>
+                                                        )}
+                                                        {action.source && (
+                                                            <span className={`text-[10px] px-2 py-0.5 rounded border font-bold uppercase tracking-wider ${getSourceBadgeColor(action.source)}`}>
+                                                                {action.source}
+                                                            </span>
+                                                        )}
+                                                        <span className={`text-[10px] px-2 py-0.5 rounded border font-bold uppercase ${ECONOMY_COLORS[action.economy]}`}>{ECONOMY_LABELS[action.economy]}</span>
+                                                    </div>
                                                 </div>
-                                                <div className="flex items-center gap-1.5 flex-shrink-0">
-                                                    {isRestricted && (
-                                                        <span className="text-[8px] px-1.5 py-0.5 rounded bg-blood/10 text-blood border border-blood/30 font-black uppercase tracking-tighter">
-                                                            {restrictionReason}
-                                                        </span>
-                                                    )}
-                                                    {action.source && (
-                                                        <span className={`text-[10px] px-2 py-0.5 rounded border font-bold uppercase tracking-wider ${getSourceBadgeColor(action.source)}`}>
-                                                            {action.source}
-                                                        </span>
-                                                    )}
-                                                    <span className={`text-[10px] px-2 py-0.5 rounded border font-bold uppercase ${ECONOMY_COLORS[action.economy]}`}>{ECONOMY_LABELS[action.economy]}</span>
-                                                </div>
-                                            </div>
 
-                                            {action.requiresConcentration && combatant.concentratingOn && (
-                                                <div className="flex items-center gap-1.5 px-2 py-1 mb-2 rounded bg-amber-900/20 border border-amber-700/50 text-amber-500 animate-in slide-in-from-top-1 duration-200">
-                                                    <Info size={10} />
-                                                    <span className="text-[9px] font-black uppercase tracking-widest shadow-text">Warn: Already Concentrating on {combatant.concentratingOn.name}</span>
-                                                </div>
-                                            )}
+                                                {action.requiresConcentration && combatant.concentratingOn && (
+                                                    <div className="flex items-center gap-1.5 px-2 py-1 mb-2 rounded bg-amber-900/20 border border-amber-700/50 text-amber-500 animate-in slide-in-from-top-1 duration-200">
+                                                        <Info size={10} />
+                                                        <span className="text-[9px] font-black uppercase tracking-widest shadow-text">Warn: Already Concentrating on {combatant.concentratingOn.name}</span>
+                                                    </div>
+                                                )}
 
-                                            <div className="flex gap-2.5 mt-2">
-                                                {action.toHit !== undefined && <span className="text-xs text-arcane font-medium">+{action.toHit} hit</span>}
-                                                {action.damageNotation && <span className="text-xs text-blood font-medium">{action.damageNotation}</span>}
+                                                <div className="flex gap-2.5 mt-2">
+                                                    {action.toHit !== undefined && <span className="text-xs text-arcane font-medium">+{action.toHit} hit</span>}
+                                                    {action.damageNotation && <span className="text-xs text-blood font-medium">{action.damageNotation}</span>}
 
-                                                {/* Weapon Mastery Display */}
-                                                {action.sourceType === 'weapon' && action.weaponBaseName && (
-                                                    (() => {
-                                                        const char = combatant.type === 'player' ? characters.find(c => c.id === combatant.sourceId) : null;
-                                                        if (char && hasMastery(char, action.weaponBaseName)) {
-                                                            const mastery = getMasteryProperty(action.weaponBaseName);
-                                                            if (mastery) {
-                                                                return (
-                                                                    <div className="flex items-center gap-1 bg-gold/10 text-gold px-1.5 py-0.5 rounded border border-gold/30 animate-in fade-in zoom-in-95 duration-300 group/mastery relative">
-                                                                        <Zap size={10} className="text-gold" />
-                                                                        <span className="text-[9px] font-black uppercase tracking-widest">{mastery.name}</span>
+                                                    {/* Weapon Mastery Display */}
+                                                    {action.sourceType === 'weapon' && action.weaponBaseName && (
+                                                        (() => {
+                                                            const char = combatant.type === 'player' ? characters.find(c => c.id === combatant.sourceId) : null;
+                                                            if (char && hasMastery(char, action.weaponBaseName)) {
+                                                                const mastery = getMasteryProperty(action.weaponBaseName);
+                                                                if (mastery) {
+                                                                    return (
+                                                                        <div className="flex items-center gap-1 bg-gold/10 text-gold px-1.5 py-0.5 rounded border border-gold/30 animate-in fade-in zoom-in-95 duration-300 group/mastery relative">
+                                                                            <Zap size={10} className="text-gold" />
+                                                                            <span className="text-[9px] font-black uppercase tracking-widest">{mastery.name}</span>
 
-                                                                        {/* Tooltip for the mastery property */}
-                                                                        <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 hidden group-hover/mastery:block w-48 p-2 bg-stone-900 border border-gold/40 rounded shadow-xl z-50 pointer-events-none">
-                                                                            <p className="text-[10px] text-parchment leading-tight">{mastery.description}</p>
-                                                                            <div className="absolute top-full left-1/2 -translate-x-1/2 border-8 border-transparent border-t-gold/40" />
+                                                                            {/* Tooltip for the mastery property */}
+                                                                            <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 hidden group-hover/mastery:block w-48 p-2 bg-stone-900 border border-gold/40 rounded shadow-xl z-50 pointer-events-none">
+                                                                                <p className="text-[10px] text-parchment leading-tight">{mastery.description}</p>
+                                                                                <div className="absolute top-full left-1/2 -translate-x-1/2 border-8 border-transparent border-t-gold/40" />
+                                                                            </div>
                                                                         </div>
-                                                                    </div>
-                                                                );
+                                                                    );
+                                                                }
                                                             }
-                                                        }
-                                                        return null;
-                                                    })()
-                                                )}
+                                                            return null;
+                                                        })()
+                                                    )}
 
-                                                {action.attacksPerAction && action.attacksPerAction > 1 && !isRestricted && (
-                                                    <span className="text-[10px] bg-gold/10 text-gold px-1.5 py-0.5 rounded font-black uppercase tracking-tighter self-center ml-auto">
-                                                        {action.attacksPerAction} Attacks
-                                                    </span>
-                                                )}
-                                            </div>
-                                        </button>
+                                                    {action.attacksPerAction && action.attacksPerAction > 1 && !isRestricted && (
+                                                        <span className="text-[10px] bg-gold/10 text-gold px-1.5 py-0.5 rounded font-black uppercase tracking-tighter self-center ml-auto">
+                                                            {action.attacksPerAction} Attacks
+                                                        </span>
+                                                    )}
+                                                </div>
+                                            </button>
+
+                                            {canTriggerEmbers && (
+                                                <button
+                                                    type="button"
+                                                    onClick={() => void handleTriggerEmbers(action)}
+                                                    disabled={embersDisabled}
+                                                    className="flex min-h-[76px] items-center justify-center gap-2 rounded-lg border border-arcane/40 bg-arcane/12 px-3 py-3 text-[10px] font-black uppercase tracking-[0.2em] text-arcane-light transition-colors hover:border-arcane hover:bg-arcane/20 disabled:cursor-wait disabled:opacity-60 sm:w-[110px] sm:flex-col"
+                                                    title={`Send ${action.name} to Embers`}
+                                                >
+                                                    <Sparkles size={14} />
+                                                    <span>{castingActionId === action.id ? 'Casting' : 'Embers FX'}</span>
+                                                </button>
+                                            )}
+                                        </div>
                                     </div>
                                 );
                             })}
