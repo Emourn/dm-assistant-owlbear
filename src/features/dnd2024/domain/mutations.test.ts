@@ -1,6 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import { createSampleCharacterCollection } from '../../../extension/domain/characterRecords';
 import {
+    applyRestRecovery,
     setInitiativeAdjustment,
     setProficiencyBonusOverride,
     updateDeathSaves,
@@ -38,5 +39,50 @@ describe('sheet runtime mutations', () => {
 
         expect(adjusted.proficiencyBonusOverride).toBe(4);
         expect(adjusted.rollAdjustments.initiative).toBe(2);
+    });
+
+    it('recovers only short-rest modeled resources on a short rest', () => {
+        const spent = {
+            ...baseSheet,
+            resources: baseSheet.resources.map((resource) =>
+                resource.id.endsWith('channel-divinity')
+                    ? { ...resource, current: 0 }
+                    : resource.id.endsWith('hit-dice')
+                        ? { ...resource, current: 1 }
+                        : resource),
+            spellcasting: {
+                ...baseSheet.spellcasting!,
+                slots: baseSheet.spellcasting!.slots.map((slot) =>
+                    slot.id.endsWith('slot-1') ? { ...slot, current: 1 } : slot),
+            },
+        };
+
+        const rested = applyRestRecovery(spent, 'short');
+
+        expect(rested.resources.find((resource) => resource.id.endsWith('channel-divinity'))?.current).toBe(2);
+        expect(rested.resources.find((resource) => resource.id.endsWith('hit-dice'))?.current).toBe(1);
+        expect(rested.spellcasting?.slots.find((slot) => slot.id.endsWith('slot-1'))?.current).toBe(1);
+    });
+
+    it('recovers long-rest modeled resources and spell slots on a long rest', () => {
+        const spent = {
+            ...baseSheet,
+            resources: baseSheet.resources.map((resource) =>
+                resource.id.endsWith('channel-divinity')
+                    ? { ...resource, current: 0 }
+                    : resource.id.endsWith('hit-dice')
+                        ? { ...resource, current: 1 }
+                        : resource),
+            spellcasting: {
+                ...baseSheet.spellcasting!,
+                slots: baseSheet.spellcasting!.slots.map((slot) => ({ ...slot, current: 0 })),
+            },
+        };
+
+        const rested = applyRestRecovery(spent, 'long');
+
+        expect(rested.resources.find((resource) => resource.id.endsWith('channel-divinity'))?.current).toBe(2);
+        expect(rested.resources.find((resource) => resource.id.endsWith('hit-dice'))?.current).toBe(1);
+        expect(rested.spellcasting?.slots.every((slot) => slot.current === slot.max)).toBe(true);
     });
 });

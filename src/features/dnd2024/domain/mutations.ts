@@ -4,6 +4,21 @@ function clamp(value: number, min: number, max: number): number {
     return Math.min(max, Math.max(min, value));
 }
 
+function shouldRecoverResource(
+    kind: 'short' | 'long',
+    resource: Phase1CharacterSheet['resources'][number],
+): boolean {
+    if (resource.kind !== 'resource' && resource.kind !== 'spell-slot') {
+        return false;
+    }
+
+    if (kind === 'short') {
+        return resource.resetOn === 'short';
+    }
+
+    return resource.resetOn === 'short' || resource.resetOn === 'long';
+}
+
 export function updateSheetResourceCounter(
     sheet: Phase1CharacterSheet,
     resourceId: string,
@@ -73,5 +88,39 @@ export function setInitiativeAdjustment(
             ...sheet.rollAdjustments,
             initiative: value,
         },
+    };
+}
+
+export function applyRestRecovery(
+    sheet: Phase1CharacterSheet,
+    kind: 'short' | 'long',
+): Phase1CharacterSheet {
+    const resources = sheet.resources.map((resource) =>
+        shouldRecoverResource(kind, resource)
+            ? {
+                ...resource,
+                current: resource.max,
+            }
+            : resource,
+    );
+
+    const spellcasting = sheet.spellcasting
+        ? {
+            ...sheet.spellcasting,
+            slots: sheet.spellcasting.slots.map((slot) =>
+                shouldRecoverResource(kind, slot)
+                    ? {
+                        ...slot,
+                        current: slot.max,
+                    }
+                    : slot,
+            ),
+        }
+        : null;
+
+    return {
+        ...sheet,
+        resources,
+        spellcasting,
     };
 }

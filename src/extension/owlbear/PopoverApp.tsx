@@ -3,6 +3,7 @@ import OBR from '@owlbear-rodeo/sdk';
 import { spendActionResource } from '../../features/dnd2024/domain/actionAutomation';
 import { buildInitiativeRoll } from '../../features/dnd2024/domain/sheet';
 import {
+    applyRestRecovery,
     setInitiativeAdjustment,
     setProficiencyBonusOverride,
     updateDeathSaves,
@@ -302,6 +303,32 @@ export function PopoverApp({ surface = 'popover' }: { surface?: 'popover' | 'pan
         }
     }, [characterState, runtime]);
 
+    const handleApplyRest = useCallback(async (kind: 'short' | 'long') => {
+        const activeSheet = characterState?.activeCharacter?.sheet;
+        const canManage = canManageSheetRuntime(
+            runtime?.role ?? null,
+            characterState?.assignedCharacterId ?? null,
+            activeSheet?.id ?? null,
+        );
+        if (!activeSheet || !canManage) {
+            return;
+        }
+
+        setIsUpdatingRuntime(true);
+        try {
+            const next = await updateCharacterSheetWith(
+                activeSheet.id,
+                (sheet) => applyRestRecovery(sheet, kind),
+            );
+            if (next) {
+                setCharacterState(next);
+                setLastRoll(null);
+            }
+        } finally {
+            setIsUpdatingRuntime(false);
+        }
+    }, [characterState, runtime]);
+
     const handleSaveOverrides = useCallback(async (nextOverrides: {
         proficiencyBonusOverride: number | null;
         initiativeAdjustment: number;
@@ -405,6 +432,7 @@ export function PopoverApp({ surface = 'popover' }: { surface?: 'popover' | 'pan
             onSaveCharacter={handleSaveCharacter}
             onAdjustResource={handleAdjustResource}
             onAdjustDeathSave={handleAdjustDeathSave}
+            onApplyRest={handleApplyRest}
             onSpendActionResource={handleSpendActionResource}
             onSaveOverrides={handleSaveOverrides}
             onLinkCharacter={handleLinkCharacter}

@@ -6,6 +6,7 @@ interface ResourceRuntimePanelProps {
     isUpdating: boolean;
     onAdjustResource: (resourceId: string, delta: number) => Promise<void>;
     onAdjustDeathSave: (kind: 'successes' | 'failures', delta: number) => Promise<void>;
+    onApplyRest: (kind: 'short' | 'long') => Promise<void>;
 }
 
 function CounterButton({
@@ -35,6 +36,7 @@ export function ResourceRuntimePanel({
     isUpdating,
     onAdjustResource,
     onAdjustDeathSave,
+    onApplyRest,
 }: ResourceRuntimePanelProps) {
     const runtimeResources = [...sheet.resources, ...(sheet.spellcasting?.slots ?? [])];
 
@@ -49,6 +51,27 @@ export function ResourceRuntimePanel({
             </div>
 
             <div className="mt-4 space-y-3">
+                <div className="flex flex-wrap gap-2 rounded-2xl border border-stone-800 bg-stone-900/60 p-4">
+                    <button
+                        type="button"
+                        onClick={() => void onApplyRest('short')}
+                        disabled={!canManage || isUpdating}
+                        className="rounded-full border border-emerald-400/35 bg-emerald-500/10 px-3 py-1.5 text-xs font-semibold text-emerald-200 transition hover:border-emerald-300/60 disabled:cursor-not-allowed disabled:opacity-50"
+                    >
+                        Apply short rest recovery
+                    </button>
+                    <button
+                        type="button"
+                        onClick={() => void onApplyRest('long')}
+                        disabled={!canManage || isUpdating}
+                        className="rounded-full border border-sky-400/35 bg-sky-500/10 px-3 py-1.5 text-xs font-semibold text-sky-200 transition hover:border-sky-300/60 disabled:cursor-not-allowed disabled:opacity-50"
+                    >
+                        Apply long rest recovery
+                    </button>
+                    <div className="text-xs text-stone-500">
+                        Recovers modeled `resource` counters and spell slots only. HP, temp HP, death saves, and hit dice stay manual in this slice.
+                    </div>
+                </div>
                 {runtimeResources.map((resource) => (
                     <div
                         key={resource.id}

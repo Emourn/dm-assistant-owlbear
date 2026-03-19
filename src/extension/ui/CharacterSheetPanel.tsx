@@ -37,6 +37,7 @@ interface CharacterSheetPanelProps {
     onSave: (sheet: Phase1CharacterSheet) => Promise<void>;
     onAdjustResource: (resourceId: string, delta: number) => Promise<void>;
     onAdjustDeathSave: (kind: 'successes' | 'failures', delta: number) => Promise<void>;
+    onApplyRest: (kind: 'short' | 'long') => Promise<void>;
     onSpendActionResource: (actionId: string) => Promise<void>;
     onSaveOverrides: (next: { proficiencyBonusOverride: number | null; initiativeAdjustment: number }) => Promise<void>;
     onLink: (sheet: Phase1CharacterSheet) => Promise<void>;
@@ -118,6 +119,7 @@ export function CharacterSheetPanel({
     onSave,
     onAdjustResource,
     onAdjustDeathSave,
+    onApplyRest,
     onSpendActionResource,
     onSaveOverrides,
     onLink,
@@ -420,6 +422,7 @@ export function CharacterSheetPanel({
                 isUpdating={isUpdatingRuntime}
                 onAdjustResource={onAdjustResource}
                 onAdjustDeathSave={onAdjustDeathSave}
+                onApplyRest={onApplyRest}
             />
 
             <OverridePanel
