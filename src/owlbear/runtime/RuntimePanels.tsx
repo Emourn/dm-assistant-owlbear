@@ -1,8 +1,9 @@
-import { useMemo, useState } from 'react';
+import { useCallback, useEffect, useMemo, useState } from 'react';
 import OBR, { type Player } from '@owlbear-rodeo/sdk';
 import {
     BookOpen,
     CalendarClock,
+    Copy,
     FileUp,
     Link2,
     Moon,
@@ -10,17 +11,28 @@ import {
     ScrollText,
     Sparkles,
     Swords,
+    Trash2,
     Users,
     Plus,
+    RefreshCw,
+    Shield,
     SunMoon,
     TentTree,
 } from 'lucide-react';
 import { useCampaignStore } from '../../store/campaignStore';
 import { useCharacterStore } from '../../store/characterStore';
 import type { Character } from '../../types/character';
-import { OwlbearCombatRoute } from '../OwlbearCombatRoute';
-import { OwlbearRoomPage } from '../OwlbearRoomPage';
-import { type OwlbearRoomState } from '../shared';
+import { useCombatStore } from '../../store/combatStore';
+import type { Combatant } from '../../types/combat';
+import {
+    getSelectedSceneItems,
+    importCurrentSelectionIntoCombat,
+    linkCharacterToCurrentSelection,
+    publishRoomStateFromStores,
+    setPlayerAssignment,
+} from '../bridge';
+import { deriveSmokeVisionProfile } from '../integrations';
+import { getRoomStateFromMetadata, type OwlbearRoomState } from '../shared';
 import { getPanelLabel, type WorkspacePanel } from './runtimeTypes';
 
 export function HeaderAction({
@@ -216,8 +228,8 @@ export function WorkspaceDrawer({
                 {activePanel === 'roster' && (
                     <RosterWorkspace onImportPdf={onImportPdf} onCreateCharacter={onCreateCharacter} onEditCharacter={onEditCharacter} />
                 )}
-                {activePanel === 'combat' && <OwlbearCombatRoute />}
-                {activePanel === 'sync' && <OwlbearRoomPage />}
+                {activePanel === 'combat' && <CombatWorkspace />}
+                {activePanel === 'sync' && <SyncWorkspace />}
                 {activePanel === 'camp' && <CampWorkspace />}
                 {activePanel === 'notes' && <NotesWorkspace />}
                 {activePanel === 'campaigns' && <CampaignWorkspace />}
@@ -270,6 +282,493 @@ function RosterWorkspace({
                             <CompactStat label="HP" value={`${character.currentHp}/${character.maxHp}`} />
                             <CompactStat label="AC" value={String(character.ac)} />
                             <CompactStat label="Spells" value={String(character.spells.length)} />
+                        </div>
+                    </div>
+                ))}
+            </div>
+        </div>
+    );
+}
+
+function SyncWorkspace() {
+    const characters = useCharacterStore((state) => state.characters);
+    const [players, setPlayers] = useState<Player[]>([]);
+    const [roomState, setRoomState] = useState<OwlbearRoomState | null>(null);
+    const [selectedCharacterId, setSelectedCharacterId] = useState('');
+    const [selectionCount, setSelectionCount] = useState(0);
+    const [isBusy, setIsBusy] = useState(false);
+
+    const playerRows = useMemo(() => players.filter((player) => player.role === 'PLAYER'), [players]);
+    const selectedCharacter = useMemo(
+        () => characters.find((entry) => entry.id === selectedCharacterId) ?? null,
+        [characters, selectedCharacterId],
+    );
+    const smokeVisionProfile = useMemo(
+        () => (selectedCharacter ? deriveSmokeVisionProfile(selectedCharacter) : null),
+        [selectedCharacter],
+    );
+
+    const refresh = useCallback(async () => {
+        const [partyPlayers, metadata, selectedItems] = await Promise.all([
+            OBR.party.getPlayers(),
+            OBR.room.getMetadata(),
+            getSelectedSceneItems(),
+        ]);
+
+        setPlayers(partyPlayers);
+        setRoomState(getRoomStateFromMetadata(metadata));
+        setSelectionCount(selectedItems.length);
+        if (!selectedCharacterId && characters[0]) {
+            setSelectedCharacterId(characters[0].id);
+        }
+    }, [characters, selectedCharacterId]);
+
+    useEffect(() => {
+        if (!OBR.isAvailable) {
+            return;
+        }
+
+        let cleanups: Array<() => void> = [];
+        const setup = async () => {
+            await refresh();
+            cleanups = [
+                OBR.party.onChange((partyPlayers) => setPlayers(partyPlayers)),
+                OBR.room.onMetadataChange((metadata) => setRoomState(getRoomStateFromMetadata(metadata))),
+                OBR.player.onChange(() => {
+                    void refresh();
+                }),
+            ];
+        };
+
+        void setup();
+        return () => {
+            cleanups.forEach((cleanup) => cleanup());
+        };
+    }, [refresh]);
+
+    const handlePublish = async () => {
+        setIsBusy(true);
+        try {
+            const next = await publishRoomStateFromStores();
+            setRoomState(next);
+            await OBR.notification.show('Published DM Assistant room state to Owlbear.', 'SUCCESS');
+        } finally {
+            setIsBusy(false);
+        }
+    };
+
+    const handleLinkSelection = async () => {
+        const character = characters.find((entry) => entry.id === selectedCharacterId);
+        if (!character) {
+            await OBR.notification.show('Choose a character first.', 'WARNING');
+            return;
+        }
+
+        setIsBusy(true);
+        try {
+            const linkedCount = await linkCharacterToCurrentSelection(character);
+            if (linkedCount === 0) {
+                await OBR.notification.show('Select one or more Owlbear tokens first.', 'WARNING');
+                return;
+            }
+
+            await refresh();
+            await OBR.notification.show(`Linked ${linkedCount} token${linkedCount === 1 ? '' : 's'} to ${character.name}.`, 'SUCCESS');
+        } finally {
+            setIsBusy(false);
+        }
+    };
+
+    const handleAssign = async (playerId: string, characterId: string | null) => {
+        setIsBusy(true);
+        try {
+            const next = await setPlayerAssignment(playerId, characterId);
+            setRoomState(next);
+            await OBR.notification.show(characterId ? 'Updated player assignment.' : 'Cleared player assignment.', 'SUCCESS');
+        } finally {
+            setIsBusy(false);
+        }
+    };
+
+    const handleImportToCombat = async () => {
+        setIsBusy(true);
+        try {
+            const count = await importCurrentSelectionIntoCombat('workbench');
+            if (count === 0) {
+                await OBR.notification.show('Select one or more Owlbear tokens first.', 'WARNING');
+                return;
+            }
+
+            await OBR.notification.show(`Imported ${count} token${count === 1 ? '' : 's'} into combat.`, 'SUCCESS');
+        } finally {
+            setIsBusy(false);
+        }
+    };
+
+    const handleCopySmokeProfile = async () => {
+        if (!selectedCharacter || !smokeVisionProfile) {
+            await OBR.notification.show('Choose a character first.', 'WARNING');
+            return;
+        }
+
+        const notes = smokeVisionProfile.notes.length ? ` | Notes: ${smokeVisionProfile.notes.join('; ')}` : '';
+        await navigator.clipboard.writeText(
+            `${selectedCharacter.name}: range ${smokeVisionProfile.range} ft | greyscale ${smokeVisionProfile.greyscale ? 'yes' : 'no'} | falloff ${smokeVisionProfile.falloff}${notes}`,
+        );
+        await OBR.notification.show('Copied the Smoke vision profile.', 'SUCCESS');
+    };
+
+    return (
+        <div className="space-y-4">
+            <div className="rounded-2xl border border-stone-800 bg-stone-900/70 p-4">
+                <div className="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
+                    <div>
+                        <div className="flex items-center gap-2 text-gold">
+                            <Shield size={16} />
+                            <div className="text-[11px] font-black uppercase tracking-[0.22em]">Sync and linking</div>
+                        </div>
+                        <div className="mt-2 font-cinzel text-2xl font-bold text-parchment">Room state and token ownership</div>
+                    </div>
+                    <div className="flex flex-wrap gap-2">
+                        <HeaderAction icon={RefreshCw} label="Publish" onClick={() => void handlePublish()} disabled={isBusy} />
+                        <HeaderAction icon={Swords} label="To Combat" onClick={() => void handleImportToCombat()} disabled={isBusy} accent />
+                    </div>
+                </div>
+                <div className="mt-4 grid gap-2 sm:grid-cols-4">
+                    <CompactStat label="Selection" value={`${selectionCount} token${selectionCount === 1 ? '' : 's'}`} />
+                    <CompactStat label="Players" value={String(playerRows.length)} />
+                    <CompactStat label="Published" value={String(roomState?.characters.length ?? characters.length)} />
+                    <CompactStat label="Assignments" value={String(Object.keys(roomState?.playerAssignments ?? {}).length)} />
+                </div>
+            </div>
+
+            <div className="grid gap-4 xl:grid-cols-[1.05fr_0.95fr]">
+                <div className="rounded-2xl border border-stone-800 bg-stone-900/70 p-4">
+                    <div className="text-[11px] font-black uppercase tracking-[0.22em] text-emerald-300">Link selection</div>
+                    <div className="mt-3 grid gap-3 lg:grid-cols-[minmax(0,1fr)_auto]">
+                        <select
+                            value={selectedCharacterId}
+                            onChange={(event) => setSelectedCharacterId(event.target.value)}
+                            className="rounded-2xl border border-stone-700 bg-stone-950 px-4 py-3 text-sm text-stone-100 outline-none transition-colors focus:border-gold"
+                        >
+                            <option value="">Choose a character</option>
+                            {characters.map((character) => (
+                                <option key={character.id} value={character.id}>
+                                    {character.name || 'Unnamed'} - Lv.{character.level} {character.className || 'Adventurer'}
+                                </option>
+                            ))}
+                        </select>
+                        <button
+                            type="button"
+                            onClick={() => void handleLinkSelection()}
+                            disabled={!selectedCharacterId || isBusy}
+                            className="rounded-2xl bg-gold px-5 py-3 text-sm font-bold text-stone-950 transition-colors hover:bg-yellow-400 disabled:cursor-not-allowed disabled:opacity-50"
+                        >
+                            Link Selection
+                        </button>
+                    </div>
+                    <div className="mt-4 rounded-2xl border border-emerald-500/20 bg-emerald-500/5 p-4 text-sm leading-relaxed text-stone-300">
+                        DM Assistant only writes under its own metadata namespace, so Smoke and Spectre!, Embers, and Owlbear map features stay isolated.
+                    </div>
+
+                    {selectedCharacter && smokeVisionProfile && (
+                        <div className="mt-4 rounded-2xl border border-sky-500/20 bg-sky-500/5 p-4">
+                            <div className="flex items-center justify-between gap-3">
+                                <div>
+                                    <div className="text-[10px] font-black uppercase tracking-[0.22em] text-sky-300">Smoke profile</div>
+                                    <div className="mt-2 text-sm font-semibold text-stone-100">{selectedCharacter.name}</div>
+                                </div>
+                                <button
+                                    type="button"
+                                    onClick={() => void handleCopySmokeProfile()}
+                                    className="inline-flex items-center gap-2 rounded-full border border-stone-700 bg-stone-950 px-3 py-1.5 text-[11px] font-black uppercase tracking-[0.16em] text-stone-100 transition-colors hover:border-sky-400/40 hover:text-sky-200"
+                                >
+                                    <Copy size={12} />
+                                    Copy
+                                </button>
+                            </div>
+                            <div className="mt-3 grid gap-2 sm:grid-cols-3">
+                                <CompactStat label="Range" value={`${smokeVisionProfile.range} ft`} />
+                                <CompactStat label="Greyscale" value={smokeVisionProfile.greyscale ? 'Yes' : 'No'} />
+                                <CompactStat label="Falloff" value={String(smokeVisionProfile.falloff)} />
+                            </div>
+                        </div>
+                    )}
+                </div>
+
+                <div className="rounded-2xl border border-stone-800 bg-stone-900/70 p-4">
+                    <div className="flex items-center gap-2 text-gold">
+                        <Users size={16} />
+                        <div className="text-[11px] font-black uppercase tracking-[0.22em]">Player assignments</div>
+                    </div>
+                    <div className="mt-4 space-y-3">
+                        {playerRows.length === 0 && (
+                            <div className="rounded-2xl border border-dashed border-stone-800 p-4 text-sm text-stone-500">
+                                No Owlbear players are connected right now.
+                            </div>
+                        )}
+                        {playerRows.map((player) => (
+                            <div key={player.id} className="rounded-2xl border border-stone-800 bg-stone-950/70 p-3">
+                                <div className="flex items-center justify-between gap-3">
+                                    <div className="min-w-0">
+                                        <div className="truncate text-sm font-semibold text-stone-100">{player.name}</div>
+                                        <div className="mt-1 text-[11px] uppercase tracking-[0.18em] text-stone-500">{player.id.slice(0, 8)}</div>
+                                    </div>
+                                    <div className="h-3 w-3 rounded-full" style={{ backgroundColor: player.color }} />
+                                </div>
+                                <select
+                                    value={roomState?.playerAssignments[player.id] ?? ''}
+                                    onChange={(event) => {
+                                        void handleAssign(player.id, event.target.value || null);
+                                    }}
+                                    className="mt-3 w-full rounded-xl border border-stone-700 bg-stone-950 px-3 py-2.5 text-sm text-stone-100 outline-none focus:border-gold"
+                                >
+                                    <option value="">No assigned character</option>
+                                    {characters.map((character) => (
+                                        <option key={character.id} value={character.id}>
+                                            {character.name || 'Unnamed'} - Lv.{character.level} {character.className || 'Adventurer'}
+                                        </option>
+                                    ))}
+                                </select>
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            </div>
+
+            <div className="grid gap-3 md:grid-cols-2 xl:grid-cols-3">
+                {(roomState?.characters ?? []).map((character) => (
+                    <div key={character.id} className="rounded-2xl border border-stone-800 bg-stone-900/60 p-4">
+                        <div className="flex items-start justify-between gap-3">
+                            <div>
+                                <div className="font-cinzel text-xl font-bold text-parchment">{character.name || 'Unnamed'}</div>
+                                <div className="mt-1 text-sm text-stone-400">
+                                    Lv.{character.level} {character.className || 'Adventurer'}
+                                </div>
+                            </div>
+                            <span className="rounded-full border border-gold/30 bg-gold/10 px-2.5 py-1 text-[11px] font-black uppercase tracking-[0.18em] text-gold">
+                                {character.linkedTokenIds.length} token{character.linkedTokenIds.length === 1 ? '' : 's'}
+                            </span>
+                        </div>
+                        <div className="mt-4 flex items-center justify-between text-sm text-stone-400">
+                            <span>HP {character.currentHp}/{character.maxHp}</span>
+                            <span>AC {character.ac}</span>
+                        </div>
+                    </div>
+                ))}
+            </div>
+        </div>
+    );
+}
+
+function CombatWorkspace() {
+    const characters = useCharacterStore((state) => state.characters);
+    const activeCampaignId = useCampaignStore((state) => state.activeCampaignId);
+    const campaigns = useCampaignStore((state) => state.campaigns);
+    const activeEncounter = useCombatStore((state) => state.activeEncounter);
+    const startEncounter = useCombatStore((state) => state.startEncounter);
+    const completeSetup = useCombatStore((state) => state.completeSetup);
+    const skipMapSetup = useCombatStore((state) => state.skipMapSetup);
+    const cancelEncounter = useCombatStore((state) => state.cancelEncounter);
+    const endEncounter = useCombatStore((state) => state.endEncounter);
+    const clearCombatants = useCombatStore((state) => state.clearCombatants);
+    const removeCombatant = useCombatStore((state) => state.removeCombatant);
+    const rollAllInitiative = useCombatStore((state) => state.rollAllInitiative);
+    const beginCombat = useCombatStore((state) => state.beginCombat);
+    const nextTurn = useCombatStore((state) => state.nextTurn);
+    const setInitiative = useCombatStore((state) => state.setInitiative);
+    const damageCombatant = useCombatStore((state) => state.damageCombatant);
+    const healCombatant = useCombatStore((state) => state.healCombatant);
+    const [title, setTitle] = useState('');
+    const [isBusy, setIsBusy] = useState(false);
+
+    const activeCampaign = campaigns.find((campaign) => campaign.id === activeCampaignId) ?? null;
+    const activeCombatant = activeEncounter?.combatants.find((combatant) => combatant.id === activeEncounter.activeCombatantId) ?? null;
+    const partyLevel = activeCampaign
+        ? characters
+            .filter((character) => activeCampaign.partyIds.includes(character.id))
+            .reduce((sum, character) => sum + character.level, 0)
+        : 0;
+
+    const handleCreateEncounter = async () => {
+        const encounterTitle = title.trim() || 'Owlbear Encounter';
+        startEncounter(encounterTitle, [], activeCampaignId || undefined);
+        completeSetup();
+        skipMapSetup();
+        setTitle('');
+        await OBR.notification.show(`Created ${encounterTitle}.`, 'SUCCESS');
+    };
+
+    const handleImportSelection = async () => {
+        setIsBusy(true);
+        try {
+            const count = await importCurrentSelectionIntoCombat('workbench');
+            if (count === 0) {
+                await OBR.notification.show('Select one or more Owlbear tokens first.', 'WARNING');
+                return;
+            }
+            await OBR.notification.show(`Imported ${count} token${count === 1 ? '' : 's'} into combat.`, 'SUCCESS');
+        } finally {
+            setIsBusy(false);
+        }
+    };
+
+    const handleRemoveCombatant = async (combatant: Combatant) => {
+        removeCombatant(combatant.id);
+        await OBR.notification.show(`Removed ${combatant.name} from the encounter.`, 'SUCCESS');
+    };
+
+    if (!activeEncounter) {
+        return (
+            <div className="space-y-4">
+                <div className="rounded-2xl border border-stone-800 bg-stone-900/70 p-4">
+                    <div className="flex items-center gap-2 text-gold">
+                        <Swords size={16} />
+                        <div className="text-[11px] font-black uppercase tracking-[0.22em]">Combat staging</div>
+                    </div>
+                    <div className="mt-4 grid gap-3 lg:grid-cols-[minmax(0,1fr)_auto_auto]">
+                        <input
+                            value={title}
+                            onChange={(event) => setTitle(event.target.value)}
+                            placeholder="Encounter title"
+                            className="rounded-2xl border border-stone-700 bg-stone-950 px-4 py-3 text-sm text-stone-100 outline-none transition-colors focus:border-gold"
+                        />
+                        <button
+                            type="button"
+                            onClick={() => void handleCreateEncounter()}
+                            className="rounded-2xl border border-stone-700 bg-stone-950 px-4 py-3 text-sm font-semibold text-stone-100 transition-colors hover:border-sky-400/20 hover:text-sky-100"
+                        >
+                            Start Empty
+                        </button>
+                        <button
+                            type="button"
+                            onClick={() => void handleImportSelection()}
+                            disabled={isBusy}
+                            className="rounded-2xl bg-gold px-4 py-3 text-sm font-bold text-stone-950 transition-colors hover:bg-yellow-400 disabled:cursor-not-allowed disabled:opacity-50"
+                        >
+                            Import Selected
+                        </button>
+                    </div>
+                </div>
+                <div className="grid gap-3 sm:grid-cols-3">
+                    <CompactStat label="Active campaign" value={activeCampaign?.title || 'None'} />
+                    <CompactStat label="Party level sum" value={String(partyLevel)} />
+                    <CompactStat label="Map mode" value="Owlbear-owned" />
+                </div>
+            </div>
+        );
+    }
+
+    return (
+        <div className="space-y-4">
+            <div className="rounded-2xl border border-stone-800 bg-stone-900/70 p-4">
+                <div className="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
+                    <div>
+                        <div className="flex items-center gap-2 text-gold">
+                            <Swords size={16} />
+                            <div className="text-[11px] font-black uppercase tracking-[0.22em]">Combat control</div>
+                        </div>
+                        <div className="mt-2 font-cinzel text-2xl font-bold text-parchment">{activeEncounter.title}</div>
+                    </div>
+                    <div className="flex flex-wrap gap-2">
+                        <HeaderAction icon={Swords} label="Import Selected" onClick={() => void handleImportSelection()} disabled={isBusy} accent />
+                        <HeaderAction icon={RefreshCw} label="Roll Init" onClick={rollAllInitiative} />
+                        <HeaderAction icon={Sparkles} label={activeEncounter.isActive ? 'Next Turn' : 'Begin'} onClick={activeEncounter.isActive ? nextTurn : beginCombat} />
+                        <HeaderAction icon={Trash2} label={activeEncounter.isActive ? 'End' : 'Discard'} onClick={activeEncounter.isActive ? endEncounter : cancelEncounter} />
+                    </div>
+                </div>
+                <div className="mt-4 grid gap-2 sm:grid-cols-4">
+                    <CompactStat label="Round" value={String(activeEncounter.round)} />
+                    <CompactStat label="Combatants" value={String(activeEncounter.combatants.length)} />
+                    <CompactStat label="State" value={activeEncounter.isActive ? 'Active' : 'Preparing'} />
+                    <CompactStat label="Current turn" value={activeCombatant?.name || 'None'} />
+                </div>
+            </div>
+
+            {activeCombatant && (
+                <div className="rounded-2xl border border-sky-500/20 bg-sky-500/5 p-4">
+                    <div className="text-[10px] font-black uppercase tracking-[0.22em] text-sky-300">Current turn</div>
+                    <div className="mt-2 flex flex-wrap items-center justify-between gap-3">
+                        <div>
+                            <div className="font-cinzel text-2xl font-bold text-parchment">{activeCombatant.name}</div>
+                            <div className="mt-1 text-sm text-stone-400">
+                                HP {activeCombatant.currentHp}/{activeCombatant.maxHp} - Init {activeCombatant.initiativeScore ?? '-'}
+                            </div>
+                        </div>
+                        <div className="flex gap-2">
+                            <button
+                                type="button"
+                                onClick={() => damageCombatant(activeCombatant.id, 5)}
+                                className="rounded-full border border-stone-700 bg-stone-950 px-3 py-2 text-[11px] font-black uppercase tracking-[0.16em] text-stone-100 transition-colors hover:border-red-400/30 hover:text-red-200"
+                            >
+                                Damage 5
+                            </button>
+                            <button
+                                type="button"
+                                onClick={() => healCombatant(activeCombatant.id, 5)}
+                                className="rounded-full border border-stone-700 bg-stone-950 px-3 py-2 text-[11px] font-black uppercase tracking-[0.16em] text-stone-100 transition-colors hover:border-emerald-400/30 hover:text-emerald-200"
+                            >
+                                Heal 5
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            )}
+
+            <div className="flex justify-end">
+                <button
+                    type="button"
+                    onClick={clearCombatants}
+                    className="rounded-full border border-stone-700 bg-stone-950 px-3 py-2 text-[11px] font-black uppercase tracking-[0.16em] text-stone-100 transition-colors hover:border-red-400/30 hover:text-red-200"
+                >
+                    Clear Combatants
+                </button>
+            </div>
+
+            <div className="space-y-3">
+                {activeEncounter.combatants.length === 0 && (
+                    <div className="rounded-2xl border border-dashed border-stone-800 p-4 text-sm text-stone-500">
+                        No combatants yet. Import selected Owlbear tokens to start initiative.
+                    </div>
+                )}
+                {activeEncounter.combatants.map((combatant) => (
+                    <div key={combatant.id} className={`rounded-2xl border p-4 ${combatant.id === activeEncounter.activeCombatantId ? 'border-sky-400/20 bg-sky-500/5' : 'border-stone-800 bg-stone-900/70'}`}>
+                        <div className="grid gap-3 lg:grid-cols-[minmax(0,1.2fr)_110px_110px_auto_auto_auto] lg:items-center">
+                            <div className="min-w-0">
+                                <div className="truncate font-semibold text-stone-100">{combatant.name}</div>
+                                <div className="mt-1 text-[11px] uppercase tracking-[0.18em] text-stone-500">{combatant.type}</div>
+                            </div>
+                            <input
+                                type="number"
+                                value={combatant.initiativeScore ?? ''}
+                                onChange={(event) => setInitiative(combatant.id, Number(event.target.value) || 0)}
+                                className="rounded-xl border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-100 outline-none transition-colors focus:border-gold"
+                                placeholder="Init"
+                            />
+                            <div className="rounded-xl border border-stone-800 bg-stone-950/70 px-3 py-2 text-sm text-stone-300">
+                                HP {combatant.currentHp}/{combatant.maxHp}
+                            </div>
+                            <button
+                                type="button"
+                                onClick={() => damageCombatant(combatant.id, 5)}
+                                className="rounded-xl border border-stone-700 bg-stone-950 px-3 py-2 text-sm font-semibold text-stone-100 transition-colors hover:border-red-400/30 hover:text-red-200"
+                            >
+                                -5
+                            </button>
+                            <button
+                                type="button"
+                                onClick={() => healCombatant(combatant.id, 5)}
+                                className="rounded-xl border border-stone-700 bg-stone-950 px-3 py-2 text-sm font-semibold text-stone-100 transition-colors hover:border-emerald-400/30 hover:text-emerald-200"
+                            >
+                                +5
+                            </button>
+                            <button
+                                type="button"
+                                onClick={() => void handleRemoveCombatant(combatant)}
+                                className="rounded-xl border border-stone-700 bg-stone-950 px-3 py-2 text-sm font-semibold text-stone-100 transition-colors hover:border-red-400/30 hover:text-red-200"
+                            >
+                                Remove
+                            </button>
                         </div>
                     </div>
                 ))}
