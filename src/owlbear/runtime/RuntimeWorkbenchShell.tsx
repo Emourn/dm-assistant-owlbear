@@ -104,6 +104,32 @@ function SelectionCommandButton({
     );
 }
 
+function GuidedStep({
+    index,
+    label,
+    description,
+    state,
+}: {
+    index: number;
+    label: string;
+    description: string;
+    state: 'pending' | 'active' | 'complete';
+}) {
+    return (
+        <div className={`rounded-xl border px-3 py-3 ${state === 'complete' ? 'border-emerald-400/20 bg-emerald-500/10' : state === 'active' ? 'border-gold/30 bg-gold/10' : 'border-stone-800 bg-stone-950/60'}`}>
+            <div className="flex items-center gap-3">
+                <div className={`flex h-6 w-6 items-center justify-center rounded-full border text-[10px] font-mono font-bold ${state === 'complete' ? 'border-emerald-400/30 bg-emerald-500/10 text-emerald-200' : state === 'active' ? 'border-gold/30 bg-gold/15 text-gold' : 'border-stone-700 bg-stone-900 text-stone-500'}`}>
+                    {state === 'complete' ? <Check size={12} /> : index}
+                </div>
+                <div>
+                    <div className={`font-mono text-[10px] font-bold uppercase tracking-[0.16em] ${state === 'pending' ? 'text-stone-500' : 'text-stone-100'}`}>{label}</div>
+                    <div className="mt-1 text-xs text-stone-400">{description}</div>
+                </div>
+            </div>
+        </div>
+    );
+}
+
 function SelectionInspector({
     selection,
     selectedItems,
@@ -153,6 +179,9 @@ function SelectionInspector({
     const embersReadySpells = linkedCharacter
         ? linkedCharacter.spells.filter((spell) => Boolean(getEmbersSpellId(spell.name))).slice(0, 4)
         : [];
+    const assignedPlayerCount = linkedCharacterId
+        ? Object.values(roomState?.playerAssignments ?? {}).filter((value) => value === linkedCharacterId).length
+        : 0;
     const portraitUrl = selection ? getItemPortraitUrl(selection.item) || linkedCharacter?.portraitUrl : undefined;
 
     if (!selection) {
@@ -242,6 +271,26 @@ function SelectionInspector({
                         <CompactStat label="HP" value={`${linkedCharacter.currentHp}/${linkedCharacter.maxHp}`} />
                         <CompactStat label="AC" value={String(linkedCharacter.ac)} />
                         <CompactStat label="Vision" value={`${smokeProfile?.range ?? 0} ft`} />
+                    </div>
+                    <div className="mt-4 grid gap-2 md:grid-cols-3">
+                        <GuidedStep
+                            index={1}
+                            label="Sheet linked"
+                            description="The current Owlbear token is linked to a saved sheet."
+                            state="complete"
+                        />
+                        <GuidedStep
+                            index={2}
+                            label="Player assignment"
+                            description={playerRows.length > 0 ? (assignedPlayerCount > 0 ? `${assignedPlayerCount} player assignment${assignedPlayerCount === 1 ? '' : 's'} set.` : 'Assign this linked sheet to one or more players.') : 'No player slots are connected yet.'}
+                            state={playerRows.length > 0 && assignedPlayerCount === 0 ? 'active' : 'complete'}
+                        />
+                        <GuidedStep
+                            index={3}
+                            label="Table actions"
+                            description="Combat, Smoke, and Embers actions stay available from this token surface."
+                            state={playerRows.length > 0 && assignedPlayerCount === 0 ? 'pending' : 'active'}
+                        />
                     </div>
                     <div className="mt-4 rounded-xl border border-stone-800 bg-stone-950/60 p-3">
                         <div className="font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-stone-500">Token commands</div>
@@ -361,16 +410,11 @@ function SelectionInspector({
                             Link token to sheet
                         </button>
                     </div>
-                    <div className="mt-3 flex flex-wrap gap-2">
-                        <SelectionCommandButton icon={FileUp} label="Import Sheet" onClick={onOpenImport} />
-                        <SelectionCommandButton icon={PencilLine} label="Create Sheet" onClick={onOpenCreate} />
-                        <SelectionCommandButton icon={Users} label="Open Roster" onClick={onOpenRoster} />
-                    </div>
                     {selectedCharacter ? (
-                        <div className="mt-4 rounded-xl border border-stone-800 bg-stone-900/70 p-4">
+                        <div className="mt-4 rounded-xl border border-gold/20 bg-gold/5 p-4">
                             <div className="flex items-center justify-between gap-3">
                                 <div>
-                                    <div className="font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-gold">Ready to link</div>
+                                    <div className="font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-gold">Guided tabletop handoff</div>
                                     <div className="mt-2 text-xl font-semibold tracking-tight text-parchment">{selectedCharacter.name || 'Unnamed'}</div>
                                     <div className="mt-1 text-sm text-stone-400">{describeCharacter(selectedCharacter)}</div>
                                 </div>
@@ -381,6 +425,30 @@ function SelectionInspector({
                                 >
                                     Review Sheet
                                 </button>
+                            </div>
+                            <div className="mt-4 grid gap-2 md:grid-cols-3">
+                                <GuidedStep
+                                    index={1}
+                                    label="Sheet selected"
+                                    description="The token is ready to use this saved sheet."
+                                    state="complete"
+                                />
+                                <GuidedStep
+                                    index={2}
+                                    label="Link token"
+                                    description="Attach the saved sheet to the current Owlbear selection."
+                                    state="active"
+                                />
+                                <GuidedStep
+                                    index={3}
+                                    label="Assign player"
+                                    description="After linking, assign the sheet to a player from the linked view."
+                                    state="pending"
+                                />
+                            </div>
+                            <div className="mt-4 flex flex-wrap gap-2">
+                                <SelectionCommandButton icon={Link2} label="Link Current Token" onClick={onLinkSelection} accent disabled={!selectedCharacterId || isBusy} />
+                                <SelectionCommandButton icon={Users} label="Open Roster" onClick={onOpenRoster} />
                             </div>
                         </div>
                     ) : (
@@ -401,6 +469,13 @@ function SelectionInspector({
                                 <div className="font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-sky-300">Manual authoring</div>
                                 <div className="mt-2 text-base font-semibold text-parchment">Create a new sheet</div>
                             </button>
+                        </div>
+                    )}
+                    {!selectedCharacter && (
+                        <div className="mt-3 flex flex-wrap gap-2">
+                            <SelectionCommandButton icon={FileUp} label="Import Sheet" onClick={onOpenImport} />
+                            <SelectionCommandButton icon={PencilLine} label="Create Sheet" onClick={onOpenCreate} />
+                            <SelectionCommandButton icon={Users} label="Open Roster" onClick={onOpenRoster} />
                         </div>
                     )}
                 </>
@@ -587,8 +662,9 @@ function SheetWorkflowCompletionCard({
     isBusy,
     selectionLabel,
     hasSelection,
+    isLinkedToSelection,
+    assignedPlayerCount,
     onLink,
-    onImportCombat,
     onAssignPlayer,
     onOpenSync,
     onCopySmokeProfile,
@@ -600,8 +676,9 @@ function SheetWorkflowCompletionCard({
     isBusy: boolean;
     selectionLabel: string;
     hasSelection: boolean;
+    isLinkedToSelection: boolean;
+    assignedPlayerCount: number;
     onLink: () => void;
-    onImportCombat: () => void;
     onAssignPlayer: (playerId: string) => void;
     onOpenSync: () => void;
     onCopySmokeProfile: () => void;
@@ -610,6 +687,8 @@ function SheetWorkflowCompletionCard({
 }) {
     const smokeProfile = deriveSmokeVisionProfile(character);
     const embersReadySpells = character.spells.filter((spell) => Boolean(getEmbersSpellId(spell.name))).slice(0, 4);
+    const needsPlayerAssignment = playerRows.length > 0 && assignedPlayerCount === 0;
+    const tabletopReady = (!hasSelection || isLinkedToSelection) && !needsPlayerAssignment;
 
     return (
         <div className="mx-auto max-w-4xl rounded-[1.35rem] border border-stone-800 bg-[linear-gradient(180deg,rgba(12,10,9,0.98),rgba(28,25,23,0.94))] p-5 shadow-[0_24px_60px_-36px_rgba(15,23,42,0.95)]">
@@ -622,21 +701,74 @@ function SheetWorkflowCompletionCard({
                 <div className="grid min-w-[180px] gap-2 sm:grid-cols-3 lg:grid-cols-1">
                     <CompactStat label="Selection" value={selectionLabel} />
                     <CompactStat label="Sheet" value={`Lv.${character.level}`} />
-                    <CompactStat label="Players" value={String(playerRows.length)} />
+                    <CompactStat label="Players" value={String(assignedPlayerCount)} />
                 </div>
             </div>
 
-            <div className="mt-5 rounded-xl border border-stone-800 bg-stone-950/60 p-3">
-                <div className="font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-stone-500">Completion actions</div>
-                <div className="mt-3 flex flex-wrap gap-2">
-                    <SelectionCommandButton icon={Link2} label="Link To Selection" onClick={onLink} accent disabled={!hasSelection || isBusy} />
-                    <SelectionCommandButton icon={Swords} label="Import Combat" onClick={onImportCombat} disabled={!hasSelection || isBusy} />
-                    <SelectionCommandButton icon={Users} label="Open Sync" onClick={onOpenSync} disabled={isBusy} />
-                    <SelectionCommandButton icon={Check} label="Done" onClick={onDone} disabled={isBusy} />
+            <div className="mt-5 rounded-xl border border-gold/20 bg-gold/5 p-4">
+                <div className="font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-gold">Guided tabletop handoff</div>
+                <div className="mt-3 grid gap-2 md:grid-cols-3">
+                    <GuidedStep
+                        index={1}
+                        label="Save sheet"
+                        description="The imported or authored sheet is now in the roster."
+                        state="complete"
+                    />
+                    <GuidedStep
+                        index={2}
+                        label="Link selection"
+                        description={hasSelection ? (isLinkedToSelection ? 'The current selection is already linked to this sheet.' : 'Link the saved sheet to the current Owlbear selection.') : 'Select a token on the map to complete linking.'}
+                        state={!hasSelection ? 'pending' : isLinkedToSelection ? 'complete' : 'active'}
+                    />
+                    <GuidedStep
+                        index={3}
+                        label="Assign player"
+                        description={playerRows.length > 0 ? (assignedPlayerCount > 0 ? `${assignedPlayerCount} player assignment${assignedPlayerCount === 1 ? '' : 's'} set.` : 'Assign this sheet to one or more players.') : 'No player slots are connected yet.'}
+                        state={playerRows.length === 0 ? 'complete' : assignedPlayerCount > 0 ? 'complete' : isLinkedToSelection ? 'active' : 'pending'}
+                    />
+                </div>
+                {!hasSelection && (
+                    <div className="mt-4 rounded-2xl border border-stone-800 bg-stone-950/70 p-3 text-sm text-stone-400">
+                        Select a token on the Owlbear map, then reopen this workflow step to finish linking the saved sheet.
+                    </div>
+                )}
+                <div className="mt-4 flex flex-wrap gap-2">
+                    {!isLinkedToSelection && (
+                        <SelectionCommandButton icon={Link2} label="Link To Selection" onClick={onLink} accent disabled={!hasSelection || isBusy} />
+                    )}
+                    {isLinkedToSelection && (
+                        <SelectionCommandButton icon={Users} label="Open Sync" onClick={onOpenSync} disabled={isBusy} />
+                    )}
+                    {tabletopReady && (
+                        <SelectionCommandButton icon={Check} label="Done" onClick={onDone} disabled={isBusy} />
+                    )}
                 </div>
             </div>
 
-            <div className="mt-4 grid gap-4 xl:grid-cols-[0.95fr_1.05fr]">
+            {playerRows.length > 0 && (
+                <div className="mt-4 rounded-xl border border-stone-800 bg-stone-950/55 p-3">
+                    <div className="font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-stone-500">Assign player now</div>
+                    <div className="mt-3 space-y-2">
+                        {playerRows.map((player) => (
+                            <div key={player.id} className="grid gap-2 rounded-xl border border-stone-800 bg-stone-900/70 px-3 py-2 md:grid-cols-[minmax(0,160px)_auto] md:items-center">
+                                <div className="flex min-w-0 items-center gap-3">
+                                    <div className="h-2.5 w-2.5 shrink-0 rounded-full" style={{ backgroundColor: player.color }} />
+                                    <div className="min-w-0">
+                                        <div className="truncate text-sm font-semibold text-stone-100">{player.name}</div>
+                                        <div className="mt-0.5 font-mono text-[10px] uppercase tracking-[0.16em] text-stone-500">
+                                            {assignedPlayerCount > 0 ? 'Update assignment' : 'Assign saved sheet'}
+                                        </div>
+                                    </div>
+                                </div>
+                                <SelectionCommandButton icon={Users} label="Assign" onClick={() => onAssignPlayer(player.id)} disabled={isBusy || (!isLinkedToSelection && hasSelection)} />
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            )}
+
+            {tabletopReady && (
+                <div className="mt-4 grid gap-4 xl:grid-cols-[0.95fr_1.05fr]">
                 <div className="rounded-xl border border-sky-500/20 bg-sky-500/5 p-4">
                     <div className="flex items-center justify-between gap-3">
                         <div>
@@ -684,25 +816,6 @@ function SheetWorkflowCompletionCard({
                         </div>
                     )}
                 </div>
-            </div>
-
-            {playerRows.length > 0 && (
-                <div className="mt-4 rounded-xl border border-stone-800 bg-stone-950/55 p-3">
-                    <div className="font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-stone-500">Assign player now</div>
-                    <div className="mt-3 space-y-2">
-                        {playerRows.map((player) => (
-                            <div key={player.id} className="grid gap-2 rounded-xl border border-stone-800 bg-stone-900/70 px-3 py-2 md:grid-cols-[minmax(0,160px)_auto] md:items-center">
-                                <div className="flex items-center gap-3 min-w-0">
-                                    <div className="h-2.5 w-2.5 shrink-0 rounded-full" style={{ backgroundColor: player.color }} />
-                                    <div className="min-w-0">
-                                        <div className="truncate text-sm font-semibold text-stone-100">{player.name}</div>
-                                        <div className="mt-0.5 font-mono text-[10px] uppercase tracking-[0.16em] text-stone-500">Assign saved sheet</div>
-                                    </div>
-                                </div>
-                                <SelectionCommandButton icon={Users} label="Assign" onClick={() => onAssignPlayer(player.id)} disabled={isBusy} />
-                            </div>
-                        ))}
-                    </div>
                 </div>
             )}
         </div>
@@ -742,6 +855,21 @@ export function RuntimeWorkbenchShell() {
     const workflowCompletionCharacter = useMemo(
         () => characters.find((character) => character.id === workflowCompletionCharacterId) ?? null,
         [characters, workflowCompletionCharacterId],
+    );
+    const workflowSelectionLinked = useMemo(
+        () => Boolean(
+            workflowCompletionCharacterId
+            && selectedTokenContexts.some((context) => context.linkedCharacter?.characterId === workflowCompletionCharacterId),
+        ),
+        [selectedTokenContexts, workflowCompletionCharacterId],
+    );
+    const workflowAssignedPlayerCount = useMemo(
+        () => (
+            workflowCompletionCharacterId
+                ? Object.values(roomState?.playerAssignments ?? {}).filter((value) => value === workflowCompletionCharacterId).length
+                : 0
+        ),
+        [roomState?.playerAssignments, workflowCompletionCharacterId],
     );
     const workflowMode: 'import' | 'create' | 'edit' | 'complete' | null =
         workflowCompletionCharacterId
@@ -1060,11 +1188,10 @@ export function RuntimeWorkbenchShell() {
                             isBusy={isBusy}
                             selectionLabel={workflowSelectionLabel}
                             hasSelection={selectedItems.length > 0}
+                            isLinkedToSelection={workflowSelectionLinked}
+                            assignedPlayerCount={workflowAssignedPlayerCount}
                             onLink={() => {
                                 void handleLinkCharacterById(workflowCompletionCharacter.id);
-                            }}
-                            onImportCombat={() => {
-                                void handleImportSelection();
                             }}
                             onAssignPlayer={(playerId) => {
                                 void handleAssignPlayer(playerId, workflowCompletionCharacter.id);
