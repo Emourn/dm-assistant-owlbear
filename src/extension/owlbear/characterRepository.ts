@@ -275,6 +275,48 @@ export async function updateCharacterSheetWith(
     return buildCurrentSnapshot(next);
 }
 
+export async function updateCharacterSheetsWith(
+    characterIds: string[],
+    updater: (sheet: Phase1CharacterSheet) => Phase1CharacterSheet,
+): Promise<CharacterRepositorySnapshot | null> {
+    if (characterIds.length === 0) {
+        return null;
+    }
+
+    const targetIds = new Set(characterIds);
+    const metadata = await OBR.room.getMetadata();
+    const current = getCharacterCollectionFromMetadata(metadata);
+    if (!current) {
+        return null;
+    }
+
+    let didUpdate = false;
+    const nextCharacters = current.characters.map((record) => {
+        if (!targetIds.has(record.sheet.id)) {
+            return record;
+        }
+
+        didUpdate = true;
+        return {
+            ...record,
+            updatedAt: Date.now(),
+            sheet: updater(record.sheet),
+        };
+    });
+
+    if (!didUpdate) {
+        return null;
+    }
+
+    const next: StoredCharacterCollection = {
+        ...current,
+        characters: nextCharacters,
+    };
+
+    await writeCharacterCollection(next);
+    return buildCurrentSnapshot(next);
+}
+
 export async function linkActiveCharacterToSelection(
     sheet: Phase1CharacterSheet,
     visibility: TokenLinkVisibility = 'room',

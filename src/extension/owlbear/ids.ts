@@ -5,4 +5,7 @@ export const LINK_SELECTION_CONTEXT_MENU_ID = `${EXTENSION_NAMESPACE}/link-selec
 export const UNLINK_SELECTION_CONTEXT_MENU_ID = `${EXTENSION_NAMESPACE}/unlink-selection`;
 export const PUBLISH_INITIATIVE_CONTEXT_MENU_ID = `${EXTENSION_NAMESPACE}/publish-initiative`;
 export const PROMPT_INITIATIVE_CONTEXT_MENU_ID = `${EXTENSION_NAMESPACE}/prompt-initiative`;
+export const PUBLISH_SELECTION_INITIATIVE_CONTEXT_MENU_ID = `${EXTENSION_NAMESPACE}/publish-selection-initiative`;
+export const APPLY_SELECTION_SHORT_REST_CONTEXT_MENU_ID = `${EXTENSION_NAMESPACE}/apply-selection-short-rest`;
+export const APPLY_SELECTION_LONG_REST_CONTEXT_MENU_ID = `${EXTENSION_NAMESPACE}/apply-selection-long-rest`;
 export const LEGACY_CONTEXT_MENU_ID = 'com.antigravity.dm-assistant/import-selection';

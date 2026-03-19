@@ -63,6 +63,38 @@ export async function publishRoomRoll(
     return next;
 }
 
+export async function publishRoomRollBatch(
+    entries: Array<{
+        result: StructuredRollResult;
+        sheet: Phase1CharacterSheet | null;
+    }>,
+    visibility: SharedVisibility,
+    source: PublishedRollEntry['source'] = 'manual',
+): Promise<StoredRoomRollState> {
+    const metadata = await OBR.room.getMetadata();
+    const current = getRoomRollStateFromMetadata(metadata);
+    const [playerId, playerName, role] = await Promise.all([
+        OBR.player.getId().catch(() => null),
+        OBR.player.getName().catch(() => 'Unknown Player'),
+        OBR.player.getRole().catch(() => null),
+    ]);
+
+    let next = current;
+    for (const entry of entries) {
+        const actor: PublishedRollActor = {
+            playerId,
+            playerName,
+            role,
+            characterId: entry.sheet?.id ?? null,
+            characterName: entry.sheet?.name ?? null,
+        };
+        next = appendPublishedRoll(next, createPublishedRollEntry(entry.result, actor, visibility, source));
+    }
+
+    await writeRoomRollState(next);
+    return next;
+}
+
 export async function openRoomPrompt(
     prompt: RoomRollPromptDraft,
     audience: PromptAudience,

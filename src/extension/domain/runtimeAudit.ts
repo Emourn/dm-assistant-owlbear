@@ -109,6 +109,16 @@ export function appendRuntimeAuditEntry(
     };
 }
 
+export function appendRuntimeAuditEntries(
+    state: StoredRuntimeAuditState,
+    entries: RuntimeAuditEntry[],
+): StoredRuntimeAuditState {
+    return {
+        ...state,
+        entries: [...entries, ...state.entries].slice(0, RUNTIME_AUDIT_LIMIT),
+    };
+}
+
 export function clearRuntimeAuditEntries(): StoredRuntimeAuditState {
     return createEmptyRuntimeAuditState();
 }
