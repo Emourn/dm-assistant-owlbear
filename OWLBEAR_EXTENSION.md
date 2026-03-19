@@ -55,6 +55,14 @@ For the Owlbear popover entry:
 npm run dev:owlbear
 ```
 
+Owlbear Rodeo can install directly from the local manifest while the dev server is running:
+
+```text
+http://localhost:5173/owlbear-manifest.json
+```
+
+The Vite dev server is configured with Owlbear Rodeo CORS support so this URL can be used during incremental feature testing.
+
 For the production bundle:
 
 ```bash
@@ -62,6 +70,14 @@ npm run build
 ```
 
 Then serve the `dist/` folder with any static host.
+
+## Recommended incremental testing loop
+
+1. Start the local dev server.
+2. In Owlbear Rodeo, add the extension from `http://localhost:5173/owlbear-manifest.json`.
+3. Enable the extension in a test room.
+4. Rebuild or refresh after each slice and verify the exact runtime flow on the tabletop.
+5. For shared testing, push the branch and let GitHub Pages publish the built `dist/` bundle.
 
 ## Hosting for Owlbear import
 

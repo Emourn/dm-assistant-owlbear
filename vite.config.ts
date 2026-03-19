@@ -31,6 +31,9 @@ export default defineConfig({
     port: 5173,
     strictPort: true,
     host: '0.0.0.0',
+    cors: {
+      origin: 'https://www.owlbear.rodeo',
+    },
     proxy: {
       '/socket.io': {
         target: 'http://localhost:3001',

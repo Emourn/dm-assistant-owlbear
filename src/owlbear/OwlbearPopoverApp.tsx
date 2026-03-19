@@ -5,6 +5,7 @@ import { resolvePlayerCharacter } from './bridge';
 import { triggerEmbersSpellFromCharacter } from './integrations';
 import { OwlbearWorkbenchApp } from './OwlbearWorkbenchApp';
 import { type OwlbearRoomState, type PlayerCharacterResolution, getRoomStateFromMetadata } from './shared';
+import { PlayerCharacterSheet } from '../components/player/PlayerCharacterSheet';
 
 export function OwlbearPopoverApp() {
     const [role, setRole] = useState<'GM' | 'PLAYER' | null>(null);
@@ -263,40 +264,8 @@ function PlayerPopoverView({
                 <MiniStat label="Prof" value={character.proficiencyBonus} prefix="+" icon={Sparkles} accent="text-sky-300" />
             </section>
 
-            <section className="rounded-3xl border border-stone-800 bg-stone-950/75 p-4">
-                <h2 className="font-cinzel text-lg font-bold text-parchment">Ability scores</h2>
-                <div className="mt-4 grid grid-cols-3 gap-3">
-                    {Object.entries(character.abilityScores).map(([ability, score]) => (
-                        <div key={ability} className="rounded-2xl border border-stone-800 bg-stone-900/70 p-3 text-center">
-                            <div className="text-[10px] font-black uppercase tracking-[0.24em] text-stone-500">{ability}</div>
-                            <div className="mt-2 font-cinzel text-2xl font-bold text-parchment">{score}</div>
-                        </div>
-                    ))}
-                </div>
-            </section>
-
-            <section className="rounded-3xl border border-stone-800 bg-stone-950/75 p-4">
-                <h2 className="font-cinzel text-lg font-bold text-parchment">Spell slots & resources</h2>
-                <div className="mt-4 space-y-3 text-sm">
-                    {character.spellSlots
-                        .map((slot, index) => ({ ...slot, level: index }))
-                        .filter((slot) => slot.level > 0 && slot.max > 0)
-                        .map((slot) => (
-                            <div key={slot.level} className="flex items-center justify-between rounded-xl border border-stone-800 bg-stone-900/60 px-3 py-2">
-                                <span className="text-stone-300">Level {slot.level}</span>
-                                <span className="font-semibold text-stone-100">{slot.current}/{slot.max}</span>
-                            </div>
-                        ))}
-                    {character.resources.map((resource) => (
-                        <div key={resource.id} className="flex items-center justify-between rounded-xl border border-stone-800 bg-stone-900/60 px-3 py-2">
-                            <span className="text-stone-300">{resource.name}</span>
-                            <span className="font-semibold text-stone-100">{resource.current}/{resource.max}</span>
-                        </div>
-                    ))}
-                    {character.resources.length === 0 && character.spellSlots.every((slot) => slot.max === 0) && (
-                        <div className="text-sm text-stone-500">No tracked spell slots or resources.</div>
-                    )}
-                </div>
+            <section className="rounded-3xl border border-stone-800 bg-stone-950/75">
+                <PlayerCharacterSheet character={character} canEdit={false} />
             </section>
 
             <section className="rounded-3xl border border-stone-800 bg-stone-950/75 p-4">
