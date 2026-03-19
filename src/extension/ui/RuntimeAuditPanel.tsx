@@ -18,6 +18,7 @@ function formatTime(timestamp: number): string {
 
 const FILTERS: Array<{ value: RuntimeAuditCategory | 'all'; label: string }> = [
     { value: 'all', label: 'All' },
+    { value: 'encounter', label: 'Encounter' },
     { value: 'resource', label: 'Resources' },
     { value: 'rest', label: 'Rests' },
     { value: 'death-save', label: 'Death saves' },

@@ -3,6 +3,7 @@ import { Crosshair, Layers3, MapPinned, ScrollText, Shield, Users } from 'lucide
 import type { Phase1CharacterSheet, StructuredRollRequest, StructuredRollResult } from '../../features/dnd2024/domain/types';
 import type { StoredRoomRollState } from '../domain/roomRolls';
 import type { RoomRollPromptDraft } from '../domain/roomRolls';
+import type { StoredEncounterState } from '../domain/encounterTracker';
 import type { StoredRuntimeAuditState } from '../domain/runtimeAudit';
 import { CURRENT_SLICE, NEXT_SLICES } from '../domain/phases';
 import {
@@ -16,6 +17,7 @@ import {
 import type { CharacterRepositorySnapshot } from '../owlbear/characterRepository';
 import type { OwlbearRuntimeSnapshot } from '../owlbear/runtime';
 import { CharacterSheetPanel } from './CharacterSheetPanel';
+import { EncounterPanel } from './EncounterPanel';
 import { RoomRollPanel } from './RoomRollPanel';
 import { RuntimeAuditPanel } from './RuntimeAuditPanel';
 import { VisibilityPolicyPanel } from './VisibilityPolicyPanel';
@@ -24,6 +26,7 @@ interface ExtensionShellProps {
     runtime: OwlbearRuntimeSnapshot | null;
     characterState: CharacterRepositorySnapshot | null;
     roomRollState: StoredRoomRollState | null;
+    encounterState: StoredEncounterState | null;
     runtimeAuditState: StoredRuntimeAuditState | null;
     visibilitySettings: StoredVisibilitySettings;
     lastRoll: StructuredRollResult | null;
@@ -33,6 +36,7 @@ interface ExtensionShellProps {
     isLinkingCharacter: boolean;
     isPublishingRoll: boolean;
     isManagingPrompt: boolean;
+    isUpdatingEncounter: boolean;
     isSavingVisibility: boolean;
     isClearingAudit: boolean;
     onRoll: (request: StructuredRollRequest) => void;
@@ -54,6 +58,11 @@ interface ExtensionShellProps {
     onAssignCharacter: (playerId: string, characterId: string | null) => Promise<void>;
     onClearPrompt: () => Promise<void>;
     onRespondToPrompt: () => Promise<void>;
+    onBuildEncounter: () => Promise<void>;
+    onAdvanceEncounter: () => Promise<void>;
+    onRetreatEncounter: () => Promise<void>;
+    onSetEncounterActive: (participantId: string) => Promise<void>;
+    onClearEncounter: () => Promise<void>;
     onSaveVisibilitySettings: (settings: StoredVisibilitySettings) => Promise<void>;
     onClearAudit: () => Promise<void>;
     loadState: 'loading' | 'ready' | 'error';
@@ -87,6 +96,7 @@ export function ExtensionShell({
     runtime,
     characterState,
     roomRollState,
+    encounterState,
     runtimeAuditState,
     visibilitySettings,
     lastRoll,
@@ -96,6 +106,7 @@ export function ExtensionShell({
     isLinkingCharacter,
     isPublishingRoll,
     isManagingPrompt,
+    isUpdatingEncounter,
     isSavingVisibility,
     isClearingAudit,
     onRoll,
@@ -117,6 +128,11 @@ export function ExtensionShell({
     onAssignCharacter,
     onClearPrompt,
     onRespondToPrompt,
+    onBuildEncounter,
+    onAdvanceEncounter,
+    onRetreatEncounter,
+    onSetEncounterActive,
+    onClearEncounter,
     onSaveVisibilitySettings,
     onClearAudit,
     loadState,
@@ -297,6 +313,17 @@ export function ExtensionShell({
                     onOpenPrompt={onOpenPrompt}
                     onClearPrompt={onClearPrompt}
                     onRespondToPrompt={onRespondToPrompt}
+                />
+
+                <EncounterPanel
+                    role={runtime.role}
+                    state={encounterState ?? { version: 1, round: 0, turnIndex: 0, participants: [] }}
+                    isUpdating={isUpdatingEncounter}
+                    onBuild={onBuildEncounter}
+                    onAdvance={onAdvanceEncounter}
+                    onRetreat={onRetreatEncounter}
+                    onSetActive={onSetEncounterActive}
+                    onClear={onClearEncounter}
                 />
 
                 <VisibilityPolicyPanel

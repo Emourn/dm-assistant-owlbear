@@ -16,6 +16,7 @@ import type {
 } from '../../features/dnd2024/domain/types';
 import type { StoredRoomRollState } from '../domain/roomRolls';
 import { buildPromptRollRequest, type RoomRollPromptDraft } from '../domain/roomRolls';
+import type { StoredEncounterState } from '../domain/encounterTracker';
 import type { StoredRuntimeAuditState } from '../domain/runtimeAudit';
 import {
     canManageSheetRuntime,
@@ -30,6 +31,14 @@ import {
     readRuntimeAuditState,
     recordRuntimeAudit,
 } from './auditRepository';
+import {
+    advanceEncounterState,
+    buildEncounterFromRoomRollFeed,
+    clearEncounterState,
+    readEncounterState,
+    retreatEncounterState,
+    setEncounterActiveParticipant,
+} from './encounterRepository';
 import {
     assignCharacterToPlayer,
     createBlankCharacter,
@@ -68,6 +77,7 @@ export function PopoverApp({ surface = 'popover' }: { surface?: 'popover' | 'pan
     const [runtime, setRuntime] = useState<OwlbearRuntimeSnapshot | null>(null);
     const [characterState, setCharacterState] = useState<CharacterRepositorySnapshot | null>(null);
     const [roomRollState, setRoomRollState] = useState<StoredRoomRollState | null>(null);
+    const [encounterState, setEncounterState] = useState<StoredEncounterState | null>(null);
     const [runtimeAuditState, setRuntimeAuditState] = useState<StoredRuntimeAuditState | null>(null);
     const [visibilitySettings, setVisibilitySettings] = useState<StoredVisibilitySettings>(createDefaultVisibilitySettings);
     const [lastRoll, setLastRoll] = useState<StructuredRollResult | null>(null);
@@ -77,6 +87,7 @@ export function PopoverApp({ surface = 'popover' }: { surface?: 'popover' | 'pan
     const [isLinkingCharacter, setIsLinkingCharacter] = useState(false);
     const [isPublishingRoll, setIsPublishingRoll] = useState(false);
     const [isManagingPrompt, setIsManagingPrompt] = useState(false);
+    const [isUpdatingEncounter, setIsUpdatingEncounter] = useState(false);
     const [isSavingVisibility, setIsSavingVisibility] = useState(false);
     const [isClearingAudit, setIsClearingAudit] = useState(false);
     const [loadState, setLoadState] = useState<'loading' | 'ready' | 'error'>('loading');
@@ -85,15 +96,17 @@ export function PopoverApp({ surface = 'popover' }: { surface?: 'popover' | 'pan
     const refresh = useCallback(async () => {
         try {
             const snapshot = await readRuntimeSnapshot();
-            const [nextCharacterState, nextRoomRollState, nextVisibilitySettings, nextRuntimeAuditState] = await Promise.all([
+            const [nextCharacterState, nextRoomRollState, nextEncounterState, nextVisibilitySettings, nextRuntimeAuditState] = await Promise.all([
                 readCharacterRepositorySnapshot(snapshot.role),
                 readRoomRollState(),
+                readEncounterState(),
                 readVisibilitySettings(),
                 readRuntimeAuditState(),
             ]);
             setRuntime(snapshot);
             setCharacterState(nextCharacterState);
             setRoomRollState(nextRoomRollState);
+            setEncounterState(nextEncounterState);
             setVisibilitySettings(nextVisibilitySettings);
             setRuntimeAuditState(nextRuntimeAuditState);
             setLoadState('ready');
@@ -596,11 +609,103 @@ export function PopoverApp({ surface = 'popover' }: { surface?: 'popover' | 'pan
         }
     }, []);
 
+    const handleBuildEncounter = useCallback(async () => {
+        setIsUpdatingEncounter(true);
+        try {
+            const next = await buildEncounterFromRoomRollFeed();
+            setEncounterState(next);
+            setRuntimeAuditState(await recordRuntimeAudit(
+                'encounter',
+                'Built encounter from initiative feed',
+                next.participants.length > 0
+                    ? next.participants.map((participant) => `${participant.label}: ${participant.initiative}`)
+                    : ['No initiative rolls were available in the room feed.'],
+                characterState?.activeCharacter?.sheet ?? null,
+            ));
+        } finally {
+            setIsUpdatingEncounter(false);
+        }
+    }, [characterState]);
+
+    const handleAdvanceEncounter = useCallback(async () => {
+        setIsUpdatingEncounter(true);
+        try {
+            const next = await advanceEncounterState();
+            setEncounterState(next);
+            const active = next.participants[next.turnIndex];
+            setRuntimeAuditState(await recordRuntimeAudit(
+                'encounter',
+                'Advanced encounter turn',
+                active
+                    ? [`Round ${next.round}.`, `Active: ${active.label} (${active.initiative}).`]
+                    : ['No active participant.'],
+                characterState?.activeCharacter?.sheet ?? null,
+            ));
+        } finally {
+            setIsUpdatingEncounter(false);
+        }
+    }, [characterState]);
+
+    const handleRetreatEncounter = useCallback(async () => {
+        setIsUpdatingEncounter(true);
+        try {
+            const next = await retreatEncounterState();
+            setEncounterState(next);
+            const active = next.participants[next.turnIndex];
+            setRuntimeAuditState(await recordRuntimeAudit(
+                'encounter',
+                'Moved encounter turn backward',
+                active
+                    ? [`Round ${next.round}.`, `Active: ${active.label} (${active.initiative}).`]
+                    : ['No active participant.'],
+                characterState?.activeCharacter?.sheet ?? null,
+            ));
+        } finally {
+            setIsUpdatingEncounter(false);
+        }
+    }, [characterState]);
+
+    const handleSetEncounterActive = useCallback(async (participantId: string) => {
+        setIsUpdatingEncounter(true);
+        try {
+            const next = await setEncounterActiveParticipant(participantId);
+            setEncounterState(next);
+            const active = next.participants[next.turnIndex];
+            setRuntimeAuditState(await recordRuntimeAudit(
+                'encounter',
+                'Set active encounter participant',
+                active
+                    ? [`Round ${next.round}.`, `Active: ${active.label} (${active.initiative}).`]
+                    : ['No active participant.'],
+                characterState?.activeCharacter?.sheet ?? null,
+            ));
+        } finally {
+            setIsUpdatingEncounter(false);
+        }
+    }, [characterState]);
+
+    const handleClearEncounter = useCallback(async () => {
+        setIsUpdatingEncounter(true);
+        try {
+            const next = await clearEncounterState();
+            setEncounterState(next);
+            setRuntimeAuditState(await recordRuntimeAudit(
+                'encounter',
+                'Cleared encounter order',
+                ['Encounter state reset.'],
+                characterState?.activeCharacter?.sheet ?? null,
+            ));
+        } finally {
+            setIsUpdatingEncounter(false);
+        }
+    }, [characterState]);
+
     return (
         <ExtensionShell
             runtime={runtime}
             characterState={characterState}
             roomRollState={roomRollState}
+            encounterState={encounterState}
             runtimeAuditState={runtimeAuditState}
             visibilitySettings={visibilitySettings}
             lastRoll={lastRoll}
@@ -610,6 +715,7 @@ export function PopoverApp({ surface = 'popover' }: { surface?: 'popover' | 'pan
             isLinkingCharacter={isLinkingCharacter}
             isPublishingRoll={isPublishingRoll}
             isManagingPrompt={isManagingPrompt}
+            isUpdatingEncounter={isUpdatingEncounter}
             isSavingVisibility={isSavingVisibility}
             isClearingAudit={isClearingAudit}
             onRoll={handleRoll}
@@ -631,6 +737,11 @@ export function PopoverApp({ surface = 'popover' }: { surface?: 'popover' | 'pan
             onOpenPrompt={handleOpenPrompt}
             onClearPrompt={handleClearPrompt}
             onRespondToPrompt={handleRespondToPrompt}
+            onBuildEncounter={handleBuildEncounter}
+            onAdvanceEncounter={handleAdvanceEncounter}
+            onRetreatEncounter={handleRetreatEncounter}
+            onSetEncounterActive={handleSetEncounterActive}
+            onClearEncounter={handleClearEncounter}
             onSaveVisibilitySettings={handleSaveVisibilitySettings}
             onClearAudit={handleClearAudit}
             loadState={loadState}
