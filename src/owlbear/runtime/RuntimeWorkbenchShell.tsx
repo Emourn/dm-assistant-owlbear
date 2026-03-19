@@ -1,6 +1,6 @@
 import { Suspense, lazy, useCallback, useEffect, useMemo, useState } from 'react';
 import OBR, { type Item, type Player } from '@owlbear-rodeo/sdk';
-import { Check, Crosshair, FileUp, Link2, PencilLine, RadioTower, Sparkles, Swords, Users, X } from 'lucide-react';
+import { Check, Copy, Crosshair, FileUp, Link2, PencilLine, RadioTower, Shield, Sparkles, Swords, Users, X } from 'lucide-react';
 import { useCampaignStore } from '../../store/campaignStore';
 import { useCharacterStore } from '../../store/characterStore';
 import { useCombatStore } from '../../store/combatStore';
@@ -11,7 +11,7 @@ import {
     publishRoomStateFromStores,
     setPlayerAssignment,
 } from '../bridge';
-import { deriveSmokeVisionProfile } from '../integrations';
+import { deriveSmokeVisionProfile, getEmbersSpellId, triggerEmbersSpellFromCharacter } from '../integrations';
 import {
     getItemDisplayName,
     getItemPortraitUrl,
@@ -69,6 +69,11 @@ function describeSelection(selectionCount: number, primarySelection: SelectedTok
     return `${selectionCount} tokens selected`;
 }
 
+function formatSmokeProfileText(character: Character, range: number, greyscale: boolean, falloff: number, notes: string[]): string {
+    const noteSuffix = notes.length ? ` | Notes: ${notes.join('; ')}` : '';
+    return `${character.name || 'Unnamed'}: range ${range} ft | greyscale ${greyscale ? 'yes' : 'no'} | falloff ${falloff}${noteSuffix}`;
+}
+
 function SelectionCommandButton({
     icon: Icon,
     label,
@@ -118,6 +123,8 @@ function SelectionInspector({
     onOpenCombat,
     onImportCombat,
     onOpenSync,
+    onCopySmokeProfile,
+    onCastEmbersSpell,
 }: {
     selection: SelectedTokenContext | null;
     selectedItems: Item[];
@@ -137,10 +144,15 @@ function SelectionInspector({
     onOpenCombat: () => void;
     onImportCombat: () => void;
     onOpenSync: () => void;
+    onCopySmokeProfile: (character: Character) => void;
+    onCastEmbersSpell: (character: Character, spellName: string) => void;
 }) {
     const linkedCharacter = selection?.linkedCharacter?.snapshot ?? null;
     const linkedCharacterId = selection?.linkedCharacter?.characterId ?? null;
     const smokeProfile = linkedCharacter ? deriveSmokeVisionProfile(linkedCharacter) : null;
+    const embersReadySpells = linkedCharacter
+        ? linkedCharacter.spells.filter((spell) => Boolean(getEmbersSpellId(spell.name))).slice(0, 4)
+        : [];
     const portraitUrl = selection ? getItemPortraitUrl(selection.item) || linkedCharacter?.portraitUrl : undefined;
 
     if (!selection) {
@@ -237,6 +249,7 @@ function SelectionInspector({
                             <SelectionCommandButton icon={Sparkles} label="Open Sheet" onClick={() => onOpenSheet(linkedCharacterId!)} accent />
                             <SelectionCommandButton icon={Swords} label="Import Combat" onClick={onImportCombat} />
                             <SelectionCommandButton icon={Link2} label="Sync" onClick={onOpenSync} />
+                            <SelectionCommandButton icon={Copy} label="Copy Smoke" onClick={() => onCopySmokeProfile(linkedCharacter)} />
                             <SelectionCommandButton icon={Users} label="Roster" onClick={onOpenRoster} />
                         </div>
                     </div>
@@ -290,11 +303,37 @@ function SelectionInspector({
                                 <RuntimeLine label="Greyscale" value={smokeProfile.greyscale ? 'Yes' : 'No'} />
                                 <RuntimeLine label="Falloff" value={String(smokeProfile.falloff)} />
                             </div>
+                            <div className="mt-3 flex flex-wrap gap-2">
+                                <SelectionCommandButton icon={Shield} label="Copy Smoke Profile" onClick={() => onCopySmokeProfile(linkedCharacter)} />
+                            </div>
                             {smokeProfile.notes.length > 0 && (
                                 <div className="mt-3 rounded-2xl border border-stone-800 bg-stone-950/70 p-3 text-sm text-stone-400">
                                     {smokeProfile.notes.join(' ')}
                                 </div>
                             )}
+                        </div>
+                    )}
+                    {embersReadySpells.length > 0 && (
+                        <div className="mt-5 rounded-xl border border-amber-500/20 bg-amber-500/5 p-4">
+                            <div className="flex items-center justify-between gap-3">
+                                <div>
+                                    <div className="font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-amber-300">Embers handoff</div>
+                                    <div className="mt-2 text-sm font-semibold text-stone-100">Mapped spells can be sent straight to Embers from the linked token flow.</div>
+                                </div>
+                                <div className="rounded-full border border-amber-400/20 bg-amber-500/10 px-3 py-1 text-[10px] font-black uppercase tracking-[0.18em] text-amber-100">
+                                    {embersReadySpells.length} ready
+                                </div>
+                            </div>
+                            <div className="mt-3 flex flex-wrap gap-2">
+                                {embersReadySpells.map((spell) => (
+                                    <SelectionCommandButton
+                                        key={spell.id}
+                                        icon={Sparkles}
+                                        label={spell.name}
+                                        onClick={() => onCastEmbersSpell(linkedCharacter, spell.name)}
+                                    />
+                                ))}
+                            </div>
                         </div>
                     )}
                 </>
@@ -552,6 +591,8 @@ function SheetWorkflowCompletionCard({
     onImportCombat,
     onAssignPlayer,
     onOpenSync,
+    onCopySmokeProfile,
+    onCastEmbersSpell,
     onDone,
 }: {
     character: Character;
@@ -563,8 +604,13 @@ function SheetWorkflowCompletionCard({
     onImportCombat: () => void;
     onAssignPlayer: (playerId: string) => void;
     onOpenSync: () => void;
+    onCopySmokeProfile: () => void;
+    onCastEmbersSpell: (spellName: string) => void;
     onDone: () => void;
 }) {
+    const smokeProfile = deriveSmokeVisionProfile(character);
+    const embersReadySpells = character.spells.filter((spell) => Boolean(getEmbersSpellId(spell.name))).slice(0, 4);
+
     return (
         <div className="mx-auto max-w-4xl rounded-[1.35rem] border border-stone-800 bg-[linear-gradient(180deg,rgba(12,10,9,0.98),rgba(28,25,23,0.94))] p-5 shadow-[0_24px_60px_-36px_rgba(15,23,42,0.95)]">
             <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
@@ -587,6 +633,56 @@ function SheetWorkflowCompletionCard({
                     <SelectionCommandButton icon={Swords} label="Import Combat" onClick={onImportCombat} disabled={!hasSelection || isBusy} />
                     <SelectionCommandButton icon={Users} label="Open Sync" onClick={onOpenSync} disabled={isBusy} />
                     <SelectionCommandButton icon={Check} label="Done" onClick={onDone} disabled={isBusy} />
+                </div>
+            </div>
+
+            <div className="mt-4 grid gap-4 xl:grid-cols-[0.95fr_1.05fr]">
+                <div className="rounded-xl border border-sky-500/20 bg-sky-500/5 p-4">
+                    <div className="flex items-center justify-between gap-3">
+                        <div>
+                            <div className="font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-sky-300">Smoke profile</div>
+                            <div className="mt-2 text-sm font-semibold text-stone-100">Copy the vision setup derived from this saved sheet.</div>
+                        </div>
+                        <SelectionCommandButton icon={Copy} label="Copy" onClick={onCopySmokeProfile} disabled={isBusy} />
+                    </div>
+                    <div className="mt-3 grid gap-2 sm:grid-cols-3">
+                        <RuntimeLine label="Range" value={`${smokeProfile.range} ft`} />
+                        <RuntimeLine label="Greyscale" value={smokeProfile.greyscale ? 'Yes' : 'No'} />
+                        <RuntimeLine label="Falloff" value={String(smokeProfile.falloff)} />
+                    </div>
+                    {smokeProfile.notes.length > 0 && (
+                        <div className="mt-3 rounded-2xl border border-stone-800 bg-stone-950/70 p-3 text-sm text-stone-400">
+                            {smokeProfile.notes.join(' ')}
+                        </div>
+                    )}
+                </div>
+                <div className="rounded-xl border border-amber-500/20 bg-amber-500/5 p-4">
+                    <div className="flex items-center justify-between gap-3">
+                        <div>
+                            <div className="font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-amber-300">Embers-ready spells</div>
+                            <div className="mt-2 text-sm font-semibold text-stone-100">Use the current selection or linked token to hand mapped spells off to Embers immediately.</div>
+                        </div>
+                        <div className="rounded-full border border-amber-400/20 bg-amber-500/10 px-3 py-1 text-[10px] font-black uppercase tracking-[0.18em] text-amber-100">
+                            {embersReadySpells.length} ready
+                        </div>
+                    </div>
+                    {embersReadySpells.length > 0 ? (
+                        <div className="mt-3 flex flex-wrap gap-2">
+                            {embersReadySpells.map((spell) => (
+                                <SelectionCommandButton
+                                    key={spell.id}
+                                    icon={Sparkles}
+                                    label={spell.name}
+                                    onClick={() => onCastEmbersSpell(spell.name)}
+                                    disabled={isBusy}
+                                />
+                            ))}
+                        </div>
+                    ) : (
+                        <div className="mt-3 rounded-2xl border border-stone-800 bg-stone-950/70 p-3 text-sm text-stone-400">
+                            No mapped Embers spells were found on this sheet yet.
+                        </div>
+                    )}
                 </div>
             </div>
 
@@ -814,6 +910,29 @@ export function RuntimeWorkbenchShell() {
         }
     };
 
+    const handleCopySmokeProfile = async (character: Character) => {
+        const smokeProfile = deriveSmokeVisionProfile(character);
+        await navigator.clipboard.writeText(
+            formatSmokeProfileText(
+                character,
+                smokeProfile.range,
+                smokeProfile.greyscale,
+                smokeProfile.falloff,
+                smokeProfile.notes,
+            ),
+        );
+        await OBR.notification.show('Copied the Smoke vision profile.', 'SUCCESS');
+    };
+
+    const handleCastEmbersSpell = async (character: Character, spellName: string) => {
+        setIsBusy(true);
+        try {
+            await triggerEmbersSpellFromCharacter(character, spellName);
+        } finally {
+            setIsBusy(false);
+        }
+    };
+
     const handleWorkflowDone = () => {
         setWorkflowCompletionCharacterId(null);
         setIsImporting(false);
@@ -893,6 +1012,12 @@ export function RuntimeWorkbenchShell() {
                         void handleImportSelection();
                     }}
                     onOpenSync={() => setActivePanel('sync')}
+                    onCopySmokeProfile={(character) => {
+                        void handleCopySmokeProfile(character);
+                    }}
+                    onCastEmbersSpell={(character, spellName) => {
+                        void handleCastEmbersSpell(character, spellName);
+                    }}
                 />
 
                 <QuickActionRail activePanel={activePanel} onOpenPanel={handleOpenPanel} />
@@ -945,6 +1070,12 @@ export function RuntimeWorkbenchShell() {
                                 void handleAssignPlayer(playerId, workflowCompletionCharacter.id);
                             }}
                             onOpenSync={() => setActivePanel('sync')}
+                            onCopySmokeProfile={() => {
+                                void handleCopySmokeProfile(workflowCompletionCharacter);
+                            }}
+                            onCastEmbersSpell={(spellName) => {
+                                void handleCastEmbersSpell(workflowCompletionCharacter, spellName);
+                            }}
                             onDone={handleWorkflowDone}
                         />
                     ) : editorState ? (
