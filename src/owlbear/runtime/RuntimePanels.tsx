@@ -32,7 +32,11 @@ import {
     publishRoomStateFromStores,
     setPlayerAssignment,
 } from '../bridge';
-import { deriveSmokeVisionProfile } from '../integrations';
+import {
+    deriveSmokeVisionProfile,
+    getEmbersSpellId,
+    triggerEmbersSpellFromCombatant,
+} from '../integrations';
 import { getRoomStateFromMetadata, type OwlbearRoomState } from '../shared';
 import { getPanelLabel, type WorkspacePanel } from './runtimeTypes';
 
@@ -521,6 +525,23 @@ function SyncWorkspace() {
                                 <CompactStat label="Greyscale" value={smokeVisionProfile.greyscale ? 'Yes' : 'No'} />
                                 <CompactStat label="Falloff" value={String(smokeVisionProfile.falloff)} />
                             </div>
+                            <div className="mt-3 rounded-2xl border border-stone-800 bg-stone-950/70 p-3 text-sm text-stone-300">
+                                Apply this in Smoke and Spectre! after linking the token. Use the selected token as the Smoke owner, set range to {smokeVisionProfile.range} ft, then match greyscale and falloff here.
+                            </div>
+                            {selectedCharacter.senses && (
+                                <div className="mt-3 text-sm text-stone-400">
+                                    Sheet senses: {selectedCharacter.senses}
+                                </div>
+                            )}
+                            {smokeVisionProfile.notes.length > 0 && (
+                                <div className="mt-3 space-y-2">
+                                    {smokeVisionProfile.notes.map((note) => (
+                                        <div key={note} className="rounded-xl border border-stone-800 bg-stone-950/70 px-3 py-2 text-sm text-stone-400">
+                                            {note}
+                                        </div>
+                                    ))}
+                                </div>
+                            )}
                         </div>
                     )}
                 </div>
@@ -613,6 +634,14 @@ function CombatWorkspace() {
 
     const activeCampaign = campaigns.find((campaign) => campaign.id === activeCampaignId) ?? null;
     const activeCombatant = activeEncounter?.combatants.find((combatant) => combatant.id === activeEncounter.activeCombatantId) ?? null;
+    const activeCharacter = useMemo(
+        () => (activeCombatant?.sourceId ? characters.find((character) => character.id === activeCombatant.sourceId) ?? null : null),
+        [activeCombatant?.sourceId, characters],
+    );
+    const embersReadySpells = useMemo(
+        () => (activeCharacter?.spells ?? []).filter((spell) => Boolean(getEmbersSpellId(spell.name))),
+        [activeCharacter],
+    );
     const partyLevel = activeCampaign
         ? characters
             .filter((character) => activeCampaign.partyIds.includes(character.id))
@@ -645,6 +674,19 @@ function CombatWorkspace() {
     const handleRemoveCombatant = async (combatant: Combatant) => {
         removeCombatant(combatant.id);
         await OBR.notification.show(`Removed ${combatant.name} from the encounter.`, 'SUCCESS');
+    };
+
+    const handleCastActiveSpell = async (spellName: string) => {
+        if (!activeCombatant) {
+            return;
+        }
+
+        setIsBusy(true);
+        try {
+            await triggerEmbersSpellFromCombatant(activeCombatant, spellName);
+        } finally {
+            setIsBusy(false);
+        }
     };
 
     if (!activeEncounter) {
@@ -741,6 +783,27 @@ function CombatWorkspace() {
                             </button>
                         </div>
                     </div>
+                    {activeCharacter && embersReadySpells.length > 0 && (
+                        <div className="mt-4">
+                            <div className="text-[10px] font-black uppercase tracking-[0.22em] text-gold">Embers-ready spells</div>
+                            <div className="mt-3 flex flex-wrap gap-2">
+                                {embersReadySpells.slice(0, 6).map((spell) => (
+                                    <button
+                                        key={spell.id}
+                                        type="button"
+                                        onClick={() => void handleCastActiveSpell(spell.name)}
+                                        disabled={isBusy}
+                                        className="rounded-full border border-gold/30 bg-gold/10 px-3 py-2 text-[11px] font-black uppercase tracking-[0.16em] text-gold transition-colors hover:border-gold/50 hover:bg-gold/15 disabled:cursor-not-allowed disabled:opacity-50"
+                                    >
+                                        {spell.name}
+                                    </button>
+                                ))}
+                            </div>
+                            <div className="mt-2 text-xs text-stone-400">
+                                Embers uses the active combatant as caster and the current Owlbear token selection as target context.
+                            </div>
+                        </div>
+                    )}
                 </div>
             )}
 
