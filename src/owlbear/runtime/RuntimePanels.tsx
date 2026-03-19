@@ -233,7 +233,7 @@ export function WorkspaceDrawer({
                 {activePanel === 'roster' && (
                     <RosterWorkspace onImportPdf={onImportPdf} onCreateCharacter={onCreateCharacter} onEditCharacter={onEditCharacter} />
                 )}
-                {activePanel === 'combat' && <CombatWorkspace />}
+                {activePanel === 'combat' && <CombatWorkspace onEditCharacter={onEditCharacter} />}
                 {activePanel === 'sync' && <SyncWorkspace />}
                 {activePanel === 'camp' && <CampWorkspace />}
                 {activePanel === 'notes' && <NotesWorkspace />}
@@ -611,7 +611,11 @@ function SyncWorkspace() {
     );
 }
 
-function CombatWorkspace() {
+function CombatWorkspace({
+    onEditCharacter,
+}: {
+    onEditCharacter: (characterId: string) => void;
+}) {
     const characters = useCharacterStore((state) => state.characters);
     const activeCampaignId = useCampaignStore((state) => state.activeCampaignId);
     const campaigns = useCampaignStore((state) => state.campaigns);
@@ -637,7 +641,9 @@ function CombatWorkspace() {
     const [isBusy, setIsBusy] = useState(false);
     const [selectedConcentrationSpell, setSelectedConcentrationSpell] = useState('');
     const [selectedConditionName, setSelectedConditionName] = useState('Blessed');
+    const [customConditionName, setCustomConditionName] = useState('');
     const [conditionDuration, setConditionDuration] = useState('1');
+    const [selectedTargetCombatantId, setSelectedTargetCombatantId] = useState('');
 
     const activeCampaign = campaigns.find((campaign) => campaign.id === activeCampaignId) ?? null;
     const activeCombatant = activeEncounter?.combatants.find((combatant) => combatant.id === activeEncounter.activeCombatantId) ?? null;
@@ -653,12 +659,16 @@ function CombatWorkspace() {
         () => (activeCharacter?.spells ?? []).filter((spell) => spell.concentration),
         [activeCharacter],
     );
+    const embersTargets = useMemo(
+        () => (activeEncounter?.combatants ?? []).filter((combatant) => combatant.id !== activeCombatant?.id),
+        [activeCombatant?.id, activeEncounter?.combatants],
+    );
     const partyLevel = activeCampaign
         ? characters
             .filter((character) => activeCampaign.partyIds.includes(character.id))
             .reduce((sum, character) => sum + character.level, 0)
         : 0;
-    const commonConditions = ['Blessed', 'Poisoned', 'Prone', 'Restrained', 'Stunned', 'Invisible'];
+    const commonConditions = ['Blessed', 'Charmed', 'Frightened', 'Grappled', 'Invisible', 'Poisoned', 'Prone', 'Restrained', 'Stunned'];
 
     useEffect(() => {
         if (concentrationSpells.length === 0) {
@@ -672,6 +682,20 @@ function CombatWorkspace() {
             return concentrationSpells[0]?.name ?? '';
         });
     }, [concentrationSpells]);
+
+    useEffect(() => {
+        if (embersTargets.length === 0) {
+            setSelectedTargetCombatantId('');
+            return;
+        }
+
+        setSelectedTargetCombatantId((current) => {
+            if (current && embersTargets.some((combatant) => combatant.id === current)) {
+                return current;
+            }
+            return embersTargets[0]?.id ?? '';
+        });
+    }, [embersTargets]);
 
     const handleCreateEncounter = async () => {
         const encounterTitle = title.trim() || 'Owlbear Encounter';
@@ -708,7 +732,8 @@ function CombatWorkspace() {
 
         setIsBusy(true);
         try {
-            await triggerEmbersSpellFromCombatant(activeCombatant, spellName);
+            const targetCombatant = embersTargets.find((combatant) => combatant.id === selectedTargetCombatantId) ?? null;
+            await triggerEmbersSpellFromCombatant(activeCombatant, spellName, targetCombatant);
         } finally {
             setIsBusy(false);
         }
@@ -753,14 +778,19 @@ function CombatWorkspace() {
     };
 
     const handleAddCondition = async () => {
-        if (!activeCombatant || !selectedConditionName.trim()) {
+        if (!activeCombatant) {
+            return;
+        }
+
+        const conditionName = (customConditionName.trim() || selectedConditionName.trim());
+        if (!conditionName) {
             return;
         }
 
         const duration = Number(conditionDuration);
         const nextCondition: Condition = {
             id: crypto.randomUUID(),
-            name: selectedConditionName.trim(),
+            name: conditionName,
             type: 'condition',
             duration: Number.isFinite(duration) && duration > 0 ? duration : undefined,
             description: 'Applied from the Owlbear compact combat panel.',
@@ -769,6 +799,7 @@ function CombatWorkspace() {
             conditions: [...activeCombatant.conditions, nextCondition],
         });
         await OBR.notification.show(`Added ${nextCondition.name} to ${activeCombatant.name}.`, 'SUCCESS');
+        setCustomConditionName('');
     };
 
     const handleRemoveCondition = async (conditionId: string, name: string) => {
@@ -858,7 +889,16 @@ function CombatWorkspace() {
                                 HP {activeCombatant.currentHp}/{activeCombatant.maxHp} - Init {activeCombatant.initiativeScore ?? '-'}
                             </div>
                         </div>
-                        <div className="flex gap-2">
+                        <div className="flex flex-wrap gap-2">
+                            {activeCharacter && (
+                                <button
+                                    type="button"
+                                    onClick={() => onEditCharacter(activeCharacter.id)}
+                                    className="rounded-full border border-stone-700 bg-stone-950 px-3 py-2 text-[11px] font-black uppercase tracking-[0.16em] text-stone-100 transition-colors hover:border-sky-400/20 hover:text-sky-100"
+                                >
+                                    Open Sheet
+                                </button>
+                            )}
                             <button
                                 type="button"
                                 onClick={() => damageCombatant(activeCombatant.id, 5)}
@@ -878,6 +918,23 @@ function CombatWorkspace() {
                     {activeCharacter && embersReadySpells.length > 0 && (
                         <div className="mt-4">
                             <div className="text-[10px] font-black uppercase tracking-[0.22em] text-gold">Embers-ready spells</div>
+                            <div className="mt-3 grid gap-2 lg:grid-cols-[minmax(0,1fr)_180px]">
+                                <div className="text-xs text-stone-400">
+                                    Embers uses the active combatant as caster and the selected target below for effect direction.
+                                </div>
+                                <select
+                                    value={selectedTargetCombatantId}
+                                    onChange={(event) => setSelectedTargetCombatantId(event.target.value)}
+                                    className="rounded-xl border border-stone-700 bg-stone-900 px-3 py-2 text-sm text-stone-100 outline-none transition-colors focus:border-gold"
+                                >
+                                    {embersTargets.length === 0 && <option value="">No other combatant</option>}
+                                    {embersTargets.map((combatant) => (
+                                        <option key={combatant.id} value={combatant.id}>
+                                            {combatant.name}
+                                        </option>
+                                    ))}
+                                </select>
+                            </div>
                             <div className="mt-3 flex flex-wrap gap-2">
                                 {embersReadySpells.slice(0, 6).map((spell) => (
                                     <button
@@ -890,9 +947,6 @@ function CombatWorkspace() {
                                         {spell.name}
                                     </button>
                                 ))}
-                            </div>
-                            <div className="mt-2 text-xs text-stone-400">
-                                Embers uses the active combatant as caster and the current Owlbear token selection as target context.
                             </div>
                         </div>
                     )}
@@ -1020,6 +1074,24 @@ function CombatWorkspace() {
                                 >
                                     Add
                                 </button>
+                            </div>
+                            <div className="mt-2 grid gap-2 lg:grid-cols-[minmax(0,1fr)_repeat(4,auto)]">
+                                <input
+                                    value={customConditionName}
+                                    onChange={(event) => setCustomConditionName(event.target.value)}
+                                    placeholder="Custom condition name"
+                                    className="rounded-xl border border-stone-700 bg-stone-900 px-3 py-2 text-sm text-stone-100 outline-none transition-colors focus:border-gold"
+                                />
+                                {[1, 3, 10, 60].map((rounds) => (
+                                    <button
+                                        key={rounds}
+                                        type="button"
+                                        onClick={() => setConditionDuration(String(rounds))}
+                                        className={`rounded-xl border px-3 py-2 text-sm font-semibold transition-colors ${conditionDuration === String(rounds) ? 'border-gold/30 bg-gold/10 text-gold' : 'border-stone-700 bg-stone-900 text-stone-100 hover:border-sky-400/20 hover:text-sky-100'}`}
+                                    >
+                                        {rounds}r
+                                    </button>
+                                ))}
                             </div>
                             <div className="mt-3 flex flex-wrap gap-2">
                                 {activeCombatant.conditions.length === 0 && (
