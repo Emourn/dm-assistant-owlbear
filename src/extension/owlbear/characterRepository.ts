@@ -176,6 +176,13 @@ export async function updateCharacterSheet(
     characterId: string,
     sheet: Phase1CharacterSheet,
 ): Promise<CharacterRepositorySnapshot | null> {
+    return updateCharacterSheetWith(characterId, () => sheet);
+}
+
+export async function updateCharacterSheetWith(
+    characterId: string,
+    updater: (sheet: Phase1CharacterSheet) => Phase1CharacterSheet,
+): Promise<CharacterRepositorySnapshot | null> {
     const metadata = await OBR.room.getMetadata();
     const current = getCharacterCollectionFromMetadata(metadata);
     if (!current) {
@@ -187,7 +194,7 @@ export async function updateCharacterSheet(
         characterId,
         (record) => ({
             ...record,
-            sheet,
+            sheet: updater(record.sheet),
         }),
     );
 

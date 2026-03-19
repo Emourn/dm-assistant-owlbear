@@ -12,10 +12,14 @@ interface ExtensionShellProps {
     lastRoll: StructuredRollResult | null;
     assigningPlayerId: string | null;
     isSavingCharacter: boolean;
+    isUpdatingRuntime: boolean;
     isLinkingCharacter: boolean;
     onRoll: (request: StructuredRollRequest) => void;
     onSelectCharacter: (characterId: string) => void;
     onSaveCharacter: (sheet: Phase1CharacterSheet) => Promise<void>;
+    onAdjustResource: (resourceId: string, delta: number) => Promise<void>;
+    onAdjustDeathSave: (kind: 'successes' | 'failures', delta: number) => Promise<void>;
+    onSaveOverrides: (next: { proficiencyBonusOverride: number | null; initiativeAdjustment: number }) => Promise<void>;
     onLinkCharacter: (sheet: Phase1CharacterSheet) => Promise<void>;
     onUnlinkCharacter: () => Promise<void>;
     onAssignCharacter: (playerId: string, characterId: string | null) => Promise<void>;
@@ -52,10 +56,14 @@ export function ExtensionShell({
     lastRoll,
     assigningPlayerId,
     isSavingCharacter,
+    isUpdatingRuntime,
     isLinkingCharacter,
     onRoll,
     onSelectCharacter,
     onSaveCharacter,
+    onAdjustResource,
+    onAdjustDeathSave,
+    onSaveOverrides,
     onLinkCharacter,
     onUnlinkCharacter,
     onAssignCharacter,
@@ -158,13 +166,24 @@ export function ExtensionShell({
                     role={runtime.role}
                     players={runtime.players as Player[]}
                     canEdit={runtime.role === 'GM'}
+                    canManageRuntime={
+                        runtime.role === 'GM'
+                        || (
+                            runtime.role === 'PLAYER'
+                            && characterState?.assignedCharacterId === characterState?.activeCharacter?.sheet.id
+                        )
+                    }
                     isSaving={isSavingCharacter}
+                    isUpdatingRuntime={isUpdatingRuntime}
                     isLinking={isLinkingCharacter}
                     assigningPlayerId={assigningPlayerId}
                     lastRoll={lastRoll}
                     onRoll={onRoll}
                     onSelectCharacter={onSelectCharacter}
                     onSave={onSaveCharacter}
+                    onAdjustResource={onAdjustResource}
+                    onAdjustDeathSave={onAdjustDeathSave}
+                    onSaveOverrides={onSaveOverrides}
                     onLink={onLinkCharacter}
                     onUnlink={onUnlinkCharacter}
                     onAssign={onAssignCharacter}

@@ -1,5 +1,11 @@
 import { useCallback, useEffect, useState } from 'react';
 import OBR from '@owlbear-rodeo/sdk';
+import {
+    setInitiativeAdjustment,
+    setProficiencyBonusOverride,
+    updateDeathSaves,
+    updateSheetResourceCounter,
+} from '../../features/dnd2024/domain/mutations';
 import { rollStructuredD20 } from '../../features/dnd2024/domain/rolls';
 import type {
     Phase1CharacterSheet,
@@ -14,6 +20,7 @@ import {
     setActiveCharacterRecord,
     unlinkSelectionCharacters,
     updateCharacterSheet,
+    updateCharacterSheetWith,
     type CharacterRepositorySnapshot,
 } from './characterRepository';
 import { readRuntimeSnapshot, type OwlbearRuntimeSnapshot } from './runtime';
@@ -24,6 +31,7 @@ export function PopoverApp({ surface = 'popover' }: { surface?: 'popover' | 'pan
     const [lastRoll, setLastRoll] = useState<StructuredRollResult | null>(null);
     const [assigningPlayerId, setAssigningPlayerId] = useState<string | null>(null);
     const [isSavingCharacter, setIsSavingCharacter] = useState(false);
+    const [isUpdatingRuntime, setIsUpdatingRuntime] = useState(false);
     const [isLinkingCharacter, setIsLinkingCharacter] = useState(false);
     const [loadState, setLoadState] = useState<'loading' | 'ready' | 'error'>('loading');
     const [error, setError] = useState<string | null>(null);
@@ -149,6 +157,74 @@ export function PopoverApp({ surface = 'popover' }: { surface?: 'popover' | 'pan
         }
     }, []);
 
+    const handleAdjustResource = useCallback(async (resourceId: string, delta: number) => {
+        const activeSheetId = characterState?.activeCharacter?.sheet.id;
+        if (!activeSheetId) {
+            return;
+        }
+
+        setIsUpdatingRuntime(true);
+        try {
+            const next = await updateCharacterSheetWith(
+                activeSheetId,
+                (sheet) => updateSheetResourceCounter(sheet, resourceId, delta),
+            );
+            if (next) {
+                setCharacterState(next);
+                setLastRoll(null);
+            }
+        } finally {
+            setIsUpdatingRuntime(false);
+        }
+    }, [characterState]);
+
+    const handleAdjustDeathSave = useCallback(async (kind: 'successes' | 'failures', delta: number) => {
+        const activeSheetId = characterState?.activeCharacter?.sheet.id;
+        if (!activeSheetId) {
+            return;
+        }
+
+        setIsUpdatingRuntime(true);
+        try {
+            const next = await updateCharacterSheetWith(
+                activeSheetId,
+                (sheet) => updateDeathSaves(sheet, kind, delta),
+            );
+            if (next) {
+                setCharacterState(next);
+                setLastRoll(null);
+            }
+        } finally {
+            setIsUpdatingRuntime(false);
+        }
+    }, [characterState]);
+
+    const handleSaveOverrides = useCallback(async (nextOverrides: {
+        proficiencyBonusOverride: number | null;
+        initiativeAdjustment: number;
+    }) => {
+        const activeSheetId = characterState?.activeCharacter?.sheet.id;
+        if (!activeSheetId) {
+            return;
+        }
+
+        setIsUpdatingRuntime(true);
+        try {
+            const next = await updateCharacterSheetWith(activeSheetId, (sheet) =>
+                setInitiativeAdjustment(
+                    setProficiencyBonusOverride(sheet, nextOverrides.proficiencyBonusOverride),
+                    nextOverrides.initiativeAdjustment,
+                ),
+            );
+            if (next) {
+                setCharacterState(next);
+                setLastRoll(null);
+            }
+        } finally {
+            setIsUpdatingRuntime(false);
+        }
+    }, [characterState]);
+
     return (
         <ExtensionShell
             runtime={runtime}
@@ -156,10 +232,14 @@ export function PopoverApp({ surface = 'popover' }: { surface?: 'popover' | 'pan
             lastRoll={lastRoll}
             assigningPlayerId={assigningPlayerId}
             isSavingCharacter={isSavingCharacter}
+            isUpdatingRuntime={isUpdatingRuntime}
             isLinkingCharacter={isLinkingCharacter}
             onRoll={handleRoll}
             onSelectCharacter={handleSelectCharacter}
             onSaveCharacter={handleSaveCharacter}
+            onAdjustResource={handleAdjustResource}
+            onAdjustDeathSave={handleAdjustDeathSave}
+            onSaveOverrides={handleSaveOverrides}
             onLinkCharacter={handleLinkCharacter}
             onUnlinkCharacter={handleUnlinkCharacter}
             onAssignCharacter={handleAssignCharacter}

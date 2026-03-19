@@ -13,7 +13,9 @@ import type {
 } from '../../features/dnd2024/domain/types';
 import type { CharacterRepositorySnapshot } from '../owlbear/characterRepository';
 import { CharacterEditorPanel } from './CharacterEditorPanel';
+import { OverridePanel } from './OverridePanel';
 import { PlayerAssignmentPanel } from './PlayerAssignmentPanel';
+import { ResourceRuntimePanel } from './ResourceRuntimePanel';
 import { TokenLinkPanel } from './TokenLinkPanel';
 
 interface CharacterSheetPanelProps {
@@ -21,13 +23,18 @@ interface CharacterSheetPanelProps {
     role: 'GM' | 'PLAYER' | null;
     players: Player[];
     canEdit: boolean;
+    canManageRuntime: boolean;
     isSaving: boolean;
+    isUpdatingRuntime: boolean;
     isLinking: boolean;
     assigningPlayerId: string | null;
     lastRoll: StructuredRollResult | null;
     onRoll: (request: StructuredRollRequest) => void;
     onSelectCharacter: (characterId: string) => void;
     onSave: (sheet: Phase1CharacterSheet) => Promise<void>;
+    onAdjustResource: (resourceId: string, delta: number) => Promise<void>;
+    onAdjustDeathSave: (kind: 'successes' | 'failures', delta: number) => Promise<void>;
+    onSaveOverrides: (next: { proficiencyBonusOverride: number | null; initiativeAdjustment: number }) => Promise<void>;
     onLink: (sheet: Phase1CharacterSheet) => Promise<void>;
     onUnlink: () => Promise<void>;
     onAssign: (playerId: string, characterId: string | null) => Promise<void>;
@@ -95,13 +102,18 @@ export function CharacterSheetPanel({
     role,
     players,
     canEdit,
+    canManageRuntime,
     isSaving,
+    isUpdatingRuntime,
     isLinking,
     assigningPlayerId,
     lastRoll,
     onRoll,
     onSelectCharacter,
     onSave,
+    onAdjustResource,
+    onAdjustDeathSave,
+    onSaveOverrides,
     onLink,
     onUnlink,
     onAssign,
@@ -358,6 +370,21 @@ export function CharacterSheetPanel({
                 characterState={characterState}
                 assigningPlayerId={assigningPlayerId}
                 onAssign={onAssign}
+            />
+
+            <ResourceRuntimePanel
+                sheet={sheet}
+                canManage={canManageRuntime}
+                isUpdating={isUpdatingRuntime}
+                onAdjustResource={onAdjustResource}
+                onAdjustDeathSave={onAdjustDeathSave}
+            />
+
+            <OverridePanel
+                sheet={sheet}
+                canEdit={canEdit}
+                isSaving={isUpdatingRuntime}
+                onSave={onSaveOverrides}
             />
 
             <CharacterEditorPanel
