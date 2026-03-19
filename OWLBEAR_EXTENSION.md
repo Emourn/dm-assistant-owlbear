@@ -1,8 +1,8 @@
-# Owlbear Rodeo Extension Packaging
+# Owlbear Rodeo D&D Assistant
 
 ## What ships
 
-This project now builds an Owlbear Rodeo extension alongside the standalone app.
+This project now builds a brand-new Owlbear Rodeo Dungeons & Dragons extension.
 
 Key build outputs:
 
@@ -11,22 +11,17 @@ Key build outputs:
 - `dist/owlbear-workbench.html`
 - `dist/owlbear-background.html`
 
-Core Owlbear-facing features implemented:
+Current rebuild slice:
 
-- GM popover for quick room control
-- Map-preserving DM command panel in Owlbear popovers
-- Owlbear background page with context menu import
-- Token-to-character linking using item metadata
-- Shared room state publishing using Owlbear room metadata
-- Player assignment registry for Owlbear room participants
-- Player-facing read-only sheet view from linked or assigned tokens
-- Combat token import that uses Owlbear selection and skips the internal map editor
-- Embers spell dispatch bridge for mapped sheet spells
-- Smoke-ready vision profiles stored on linked tokens and surfaced in the sync panel
+- brand-new extension namespace and manifest identity
+- new Owlbear-native runtime shell
+- selection-aware popover shell
+- lightweight context-menu open action
+- clean domain / Owlbear adapter / UI separation for future Phase 1 work
 
 ## Compatibility posture
 
-DM Assistant does not try to replace Owlbear's map stack.
+The new D&D Assistant does not try to replace Owlbear's map stack.
 
 The extension is designed to coexist with scene and ambience extensions such as:
 
@@ -36,9 +31,9 @@ The extension is designed to coexist with scene and ambience extensions such as:
 
 Why this is compatible:
 
-- DM Assistant only writes to its own metadata namespace: `com.antigravity.dm-assistant`
-- Character sheet links are stored as token metadata under that namespace
-- The extension does not overwrite scene lighting, fog, particles, or effect data owned by other extensions
+- The new extension uses its own metadata namespace: `com.antigravity.dnd-assistant`
+- It does not take ownership of maps, fog, lighting, particles, or other extension state
+- The current rebuild slice does not yet write character or encounter metadata
 
 ## Build
 
@@ -61,7 +56,7 @@ Owlbear Rodeo can install directly from the local manifest while the dev server 
 http://localhost:5173/owlbear-manifest.json
 ```
 
-The Vite dev server is configured with Owlbear Rodeo CORS support so this URL can be used during incremental feature testing.
+The Vite dev server is configured with Owlbear Rodeo CORS support so this URL can be used during incremental feature testing of the rebuild.
 
 For the production bundle:
 
@@ -96,42 +91,26 @@ The URL you will paste into Owlbear is the hosted manifest, for example:
 https://<your-host>/<path>/owlbear-manifest.json
 ```
 
-If a static host serves a stale cached manifest during rollout, a second manifest with absolute URLs can be imported directly from the repository:
+For this repository, the intended hosted URL is:
 
 ```text
-https://raw.githubusercontent.com/Emourn/dm-assistant-owlbear/codex/owlbear-extension/public/owlbear-manifest-raw.json
+https://emourn.github.io/dm-assistant-owlbear/owlbear-manifest.json
 ```
 
-## Recommended GitHub Pages flow
+If GitHub Pages is not enabled yet, Owlbear will return a 404 for that URL until Pages is configured in the repository settings. Local dev manifest testing still works immediately.
 
-1. Create a repository and push this project.
-2. Build the project.
-3. Publish the contents of `dist/` to GitHub Pages.
-4. Use the public `owlbear-manifest.json` URL in Owlbear Rodeo.
+## Recommended incremental testing loop
 
-Because the Vite config now uses a relative base path, the built extension assets can be hosted from a repository subpath.
-
-## Current Owlbear workflow
-
-### GM workflow
-
-1. Open the DM Assistant popover from Owlbear.
-2. Open the DM workbench for campaigns, characters, combat, and rests.
-3. Link selected Owlbear tokens to character sheets from the `Owlbear` tab.
-4. Assign Owlbear players to characters.
-5. Publish room state.
-6. Import selected Owlbear tokens into combat whenever needed.
-
-### Player workflow
-
-1. GM assigns the player to a character.
-2. GM links the character to a tabletop token.
-3. Player selects that token or uses their assigned token.
-4. Player opens the extension popover to view a read-only sheet.
+1. Start the local dev server.
+2. In Owlbear Rodeo, install from `http://localhost:5173/owlbear-manifest.json`.
+3. Open the extension in a test room.
+4. Confirm the new rebuild shell loads instead of the old DM Assistant workbench.
+5. Verify room role, selection summary, and context-menu open action.
+6. Only after that, add the next Phase 1 slice.
 
 ## Important constraints
 
-- The old internal tactical map editor is intentionally not part of the Owlbear flow.
+- This extension is being rebuilt from scratch.
+- The old DM Assistant Owlbear implementation is no longer the intended foundation.
 - Owlbear remains the map engine.
-- DM Assistant handles sheet state, campaign state, rests, and combat logic around Owlbear.
-- Very large full-sheet sharing is handled through token metadata links, not by trying to cram full data into room metadata.
+- Phase 1 character-sheet systems will be reintroduced incrementally on top of the new shell.

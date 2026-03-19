@@ -1,10 +1,10 @@
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import '../index.css';
-import { OwlbearWorkbenchApp } from './OwlbearWorkbenchApp';
+import { PopoverApp } from '../extension/owlbear/PopoverApp';
 
 createRoot(document.getElementById('root')!).render(
     <StrictMode>
-        <OwlbearWorkbenchApp />
+        <PopoverApp surface="panel" />
     </StrictMode>,
 );

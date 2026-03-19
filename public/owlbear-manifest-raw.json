@@ -1,16 +1,16 @@
 {
-  "name": "DM Assistant",
+  "name": "D&D Assistant",
   "version": "0.1.0",
   "manifest_version": 1,
-  "author": "OpenAI Codex for Carlo",
-  "description": "Character sheets, token links, room sync, and combat for Owlbear Rodeo.",
+  "author": "Carlo and OpenAI Codex",
+  "description": "A brand-new Owlbear Rodeo Dungeons & Dragons extension rebuilt from scratch with a map-first, selection-first workflow.",
   "icon": "https://emourn.github.io/dm-assistant-owlbear/owlbear/icon.svg",
   "background_url": "https://emourn.github.io/dm-assistant-owlbear/owlbear-background.html",
   "action": {
-    "title": "DM Assistant",
+    "title": "D&D Assistant",
     "icon": "https://emourn.github.io/dm-assistant-owlbear/owlbear/icon.svg",
     "popover": "https://emourn.github.io/dm-assistant-owlbear/owlbear.html",
-    "height": 760,
-    "width": 560
+    "height": 720,
+    "width": 460
   }
 }
