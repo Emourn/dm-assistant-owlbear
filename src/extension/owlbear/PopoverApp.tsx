@@ -8,6 +8,7 @@ import type {
 } from '../../features/dnd2024/domain/types';
 import { ExtensionShell } from '../ui/ExtensionShell';
 import {
+    assignCharacterToPlayer,
     linkActiveCharacterToSelection,
     readCharacterRepositorySnapshot,
     setActiveCharacterRecord,
@@ -21,6 +22,7 @@ export function PopoverApp({ surface = 'popover' }: { surface?: 'popover' | 'pan
     const [runtime, setRuntime] = useState<OwlbearRuntimeSnapshot | null>(null);
     const [characterState, setCharacterState] = useState<CharacterRepositorySnapshot | null>(null);
     const [lastRoll, setLastRoll] = useState<StructuredRollResult | null>(null);
+    const [assigningPlayerId, setAssigningPlayerId] = useState<string | null>(null);
     const [isSavingCharacter, setIsSavingCharacter] = useState(false);
     const [isLinkingCharacter, setIsLinkingCharacter] = useState(false);
     const [loadState, setLoadState] = useState<'loading' | 'ready' | 'error'>('loading');
@@ -135,11 +137,24 @@ export function PopoverApp({ surface = 'popover' }: { surface?: 'popover' | 'pan
         }
     }, []);
 
+    const handleAssignCharacter = useCallback(async (playerId: string, characterId: string | null) => {
+        setAssigningPlayerId(playerId);
+        try {
+            const next = await assignCharacterToPlayer(playerId, characterId);
+            if (next) {
+                setCharacterState(next);
+            }
+        } finally {
+            setAssigningPlayerId(null);
+        }
+    }, []);
+
     return (
         <ExtensionShell
             runtime={runtime}
             characterState={characterState}
             lastRoll={lastRoll}
+            assigningPlayerId={assigningPlayerId}
             isSavingCharacter={isSavingCharacter}
             isLinkingCharacter={isLinkingCharacter}
             onRoll={handleRoll}
@@ -147,6 +162,7 @@ export function PopoverApp({ surface = 'popover' }: { surface?: 'popover' | 'pan
             onSaveCharacter={handleSaveCharacter}
             onLinkCharacter={handleLinkCharacter}
             onUnlinkCharacter={handleUnlinkCharacter}
+            onAssignCharacter={handleAssignCharacter}
             loadState={loadState}
             error={error}
             surface={surface}

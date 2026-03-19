@@ -1,3 +1,4 @@
+import type { Player } from '@owlbear-rodeo/sdk';
 import { BookOpenText, HeartPulse, Shield, Sparkles, Swords, WandSparkles } from 'lucide-react';
 import {
     createCharacterSheetViewModel,
@@ -12,20 +13,24 @@ import type {
 } from '../../features/dnd2024/domain/types';
 import type { CharacterRepositorySnapshot } from '../owlbear/characterRepository';
 import { CharacterEditorPanel } from './CharacterEditorPanel';
+import { PlayerAssignmentPanel } from './PlayerAssignmentPanel';
 import { TokenLinkPanel } from './TokenLinkPanel';
 
 interface CharacterSheetPanelProps {
     characterState: CharacterRepositorySnapshot | null;
     role: 'GM' | 'PLAYER' | null;
+    players: Player[];
     canEdit: boolean;
     isSaving: boolean;
     isLinking: boolean;
+    assigningPlayerId: string | null;
     lastRoll: StructuredRollResult | null;
     onRoll: (request: StructuredRollRequest) => void;
     onSelectCharacter: (characterId: string) => void;
     onSave: (sheet: Phase1CharacterSheet) => Promise<void>;
     onLink: (sheet: Phase1CharacterSheet) => Promise<void>;
     onUnlink: () => Promise<void>;
+    onAssign: (playerId: string, characterId: string | null) => Promise<void>;
 }
 
 function SummaryCard({
@@ -88,15 +93,18 @@ function sourceLabel(source: CharacterRepositorySnapshot['source']): string {
 export function CharacterSheetPanel({
     characterState,
     role,
+    players,
     canEdit,
     isSaving,
     isLinking,
+    assigningPlayerId,
     lastRoll,
     onRoll,
     onSelectCharacter,
     onSave,
     onLink,
     onUnlink,
+    onAssign,
 }: CharacterSheetPanelProps) {
     const active = characterState?.activeCharacter;
     if (!active) {
@@ -341,6 +349,15 @@ export function CharacterSheetPanel({
                 isLinking={isLinking}
                 onLink={onLink}
                 onUnlink={onUnlink}
+            />
+
+            <PlayerAssignmentPanel
+                role={role}
+                players={players}
+                sheet={sheet}
+                characterState={characterState}
+                assigningPlayerId={assigningPlayerId}
+                onAssign={onAssign}
             />
 
             <CharacterEditorPanel

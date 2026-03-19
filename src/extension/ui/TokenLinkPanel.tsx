@@ -14,6 +14,9 @@ function resolutionLabel(source: CharacterRepositorySnapshot['resolution']['sour
     if (source === 'selected-token') {
         return 'Viewing selected token';
     }
+    if (source === 'assigned-character') {
+        return 'Viewing assigned character';
+    }
     if (source === 'active-character') {
         return 'Viewing active record';
     }

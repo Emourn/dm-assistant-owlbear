@@ -10,16 +10,23 @@ import {
 } from '../domain/characterRecords';
 import type { Phase1CharacterSheet } from '../../features/dnd2024/domain/types';
 import {
+    createEmptyPlayerAssignments,
+    parseStoredPlayerAssignments,
+    PLAYER_ASSIGNMENT_VERSION,
+    resolveCharacterView,
+    type CharacterViewResolution,
+    type StoredPlayerAssignments,
+} from '../domain/playerAssignments';
+import {
     parseStoredTokenLink,
-    resolveCharacterIdFromSelection,
     TOKEN_LINK_VERSION,
     type StoredTokenLink,
     type TokenLinkVisibility,
-    type TokenSelectionResolution,
 } from '../domain/tokenLinks';
 import { EXTENSION_NAMESPACE } from './ids';
 
 export const ROOM_CHARACTER_COLLECTION_KEY = `${EXTENSION_NAMESPACE}/characters`;
+export const ROOM_PLAYER_ASSIGNMENTS_KEY = `${EXTENSION_NAMESPACE}/player-assignments`;
 export const TOKEN_CHARACTER_LINK_KEY = `${EXTENSION_NAMESPACE}/token-link`;
 
 export interface TokenSelectionState {
@@ -30,14 +37,20 @@ export interface TokenSelectionState {
 
 export interface CharacterRepositorySnapshot {
     collection: StoredCharacterCollection;
+    playerAssignments: StoredPlayerAssignments;
+    assignedCharacterId: string | null;
     activeCharacter: StoredCharacterRecord | null;
     source: 'room-metadata' | 'demo-seed' | 'empty';
-    resolution: TokenSelectionResolution;
+    resolution: CharacterViewResolution;
     selection: TokenSelectionState;
 }
 
 export function getCharacterCollectionFromMetadata(metadata: Metadata): StoredCharacterCollection | null {
     return parseStoredCharacterCollection(metadata[ROOM_CHARACTER_COLLECTION_KEY]);
+}
+
+export function getPlayerAssignmentsFromMetadata(metadata: Metadata): StoredPlayerAssignments {
+    return parseStoredPlayerAssignments(metadata[ROOM_PLAYER_ASSIGNMENTS_KEY]) ?? createEmptyPlayerAssignments();
 }
 
 function getTokenCharacterLink(item: Item): StoredTokenLink | null {
@@ -68,26 +81,34 @@ async function getSelectionState(): Promise<TokenSelectionState> {
 
 function buildSnapshot(
     collection: StoredCharacterCollection,
+    playerAssignments: StoredPlayerAssignments,
     source: CharacterRepositorySnapshot['source'],
     role: 'GM' | 'PLAYER' | null,
+    playerId: string | null,
     selection: TokenSelectionState,
 ): CharacterRepositorySnapshot {
     const fallback = selectActiveCharacterRecord(collection);
-    const preferred = resolveCharacterIdFromSelection(
-        role === 'PLAYER' ? role : null,
+    const assignedCharacterId = playerId ? playerAssignments.assignments[playerId] ?? null : null;
+    const preferred = resolveCharacterView(
+        role,
         selection.links,
+        assignedCharacterId,
         fallback?.sheet.id ?? null,
     );
     const resolvedRecord = collection.characters.find((record) => record.sheet.id === preferred.characterId) ?? null;
-    const activeCharacter = resolvedRecord ?? fallback ?? null;
+    const activeCharacter = role === 'GM'
+        ? (resolvedRecord ?? fallback ?? null)
+        : resolvedRecord;
     const resolution = resolvedRecord
         ? preferred
-        : activeCharacter
+        : role === 'GM' && activeCharacter
             ? { characterId: activeCharacter.sheet.id, source: 'active-character' as const }
             : { characterId: null, source: 'none' as const };
 
     return {
         collection,
+        playerAssignments,
+        assignedCharacterId,
         activeCharacter,
         source,
         resolution,
@@ -101,25 +122,33 @@ async function writeCharacterCollection(collection: StoredCharacterCollection): 
     });
 }
 
+async function writePlayerAssignments(assignments: StoredPlayerAssignments): Promise<void> {
+    await OBR.room.setMetadata({
+        [ROOM_PLAYER_ASSIGNMENTS_KEY]: assignments,
+    });
+}
+
 export async function readCharacterRepositorySnapshot(
     role: 'GM' | 'PLAYER' | null,
 ): Promise<CharacterRepositorySnapshot> {
     const metadata = await OBR.room.getMetadata();
+    const playerId = await OBR.player.getId().catch(() => null);
     const selection = await getSelectionState();
     const existing = getCharacterCollectionFromMetadata(metadata);
+    const playerAssignments = getPlayerAssignmentsFromMetadata(metadata);
 
     if (existing) {
-        return buildSnapshot(existing, 'room-metadata', role, selection);
+        return buildSnapshot(existing, playerAssignments, 'room-metadata', role, playerId, selection);
     }
 
     if (role === 'GM') {
         const seeded = createSampleCharacterCollection();
         await writeCharacterCollection(seeded);
-        return buildSnapshot(seeded, 'demo-seed', role, selection);
+        return buildSnapshot(seeded, playerAssignments, 'demo-seed', role, playerId, selection);
     }
 
     const empty = createEmptyCharacterCollection();
-    return buildSnapshot(empty, 'empty', role, selection);
+    return buildSnapshot(empty, playerAssignments, 'empty', role, playerId, selection);
 }
 
 export async function setActiveCharacterRecord(characterId: string): Promise<CharacterRepositorySnapshot | null> {
@@ -136,8 +165,11 @@ export async function setActiveCharacterRecord(characterId: string): Promise<Cha
 
     await writeCharacterCollection(next);
     const role = await OBR.player.getRole();
+    const playerId = await OBR.player.getId().catch(() => null);
+    const latestMetadata = await OBR.room.getMetadata();
+    const playerAssignments = getPlayerAssignmentsFromMetadata(latestMetadata);
     const selection = await getSelectionState();
-    return buildSnapshot(next, 'room-metadata', role, selection);
+    return buildSnapshot(next, playerAssignments, 'room-metadata', role, playerId, selection);
 }
 
 export async function updateCharacterSheet(
@@ -165,8 +197,11 @@ export async function updateCharacterSheet(
 
     await writeCharacterCollection(next);
     const role = await OBR.player.getRole();
+    const playerId = await OBR.player.getId().catch(() => null);
+    const latestMetadata = await OBR.room.getMetadata();
+    const playerAssignments = getPlayerAssignmentsFromMetadata(latestMetadata);
     const selection = await getSelectionState();
-    return buildSnapshot(next, 'room-metadata', role, selection);
+    return buildSnapshot(next, playerAssignments, 'room-metadata', role, playerId, selection);
 }
 
 export async function linkActiveCharacterToSelection(
@@ -210,4 +245,38 @@ export async function unlinkSelectionCharacters(): Promise<CharacterRepositorySn
 
     const role = await OBR.player.getRole();
     return readCharacterRepositorySnapshot(role);
+}
+
+export async function assignCharacterToPlayer(
+    playerId: string,
+    characterId: string | null,
+): Promise<CharacterRepositorySnapshot | null> {
+    const metadata = await OBR.room.getMetadata();
+    const collection = getCharacterCollectionFromMetadata(metadata);
+    if (!collection) {
+        return null;
+    }
+
+    const currentAssignments = getPlayerAssignmentsFromMetadata(metadata);
+    const nextAssignments = {
+        ...currentAssignments.assignments,
+    };
+
+    if (characterId) {
+        nextAssignments[playerId] = characterId;
+    } else {
+        delete nextAssignments[playerId];
+    }
+
+    const next: StoredPlayerAssignments = {
+        version: PLAYER_ASSIGNMENT_VERSION,
+        assignments: nextAssignments,
+    };
+
+    await writePlayerAssignments(next);
+
+    const role = await OBR.player.getRole();
+    const currentPlayerId = await OBR.player.getId().catch(() => null);
+    const selection = await getSelectionState();
+    return buildSnapshot(collection, next, 'room-metadata', role, currentPlayerId, selection);
 }

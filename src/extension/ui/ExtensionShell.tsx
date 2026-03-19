@@ -1,3 +1,4 @@
+import type { Player } from '@owlbear-rodeo/sdk';
 import { Crosshair, Layers3, MapPinned, ScrollText, Shield, Users } from 'lucide-react';
 import type { Phase1CharacterSheet, StructuredRollRequest, StructuredRollResult } from '../../features/dnd2024/domain/types';
 import { CURRENT_SLICE, NEXT_SLICES } from '../domain/phases';
@@ -9,6 +10,7 @@ interface ExtensionShellProps {
     runtime: OwlbearRuntimeSnapshot | null;
     characterState: CharacterRepositorySnapshot | null;
     lastRoll: StructuredRollResult | null;
+    assigningPlayerId: string | null;
     isSavingCharacter: boolean;
     isLinkingCharacter: boolean;
     onRoll: (request: StructuredRollRequest) => void;
@@ -16,6 +18,7 @@ interface ExtensionShellProps {
     onSaveCharacter: (sheet: Phase1CharacterSheet) => Promise<void>;
     onLinkCharacter: (sheet: Phase1CharacterSheet) => Promise<void>;
     onUnlinkCharacter: () => Promise<void>;
+    onAssignCharacter: (playerId: string, characterId: string | null) => Promise<void>;
     loadState: 'loading' | 'ready' | 'error';
     error: string | null;
     surface: 'popover' | 'panel';
@@ -47,6 +50,7 @@ export function ExtensionShell({
     runtime,
     characterState,
     lastRoll,
+    assigningPlayerId,
     isSavingCharacter,
     isLinkingCharacter,
     onRoll,
@@ -54,6 +58,7 @@ export function ExtensionShell({
     onSaveCharacter,
     onLinkCharacter,
     onUnlinkCharacter,
+    onAssignCharacter,
     loadState,
     error,
     surface,
@@ -151,15 +156,18 @@ export function ExtensionShell({
                 <CharacterSheetPanel
                     characterState={characterState}
                     role={runtime.role}
+                    players={runtime.players as Player[]}
                     canEdit={runtime.role === 'GM'}
                     isSaving={isSavingCharacter}
                     isLinking={isLinkingCharacter}
+                    assigningPlayerId={assigningPlayerId}
                     lastRoll={lastRoll}
                     onRoll={onRoll}
                     onSelectCharacter={onSelectCharacter}
                     onSave={onSaveCharacter}
                     onLink={onLinkCharacter}
                     onUnlink={onUnlinkCharacter}
+                    onAssign={onAssignCharacter}
                 />
 
                 <section className="grid gap-4 lg:grid-cols-[1.15fr_0.85fr]">
