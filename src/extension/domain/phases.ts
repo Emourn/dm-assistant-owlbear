@@ -7,25 +7,25 @@ export interface MilestoneSlice {
 
 export const CURRENT_SLICE: MilestoneSlice = {
     milestone: 'Phase 1 - Automated 2024 character sheet foundation',
-    scope: 'Richer action outcome automation for attacks and spells, so automated actions can model damage/effect outcomes and roll those formulas directly from the compact runtime sheet.',
+    scope: 'Context-menu-first runtime shortcuts inspired by owlbear-hp-tracker, so right-click actions can open the sheet, link selections, unlink selections, and trigger fast initiative flows.',
     acceptanceCriteria: [
-        'Automated actions can model one or more outcomes with labels, formula text, type tags, and summaries.',
-        'Attack and save-based action cards can roll modeled outcomes directly in the runtime sheet.',
-        'Outcome automation stays separate from room-roll publication and from token HP mutation.',
-        'The demo character exposes attack and spell actions with modeled outcomes for Owlbear testing.',
+        'Right-clicking in Owlbear exposes compact D&D Assistant shortcuts instead of only the generic open action.',
+        'The GM can link or unlink the current token selection from the context menu.',
+        'Initiative can be published directly from the context menu when the current viewer can resolve a sheet.',
+        'The GM can open an initiative prompt from the context menu without opening the sheet first.',
     ],
     nonGoals: [
-        'Per-player targeted prompts',
-        'Target HP mutation',
-        'Full replay or undo tooling',
-        'Token-link migration helpers',
-        'Encounter or condition automation',
+        'Per-target HP mutation',
+        'Batch token operations',
+        'Condition application',
+        'Encounter ordering',
+        'Room-feed publication for non-initiative outcomes',
     ],
 };
 
 export const NEXT_SLICES = [
-    'Phase 1 Slice 16: context-menu-first runtime shortcuts inspired by hp-tracker',
     'Phase 1 Slice 17: token- and selection-level batch runtime tools',
     'Phase 1 Slice 18: encounter ordering and active-turn integration',
     'Phase 1 Slice 19: target-aware HP and condition application from action outcomes',
+    'Phase 1 Slice 20: Phase 1 hardening and closeout',
 ];
