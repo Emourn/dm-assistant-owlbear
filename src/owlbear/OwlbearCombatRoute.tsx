@@ -20,11 +20,11 @@ export function OwlbearCombatRoute() {
 
     useEffect(() => {
         const pending = consumePendingTokenImport();
-        if (!pending?.items.length) {
+        if (!pending?.itemIds.length) {
             return;
         }
 
-        void importItemsIntoCombat(pending.items, pending.source).then((count) => {
+        void OBR.scene.items.getItems(pending.itemIds).then((items) => importItemsIntoCombat(items, pending.source)).then((count) => {
             if (count > 0) {
                 void OBR.notification.show(`Imported ${count} Owlbear token${count === 1 ? '' : 's'} into combat.`, 'SUCCESS');
             }

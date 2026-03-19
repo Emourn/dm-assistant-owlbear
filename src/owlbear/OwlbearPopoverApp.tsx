@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from 'react';
 import OBR, { type Player } from '@owlbear-rodeo/sdk';
-import { Heart, Shield, Sparkles, Users } from 'lucide-react';
+import { AlertTriangle, Heart, RefreshCw, Shield, Sparkles, Users } from 'lucide-react';
 import { resolvePlayerCharacter } from './bridge';
 import { triggerEmbersSpellFromCharacter } from './integrations';
 import { OwlbearWorkbenchApp } from './OwlbearWorkbenchApp';
@@ -8,55 +8,86 @@ import { type OwlbearRoomState, type PlayerCharacterResolution, getRoomStateFrom
 
 export function OwlbearPopoverApp() {
     const [role, setRole] = useState<'GM' | 'PLAYER' | null>(null);
+    const [loadState, setLoadState] = useState<'loading' | 'ready' | 'error'>('loading');
+    const [loadError, setLoadError] = useState<string | null>(null);
     const [players, setPlayers] = useState<Player[]>([]);
     const [roomState, setRoomState] = useState<OwlbearRoomState | null>(null);
     const [playerCharacter, setPlayerCharacter] = useState<PlayerCharacterResolution | null>(null);
 
     const refresh = useCallback(async () => {
-        const [nextRole, nextPlayers, metadata] = await Promise.all([
-            OBR.player.getRole(),
+        const nextRole = await OBR.player.getRole();
+        const [playersResult, metadataResult, characterResult] = await Promise.allSettled([
             OBR.party.getPlayers(),
             OBR.room.getMetadata(),
+            nextRole === 'PLAYER' ? resolvePlayerCharacter() : Promise.resolve(null),
         ]);
 
-        const nextRoomState = getRoomStateFromMetadata(metadata);
+        const nextPlayers = playersResult.status === 'fulfilled' ? playersResult.value : [];
+        const nextRoomState = metadataResult.status === 'fulfilled'
+            ? getRoomStateFromMetadata(metadataResult.value)
+            : null;
         setRole(nextRole);
         setPlayers(nextPlayers);
         setRoomState(nextRoomState);
+        setPlayerCharacter(nextRole === 'PLAYER' && characterResult.status === 'fulfilled' ? characterResult.value : null);
 
-        if (nextRole === 'PLAYER') {
-            setPlayerCharacter(await resolvePlayerCharacter());
-        }
-
-        await OBR.action.setWidth(nextRole === 'GM' ? 560 : 460);
-        await OBR.action.setHeight(nextRole === 'GM' ? 760 : 720);
-        await OBR.action.setBadgeText(
-            nextRoomState?.activeEncounter ? String(nextRoomState.activeEncounter.combatants.length) : undefined,
-        );
+        await Promise.all([
+            OBR.action.setWidth(nextRole === 'GM' ? 560 : 460),
+            OBR.action.setHeight(nextRole === 'GM' ? 760 : 720),
+            OBR.action.setBadgeText(
+                nextRoomState?.activeEncounter ? String(nextRoomState.activeEncounter.combatants.length) : undefined,
+            ),
+        ]);
     }, []);
+
+    const runRefresh = useCallback(async (): Promise<boolean> => {
+        try {
+            await refresh();
+            setLoadError(null);
+            setLoadState('ready');
+            return true;
+        } catch (error) {
+            setLoadError(error instanceof Error ? error.message : 'Failed to connect to Owlbear Rodeo.');
+            setLoadState('error');
+            return false;
+        }
+    }, [refresh]);
 
     useEffect(() => {
         if (!OBR.isAvailable) {
             return;
         }
 
+        let isDisposed = false;
         let cleanups: Array<() => void> = [];
-        const setup = async () => {
-            await refresh();
+        OBR.onReady(async () => {
+            if (isDisposed) {
+                return;
+            }
+
+            const connected = await runRefresh();
+            if (!connected || isDisposed) {
+                return;
+            }
+
             cleanups = [
-                OBR.party.onChange((nextPlayers) => setPlayers(nextPlayers)),
-                OBR.room.onMetadataChange((metadata) => setRoomState(getRoomStateFromMetadata(metadata))),
+                OBR.party.onChange(() => {
+                    void runRefresh();
+                }),
+                OBR.room.onMetadataChange(() => {
+                    void runRefresh();
+                }),
                 OBR.player.onChange(() => {
-                    void refresh();
+                    void runRefresh();
                 }),
             ];
-        };
+        });
 
-        void setup();
         return () => {
+            isDisposed = true;
             cleanups.forEach((cleanup) => cleanup());
         };
-    }, [refresh]);
+    }, [runRefresh]);
 
     if (!OBR.isAvailable) {
         return (
@@ -67,6 +98,29 @@ export function OwlbearPopoverApp() {
                         This entry point is meant to run inside Owlbear Rodeo as an extension popover.
                     </p>
                 </div>
+            </div>
+        );
+    }
+
+    if (loadState === 'error') {
+        return (
+            <div className="min-h-screen bg-[radial-gradient(circle_at_top,_rgba(245,158,11,0.14),_transparent_28%),linear-gradient(180deg,_rgba(10,10,10,0.98),_rgba(17,24,39,0.98))] p-4 text-stone-100">
+                <ConnectionErrorCard
+                    error={loadError}
+                    onRetry={() => {
+                        setLoadState('loading');
+                        setLoadError(null);
+                        void runRefresh();
+                    }}
+                />
+            </div>
+        );
+    }
+
+    if (loadState === 'loading' || role === null) {
+        return (
+            <div className="min-h-screen bg-[radial-gradient(circle_at_top,_rgba(245,158,11,0.14),_transparent_28%),linear-gradient(180deg,_rgba(10,10,10,0.98),_rgba(17,24,39,0.98))] p-4 text-stone-100">
+                <LoadingPopoverCard />
             </div>
         );
     }
@@ -82,6 +136,44 @@ export function OwlbearPopoverApp() {
     return (
         <div className="min-h-screen bg-[radial-gradient(circle_at_top,_rgba(245,158,11,0.14),_transparent_28%),linear-gradient(180deg,_rgba(10,10,10,0.98),_rgba(17,24,39,0.98))] p-4 text-stone-100">
             <PlayerPopoverView playerCount={players.filter((player) => player.role === 'PLAYER').length} roomState={roomState} resolution={playerCharacter} />
+        </div>
+    );
+}
+
+function LoadingPopoverCard() {
+    return (
+        <div className="rounded-[1.75rem] border border-stone-800 bg-stone-950/80 p-6">
+            <div className="flex items-center gap-2 text-gold">
+                <RefreshCw size={16} className="animate-spin" />
+                <span className="text-[11px] font-black uppercase tracking-[0.28em]">Connecting</span>
+            </div>
+            <h1 className="mt-3 font-cinzel text-3xl font-bold text-parchment">Loading Owlbear workspace</h1>
+            <p className="mt-3 text-sm leading-relaxed text-stone-400">
+                DM Assistant is checking your Owlbear room role, current scene state, and linked sheets before deciding whether to open the GM workspace or player sheet.
+            </p>
+        </div>
+    );
+}
+
+function ConnectionErrorCard({ error, onRetry }: { error: string | null; onRetry: () => void }) {
+    return (
+        <div className="rounded-[1.75rem] border border-amber-500/20 bg-stone-950/80 p-6">
+            <div className="flex items-center gap-2 text-amber-300">
+                <AlertTriangle size={16} />
+                <span className="text-[11px] font-black uppercase tracking-[0.28em]">Connection issue</span>
+            </div>
+            <h1 className="mt-3 font-cinzel text-3xl font-bold text-parchment">DM Assistant could not finish loading</h1>
+            <p className="mt-3 text-sm leading-relaxed text-stone-400">
+                {error || 'The extension could not finish connecting to Owlbear Rodeo. Retrying usually fixes startup timing issues.'}
+            </p>
+            <button
+                type="button"
+                onClick={onRetry}
+                className="mt-5 inline-flex items-center gap-2 rounded-xl bg-gold px-4 py-2.5 text-sm font-bold text-stone-950 transition-colors hover:bg-yellow-400"
+            >
+                <RefreshCw size={16} />
+                Retry connection
+            </button>
         </div>
     );
 }

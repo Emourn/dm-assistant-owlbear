@@ -14,12 +14,33 @@ export function getWorkbenchUrl(hash = '#/'): string {
     return `${url.toString()}${hash}`;
 }
 
-export async function openWorkbench(hash = '#/'): Promise<void> {
-    await OBR.popover.open({
+export async function openWorkbench(hash = '#/', anchorElementId?: string): Promise<void> {
+    const basePopover = {
         id: PANEL_POPOVER_ID,
         url: getWorkbenchUrl(hash),
         width: 560,
         height: 760,
+        disableClickAway: true,
+    } as const;
+
+    if (anchorElementId) {
+        await OBR.popover.open({
+            ...basePopover,
+            anchorElementId,
+            anchorOrigin: {
+                horizontal: 'RIGHT',
+                vertical: 'TOP',
+            },
+            transformOrigin: {
+                horizontal: 'RIGHT',
+                vertical: 'TOP',
+            },
+        });
+        return;
+    }
+
+    await OBR.popover.open({
+        ...basePopover,
         anchorReference: 'POSITION',
         anchorPosition: {
             left: Math.max(24, window.innerWidth - 32),
@@ -33,7 +54,6 @@ export async function openWorkbench(hash = '#/'): Promise<void> {
             horizontal: 'RIGHT',
             vertical: 'TOP',
         },
-        disableClickAway: true,
     });
 }
 
@@ -45,7 +65,7 @@ export function stashPendingTokenImport(items: Item[], source: PendingTokenImpor
     const payload: PendingTokenImport = {
         capturedAt: Date.now(),
         source,
-        items,
+        itemIds: items.map((item) => item.id),
     };
     window.localStorage.setItem(PENDING_IMPORT_KEY, JSON.stringify(payload));
 }
@@ -63,7 +83,18 @@ export function consumePendingTokenImport(): PendingTokenImport | null {
     window.localStorage.removeItem(PENDING_IMPORT_KEY);
 
     try {
-        return JSON.parse(raw) as PendingTokenImport;
+        const parsed = JSON.parse(raw) as PendingTokenImport & { items?: Item[] };
+        if (Array.isArray(parsed.itemIds)) {
+            return parsed;
+        }
+        if (Array.isArray(parsed.items)) {
+            return {
+                capturedAt: parsed.capturedAt,
+                source: parsed.source,
+                itemIds: parsed.items.map((item) => item.id),
+            };
+        }
+        return null;
     } catch {
         return null;
     }

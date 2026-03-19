@@ -81,7 +81,7 @@ export interface LinkedCharacterTokenData {
 export interface PendingTokenImport {
     capturedAt: number;
     source: 'context-menu' | 'popover' | 'workbench';
-    items: Item[];
+    itemIds: string[];
 }
 
 export interface PlayerCharacterResolution {

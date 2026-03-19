@@ -20,9 +20,9 @@ OBR.onReady(() => {
                 },
             },
         ],
-        onClick: async (context) => {
+        onClick: async (context, elementId) => {
             stashPendingTokenImport(context.items, 'context-menu');
-            await openWorkbench('#/combat');
+            await openWorkbench('#/combat', elementId);
         },
     });
 });
