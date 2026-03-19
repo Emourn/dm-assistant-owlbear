@@ -1,7 +1,10 @@
 import { describe, expect, it } from 'vitest';
 import {
+    addBlankCharacterRecord,
     CHARACTER_COLLECTION_VERSION,
     createSampleCharacterCollection,
+    deleteStoredCharacterRecord,
+    duplicateStoredCharacterRecord,
     parseStoredCharacterCollection,
     selectActiveCharacterRecord,
     updateStoredCharacterRecord,
@@ -57,5 +60,47 @@ describe('extension character records', () => {
         expect(updated?.characters[0].sheet.name).toBe('Seraphina Stormvale');
         expect(updated?.characters[0].sheet.abilities.wis).toBe(20);
         expect(updated?.characters[0].updatedAt).toBe(2000);
+    });
+
+    it('adds a new blank character and makes it active', () => {
+        const collection = createSampleCharacterCollection(1000);
+        const next = addBlankCharacterRecord(collection, 2000);
+        const active = selectActiveCharacterRecord(next);
+
+        expect(next.characters).toHaveLength(2);
+        expect(active?.sheet.name).toBe('New Character');
+        expect(active?.sheet.classSummary).toBe('Adventurer');
+        expect(active?.sheet.skills.acrobatics.proficiency).toBe('none');
+    });
+
+    it('duplicates a character with remapped owned ids and copied resource references', () => {
+        const collection = createSampleCharacterCollection(1000);
+        const next = duplicateStoredCharacterRecord(collection, collection.characters[0].sheet.id, 2000);
+        const duplicated = next?.characters[1];
+
+        expect(next?.characters).toHaveLength(2);
+        expect(duplicated?.sheet.name).toBe('Seraphina Vale Copy');
+        expect(duplicated?.sheet.id).not.toBe(collection.characters[0].sheet.id);
+        expect(duplicated?.sheet.spellcasting?.slots[0].id).toContain(`${duplicated?.sheet.id}:`);
+        expect(duplicated?.sheet.actions[2].automation?.resourceCost?.resourceId).toBe(
+            duplicated?.sheet.spellcasting?.slots[0].id,
+        );
+        expect(duplicated?.updatedAt).toBe(2000);
+    });
+
+    it('deletes the active character and promotes a neighbor', () => {
+        const seeded = addBlankCharacterRecord(createSampleCharacterCollection(1000), 2000);
+        const deleted = deleteStoredCharacterRecord(seeded, seeded.activeCharacterId!);
+
+        expect(deleted?.characters).toHaveLength(1);
+        expect(selectActiveCharacterRecord(deleted!)?.sheet.name).toBe('Seraphina Vale');
+    });
+
+    it('allows removing the final character and leaves an empty collection', () => {
+        const collection = createSampleCharacterCollection(1000);
+        const deleted = deleteStoredCharacterRecord(collection, collection.characters[0].sheet.id);
+
+        expect(deleted?.characters).toHaveLength(0);
+        expect(deleted?.activeCharacterId).toBeNull();
     });
 });

@@ -33,6 +33,9 @@ interface ExtensionShellProps {
     onRoll: (request: StructuredRollRequest) => void;
     onPublishLastRoll: () => Promise<void>;
     onSelectCharacter: (characterId: string) => void;
+    onCreateCharacter: () => Promise<void>;
+    onDuplicateCharacter: (characterId: string) => Promise<void>;
+    onDeleteCharacter: (characterId: string) => Promise<void>;
     onSaveCharacter: (sheet: Phase1CharacterSheet) => Promise<void>;
     onAdjustResource: (resourceId: string, delta: number) => Promise<void>;
     onAdjustDeathSave: (kind: 'successes' | 'failures', delta: number) => Promise<void>;
@@ -89,6 +92,9 @@ export function ExtensionShell({
     onRoll,
     onPublishLastRoll,
     onSelectCharacter,
+    onCreateCharacter,
+    onDuplicateCharacter,
+    onDeleteCharacter,
     onSaveCharacter,
     onAdjustResource,
     onAdjustDeathSave,
@@ -246,6 +252,9 @@ export function ExtensionShell({
                     lastRoll={lastRoll}
                     onRoll={onRoll}
                     onSelectCharacter={onSelectCharacter}
+                    onCreateCharacter={onCreateCharacter}
+                    onDuplicateCharacter={onDuplicateCharacter}
+                    onDeleteCharacter={onDeleteCharacter}
                     onSave={onSaveCharacter}
                     onAdjustResource={onAdjustResource}
                     onAdjustDeathSave={onAdjustDeathSave}

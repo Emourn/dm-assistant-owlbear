@@ -1,7 +1,10 @@
 import OBR, { type Item, type Metadata } from '@owlbear-rodeo/sdk';
 import {
+    addBlankCharacterRecord,
     createEmptyCharacterCollection,
     createSampleCharacterCollection,
+    deleteStoredCharacterRecord,
+    duplicateStoredCharacterRecord,
     parseStoredCharacterCollection,
     selectActiveCharacterRecord,
     updateStoredCharacterRecord,
@@ -128,6 +131,15 @@ async function writePlayerAssignments(assignments: StoredPlayerAssignments): Pro
     });
 }
 
+async function buildCurrentSnapshot(collection: StoredCharacterCollection): Promise<CharacterRepositorySnapshot> {
+    const role = await OBR.player.getRole();
+    const playerId = await OBR.player.getId().catch(() => null);
+    const latestMetadata = await OBR.room.getMetadata();
+    const playerAssignments = getPlayerAssignmentsFromMetadata(latestMetadata);
+    const selection = await getSelectionState();
+    return buildSnapshot(collection, playerAssignments, 'room-metadata', role, playerId, selection);
+}
+
 export async function readCharacterRepositorySnapshot(
     role: 'GM' | 'PLAYER' | null,
 ): Promise<CharacterRepositorySnapshot> {
@@ -164,12 +176,48 @@ export async function setActiveCharacterRecord(characterId: string): Promise<Cha
     };
 
     await writeCharacterCollection(next);
-    const role = await OBR.player.getRole();
-    const playerId = await OBR.player.getId().catch(() => null);
-    const latestMetadata = await OBR.room.getMetadata();
-    const playerAssignments = getPlayerAssignmentsFromMetadata(latestMetadata);
-    const selection = await getSelectionState();
-    return buildSnapshot(next, playerAssignments, 'room-metadata', role, playerId, selection);
+    return buildCurrentSnapshot(next);
+}
+
+export async function createBlankCharacter(): Promise<CharacterRepositorySnapshot | null> {
+    const metadata = await OBR.room.getMetadata();
+    const current = getCharacterCollectionFromMetadata(metadata) ?? createEmptyCharacterCollection();
+    const next = addBlankCharacterRecord(current);
+
+    await writeCharacterCollection(next);
+    return buildCurrentSnapshot(next);
+}
+
+export async function duplicateCharacter(characterId: string): Promise<CharacterRepositorySnapshot | null> {
+    const metadata = await OBR.room.getMetadata();
+    const current = getCharacterCollectionFromMetadata(metadata);
+    if (!current) {
+        return null;
+    }
+
+    const next = duplicateStoredCharacterRecord(current, characterId);
+    if (!next) {
+        return null;
+    }
+
+    await writeCharacterCollection(next);
+    return buildCurrentSnapshot(next);
+}
+
+export async function deleteCharacter(characterId: string): Promise<CharacterRepositorySnapshot | null> {
+    const metadata = await OBR.room.getMetadata();
+    const current = getCharacterCollectionFromMetadata(metadata);
+    if (!current) {
+        return null;
+    }
+
+    const next = deleteStoredCharacterRecord(current, characterId);
+    if (!next) {
+        return null;
+    }
+
+    await writeCharacterCollection(next);
+    return buildCurrentSnapshot(next);
 }
 
 export async function updateCharacterSheet(
@@ -203,12 +251,7 @@ export async function updateCharacterSheetWith(
     }
 
     await writeCharacterCollection(next);
-    const role = await OBR.player.getRole();
-    const playerId = await OBR.player.getId().catch(() => null);
-    const latestMetadata = await OBR.room.getMetadata();
-    const playerAssignments = getPlayerAssignmentsFromMetadata(latestMetadata);
-    const selection = await getSelectionState();
-    return buildSnapshot(next, playerAssignments, 'room-metadata', role, playerId, selection);
+    return buildCurrentSnapshot(next);
 }
 
 export async function linkActiveCharacterToSelection(

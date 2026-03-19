@@ -7,23 +7,23 @@ export interface MilestoneSlice {
 
 export const CURRENT_SLICE: MilestoneSlice = {
     milestone: 'Phase 1 - Automated 2024 character sheet foundation',
-    scope: 'Short-rest and long-rest recovery for modeled resources and spell slots, so the runtime sheet can reset counters without reopening the editor.',
+    scope: 'GM-side character collection management for real room sheets, so the extension is no longer limited to the seeded demo character.',
     acceptanceCriteria: [
-        'A permitted user can apply short-rest recovery to modeled short-rest resources from the runtime sheet.',
-        'A permitted user can apply long-rest recovery to modeled resources and spell slots from the runtime sheet.',
-        'Hit dice, HP, temp HP, and death saves remain manual and are not silently changed by rest automation in this slice.',
-        'Rest recovery writes back through the same metadata-driven runtime flow as other counters.',
+        'A GM can create a new blank 2024 character record directly from the Owlbear sheet.',
+        'A GM can duplicate the active character without carrying stale nested action or resource ids into the copy.',
+        'A GM can delete the active character and the collection promotes a sensible next active record or becomes empty safely.',
+        'Character collection changes persist through the same versioned room metadata namespace as the rest of Phase 1.',
     ],
     nonGoals: [
-        'HP or temp HP recovery',
-        'Hit dice recovery rules',
-        'Death save clearing',
+        'JSON import/export',
+        'Token-link migration helpers',
+        'Bulk authoring workflows',
         'Encounter or condition automation',
     ],
 };
 
 export const NEXT_SLICES = [
-    'Phase 1 Slice 11: richer import and authoring flows for non-demo characters',
+    'Phase 1 Slice 11b: JSON import/export flows for non-demo characters',
     'Phase 1 Slice 12: broader prompt types for abilities, saves, and skills',
     'Phase 1 Slice 13: GM-side audits and history tools for metadata-driven runtime actions',
     'Phase 1 Slice 14: save-DC and effect-oriented action automation',

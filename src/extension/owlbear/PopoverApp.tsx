@@ -26,6 +26,9 @@ import {
 import { ExtensionShell } from '../ui/ExtensionShell';
 import {
     assignCharacterToPlayer,
+    createBlankCharacter,
+    deleteCharacter,
+    duplicateCharacter,
     linkActiveCharacterToSelection,
     readCharacterRepositorySnapshot,
     setActiveCharacterRecord,
@@ -188,6 +191,45 @@ export function PopoverApp({ surface = 'popover' }: { surface?: 'popover' | 'pan
             const next = await updateCharacterSheet(sheet.id, sheet);
             if (next) {
                 setCharacterState(next);
+            }
+        } finally {
+            setIsSavingCharacter(false);
+        }
+    }, []);
+
+    const handleCreateCharacter = useCallback(async () => {
+        setIsSavingCharacter(true);
+        try {
+            const next = await createBlankCharacter();
+            if (next) {
+                setCharacterState(next);
+                setLastRoll(null);
+            }
+        } finally {
+            setIsSavingCharacter(false);
+        }
+    }, []);
+
+    const handleDuplicateCharacter = useCallback(async (characterId: string) => {
+        setIsSavingCharacter(true);
+        try {
+            const next = await duplicateCharacter(characterId);
+            if (next) {
+                setCharacterState(next);
+                setLastRoll(null);
+            }
+        } finally {
+            setIsSavingCharacter(false);
+        }
+    }, []);
+
+    const handleDeleteCharacter = useCallback(async (characterId: string) => {
+        setIsSavingCharacter(true);
+        try {
+            const next = await deleteCharacter(characterId);
+            if (next) {
+                setCharacterState(next);
+                setLastRoll(null);
             }
         } finally {
             setIsSavingCharacter(false);
@@ -429,6 +471,9 @@ export function PopoverApp({ surface = 'popover' }: { surface?: 'popover' | 'pan
             onRoll={handleRoll}
             onPublishLastRoll={handlePublishLastRoll}
             onSelectCharacter={handleSelectCharacter}
+            onCreateCharacter={handleCreateCharacter}
+            onDuplicateCharacter={handleDuplicateCharacter}
+            onDeleteCharacter={handleDeleteCharacter}
             onSaveCharacter={handleSaveCharacter}
             onAdjustResource={handleAdjustResource}
             onAdjustDeathSave={handleAdjustDeathSave}

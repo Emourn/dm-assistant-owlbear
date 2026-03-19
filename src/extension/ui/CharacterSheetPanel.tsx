@@ -14,6 +14,7 @@ import type {
 } from '../../features/dnd2024/domain/types';
 import type { CharacterRepositorySnapshot } from '../owlbear/characterRepository';
 import { ActionSpellEditorPanel } from './ActionSpellEditorPanel';
+import { CharacterCollectionPanel } from './CharacterCollectionPanel';
 import { CharacterEditorPanel } from './CharacterEditorPanel';
 import { OverridePanel } from './OverridePanel';
 import { PlayerAssignmentPanel } from './PlayerAssignmentPanel';
@@ -34,6 +35,9 @@ interface CharacterSheetPanelProps {
     lastRoll: StructuredRollResult | null;
     onRoll: (request: StructuredRollRequest) => void;
     onSelectCharacter: (characterId: string) => void;
+    onCreateCharacter: () => Promise<void>;
+    onDuplicateCharacter: (characterId: string) => Promise<void>;
+    onDeleteCharacter: (characterId: string) => Promise<void>;
     onSave: (sheet: Phase1CharacterSheet) => Promise<void>;
     onAdjustResource: (resourceId: string, delta: number) => Promise<void>;
     onAdjustDeathSave: (kind: 'successes' | 'failures', delta: number) => Promise<void>;
@@ -116,6 +120,9 @@ export function CharacterSheetPanel({
     lastRoll,
     onRoll,
     onSelectCharacter,
+    onCreateCharacter,
+    onDuplicateCharacter,
+    onDeleteCharacter,
     onSave,
     onAdjustResource,
     onAdjustDeathSave,
@@ -129,16 +136,28 @@ export function CharacterSheetPanel({
     const active = characterState?.activeCharacter;
     if (!active) {
         return (
-            <section className="rounded-[1.4rem] border border-stone-800 bg-stone-950/75 p-5">
-                <div className="flex items-center gap-2 text-sky-300">
-                    <BookOpenText size={16} />
-                    <span className="text-[11px] font-black uppercase tracking-[0.26em]">Character foundation</span>
-                </div>
-                <h2 className="mt-3 text-xl font-semibold tracking-tight text-parchment">No shared character yet</h2>
-                <p className="mt-2 text-sm leading-relaxed text-stone-400">
-                    The GM will see a seeded demo sheet the first time they open this slice. Players see room metadata only, so the extension stays read-safe by default.
-                </p>
-            </section>
+            <div className="flex flex-col gap-4">
+                <CharacterCollectionPanel
+                    collection={characterState?.collection ?? null}
+                    activeCharacterId={characterState?.collection.activeCharacterId ?? null}
+                    canEdit={canEdit}
+                    isSaving={isSaving}
+                    onSelectCharacter={onSelectCharacter}
+                    onCreateCharacter={onCreateCharacter}
+                    onDuplicateCharacter={onDuplicateCharacter}
+                    onDeleteCharacter={onDeleteCharacter}
+                />
+                <section className="rounded-[1.4rem] border border-stone-800 bg-stone-950/75 p-5">
+                    <div className="flex items-center gap-2 text-sky-300">
+                        <BookOpenText size={16} />
+                        <span className="text-[11px] font-black uppercase tracking-[0.26em]">Character foundation</span>
+                    </div>
+                    <h2 className="mt-3 text-xl font-semibold tracking-tight text-parchment">No shared character yet</h2>
+                    <p className="mt-2 text-sm leading-relaxed text-stone-400">
+                        This room has no active sheet right now. GMs can create a new record above; players only resolve sheets that exist in room metadata.
+                    </p>
+                </section>
+            </div>
         );
     }
 
@@ -147,6 +166,17 @@ export function CharacterSheetPanel({
 
     return (
         <div className="flex flex-col gap-4">
+            <CharacterCollectionPanel
+                collection={characterState?.collection ?? null}
+                activeCharacterId={characterState?.collection.activeCharacterId ?? null}
+                canEdit={canEdit}
+                isSaving={isSaving}
+                onSelectCharacter={onSelectCharacter}
+                onCreateCharacter={onCreateCharacter}
+                onDuplicateCharacter={onDuplicateCharacter}
+                onDeleteCharacter={onDeleteCharacter}
+            />
+
             <section className="rounded-[1.4rem] border border-stone-800 bg-stone-950/75 p-5">
                 <div className="flex flex-wrap items-center justify-between gap-3">
                     <div>
@@ -163,20 +193,6 @@ export function CharacterSheetPanel({
                         <span className="rounded-full border border-emerald-400/25 bg-emerald-500/10 px-3 py-1 text-[11px] font-black uppercase tracking-[0.22em] text-emerald-300">
                             {sourceLabel(characterState.source)}
                         </span>
-                        {characterState.collection.characters.map((record) => (
-                            <button
-                                key={record.sheet.id}
-                                type="button"
-                                onClick={() => onSelectCharacter(record.sheet.id)}
-                                className={`rounded-full border px-3 py-1 text-xs transition ${
-                                    record.sheet.id === sheet.id
-                                        ? 'border-amber-400/40 bg-amber-500/10 text-amber-200'
-                                        : 'border-stone-700 bg-stone-950 text-stone-400 hover:border-stone-500 hover:text-stone-200'
-                                }`}
-                            >
-                                {record.sheet.name}
-                            </button>
-                        ))}
                     </div>
                 </div>
 
