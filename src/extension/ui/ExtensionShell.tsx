@@ -1,20 +1,26 @@
 import type { Player } from '@owlbear-rodeo/sdk';
 import { Crosshair, Layers3, MapPinned, ScrollText, Shield, Users } from 'lucide-react';
 import type { Phase1CharacterSheet, StructuredRollRequest, StructuredRollResult } from '../../features/dnd2024/domain/types';
+import type { StoredRoomRollState } from '../domain/roomRolls';
 import { CURRENT_SLICE, NEXT_SLICES } from '../domain/phases';
 import type { CharacterRepositorySnapshot } from '../owlbear/characterRepository';
 import type { OwlbearRuntimeSnapshot } from '../owlbear/runtime';
 import { CharacterSheetPanel } from './CharacterSheetPanel';
+import { RoomRollPanel } from './RoomRollPanel';
 
 interface ExtensionShellProps {
     runtime: OwlbearRuntimeSnapshot | null;
     characterState: CharacterRepositorySnapshot | null;
+    roomRollState: StoredRoomRollState | null;
     lastRoll: StructuredRollResult | null;
     assigningPlayerId: string | null;
     isSavingCharacter: boolean;
     isUpdatingRuntime: boolean;
     isLinkingCharacter: boolean;
+    isPublishingRoll: boolean;
+    isManagingPrompt: boolean;
     onRoll: (request: StructuredRollRequest) => void;
+    onPublishLastRoll: () => Promise<void>;
     onSelectCharacter: (characterId: string) => void;
     onSaveCharacter: (sheet: Phase1CharacterSheet) => Promise<void>;
     onAdjustResource: (resourceId: string, delta: number) => Promise<void>;
@@ -23,6 +29,9 @@ interface ExtensionShellProps {
     onLinkCharacter: (sheet: Phase1CharacterSheet) => Promise<void>;
     onUnlinkCharacter: () => Promise<void>;
     onAssignCharacter: (playerId: string, characterId: string | null) => Promise<void>;
+    onPromptInitiative: () => Promise<void>;
+    onClearPrompt: () => Promise<void>;
+    onRespondToPrompt: () => Promise<void>;
     loadState: 'loading' | 'ready' | 'error';
     error: string | null;
     surface: 'popover' | 'panel';
@@ -53,12 +62,16 @@ function StatCard({
 export function ExtensionShell({
     runtime,
     characterState,
+    roomRollState,
     lastRoll,
     assigningPlayerId,
     isSavingCharacter,
     isUpdatingRuntime,
     isLinkingCharacter,
+    isPublishingRoll,
+    isManagingPrompt,
     onRoll,
+    onPublishLastRoll,
     onSelectCharacter,
     onSaveCharacter,
     onAdjustResource,
@@ -67,6 +80,9 @@ export function ExtensionShell({
     onLinkCharacter,
     onUnlinkCharacter,
     onAssignCharacter,
+    onPromptInitiative,
+    onClearPrompt,
+    onRespondToPrompt,
     loadState,
     error,
     surface,
@@ -187,6 +203,19 @@ export function ExtensionShell({
                     onLink={onLinkCharacter}
                     onUnlink={onUnlinkCharacter}
                     onAssign={onAssignCharacter}
+                />
+
+                <RoomRollPanel
+                    role={runtime.role}
+                    sheet={characterState?.activeCharacter?.sheet ?? null}
+                    lastRoll={lastRoll}
+                    roomRollState={roomRollState ?? { version: 1, feed: [], activePrompt: null }}
+                    isPublishing={isPublishingRoll}
+                    isManagingPrompt={isManagingPrompt}
+                    onPublishLastRoll={onPublishLastRoll}
+                    onPromptInitiative={onPromptInitiative}
+                    onClearPrompt={onClearPrompt}
+                    onRespondToPrompt={onRespondToPrompt}
                 />
 
                 <section className="grid gap-4 lg:grid-cols-[1.15fr_0.85fr]">

@@ -1,5 +1,6 @@
 import { useCallback, useEffect, useState } from 'react';
 import OBR from '@owlbear-rodeo/sdk';
+import { buildInitiativeRoll } from '../../features/dnd2024/domain/sheet';
 import {
     setInitiativeAdjustment,
     setProficiencyBonusOverride,
@@ -12,6 +13,7 @@ import type {
     StructuredRollRequest,
     StructuredRollResult,
 } from '../../features/dnd2024/domain/types';
+import type { StoredRoomRollState } from '../domain/roomRolls';
 import { ExtensionShell } from '../ui/ExtensionShell';
 import {
     assignCharacterToPlayer,
@@ -23,25 +25,38 @@ import {
     updateCharacterSheetWith,
     type CharacterRepositorySnapshot,
 } from './characterRepository';
+import {
+    clearRoomPrompt,
+    openInitiativePrompt,
+    publishRoomRoll,
+    readRoomRollState,
+} from './rollRepository';
 import { readRuntimeSnapshot, type OwlbearRuntimeSnapshot } from './runtime';
 
 export function PopoverApp({ surface = 'popover' }: { surface?: 'popover' | 'panel' }) {
     const [runtime, setRuntime] = useState<OwlbearRuntimeSnapshot | null>(null);
     const [characterState, setCharacterState] = useState<CharacterRepositorySnapshot | null>(null);
+    const [roomRollState, setRoomRollState] = useState<StoredRoomRollState | null>(null);
     const [lastRoll, setLastRoll] = useState<StructuredRollResult | null>(null);
     const [assigningPlayerId, setAssigningPlayerId] = useState<string | null>(null);
     const [isSavingCharacter, setIsSavingCharacter] = useState(false);
     const [isUpdatingRuntime, setIsUpdatingRuntime] = useState(false);
     const [isLinkingCharacter, setIsLinkingCharacter] = useState(false);
+    const [isPublishingRoll, setIsPublishingRoll] = useState(false);
+    const [isManagingPrompt, setIsManagingPrompt] = useState(false);
     const [loadState, setLoadState] = useState<'loading' | 'ready' | 'error'>('loading');
     const [error, setError] = useState<string | null>(null);
 
     const refresh = useCallback(async () => {
         try {
             const snapshot = await readRuntimeSnapshot();
-            const nextCharacterState = await readCharacterRepositorySnapshot(snapshot.role);
+            const [nextCharacterState, nextRoomRollState] = await Promise.all([
+                readCharacterRepositorySnapshot(snapshot.role),
+                readRoomRollState(),
+            ]);
             setRuntime(snapshot);
             setCharacterState(nextCharacterState);
+            setRoomRollState(nextRoomRollState);
             setLoadState('ready');
             setError(null);
         } catch (cause) {
@@ -101,6 +116,20 @@ export function PopoverApp({ surface = 'popover' }: { surface?: 'popover' | 'pan
     const handleRoll = useCallback((request: StructuredRollRequest) => {
         setLastRoll(rollStructuredD20(request));
     }, []);
+
+    const handlePublishLastRoll = useCallback(async () => {
+        if (!lastRoll) {
+            return;
+        }
+
+        setIsPublishingRoll(true);
+        try {
+            const next = await publishRoomRoll(lastRoll, characterState?.activeCharacter?.sheet ?? null, 'manual');
+            setRoomRollState(next);
+        } finally {
+            setIsPublishingRoll(false);
+        }
+    }, [characterState, lastRoll]);
 
     const handleSelectCharacter = useCallback(async (characterId: string) => {
         const next = await setActiveCharacterRecord(characterId);
@@ -225,16 +254,58 @@ export function PopoverApp({ surface = 'popover' }: { surface?: 'popover' | 'pan
         }
     }, [characterState]);
 
+    const handlePromptInitiative = useCallback(async () => {
+        setIsManagingPrompt(true);
+        try {
+            const next = await openInitiativePrompt();
+            setRoomRollState(next);
+        } finally {
+            setIsManagingPrompt(false);
+        }
+    }, []);
+
+    const handleClearPrompt = useCallback(async () => {
+        setIsManagingPrompt(true);
+        try {
+            const next = await clearRoomPrompt();
+            setRoomRollState(next);
+        } finally {
+            setIsManagingPrompt(false);
+        }
+    }, []);
+
+    const handleRespondToPrompt = useCallback(async () => {
+        const sheet = characterState?.activeCharacter?.sheet;
+        const prompt = roomRollState?.activePrompt;
+        if (!sheet || prompt?.kind !== 'initiative') {
+            return;
+        }
+
+        const result = rollStructuredD20(buildInitiativeRoll(sheet));
+        setLastRoll(result);
+        setIsPublishingRoll(true);
+        try {
+            const next = await publishRoomRoll(result, sheet, 'prompt');
+            setRoomRollState(next);
+        } finally {
+            setIsPublishingRoll(false);
+        }
+    }, [characterState, roomRollState]);
+
     return (
         <ExtensionShell
             runtime={runtime}
             characterState={characterState}
+            roomRollState={roomRollState}
             lastRoll={lastRoll}
             assigningPlayerId={assigningPlayerId}
             isSavingCharacter={isSavingCharacter}
             isUpdatingRuntime={isUpdatingRuntime}
             isLinkingCharacter={isLinkingCharacter}
+            isPublishingRoll={isPublishingRoll}
+            isManagingPrompt={isManagingPrompt}
             onRoll={handleRoll}
+            onPublishLastRoll={handlePublishLastRoll}
             onSelectCharacter={handleSelectCharacter}
             onSaveCharacter={handleSaveCharacter}
             onAdjustResource={handleAdjustResource}
@@ -243,6 +314,9 @@ export function PopoverApp({ surface = 'popover' }: { surface?: 'popover' | 'pan
             onLinkCharacter={handleLinkCharacter}
             onUnlinkCharacter={handleUnlinkCharacter}
             onAssignCharacter={handleAssignCharacter}
+            onPromptInitiative={handlePromptInitiative}
+            onClearPrompt={handleClearPrompt}
+            onRespondToPrompt={handleRespondToPrompt}
             loadState={loadState}
             error={error}
             surface={surface}

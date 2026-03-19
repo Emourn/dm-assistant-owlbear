@@ -1,0 +1,1 @@
+import"./modulepreload-polyfill-B5Qt9EMX.js";import{c as o,j as r}from"./index-DrJiI7YX.js";import{r as t}from"./vendor-ui-BRo-JLAf.js";import{P as e}from"./PopoverApp-CfuKIoi6.js";import"./index-C68faxfe.js";import"./rolls-D71H8L4Y.js";import"./ids-CYufwxM-.js";o.createRoot(document.getElementById("root")).render(r.jsx(t.StrictMode,{children:r.jsx(e,{surface:"panel"})}));

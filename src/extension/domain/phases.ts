@@ -7,24 +7,24 @@ export interface MilestoneSlice {
 
 export const CURRENT_SLICE: MilestoneSlice = {
     milestone: 'Phase 1 - Automated 2024 character sheet foundation',
-    scope: 'GM authoring for actions and spellcasting, so the rebuilt sheet can model runtime-facing actions, spell stats, and spell slots without leaving Owlbear.',
+    scope: 'Room-visible roll publication with a compact initiative prompt, so structured rolls can leave the local preview and become shared table state.',
     acceptanceCriteria: [
-        'A GM can add, edit, and remove action summaries from the compact sheet UI.',
-        'A GM can enable or disable spellcasting and edit spell ability, attack bonus, save DC, and slot rows.',
-        'Authored actions and spell slots persist to versioned room metadata and immediately re-render in the runtime sheet.',
-        'Players remain read-only for this authoring surface.',
+        'Any user can publish their current structured roll into a room-visible feed.',
+        'A GM can issue and clear a compact initiative prompt from the Owlbear sheet.',
+        'A user with a resolved sheet can answer the initiative prompt and publish the result in one step.',
+        'Published rolls and the active prompt persist in versioned room metadata.',
     ],
     nonGoals: [
-        'Room-wide roll prompts or chat broadcast',
         'Encounter or condition automation',
         'Action automation or damage resolution',
-        'Prepared spell libraries or import flows',
+        'General-purpose chat or dice history outside our metadata namespace',
+        'Non-initiative prompt types',
     ],
 };
 
 export const NEXT_SLICES = [
-    'Phase 1 Slice 8: roll prompting and room-visible roll publication',
     'Phase 1 Slice 9: richer permission and visibility controls',
     'Phase 1 Slice 10: deeper automation for attacks, spells, and rest flows',
     'Phase 1 Slice 11: richer import and authoring flows for non-demo characters',
+    'Phase 1 Slice 12: broader prompt types for abilities, saves, and skills',
 ];
