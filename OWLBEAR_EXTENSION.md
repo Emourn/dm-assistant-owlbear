@@ -76,28 +76,17 @@ Then serve the `dist/` folder with any static host.
 
 ## Hosting for Owlbear import
 
-Owlbear Rodeo imports extensions by manifest URL, not by a raw git repository URL.
+Owlbear Rodeo imports extensions by manifest URL.
 
-That means the repository should host the built files somewhere public, for example:
-
-- GitHub Pages
-- Cloudflare Pages
-- Netlify
-- Vercel static hosting
-
-The URL you will paste into Owlbear is the hosted manifest, for example:
+The canonical repo-backed manifest for this project is the jsDelivr GitHub CDN URL:
 
 ```text
-https://<your-host>/<path>/owlbear-manifest.json
+https://cdn.jsdelivr.net/gh/Emourn/dm-assistant-owlbear/public/owlbear-manifest-cdn.json
 ```
 
-For this repository, the intended hosted URL is:
+This path serves directly from the Git repository and does not depend on GitHub Pages being enabled.
 
-```text
-https://emourn.github.io/dm-assistant-owlbear/owlbear-manifest.json
-```
-
-If GitHub Pages is not enabled yet, Owlbear will return a 404 for that URL until Pages is configured in the repository settings. Local dev manifest testing still works immediately.
+GitHub Pages can still be enabled later if desired, but it is not required for extension installs.
 
 ## Recommended incremental testing loop
 
@@ -107,6 +96,12 @@ If GitHub Pages is not enabled yet, Owlbear will return a 404 for that URL until
 4. Confirm the new rebuild shell loads instead of the old DM Assistant workbench.
 5. Verify room role, selection summary, and context-menu open action.
 6. Only after that, add the next Phase 1 slice.
+
+For shared repo-backed testing, install from:
+
+```text
+https://cdn.jsdelivr.net/gh/Emourn/dm-assistant-owlbear/public/owlbear-manifest-cdn.json
+```
 
 ## Important constraints
 

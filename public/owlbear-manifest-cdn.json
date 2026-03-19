@@ -1,0 +1,16 @@
+{
+  "name": "D&D Assistant",
+  "version": "0.1.0",
+  "manifest_version": 1,
+  "author": "Carlo and OpenAI Codex",
+  "description": "A brand-new Owlbear Rodeo Dungeons & Dragons extension rebuilt from scratch with a map-first, selection-first workflow.",
+  "icon": "https://cdn.jsdelivr.net/gh/Emourn/dm-assistant-owlbear/dist/owlbear/icon.svg?v=1448aed94bca2c50ba7dea5f241a56e9be4ee763",
+  "background_url": "https://cdn.jsdelivr.net/gh/Emourn/dm-assistant-owlbear/dist/owlbear-background.html?v=1448aed94bca2c50ba7dea5f241a56e9be4ee763",
+  "action": {
+    "title": "D&D Assistant",
+    "icon": "https://cdn.jsdelivr.net/gh/Emourn/dm-assistant-owlbear/dist/owlbear/icon.svg?v=1448aed94bca2c50ba7dea5f241a56e9be4ee763",
+    "popover": "https://cdn.jsdelivr.net/gh/Emourn/dm-assistant-owlbear/dist/owlbear.html?v=1448aed94bca2c50ba7dea5f241a56e9be4ee763",
+    "height": 720,
+    "width": 460
+  }
+}
