@@ -1,0 +1,1 @@
+import"./modulepreload-polyfill-B5Qt9EMX.js";import{c as o,j as r}from"./index-BD7aWxSs.js";import{r as t}from"./vendor-ui-Bzp0AazY.js";import{P as e}from"./PopoverApp-fTz9_3Q5.js";import"./index-C68faxfe.js";o.createRoot(document.getElementById("root")).render(r.jsx(t.StrictMode,{children:r.jsx(e,{surface:"popover"})}));

@@ -28,14 +28,29 @@ export function PopoverApp({ surface = 'popover' }: { surface?: 'popover' | 'pan
         let cleanups: Array<() => void> = [];
         OBR.onReady(async () => {
             await refresh();
-            cleanups = [
-                OBR.player.onChange(() => {
-                    void refresh();
-                }),
-                OBR.party.onChange(() => {
-                    void refresh();
-                }),
-            ];
+            const nextCleanups: Array<() => void> = [];
+
+            try {
+                nextCleanups.push(
+                    OBR.player.onChange(() => {
+                        void refresh();
+                    }),
+                );
+            } catch {
+                // Ignore listener registration failures during early rebuild slices.
+            }
+
+            try {
+                nextCleanups.push(
+                    OBR.party.onChange(() => {
+                        void refresh();
+                    }),
+                );
+            } catch {
+                // Ignore listener registration failures during early rebuild slices.
+            }
+
+            cleanups = nextCleanups;
         });
 
         return () => {

@@ -18,31 +18,29 @@ function getItemName(item: Item): string {
     return item.name?.trim() || `Token ${item.id.slice(0, 6)}`;
 }
 
+async function safeSdkCall<T>(read: () => Promise<T>, fallback: T): Promise<T> {
+    try {
+        return await Promise.resolve().then(read);
+    } catch {
+        return fallback;
+    }
+}
+
 export async function readRuntimeSnapshot(): Promise<OwlbearRuntimeSnapshot> {
-    const [roleResult, playerResult, playersResult, selectionResult] = await Promise.allSettled([
-        OBR.player.getRole(),
-        OBR.player.getName(),
-        OBR.party.getPlayers(),
-        OBR.player.getSelection(),
+    const [role, player, playersMaybe, selectedIdsMaybe] = await Promise.all([
+        safeSdkCall(() => OBR.player.getRole(), null),
+        safeSdkCall(() => OBR.player.getName(), 'Unknown Player'),
+        safeSdkCall(() => OBR.party.getPlayers(), [] as Player[]),
+        safeSdkCall(() => OBR.player.getSelection(), [] as string[]),
     ]);
 
-    const role = roleResult.status === 'fulfilled' ? roleResult.value : null;
-    const player = playerResult.status === 'fulfilled' ? playerResult.value : 'Unknown Player';
-    const players = playersResult.status === 'fulfilled' && Array.isArray(playersResult.value)
-        ? playersResult.value
-        : [];
-    const selectedIds = selectionResult.status === 'fulfilled' && Array.isArray(selectionResult.value)
-        ? selectionResult.value
-        : [];
+    const players = Array.isArray(playersMaybe) ? playersMaybe : [];
+    const selectedIds = Array.isArray(selectedIdsMaybe) ? selectedIdsMaybe : [];
 
     let selectedItems: Item[] = [];
     if (selectedIds.length > 0) {
-        try {
-            const items = await OBR.scene.items.getItems(selectedIds);
-            selectedItems = Array.isArray(items) ? items : [];
-        } catch {
-            selectedItems = [];
-        }
+        const items = await safeSdkCall(() => OBR.scene.items.getItems(selectedIds), [] as Item[]);
+        selectedItems = Array.isArray(items) ? items : [];
     }
 
     return {
