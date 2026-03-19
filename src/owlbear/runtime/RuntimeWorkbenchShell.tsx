@@ -1,6 +1,6 @@
 import { Suspense, lazy, useCallback, useEffect, useMemo, useState } from 'react';
 import OBR, { type Item, type Player } from '@owlbear-rodeo/sdk';
-import { Crosshair, FileUp, PencilLine, RadioTower, Sparkles, Swords, UserRoundPlus } from 'lucide-react';
+import { Crosshair, FileUp, Link2, PencilLine, RadioTower, Sparkles, Swords, Users } from 'lucide-react';
 import { useCampaignStore } from '../../store/campaignStore';
 import { useCharacterStore } from '../../store/characterStore';
 import { useCombatStore } from '../../store/combatStore';
@@ -69,6 +69,36 @@ function describeSelection(selectionCount: number, primarySelection: SelectedTok
     return `${selectionCount} tokens selected`;
 }
 
+function SelectionCommandButton({
+    icon: Icon,
+    label,
+    onClick,
+    accent = false,
+    disabled,
+}: {
+    icon: typeof Sparkles;
+    label: string;
+    onClick: () => void;
+    accent?: boolean;
+    disabled?: boolean;
+}) {
+    return (
+        <button
+            type="button"
+            onClick={onClick}
+            disabled={disabled}
+            className={`inline-flex items-center gap-2 rounded-xl border px-3 py-2 font-mono text-[10px] font-bold uppercase tracking-[0.18em] transition-colors disabled:cursor-not-allowed disabled:opacity-50 ${
+                accent
+                    ? 'border-gold/40 bg-gold text-stone-950 hover:bg-yellow-400'
+                    : 'border-stone-700 bg-stone-950/90 text-stone-100 hover:border-sky-400/20 hover:text-sky-100'
+            }`}
+        >
+            <Icon size={13} />
+            {label}
+        </button>
+    );
+}
+
 function SelectionInspector({
     selection,
     selectedItems,
@@ -85,6 +115,9 @@ function SelectionInspector({
     onOpenCreate,
     onAssignPlayer,
     onOpenRoster,
+    onOpenCombat,
+    onImportCombat,
+    onOpenSync,
 }: {
     selection: SelectedTokenContext | null;
     selectedItems: Item[];
@@ -101,6 +134,9 @@ function SelectionInspector({
     onOpenCreate: () => void;
     onAssignPlayer: (playerId: string, characterId: string | null) => void;
     onOpenRoster: () => void;
+    onOpenCombat: () => void;
+    onImportCombat: () => void;
+    onOpenSync: () => void;
 }) {
     const linkedCharacter = selection?.linkedCharacter?.snapshot ?? null;
     const linkedCharacterId = selection?.linkedCharacter?.characterId ?? null;
@@ -115,9 +151,7 @@ function SelectionInspector({
                     <span className="font-mono text-[10px] font-bold uppercase tracking-[0.26em]">Selection inspector</span>
                 </div>
                 <h2 className="mt-3 text-2xl font-semibold tracking-tight text-parchment">Stay on the map</h2>
-                <p className="mt-3 max-w-2xl text-sm leading-relaxed text-stone-400">
-                    Select a token in Owlbear to link it, open its sheet, assign a player, or push it into combat. The extension should react to the tabletop you are already using, not pull you into a separate dashboard.
-                </p>
+                <p className="mt-2 max-w-2xl text-sm text-stone-400">Select a token to link, assign, or import. Until then, use one of these entry points.</p>
                 <div className="mt-5 grid gap-3 sm:grid-cols-3">
                     <button
                         type="button"
@@ -147,6 +181,10 @@ function SelectionInspector({
                         <div className="mt-2 text-sm text-stone-400">Review your roster, edit imported sheets, and prepare characters before linking tokens.</div>
                     </button>
                 </div>
+                <div className="mt-4 flex flex-wrap gap-2">
+                    <SelectionCommandButton icon={Swords} label="Open Combat" onClick={onOpenCombat} />
+                    <SelectionCommandButton icon={Link2} label="Open Sync" onClick={onOpenSync} />
+                </div>
             </section>
         );
     }
@@ -172,10 +210,10 @@ function SelectionInspector({
                             </span>
                         </div>
                         <h2 className="mt-2 truncate text-2xl font-semibold tracking-tight text-parchment">{getItemDisplayName(selection.item)}</h2>
-                        <p className="mt-2 max-w-2xl text-sm leading-relaxed text-stone-400">
+                        <p className="mt-2 max-w-2xl text-sm text-stone-400">
                             {linkedCharacter
-                                ? `This token is connected to ${linkedCharacter.name || 'an unnamed character'}. Open the sheet, adjust assignments, or send the token into combat without leaving the map.`
-                                : 'Choose a saved sheet, then link it to the selected token so rests, combat, player assignment, and automation all stay anchored to this tabletop piece.'}
+                                ? `Linked to ${linkedCharacter.name || 'an unnamed character'}. Use the command strip below for sheet, sync, and combat actions.`
+                                : 'Choose a saved sheet, then link it to this token.'}
                         </p>
                     </div>
                 </div>
@@ -193,9 +231,14 @@ function SelectionInspector({
                         <CompactStat label="AC" value={String(linkedCharacter.ac)} />
                         <CompactStat label="Vision" value={`${smokeProfile?.range ?? 0} ft`} />
                     </div>
-                    <div className="mt-4 flex flex-wrap gap-2">
-                        <HeaderAction icon={Sparkles} label="Open Sheet" onClick={() => onOpenSheet(linkedCharacterId!)} />
-                        <HeaderAction icon={UserRoundPlus} label="Assign Player" onClick={onOpenRoster} />
+                    <div className="mt-4 rounded-xl border border-stone-800 bg-stone-950/60 p-3">
+                        <div className="font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-stone-500">Token commands</div>
+                        <div className="mt-3 flex flex-wrap gap-2">
+                            <SelectionCommandButton icon={Sparkles} label="Open Sheet" onClick={() => onOpenSheet(linkedCharacterId!)} accent />
+                            <SelectionCommandButton icon={Swords} label="Import Combat" onClick={onImportCombat} />
+                            <SelectionCommandButton icon={Link2} label="Sync" onClick={onOpenSync} />
+                            <SelectionCommandButton icon={Users} label="Roster" onClick={onOpenRoster} />
+                        </div>
                     </div>
                     {playerRows.length > 0 && (
                         <div className="mt-5 grid gap-3 md:grid-cols-2">
@@ -230,7 +273,7 @@ function SelectionInspector({
                             <div className="flex items-center justify-between gap-3">
                                 <div>
                                     <div className="font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-sky-300">Smoke profile</div>
-                                    <div className="mt-2 text-sm font-semibold text-stone-100">Stored alongside the token link for Smoke and Spectre!</div>
+                                    <div className="mt-2 text-sm font-semibold text-stone-100">Stored with the token link for Smoke and Spectre!</div>
                                 </div>
                                 <div className="rounded-full border border-sky-400/20 bg-sky-500/10 px-3 py-1 text-[10px] font-black uppercase tracking-[0.18em] text-sky-100">
                                     Vision intent
@@ -272,6 +315,11 @@ function SelectionInspector({
                         >
                             Link token to sheet
                         </button>
+                    </div>
+                    <div className="mt-3 flex flex-wrap gap-2">
+                        <SelectionCommandButton icon={FileUp} label="Import Sheet" onClick={onOpenImport} />
+                        <SelectionCommandButton icon={PencilLine} label="Create Sheet" onClick={onOpenCreate} />
+                        <SelectionCommandButton icon={Users} label="Open Roster" onClick={onOpenRoster} />
                     </div>
                     {selectedCharacter ? (
                         <div className="mt-4 rounded-xl border border-stone-800 bg-stone-900/70 p-4">
@@ -609,6 +657,11 @@ export function RuntimeWorkbenchShell() {
                         void handleAssignPlayer(playerId, characterId);
                     }}
                     onOpenRoster={() => setActivePanel('roster')}
+                    onOpenCombat={() => setActivePanel('combat')}
+                    onImportCombat={() => {
+                        void handleImportSelection();
+                    }}
+                    onOpenSync={() => setActivePanel('sync')}
                 />
 
                 <QuickActionRail activePanel={activePanel} onOpenPanel={handleOpenPanel} />
