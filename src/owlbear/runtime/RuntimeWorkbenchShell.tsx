@@ -1,8 +1,6 @@
-import { useCallback, useEffect, useMemo, useState } from 'react';
+import { Suspense, lazy, useCallback, useEffect, useMemo, useState } from 'react';
 import OBR, { type Item, type Player } from '@owlbear-rodeo/sdk';
 import { Crosshair, FileUp, PencilLine, RadioTower, Sparkles, Swords, UserRoundPlus } from 'lucide-react';
-import { CharacterForm } from '../../components/character/CharacterForm';
-import { PdfImportModal } from '../../components/character/PdfImportModal';
 import { useCampaignStore } from '../../store/campaignStore';
 import { useCharacterStore } from '../../store/characterStore';
 import { useCombatStore } from '../../store/combatStore';
@@ -31,6 +29,16 @@ import {
     WorkspaceDrawer,
 } from './RuntimePanels';
 import { type EditorState, type SelectedTokenContext, type WorkspacePanel } from './runtimeTypes';
+
+const CharacterForm = lazy(async () => {
+    const mod = await import('../../components/character/CharacterForm');
+    return { default: mod.CharacterForm };
+});
+
+const PdfImportModal = lazy(async () => {
+    const mod = await import('../../components/character/PdfImportModal');
+    return { default: mod.PdfImportModal };
+});
 
 function describeCharacter(character: Character | null | undefined): string {
     if (!character) {
@@ -363,6 +371,18 @@ function EncounterStrip({
     );
 }
 
+function OverlayLoadingCard({ label }: { label: string }) {
+    return (
+        <div className="flex min-h-[320px] items-center justify-center rounded-[1.6rem] border border-stone-800 bg-stone-950/95 px-6 py-10 text-center shadow-[0_24px_60px_-36px_rgba(15,23,42,0.95)]">
+            <div>
+                <div className="text-[10px] font-black uppercase tracking-[0.24em] text-stone-500">Loading</div>
+                <div className="mt-3 font-cinzel text-2xl font-bold text-parchment">{label}</div>
+                <div className="mt-2 text-sm text-stone-400">Preparing the heavy editor surface only when it is actually needed.</div>
+            </div>
+        </div>
+    );
+}
+
 export function RuntimeWorkbenchShell() {
     const characters = useCharacterStore((state) => state.characters);
     const campaigns = useCampaignStore((state) => state.campaigns);
@@ -618,26 +638,30 @@ export function RuntimeWorkbenchShell() {
             {editorState && (
                 <div className="fixed inset-0 z-40 overflow-y-auto bg-stone-950/84 px-3 py-6 backdrop-blur-sm">
                     <div className="mx-auto max-w-7xl">
-                        <CharacterForm
-                            characterId={editorState.characterId}
-                            initialData={editorState.initialData}
-                            onClose={() => {
-                                setEditorState(null);
-                                void refresh();
-                            }}
-                        />
+                        <Suspense fallback={<OverlayLoadingCard label="Character editor" />}>
+                            <CharacterForm
+                                characterId={editorState.characterId}
+                                initialData={editorState.initialData}
+                                onClose={() => {
+                                    setEditorState(null);
+                                    void refresh();
+                                }}
+                            />
+                        </Suspense>
                     </div>
                 </div>
             )}
 
             {isImporting && (
-                <PdfImportModal
-                    onClose={() => setIsImporting(false)}
-                    onImportSuccess={(data) => {
-                        setIsImporting(false);
-                        setEditorState({ initialData: data });
-                    }}
-                />
+                <Suspense fallback={<OverlayLoadingCard label="PDF importer" />}>
+                    <PdfImportModal
+                        onClose={() => setIsImporting(false)}
+                        onImportSuccess={(data) => {
+                            setIsImporting(false);
+                            setEditorState({ initialData: data });
+                        }}
+                    />
+                </Suspense>
             )}
         </div>
     );

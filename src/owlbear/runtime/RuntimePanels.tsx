@@ -9,6 +9,7 @@ import {
     Moon,
     PencilLine,
     ScrollText,
+    Search,
     Sparkles,
     Swords,
     Trash2,
@@ -248,6 +249,20 @@ function RosterWorkspace({
     onEditCharacter: (characterId: string) => void;
 }) {
     const characters = useCharacterStore((state) => state.characters);
+    const [query, setQuery] = useState('');
+    const filteredCharacters = useMemo(() => {
+        const normalized = query.trim().toLowerCase();
+        if (!normalized) {
+            return characters;
+        }
+
+        return characters.filter((character) => {
+            const haystack = [character.name, character.className, character.race, character.playerName]
+                .join(' ')
+                .toLowerCase();
+            return haystack.includes(normalized);
+        });
+    }, [characters, query]);
 
     return (
         <div className="space-y-4">
@@ -255,19 +270,33 @@ function RosterWorkspace({
                 <HeaderAction icon={FileUp} label="Import PDF" onClick={onImportPdf} accent />
                 <HeaderAction icon={PencilLine} label="Create Sheet" onClick={onCreateCharacter} />
             </div>
+            <div className="relative">
+                <Search size={15} className="pointer-events-none absolute left-4 top-1/2 -translate-y-1/2 text-stone-500" />
+                <input
+                    value={query}
+                    onChange={(event) => setQuery(event.target.value)}
+                    placeholder="Filter sheets by name, class, race, or player"
+                    className="w-full rounded-2xl border border-stone-700 bg-stone-950 py-3 pl-11 pr-4 text-sm text-stone-100 outline-none transition-colors focus:border-gold"
+                />
+            </div>
             <div className="grid gap-3 md:grid-cols-2">
                 {characters.length === 0 && (
                     <div className="rounded-2xl border border-dashed border-stone-800 p-4 text-sm text-stone-500">
                         No saved sheets yet. Import a PDF or create a sheet to begin linking tokens and assigning players.
                     </div>
                 )}
-                {characters.map((character) => (
+                {characters.length > 0 && filteredCharacters.length === 0 && (
+                    <div className="rounded-2xl border border-dashed border-stone-800 p-4 text-sm text-stone-500">
+                        No saved sheets match that filter.
+                    </div>
+                )}
+                {filteredCharacters.map((character) => (
                     <div key={character.id} className="rounded-2xl border border-stone-800 bg-stone-900/70 p-4">
                         <div className="flex items-start justify-between gap-3">
                             <div>
                                 <div className="font-cinzel text-xl font-bold text-parchment">{character.name || 'Unnamed'}</div>
                                 <div className="mt-1 text-sm text-stone-400">
-                                    Lv.{character.level} {character.className || 'Adventurer'}{character.race ? ` · ${character.race}` : ''}
+                                    Lv.{character.level} {character.className || 'Adventurer'}{character.race ? ` - ${character.race}` : ''}
                                 </div>
                             </div>
                             <button
