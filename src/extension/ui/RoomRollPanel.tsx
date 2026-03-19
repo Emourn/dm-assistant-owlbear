@@ -1,15 +1,17 @@
 import { RadioTower, ScrollText, Send, Siren } from 'lucide-react';
-import type { Phase1CharacterSheet, StructuredRollResult } from '../../features/dnd2024/domain/types';
+import type { StructuredRollResult } from '../../features/dnd2024/domain/types';
 import { formatSignedNumber } from '../../features/dnd2024/domain/sheet';
 import type { StoredRoomRollState } from '../domain/roomRolls';
 
 interface RoomRollPanelProps {
     role: 'GM' | 'PLAYER' | null;
-    sheet: Phase1CharacterSheet | null;
     lastRoll: StructuredRollResult | null;
     roomRollState: StoredRoomRollState;
+    defaultRollVisibility: 'room' | 'assigned-only' | 'gm-only';
     isPublishing: boolean;
     isManagingPrompt: boolean;
+    canPublishLastRoll: boolean;
+    canRespondToPrompt: boolean;
     onPublishLastRoll: () => Promise<void>;
     onPromptInitiative: () => Promise<void>;
     onClearPrompt: () => Promise<void>;
@@ -25,18 +27,19 @@ function formatTime(timestamp: number): string {
 
 export function RoomRollPanel({
     role,
-    sheet,
     lastRoll,
     roomRollState,
+    defaultRollVisibility,
     isPublishing,
     isManagingPrompt,
+    canPublishLastRoll,
+    canRespondToPrompt,
     onPublishLastRoll,
     onPromptInitiative,
     onClearPrompt,
     onRespondToPrompt,
 }: RoomRollPanelProps) {
     const activePrompt = roomRollState.activePrompt;
-    const canRespondToPrompt = activePrompt?.kind === 'initiative' && Boolean(sheet);
 
     return (
         <section className="rounded-[1.4rem] border border-stone-800 bg-stone-950/75 p-5">
@@ -49,6 +52,9 @@ export function RoomRollPanel({
                     <div className="mt-2 text-lg font-semibold text-parchment">Publish structured rolls to the table</div>
                     <div className="mt-1 text-sm text-stone-400">
                         A compact room feed for prompted and manually published results. This slice stays Owlbear-native and metadata-first.
+                    </div>
+                    <div className="mt-1 text-xs text-stone-500">
+                        Manual publication default: {defaultRollVisibility}.
                     </div>
                 </div>
                 {role === 'GM' && (
@@ -75,6 +81,7 @@ export function RoomRollPanel({
                             <div className="mt-1 text-sm text-stone-300">
                                 Prompted by {activePrompt.createdByName} at {formatTime(activePrompt.createdAt)}.
                             </div>
+                            <div className="mt-1 text-xs text-stone-500">Audience: {activePrompt.audience}</div>
                         </div>
                         <div className="flex flex-wrap gap-2">
                             {canRespondToPrompt && (
@@ -118,7 +125,7 @@ export function RoomRollPanel({
                         <button
                             type="button"
                             onClick={() => void onPublishLastRoll()}
-                            disabled={isPublishing}
+                            disabled={isPublishing || !canPublishLastRoll}
                             className="rounded-full border border-emerald-400/35 bg-emerald-500/10 px-3 py-1.5 text-xs font-semibold text-emerald-200 transition hover:border-emerald-300/60 disabled:cursor-not-allowed disabled:opacity-60"
                         >
                             {isPublishing ? 'Publishing...' : 'Publish to room'}
@@ -144,7 +151,7 @@ export function RoomRollPanel({
                                 <div>
                                     <div className="text-sm font-semibold text-parchment">{entry.result.label}</div>
                                     <div className="mt-1 text-xs text-stone-500">
-                                        {entry.actor.characterName ?? entry.actor.playerName} • {entry.actor.playerName} • {formatTime(entry.publishedAt)}
+                                        {entry.actor.characterName ?? entry.actor.playerName} / {entry.actor.playerName} / {formatTime(entry.publishedAt)}
                                     </div>
                                 </div>
                                 <div className="text-right">
@@ -157,6 +164,7 @@ export function RoomRollPanel({
                                 <span>Kept d20 {entry.result.kept}</span>
                                 <span>{formatSignedNumber(entry.result.totalModifier)} mods</span>
                                 <span>{entry.source === 'prompt' ? 'Prompted' : 'Manual'}</span>
+                                <span>{entry.visibility}</span>
                             </div>
                         </div>
                     ))}

@@ -5,6 +5,7 @@ interface TokenLinkPanelProps {
     sheet: Phase1CharacterSheet;
     role: 'GM' | 'PLAYER' | null;
     characterState: CharacterRepositorySnapshot;
+    defaultLinkVisibility: 'room' | 'assigned-only' | 'gm-only';
     isLinking: boolean;
     onLink: (sheet: Phase1CharacterSheet) => Promise<void>;
     onUnlink: () => Promise<void>;
@@ -27,6 +28,7 @@ export function TokenLinkPanel({
     sheet,
     role,
     characterState,
+    defaultLinkVisibility,
     isLinking,
     onLink,
     onUnlink,
@@ -46,6 +48,11 @@ export function TokenLinkPanel({
                             ? 'Select one or more tokens to link them to the active character.'
                             : `${selection.count} selected token${selection.count === 1 ? '' : 's'} - ${selection.linkedCount} linked`}
                     </div>
+                    {role === 'GM' && (
+                        <div className="mt-1 text-xs text-stone-500">
+                            New links use the current default visibility: {defaultLinkVisibility}.
+                        </div>
+                    )}
                 </div>
                 {role === 'GM' && (
                     <div className="flex gap-2">

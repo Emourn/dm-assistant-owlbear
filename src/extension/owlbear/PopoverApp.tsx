@@ -14,6 +14,12 @@ import type {
     StructuredRollResult,
 } from '../../features/dnd2024/domain/types';
 import type { StoredRoomRollState } from '../domain/roomRolls';
+import {
+    canPublishManualRoll,
+    canRespondToPrompt,
+    createDefaultVisibilitySettings,
+    type StoredVisibilitySettings,
+} from '../domain/visibilitySettings';
 import { ExtensionShell } from '../ui/ExtensionShell';
 import {
     assignCharacterToPlayer,
@@ -32,11 +38,24 @@ import {
     readRoomRollState,
 } from './rollRepository';
 import { readRuntimeSnapshot, type OwlbearRuntimeSnapshot } from './runtime';
+import { readVisibilitySettings, updateVisibilitySettings } from './visibilityRepository';
+
+function getSelectedLinkVisibility(
+    characterState: CharacterRepositorySnapshot | null,
+): StoredVisibilitySettings['defaultTokenLinkVisibility'] | null {
+    const activeId = characterState?.activeCharacter?.sheet.id;
+    if (!activeId || characterState?.resolution.source !== 'selected-token') {
+        return null;
+    }
+
+    return characterState.selection.links.find((link) => link.characterId === activeId)?.visibility ?? null;
+}
 
 export function PopoverApp({ surface = 'popover' }: { surface?: 'popover' | 'panel' }) {
     const [runtime, setRuntime] = useState<OwlbearRuntimeSnapshot | null>(null);
     const [characterState, setCharacterState] = useState<CharacterRepositorySnapshot | null>(null);
     const [roomRollState, setRoomRollState] = useState<StoredRoomRollState | null>(null);
+    const [visibilitySettings, setVisibilitySettings] = useState<StoredVisibilitySettings>(createDefaultVisibilitySettings);
     const [lastRoll, setLastRoll] = useState<StructuredRollResult | null>(null);
     const [assigningPlayerId, setAssigningPlayerId] = useState<string | null>(null);
     const [isSavingCharacter, setIsSavingCharacter] = useState(false);
@@ -44,19 +63,22 @@ export function PopoverApp({ surface = 'popover' }: { surface?: 'popover' | 'pan
     const [isLinkingCharacter, setIsLinkingCharacter] = useState(false);
     const [isPublishingRoll, setIsPublishingRoll] = useState(false);
     const [isManagingPrompt, setIsManagingPrompt] = useState(false);
+    const [isSavingVisibility, setIsSavingVisibility] = useState(false);
     const [loadState, setLoadState] = useState<'loading' | 'ready' | 'error'>('loading');
     const [error, setError] = useState<string | null>(null);
 
     const refresh = useCallback(async () => {
         try {
             const snapshot = await readRuntimeSnapshot();
-            const [nextCharacterState, nextRoomRollState] = await Promise.all([
+            const [nextCharacterState, nextRoomRollState, nextVisibilitySettings] = await Promise.all([
                 readCharacterRepositorySnapshot(snapshot.role),
                 readRoomRollState(),
+                readVisibilitySettings(),
             ]);
             setRuntime(snapshot);
             setCharacterState(nextCharacterState);
             setRoomRollState(nextRoomRollState);
+            setVisibilitySettings(nextVisibilitySettings);
             setLoadState('ready');
             setError(null);
         } catch (cause) {
@@ -122,14 +144,33 @@ export function PopoverApp({ surface = 'popover' }: { surface?: 'popover' | 'pan
             return;
         }
 
+        const activeCharacterId = characterState?.activeCharacter?.sheet.id ?? null;
+        const selectedLinkVisibility = getSelectedLinkVisibility(characterState);
+        const canPublish = canPublishManualRoll({
+            role: runtime?.role ?? null,
+            assignedCharacterId: characterState?.assignedCharacterId ?? null,
+            activeCharacterId,
+            resolutionSource: characterState?.resolution.source ?? 'none',
+            selectedLinkVisibility,
+            settings: visibilitySettings,
+        });
+        if (!canPublish) {
+            return;
+        }
+
         setIsPublishingRoll(true);
         try {
-            const next = await publishRoomRoll(lastRoll, characterState?.activeCharacter?.sheet ?? null, 'manual');
+            const next = await publishRoomRoll(
+                lastRoll,
+                characterState?.activeCharacter?.sheet ?? null,
+                visibilitySettings.defaultRollVisibility,
+                'manual',
+            );
             setRoomRollState(next);
         } finally {
             setIsPublishingRoll(false);
         }
-    }, [characterState, lastRoll]);
+    }, [characterState, lastRoll, runtime, visibilitySettings]);
 
     const handleSelectCharacter = useCallback(async (characterId: string) => {
         const next = await setActiveCharacterRecord(characterId);
@@ -153,14 +194,14 @@ export function PopoverApp({ surface = 'popover' }: { surface?: 'popover' | 'pan
     const handleLinkCharacter = useCallback(async (sheet: Phase1CharacterSheet) => {
         setIsLinkingCharacter(true);
         try {
-            const next = await linkActiveCharacterToSelection(sheet);
+            const next = await linkActiveCharacterToSelection(sheet, visibilitySettings.defaultTokenLinkVisibility);
             if (next) {
                 setCharacterState(next);
             }
         } finally {
             setIsLinkingCharacter(false);
         }
-    }, []);
+    }, [visibilitySettings]);
 
     const handleUnlinkCharacter = useCallback(async () => {
         setIsLinkingCharacter(true);
@@ -257,12 +298,12 @@ export function PopoverApp({ surface = 'popover' }: { surface?: 'popover' | 'pan
     const handlePromptInitiative = useCallback(async () => {
         setIsManagingPrompt(true);
         try {
-            const next = await openInitiativePrompt();
+            const next = await openInitiativePrompt(visibilitySettings.initiativePromptAudience);
             setRoomRollState(next);
         } finally {
             setIsManagingPrompt(false);
         }
-    }, []);
+    }, [visibilitySettings]);
 
     const handleClearPrompt = useCallback(async () => {
         setIsManagingPrompt(true);
@@ -277,7 +318,15 @@ export function PopoverApp({ surface = 'popover' }: { surface?: 'popover' | 'pan
     const handleRespondToPrompt = useCallback(async () => {
         const sheet = characterState?.activeCharacter?.sheet;
         const prompt = roomRollState?.activePrompt;
-        if (!sheet || prompt?.kind !== 'initiative') {
+        const canRespond = prompt
+            ? canRespondToPrompt({
+                role: runtime?.role ?? null,
+                assignedCharacterId: characterState?.assignedCharacterId ?? null,
+                activeCharacterId: sheet?.id ?? null,
+                audience: prompt.audience,
+            })
+            : false;
+        if (!sheet || prompt?.kind !== 'initiative' || !canRespond) {
             return;
         }
 
@@ -285,18 +334,30 @@ export function PopoverApp({ surface = 'popover' }: { surface?: 'popover' | 'pan
         setLastRoll(result);
         setIsPublishingRoll(true);
         try {
-            const next = await publishRoomRoll(result, sheet, 'prompt');
+            const visibility = prompt.audience === 'room' ? 'room' : 'assigned-only';
+            const next = await publishRoomRoll(result, sheet, visibility, 'prompt');
             setRoomRollState(next);
         } finally {
             setIsPublishingRoll(false);
         }
-    }, [characterState, roomRollState]);
+    }, [characterState, roomRollState, runtime]);
+
+    const handleSaveVisibilitySettings = useCallback(async (nextSettings: StoredVisibilitySettings) => {
+        setIsSavingVisibility(true);
+        try {
+            const saved = await updateVisibilitySettings(nextSettings);
+            setVisibilitySettings(saved);
+        } finally {
+            setIsSavingVisibility(false);
+        }
+    }, []);
 
     return (
         <ExtensionShell
             runtime={runtime}
             characterState={characterState}
             roomRollState={roomRollState}
+            visibilitySettings={visibilitySettings}
             lastRoll={lastRoll}
             assigningPlayerId={assigningPlayerId}
             isSavingCharacter={isSavingCharacter}
@@ -304,6 +365,7 @@ export function PopoverApp({ surface = 'popover' }: { surface?: 'popover' | 'pan
             isLinkingCharacter={isLinkingCharacter}
             isPublishingRoll={isPublishingRoll}
             isManagingPrompt={isManagingPrompt}
+            isSavingVisibility={isSavingVisibility}
             onRoll={handleRoll}
             onPublishLastRoll={handlePublishLastRoll}
             onSelectCharacter={handleSelectCharacter}
@@ -317,6 +379,7 @@ export function PopoverApp({ surface = 'popover' }: { surface?: 'popover' | 'pan
             onPromptInitiative={handlePromptInitiative}
             onClearPrompt={handleClearPrompt}
             onRespondToPrompt={handleRespondToPrompt}
+            onSaveVisibilitySettings={handleSaveVisibilitySettings}
             loadState={loadState}
             error={error}
             surface={surface}

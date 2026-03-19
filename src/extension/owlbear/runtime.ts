@@ -8,6 +8,7 @@ export interface SelectionSummary {
 export interface OwlbearRuntimeSnapshot {
     ready: boolean;
     role: 'GM' | 'PLAYER' | null;
+    playerId: string | null;
     roomName: string;
     playerName: string;
     players: Player[];
@@ -27,8 +28,9 @@ async function safeSdkCall<T>(read: () => Promise<T>, fallback: T): Promise<T> {
 }
 
 export async function readRuntimeSnapshot(): Promise<OwlbearRuntimeSnapshot> {
-    const [role, player, playersMaybe, selectedIdsMaybe] = await Promise.all([
+    const [role, playerId, player, playersMaybe, selectedIdsMaybe] = await Promise.all([
         safeSdkCall(() => OBR.player.getRole(), null),
+        safeSdkCall(() => OBR.player.getId(), null),
         safeSdkCall(() => OBR.player.getName(), 'Unknown Player'),
         safeSdkCall(() => OBR.party.getPlayers(), [] as Player[]),
         safeSdkCall(() => OBR.player.getSelection(), [] as string[]),
@@ -46,6 +48,7 @@ export async function readRuntimeSnapshot(): Promise<OwlbearRuntimeSnapshot> {
     return {
         ready: true,
         role,
+        playerId,
         roomName: OBR.room.id || 'Owlbear Room',
         playerName: player || 'Unknown Player',
         players,

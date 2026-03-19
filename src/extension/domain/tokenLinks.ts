@@ -1,6 +1,8 @@
+import { canViewVisibilityScopedCharacter, type SharedVisibility } from './visibilitySettings';
+
 export const TOKEN_LINK_VERSION = 1;
 
-export type TokenLinkVisibility = 'room' | 'gm-only';
+export type TokenLinkVisibility = SharedVisibility;
 
 export interface StoredTokenLink {
     version: typeof TOKEN_LINK_VERSION;
@@ -35,7 +37,13 @@ export function parseStoredTokenLink(value: unknown): StoredTokenLink | null {
         return null;
     }
 
-    const visibility = value.visibility === 'gm-only' ? 'gm-only' : value.visibility === 'room' ? 'room' : null;
+    const visibility = value.visibility === 'gm-only'
+        ? 'gm-only'
+        : value.visibility === 'assigned-only'
+            ? 'assigned-only'
+            : value.visibility === 'room'
+                ? 'room'
+                : null;
     if (!visibility) {
         return null;
     }
@@ -53,9 +61,12 @@ export function parseStoredTokenLink(value: unknown): StoredTokenLink | null {
 export function resolveCharacterIdFromSelection(
     role: 'GM' | 'PLAYER' | null,
     selectedLinks: StoredTokenLink[],
+    assignedCharacterId: string | null,
     fallbackCharacterId: string | null,
 ): TokenSelectionResolution {
-    const allowedLink = selectedLinks.find((link) => role === 'GM' || link.visibility === 'room');
+    const allowedLink = selectedLinks.find((link) =>
+        canViewVisibilityScopedCharacter(role, link.visibility, assignedCharacterId, link.characterId),
+    );
     if (allowedLink) {
         return {
             characterId: allowedLink.characterId,

@@ -33,6 +33,7 @@ describe('token link domain', () => {
                     linkedBy: 'player-1',
                 },
             ],
+            null,
             'hero-2',
         );
 
@@ -55,6 +56,7 @@ describe('token link domain', () => {
                     linkedBy: 'player-1',
                 },
             ],
+            null,
             'hero-2',
         );
 

@@ -11,6 +11,7 @@ import {
     type PublishedRollEntry,
     type StoredRoomRollState,
 } from '../domain/roomRolls';
+import type { PromptAudience, SharedVisibility } from '../domain/visibilitySettings';
 import { EXTENSION_NAMESPACE } from './ids';
 
 export const ROOM_ROLL_STATE_KEY = `${EXTENSION_NAMESPACE}/room-rolls`;
@@ -49,25 +50,28 @@ async function buildPublishedRollActor(sheet: Phase1CharacterSheet | null): Prom
 export async function publishRoomRoll(
     result: StructuredRollResult,
     sheet: Phase1CharacterSheet | null,
+    visibility: SharedVisibility,
     source: PublishedRollEntry['source'] = 'manual',
 ): Promise<StoredRoomRollState> {
     const metadata = await OBR.room.getMetadata();
     const current = getRoomRollStateFromMetadata(metadata);
     const actor = await buildPublishedRollActor(sheet);
-    const entry = createPublishedRollEntry(result, actor, source);
+    const entry = createPublishedRollEntry(result, actor, visibility, source);
     const next = appendPublishedRoll(current, entry);
     await writeRoomRollState(next);
     return next;
 }
 
-export async function openInitiativePrompt(): Promise<StoredRoomRollState> {
+export async function openInitiativePrompt(
+    audience: PromptAudience,
+): Promise<StoredRoomRollState> {
     const metadata = await OBR.room.getMetadata();
     const current = getRoomRollStateFromMetadata(metadata);
     const [playerId, playerName] = await Promise.all([
         OBR.player.getId().catch(() => null),
         OBR.player.getName().catch(() => 'GM'),
     ]);
-    const next = setActivePrompt(current, createInitiativePrompt(Date.now(), playerName, playerId));
+    const next = setActivePrompt(current, createInitiativePrompt(Date.now(), playerName, playerId, audience));
     await writeRoomRollState(next);
     return next;
 }

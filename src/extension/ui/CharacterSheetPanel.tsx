@@ -25,6 +25,7 @@ interface CharacterSheetPanelProps {
     players: Player[];
     canEdit: boolean;
     canManageRuntime: boolean;
+    defaultLinkVisibility: 'room' | 'assigned-only' | 'gm-only';
     isSaving: boolean;
     isUpdatingRuntime: boolean;
     isLinking: boolean;
@@ -104,6 +105,7 @@ export function CharacterSheetPanel({
     players,
     canEdit,
     canManageRuntime,
+    defaultLinkVisibility,
     isSaving,
     isUpdatingRuntime,
     isLinking,
@@ -359,6 +361,7 @@ export function CharacterSheetPanel({
                 sheet={sheet}
                 role={role}
                 characterState={characterState}
+                defaultLinkVisibility={defaultLinkVisibility}
                 isLinking={isLinking}
                 onLink={onLink}
                 onUnlink={onUnlink}

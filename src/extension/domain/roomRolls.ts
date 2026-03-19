@@ -1,4 +1,5 @@
 import type { StructuredRollResult } from '../../features/dnd2024/domain/types';
+import type { PromptAudience, SharedVisibility } from './visibilitySettings';
 
 export const ROOM_ROLL_STATE_VERSION = 1;
 const ROOM_ROLL_FEED_LIMIT = 20;
@@ -15,6 +16,7 @@ export interface PublishedRollEntry {
     id: string;
     publishedAt: number;
     source: 'manual' | 'prompt';
+    visibility: SharedVisibility;
     actor: PublishedRollActor;
     result: StructuredRollResult;
 }
@@ -23,6 +25,7 @@ export interface RoomRollPrompt {
     id: string;
     kind: 'initiative';
     label: string;
+    audience: PromptAudience;
     createdAt: number;
     createdById: string | null;
     createdByName: string;
@@ -66,23 +69,59 @@ function isPublishedRollActor(value: unknown): value is PublishedRollActor {
         && (typeof value.characterName === 'string' || value.characterName === null);
 }
 
-function isPublishedRollEntry(value: unknown): value is PublishedRollEntry {
-    return isRecord(value)
-        && typeof value.id === 'string'
-        && typeof value.publishedAt === 'number'
-        && (value.source === 'manual' || value.source === 'prompt')
-        && isPublishedRollActor(value.actor)
-        && isStructuredRollResult(value.result);
+function parsePublishedRollEntry(value: unknown): PublishedRollEntry | null {
+    if (!isRecord(value)) {
+        return null;
+    }
+
+    if (
+        typeof value.id !== 'string'
+        || typeof value.publishedAt !== 'number'
+        || (value.source !== 'manual' && value.source !== 'prompt')
+        || !isPublishedRollActor(value.actor)
+        || !isStructuredRollResult(value.result)
+    ) {
+        return null;
+    }
+
+    const visibility: SharedVisibility = value.visibility === 'assigned-only'
+        ? 'assigned-only'
+        : value.visibility === 'gm-only'
+            ? 'gm-only'
+            : 'room';
+
+    return {
+        id: value.id,
+        publishedAt: value.publishedAt,
+        source: value.source,
+        visibility,
+        actor: value.actor,
+        result: value.result,
+    };
 }
 
-function isRoomRollPrompt(value: unknown): value is RoomRollPrompt {
-    return isRecord(value)
-        && typeof value.id === 'string'
-        && value.kind === 'initiative'
-        && typeof value.label === 'string'
-        && typeof value.createdAt === 'number'
-        && (typeof value.createdById === 'string' || value.createdById === null)
-        && typeof value.createdByName === 'string';
+function parseRoomRollPrompt(value: unknown): RoomRollPrompt | null {
+    if (
+        !isRecord(value)
+        || typeof value.id !== 'string'
+        || value.kind !== 'initiative'
+        || typeof value.label !== 'string'
+        || typeof value.createdAt !== 'number'
+        || (typeof value.createdById !== 'string' && value.createdById !== null)
+        || typeof value.createdByName !== 'string'
+    ) {
+        return null;
+    }
+
+    return {
+        id: value.id,
+        kind: 'initiative',
+        label: value.label,
+        audience: value.audience === 'assigned-only' ? 'assigned-only' : 'room',
+        createdAt: value.createdAt,
+        createdById: value.createdById,
+        createdByName: value.createdByName,
+    };
 }
 
 export function createEmptyRoomRollState(): StoredRoomRollState {
@@ -100,20 +139,25 @@ export function parseStoredRoomRollState(value: unknown): StoredRoomRollState | 
 
     return {
         version: ROOM_ROLL_STATE_VERSION,
-        feed: value.feed.filter(isPublishedRollEntry).slice(0, ROOM_ROLL_FEED_LIMIT),
-        activePrompt: isRoomRollPrompt(value.activePrompt) ? value.activePrompt : null,
+        feed: value.feed
+            .map((entry) => parsePublishedRollEntry(entry))
+            .filter((entry): entry is PublishedRollEntry => Boolean(entry))
+            .slice(0, ROOM_ROLL_FEED_LIMIT),
+        activePrompt: parseRoomRollPrompt(value.activePrompt),
     };
 }
 
 export function createPublishedRollEntry(
     result: StructuredRollResult,
     actor: PublishedRollActor,
+    visibility: SharedVisibility,
     source: PublishedRollEntry['source'] = 'manual',
 ): PublishedRollEntry {
     return {
         id: `roll:${result.metadata.timestamp}:${actor.playerId ?? 'anon'}:${result.id}`,
         publishedAt: result.metadata.timestamp,
         source,
+        visibility,
         actor,
         result,
     };
@@ -133,11 +177,13 @@ export function createInitiativePrompt(
     createdAt: number,
     createdByName: string,
     createdById: string | null,
+    audience: PromptAudience,
 ): RoomRollPrompt {
     return {
         id: `prompt:initiative:${createdAt}`,
         kind: 'initiative',
         label: 'Prompt initiative',
+        audience,
         createdAt,
         createdById,
         createdByName,

@@ -1,4 +1,5 @@
 import type { StoredTokenLink } from './tokenLinks';
+import { canViewVisibilityScopedCharacter } from './visibilitySettings';
 
 export const PLAYER_ASSIGNMENT_VERSION = 1;
 
@@ -47,7 +48,9 @@ export function resolveCharacterView(
     activeCharacterId: string | null,
 ): CharacterViewResolution {
     if (role === 'PLAYER') {
-        const visibleLink = selectedLinks.find((link) => link.visibility === 'room');
+        const visibleLink = selectedLinks.find((link) =>
+            canViewVisibilityScopedCharacter(role, link.visibility, assignedCharacterId, link.characterId),
+        );
         if (visibleLink) {
             return {
                 characterId: visibleLink.characterId,

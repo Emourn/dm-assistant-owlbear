@@ -28,7 +28,7 @@ describe('room roll state', () => {
             role: 'PLAYER',
             characterId: 'demo-seraphina-vale',
             characterName: 'Seraphina Vale',
-        });
+        }, 'room');
 
         const updated = appendPublishedRoll(createEmptyRoomRollState(), entry);
 
@@ -38,10 +38,11 @@ describe('room roll state', () => {
     });
 
     it('stores and clears initiative prompts', () => {
-        const prompt = createInitiativePrompt(2000, 'GM', 'gm-1');
+        const prompt = createInitiativePrompt(2000, 'GM', 'gm-1', 'assigned-only');
         const updated = setActivePrompt(createEmptyRoomRollState(), prompt);
 
         expect(updated.activePrompt?.kind).toBe('initiative');
+        expect(updated.activePrompt?.audience).toBe('assigned-only');
         expect(setActivePrompt(updated, null).activePrompt).toBeNull();
     });
 
@@ -56,9 +57,9 @@ describe('room roll state', () => {
                     role: 'GM',
                     characterId: null,
                     characterName: null,
-                }),
+                }, 'gm-only'),
             ],
-            activePrompt: createInitiativePrompt(2000, 'GM', null),
+            activePrompt: createInitiativePrompt(2000, 'GM', null, 'room'),
         };
 
         expect(parseStoredRoomRollState(state)?.feed).toHaveLength(1);

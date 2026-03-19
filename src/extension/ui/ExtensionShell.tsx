@@ -3,15 +3,25 @@ import { Crosshair, Layers3, MapPinned, ScrollText, Shield, Users } from 'lucide
 import type { Phase1CharacterSheet, StructuredRollRequest, StructuredRollResult } from '../../features/dnd2024/domain/types';
 import type { StoredRoomRollState } from '../domain/roomRolls';
 import { CURRENT_SLICE, NEXT_SLICES } from '../domain/phases';
+import {
+    canManageSheetRuntime,
+    canPublishManualRoll,
+    canRespondToPrompt,
+    canViewPrompt,
+    canViewPublishedRoll,
+    type StoredVisibilitySettings,
+} from '../domain/visibilitySettings';
 import type { CharacterRepositorySnapshot } from '../owlbear/characterRepository';
 import type { OwlbearRuntimeSnapshot } from '../owlbear/runtime';
 import { CharacterSheetPanel } from './CharacterSheetPanel';
 import { RoomRollPanel } from './RoomRollPanel';
+import { VisibilityPolicyPanel } from './VisibilityPolicyPanel';
 
 interface ExtensionShellProps {
     runtime: OwlbearRuntimeSnapshot | null;
     characterState: CharacterRepositorySnapshot | null;
     roomRollState: StoredRoomRollState | null;
+    visibilitySettings: StoredVisibilitySettings;
     lastRoll: StructuredRollResult | null;
     assigningPlayerId: string | null;
     isSavingCharacter: boolean;
@@ -19,6 +29,7 @@ interface ExtensionShellProps {
     isLinkingCharacter: boolean;
     isPublishingRoll: boolean;
     isManagingPrompt: boolean;
+    isSavingVisibility: boolean;
     onRoll: (request: StructuredRollRequest) => void;
     onPublishLastRoll: () => Promise<void>;
     onSelectCharacter: (characterId: string) => void;
@@ -32,6 +43,7 @@ interface ExtensionShellProps {
     onPromptInitiative: () => Promise<void>;
     onClearPrompt: () => Promise<void>;
     onRespondToPrompt: () => Promise<void>;
+    onSaveVisibilitySettings: (settings: StoredVisibilitySettings) => Promise<void>;
     loadState: 'loading' | 'ready' | 'error';
     error: string | null;
     surface: 'popover' | 'panel';
@@ -63,6 +75,7 @@ export function ExtensionShell({
     runtime,
     characterState,
     roomRollState,
+    visibilitySettings,
     lastRoll,
     assigningPlayerId,
     isSavingCharacter,
@@ -70,6 +83,7 @@ export function ExtensionShell({
     isLinkingCharacter,
     isPublishingRoll,
     isManagingPrompt,
+    isSavingVisibility,
     onRoll,
     onPublishLastRoll,
     onSelectCharacter,
@@ -83,6 +97,7 @@ export function ExtensionShell({
     onPromptInitiative,
     onClearPrompt,
     onRespondToPrompt,
+    onSaveVisibilitySettings,
     loadState,
     error,
     surface,
@@ -119,6 +134,42 @@ export function ExtensionShell({
         : runtime.selection.count === 1
             ? runtime.selection.names[0]
             : `${runtime.selection.count} tokens selected`;
+    const activeCharacterId = characterState?.activeCharacter?.sheet.id ?? null;
+    const selectedLinkVisibility = characterState?.resolution.source === 'selected-token'
+        ? characterState.selection.links.find((link) => link.characterId === activeCharacterId)?.visibility ?? null
+        : null;
+    const canManageRuntime = canManageSheetRuntime(
+        runtime.role,
+        characterState?.assignedCharacterId ?? null,
+        activeCharacterId,
+    );
+    const canPublishLastRoll = canPublishManualRoll({
+        role: runtime.role,
+        assignedCharacterId: characterState?.assignedCharacterId ?? null,
+        activeCharacterId,
+        resolutionSource: characterState?.resolution.source ?? 'none',
+        selectedLinkVisibility,
+        settings: visibilitySettings,
+    });
+    const visiblePrompt = roomRollState?.activePrompt && canViewPrompt({
+        role: runtime.role,
+        assignedCharacterId: characterState?.assignedCharacterId ?? null,
+        activeCharacterId,
+        audience: roomRollState.activePrompt.audience,
+    })
+        ? roomRollState.activePrompt
+        : null;
+    const visibleFeed = (roomRollState?.feed ?? []).filter((entry) =>
+        canViewPublishedRoll(runtime.role, runtime.playerId ?? null, characterState?.assignedCharacterId ?? null, entry),
+    );
+    const canRespondVisiblePrompt = visiblePrompt
+        ? canRespondToPrompt({
+            role: runtime.role,
+            assignedCharacterId: characterState?.assignedCharacterId ?? null,
+            activeCharacterId,
+            audience: visiblePrompt.audience,
+        })
+        : false;
 
     return (
         <div className="min-h-screen bg-[radial-gradient(circle_at_top_left,_rgba(245,158,11,0.12),_transparent_28%),radial-gradient(circle_at_bottom_right,_rgba(56,189,248,0.10),_transparent_24%),linear-gradient(180deg,rgba(12,10,9,0.99),rgba(17,24,39,0.96))] p-4 text-stone-100">
@@ -182,17 +233,12 @@ export function ExtensionShell({
                     role={runtime.role}
                     players={runtime.players as Player[]}
                     canEdit={runtime.role === 'GM'}
-                    canManageRuntime={
-                        runtime.role === 'GM'
-                        || (
-                            runtime.role === 'PLAYER'
-                            && characterState?.assignedCharacterId === characterState?.activeCharacter?.sheet.id
-                        )
-                    }
+                    canManageRuntime={canManageRuntime}
                     isSaving={isSavingCharacter}
                     isUpdatingRuntime={isUpdatingRuntime}
                     isLinking={isLinkingCharacter}
                     assigningPlayerId={assigningPlayerId}
+                    defaultLinkVisibility={visibilitySettings.defaultTokenLinkVisibility}
                     lastRoll={lastRoll}
                     onRoll={onRoll}
                     onSelectCharacter={onSelectCharacter}
@@ -207,15 +253,28 @@ export function ExtensionShell({
 
                 <RoomRollPanel
                     role={runtime.role}
-                    sheet={characterState?.activeCharacter?.sheet ?? null}
                     lastRoll={lastRoll}
-                    roomRollState={roomRollState ?? { version: 1, feed: [], activePrompt: null }}
+                    roomRollState={{
+                        version: roomRollState?.version ?? 1,
+                        feed: visibleFeed,
+                        activePrompt: visiblePrompt,
+                    }}
+                    defaultRollVisibility={visibilitySettings.defaultRollVisibility}
                     isPublishing={isPublishingRoll}
                     isManagingPrompt={isManagingPrompt}
+                    canPublishLastRoll={canPublishLastRoll}
+                    canRespondToPrompt={canRespondVisiblePrompt}
                     onPublishLastRoll={onPublishLastRoll}
                     onPromptInitiative={onPromptInitiative}
                     onClearPrompt={onClearPrompt}
                     onRespondToPrompt={onRespondToPrompt}
+                />
+
+                <VisibilityPolicyPanel
+                    role={runtime.role}
+                    settings={visibilitySettings}
+                    isSaving={isSavingVisibility}
+                    onSave={onSaveVisibilitySettings}
                 />
 
                 <section className="grid gap-4 lg:grid-cols-[1.15fr_0.85fr]">
