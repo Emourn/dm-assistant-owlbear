@@ -23,6 +23,7 @@ import type {
     StructuredRollResult,
 } from '../../features/dnd2024/domain/types';
 import type { CharacterRepositorySnapshot } from '../owlbear/characterRepository';
+import { getSelectedLinkedCharacters } from '../domain/selectionBatch';
 import type { RoomRollPromptDraft } from '../domain/roomRolls';
 import { ActionSpellEditorPanel } from './ActionSpellEditorPanel';
 import { CharacterCollectionPanel } from './CharacterCollectionPanel';
@@ -54,7 +55,9 @@ interface CharacterSheetPanelProps {
     onAdjustResource: (resourceId: string, delta: number) => Promise<void>;
     onAdjustDeathSave: (kind: 'successes' | 'failures', delta: number) => Promise<void>;
     onApplyRest: (kind: 'short' | 'long') => Promise<void>;
+    onRemoveCondition: (label: string) => Promise<void>;
     onSpendActionResource: (actionId: string) => Promise<void>;
+    onApplyOutcomeToSelection: (actionId: string, outcomeIndex: number) => Promise<ActionOutcomeRollResult | null>;
     onSaveOverrides: (next: { proficiencyBonusOverride: number | null; initiativeAdjustment: number }) => Promise<void>;
     onOpenPrompt: (prompt: RoomRollPromptDraft) => Promise<void>;
     onLink: (sheet: Phase1CharacterSheet) => Promise<void>;
@@ -141,7 +144,9 @@ export function CharacterSheetPanel({
     onAdjustResource,
     onAdjustDeathSave,
     onApplyRest,
+    onRemoveCondition,
     onSpendActionResource,
+    onApplyOutcomeToSelection,
     onSaveOverrides,
     onOpenPrompt,
     onLink,
@@ -185,6 +190,7 @@ export function CharacterSheetPanel({
 
     const sheet = active.sheet;
     const model = createCharacterSheetViewModel(sheet);
+    const selectedTargets = getSelectedLinkedCharacters(characterState?.selection.links ?? []);
     const showOutcomePreview = Boolean(
         lastOutcomeRoll && (!lastRoll || lastOutcomeRoll.metadata.timestamp >= lastRoll.metadata.timestamp),
     );
@@ -375,6 +381,13 @@ export function CharacterSheetPanel({
                                 <Swords size={16} />
                                 <span className="text-[11px] font-black uppercase tracking-[0.22em]">Actions</span>
                             </div>
+                            {role === 'GM' && (
+                                <div className="mt-3 rounded-2xl border border-stone-800 bg-stone-950/70 p-3 text-sm text-stone-300">
+                                    {selectedTargets.length > 0
+                                        ? `Linked targets: ${selectedTargets.map((target) => target.characterName).join(', ')}.`
+                                        : 'Select linked Owlbear tokens to apply modeled damage, healing, or conditions from action outcomes.'}
+                                </div>
+                            )}
                             <div className="mt-3 space-y-3">
                                 {sheet.actions.map((action) => {
                                     const saveSummary = canUseActionSaveDc(sheet, action)
@@ -487,11 +500,39 @@ export function CharacterSheetPanel({
                                                                             Roll {outcome.kind}
                                                                         </button>
                                                                     )}
+                                                                    {role === 'GM' && selectedTargets.length > 0 && (outcome.application.hitPoints || outcome.application.conditionLabel) && (
+                                                                        <button
+                                                                            type="button"
+                                                                            onClick={() => {
+                                                                                void onApplyOutcomeToSelection(action.id, outcome.index).then((result) => {
+                                                                                    if (result) {
+                                                                                        setLastOutcomeRoll(result);
+                                                                                    }
+                                                                                });
+                                                                            }}
+                                                                            disabled={isUpdatingRuntime}
+                                                                            className="rounded-full border border-rose-400/35 bg-rose-500/10 px-3 py-1.5 text-xs font-semibold text-rose-200 transition hover:border-rose-300/60 disabled:cursor-not-allowed disabled:opacity-50"
+                                                                        >
+                                                                            {outcome.application.hitPoints
+                                                                                ? 'Roll and apply to targets'
+                                                                                : outcome.application.conditionMode === 'remove'
+                                                                                    ? 'Clear on targets'
+                                                                                    : 'Apply to targets'}
+                                                                        </button>
+                                                                    )}
                                                                 </div>
                                                             </div>
                                                             <div className="mt-2 space-y-1 text-sm text-stone-300">
                                                                 {outcome.formula && <div>{outcome.formula}</div>}
                                                                 {outcome.summary && <div className="text-stone-400">{outcome.summary}</div>}
+                                                                {outcome.application.hitPoints && (
+                                                                    <div className="text-stone-500">Applies {outcome.application.hitPoints} to linked selected targets.</div>
+                                                                )}
+                                                                {outcome.application.conditionLabel && (
+                                                                    <div className="text-stone-500">
+                                                                        {outcome.application.conditionMode === 'remove' ? 'Clears' : 'Applies'} {outcome.application.conditionLabel} on linked selected targets.
+                                                                    </div>
+                                                                )}
                                                             </div>
                                                         </div>
                                                     ))}
@@ -525,6 +566,30 @@ export function CharacterSheetPanel({
                                         <div>Save DC {sheet.spellcasting.saveDc}</div>
                                     </div>
                                 )}
+                                <div className="rounded-2xl border border-stone-800 bg-stone-900/60 p-3 text-sm text-stone-300">
+                                    <div className="font-medium text-parchment">Conditions</div>
+                                    {sheet.conditions.length > 0 ? (
+                                        <div className="mt-2 flex flex-wrap gap-2">
+                                            {sheet.conditions.map((condition) => (
+                                                <div key={condition.id} className="flex items-center gap-2 rounded-full border border-stone-700 bg-stone-950 px-3 py-1.5">
+                                                    <span>{condition.label}</span>
+                                                    {role === 'GM' && (
+                                                        <button
+                                                            type="button"
+                                                            onClick={() => void onRemoveCondition(condition.label)}
+                                                            disabled={isUpdatingRuntime}
+                                                            className="text-[11px] text-rose-200 transition hover:text-rose-100 disabled:cursor-not-allowed disabled:opacity-50"
+                                                        >
+                                                            Clear
+                                                        </button>
+                                                    )}
+                                                </div>
+                                            ))}
+                                        </div>
+                                    ) : (
+                                        <div className="mt-1 text-stone-500">No active conditions.</div>
+                                    )}
+                                </div>
                             </div>
                         </div>
 

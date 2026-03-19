@@ -13,6 +13,9 @@ export interface EditableActionOutcomeInput {
     formula?: string;
     damageType?: string;
     summary?: string;
+    hpApplication?: 'none' | 'damage' | 'healing';
+    conditionLabel?: string;
+    conditionMode?: 'add' | 'remove';
 }
 
 export interface EditableActionInput {
@@ -172,8 +175,12 @@ function sanitizeOutcome(input: EditableActionOutcomeInput): Phase1ActionOutcome
     const label = input.label.trim();
     const formula = normalizeText(input.formula);
     const summary = normalizeText(input.summary);
+    const conditionLabel = normalizeText(input.conditionLabel);
+    const hpApplication = input.hpApplication === 'damage' || input.hpApplication === 'healing'
+        ? input.hpApplication
+        : undefined;
 
-    if (!label || (!formula && !summary)) {
+    if (!label || (!formula && !summary && !hpApplication && !conditionLabel)) {
         return null;
     }
 
@@ -183,6 +190,13 @@ function sanitizeOutcome(input: EditableActionOutcomeInput): Phase1ActionOutcome
         formula,
         damageType: normalizeText(input.damageType),
         summary,
+        application: hpApplication || conditionLabel
+            ? {
+                hitPoints: hpApplication,
+                conditionLabel,
+                conditionMode: input.conditionMode === 'remove' ? 'remove' : 'add',
+            }
+            : null,
     };
 }
 

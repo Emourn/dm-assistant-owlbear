@@ -27,6 +27,7 @@ describe('sheet authoring helpers', () => {
                         formula: ' 1d8 + 3 ',
                         damageType: ' Slashing ',
                         summary: ' Weapon damage. ',
+                        hpApplication: 'damage',
                     },
                 ],
             },
@@ -60,6 +61,10 @@ describe('sheet authoring helpers', () => {
                     formula: '1d8 + 3',
                     damageType: 'Slashing',
                     summary: 'Weapon damage.',
+                    application: {
+                        hitPoints: 'damage',
+                        conditionMode: 'add',
+                    },
                 },
             ],
         });
@@ -88,6 +93,9 @@ describe('sheet authoring helpers', () => {
                         formula: ' 2d8 ',
                         damageType: ' Radiant ',
                         summary: ' Cantrip scaling damage. ',
+                        hpApplication: 'damage',
+                        conditionLabel: ' Blinded ',
+                        conditionMode: 'add',
                     },
                 ],
             },
@@ -108,6 +116,11 @@ describe('sheet authoring helpers', () => {
                     formula: '2d8',
                     damageType: 'Radiant',
                     summary: 'Cantrip scaling damage.',
+                    application: {
+                        hitPoints: 'damage',
+                        conditionLabel: 'Blinded',
+                        conditionMode: 'add',
+                    },
                 },
             ],
         });

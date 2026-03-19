@@ -24,6 +24,13 @@ export interface Phase1ResourceCounter {
     detail?: string;
 }
 
+export interface Phase1Condition {
+    id: string;
+    label: string;
+    source?: string;
+    summary?: string;
+}
+
 export interface Phase1Movement {
     kind: string;
     label: string;
@@ -58,6 +65,13 @@ export interface Phase1ActionOutcome {
     formula?: string;
     damageType?: string;
     summary?: string;
+    application?: Phase1OutcomeApplication | null;
+}
+
+export interface Phase1OutcomeApplication {
+    hitPoints?: 'damage' | 'healing';
+    conditionLabel?: string;
+    conditionMode?: 'add' | 'remove';
 }
 
 export interface Phase1AttackRollAutomation {
@@ -130,6 +144,7 @@ export interface Phase1CharacterSheet {
     senses: Phase1Sense[];
     spellcasting: Phase1Spellcasting | null;
     resources: Phase1ResourceCounter[];
+    conditions: Phase1Condition[];
     actions: Phase1ActionSummary[];
     notes: string[];
 }

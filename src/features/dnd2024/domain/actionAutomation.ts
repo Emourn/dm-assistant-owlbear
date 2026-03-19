@@ -31,12 +31,18 @@ export interface ActionSaveDcSummary {
 
 export interface ActionOutcomeSummary {
     id: string;
+    index: number;
     label: string;
     kind: Phase1ActionOutcome['kind'];
     formula?: string;
     damageType?: string;
     summary?: string;
     request: ActionOutcomeRollRequest | null;
+    application: {
+        hitPoints: 'damage' | 'healing' | null;
+        conditionLabel: string | null;
+        conditionMode: 'add' | 'remove';
+    };
     audit: string[];
 }
 
@@ -309,15 +315,27 @@ export function buildActionOutcomeSummaries(
         } else {
             audit.push('This outcome is descriptive only.');
         }
+        if (outcome.application?.hitPoints) {
+            audit.push(`Can apply ${outcome.application.hitPoints} to selected linked targets.`);
+        }
+        if (outcome.application?.conditionLabel) {
+            audit.push(`${outcome.application.conditionMode === 'remove' ? 'Clears' : 'Applies'} ${outcome.application.conditionLabel} on selected linked targets.`);
+        }
 
         return {
             id: `${action.id}:outcome:${index + 1}`,
+            index,
             label: outcome.label,
             kind: outcome.kind,
             formula: outcome.formula?.trim() || undefined,
             damageType: outcome.damageType,
             summary: outcome.summary,
             request: createOutcomeRequest(sheet, action, index, outcome, audit),
+            application: {
+                hitPoints: outcome.application?.hitPoints ?? null,
+                conditionLabel: outcome.application?.conditionLabel?.trim() || null,
+                conditionMode: outcome.application?.conditionMode === 'remove' ? 'remove' : 'add',
+            },
             audit,
         };
     });

@@ -7,25 +7,25 @@ export interface MilestoneSlice {
 
 export const CURRENT_SLICE: MilestoneSlice = {
     milestone: 'Phase 1 - Automated 2024 character sheet foundation',
-    scope: 'Encounter ordering and active-turn integration, so the GM can build a turn order from initiative results and run rounds directly inside the Owlbear runtime surface.',
+    scope: 'Target-aware HP and condition application from action outcomes, so the GM can apply modeled damage, healing, and status effects directly to linked selected tokens from the compact runtime sheet.',
     acceptanceCriteria: [
-        'The GM can build an encounter order from initiative results already stored in room metadata.',
-        'The GM can advance, retreat, clear, and directly set the active turn from a compact encounter panel.',
-        'Encounter state is stored independently from the room roll feed and survives popover reloads.',
-        'Encounter actions record to runtime audit history.',
+        'The GM can apply modeled damage or healing outcomes to linked selected targets from action cards.',
+        'The GM can apply or clear named conditions on linked selected targets from effect-oriented outcomes.',
+        'Applied HP and condition changes persist to the stored target character records.',
+        'Target mutations record to runtime audit with enough detail to explain what changed.',
     ],
     nonGoals: [
-        'Target HP mutation',
-        'Condition application',
-        'Per-target spell or attack resolution',
+        'Per-target spell or attack hit resolution',
         'Automated round effects',
-        'Full combatant authoring outside initiative-based ordering',
+        'Owlbear visual badge syncing for conditions',
+        'Freeform combatant authoring outside linked characters',
+        'Full encounter-state automation',
     ],
 };
 
 export const NEXT_SLICES = [
-    'Phase 1 Slice 19: target-aware HP and condition application from action outcomes',
-    'Phase 1 Slice 20: Phase 1 hardening and closeout',
+    'Phase 1 Slice 20: context-menu shortcuts for HP and condition application',
+    'Phase 1 Slice 21: Phase 1 hardening and closeout',
     'Phase 2: token linking, player assignment, and player-safe sheet viewing stabilization',
     'Phase 3: broader prompting and initiative workflow polish',
 ];

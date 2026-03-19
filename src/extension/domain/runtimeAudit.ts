@@ -1,7 +1,16 @@
 export const RUNTIME_AUDIT_VERSION = 1;
 const RUNTIME_AUDIT_LIMIT = 50;
 
-export type RuntimeAuditCategory = 'resource' | 'rest' | 'death-save' | 'override' | 'roll' | 'prompt' | 'encounter';
+export type RuntimeAuditCategory =
+    'resource'
+    | 'rest'
+    | 'death-save'
+    | 'override'
+    | 'roll'
+    | 'prompt'
+    | 'encounter'
+    | 'hit-points'
+    | 'condition';
 
 export interface RuntimeAuditActor {
     playerId: string | null;
@@ -43,7 +52,7 @@ function parseRuntimeAuditEntry(value: unknown): RuntimeAuditEntry | null {
         !isRecord(value)
         || typeof value.id !== 'string'
         || typeof value.recordedAt !== 'number'
-        || !['resource', 'rest', 'death-save', 'override', 'roll', 'prompt', 'encounter'].includes(String(value.category))
+        || !['resource', 'rest', 'death-save', 'override', 'roll', 'prompt', 'encounter', 'hit-points', 'condition'].includes(String(value.category))
         || typeof value.action !== 'string'
         || !Array.isArray(value.details)
         || !isRuntimeAuditActor(value.actor)

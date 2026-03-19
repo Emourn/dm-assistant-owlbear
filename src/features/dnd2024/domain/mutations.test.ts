@@ -1,7 +1,10 @@
 import { describe, expect, it } from 'vitest';
 import { createSampleCharacterCollection } from '../../../extension/domain/characterRecords';
 import {
+    addCondition,
+    applyHitPointDelta,
     applyRestRecovery,
+    removeCondition,
     setInitiativeAdjustment,
     setProficiencyBonusOverride,
     updateDeathSaves,
@@ -39,6 +42,36 @@ describe('sheet runtime mutations', () => {
 
         expect(adjusted.proficiencyBonusOverride).toBe(4);
         expect(adjusted.rollAdjustments.initiative).toBe(2);
+    });
+
+    it('applies damage against temp HP first and healing up to max HP', () => {
+        const damaged = applyHitPointDelta(baseSheet, 'damage', 7);
+        expect(damaged.hitPoints.temp).toBe(0);
+        expect(damaged.hitPoints.current).toBe(35);
+
+        const healed = applyHitPointDelta(damaged, 'healing', 10);
+        expect(healed.hitPoints.current).toBe(38);
+        expect(healed.hitPoints.temp).toBe(0);
+    });
+
+    it('adds and removes named conditions idempotently', () => {
+        const applied = addCondition(baseSheet, {
+            label: 'Paralyzed',
+            source: 'Hold Person',
+            summary: 'Target cannot move or speak.',
+        });
+        expect(applied.conditions).toHaveLength(1);
+        expect(applied.conditions[0].label).toBe('Paralyzed');
+
+        const reapplied = addCondition(applied, {
+            label: 'Paralyzed',
+            source: 'Hold Person',
+            summary: 'Target cannot move or speak.',
+        });
+        expect(reapplied.conditions).toHaveLength(1);
+
+        const cleared = removeCondition(reapplied, 'Paralyzed');
+        expect(cleared.conditions).toHaveLength(0);
     });
 
     it('recovers only short-rest modeled resources on a short rest', () => {

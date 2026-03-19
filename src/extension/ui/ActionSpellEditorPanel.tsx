@@ -37,6 +37,9 @@ function createEmptyOutcome(kind: EditableActionOutcomeInput['kind'] = 'damage')
         formula: '',
         damageType: '',
         summary: '',
+        hpApplication: kind === 'damage' ? 'damage' : kind === 'healing' ? 'healing' : 'none',
+        conditionLabel: '',
+        conditionMode: 'add',
     };
 }
 
@@ -74,6 +77,9 @@ function createState(sheet: Phase1CharacterSheet): ActionSpellEditorState {
                 formula: outcome.formula ?? '',
                 damageType: outcome.damageType ?? '',
                 summary: outcome.summary ?? '',
+                hpApplication: outcome.application?.hitPoints ?? 'none',
+                conditionLabel: outcome.application?.conditionLabel ?? '',
+                conditionMode: outcome.application?.conditionMode ?? 'add',
             })) ?? [],
             resourceCostId: action.automation ? action.automation.resourceCost?.resourceId ?? '' : '',
             resourceCostAmount: action.automation ? action.automation.resourceCost?.amount ?? 1 : 1,
@@ -203,6 +209,47 @@ function OutcomeEditor({
                                         outcomeIndex === index ? { ...entry, damageType: value } : entry))
                                 }
                             />
+                            <label className="block">
+                                <div className="mb-1 text-[10px] font-black uppercase tracking-[0.22em] text-stone-500">HP application</div>
+                                <select
+                                    value={outcome.hpApplication ?? 'none'}
+                                    onChange={(event) =>
+                                        onChange(outcomes.map((entry, outcomeIndex) =>
+                                            outcomeIndex === index
+                                                ? { ...entry, hpApplication: event.target.value as EditableActionOutcomeInput['hpApplication'] }
+                                                : entry))
+                                    }
+                                    className="w-full rounded-xl border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-100 outline-none transition focus:border-amber-400/50"
+                                >
+                                    <option value="none">No HP change</option>
+                                    <option value="damage">Damage</option>
+                                    <option value="healing">Healing</option>
+                                </select>
+                            </label>
+                            <TextField
+                                label="Condition label"
+                                value={outcome.conditionLabel ?? ''}
+                                onChange={(value) =>
+                                    onChange(outcomes.map((entry, outcomeIndex) =>
+                                        outcomeIndex === index ? { ...entry, conditionLabel: value } : entry))
+                                }
+                            />
+                            <label className="block">
+                                <div className="mb-1 text-[10px] font-black uppercase tracking-[0.22em] text-stone-500">Condition mode</div>
+                                <select
+                                    value={outcome.conditionMode ?? 'add'}
+                                    onChange={(event) =>
+                                        onChange(outcomes.map((entry, outcomeIndex) =>
+                                            outcomeIndex === index
+                                                ? { ...entry, conditionMode: event.target.value as EditableActionOutcomeInput['conditionMode'] }
+                                                : entry))
+                                    }
+                                    className="w-full rounded-xl border border-stone-700 bg-stone-950 px-3 py-2 text-sm text-stone-100 outline-none transition focus:border-amber-400/50"
+                                >
+                                    <option value="add">Apply condition</option>
+                                    <option value="remove">Clear condition</option>
+                                </select>
+                            </label>
                             <label className="block lg:col-span-2">
                                 <div className="mb-1 text-[10px] font-black uppercase tracking-[0.22em] text-stone-500">Summary</div>
                                 <textarea

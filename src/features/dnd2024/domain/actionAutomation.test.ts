@@ -81,21 +81,37 @@ describe('action automation', () => {
         const sheet = getSampleSheet();
         const mace = sheet.actions.find((action) => action.name === 'Mace')!;
         const sacredFlame = sheet.actions.find((action) => action.name === 'Sacred Flame')!;
+        const holdPerson = sheet.actions.find((action) => action.name === 'Hold Person')!;
 
         const maceOutcomes = buildActionOutcomeSummaries(sheet, mace);
         const sacredFlameOutcomes = buildActionOutcomeSummaries(sheet, sacredFlame);
+        const holdPersonOutcomes = buildActionOutcomeSummaries(sheet, holdPerson);
 
         expect(maceOutcomes[0]).toMatchObject({
             label: 'On hit',
             kind: 'damage',
             formula: '1d6',
             damageType: 'Bludgeoning',
+            application: {
+                hitPoints: 'damage',
+                conditionLabel: null,
+                conditionMode: 'add',
+            },
         });
         expect(maceOutcomes[0].request?.label).toBe('Mace - On hit');
         expect(sacredFlameOutcomes[0]).toMatchObject({
             label: 'On failed save',
             formula: '1d8',
             damageType: 'Radiant',
+        });
+        expect(holdPersonOutcomes[0]).toMatchObject({
+            kind: 'effect',
+            request: null,
+            application: {
+                hitPoints: null,
+                conditionLabel: 'Paralyzed',
+                conditionMode: 'add',
+            },
         });
     });
 });

@@ -1,15 +1,19 @@
 import { useCallback, useEffect, useState } from 'react';
 import OBR from '@owlbear-rodeo/sdk';
-import { getActionUseState, spendActionResource } from '../../features/dnd2024/domain/actionAutomation';
+import { buildActionOutcomeSummaries, getActionUseState, spendActionResource } from '../../features/dnd2024/domain/actionAutomation';
 import {
+    addCondition,
+    applyHitPointDelta,
     applyRestRecovery,
+    removeCondition,
     setInitiativeAdjustment,
     setProficiencyBonusOverride,
     updateDeathSaves,
     updateSheetResourceCounter,
 } from '../../features/dnd2024/domain/mutations';
-import { rollStructuredD20 } from '../../features/dnd2024/domain/rolls';
+import { rollActionOutcome, rollStructuredD20 } from '../../features/dnd2024/domain/rolls';
 import type {
+    ActionOutcomeRollResult,
     Phase1CharacterSheet,
     StructuredRollRequest,
     StructuredRollResult,
@@ -47,10 +51,12 @@ import {
     importCharacterJson,
     linkActiveCharacterToSelection,
     readCharacterRepositorySnapshot,
+    readSelectedLinkedCharacterRecords,
     setActiveCharacterRecord,
     unlinkSelectionCharacters,
     updateCharacterSheet,
     updateCharacterSheetWith,
+    updateCharacterSheetsWith,
     type CharacterRepositorySnapshot,
 } from './characterRepository';
 import {
@@ -484,6 +490,127 @@ export function PopoverApp({ surface = 'popover' }: { surface?: 'popover' | 'pan
         }
     }, [characterState, runtime]);
 
+    const handleRemoveCondition = useCallback(async (label: string) => {
+        const activeSheet = characterState?.activeCharacter?.sheet;
+        const canManage = canManageSheetRuntime(
+            runtime?.role ?? null,
+            characterState?.assignedCharacterId ?? null,
+            activeSheet?.id ?? null,
+        );
+        if (!activeSheet || !canManage) {
+            return;
+        }
+
+        setIsUpdatingRuntime(true);
+        try {
+            const next = await updateCharacterSheetWith(
+                activeSheet.id,
+                (sheet) => removeCondition(sheet, label),
+            );
+            if (next) {
+                setCharacterState(next);
+                setRuntimeAuditState(await recordRuntimeAudit(
+                    'condition',
+                    `Removed ${label}`,
+                    ['Condition removed from the active sheet.'],
+                    next.activeCharacter?.sheet ?? null,
+                ));
+            }
+        } finally {
+            setIsUpdatingRuntime(false);
+        }
+    }, [characterState, runtime]);
+
+    const handleApplyOutcomeToSelection = useCallback(async (
+        actionId: string,
+        outcomeIndex: number,
+    ): Promise<ActionOutcomeRollResult | null> => {
+        const activeSheet = characterState?.activeCharacter?.sheet;
+        if (!activeSheet || runtime?.role !== 'GM') {
+            return null;
+        }
+
+        const action = activeSheet.actions.find((entry) => entry.id === actionId);
+        if (!action?.automation?.outcomes?.[outcomeIndex]) {
+            return null;
+        }
+
+        const outcome = action.automation.outcomes[outcomeIndex];
+        const selectedTargets = await readSelectedLinkedCharacterRecords();
+        if (selectedTargets.length === 0) {
+            return null;
+        }
+
+        const rollRequest = buildActionOutcomeSummaries(activeSheet, action)[outcomeIndex]?.request ?? null;
+        const rolledOutcome = rollRequest ? rollActionOutcome(rollRequest) : null;
+        const amount = rolledOutcome?.total ?? 0;
+        const hasHitPointMutation = Boolean(outcome.application?.hitPoints && rolledOutcome);
+        const hasConditionMutation = Boolean(outcome.application?.conditionLabel);
+        if (!hasHitPointMutation && !hasConditionMutation) {
+            return rolledOutcome;
+        }
+
+        const beforeById = new Map(
+            selectedTargets.map((target) => [target.characterId, target.record.sheet]),
+        );
+
+        setIsUpdatingRuntime(true);
+        try {
+            const next = await updateCharacterSheetsWith(
+                selectedTargets.map((target) => target.characterId),
+                (sheet: Phase1CharacterSheet) => {
+                    let updated = sheet;
+                    if (hasHitPointMutation && outcome.application?.hitPoints) {
+                        updated = applyHitPointDelta(updated, outcome.application.hitPoints, amount);
+                    }
+                    if (hasConditionMutation && outcome.application?.conditionLabel) {
+                        updated = outcome.application.conditionMode === 'remove'
+                            ? removeCondition(updated, outcome.application.conditionLabel)
+                            : addCondition(updated, {
+                                label: outcome.application.conditionLabel,
+                                source: `${activeSheet.name} - ${action.name}`,
+                                summary: outcome.summary,
+                            });
+                    }
+                    return updated;
+                },
+            );
+
+            if (next) {
+                setCharacterState(next);
+                const details = selectedTargets.map((target) => {
+                    const previous = beforeById.get(target.characterId);
+                    const updated = next.collection.characters.find((record: CharacterRepositorySnapshot['collection']['characters'][number]) => record.sheet.id === target.characterId)?.sheet;
+                    const hpChange = hasHitPointMutation && previous && updated
+                        ? `${previous.hitPoints.current}/${previous.hitPoints.max}${previous.hitPoints.temp > 0 ? ` (+${previous.hitPoints.temp} temp)` : ''} -> ${updated.hitPoints.current}/${updated.hitPoints.max}${updated.hitPoints.temp > 0 ? ` (+${updated.hitPoints.temp} temp)` : ''}`
+                        : null;
+                    const conditionChange = outcome.application?.conditionLabel
+                        ? outcome.application.conditionMode === 'remove'
+                            ? `Cleared ${outcome.application.conditionLabel}.`
+                            : `Applied ${outcome.application.conditionLabel}.`
+                        : null;
+
+                    return [
+                        `${target.characterName}:`,
+                        ...(hpChange ? [hpChange] : []),
+                        ...(conditionChange ? [conditionChange] : []),
+                    ].join(' ');
+                });
+
+                setRuntimeAuditState(await recordRuntimeAudit(
+                    hasHitPointMutation ? 'hit-points' : 'condition',
+                    `Applied ${action.name} - ${outcome.label} to linked selection`,
+                    details,
+                    activeSheet,
+                ));
+            }
+        } finally {
+            setIsUpdatingRuntime(false);
+        }
+
+        return rolledOutcome;
+    }, [characterState, runtime]);
+
     const handleSaveOverrides = useCallback(async (nextOverrides: {
         proficiencyBonusOverride: number | null;
         initiativeAdjustment: number;
@@ -729,7 +856,9 @@ export function PopoverApp({ surface = 'popover' }: { surface?: 'popover' | 'pan
             onAdjustResource={handleAdjustResource}
             onAdjustDeathSave={handleAdjustDeathSave}
             onApplyRest={handleApplyRest}
+            onRemoveCondition={handleRemoveCondition}
             onSpendActionResource={handleSpendActionResource}
+            onApplyOutcomeToSelection={handleApplyOutcomeToSelection}
             onSaveOverrides={handleSaveOverrides}
             onLinkCharacter={handleLinkCharacter}
             onUnlinkCharacter={handleUnlinkCharacter}

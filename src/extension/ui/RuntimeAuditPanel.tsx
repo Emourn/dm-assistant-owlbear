@@ -25,6 +25,8 @@ const FILTERS: Array<{ value: RuntimeAuditCategory | 'all'; label: string }> = [
     { value: 'override', label: 'Overrides' },
     { value: 'roll', label: 'Rolls' },
     { value: 'prompt', label: 'Prompts' },
+    { value: 'hit-points', label: 'HP' },
+    { value: 'condition', label: 'Conditions' },
 ];
 
 export function RuntimeAuditPanel({

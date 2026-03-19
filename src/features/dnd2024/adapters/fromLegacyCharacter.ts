@@ -264,6 +264,7 @@ export function adaptLegacyCharacterToPhase1Sheet(character: Character): Phase1C
         senses: parseSenses(character.senses || '', character.darkvision),
         spellcasting: adaptSpellcasting(character),
         resources: adaptResources(character),
+        conditions: [],
         actions: adaptActions(character),
         notes: [character.notes, character.damageNotes].filter(Boolean),
     };

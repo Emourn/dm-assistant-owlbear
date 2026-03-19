@@ -3,6 +3,7 @@ import type {
     AbilityId,
     Phase1ActionSummary,
     Phase1CharacterSheet,
+    Phase1Condition,
     Phase1Movement,
     Phase1ResourceCounter,
     Phase1Sense,
@@ -96,12 +97,63 @@ function createActions(...actions: Phase1ActionSummary[]): Phase1ActionSummary[]
     return actions;
 }
 
+function normalizeConditions(conditions: unknown): Phase1Condition[] {
+    if (!Array.isArray(conditions)) {
+        return [];
+    }
+
+    return conditions
+        .filter((condition): condition is Phase1Condition =>
+            isRecord(condition)
+            && typeof condition.id === 'string'
+            && typeof condition.label === 'string')
+        .map((condition) => ({
+            id: condition.id,
+            label: condition.label,
+            source: typeof condition.source === 'string' ? condition.source : undefined,
+            summary: typeof condition.summary === 'string' ? condition.summary : undefined,
+        }));
+}
+
+function normalizeAction(action: Phase1ActionSummary): Phase1ActionSummary {
+    if (!action.automation) {
+        return action;
+    }
+
+    return {
+        ...action,
+        automation: {
+            ...action.automation,
+            outcomes: action.automation.outcomes?.map((outcome) => ({
+                ...outcome,
+                application: outcome.application
+                    ? {
+                        hitPoints: outcome.application.hitPoints === 'healing' ? 'healing' : outcome.application.hitPoints === 'damage' ? 'damage' : undefined,
+                        conditionLabel: typeof outcome.application.conditionLabel === 'string'
+                            ? outcome.application.conditionLabel
+                            : undefined,
+                        conditionMode: outcome.application.conditionMode === 'remove' ? 'remove' : 'add',
+                    }
+                    : null,
+            })) ?? [],
+        },
+    };
+}
+
+function normalizeSheet(sheet: Phase1CharacterSheet): Phase1CharacterSheet {
+    return {
+        ...sheet,
+        conditions: normalizeConditions((sheet as Phase1CharacterSheet & { conditions?: unknown }).conditions),
+        actions: sheet.actions.map((action) => normalizeAction(action)),
+    };
+}
+
 function createCharacterRecord(sheet: Phase1CharacterSheet, updatedAt: number): StoredCharacterRecord {
     return {
         version: CHARACTER_COLLECTION_VERSION,
         ruleset: CHARACTER_RULESET,
         updatedAt,
-        sheet,
+        sheet: normalizeSheet(sheet),
     };
 }
 
@@ -110,9 +162,9 @@ function cloneRecordForImport(record: StoredCharacterRecord, updatedAt: number):
         version: CHARACTER_COLLECTION_VERSION,
         ruleset: CHARACTER_RULESET,
         updatedAt,
-        sheet: {
+        sheet: normalizeSheet({
             ...record.sheet,
-        },
+        }),
     };
 }
 
@@ -203,6 +255,7 @@ function createBlankCharacterSheet(characterId: string, name: string): Phase1Cha
         }),
         spellcasting: null,
         resources: [],
+        conditions: [],
         actions: [],
         notes: [
             'Created from the Phase 1 collection manager.',
@@ -330,7 +383,12 @@ function isStoredCharacterRecord(value: unknown): value is StoredCharacterRecord
 }
 
 function parseStoredCharacterRecord(value: unknown): StoredCharacterRecord | null {
-    return isStoredCharacterRecord(value) ? value : null;
+    return isStoredCharacterRecord(value)
+        ? {
+            ...value,
+            sheet: normalizeSheet(value.sheet),
+        }
+        : null;
 }
 
 function parseImportedRecordArray(value: unknown, updatedAt: number): StoredCharacterRecord[] | null {
@@ -426,7 +484,9 @@ export function parseStoredCharacterCollection(value: unknown): StoredCharacterC
         return null;
     }
 
-    const characters = value.characters.filter(isStoredCharacterRecord);
+    const characters = value.characters
+        .map((record) => parseStoredCharacterRecord(record))
+        .filter((record): record is StoredCharacterRecord => Boolean(record));
     if (characters.length === 0) {
         return createEmptyCharacterCollection();
     }
@@ -708,6 +768,7 @@ export function createSampleCharacterCollection(now = Date.now()): StoredCharact
                             detail: 'Turn Undead / Radiance of the Dawn',
                         },
                     ),
+                    conditions: [],
                     actions: createActions(
                         {
                             id: `${characterId}:mace`,
@@ -728,6 +789,9 @@ export function createSampleCharacterCollection(now = Date.now()): StoredCharact
                                         formula: '1d6',
                                         damageType: 'Bludgeoning',
                                         summary: 'One-handed melee weapon damage.',
+                                        application: {
+                                            hitPoints: 'damage',
+                                        },
                                     },
                                 ],
                                 resourceCost: null,
@@ -756,6 +820,9 @@ export function createSampleCharacterCollection(now = Date.now()): StoredCharact
                                         formula: '1d8',
                                         damageType: 'Radiant',
                                         summary: 'Target takes radiant damage on a failed Dexterity save.',
+                                        application: {
+                                            hitPoints: 'damage',
+                                        },
                                     },
                                 ],
                                 resourceCost: null,
@@ -780,10 +847,46 @@ export function createSampleCharacterCollection(now = Date.now()): StoredCharact
                                         formula: '4d6',
                                         damageType: 'Radiant',
                                         summary: 'The next attack roll made against the target before the end of your next turn has advantage.',
+                                        application: {
+                                            hitPoints: 'damage',
+                                        },
                                     },
                                 ],
                                 resourceCost: {
                                     resourceId: `${characterId}:slot-1`,
+                                    amount: 1,
+                                },
+                            },
+                        },
+                        {
+                            id: `${characterId}:hold-person`,
+                            name: 'Hold Person',
+                            kind: 'spell',
+                            source: 'Prepared spell',
+                            description: 'Wisdom save spell. Condition application is still manual but target-aware in this slice.',
+                            automation: {
+                                kind: 'save-dc',
+                                saveAbility: 'wis',
+                                dcSource: 'spellcasting',
+                                proficient: false,
+                                bonus: 0,
+                                fixedDc: null,
+                                effectSummary: 'Choose a humanoid you can see within range.',
+                                successSummary: 'The target resists the spell.',
+                                failureSummary: 'The target is Paralyzed while the spell persists.',
+                                outcomes: [
+                                    {
+                                        label: 'On failed save',
+                                        kind: 'effect',
+                                        summary: 'Applies the Paralyzed condition. Duration and concentration stay manual.',
+                                        application: {
+                                            conditionLabel: 'Paralyzed',
+                                            conditionMode: 'add',
+                                        },
+                                    },
+                                ],
+                                resourceCost: {
+                                    resourceId: `${characterId}:slot-2`,
                                     amount: 1,
                                 },
                             },

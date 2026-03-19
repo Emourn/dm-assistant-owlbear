@@ -1,6 +1,11 @@
 import type { Player } from '@owlbear-rodeo/sdk';
 import { Crosshair, Layers3, MapPinned, ScrollText, Shield, Users } from 'lucide-react';
-import type { Phase1CharacterSheet, StructuredRollRequest, StructuredRollResult } from '../../features/dnd2024/domain/types';
+import type {
+    ActionOutcomeRollResult,
+    Phase1CharacterSheet,
+    StructuredRollRequest,
+    StructuredRollResult,
+} from '../../features/dnd2024/domain/types';
 import type { StoredRoomRollState } from '../domain/roomRolls';
 import type { RoomRollPromptDraft } from '../domain/roomRolls';
 import type { StoredEncounterState } from '../domain/encounterTracker';
@@ -50,7 +55,9 @@ interface ExtensionShellProps {
     onAdjustResource: (resourceId: string, delta: number) => Promise<void>;
     onAdjustDeathSave: (kind: 'successes' | 'failures', delta: number) => Promise<void>;
     onApplyRest: (kind: 'short' | 'long') => Promise<void>;
+    onRemoveCondition: (label: string) => Promise<void>;
     onSpendActionResource: (actionId: string) => Promise<void>;
+    onApplyOutcomeToSelection: (actionId: string, outcomeIndex: number) => Promise<ActionOutcomeRollResult | null>;
     onSaveOverrides: (next: { proficiencyBonusOverride: number | null; initiativeAdjustment: number }) => Promise<void>;
     onOpenPrompt: (prompt: RoomRollPromptDraft) => Promise<void>;
     onLinkCharacter: (sheet: Phase1CharacterSheet) => Promise<void>;
@@ -120,7 +127,9 @@ export function ExtensionShell({
     onAdjustResource,
     onAdjustDeathSave,
     onApplyRest,
+    onRemoveCondition,
     onSpendActionResource,
+    onApplyOutcomeToSelection,
     onSaveOverrides,
     onOpenPrompt,
     onLinkCharacter,
@@ -287,7 +296,9 @@ export function ExtensionShell({
                     onAdjustResource={onAdjustResource}
                     onAdjustDeathSave={onAdjustDeathSave}
                     onApplyRest={onApplyRest}
+                    onRemoveCondition={onRemoveCondition}
                     onSpendActionResource={onSpendActionResource}
+                    onApplyOutcomeToSelection={onApplyOutcomeToSelection}
                     onSaveOverrides={onSaveOverrides}
                     onOpenPrompt={onOpenPrompt}
                     onLink={onLinkCharacter}

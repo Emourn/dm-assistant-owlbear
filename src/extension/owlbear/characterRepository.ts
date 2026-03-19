@@ -27,6 +27,7 @@ import {
     type StoredTokenLink,
     type TokenLinkVisibility,
 } from '../domain/tokenLinks';
+import { getSelectedLinkedCharacters } from '../domain/selectionBatch';
 import { EXTENSION_NAMESPACE } from './ids';
 
 export const ROOM_CHARACTER_COLLECTION_KEY = `${EXTENSION_NAMESPACE}/characters`;
@@ -52,6 +53,14 @@ export interface CharacterRepositorySnapshot {
 export interface CharacterImportSnapshot {
     snapshot: CharacterRepositorySnapshot;
     importedCount: number;
+}
+
+export interface SelectedLinkedCharacterRecord {
+    characterId: string;
+    characterName: string;
+    visibility: StoredTokenLink['visibility'];
+    tokenCount: number;
+    record: StoredCharacterRecord;
 }
 
 export function getCharacterCollectionFromMetadata(metadata: Metadata): StoredCharacterCollection | null {
@@ -315,6 +324,22 @@ export async function updateCharacterSheetsWith(
 
     await writeCharacterCollection(next);
     return buildCurrentSnapshot(next);
+}
+
+export async function readSelectedLinkedCharacterRecords(): Promise<SelectedLinkedCharacterRecord[]> {
+    const metadata = await OBR.room.getMetadata();
+    const collection = getCharacterCollectionFromMetadata(metadata);
+    if (!collection) {
+        return [];
+    }
+
+    const selection = await getSelectionState();
+    return getSelectedLinkedCharacters(selection.links)
+        .map((selected) => ({
+            ...selected,
+            record: collection.characters.find((record) => record.sheet.id === selected.characterId) ?? null,
+        }))
+        .filter((selected): selected is SelectedLinkedCharacterRecord => Boolean(selected.record));
 }
 
 export async function linkActiveCharacterToSelection(

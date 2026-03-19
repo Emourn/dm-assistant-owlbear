@@ -35,6 +35,18 @@ describe('extension character records', () => {
         expect(selectActiveCharacterRecord(parsed!)?.sheet.id).toBe(collection.characters[0].sheet.id);
     });
 
+    it('normalizes older stored sheets that are missing newer optional fields', () => {
+        const collection = createSampleCharacterCollection(1000);
+        const legacy = JSON.parse(JSON.stringify(collection));
+        delete legacy.characters[0].sheet.conditions;
+        delete legacy.characters[0].sheet.actions[0].automation.outcomes[0].application;
+
+        const parsed = parseStoredCharacterCollection(legacy);
+
+        expect(parsed?.characters[0].sheet.conditions).toEqual([]);
+        expect(parsed?.characters[0].sheet.actions[0].automation?.outcomes?.[0]?.application).toBeNull();
+    });
+
     it('rejects incompatible collection shapes', () => {
         expect(parseStoredCharacterCollection({ version: 99, characters: [] })).toBeNull();
         expect(parseStoredCharacterCollection('nope')).toBeNull();
