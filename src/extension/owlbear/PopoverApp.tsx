@@ -1,11 +1,16 @@
 import { useCallback, useEffect, useState } from 'react';
 import OBR from '@owlbear-rodeo/sdk';
 import { rollStructuredD20 } from '../../features/dnd2024/domain/rolls';
-import type { StructuredRollRequest, StructuredRollResult } from '../../features/dnd2024/domain/types';
+import type {
+    Phase1CharacterSheet,
+    StructuredRollRequest,
+    StructuredRollResult,
+} from '../../features/dnd2024/domain/types';
 import { ExtensionShell } from '../ui/ExtensionShell';
 import {
     readCharacterRepositorySnapshot,
     setActiveCharacterRecord,
+    updateCharacterSheet,
     type CharacterRepositorySnapshot,
 } from './characterRepository';
 import { readRuntimeSnapshot, type OwlbearRuntimeSnapshot } from './runtime';
@@ -14,6 +19,7 @@ export function PopoverApp({ surface = 'popover' }: { surface?: 'popover' | 'pan
     const [runtime, setRuntime] = useState<OwlbearRuntimeSnapshot | null>(null);
     const [characterState, setCharacterState] = useState<CharacterRepositorySnapshot | null>(null);
     const [lastRoll, setLastRoll] = useState<StructuredRollResult | null>(null);
+    const [isSavingCharacter, setIsSavingCharacter] = useState(false);
     const [loadState, setLoadState] = useState<'loading' | 'ready' | 'error'>('loading');
     const [error, setError] = useState<string | null>(null);
 
@@ -90,13 +96,27 @@ export function PopoverApp({ surface = 'popover' }: { surface?: 'popover' | 'pan
         }
     }, []);
 
+    const handleSaveCharacter = useCallback(async (sheet: Phase1CharacterSheet) => {
+        setIsSavingCharacter(true);
+        try {
+            const next = await updateCharacterSheet(sheet.id, sheet);
+            if (next) {
+                setCharacterState(next);
+            }
+        } finally {
+            setIsSavingCharacter(false);
+        }
+    }, []);
+
     return (
         <ExtensionShell
             runtime={runtime}
             characterState={characterState}
             lastRoll={lastRoll}
+            isSavingCharacter={isSavingCharacter}
             onRoll={handleRoll}
             onSelectCharacter={handleSelectCharacter}
+            onSaveCharacter={handleSaveCharacter}
             loadState={loadState}
             error={error}
             surface={surface}

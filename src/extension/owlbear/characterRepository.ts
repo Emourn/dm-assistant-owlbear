@@ -4,9 +4,11 @@ import {
     createSampleCharacterCollection,
     parseStoredCharacterCollection,
     selectActiveCharacterRecord,
+    updateStoredCharacterRecord,
     type StoredCharacterCollection,
     type StoredCharacterRecord,
 } from '../domain/characterRecords';
+import type { Phase1CharacterSheet } from '../../features/dnd2024/domain/types';
 import { EXTENSION_NAMESPACE } from './ids';
 
 export const ROOM_CHARACTER_COLLECTION_KEY = `${EXTENSION_NAMESPACE}/characters`;
@@ -70,6 +72,37 @@ export async function setActiveCharacterRecord(characterId: string): Promise<Cha
         ...current,
         activeCharacterId: characterId,
     };
+
+    await writeCharacterCollection(next);
+    return {
+        collection: next,
+        activeCharacter: selectActiveCharacterRecord(next),
+        source: 'room-metadata',
+    };
+}
+
+export async function updateCharacterSheet(
+    characterId: string,
+    sheet: Phase1CharacterSheet,
+): Promise<CharacterRepositorySnapshot | null> {
+    const metadata = await OBR.room.getMetadata();
+    const current = getCharacterCollectionFromMetadata(metadata);
+    if (!current) {
+        return null;
+    }
+
+    const next = updateStoredCharacterRecord(
+        current,
+        characterId,
+        (record) => ({
+            ...record,
+            sheet,
+        }),
+    );
+
+    if (!next) {
+        return null;
+    }
 
     await writeCharacterCollection(next);
     return {

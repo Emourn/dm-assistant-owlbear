@@ -157,6 +157,35 @@ export function parseStoredCharacterCollection(value: unknown): StoredCharacterC
     };
 }
 
+export function updateStoredCharacterRecord(
+    collection: StoredCharacterCollection,
+    characterId: string,
+    updater: (record: StoredCharacterRecord) => StoredCharacterRecord,
+    updatedAt = Date.now(),
+): StoredCharacterCollection | null {
+    let didUpdate = false;
+    const characters = collection.characters.map((record) => {
+        if (record.sheet.id !== characterId) {
+            return record;
+        }
+
+        didUpdate = true;
+        return {
+            ...updater(record),
+            updatedAt,
+        };
+    });
+
+    if (!didUpdate) {
+        return null;
+    }
+
+    return {
+        ...collection,
+        characters,
+    };
+}
+
 export function createSampleCharacterCollection(now = Date.now()): StoredCharacterCollection {
     const characterId = 'demo-seraphina-vale';
 

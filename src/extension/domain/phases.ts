@@ -7,24 +7,24 @@ export interface MilestoneSlice {
 
 export const CURRENT_SLICE: MilestoneSlice = {
     milestone: 'Phase 1 - Automated 2024 character sheet foundation',
-    scope: 'Versioned 2024 character metadata and compact rollable sheet UI inside the new Owlbear-native extension shell.',
+    scope: 'GM-side editing for the versioned 2024 character record, with instant recomputation in the compact rollable Owlbear sheet.',
     acceptanceCriteria: [
-        'The extension stores a versioned character collection under its own Owlbear room metadata namespace.',
-        'A GM can open the shell and immediately see a seeded demo 2024 character sheet for slice validation.',
-        'The compact sheet shows derived values and supports click-to-roll for abilities, saves, skills, and initiative.',
-        'Rolls display auditable formulas and modifier breakdowns inside the Owlbear popover.',
+        'A GM can edit the active character record from within the new Owlbear sheet.',
+        'Edited identity, level, HP, AC, notes, and ability scores persist under the extension metadata namespace.',
+        'Derived values and click-to-roll outputs update immediately after saving.',
+        'Players remain read-only in this slice.',
     ],
     nonGoals: [
-        'Character editing and import flows',
         'Token linkage and player assignment',
         'Room-wide roll prompts or chat broadcast',
         'Encounter or condition automation',
+        'Full action, spell, or resource editing',
     ],
 };
 
 export const NEXT_SLICES = [
-    'Phase 1 Slice 3: formal character creation and editing on top of the versioned schema',
     'Phase 1 Slice 4: token linkage foundations and player-safe character resolution',
     'Phase 1 Slice 5: resource write-back and manual override controls',
-    'Phase 1 Slice 6: roll prompting and room-visible roll publication',
+    'Phase 1 Slice 6: action and spell editing on top of the character schema',
+    'Phase 1 Slice 7: roll prompting and room-visible roll publication',
 ];

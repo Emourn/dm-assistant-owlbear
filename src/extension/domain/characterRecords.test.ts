@@ -4,6 +4,7 @@ import {
     createSampleCharacterCollection,
     parseStoredCharacterCollection,
     selectActiveCharacterRecord,
+    updateStoredCharacterRecord,
 } from './characterRecords';
 
 describe('extension character records', () => {
@@ -31,5 +32,30 @@ describe('extension character records', () => {
     it('rejects incompatible collection shapes', () => {
         expect(parseStoredCharacterCollection({ version: 99, characters: [] })).toBeNull();
         expect(parseStoredCharacterCollection('nope')).toBeNull();
+    });
+
+    it('updates a stored record and stamps a new update time', () => {
+        const collection = createSampleCharacterCollection(1000);
+        const updated = updateStoredCharacterRecord(
+            collection,
+            collection.characters[0].sheet.id,
+            (record) => ({
+                ...record,
+                sheet: {
+                    ...record.sheet,
+                    name: 'Seraphina Stormvale',
+                    abilities: {
+                        ...record.sheet.abilities,
+                        wis: 20,
+                    },
+                },
+            }),
+            2000,
+        );
+
+        expect(updated).not.toBeNull();
+        expect(updated?.characters[0].sheet.name).toBe('Seraphina Stormvale');
+        expect(updated?.characters[0].sheet.abilities.wis).toBe(20);
+        expect(updated?.characters[0].updatedAt).toBe(2000);
     });
 });

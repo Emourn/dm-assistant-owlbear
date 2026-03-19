@@ -1,5 +1,5 @@
 import { Crosshair, Layers3, MapPinned, ScrollText, Shield, Users } from 'lucide-react';
-import type { StructuredRollRequest, StructuredRollResult } from '../../features/dnd2024/domain/types';
+import type { Phase1CharacterSheet, StructuredRollRequest, StructuredRollResult } from '../../features/dnd2024/domain/types';
 import { CURRENT_SLICE, NEXT_SLICES } from '../domain/phases';
 import type { CharacterRepositorySnapshot } from '../owlbear/characterRepository';
 import type { OwlbearRuntimeSnapshot } from '../owlbear/runtime';
@@ -9,8 +9,10 @@ interface ExtensionShellProps {
     runtime: OwlbearRuntimeSnapshot | null;
     characterState: CharacterRepositorySnapshot | null;
     lastRoll: StructuredRollResult | null;
+    isSavingCharacter: boolean;
     onRoll: (request: StructuredRollRequest) => void;
     onSelectCharacter: (characterId: string) => void;
+    onSaveCharacter: (sheet: Phase1CharacterSheet) => Promise<void>;
     loadState: 'loading' | 'ready' | 'error';
     error: string | null;
     surface: 'popover' | 'panel';
@@ -42,8 +44,10 @@ export function ExtensionShell({
     runtime,
     characterState,
     lastRoll,
+    isSavingCharacter,
     onRoll,
     onSelectCharacter,
+    onSaveCharacter,
     loadState,
     error,
     surface,
@@ -140,9 +144,12 @@ export function ExtensionShell({
 
                 <CharacterSheetPanel
                     characterState={characterState}
+                    canEdit={runtime.role === 'GM'}
+                    isSaving={isSavingCharacter}
                     lastRoll={lastRoll}
                     onRoll={onRoll}
                     onSelectCharacter={onSelectCharacter}
+                    onSave={onSaveCharacter}
                 />
 
                 <section className="grid gap-4 lg:grid-cols-[1.15fr_0.85fr]">
