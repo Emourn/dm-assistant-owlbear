@@ -1,6 +1,8 @@
-import type { Player } from '@owlbear-rodeo/sdk';
+import { useMemo, useState } from 'react';
+import OBR, { type Player } from '@owlbear-rodeo/sdk';
 import {
     BookOpen,
+    CalendarClock,
     FileUp,
     Link2,
     Moon,
@@ -9,10 +11,11 @@ import {
     Sparkles,
     Swords,
     Users,
+    Plus,
+    SunMoon,
+    TentTree,
 } from 'lucide-react';
-import { Camp } from '../../pages/Camp';
-import { CampaignNavigator } from '../../pages/CampaignNavigator';
-import { Campaigns } from '../../pages/Campaigns';
+import { useCampaignStore } from '../../store/campaignStore';
 import { useCharacterStore } from '../../store/characterStore';
 import type { Character } from '../../types/character';
 import { OwlbearCombatRoute } from '../OwlbearCombatRoute';
@@ -215,9 +218,9 @@ export function WorkspaceDrawer({
                 )}
                 {activePanel === 'combat' && <OwlbearCombatRoute />}
                 {activePanel === 'sync' && <OwlbearRoomPage />}
-                {activePanel === 'camp' && <Camp />}
-                {activePanel === 'notes' && <CampaignNavigator />}
-                {activePanel === 'campaigns' && <Campaigns />}
+                {activePanel === 'camp' && <CampWorkspace />}
+                {activePanel === 'notes' && <NotesWorkspace />}
+                {activePanel === 'campaigns' && <CampaignWorkspace />}
             </div>
         </section>
     );
@@ -267,6 +270,370 @@ function RosterWorkspace({
                             <CompactStat label="HP" value={`${character.currentHp}/${character.maxHp}`} />
                             <CompactStat label="AC" value={String(character.ac)} />
                             <CompactStat label="Spells" value={String(character.spells.length)} />
+                        </div>
+                    </div>
+                ))}
+            </div>
+        </div>
+    );
+}
+
+function CampaignWorkspace() {
+    const campaigns = useCampaignStore((state) => state.campaigns);
+    const activeCampaignId = useCampaignStore((state) => state.activeCampaignId);
+    const addCampaign = useCampaignStore((state) => state.addCampaign);
+    const setActiveCampaign = useCampaignStore((state) => state.setActiveCampaign);
+    const [title, setTitle] = useState('');
+    const [description, setDescription] = useState('');
+
+    const handleCreate = async () => {
+        const trimmedTitle = title.trim();
+        if (!trimmedTitle) {
+            await OBR.notification.show('Give the campaign a title first.', 'WARNING');
+            return;
+        }
+
+        addCampaign({
+            title: trimmedTitle,
+            description: description.trim(),
+            partyIds: [],
+            npcs: [],
+            locations: [],
+            timeTracking: {
+                currentDay: 1,
+                currentHour: 8,
+                currentMinute: 0,
+                calendarSystem: 'generic',
+            },
+        });
+        setTitle('');
+        setDescription('');
+        await OBR.notification.show(`Created ${trimmedTitle}.`, 'SUCCESS');
+    };
+
+    return (
+        <div className="space-y-4">
+            <div className="rounded-2xl border border-stone-800 bg-stone-900/70 p-4">
+                <div className="flex items-center gap-2 text-gold">
+                    <BookOpen size={16} />
+                    <div className="text-[11px] font-black uppercase tracking-[0.22em]">Campaign staging</div>
+                </div>
+                <div className="mt-4 grid gap-3 lg:grid-cols-[minmax(0,0.8fr)_minmax(0,1.2fr)_auto]">
+                    <input
+                        value={title}
+                        onChange={(event) => setTitle(event.target.value)}
+                        placeholder="New campaign title"
+                        className="rounded-2xl border border-stone-700 bg-stone-950 px-4 py-3 text-sm text-stone-100 outline-none transition-colors focus:border-gold"
+                    />
+                    <input
+                        value={description}
+                        onChange={(event) => setDescription(event.target.value)}
+                        placeholder="Short description"
+                        className="rounded-2xl border border-stone-700 bg-stone-950 px-4 py-3 text-sm text-stone-100 outline-none transition-colors focus:border-gold"
+                    />
+                    <button
+                        type="button"
+                        onClick={() => void handleCreate()}
+                        className="inline-flex items-center justify-center gap-2 rounded-2xl bg-gold px-4 py-3 text-sm font-bold text-stone-950 transition-colors hover:bg-yellow-400"
+                    >
+                        <Plus size={16} />
+                        Create
+                    </button>
+                </div>
+            </div>
+
+            <div className="grid gap-3 md:grid-cols-2">
+                {campaigns.length === 0 && (
+                    <div className="rounded-2xl border border-dashed border-stone-800 p-4 text-sm text-stone-500">
+                        No campaigns yet. Create one here so rest flows, notes, and party context have a home inside Owlbear.
+                    </div>
+                )}
+                {campaigns.map((campaign) => (
+                    <button
+                        key={campaign.id}
+                        type="button"
+                        onClick={() => setActiveCampaign(campaign.id)}
+                        className={`rounded-2xl border p-4 text-left transition-colors ${
+                            campaign.id === activeCampaignId
+                                ? 'border-gold/40 bg-gold/10'
+                                : 'border-stone-800 bg-stone-900/70 hover:border-stone-700 hover:bg-stone-900'
+                        }`}
+                    >
+                        <div className="flex items-start justify-between gap-3">
+                            <div className="min-w-0">
+                                <div className="truncate font-cinzel text-xl font-bold text-parchment">{campaign.title}</div>
+                                <div className="mt-2 text-sm leading-relaxed text-stone-400">
+                                    {campaign.description || 'No description yet.'}
+                                </div>
+                            </div>
+                            {campaign.id === activeCampaignId && (
+                                <span className="rounded-full border border-gold/30 bg-gold/10 px-2.5 py-1 text-[10px] font-black uppercase tracking-[0.18em] text-gold">
+                                    Active
+                                </span>
+                            )}
+                        </div>
+                        <div className="mt-4 grid gap-2 sm:grid-cols-4">
+                            <CompactStat label="Party" value={String(campaign.partyIds.length)} />
+                            <CompactStat label="Notes" value={String(campaign.sessionNotes.length)} />
+                            <CompactStat label="NPCs" value={String(campaign.npcs.length)} />
+                            <CompactStat label="Sites" value={String(campaign.locations.length)} />
+                        </div>
+                    </button>
+                ))}
+            </div>
+        </div>
+    );
+}
+
+function CampWorkspace() {
+    const characters = useCharacterStore((state) => state.characters);
+    const shortRest = useCharacterStore((state) => state.shortRest);
+    const longRest = useCharacterStore((state) => state.longRest);
+    const longRestParty = useCharacterStore((state) => state.longRestParty);
+    const campaigns = useCampaignStore((state) => state.campaigns);
+    const activeCampaignId = useCampaignStore((state) => state.activeCampaignId);
+    const [hitDiceMap, setHitDiceMap] = useState<Record<string, number>>({});
+
+    const activeCampaign = campaigns.find((campaign) => campaign.id === activeCampaignId) ?? null;
+    const party = useMemo(
+        () => characters.filter((character) => activeCampaign?.partyIds.includes(character.id)),
+        [activeCampaign?.partyIds, characters],
+    );
+    const totalCurrentHp = party.reduce((sum, character) => sum + character.currentHp, 0);
+    const totalMaxHp = party.reduce((sum, character) => sum + character.maxHp, 0);
+
+    const handleShortRest = async (character: Character) => {
+        const spend = Math.max(0, hitDiceMap[character.id] ?? 0);
+        shortRest(character.id, spend);
+        await OBR.notification.show(`Applied a short rest to ${character.name || 'that character'}.`, 'SUCCESS');
+    };
+
+    const handleLongRest = async (character: Character) => {
+        longRest(character.id);
+        await OBR.notification.show(`Applied a long rest to ${character.name || 'that character'}.`, 'SUCCESS');
+    };
+
+    const handlePartyLongRest = async () => {
+        longRestParty(party.map((character) => character.id));
+        await OBR.notification.show('Applied a long rest to the active party.', 'SUCCESS');
+    };
+
+    return (
+        <div className="space-y-4">
+            <div className="rounded-2xl border border-stone-800 bg-stone-900/70 p-4">
+                <div className="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
+                    <div>
+                        <div className="flex items-center gap-2 text-gold">
+                            <TentTree size={16} />
+                            <div className="text-[11px] font-black uppercase tracking-[0.22em]">Camp control</div>
+                        </div>
+                        <div className="mt-2 font-cinzel text-2xl font-bold text-parchment">
+                            {activeCampaign?.title || 'No active campaign'}
+                        </div>
+                    </div>
+                    <button
+                        type="button"
+                        onClick={() => void handlePartyLongRest()}
+                        disabled={party.length === 0}
+                        className="inline-flex items-center gap-2 rounded-2xl bg-gold px-4 py-3 text-sm font-bold text-stone-950 transition-colors hover:bg-yellow-400 disabled:cursor-not-allowed disabled:opacity-50"
+                    >
+                        <SunMoon size={16} />
+                        Long Rest Party
+                    </button>
+                </div>
+                <div className="mt-4 grid gap-2 sm:grid-cols-3">
+                    <CompactStat label="Members" value={String(party.length)} />
+                    <CompactStat label="Party HP" value={`${totalCurrentHp}/${totalMaxHp || 0}`} />
+                    <CompactStat label="Condition" value={party.length === 0 ? 'Idle' : totalMaxHp > 0 ? `${Math.round((totalCurrentHp / totalMaxHp) * 100)}%` : 'Ready'} />
+                </div>
+            </div>
+
+            {party.length === 0 ? (
+                <div className="rounded-2xl border border-dashed border-stone-800 p-4 text-sm text-stone-500">
+                    Add characters to the active campaign to use camp automation here.
+                </div>
+            ) : (
+                <div className="grid gap-3 md:grid-cols-2">
+                    {party.map((character) => (
+                        <div key={character.id} className="rounded-2xl border border-stone-800 bg-stone-900/70 p-4">
+                            <div className="flex items-start justify-between gap-3">
+                                <div>
+                                    <div className="font-cinzel text-xl font-bold text-parchment">{character.name || 'Unnamed'}</div>
+                                    <div className="mt-1 text-sm text-stone-400">
+                                        Lv.{character.level} {character.className || 'Adventurer'}
+                                    </div>
+                                </div>
+                                <CompactStat label="HP" value={`${character.currentHp}/${character.maxHp}`} />
+                            </div>
+                            <div className="mt-4 grid gap-2 sm:grid-cols-3">
+                                <CompactStat label="AC" value={String(character.ac)} />
+                                <CompactStat label="Temp HP" value={String(character.tempHp)} />
+                                <CompactStat label="Exhaustion" value={String(character.exhaustion)} />
+                            </div>
+                            <div className="mt-4 grid gap-3 lg:grid-cols-[120px_repeat(2,minmax(0,1fr))]">
+                                <input
+                                    type="number"
+                                    min="0"
+                                    value={hitDiceMap[character.id] ?? 0}
+                                    onChange={(event) => setHitDiceMap((current) => ({ ...current, [character.id]: Number(event.target.value) || 0 }))}
+                                    className="rounded-2xl border border-stone-700 bg-stone-950 px-3 py-2.5 text-sm text-stone-100 outline-none transition-colors focus:border-gold"
+                                />
+                                <button
+                                    type="button"
+                                    onClick={() => void handleShortRest(character)}
+                                    className="inline-flex items-center justify-center gap-2 rounded-2xl border border-stone-700 bg-stone-950 px-4 py-2.5 text-sm font-semibold text-stone-100 transition-colors hover:border-sky-400/20 hover:text-sky-100"
+                                >
+                                    <Moon size={15} />
+                                    Short Rest
+                                </button>
+                                <button
+                                    type="button"
+                                    onClick={() => void handleLongRest(character)}
+                                    className="inline-flex items-center justify-center gap-2 rounded-2xl border border-gold/30 bg-gold/10 px-4 py-2.5 text-sm font-semibold text-gold transition-colors hover:border-gold/50 hover:bg-gold/15"
+                                >
+                                    <SunMoon size={15} />
+                                    Long Rest
+                                </button>
+                            </div>
+                        </div>
+                    ))}
+                </div>
+            )}
+        </div>
+    );
+}
+
+function NotesWorkspace() {
+    const campaigns = useCampaignStore((state) => state.campaigns);
+    const activeCampaignId = useCampaignStore((state) => state.activeCampaignId);
+    const addSessionNote = useCampaignStore((state) => state.addSessionNote);
+    const advanceTime = useCampaignStore((state) => state.advanceTime);
+    const [title, setTitle] = useState('');
+    const [content, setContent] = useState('');
+
+    const activeCampaign = campaigns.find((campaign) => campaign.id === activeCampaignId) ?? null;
+    const notes = [...(activeCampaign?.sessionNotes ?? [])].sort((left, right) => right.date - left.date);
+    const nextSessionNumber = (notes[0]?.sessionNumber ?? 0) + 1;
+    const timeLabel = activeCampaign
+        ? `Day ${activeCampaign.timeTracking.currentDay}, ${String(activeCampaign.timeTracking.currentHour).padStart(2, '0')}:${String(activeCampaign.timeTracking.currentMinute).padStart(2, '0')}`
+        : 'No active campaign';
+
+    const handleAddNote = async () => {
+        if (!activeCampaign) {
+            await OBR.notification.show('Choose an active campaign first.', 'WARNING');
+            return;
+        }
+        if (!title.trim() || !content.trim()) {
+            await OBR.notification.show('Add a title and note content first.', 'WARNING');
+            return;
+        }
+
+        addSessionNote(activeCampaign.id, {
+            sessionNumber: nextSessionNumber,
+            title: title.trim(),
+            content: content.trim(),
+        });
+        setTitle('');
+        setContent('');
+        await OBR.notification.show('Saved the note to the active campaign.', 'SUCCESS');
+    };
+
+    const handleAdvanceTime = async (minutes: number) => {
+        if (!activeCampaign) {
+            await OBR.notification.show('Choose an active campaign first.', 'WARNING');
+            return;
+        }
+        advanceTime(activeCampaign.id, minutes);
+        await OBR.notification.show('Advanced campaign time.', 'SUCCESS');
+    };
+
+    return (
+        <div className="space-y-4">
+            <div className="rounded-2xl border border-stone-800 bg-stone-900/70 p-4">
+                <div className="flex flex-col gap-3 lg:flex-row lg:items-center lg:justify-between">
+                    <div>
+                        <div className="flex items-center gap-2 text-gold">
+                            <CalendarClock size={16} />
+                            <div className="text-[11px] font-black uppercase tracking-[0.22em]">Navigator and notes</div>
+                        </div>
+                        <div className="mt-2 font-cinzel text-2xl font-bold text-parchment">{activeCampaign?.title || 'No active campaign'}</div>
+                    </div>
+                    <div className="grid gap-2 sm:grid-cols-3">
+                        <button
+                            type="button"
+                            onClick={() => void handleAdvanceTime(10)}
+                            className="rounded-full border border-stone-700 bg-stone-950 px-3 py-2 text-[11px] font-black uppercase tracking-[0.18em] text-stone-100 transition-colors hover:border-sky-400/20 hover:text-sky-100"
+                        >
+                            +10 min
+                        </button>
+                        <button
+                            type="button"
+                            onClick={() => void handleAdvanceTime(60)}
+                            className="rounded-full border border-stone-700 bg-stone-950 px-3 py-2 text-[11px] font-black uppercase tracking-[0.18em] text-stone-100 transition-colors hover:border-sky-400/20 hover:text-sky-100"
+                        >
+                            +1 hour
+                        </button>
+                        <button
+                            type="button"
+                            onClick={() => void handleAdvanceTime(480)}
+                            className="rounded-full border border-stone-700 bg-stone-950 px-3 py-2 text-[11px] font-black uppercase tracking-[0.18em] text-stone-100 transition-colors hover:border-sky-400/20 hover:text-sky-100"
+                        >
+                            +8 hours
+                        </button>
+                    </div>
+                </div>
+                <div className="mt-4 grid gap-2 sm:grid-cols-4">
+                    <CompactStat label="Clock" value={timeLabel} />
+                    <CompactStat label="Notes" value={String(notes.length)} />
+                    <CompactStat label="NPCs" value={String(activeCampaign?.npcs.length ?? 0)} />
+                    <CompactStat label="Locations" value={String(activeCampaign?.locations.length ?? 0)} />
+                </div>
+            </div>
+
+            <div className="rounded-2xl border border-stone-800 bg-stone-900/70 p-4">
+                <div className="text-[11px] font-black uppercase tracking-[0.22em] text-emerald-300">Quick DM note</div>
+                <div className="mt-3 grid gap-3">
+                    <input
+                        value={title}
+                        onChange={(event) => setTitle(event.target.value)}
+                        placeholder="Session title or scene name"
+                        className="rounded-2xl border border-stone-700 bg-stone-950 px-4 py-3 text-sm text-stone-100 outline-none transition-colors focus:border-gold"
+                    />
+                    <textarea
+                        value={content}
+                        onChange={(event) => setContent(event.target.value)}
+                        placeholder="Capture clue chains, improvised rulings, NPC intent, treasure, or anything you need to remember mid-session."
+                        className="min-h-[140px] rounded-2xl border border-stone-700 bg-stone-950 px-4 py-3 text-sm text-stone-100 outline-none transition-colors focus:border-gold"
+                    />
+                    <button
+                        type="button"
+                        onClick={() => void handleAddNote()}
+                        className="inline-flex items-center justify-center gap-2 rounded-2xl bg-gold px-4 py-3 text-sm font-bold text-stone-950 transition-colors hover:bg-yellow-400"
+                    >
+                        <ScrollText size={16} />
+                        Save Note
+                    </button>
+                </div>
+            </div>
+
+            <div className="grid gap-3">
+                {notes.length === 0 && (
+                    <div className="rounded-2xl border border-dashed border-stone-800 p-4 text-sm text-stone-500">
+                        No campaign notes yet. Save quick notes here instead of leaving Owlbear to update another app screen.
+                    </div>
+                )}
+                {notes.slice(0, 6).map((note) => (
+                    <div key={note.id} className="rounded-2xl border border-stone-800 bg-stone-900/70 p-4">
+                        <div className="flex items-start justify-between gap-3">
+                            <div>
+                                <div className="font-cinzel text-xl font-bold text-parchment">{note.title}</div>
+                                <div className="mt-1 text-[11px] uppercase tracking-[0.18em] text-stone-500">
+                                    Session {note.sessionNumber} - {new Date(note.date).toLocaleDateString()}
+                                </div>
+                            </div>
+                        </div>
+                        <div className="mt-3 text-sm leading-relaxed text-stone-300 whitespace-pre-wrap">
+                            {note.content}
                         </div>
                     </div>
                 ))}
