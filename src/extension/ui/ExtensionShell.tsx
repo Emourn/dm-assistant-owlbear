@@ -1,9 +1,16 @@
 import { Crosshair, Layers3, MapPinned, ScrollText, Shield, Users } from 'lucide-react';
+import type { StructuredRollRequest, StructuredRollResult } from '../../features/dnd2024/domain/types';
 import { CURRENT_SLICE, NEXT_SLICES } from '../domain/phases';
+import type { CharacterRepositorySnapshot } from '../owlbear/characterRepository';
 import type { OwlbearRuntimeSnapshot } from '../owlbear/runtime';
+import { CharacterSheetPanel } from './CharacterSheetPanel';
 
 interface ExtensionShellProps {
     runtime: OwlbearRuntimeSnapshot | null;
+    characterState: CharacterRepositorySnapshot | null;
+    lastRoll: StructuredRollResult | null;
+    onRoll: (request: StructuredRollRequest) => void;
+    onSelectCharacter: (characterId: string) => void;
     loadState: 'loading' | 'ready' | 'error';
     error: string | null;
     surface: 'popover' | 'panel';
@@ -31,7 +38,16 @@ function StatCard({
     );
 }
 
-export function ExtensionShell({ runtime, loadState, error, surface }: ExtensionShellProps) {
+export function ExtensionShell({
+    runtime,
+    characterState,
+    lastRoll,
+    onRoll,
+    onSelectCharacter,
+    loadState,
+    error,
+    surface,
+}: ExtensionShellProps) {
     if (loadState === 'loading') {
         return (
             <div className="min-h-screen bg-[linear-gradient(180deg,rgba(12,10,9,0.98),rgba(17,24,39,0.98))] p-4 text-stone-100">
@@ -121,6 +137,13 @@ export function ExtensionShell({ runtime, loadState, error, surface }: Extension
                         </div>
                     </div>
                 </section>
+
+                <CharacterSheetPanel
+                    characterState={characterState}
+                    lastRoll={lastRoll}
+                    onRoll={onRoll}
+                    onSelectCharacter={onSelectCharacter}
+                />
 
                 <section className="grid gap-4 lg:grid-cols-[1.15fr_0.85fr]">
                     <div className="rounded-[1.4rem] border border-stone-800 bg-stone-950/75 p-5">

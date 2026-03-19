@@ -7,25 +7,24 @@ export interface MilestoneSlice {
 
 export const CURRENT_SLICE: MilestoneSlice = {
     milestone: 'Phase 1 - Automated 2024 character sheet foundation',
-    scope: 'Extension reset slice: replace the old DM Assistant Owlbear shell with a new clean D&D Assistant extension skeleton.',
+    scope: 'Versioned 2024 character metadata and compact rollable sheet UI inside the new Owlbear-native extension shell.',
     acceptanceCriteria: [
-        'Owlbear loads a brand-new extension shell instead of the old DM Assistant workbench.',
-        'The shell shows Owlbear-native runtime context: role, room status, and current selection.',
-        'The new code path is organized under explicit domain, Owlbear adapter, and UI boundaries.',
-        'The extension can still be installed from the local manifest and production build.',
+        'The extension stores a versioned character collection under its own Owlbear room metadata namespace.',
+        'A GM can open the shell and immediately see a seeded demo 2024 character sheet for slice validation.',
+        'The compact sheet shows derived values and supports click-to-roll for abilities, saves, skills, and initiative.',
+        'Rolls display auditable formulas and modifier breakdowns inside the Owlbear popover.',
     ],
     nonGoals: [
-        'Character persistence and editing',
-        'Derived stat calculations',
-        'Roll execution or prompts',
-        'Token linking and player assignment',
+        'Character editing and import flows',
+        'Token linkage and player assignment',
+        'Room-wide roll prompts or chat broadcast',
         'Encounter or condition automation',
     ],
 };
 
 export const NEXT_SLICES = [
-    'Phase 1 Slice 2: versioned 2024 character schema and local persistence',
-    'Phase 1 Slice 3: pure derived stat engine for abilities, skills, saves, initiative, AC, HP, and senses',
-    'Phase 1 Slice 4: structured roll engine with auditable breakdowns',
-    'Phase 1 Slice 5: compact Owlbear-native sheet UI backed by the new domain',
+    'Phase 1 Slice 3: formal character creation and editing on top of the versioned schema',
+    'Phase 1 Slice 4: token linkage foundations and player-safe character resolution',
+    'Phase 1 Slice 5: resource write-back and manual override controls',
+    'Phase 1 Slice 6: roll prompting and room-visible roll publication',
 ];
