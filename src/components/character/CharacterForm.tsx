@@ -38,6 +38,7 @@ interface CharacterFormProps {
     characterId?: string | null;
     initialData?: Partial<Character>;
     onClose: () => void;
+    onSaveComplete?: (characterId: string) => void;
     surface?: 'default' | 'owlbear';
     entryMode?: 'create' | 'edit' | 'import';
 }
@@ -85,6 +86,7 @@ export function CharacterForm({
     characterId,
     initialData,
     onClose,
+    onSaveComplete,
     surface = 'default',
     entryMode = characterId ? 'edit' : initialData ? 'import' : 'create',
 }: CharacterFormProps) {
@@ -232,6 +234,7 @@ export function CharacterForm({
         }
         setHasUnsavedChanges(false);
         addToast(`${formData.name || 'Hero'} saved to your roster.`, 'success');
+        onSaveComplete?.(formData.id);
         onClose();
     };
 

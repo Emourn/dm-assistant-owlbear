@@ -469,27 +469,38 @@ function SheetWorkflowOverlay({
     onClose,
     children,
 }: {
-    mode: 'import' | 'create' | 'edit';
+    mode: 'import' | 'create' | 'edit' | 'complete';
     selectionLabel: string;
     linkedSheetLabel: string;
     onClose: () => void;
     children: React.ReactNode;
 }) {
-    const title = mode === 'import' ? 'Sheet import flow' : mode === 'create' ? 'New sheet flow' : 'Sheet review flow';
+    const title =
+        mode === 'import'
+            ? 'Sheet import flow'
+            : mode === 'create'
+                ? 'New sheet flow'
+                : mode === 'edit'
+                    ? 'Sheet review flow'
+                    : 'Sheet saved';
     const subtitle =
         mode === 'import'
             ? 'Import first, then save and link the sheet back to the tabletop.'
             : mode === 'create'
                 ? 'Author the sheet, save it, then return to token linking and player assignment.'
-                : 'Adjust the existing sheet, save changes, then return to sync or combat.';
+                : mode === 'edit'
+                    ? 'Adjust the existing sheet, save changes, then return to sync or combat.'
+                    : 'Use the completion actions below to finish linking the saved sheet into the current Owlbear session.';
 
-    const activeStep = mode === 'import' ? 0 : mode === 'create' ? 1 : 1;
+    const activeStep = mode === 'import' ? 0 : mode === 'create' ? 1 : mode === 'edit' ? 1 : 3;
     const steps =
         mode === 'import'
             ? ['Import PDF', 'Review automation', 'Save sheet', 'Link token']
             : mode === 'create'
                 ? ['Create shell', 'Author sheet', 'Save sheet', 'Link token']
-                : ['Open sheet', 'Edit details', 'Save changes', 'Return to map'];
+                : mode === 'edit'
+                    ? ['Open sheet', 'Edit details', 'Save changes', 'Return to map']
+                    : ['Import or create', 'Review sheet', 'Save sheet', 'Complete sync'];
 
     return (
         <div className="fixed inset-0 z-40 overflow-y-auto bg-stone-950/84 px-3 py-6 backdrop-blur-sm">
@@ -531,6 +542,77 @@ function SheetWorkflowOverlay({
     );
 }
 
+function SheetWorkflowCompletionCard({
+    character,
+    playerRows,
+    isBusy,
+    selectionLabel,
+    hasSelection,
+    onLink,
+    onImportCombat,
+    onAssignPlayer,
+    onOpenSync,
+    onDone,
+}: {
+    character: Character;
+    playerRows: Player[];
+    isBusy: boolean;
+    selectionLabel: string;
+    hasSelection: boolean;
+    onLink: () => void;
+    onImportCombat: () => void;
+    onAssignPlayer: (playerId: string) => void;
+    onOpenSync: () => void;
+    onDone: () => void;
+}) {
+    return (
+        <div className="mx-auto max-w-4xl rounded-[1.35rem] border border-stone-800 bg-[linear-gradient(180deg,rgba(12,10,9,0.98),rgba(28,25,23,0.94))] p-5 shadow-[0_24px_60px_-36px_rgba(15,23,42,0.95)]">
+            <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
+                <div>
+                    <div className="font-mono text-[10px] font-bold uppercase tracking-[0.24em] text-emerald-300">Saved sheet</div>
+                    <h2 className="mt-2 text-2xl font-semibold tracking-tight text-parchment">{character.name || 'Unnamed'}</h2>
+                    <p className="mt-2 text-sm text-stone-400">The sheet is now in your roster. Finish the tabletop handoff while the current token selection is still active.</p>
+                </div>
+                <div className="grid min-w-[180px] gap-2 sm:grid-cols-3 lg:grid-cols-1">
+                    <CompactStat label="Selection" value={selectionLabel} />
+                    <CompactStat label="Sheet" value={`Lv.${character.level}`} />
+                    <CompactStat label="Players" value={String(playerRows.length)} />
+                </div>
+            </div>
+
+            <div className="mt-5 rounded-xl border border-stone-800 bg-stone-950/60 p-3">
+                <div className="font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-stone-500">Completion actions</div>
+                <div className="mt-3 flex flex-wrap gap-2">
+                    <SelectionCommandButton icon={Link2} label="Link To Selection" onClick={onLink} accent disabled={!hasSelection || isBusy} />
+                    <SelectionCommandButton icon={Swords} label="Import Combat" onClick={onImportCombat} disabled={!hasSelection || isBusy} />
+                    <SelectionCommandButton icon={Users} label="Open Sync" onClick={onOpenSync} disabled={isBusy} />
+                    <SelectionCommandButton icon={Check} label="Done" onClick={onDone} disabled={isBusy} />
+                </div>
+            </div>
+
+            {playerRows.length > 0 && (
+                <div className="mt-4 rounded-xl border border-stone-800 bg-stone-950/55 p-3">
+                    <div className="font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-stone-500">Assign player now</div>
+                    <div className="mt-3 space-y-2">
+                        {playerRows.map((player) => (
+                            <div key={player.id} className="grid gap-2 rounded-xl border border-stone-800 bg-stone-900/70 px-3 py-2 md:grid-cols-[minmax(0,160px)_auto] md:items-center">
+                                <div className="flex items-center gap-3 min-w-0">
+                                    <div className="h-2.5 w-2.5 shrink-0 rounded-full" style={{ backgroundColor: player.color }} />
+                                    <div className="min-w-0">
+                                        <div className="truncate text-sm font-semibold text-stone-100">{player.name}</div>
+                                        <div className="mt-0.5 font-mono text-[10px] uppercase tracking-[0.16em] text-stone-500">Assign saved sheet</div>
+                                    </div>
+                                </div>
+                                <SelectionCommandButton icon={Users} label="Assign" onClick={() => onAssignPlayer(player.id)} disabled={isBusy} />
+                            </div>
+                        ))}
+                    </div>
+                </div>
+            )}
+        </div>
+    );
+}
+
 export function RuntimeWorkbenchShell() {
     const characters = useCharacterStore((state) => state.characters);
     const campaigns = useCampaignStore((state) => state.campaigns);
@@ -545,6 +627,7 @@ export function RuntimeWorkbenchShell() {
     const [editorState, setEditorState] = useState<EditorState>(null);
     const [isImporting, setIsImporting] = useState(false);
     const [isBusy, setIsBusy] = useState(false);
+    const [workflowCompletionCharacterId, setWorkflowCompletionCharacterId] = useState<string | null>(null);
 
     const playerRows = useMemo(() => players.filter((player) => player.role === 'PLAYER'), [players]);
     const selectedTokenContexts = useMemo<SelectedTokenContext[]>(
@@ -560,7 +643,18 @@ export function RuntimeWorkbenchShell() {
         () => characters.find((character) => character.id === selectedCharacterId) ?? null,
         [characters, selectedCharacterId],
     );
-    const workflowMode = isImporting ? 'import' : editorState ? (editorState.characterId ? 'edit' : 'create') : null;
+    const workflowCompletionCharacter = useMemo(
+        () => characters.find((character) => character.id === workflowCompletionCharacterId) ?? null,
+        [characters, workflowCompletionCharacterId],
+    );
+    const workflowMode: 'import' | 'create' | 'edit' | 'complete' | null =
+        workflowCompletionCharacterId
+            ? 'complete'
+            : isImporting
+                ? 'import'
+                : editorState
+                    ? (editorState.characterId ? 'edit' : 'create')
+                    : null;
     const workflowSelectionLabel = describeSelection(selectedItems.length, primarySelection);
     const workflowLinkedSheetLabel =
         primarySelection?.linkedCharacter?.snapshot?.name ||
@@ -619,14 +713,17 @@ export function RuntimeWorkbenchShell() {
     }, [characters, primarySelection?.linkedCharacter?.characterId, selectedCharacterId]);
 
     const handleOpenImport = () => {
+        setWorkflowCompletionCharacterId(null);
         setIsImporting(true);
     };
 
     const handleOpenCreate = () => {
+        setWorkflowCompletionCharacterId(null);
         setEditorState({});
     };
 
     const handleOpenSheet = (characterId: string) => {
+        setWorkflowCompletionCharacterId(null);
         setEditorState({ characterId });
     };
 
@@ -693,6 +790,34 @@ export function RuntimeWorkbenchShell() {
         } finally {
             setIsBusy(false);
         }
+    };
+
+    const handleLinkCharacterById = async (characterId: string) => {
+        const character = characters.find((entry) => entry.id === characterId);
+        if (!character) {
+            await OBR.notification.show('That saved sheet could not be found.', 'WARNING');
+            return;
+        }
+
+        setSelectedCharacterId(characterId);
+        setIsBusy(true);
+        try {
+            const linkedCount = await linkCharacterToCurrentSelection(character);
+            if (linkedCount === 0) {
+                await OBR.notification.show('Select one or more Owlbear tokens first.', 'WARNING');
+                return;
+            }
+            await refresh();
+            await OBR.notification.show(`Linked ${linkedCount} token${linkedCount === 1 ? '' : 's'} to ${character.name}.`, 'SUCCESS');
+        } finally {
+            setIsBusy(false);
+        }
+    };
+
+    const handleWorkflowDone = () => {
+        setWorkflowCompletionCharacterId(null);
+        setIsImporting(false);
+        setEditorState(null);
     };
 
     if (!OBR.isAvailable) {
@@ -800,15 +925,38 @@ export function RuntimeWorkbenchShell() {
                     selectionLabel={workflowSelectionLabel}
                     linkedSheetLabel={workflowLinkedSheetLabel}
                     onClose={() => {
-                        setIsImporting(false);
-                        setEditorState(null);
+                        handleWorkflowDone();
                     }}
                 >
-                    {editorState ? (
+                    {workflowMode === 'complete' && workflowCompletionCharacter ? (
+                        <SheetWorkflowCompletionCard
+                            character={workflowCompletionCharacter}
+                            playerRows={playerRows}
+                            isBusy={isBusy}
+                            selectionLabel={workflowSelectionLabel}
+                            hasSelection={selectedItems.length > 0}
+                            onLink={() => {
+                                void handleLinkCharacterById(workflowCompletionCharacter.id);
+                            }}
+                            onImportCombat={() => {
+                                void handleImportSelection();
+                            }}
+                            onAssignPlayer={(playerId) => {
+                                void handleAssignPlayer(playerId, workflowCompletionCharacter.id);
+                            }}
+                            onOpenSync={() => setActivePanel('sync')}
+                            onDone={handleWorkflowDone}
+                        />
+                    ) : editorState ? (
                         <Suspense fallback={<OverlayLoadingCard label="Character editor" />}>
                             <CharacterForm
                                 characterId={editorState.characterId}
                                 initialData={editorState.initialData}
+                                onSaveComplete={(savedCharacterId) => {
+                                    setSelectedCharacterId(savedCharacterId);
+                                    setWorkflowCompletionCharacterId(savedCharacterId);
+                                    void refresh();
+                                }}
                                 surface="owlbear"
                                 entryMode={editorState.characterId ? 'edit' : editorState.initialData ? 'import' : 'create'}
                                 onClose={() => {
