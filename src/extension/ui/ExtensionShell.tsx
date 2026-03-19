@@ -36,6 +36,7 @@ interface ExtensionShellProps {
     onCreateCharacter: () => Promise<void>;
     onDuplicateCharacter: (characterId: string) => Promise<void>;
     onDeleteCharacter: (characterId: string) => Promise<void>;
+    onImportCharacters: (payload: string, mode: 'append' | 'replace') => Promise<number>;
     onSaveCharacter: (sheet: Phase1CharacterSheet) => Promise<void>;
     onAdjustResource: (resourceId: string, delta: number) => Promise<void>;
     onAdjustDeathSave: (kind: 'successes' | 'failures', delta: number) => Promise<void>;
@@ -95,6 +96,7 @@ export function ExtensionShell({
     onCreateCharacter,
     onDuplicateCharacter,
     onDeleteCharacter,
+    onImportCharacters,
     onSaveCharacter,
     onAdjustResource,
     onAdjustDeathSave,
@@ -255,6 +257,7 @@ export function ExtensionShell({
                     onCreateCharacter={onCreateCharacter}
                     onDuplicateCharacter={onDuplicateCharacter}
                     onDeleteCharacter={onDeleteCharacter}
+                    onImportCharacters={onImportCharacters}
                     onSave={onSaveCharacter}
                     onAdjustResource={onAdjustResource}
                     onAdjustDeathSave={onAdjustDeathSave}

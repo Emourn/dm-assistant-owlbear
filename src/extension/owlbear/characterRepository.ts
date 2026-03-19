@@ -5,6 +5,7 @@ import {
     createSampleCharacterCollection,
     deleteStoredCharacterRecord,
     duplicateStoredCharacterRecord,
+    importCharactersFromJson,
     parseStoredCharacterCollection,
     selectActiveCharacterRecord,
     updateStoredCharacterRecord,
@@ -46,6 +47,11 @@ export interface CharacterRepositorySnapshot {
     source: 'room-metadata' | 'demo-seed' | 'empty';
     resolution: CharacterViewResolution;
     selection: TokenSelectionState;
+}
+
+export interface CharacterImportSnapshot {
+    snapshot: CharacterRepositorySnapshot;
+    importedCount: number;
 }
 
 export function getCharacterCollectionFromMetadata(metadata: Metadata): StoredCharacterCollection | null {
@@ -218,6 +224,21 @@ export async function deleteCharacter(characterId: string): Promise<CharacterRep
 
     await writeCharacterCollection(next);
     return buildCurrentSnapshot(next);
+}
+
+export async function importCharacterJson(
+    payload: string,
+    mode: 'append' | 'replace',
+): Promise<CharacterImportSnapshot | null> {
+    const metadata = await OBR.room.getMetadata();
+    const current = getCharacterCollectionFromMetadata(metadata) ?? createEmptyCharacterCollection();
+    const imported = importCharactersFromJson(current, payload, mode);
+
+    await writeCharacterCollection(imported.collection);
+    return {
+        snapshot: await buildCurrentSnapshot(imported.collection),
+        importedCount: imported.importedCount,
+    };
 }
 
 export async function updateCharacterSheet(

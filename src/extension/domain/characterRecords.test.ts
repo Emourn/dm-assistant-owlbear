@@ -5,8 +5,11 @@ import {
     createSampleCharacterCollection,
     deleteStoredCharacterRecord,
     duplicateStoredCharacterRecord,
+    importCharactersFromJson,
     parseStoredCharacterCollection,
     selectActiveCharacterRecord,
+    serializeStoredCharacterCollection,
+    serializeStoredCharacterRecord,
     updateStoredCharacterRecord,
 } from './characterRecords';
 
@@ -102,5 +105,57 @@ describe('extension character records', () => {
 
         expect(deleted?.characters).toHaveLength(0);
         expect(deleted?.activeCharacterId).toBeNull();
+    });
+
+    it('serializes a stored record and collection as JSON', () => {
+        const collection = createSampleCharacterCollection(1000);
+
+        expect(serializeStoredCharacterRecord(collection.characters[0])).toContain('"ruleset": "dnd-2024"');
+        expect(serializeStoredCharacterCollection(collection)).toContain('"activeCharacterId": "demo-seraphina-vale"');
+    });
+
+    it('imports a single record JSON by appending it with a unique identity', () => {
+        const collection = addBlankCharacterRecord(createSampleCharacterCollection(1000), 2000);
+        const payload = serializeStoredCharacterRecord(collection.characters[0]);
+        const imported = importCharactersFromJson(collection, payload, 'append', 3000);
+
+        expect(imported.importedCount).toBe(1);
+        expect(imported.collection.characters).toHaveLength(3);
+        expect(selectActiveCharacterRecord(imported.collection)?.sheet.name).toBe('Seraphina Vale 2');
+    });
+
+    it('replaces the collection from exported JSON and preserves the imported active record order', () => {
+        const collection = addBlankCharacterRecord(createSampleCharacterCollection(1000), 2000);
+        const payload = serializeStoredCharacterCollection(collection);
+        const imported = importCharactersFromJson(createSampleCharacterCollection(500), payload, 'replace', 3000);
+
+        expect(imported.importedCount).toBe(2);
+        expect(imported.collection.characters).toHaveLength(2);
+        expect(imported.collection.activeCharacterId).toBe(collection.activeCharacterId);
+    });
+
+    it('imports a plain sheet payload and makes it active', () => {
+        const collection = createSampleCharacterCollection(1000);
+        const payload = JSON.stringify({
+            ...collection.characters[0].sheet,
+            id: 'custom-sheet',
+            name: 'Imported Acolyte',
+        });
+        const imported = importCharactersFromJson(collection, payload, 'append', 3000);
+
+        expect(imported.importedCount).toBe(1);
+        expect(selectActiveCharacterRecord(imported.collection)?.sheet.name).toBe('Imported Acolyte');
+        expect(selectActiveCharacterRecord(imported.collection)?.sheet.id).toBe('imported-acolyte');
+    });
+
+    it('rejects invalid import payloads', () => {
+        const collection = createSampleCharacterCollection(1000);
+
+        expect(() => importCharactersFromJson(collection, '{bad json', 'append')).toThrow(
+            'Import JSON could not be parsed.',
+        );
+        expect(() => importCharactersFromJson(collection, JSON.stringify({ hello: 'world' }), 'append')).toThrow(
+            'Import JSON did not contain a compatible Phase 1 character payload.',
+        );
     });
 });

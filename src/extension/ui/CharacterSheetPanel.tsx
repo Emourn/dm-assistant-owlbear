@@ -38,6 +38,7 @@ interface CharacterSheetPanelProps {
     onCreateCharacter: () => Promise<void>;
     onDuplicateCharacter: (characterId: string) => Promise<void>;
     onDeleteCharacter: (characterId: string) => Promise<void>;
+    onImportCharacters: (payload: string, mode: 'append' | 'replace') => Promise<number>;
     onSave: (sheet: Phase1CharacterSheet) => Promise<void>;
     onAdjustResource: (resourceId: string, delta: number) => Promise<void>;
     onAdjustDeathSave: (kind: 'successes' | 'failures', delta: number) => Promise<void>;
@@ -123,6 +124,7 @@ export function CharacterSheetPanel({
     onCreateCharacter,
     onDuplicateCharacter,
     onDeleteCharacter,
+    onImportCharacters,
     onSave,
     onAdjustResource,
     onAdjustDeathSave,
@@ -146,6 +148,7 @@ export function CharacterSheetPanel({
                     onCreateCharacter={onCreateCharacter}
                     onDuplicateCharacter={onDuplicateCharacter}
                     onDeleteCharacter={onDeleteCharacter}
+                    onImportCharacters={onImportCharacters}
                 />
                 <section className="rounded-[1.4rem] border border-stone-800 bg-stone-950/75 p-5">
                     <div className="flex items-center gap-2 text-sky-300">
@@ -175,6 +178,7 @@ export function CharacterSheetPanel({
                 onCreateCharacter={onCreateCharacter}
                 onDuplicateCharacter={onDuplicateCharacter}
                 onDeleteCharacter={onDeleteCharacter}
+                onImportCharacters={onImportCharacters}
             />
 
             <section className="rounded-[1.4rem] border border-stone-800 bg-stone-950/75 p-5">

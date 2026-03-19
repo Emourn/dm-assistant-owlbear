@@ -29,6 +29,7 @@ import {
     createBlankCharacter,
     deleteCharacter,
     duplicateCharacter,
+    importCharacterJson,
     linkActiveCharacterToSelection,
     readCharacterRepositorySnapshot,
     setActiveCharacterRecord,
@@ -231,6 +232,22 @@ export function PopoverApp({ surface = 'popover' }: { surface?: 'popover' | 'pan
                 setCharacterState(next);
                 setLastRoll(null);
             }
+        } finally {
+            setIsSavingCharacter(false);
+        }
+    }, []);
+
+    const handleImportCharacters = useCallback(async (payload: string, mode: 'append' | 'replace') => {
+        setIsSavingCharacter(true);
+        try {
+            const next = await importCharacterJson(payload, mode);
+            if (!next) {
+                throw new Error('Import failed to produce a room snapshot.');
+            }
+
+            setCharacterState(next.snapshot);
+            setLastRoll(null);
+            return next.importedCount;
         } finally {
             setIsSavingCharacter(false);
         }
@@ -474,6 +491,7 @@ export function PopoverApp({ surface = 'popover' }: { surface?: 'popover' | 'pan
             onCreateCharacter={handleCreateCharacter}
             onDuplicateCharacter={handleDuplicateCharacter}
             onDeleteCharacter={handleDeleteCharacter}
+            onImportCharacters={handleImportCharacters}
             onSaveCharacter={handleSaveCharacter}
             onAdjustResource={handleAdjustResource}
             onAdjustDeathSave={handleAdjustDeathSave}

@@ -27,6 +27,13 @@ export interface StoredCharacterCollection {
     characters: StoredCharacterRecord[];
 }
 
+export type CharacterImportMode = 'append' | 'replace';
+
+export interface CharacterImportResult {
+    collection: StoredCharacterCollection;
+    importedCount: number;
+}
+
 function slugify(value: string): string {
     return value
         .trim()
@@ -95,6 +102,17 @@ function createCharacterRecord(sheet: Phase1CharacterSheet, updatedAt: number): 
         ruleset: CHARACTER_RULESET,
         updatedAt,
         sheet,
+    };
+}
+
+function cloneRecordForImport(record: StoredCharacterRecord, updatedAt: number): StoredCharacterRecord {
+    return {
+        version: CHARACTER_COLLECTION_VERSION,
+        ruleset: CHARACTER_RULESET,
+        updatedAt,
+        sheet: {
+            ...record.sheet,
+        },
     };
 }
 
@@ -258,6 +276,21 @@ function duplicateSheet(source: Phase1CharacterSheet, nextSheetId: string, nextN
     };
 }
 
+function renameImportedSheet(
+    source: Phase1CharacterSheet,
+    nextSheetId: string,
+    nextName: string,
+): Phase1CharacterSheet {
+    if (source.id === nextSheetId && source.name === nextName) {
+        return source;
+    }
+
+    return {
+        ...duplicateSheet(source, nextSheetId, nextName),
+        notes: source.notes,
+    };
+}
+
 function isRecord(value: unknown): value is Record<string, unknown> {
     return typeof value === 'object' && value !== null;
 }
@@ -295,12 +328,85 @@ function isStoredCharacterRecord(value: unknown): value is StoredCharacterRecord
     );
 }
 
+function parseStoredCharacterRecord(value: unknown): StoredCharacterRecord | null {
+    return isStoredCharacterRecord(value) ? value : null;
+}
+
+function parseImportedRecordArray(value: unknown, updatedAt: number): StoredCharacterRecord[] | null {
+    if (!Array.isArray(value)) {
+        return null;
+    }
+
+    const records = value
+        .map((entry) => {
+            const record = parseStoredCharacterRecord(entry);
+            if (record) {
+                return cloneRecordForImport(record, updatedAt);
+            }
+
+            if (isSheetLike(entry)) {
+                return createCharacterRecord(entry, updatedAt);
+            }
+
+            return null;
+        })
+        .filter((entry): entry is StoredCharacterRecord => Boolean(entry));
+
+    return records.length > 0 ? records : null;
+}
+
+function parseImportedPayload(
+    value: unknown,
+    updatedAt: number,
+): { records: StoredCharacterRecord[]; activeCharacterId: string | null } | null {
+    const collection = parseStoredCharacterCollection(value);
+    if (collection) {
+        return {
+            records: collection.characters.map((record) => cloneRecordForImport(record, updatedAt)),
+            activeCharacterId: collection.activeCharacterId,
+        };
+    }
+
+    const record = parseStoredCharacterRecord(value);
+    if (record) {
+        return {
+            records: [cloneRecordForImport(record, updatedAt)],
+            activeCharacterId: record.sheet.id,
+        };
+    }
+
+    if (isSheetLike(value)) {
+        return {
+            records: [createCharacterRecord(value, updatedAt)],
+            activeCharacterId: value.id,
+        };
+    }
+
+    const records = parseImportedRecordArray(value, updatedAt);
+    if (records) {
+        return {
+            records,
+            activeCharacterId: records[0].sheet.id,
+        };
+    }
+
+    return null;
+}
+
 export function createEmptyCharacterCollection(): StoredCharacterCollection {
     return {
         version: CHARACTER_COLLECTION_VERSION,
         activeCharacterId: null,
         characters: [],
     };
+}
+
+export function serializeStoredCharacterRecord(record: StoredCharacterRecord): string {
+    return JSON.stringify(record, null, 2);
+}
+
+export function serializeStoredCharacterCollection(collection: StoredCharacterCollection): string {
+    return JSON.stringify(collection, null, 2);
 }
 
 export function selectActiveCharacterRecord(
@@ -424,6 +530,57 @@ export function deleteStoredCharacterRecord(
         ...collection,
         activeCharacterId: nextActiveCharacterId,
         characters,
+    };
+}
+
+export function importCharactersFromJson(
+    collection: StoredCharacterCollection,
+    payload: string,
+    mode: CharacterImportMode,
+    updatedAt = Date.now(),
+): CharacterImportResult {
+    let parsed: unknown;
+    try {
+        parsed = JSON.parse(payload);
+    } catch {
+        throw new Error('Import JSON could not be parsed.');
+    }
+
+    const imported = parseImportedPayload(parsed, updatedAt);
+    if (!imported || imported.records.length === 0) {
+        throw new Error('Import JSON did not contain a compatible Phase 1 character payload.');
+    }
+
+    const base = mode === 'replace' ? createEmptyCharacterCollection() : collection;
+    let next = {
+        ...base,
+        characters: [...base.characters],
+    };
+    let importedActiveCharacterId: string | null = null;
+
+    for (const record of imported.records) {
+        const nextName = createUniqueCharacterName(next, record.sheet.name);
+        const nextId = createUniqueCharacterId(next, nextName);
+        const importedRecord = createCharacterRecord(
+            renameImportedSheet(record.sheet, nextId, nextName),
+            updatedAt,
+        );
+        next = {
+            ...next,
+            characters: [...next.characters, importedRecord],
+        };
+
+        if (record.sheet.id === imported.activeCharacterId || imported.records.length === 1) {
+            importedActiveCharacterId = importedRecord.sheet.id;
+        }
+    }
+
+    return {
+        collection: {
+            ...next,
+            activeCharacterId: importedActiveCharacterId ?? next.characters.at(-1)?.sheet.id ?? null,
+        },
+        importedCount: imported.records.length,
     };
 }
 
