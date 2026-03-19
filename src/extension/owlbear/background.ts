@@ -1,19 +1,29 @@
 import OBR from '@owlbear-rodeo/sdk';
-import { applyRestRecovery } from '../../features/dnd2024/domain/mutations';
+import { addCondition, applyHitPointDelta, applyRestRecovery, removeCondition } from '../../features/dnd2024/domain/mutations';
 import { rollStructuredD20 } from '../../features/dnd2024/domain/rolls';
 import { buildInitiativeRoll } from '../../features/dnd2024/domain/sheet';
-import { canPublishInitiativeShortcut } from '../domain/contextShortcuts';
-import { getSelectedLinkedCharacters } from '../domain/selectionBatch';
+import {
+    canPublishInitiativeShortcut,
+    CONDITION_SHORTCUTS,
+    HIT_POINT_SHORTCUTS,
+} from '../domain/contextShortcuts';
 import { recordRuntimeAudit } from './auditRepository';
 import {
     linkActiveCharacterToSelection,
     readCharacterRepositorySnapshot,
+    readSelectedLinkedCharacterRecords,
     unlinkSelectionCharacters,
     updateCharacterSheetsWith,
 } from './characterRepository';
 import {
+    APPLY_SELECTION_PARALYZED_CONTEXT_MENU_ID,
+    APPLY_SELECTION_PRONE_CONTEXT_MENU_ID,
     APPLY_SELECTION_LONG_REST_CONTEXT_MENU_ID,
     APPLY_SELECTION_SHORT_REST_CONTEXT_MENU_ID,
+    CLEAR_SELECTION_PARALYZED_CONTEXT_MENU_ID,
+    CLEAR_SELECTION_PRONE_CONTEXT_MENU_ID,
+    DAMAGE_SELECTION_FIVE_CONTEXT_MENU_ID,
+    HEAL_SELECTION_FIVE_CONTEXT_MENU_ID,
     LEGACY_CONTEXT_MENU_ID,
     LINK_SELECTION_CONTEXT_MENU_ID,
     OPEN_CONTEXT_MENU_ID,
@@ -42,25 +52,19 @@ async function getSelectedLinkedCharacterRecords() {
     const role = await OBR.player.getRole().catch(() => null);
     if (role !== 'GM') {
         return {
-            role,
-            snapshot: null,
+            role, 
             selectedCharacters: [],
         };
     }
 
-    const snapshot = await readCharacterRepositorySnapshot(role);
-    const selectedCharacters = getSelectedLinkedCharacters(snapshot.selection.links)
-        .map((selected) => ({
-            ...selected,
-            record: snapshot.collection.characters.find((record) => record.sheet.id === selected.characterId) ?? null,
-        }))
-        .filter((selected): selected is typeof selected & { record: NonNullable<typeof selected.record> } => Boolean(selected.record));
-
     return {
         role,
-        snapshot,
-        selectedCharacters,
+        selectedCharacters: await readSelectedLinkedCharacterRecords(),
     };
+}
+
+function formatHitPoints(current: number, max: number, temp: number): string {
+    return `${current}/${max}${temp > 0 ? ` (+${temp} temp)` : ''}`;
 }
 
 async function handleLinkSelection(): Promise<void> {
@@ -277,6 +281,105 @@ async function handleApplySelectionRest(kind: 'short' | 'long'): Promise<void> {
     await showNotice(`Applied a ${kind} rest to ${pluralize(selectedCharacters.length, 'linked character')}.`);
 }
 
+async function handleApplySelectionHitPoints(
+    shortcut: typeof HIT_POINT_SHORTCUTS[number],
+): Promise<void> {
+    const { role, selectedCharacters } = await getSelectedLinkedCharacterRecords();
+    if (role !== 'GM') {
+        await showNotice(`Only the GM can ${shortcut.kind === 'damage' ? 'damage' : 'heal'} linked selections.`, 'WARNING');
+        return;
+    }
+
+    if (selectedCharacters.length === 0) {
+        await showNotice('Select one or more linked Owlbear tokens first.', 'WARNING');
+        return;
+    }
+
+    const beforeById = new Map(
+        selectedCharacters.map((selected) => [selected.characterId, selected.record.sheet]),
+    );
+    const next = await updateCharacterSheetsWith(
+        selectedCharacters.map((selected) => selected.characterId),
+        (sheet) => applyHitPointDelta(sheet, shortcut.kind, shortcut.amount),
+    );
+
+    if (!next) {
+        await showNotice(`Could not apply ${shortcut.label.toLowerCase()}.`, 'WARNING');
+        return;
+    }
+
+    const details = selectedCharacters.map((selected) => {
+        const previous = beforeById.get(selected.characterId);
+        const updated = next.collection.characters.find((record) => record.sheet.id === selected.characterId)?.sheet;
+        if (!previous || !updated) {
+            return `${selected.characterName}: no change recorded.`;
+        }
+
+        return `${selected.characterName}: ${formatHitPoints(previous.hitPoints.current, previous.hitPoints.max, previous.hitPoints.temp)} -> ${formatHitPoints(updated.hitPoints.current, updated.hitPoints.max, updated.hitPoints.temp)}.`;
+    });
+
+    await recordRuntimeAudit(
+        'hit-points',
+        shortcut.label,
+        details,
+        null,
+    );
+    await showNotice(`${shortcut.label} for ${pluralize(selectedCharacters.length, 'linked character')}.`);
+}
+
+async function handleApplySelectionCondition(
+    shortcut: typeof CONDITION_SHORTCUTS[number],
+): Promise<void> {
+    const { role, selectedCharacters } = await getSelectedLinkedCharacterRecords();
+    if (role !== 'GM') {
+        await showNotice(`Only the GM can change linked target conditions.`, 'WARNING');
+        return;
+    }
+
+    if (selectedCharacters.length === 0) {
+        await showNotice('Select one or more linked Owlbear tokens first.', 'WARNING');
+        return;
+    }
+
+    const beforeById = new Map(
+        selectedCharacters.map((selected) => [selected.characterId, selected.record.sheet]),
+    );
+    const next = await updateCharacterSheetsWith(
+        selectedCharacters.map((selected) => selected.characterId),
+        (sheet) => shortcut.mode === 'remove'
+            ? removeCondition(sheet, shortcut.conditionLabel)
+            : addCondition(sheet, {
+                label: shortcut.conditionLabel,
+                source: 'Context menu shortcut',
+                summary: `Applied from ${shortcut.label}.`,
+            }),
+    );
+
+    if (!next) {
+        await showNotice(`Could not ${shortcut.label.toLowerCase()}.`, 'WARNING');
+        return;
+    }
+
+    const details = selectedCharacters.map((selected) => {
+        const previous = beforeById.get(selected.characterId);
+        const updated = next.collection.characters.find((record) => record.sheet.id === selected.characterId)?.sheet;
+        const hadCondition = previous?.conditions.some((condition) => condition.label === shortcut.conditionLabel) ?? false;
+        const hasCondition = updated?.conditions.some((condition) => condition.label === shortcut.conditionLabel) ?? false;
+        if (shortcut.mode === 'add') {
+            return `${selected.characterName}: ${hadCondition ? 'already had' : 'now has'} ${shortcut.conditionLabel}.`;
+        }
+        return `${selected.characterName}: ${hasCondition ? `still has ${shortcut.conditionLabel}` : `${shortcut.conditionLabel} cleared`}.`;
+    });
+
+    await recordRuntimeAudit(
+        'condition',
+        shortcut.label,
+        details,
+        null,
+    );
+    await showNotice(`${shortcut.label} for ${pluralize(selectedCharacters.length, 'linked character')}.`);
+}
+
 async function registerContextMenus(): Promise<void> {
     const ids = [
         LEGACY_CONTEXT_MENU_ID,
@@ -288,6 +391,12 @@ async function registerContextMenus(): Promise<void> {
         PUBLISH_SELECTION_INITIATIVE_CONTEXT_MENU_ID,
         APPLY_SELECTION_SHORT_REST_CONTEXT_MENU_ID,
         APPLY_SELECTION_LONG_REST_CONTEXT_MENU_ID,
+        DAMAGE_SELECTION_FIVE_CONTEXT_MENU_ID,
+        HEAL_SELECTION_FIVE_CONTEXT_MENU_ID,
+        APPLY_SELECTION_PRONE_CONTEXT_MENU_ID,
+        CLEAR_SELECTION_PRONE_CONTEXT_MENU_ID,
+        APPLY_SELECTION_PARALYZED_CONTEXT_MENU_ID,
+        CLEAR_SELECTION_PARALYZED_CONTEXT_MENU_ID,
     ];
     ids.forEach((id) => {
         void OBR.contextMenu.remove(id).catch(() => undefined);
@@ -428,6 +537,108 @@ async function registerContextMenus(): Promise<void> {
         ],
         onClick: async () => {
             await handleApplySelectionRest('long');
+        },
+    });
+
+    await OBR.contextMenu.create({
+        id: DAMAGE_SELECTION_FIVE_CONTEXT_MENU_ID,
+        icons: [
+            {
+                icon,
+                label: HIT_POINT_SHORTCUTS[0].label,
+                filter: {
+                    min: 1,
+                    roles: ['GM'],
+                },
+            },
+        ],
+        onClick: async () => {
+            await handleApplySelectionHitPoints(HIT_POINT_SHORTCUTS[0]);
+        },
+    });
+
+    await OBR.contextMenu.create({
+        id: HEAL_SELECTION_FIVE_CONTEXT_MENU_ID,
+        icons: [
+            {
+                icon,
+                label: HIT_POINT_SHORTCUTS[1].label,
+                filter: {
+                    min: 1,
+                    roles: ['GM'],
+                },
+            },
+        ],
+        onClick: async () => {
+            await handleApplySelectionHitPoints(HIT_POINT_SHORTCUTS[1]);
+        },
+    });
+
+    await OBR.contextMenu.create({
+        id: APPLY_SELECTION_PRONE_CONTEXT_MENU_ID,
+        icons: [
+            {
+                icon,
+                label: CONDITION_SHORTCUTS[0].label,
+                filter: {
+                    min: 1,
+                    roles: ['GM'],
+                },
+            },
+        ],
+        onClick: async () => {
+            await handleApplySelectionCondition(CONDITION_SHORTCUTS[0]);
+        },
+    });
+
+    await OBR.contextMenu.create({
+        id: CLEAR_SELECTION_PRONE_CONTEXT_MENU_ID,
+        icons: [
+            {
+                icon,
+                label: CONDITION_SHORTCUTS[1].label,
+                filter: {
+                    min: 1,
+                    roles: ['GM'],
+                },
+            },
+        ],
+        onClick: async () => {
+            await handleApplySelectionCondition(CONDITION_SHORTCUTS[1]);
+        },
+    });
+
+    await OBR.contextMenu.create({
+        id: APPLY_SELECTION_PARALYZED_CONTEXT_MENU_ID,
+        icons: [
+            {
+                icon,
+                label: CONDITION_SHORTCUTS[2].label,
+                filter: {
+                    min: 1,
+                    roles: ['GM'],
+                },
+            },
+        ],
+        onClick: async () => {
+            await handleApplySelectionCondition(CONDITION_SHORTCUTS[2]);
+        },
+    });
+
+    await OBR.contextMenu.create({
+        id: CLEAR_SELECTION_PARALYZED_CONTEXT_MENU_ID,
+        icons: [
+            {
+                icon,
+                label: CONDITION_SHORTCUTS[3].label,
+                filter: {
+                    min: 1,
+                    roles: ['GM'],
+                },
+            },
+        ],
+        onClick: async () => {
+            await handleApplySelectionCondition(CONDITION_SHORTCUTS[3]);
         },
     });
 }
