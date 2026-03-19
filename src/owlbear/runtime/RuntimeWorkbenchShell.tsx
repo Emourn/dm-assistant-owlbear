@@ -187,44 +187,61 @@ function SelectionInspector({
     if (!selection) {
         return (
             <section className="overflow-hidden rounded-[1.35rem] border border-stone-800 bg-[linear-gradient(180deg,rgba(12,10,9,0.98),rgba(28,25,23,0.94))] p-5 shadow-[0_24px_60px_-36px_rgba(15,23,42,0.95)]">
-                <div className="flex items-center gap-2 text-emerald-300">
-                    <Crosshair size={16} />
-                    <span className="font-mono text-[10px] font-bold uppercase tracking-[0.26em]">Selection inspector</span>
+                <div className="flex flex-col gap-4 lg:flex-row lg:items-start lg:justify-between">
+                    <div>
+                        <div className="flex items-center gap-2 text-emerald-300">
+                            <Crosshair size={16} />
+                            <span className="font-mono text-[10px] font-bold uppercase tracking-[0.26em]">Selection inspector</span>
+                            <span className="rounded-full border border-stone-700 bg-stone-950/80 px-2.5 py-1 text-[10px] font-black uppercase tracking-[0.16em] text-stone-300">
+                                Idle
+                            </span>
+                        </div>
+                        <h2 className="mt-3 text-xl font-semibold tracking-tight text-parchment">Map-first idle state</h2>
+                        <p className="mt-2 max-w-2xl text-sm text-stone-400">
+                            Select a token to link, assign, or import. Until then, use a compact roster or setup action.
+                        </p>
+                    </div>
+                    <div className="grid min-w-[180px] gap-2 sm:grid-cols-3 lg:grid-cols-1">
+                        <CompactStat label="Sheets" value={String(characters.length)} />
+                        <CompactStat label="Players" value={String(playerRows.length)} />
+                        <CompactStat label="Selection" value="Waiting" />
+                    </div>
                 </div>
-                <h2 className="mt-3 text-2xl font-semibold tracking-tight text-parchment">Stay on the map</h2>
-                <p className="mt-2 max-w-2xl text-sm text-stone-400">Select a token to link, assign, or import. Until then, use one of these entry points.</p>
-                <div className="mt-5 grid gap-3 sm:grid-cols-3">
-                    <button
-                        type="button"
-                        onClick={onOpenImport}
-                        className="rounded-xl border border-gold/30 bg-gold/10 px-4 py-4 text-left transition-colors hover:border-gold/50 hover:bg-gold/15"
-                    >
-                        <div className="font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-gold">Import</div>
-                        <div className="mt-2 text-base font-semibold text-parchment">Import a PDF sheet</div>
-                        <div className="mt-2 text-sm text-stone-400">Start from a D&D Beyond or fillable PDF and save it to the roster.</div>
-                    </button>
-                    <button
-                        type="button"
-                        onClick={onOpenCreate}
-                        className="rounded-xl border border-stone-800 bg-stone-900/70 px-4 py-4 text-left transition-colors hover:border-stone-700 hover:bg-stone-900"
-                    >
-                        <div className="font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-sky-300">Create</div>
-                        <div className="mt-2 text-base font-semibold text-parchment">Create a new sheet</div>
-                        <div className="mt-2 text-sm text-stone-400">Open the full editor only when you need to author or revise a character.</div>
-                    </button>
-                    <button
-                        type="button"
-                        onClick={onOpenRoster}
-                        className="rounded-xl border border-stone-800 bg-stone-900/70 px-4 py-4 text-left transition-colors hover:border-stone-700 hover:bg-stone-900"
-                    >
-                        <div className="font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-emerald-300">Roster</div>
-                        <div className="mt-2 text-base font-semibold text-parchment">Open saved characters</div>
-                        <div className="mt-2 text-sm text-stone-400">Review your roster, edit imported sheets, and prepare characters before linking tokens.</div>
-                    </button>
-                </div>
-                <div className="mt-4 flex flex-wrap gap-2">
-                    <SelectionCommandButton icon={Swords} label="Open Combat" onClick={onOpenCombat} />
-                    <SelectionCommandButton icon={Link2} label="Open Sync" onClick={onOpenSync} />
+                <div className="mt-5 grid gap-3 lg:grid-cols-[1.1fr_0.9fr]">
+                    <div className="rounded-xl border border-gold/20 bg-gold/5 p-4">
+                        <div className="font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-gold">Primary setup</div>
+                        <div className="mt-3 grid gap-2 sm:grid-cols-2">
+                            <button
+                                type="button"
+                                onClick={onOpenImport}
+                                className="rounded-xl border border-gold/30 bg-gold/10 px-4 py-4 text-left transition-colors hover:border-gold/50 hover:bg-gold/15"
+                            >
+                                <div className="font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-gold">Import</div>
+                                <div className="mt-2 text-base font-semibold text-parchment">Import PDF sheet</div>
+                                <div className="mt-2 text-sm text-stone-400">Fastest path for a live token workflow.</div>
+                            </button>
+                            <button
+                                type="button"
+                                onClick={onOpenCreate}
+                                className="rounded-xl border border-stone-800 bg-stone-900/70 px-4 py-4 text-left transition-colors hover:border-stone-700 hover:bg-stone-900"
+                            >
+                                <div className="font-mono text-[10px] font-bold uppercase tracking-[0.2em] text-sky-300">Create</div>
+                                <div className="mt-2 text-base font-semibold text-parchment">Create sheet</div>
+                                <div className="mt-2 text-sm text-stone-400">Open the editor only when you need to author manually.</div>
+                            </button>
+                        </div>
+                    </div>
+                    <div className="rounded-xl border border-stone-800 bg-stone-950/60 p-4">
+                        <div className="font-mono text-[10px] font-bold uppercase tracking-[0.22em] text-stone-500">Utility actions</div>
+                        <div className="mt-3 flex flex-wrap gap-2">
+                            <SelectionCommandButton icon={Users} label="Open Roster" onClick={onOpenRoster} accent={characters.length > 0} />
+                            <SelectionCommandButton icon={Swords} label="Open Combat" onClick={onOpenCombat} />
+                            <SelectionCommandButton icon={Link2} label="Open Sync" onClick={onOpenSync} />
+                        </div>
+                        <div className="mt-4 rounded-xl border border-stone-800 bg-stone-900/70 px-3 py-3 text-sm text-stone-400">
+                            Token-specific commands appear here as soon as you select something on the map.
+                        </div>
+                    </div>
                 </div>
             </section>
         );
@@ -1078,33 +1095,34 @@ export function RuntimeWorkbenchShell() {
     return (
         <div className="min-h-screen bg-[radial-gradient(circle_at_top_left,_rgba(56,189,248,0.08),_transparent_28%),radial-gradient(circle_at_top_right,_rgba(245,158,11,0.08),_transparent_24%),linear-gradient(180deg,rgba(12,10,9,0.99),rgba(17,24,39,0.94))] p-4 text-stone-100 sm:p-5">
             <div className="mx-auto flex max-w-6xl flex-col gap-4">
-                <section className="overflow-hidden rounded-[1.35rem] border border-stone-800 bg-[linear-gradient(180deg,rgba(12,10,9,0.98),rgba(28,25,23,0.94))] p-4 shadow-[0_24px_60px_-36px_rgba(15,23,42,0.95)]">
-                    <div className="flex flex-col gap-4 xl:flex-row xl:items-end xl:justify-between">
+                <section className="overflow-hidden rounded-[1.2rem] border border-stone-800 bg-[linear-gradient(180deg,rgba(12,10,9,0.98),rgba(28,25,23,0.94))] p-4 shadow-[0_24px_60px_-36px_rgba(15,23,42,0.95)]">
+                    <div className="flex flex-col gap-3 xl:flex-row xl:items-center xl:justify-between">
                         <div className="min-w-0">
                             <div className="flex flex-wrap items-center gap-2 text-emerald-300">
-                                <RadioTower size={16} />
+                                <RadioTower size={15} />
                                 <span className="font-mono text-[10px] font-bold uppercase tracking-[0.28em]">DM Assistant for Owlbear</span>
+                                <span className="rounded-full border border-stone-700 bg-stone-950/80 px-2.5 py-1 text-[10px] font-black uppercase tracking-[0.16em] text-stone-300">
+                                    Runtime
+                                </span>
                             </div>
-                            <div className="mt-3 flex flex-col gap-2 lg:flex-row lg:items-end lg:justify-between">
-                                <div>
-                                    <h1 className="text-2xl font-semibold tracking-tight text-parchment">Runtime command panel</h1>
-                                    <p className="mt-2 max-w-3xl text-sm leading-relaxed text-stone-400">
-                                        Use the panel as a lightweight console beside the map. Token linking, sheet automation, rests, notes, and combat all stay close to Owlbear instead of taking over the tabletop.
-                                    </p>
-                                </div>
+                            <div className="mt-2 text-sm text-stone-400">
+                                {selectedItems.length > 0
+                                    ? `Current focus: ${describeSelection(selectedItems.length, primarySelection)}`
+                                    : 'No token selected. Use import, roster, or sync until a token is selected.'}
                             </div>
                         </div>
-                        <div className="grid gap-2 sm:grid-cols-2 xl:grid-cols-4">
+                        <div className="flex flex-wrap gap-2">
                             <HeaderAction icon={FileUp} label="Import PDF" onClick={handleOpenImport} accent />
                             <HeaderAction icon={PencilLine} label="New Sheet" onClick={handleOpenCreate} />
-                            <HeaderAction icon={Swords} label="Import Combat" onClick={handleImportSelection} disabled={isBusy} />
-                            <HeaderAction icon={Sparkles} label="Publish Sync" onClick={handlePublish} disabled={isBusy} />
+                            <HeaderAction icon={Swords} label="To Combat" onClick={handleImportSelection} disabled={isBusy} />
+                            <HeaderAction icon={Sparkles} label="Publish" onClick={handlePublish} disabled={isBusy} />
                         </div>
                     </div>
-                    <div className="mt-4 grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
+                    <div className="mt-3 grid gap-2 sm:grid-cols-2 xl:grid-cols-5">
                         <CompactStat label="Campaign" value={activeCampaign?.title || 'No active campaign'} />
                         <CompactStat label="Selection" value={describeSelection(selectedItems.length, primarySelection)} />
                         <CompactStat label="Sheets" value={String(characters.length)} />
+                        <CompactStat label="Players" value={String(playerRows.length)} />
                         <CompactStat label="Encounter" value={activeEncounter?.title || roomState?.activeEncounter?.title || 'Idle'} />
                     </div>
                 </section>
