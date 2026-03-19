@@ -3,6 +3,7 @@ import { Crosshair, Layers3, MapPinned, ScrollText, Shield, Users } from 'lucide
 import type { Phase1CharacterSheet, StructuredRollRequest, StructuredRollResult } from '../../features/dnd2024/domain/types';
 import type { StoredRoomRollState } from '../domain/roomRolls';
 import type { RoomRollPromptDraft } from '../domain/roomRolls';
+import type { StoredRuntimeAuditState } from '../domain/runtimeAudit';
 import { CURRENT_SLICE, NEXT_SLICES } from '../domain/phases';
 import {
     canManageSheetRuntime,
@@ -16,12 +17,14 @@ import type { CharacterRepositorySnapshot } from '../owlbear/characterRepository
 import type { OwlbearRuntimeSnapshot } from '../owlbear/runtime';
 import { CharacterSheetPanel } from './CharacterSheetPanel';
 import { RoomRollPanel } from './RoomRollPanel';
+import { RuntimeAuditPanel } from './RuntimeAuditPanel';
 import { VisibilityPolicyPanel } from './VisibilityPolicyPanel';
 
 interface ExtensionShellProps {
     runtime: OwlbearRuntimeSnapshot | null;
     characterState: CharacterRepositorySnapshot | null;
     roomRollState: StoredRoomRollState | null;
+    runtimeAuditState: StoredRuntimeAuditState | null;
     visibilitySettings: StoredVisibilitySettings;
     lastRoll: StructuredRollResult | null;
     assigningPlayerId: string | null;
@@ -31,6 +34,7 @@ interface ExtensionShellProps {
     isPublishingRoll: boolean;
     isManagingPrompt: boolean;
     isSavingVisibility: boolean;
+    isClearingAudit: boolean;
     onRoll: (request: StructuredRollRequest) => void;
     onPublishLastRoll: () => Promise<void>;
     onSelectCharacter: (characterId: string) => void;
@@ -51,6 +55,7 @@ interface ExtensionShellProps {
     onClearPrompt: () => Promise<void>;
     onRespondToPrompt: () => Promise<void>;
     onSaveVisibilitySettings: (settings: StoredVisibilitySettings) => Promise<void>;
+    onClearAudit: () => Promise<void>;
     loadState: 'loading' | 'ready' | 'error';
     error: string | null;
     surface: 'popover' | 'panel';
@@ -82,6 +87,7 @@ export function ExtensionShell({
     runtime,
     characterState,
     roomRollState,
+    runtimeAuditState,
     visibilitySettings,
     lastRoll,
     assigningPlayerId,
@@ -91,6 +97,7 @@ export function ExtensionShell({
     isPublishingRoll,
     isManagingPrompt,
     isSavingVisibility,
+    isClearingAudit,
     onRoll,
     onPublishLastRoll,
     onSelectCharacter,
@@ -111,6 +118,7 @@ export function ExtensionShell({
     onClearPrompt,
     onRespondToPrompt,
     onSaveVisibilitySettings,
+    onClearAudit,
     loadState,
     error,
     surface,
@@ -295,6 +303,13 @@ export function ExtensionShell({
                     settings={visibilitySettings}
                     isSaving={isSavingVisibility}
                     onSave={onSaveVisibilitySettings}
+                />
+
+                <RuntimeAuditPanel
+                    role={runtime.role}
+                    state={runtimeAuditState ?? { version: 1, entries: [] }}
+                    isClearing={isClearingAudit}
+                    onClear={onClearAudit}
                 />
 
                 <section className="grid gap-4 lg:grid-cols-[1.15fr_0.85fr]">

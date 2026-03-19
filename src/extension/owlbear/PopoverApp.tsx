@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useState } from 'react';
 import OBR from '@owlbear-rodeo/sdk';
-import { spendActionResource } from '../../features/dnd2024/domain/actionAutomation';
+import { getActionUseState, spendActionResource } from '../../features/dnd2024/domain/actionAutomation';
 import { buildInitiativeRoll } from '../../features/dnd2024/domain/sheet';
 import {
     applyRestRecovery,
@@ -17,6 +17,7 @@ import type {
 } from '../../features/dnd2024/domain/types';
 import type { StoredRoomRollState } from '../domain/roomRolls';
 import { buildPromptRollRequest, type RoomRollPromptDraft } from '../domain/roomRolls';
+import type { StoredRuntimeAuditState } from '../domain/runtimeAudit';
 import {
     canManageSheetRuntime,
     canPublishManualRoll,
@@ -25,6 +26,11 @@ import {
     type StoredVisibilitySettings,
 } from '../domain/visibilitySettings';
 import { ExtensionShell } from '../ui/ExtensionShell';
+import {
+    clearRuntimeAuditHistory,
+    readRuntimeAuditState,
+    recordRuntimeAudit,
+} from './auditRepository';
 import {
     assignCharacterToPlayer,
     createBlankCharacter,
@@ -63,6 +69,7 @@ export function PopoverApp({ surface = 'popover' }: { surface?: 'popover' | 'pan
     const [runtime, setRuntime] = useState<OwlbearRuntimeSnapshot | null>(null);
     const [characterState, setCharacterState] = useState<CharacterRepositorySnapshot | null>(null);
     const [roomRollState, setRoomRollState] = useState<StoredRoomRollState | null>(null);
+    const [runtimeAuditState, setRuntimeAuditState] = useState<StoredRuntimeAuditState | null>(null);
     const [visibilitySettings, setVisibilitySettings] = useState<StoredVisibilitySettings>(createDefaultVisibilitySettings);
     const [lastRoll, setLastRoll] = useState<StructuredRollResult | null>(null);
     const [assigningPlayerId, setAssigningPlayerId] = useState<string | null>(null);
@@ -72,21 +79,24 @@ export function PopoverApp({ surface = 'popover' }: { surface?: 'popover' | 'pan
     const [isPublishingRoll, setIsPublishingRoll] = useState(false);
     const [isManagingPrompt, setIsManagingPrompt] = useState(false);
     const [isSavingVisibility, setIsSavingVisibility] = useState(false);
+    const [isClearingAudit, setIsClearingAudit] = useState(false);
     const [loadState, setLoadState] = useState<'loading' | 'ready' | 'error'>('loading');
     const [error, setError] = useState<string | null>(null);
 
     const refresh = useCallback(async () => {
         try {
             const snapshot = await readRuntimeSnapshot();
-            const [nextCharacterState, nextRoomRollState, nextVisibilitySettings] = await Promise.all([
+            const [nextCharacterState, nextRoomRollState, nextVisibilitySettings, nextRuntimeAuditState] = await Promise.all([
                 readCharacterRepositorySnapshot(snapshot.role),
                 readRoomRollState(),
                 readVisibilitySettings(),
+                readRuntimeAuditState(),
             ]);
             setRuntime(snapshot);
             setCharacterState(nextCharacterState);
             setRoomRollState(nextRoomRollState);
             setVisibilitySettings(nextVisibilitySettings);
+            setRuntimeAuditState(nextRuntimeAuditState);
             setLoadState('ready');
             setError(null);
         } catch (cause) {
@@ -175,6 +185,15 @@ export function PopoverApp({ surface = 'popover' }: { surface?: 'popover' | 'pan
                 'manual',
             );
             setRoomRollState(next);
+            setRuntimeAuditState(await recordRuntimeAudit(
+                'roll',
+                `Published ${lastRoll.label}`,
+                [
+                    `Total ${lastRoll.total} from ${lastRoll.formula}.`,
+                    `Visibility: ${visibilitySettings.defaultRollVisibility}.`,
+                ],
+                characterState?.activeCharacter?.sheet ?? null,
+            ));
         } finally {
             setIsPublishingRoll(false);
         }
@@ -298,6 +317,11 @@ export function PopoverApp({ surface = 'popover' }: { surface?: 'popover' | 'pan
 
         setIsUpdatingRuntime(true);
         try {
+            const previous = [
+                ...(characterState?.activeCharacter?.sheet.resources ?? []),
+                ...(characterState?.activeCharacter?.sheet.spellcasting?.slots ?? []),
+            ]
+                .find((resource) => resource.id === resourceId);
             const next = await updateCharacterSheetWith(
                 activeSheetId,
                 (sheet) => updateSheetResourceCounter(sheet, resourceId, delta),
@@ -305,6 +329,22 @@ export function PopoverApp({ surface = 'popover' }: { surface?: 'popover' | 'pan
             if (next) {
                 setCharacterState(next);
                 setLastRoll(null);
+                const updated = [
+                    ...(next.activeCharacter?.sheet.resources ?? []),
+                    ...(next.activeCharacter?.sheet.spellcasting?.slots ?? []),
+                ]
+                    .find((resource) => resource.id === resourceId);
+                if (previous && updated) {
+                    setRuntimeAuditState(await recordRuntimeAudit(
+                        'resource',
+                        `Adjusted ${updated.name}`,
+                        [
+                            `${previous.current}/${previous.max} -> ${updated.current}/${updated.max}`,
+                            `Delta ${delta >= 0 ? `+${delta}` : delta}.`,
+                        ],
+                        next.activeCharacter?.sheet ?? null,
+                    ));
+                }
             }
         } finally {
             setIsUpdatingRuntime(false);
@@ -319,6 +359,7 @@ export function PopoverApp({ surface = 'popover' }: { surface?: 'popover' | 'pan
 
         setIsUpdatingRuntime(true);
         try {
+            const previous = characterState?.activeCharacter?.sheet.deathSaves[kind] ?? 0;
             const next = await updateCharacterSheetWith(
                 activeSheetId,
                 (sheet) => updateDeathSaves(sheet, kind, delta),
@@ -326,6 +367,15 @@ export function PopoverApp({ surface = 'popover' }: { surface?: 'popover' | 'pan
             if (next) {
                 setCharacterState(next);
                 setLastRoll(null);
+                setRuntimeAuditState(await recordRuntimeAudit(
+                    'death-save',
+                    `Updated death save ${kind}`,
+                    [
+                        `${previous}/3 -> ${next.activeCharacter?.sheet.deathSaves[kind] ?? previous}/3`,
+                        `Delta ${delta >= 0 ? `+${delta}` : delta}.`,
+                    ],
+                    next.activeCharacter?.sheet ?? null,
+                ));
             }
         } finally {
             setIsUpdatingRuntime(false);
@@ -347,6 +397,7 @@ export function PopoverApp({ surface = 'popover' }: { surface?: 'popover' | 'pan
         if (!action) {
             return;
         }
+        const useState = getActionUseState(activeSheet, action);
 
         setIsUpdatingRuntime(true);
         try {
@@ -357,6 +408,22 @@ export function PopoverApp({ surface = 'popover' }: { surface?: 'popover' | 'pan
             if (next) {
                 setCharacterState(next);
                 setLastRoll(null);
+                if (useState.resource) {
+                    const nextResource = [
+                        ...(next.activeCharacter?.sheet.resources ?? []),
+                        ...(next.activeCharacter?.sheet.spellcasting?.slots ?? []),
+                    ]
+                        .find((resource) => resource.id === useState.resource?.id);
+                    setRuntimeAuditState(await recordRuntimeAudit(
+                        'resource',
+                        `Spent ${useState.resource.name} from ${action.name}`,
+                        [
+                            `${useState.resource.current}/${useState.resource.max} -> ${nextResource?.current ?? useState.resource.current}/${useState.resource.max}`,
+                            `Cost ${useState.amount}.`,
+                        ],
+                        next.activeCharacter?.sheet ?? null,
+                    ));
+                }
             }
         } finally {
             setIsUpdatingRuntime(false);
@@ -376,6 +443,7 @@ export function PopoverApp({ surface = 'popover' }: { surface?: 'popover' | 'pan
 
         setIsUpdatingRuntime(true);
         try {
+            const previousResources = [...activeSheet.resources, ...(activeSheet.spellcasting?.slots ?? [])];
             const next = await updateCharacterSheetWith(
                 activeSheet.id,
                 (sheet) => applyRestRecovery(sheet, kind),
@@ -383,6 +451,21 @@ export function PopoverApp({ surface = 'popover' }: { surface?: 'popover' | 'pan
             if (next) {
                 setCharacterState(next);
                 setLastRoll(null);
+                const updatedResources = [...(next.activeCharacter?.sheet.resources ?? []), ...((next.activeCharacter?.sheet.spellcasting?.slots) ?? [])];
+                const recovered = updatedResources
+                    .map((resource) => {
+                        const previous = previousResources.find((entry) => entry.id === resource.id);
+                        return previous && previous.current !== resource.current
+                            ? `${resource.name}: ${previous.current}/${previous.max} -> ${resource.current}/${resource.max}`
+                            : null;
+                    })
+                    .filter((entry): entry is string => Boolean(entry));
+                setRuntimeAuditState(await recordRuntimeAudit(
+                    'rest',
+                    `Applied ${kind} rest recovery`,
+                    recovered.length > 0 ? recovered : ['No modeled counters changed.'],
+                    next.activeCharacter?.sheet ?? null,
+                ));
             }
         } finally {
             setIsUpdatingRuntime(false);
@@ -409,6 +492,15 @@ export function PopoverApp({ surface = 'popover' }: { surface?: 'popover' | 'pan
             if (next) {
                 setCharacterState(next);
                 setLastRoll(null);
+                setRuntimeAuditState(await recordRuntimeAudit(
+                    'override',
+                    'Saved manual overrides',
+                    [
+                        `Proficiency override: ${nextOverrides.proficiencyBonusOverride ?? 'auto'}.`,
+                        `Initiative adjustment: ${nextOverrides.initiativeAdjustment}.`,
+                    ],
+                    next.activeCharacter?.sheet ?? null,
+                ));
             }
         } finally {
             setIsUpdatingRuntime(false);
@@ -420,20 +512,35 @@ export function PopoverApp({ surface = 'popover' }: { surface?: 'popover' | 'pan
         try {
             const next = await openRoomPrompt(prompt, visibilitySettings.initiativePromptAudience);
             setRoomRollState(next);
+            setRuntimeAuditState(await recordRuntimeAudit(
+                'prompt',
+                `Opened ${next.activePrompt?.label ?? 'prompt'}`,
+                [`Audience: ${visibilitySettings.initiativePromptAudience}.`],
+                characterState?.activeCharacter?.sheet ?? null,
+            ));
         } finally {
             setIsManagingPrompt(false);
         }
-    }, [visibilitySettings]);
+    }, [characterState, visibilitySettings]);
 
     const handleClearPrompt = useCallback(async () => {
         setIsManagingPrompt(true);
         try {
+            const previousPrompt = roomRollState?.activePrompt;
             const next = await clearRoomPrompt();
             setRoomRollState(next);
+            if (previousPrompt) {
+                setRuntimeAuditState(await recordRuntimeAudit(
+                    'prompt',
+                    `Cleared ${previousPrompt.label}`,
+                    [`Audience was ${previousPrompt.audience}.`],
+                    characterState?.activeCharacter?.sheet ?? null,
+                ));
+            }
         } finally {
             setIsManagingPrompt(false);
         }
-    }, []);
+    }, [characterState, roomRollState]);
 
     const handleRespondToPrompt = useCallback(async () => {
         const sheet = characterState?.activeCharacter?.sheet;
@@ -457,6 +564,15 @@ export function PopoverApp({ surface = 'popover' }: { surface?: 'popover' | 'pan
             const visibility = prompt.audience === 'room' ? 'room' : 'assigned-only';
             const next = await publishRoomRoll(result, sheet, visibility, 'prompt');
             setRoomRollState(next);
+            setRuntimeAuditState(await recordRuntimeAudit(
+                'roll',
+                `Answered ${prompt.label}`,
+                [
+                    `Published ${result.total} from ${result.formula}.`,
+                    `Visibility: ${visibility}.`,
+                ],
+                sheet,
+            ));
         } finally {
             setIsPublishingRoll(false);
         }
@@ -472,11 +588,21 @@ export function PopoverApp({ surface = 'popover' }: { surface?: 'popover' | 'pan
         }
     }, []);
 
+    const handleClearAudit = useCallback(async () => {
+        setIsClearingAudit(true);
+        try {
+            setRuntimeAuditState(await clearRuntimeAuditHistory());
+        } finally {
+            setIsClearingAudit(false);
+        }
+    }, []);
+
     return (
         <ExtensionShell
             runtime={runtime}
             characterState={characterState}
             roomRollState={roomRollState}
+            runtimeAuditState={runtimeAuditState}
             visibilitySettings={visibilitySettings}
             lastRoll={lastRoll}
             assigningPlayerId={assigningPlayerId}
@@ -486,6 +612,7 @@ export function PopoverApp({ surface = 'popover' }: { surface?: 'popover' | 'pan
             isPublishingRoll={isPublishingRoll}
             isManagingPrompt={isManagingPrompt}
             isSavingVisibility={isSavingVisibility}
+            isClearingAudit={isClearingAudit}
             onRoll={handleRoll}
             onPublishLastRoll={handlePublishLastRoll}
             onSelectCharacter={handleSelectCharacter}
@@ -506,6 +633,7 @@ export function PopoverApp({ surface = 'popover' }: { surface?: 'popover' | 'pan
             onClearPrompt={handleClearPrompt}
             onRespondToPrompt={handleRespondToPrompt}
             onSaveVisibilitySettings={handleSaveVisibilitySettings}
+            onClearAudit={handleClearAudit}
             loadState={loadState}
             error={error}
             surface={surface}
