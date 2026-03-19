@@ -1,0 +1,227 @@
+(cid:0)(cid:2)(cid:3)(cid:4)(cid:5)(cid:3)(cid:6)(cid:7)(cid:8)(cid:9)(cid:8)(cid:2)(cid:10)(cid:11)(cid:3)(cid:12)(cid:13)(cid:7)(cid:14)(cid:8)(cid:6)(cid:2)(cid:15)(cid:3)(cid:16)(cid:10)(cid:14)(cid:3)(cid:17)(cid:10)(cid:14)(cid:3)(cid:10)(cid:18)(cid:19)(cid:20)(cid:10)(cid:11)(cid:11)(cid:5)(cid:3)(cid:8)(cid:2)(cid:18)(cid:11)(cid:20)(cid:21)(cid:13)(cid:21)(cid:22)(cid:3)(cid:0)(cid:3)(cid:17)(cid:10)(cid:14)(cid:3)(cid:9)(cid:6)(cid:8)(cid:2)(cid:9)
+(cid:19)(cid:6)(cid:3)(cid:6)(cid:7)(cid:8)(cid:9)(cid:8)(cid:2)(cid:10)(cid:11)(cid:11)(cid:5)(cid:3)(cid:23)(cid:10)(cid:12)(cid:13)(cid:3)(cid:19)(cid:23)(cid:13)(cid:3)(cid:24)(cid:11)(cid:10)(cid:5)(cid:13)(cid:7)(cid:14)(cid:3)(cid:25)(cid:8)(cid:2)(cid:21)(cid:3)(cid:23)(cid:8)(cid:4)(cid:3)(cid:17)(cid:23)(cid:13)(cid:2)(cid:3)(cid:19)(cid:23)(cid:13)(cid:5)(cid:3)(cid:17)(cid:13)(cid:2)(cid:19)(cid:3)(cid:19)(cid:6)
+(cid:26)(cid:13)(cid:10)(cid:19)(cid:23)(cid:3)(cid:27)(cid:6)(cid:20)(cid:14)(cid:13)(cid:3)(cid:25)(cid:6)(cid:7)(cid:3)(cid:19)(cid:23)(cid:13)(cid:3)(cid:28)(cid:2)(cid:21)(cid:3)(cid:19)(cid:8)(cid:4)(cid:13)(cid:3)(cid:8)(cid:2)(cid:3)(cid:29)(cid:23)(cid:10)(cid:24)(cid:19)(cid:13)(cid:7)(cid:3)(cid:30)(cid:22)(cid:3)(cid:31)(cid:23)(cid:13)(cid:5)(cid:3)(cid:17)(cid:6)(cid:20)(cid:11)(cid:21)(cid:3)(cid:25)(cid:10)(cid:18)(cid:13)
+(cid:6)(cid:25)(cid:25)(cid:3)(cid:17)(cid:8)(cid:19)(cid:23)(cid:3) (cid:19)(cid:7)(cid:10)(cid:23)(cid:21)(cid:15)(cid:3)(cid:9)(cid:13)(cid:19)(cid:3)(cid:19)(cid:23)(cid:13)(cid:3)(cid:24)(cid:8)(cid:13)(cid:18)(cid:13)(cid:3)(cid:6)(cid:25)(cid:3)(cid:19)(cid:23)(cid:13)(cid:3)!(cid:6)(cid:21)(cid:3)(cid:6)(cid:25)(cid:3) (cid:13)(cid:12)(cid:13)(cid:2)(cid:3)"(cid:10)(cid:7)(cid:19)(cid:14)(cid:15)(cid:3)(cid:10)(cid:2)(cid:21)
+(cid:19)(cid:23)(cid:13)(cid:2)(cid:3)(cid:19)(cid:23)(cid:13)(cid:3)(cid:26)(cid:10)(cid:7)#(cid:3)"(cid:6)(cid:17)(cid:13)(cid:7)(cid:14)(cid:3)(cid:17)(cid:6)(cid:20)(cid:11)(cid:21)(cid:3)(cid:21)(cid:13)(cid:24)(cid:6)(cid:14)(cid:8)(cid:19)(cid:3)(cid:19)(cid:23)(cid:13)(cid:4)(cid:3)(cid:8)(cid:2)(cid:19)(cid:6)(cid:3)(cid:31)(cid:6)(cid:12)(cid:10)(cid:9)(cid:22)(cid:3)(cid:27)(cid:13)(cid:7)(cid:13)
+(cid:19)(cid:23)(cid:13)(cid:5)(cid:3)(cid:17)(cid:6)(cid:20)(cid:11)(cid:21)(cid:3)(cid:13)(cid:2)(cid:18)(cid:6)(cid:20)(cid:2)(cid:19)(cid:13)(cid:7)(cid:3)(cid:16)(cid:10)(cid:14)(cid:3)(cid:10)(cid:2)(cid:21)(cid:3)(cid:17)(cid:6)(cid:20)(cid:11)(cid:21)(cid:3)(cid:13)(cid:8)(cid:19)(cid:23)(cid:13)(cid:7)(cid:3)(cid:9)(cid:13)(cid:19)(cid:3)(cid:19)(cid:23)(cid:13)(cid:3) (cid:17)(cid:6)(cid:7)(cid:21)(cid:3)(cid:6)(cid:25)
+(cid:16)(cid:10)(cid:14)(cid:3)(cid:25)(cid:7)(cid:6)(cid:4)(cid:3)(cid:23)(cid:8)(cid:4)(cid:3)(cid:6)(cid:7)(cid:3)(cid:19)(cid:23)(cid:13)(cid:5)(cid:3)(cid:17)(cid:6)(cid:20)(cid:11)(cid:21)(cid:3)(cid:18)(cid:6)(cid:2)(cid:12)(cid:8)(cid:2)(cid:18)(cid:13)(cid:3)(cid:16)(cid:10)(cid:14)(cid:3)(cid:19)(cid:6)(cid:3)(cid:23)(cid:13)(cid:11)(cid:24)(cid:3)(cid:19)(cid:23)(cid:13)(cid:4)(cid:3)(cid:7)(cid:8)(cid:21)
+(cid:19)(cid:23)(cid:13)(cid:3)(cid:4)(cid:20)(cid:11)(cid:8)(cid:12)(cid:13)(cid:7)(cid:14)(cid:13)(cid:3)(cid:6)(cid:25)(cid:3)$(cid:13)(cid:18)(cid:2)(cid:10)(cid:22)(cid:3)(cid:0)(cid:3)(cid:14)(cid:18)(cid:7)(cid:10)(cid:24)(cid:24)(cid:13)(cid:21)(cid:3)(cid:19)(cid:23)(cid:8)(cid:14)(cid:3)(cid:8)(cid:21)(cid:13)(cid:10)(cid:3)%(cid:13)(cid:18)(cid:10)(cid:20)(cid:14)(cid:13)(cid:3)(cid:19)(cid:23)(cid:13)(cid:3) (cid:6)(cid:16)(cid:15)
+(cid:10)(cid:14)(cid:3)(cid:0)(cid:3)(cid:20)(cid:2)(cid:21)(cid:13)(cid:7)(cid:14)(cid:19)(cid:10)(cid:2)(cid:21)(cid:3)(cid:8)(cid:19)(cid:15)(cid:3)(cid:23)(cid:10)(cid:14)(cid:3)%(cid:13)(cid:13)(cid:2)(cid:3)(cid:11)(cid:6)(cid:14)(cid:19)(cid:3)(cid:19)(cid:6)(cid:3)(cid:16)(cid:10)(cid:14)(cid:3)(cid:14)(cid:8)(cid:2)(cid:18)(cid:13)(cid:3)(cid:10)(cid:7)(cid:7)(cid:8)(cid:12)(cid:8)(cid:2)(cid:9)(cid:3)(cid:8)(cid:2)
+(cid:31)(cid:6)(cid:12)(cid:10)(cid:9)(cid:15)(cid:3)(cid:24)(cid:11)(cid:20)(cid:14)(cid:22)(cid:22)(cid:3)!(cid:10)(cid:12)(cid:13)(cid:2)(cid:11)(cid:6)(cid:25)(cid:19)(cid:3)(cid:17)(cid:6)(cid:20)(cid:11)(cid:21)(cid:2)&(cid:19)(cid:3)(cid:14)(cid:8)(cid:4)(cid:24)(cid:11)(cid:5)(cid:3)(cid:11)(cid:13)(cid:19)(cid:3)(cid:23)(cid:8)(cid:4)(cid:3)(cid:17)(cid:10)(cid:11)#(cid:3)(cid:6)(cid:20)(cid:19)(cid:22)
+
+
+
+
+
+
+Zybilna says, "She did. . by imprisoning him with the I did put in a built in Easy Mode. The Rod of Seven
+maze." Parts can shift one's alignment to a lawful alignment if
+Vecna smiles, "and thanks to my loyal subjects, it is held. While Vecna is already of a Lawful Alignment,
+helping me with my ritual, I am free. Now watch me Lawful Evil, I instead am taking a liberty for the Rod to
+unmake .. everything." shift one's alignment to Lawful Good. I decided this, not
+And with that the battle is on again, and now. . you're as a cop-out, but again, as an easy mode. Should a
+fighting a god. player have attuned toV ecna's Hand, and again that is
+done by lopping off one's own hand and shoving the
+LEVEL20 Vecna Hand onto the stump, they need to hold the Rod
+in that hand. Because the Hand ofVecna really does
+This is where there is a major challenge and something
+belong toV ecna this alignment shift will effect him and
+I failed to include in the video. While the epic battle just
+not the player. It should weaken him down to a point
+prior took players from level 18 to 19, at the start of this
+where he won't know what is going on and will allow
+phase, they hit level 20 and there was nothing I had in
+the players to do as they see fit.
+place for them to rest to gain level 20 abilities. BUT
+Either way, this battle will end with the characters
+then it hit me, The Lady of Pain is there in the
+being triumphant or with their total failure.
+background. While she cannot putV ecna into a new
+Maze at this point, she can place the players into one, at
+VECNA WINS
+least long enough for them to rest and level up. Once
+they have done that she willingly lets them out. At one of my tables the players have already stated that
+One of the major fixes and perhaps the entire reason I they are going to team up withV ecna and help him
+started this fix to begin with was because Wizards of the remake the multiverse.Joy.
+Coast told us, in all of their marketing material that In Eve of Ruin we are given a brief one line that states
+we'd be facingV ecna, the God of Secrets, yet, what we that shouldV ecna win that the "multiverse becomes a
+got instead ofVecna in his archlich form. They didn't terrible place indeed." And that's it. My fix had to
+even upgrade his statblock from the Vecna Dossier that continue.
+came out a couple of years back. This was a ripoff of ShouldV ecna win, I have two endings. One I'll be
+me, and as mentioned, this was the specific reason that doing 100% with one table as they are older players and
+I wanted to provide a fix. One of my Discord members would get a kick out this; Vecna will unmake everything,
+created up a Vecna the Whispered One stat block that 5th edition won't exist, 4th edition will revert back to
+was miles above what we got in Eve of Ruin, you can 3.5. 3.5 will disolve to 3rd, 3rd will become 2nd edition,
+take a look at it here: Vecna the WhisRered One. and we will go all the way back to the pamphlet version
+This new stat block is powerful, nasty, and should of the game, which will also include Eldritch Wizardry.
+provide an actual challenge. In Eve of Ruin we are told Vecna will explain that that's what he's been trying to do
+thatV ecna doesn't pay the characters any mind at all all along, revert the game back to it's basics, to it's
+unless they directly challege him, that he is too busy beginning to where he was first spoken about. That he
+trying to perform his ritual. In this fixed version, he is hasn't been the evil one all along, that he instead was
+very much active. trying to rid the multiverse of the evil corporate
+Big Bad Evil Guys must have a bit of dialgue, right? overlords. He hopes that the progenitors of this reset do
+They are compelled to explain everything, what their not make the same mistakes. From this point, that game
+overall goal has been all along. In this, Vecna is no table will begin playing the pamphlet version of
+different. He will explain that the Obelisks were build by Dungeons and Dragons.
+the Netherese, that he used the obelisks to wipe out all The more realistic ending would haveV ecna and the
+knowledge of the Netherese, but in doing so learned of characters floating on a large rock in space as the
+an even older race known as the Spellweavers that multiverse unravels around them. Planes would shift,
+actually taught the Netherese how to build the obelisks some would collide, others would disappear, and even
+and that they worshipped an even more ancient god some might emerge that had been long forgotten.V ecna
+known asJ ergal, the Lord of the End of Everything. would truely become the master of the multiverse, buit
+Vecna goes on to explain that he has been using the thenJergal would finally come forth. This is the
+characters to help unlock the Maze by completing one cliffhanger I'd leave it at; Why?
+such Obelisk and with it made hole, it allowed a rift to Why wouldV ecna want to meet withJergal? To kill
+be opened, which is turn allows Vecna to escape, that him so thatV ecna could be the true Lord of the End of
+the last part of the Rod of Seven Parts held the final Everything? Or would we find out thatJergal was
+part of the obelisk. BUT, in order to have his full power, actually pullingV ecna's strings all along? Would we
+his full body must be restored, and thankfully, the discover thatJergal held power a multifold of magnitude
+characters also retrieved his hand and eye, all they need over whatV ecna had or would be find that by Vecna's
+to do is hand them over. unmaking of the multiverse, that he unmade whatever
+This is the end all battle of the Adventure. It won't be prisonJergal had been held in thus cementing that
+easy and it won't be fair.V ecna will use everythin in his Vecna was indeed the most powerful? That would be
+power to win. the final tease that I would leave the players with.
+
+
+
+
+• explains that the players were his puppets that he
+LEVEL 18, 19, AND 20
+used them to complete the obelisk and complete the
+Major change from Eve of Ruin, as Mordenkainen isn't
+rod (which held the last piece of the obelisk) so that
+Kas. there is no betrayer to be revealed. Rest of he could escape the Maze.
+adventure will also be altered quite a bit. Do we have • what if a player rips out an eye and shoves V's in?
+Kas return here? If so, how does he enter Sigil?
+what is a player lops off their hand and slaps V's on?
+what if it's the same player?
+• Mordenkainen assembles the full rod
+• offer than it can make vecna weaker if the hand of
+• Zybilna sees that the obelisk is missing a piece at the
+vecna holds the rod of seven parts that it will shift his
+top
+alignment and give the players a slight advantage
+• 7th piece of the rod contains that last obelisk piece
+• fight should not be fair nor easy. if players die they
+• characters pass out due to another vecna vision
+die.
+• mordenkainen needs to mention Wizards Three
+• have everyone step onto balcony that overlooks the
+VECNA WINS
+city, dusk is falling, eve. Even tho we can't really see
+the sun, this is more symbolic than anything else. Vecna will take players with him so they can witness the
+• rift opens once rod is placed into obelisk end and the ultimate remaking.
+• match the artwork from DMs screen from Beedle
+• he remakes the multiverse
+and GRIM's website, include spiderdragon
+• option 1 : undoes META style all of D&D and takes it
+• mordenkainen falls but vanishes before he hits the
+back to the old white book days. Mark wants to play
+ground
+super old school rules so this would be great to
+• massive battle can be seen, monsters pour into the
+explain why we are doing this.
+santum -players can quell their thirst for blood and
+• Option 2 : vecna and players are on a rock in space
+battle here.
+watching the multiverse unfold and remake itself.
+• have kas return here? maybe he found a way to the
+• he meetsJergal but we don't know why
+battle and enters here to help? don't want to rob
+• what the future for the characters? does V kill them?
+players of fun victory before the real storm hits tho.
+shove them off the rock and watch and laugh as they
+• more spiderdragons
+float in space forever?
+• moar spiderdragons
+• and another. spiderdragons are cool.
+VECNALOSES
+• make battle grand and fierce.
+• mordenkainen returns and bring circle of eight with Big celebration but also there are hints of things to yet
+him they help turn the tide of the epic battle, it can come:
+go on for several rounds tho.
+• rift shimmers and slides a bit and then stops and • players are rewarded with a big celebration and a
+becomes solid. permanent home in Sigil
+• lady of pain shows up and pits the characters into • other towns celebrate that vecna is gone tho they
+their own maze. this is more of a place of protection may not know who saved them
+really, outside of time and space, here they can heal • negative things also happen -while some cult of
+up and level up. need to add something more tho, vecna members will give up and turn themselves in,
+going from level 18 to 20 should be more than just some will attempt to elevate themselves and may
+an epic battle. even attempt to become a lich.
+• after levelling up LoP releases them • something is whispering back and has stepped into
+• mord and Co8 rush the rift only to crumble to black the void that vecna was in, that entity might be even
+dust. yes, we just killed Mordenkainen and 8 worse (tease cthulhu here)
+powerful wizards.
+VECNAFIGHT
+Use Timmy's Vecna the Whisgered One stat block,
+it's much better and more powerful than the archlich
+version WotC provided plus they already fought the
+archligh version earler.
+• don't pull vecna's punches.
+• give epic villian speech -netherese built obelisk
+based on ancient spellweaver obelisk, they
+worshipedJergal the lord of the end of everything,
+vecna wants to meet this guy, we don't know why
+(yet).
+• vecna wants his hand and eye back
+F;xirgVecna
+13
+FIXING VECNA - PLAYERS GONE WILD
+HAT IF THE PLAYERS DECIDE THAT THEY HAVE HAD I was correct in my prediction when they went
+enough of everything and want to join through Eberron, they attempted to free Landro from
+[Vecna's cause and help him to remake the the mountain, not because they felt bad for him, but
+multiverse? While Vecna is Lawful Evil, he instead because they wanted a big damn machine to
+will certainly not turn the help away. He march around inside of. After Landro blew up, they
+may not see the player's characters as insisted on trying to find another colossus as there were
+followers or worshipers, but he will see many strewn all over the landscape. Finally they
+them as a possible tool or means to meet his final decided to try to collect parts and build their own. They
+objective of remaking the multiverse. figured that by having a massive robot on their side that
+I was compelled to offer this scenario up because. .. at that could help them if they decided to fight Alustreil,
+one of the sessions that I run, my players have chosen to Mordenkainen, Zybilna, or any other powerful being. It
+do exactly this, join Vecna. They went through my initial is a great time to be a dungeon master ..
+Death House at level 1, as previously detailed in this I finally decided to have an out of game chat with
+document, just fine. Then as they went through the Nest them about their actions and possible ramifications.
+of the Eldritch Eye .. they encountered Zalryr first, they While I'm fine with them taking the amount of player
+held no punches and dispatched of him. Of course the agency that they are, I did explain to them that there
+cultists heard the sounds of battle and rushed in, only to would likely be other NPCs that pop up at different
+find their leader dead on the floor. One player did an points that they could go all murder hobo against if that
+arcane check and recognized the tattoo. . then in haste was the path they really wanted to go down, but I also
+drew a similar tattoo made of Zalryr's blood onto the warned them that this would not be an easy adventure
+back of his hand .. and they proceeded to convince the to begin with, even less so should they side with Vecna.
+cultists that Vecna had sent them to get rid of Zalryr, While we are still moving through the adventure,
+that he wasn't performing and bringing enough people currently they are in the middle of the 2nd visit to Death
+to Vecna's side. . House. Vecna will encounter them here and I'll change
+The party then commanded each cultist to go forth up the dialogue between Strahd and the players, but
+and spread the word that there were 6 new leaders to who knows how this will ultimately turn out.
+direct them all, that they would be visiting each hideout
+to "check up" on things. The Vecna cult members then I'm honestly rather surprised that they are still alive.
+scattered and only after they had left did the "runic
+circle hiss and flash with lurid light". Vecna coalesced To that end, I wrote down only four bullet points:
+into his apparition of the skull and one glowing green
+eye and spoke:
+"Zalryr was such a disappointment, but I find you six
+to be six points of interest. Yes, you have great potential!
+We will meet again, but until then, I've got my eye on
+you!" and then the apparition exlodes just as it does in
+the NotEE adventure, passing streaks of shadows
+through each character, bestowing upon them one of
+the two charms.
+I had already made most of my bullet point notes as
+detailed out in the previous section, and while I knew
+that I could keep most of them and leave the adventure
+as is, the biggest challenge would come about when
+they decided to reveal to the NPCs, mainly
+Mordenkainen, Alustriel, and Zybilna what they were
+really doing.
+Should they reveal that they are working to help
+Vecna when they first encounter Alustriel, well, at that
+point they'd only be around level 5, she'd wipe the floor
+with them and use their bones to make cookies. Even
+waiting until the end, once they have reached level 20 Good luck to you should your players decide to team up
+could be a challenge because, depending on how they with Vecna, it won't be easy for them, hell, the
+reveal themselves, the Lady of Pain could just toss them adventure won't be easy regardless, but less so if they
+into a Maze (like she does to give them a breather at the side with him.
+end so they can heal up and level up) and never let them The remaining pages are blank for your own notes.
+out.
+Fixing V � c.'la
+

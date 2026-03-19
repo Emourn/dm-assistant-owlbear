@@ -1,0 +1,1560 @@
+{
+    "classes": [
+        {
+            "id": "barbarian_2024",
+            "name": "Barbarian",
+            "source": "PHB 2024",
+            "is2024": true,
+            "hitDice": "d12",
+            "primaryAbility": [
+                "Strength"
+            ],
+            "savingThrows": [
+                "Strength",
+                "Constitution"
+            ],
+            "proficiencies": {
+                "skills": {
+                    "choose": 2,
+                    "from": [
+                        "Animal Handling",
+                        "Athletics",
+                        "Intimidation",
+                        "Nature",
+                        "Perception",
+                        "Survival"
+                    ]
+                },
+                "weapons": [
+                    "Simple",
+                    "Martial"
+                ],
+                "armor": [
+                    "Light",
+                    "Medium",
+                    "Shields"
+                ]
+            },
+            "startingEquipment": {
+                "choiceA": [
+                    "Greatsword",
+                    "4 Javelins",
+                    "Explorer's Pack",
+                    "15 GP"
+                ],
+                "choiceB": [
+                    "150 GP"
+                ]
+            },
+            "levels": {
+                "1": {
+                    "features": [
+                        {
+                            "name": "Rage",
+                            "description": "Bonus Action to enter. Advantage on STR checks/saves. Bonus damage to melee attacks. Resistance to bludgeoning, piercing, slashing."
+                        },
+                        {
+                            "name": "Unarmored Defense",
+                            "description": "While not wearing armor, AC = 10 + DEX + CON + Shield."
+                        },
+                        {
+                            "name": "Weapon Mastery",
+                            "description": "Choose two kinds of weapons to use their mastery properties."
+                        }
+                    ],
+                    "rageDamage": 2,
+                    "rages": 2
+                },
+                "2": {
+                    "features": [
+                        {
+                            "name": "Danger Sense",
+                            "description": "Advantage on DEX saves against seen effects."
+                        },
+                        {
+                            "name": "Reckless Attack",
+                            "description": "Advantage on STR melee attacks; attacks against you have Advantage until next turn."
+                        }
+                    ]
+                },
+                "3": {
+                    "features": [
+                        {
+                            "name": "Barbarian Subclass",
+                            "description": "Choose a subclass."
+                        },
+                        {
+                            "name": "Primal Knowledge",
+                            "description": "Gain proficiency in one extra skill from the Barbarian list. While Raging, you can use STR for certain skill checks."
+                        }
+                    ]
+                }
+            },
+            "subclasses": [
+                {
+                    "name": "Path of the Berserker",
+                    "features": [
+                        {
+                            "level": 3,
+                            "name": "Frenzy",
+                            "description": "Extra d6 damage on Reckless Attack."
+                        }
+                    ]
+                },
+                {
+                    "name": "Path of the Wild Heart",
+                    "features": [
+                        {
+                            "level": 3,
+                            "name": "Animal Aspect",
+                            "description": "Choose Bear, Eagle, or Wolf aspect while raging."
+                        }
+                    ]
+                },
+                {
+                    "name": "Path of the World Tree",
+                    "features": [
+                        {
+                            "level": 3,
+                            "name": "Vitality of the Tree",
+                            "description": "Gain Temp HP when you Rage."
+                        }
+                    ]
+                },
+                {
+                    "name": "Path of the Zealot",
+                    "features": [
+                        {
+                            "level": 3,
+                            "name": "Divine Fury",
+                            "description": "Extra radiant/necrotic damage on first hit."
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "bard_2024",
+            "name": "Bard",
+            "source": "PHB 2024",
+            "is2024": true,
+            "hitDice": "d8",
+            "primaryAbility": [
+                "Charisma"
+            ],
+            "savingThrows": [
+                "Dexterity",
+                "Charisma"
+            ],
+            "proficiencies": {
+                "skills": {
+                    "choose": 3,
+                    "from": "all"
+                },
+                "weapons": [
+                    "Simple"
+                ],
+                "tools": {
+                    "choose": 3,
+                    "from": "Musical Instruments"
+                },
+                "armor": [
+                    "Light"
+                ]
+            },
+            "startingEquipment": {
+                "choiceA": [
+                    "Leather Armor",
+                    "2 Daggers",
+                    "Musical Instrument",
+                    "Entertainer's Pack",
+                    "19 GP"
+                ],
+                "choiceB": [
+                    "90 GP"
+                ]
+            },
+            "levels": {
+                "1": {
+                    "features": [
+                        {
+                            "name": "Bardic Inspiration (d6)",
+                            "description": "Bonus Action to give a die to another creature within 60ft. Adds to a failed d20 test. Lasts 1 hour."
+                        },
+                        {
+                            "name": "Spellcasting",
+                            "description": "Charisma-based slot casting. 2 Cantrips, 4 Prepared spells."
+                        }
+                    ],
+                    "cantrips": 2,
+                    "spellsPrepared": 4,
+                    "inspirationDie": "d6"
+                },
+                "2": {
+                    "features": [
+                        {
+                            "name": "Expertise",
+                            "description": "Double proficiency bonus for two skills."
+                        },
+                        {
+                            "name": "Jack of All Trades",
+                            "description": "Add half proficiency bonus to non-proficient skill checks."
+                        }
+                    ]
+                },
+                "3": {
+                    "features": [
+                        {
+                            "name": "Bard Subclass",
+                            "description": "Choose a subclass."
+                        }
+                    ]
+                }
+            },
+            "subclasses": [
+                {
+                    "name": "College of Dance",
+                    "features": [
+                        {
+                            "level": 3,
+                            "name": "Dazzling Footwork",
+                            "description": "Unarmored Defense (10+DEX+CHA), Agile Strikes."
+                        }
+                    ]
+                },
+                {
+                    "name": "College of Glamour",
+                    "features": [
+                        {
+                            "level": 3,
+                            "name": "Mantle of Inspiration",
+                            "description": "Temp HP and reaction movement."
+                        }
+                    ]
+                },
+                {
+                    "name": "College of Lore",
+                    "features": [
+                        {
+                            "level": 3,
+                            "name": "Cutting Words",
+                            "description": "Reaction to subtract inspiration die from enemy roll."
+                        }
+                    ]
+                },
+                {
+                    "name": "College of Valor",
+                    "features": [
+                        {
+                            "level": 3,
+                            "name": "Combat Inspiration",
+                            "description": "Add inspiration to AC or damage."
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "cleric_2024",
+            "name": "Cleric",
+            "source": "PHB 2024",
+            "is2024": true,
+            "hitDice": "d8",
+            "primaryAbility": [
+                "Wisdom"
+            ],
+            "savingThrows": [
+                "Wisdom",
+                "Charisma"
+            ],
+            "proficiencies": {
+                "skills": {
+                    "choose": 2,
+                    "from": [
+                        "History",
+                        "Insight",
+                        "Medicine",
+                        "Persuasion",
+                        "Religion"
+                    ]
+                },
+                "weapons": [
+                    "Simple"
+                ],
+                "armor": [
+                    "Light",
+                    "Medium",
+                    "Shields"
+                ]
+            },
+            "startingEquipment": {
+                "choiceA": [
+                    "Chain Shirt",
+                    "Shield",
+                    "Mace",
+                    "Holy Symbol",
+                    "Priest's Pack",
+                    "7 GP"
+                ],
+                "choiceB": [
+                    "110 GP"
+                ]
+            },
+            "levels": {
+                "1": {
+                    "features": [
+                        {
+                            "name": "Divine Order",
+                            "description": "Choose Protector (Heavy Armor/Martial Weapons) or Thaumaturge (+1 Cantrip, Bonus to Arcana/Religion)."
+                        },
+                        {
+                            "name": "Spellcasting",
+                            "description": "Wisdom-based slot casting. 3 Cantrips, 4 Prepared spells."
+                        }
+                    ],
+                    "cantrips": 3,
+                    "spellsPrepared": 4
+                },
+                "2": {
+                    "features": [
+                        {
+                            "name": "Channel Divinity",
+                            "description": "Divine Spark (Healing or Damage) or Turn Undead. 2 uses per short/long rest."
+                        }
+                    ]
+                },
+                "3": {
+                    "features": [
+                        {
+                            "name": "Cleric Subclass",
+                            "description": "Choose a subclass (Domain)."
+                        }
+                    ]
+                }
+            },
+            "subclasses": [
+                {
+                    "name": "Life Domain",
+                    "features": [
+                        {
+                            "level": 3,
+                            "name": "Disciple of Life",
+                            "description": "Bonus healing on spells."
+                        }
+                    ]
+                },
+                {
+                    "name": "Light Domain",
+                    "features": [
+                        {
+                            "level": 3,
+                            "name": "Warding Flare",
+                            "description": "Reaction to impose disadvantage on attack."
+                        }
+                    ]
+                },
+                {
+                    "name": "Trickery Domain",
+                    "features": [
+                        {
+                            "level": 3,
+                            "name": "Invoke Duplicity",
+                            "description": "Create an illusory duplicate."
+                        }
+                    ]
+                },
+                {
+                    "name": "War Domain",
+                    "features": [
+                        {
+                            "level": 3,
+                            "name": "War Priest",
+                            "description": "Extra attack as bonus action."
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "druid_2024",
+            "name": "Druid",
+            "source": "PHB 2024",
+            "is2024": true,
+            "hitDice": "d8",
+            "primaryAbility": [
+                "Wisdom"
+            ],
+            "savingThrows": [
+                "Intelligence",
+                "Wisdom"
+            ],
+            "proficiencies": {
+                "skills": {
+                    "choose": 2,
+                    "from": [
+                        "Animal Handling",
+                        "Arcana",
+                        "Insight",
+                        "Medicine",
+                        "Nature",
+                        "Perception",
+                        "Religion",
+                        "Survival"
+                    ]
+                },
+                "weapons": [
+                    "Simple"
+                ],
+                "armor": [
+                    "Light"
+                ],
+                "tools": [
+                    "Herbalism Kit"
+                ]
+            },
+            "startingEquipment": {
+                "choiceA": [
+                    "Leather Armor",
+                    "Shield",
+                    "Sickle",
+                    "Druidic Focus",
+                    "Explorer's Pack",
+                    "9 GP"
+                ],
+                "choiceB": [
+                    "50 GP"
+                ]
+            },
+            "levels": {
+                "1": {
+                    "features": [
+                        {
+                            "name": "Druidic",
+                            "description": "Speak and leave hidden messages in Druidic."
+                        },
+                        {
+                            "name": "Primal Order",
+                            "description": "Choose Magician (+1 Cantrip, Bonus to Arcana/Nature) or Warden (Martial Weapons, Medium Armor)."
+                        },
+                        {
+                            "name": "Spellcasting",
+                            "description": "Wisdom-based slot casting. 2 Cantrips, 4 Prepared spells."
+                        }
+                    ],
+                    "cantrips": 2,
+                    "spellsPrepared": 4
+                },
+                "2": {
+                    "features": [
+                        {
+                            "name": "Wild Shape",
+                            "description": "Bonus Action to transform into a beast. 2 uses per short/long rest."
+                        },
+                        {
+                            "name": "Wild Companion",
+                            "description": "Expend a use of Wild Shape or spell slot to cast Find Familiar."
+                        }
+                    ]
+                },
+                "3": {
+                    "features": [
+                        {
+                            "name": "Druid Subclass",
+                            "description": "Choose a subclass (Circle)."
+                        }
+                    ]
+                }
+            },
+            "subclasses": [
+                {
+                    "name": "Circle of the Land",
+                    "features": [
+                        {
+                            "level": 3,
+                            "name": "Land's Aid",
+                            "description": "Expend wild shape for AOE damage/healing."
+                        }
+                    ]
+                },
+                {
+                    "name": "Circle of the Moon",
+                    "features": [
+                        {
+                            "level": 3,
+                            "name": "Circle Forms",
+                            "description": "Action/Bonus Action wild shape, higher CR, better AC."
+                        }
+                    ]
+                },
+                {
+                    "name": "Circle of the Sea",
+                    "features": [
+                        {
+                            "level": 3,
+                            "name": "Wrath of the Sea",
+                            "description": "Ocean spray aura for damage and push."
+                        }
+                    ]
+                },
+                {
+                    "name": "Circle of the Stars",
+                    "features": [
+                        {
+                            "level": 3,
+                            "name": "Starry Form",
+                            "description": "Transformation for Archer, Chalice, or Dragon benefits."
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "fighter_2024",
+            "name": "Fighter",
+            "source": "PHB 2024",
+            "is2024": true,
+            "hitDice": "d10",
+            "primaryAbility": [
+                "Strength",
+                "Dexterity"
+            ],
+            "savingThrows": [
+                "Strength",
+                "Constitution"
+            ],
+            "proficiencies": {
+                "skills": {
+                    "choose": 2,
+                    "from": [
+                        "Acrobatics",
+                        "Animal Handling",
+                        "Athletics",
+                        "History",
+                        "Insight",
+                        "Intimidation",
+                        "Perception",
+                        "Survival"
+                    ]
+                },
+                "weapons": [
+                    "Simple",
+                    "Martial"
+                ],
+                "armor": [
+                    "Light",
+                    "Medium",
+                    "Heavy",
+                    "Shields"
+                ]
+            },
+            "startingEquipment": {
+                "choiceA": [
+                    "Chain Mail",
+                    "Shield",
+                    "Longsword",
+                    "2 Javelins",
+                    "Dungeoneer's Pack",
+                    "9 GP"
+                ],
+                "choiceB": [
+                    "155 GP"
+                ]
+            },
+            "levels": {
+                "1": {
+                    "features": [
+                        {
+                            "name": "Fighting Style",
+                            "description": "Gain a Fighting Style feat."
+                        },
+                        {
+                            "name": "Second Wind",
+                            "description": "Bonus Action to heal 1d10 + Fighter level. Uses replenish on rest."
+                        },
+                        {
+                            "name": "Weapon Mastery",
+                            "description": "Choose three kinds of weapons to use their mastery properties."
+                        }
+                    ]
+                },
+                "2": {
+                    "features": [
+                        {
+                            "name": "Action Surge",
+                            "description": "Take one additional action. Replenishes on Long Rest."
+                        },
+                        {
+                            "name": "Tactical Mind",
+                            "description": "Expend Second Wind use to add 1d10 to failed ability check."
+                        }
+                    ]
+                },
+                "3": {
+                    "features": [
+                        {
+                            "name": "Fighter Subclass",
+                            "description": "Choose a subclass."
+                        }
+                    ]
+                }
+            },
+            "subclasses": [
+                {
+                    "name": "Battle Master",
+                    "features": [
+                        {
+                            "level": 3,
+                            "name": "Combat Superiority",
+                            "description": "Gain Superiority Dice and Maneuvers."
+                        }
+                    ]
+                },
+                {
+                    "name": "Champion",
+                    "features": [
+                        {
+                            "level": 3,
+                            "name": "Improved Critical",
+                            "description": "Crit on 19-20."
+                        }
+                    ]
+                },
+                {
+                    "name": "Eldritch Knight",
+                    "features": [
+                        {
+                            "level": 3,
+                            "name": "Spellcasting",
+                            "description": "INT-based casting with Wizard spells."
+                        }
+                    ]
+                },
+                {
+                    "name": "Psi Warrior",
+                    "features": [
+                        {
+                            "level": 3,
+                            "name": "Psionic Power",
+                            "description": "Protective and offensive psionic dice."
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "monk_2024",
+            "name": "Monk",
+            "source": "PHB 2024",
+            "is2024": true,
+            "hitDice": "d8",
+            "primaryAbility": [
+                "Dexterity",
+                "Wisdom"
+            ],
+            "savingThrows": [
+                "Strength",
+                "Dexterity"
+            ],
+            "proficiencies": {
+                "skills": {
+                    "choose": 2,
+                    "from": [
+                        "Acrobatics",
+                        "Athletics",
+                        "History",
+                        "Insight",
+                        "Religion",
+                        "Stealth"
+                    ]
+                },
+                "weapons": [
+                    "Simple",
+                    "Martial (Finesse/Light)"
+                ],
+                "tools": {
+                    "choose": 1,
+                    "from": [
+                        "Artisan's Tools",
+                        "Musical Instruments"
+                    ]
+                }
+            },
+            "startingEquipment": {
+                "choiceA": [
+                    "Spear",
+                    "5 Daggers",
+                    "Explorer's Pack",
+                    "11 GP"
+                ],
+                "choiceB": [
+                    "65 GP"
+                ]
+            },
+            "levels": {
+                "1": {
+                    "features": [
+                        {
+                            "name": "Martial Arts",
+                            "description": "d6 Die. Use DEX for Unarmed/Monk weapons. Bonus Action Unarmed Strike."
+                        },
+                        {
+                            "name": "Unarmored Defense",
+                            "description": "While not wearing armor/shield, AC = 10 + DEX + WIS."
+                        }
+                    ]
+                },
+                "2": {
+                    "features": [
+                        {
+                            "name": "Monk's Focus",
+                            "description": "Focus Points to use Flurry of Blows, Patient Defense, or Step of the Wind."
+                        },
+                        {
+                            "name": "Unarmored Movement",
+                            "description": "+10ft speed while unarmored."
+                        }
+                    ]
+                },
+                "3": {
+                    "features": [
+                        {
+                            "name": "Monk Subclass",
+                            "description": "Choose a subclass (Way)."
+                        },
+                        {
+                            "name": "Deflect Attacks",
+                            "description": "Reaction to reduce damage from melee/ranged attacks."
+                        }
+                    ]
+                }
+            },
+            "subclasses": [
+                {
+                    "name": "Warrior of Mercy",
+                    "features": [
+                        {
+                            "level": 3,
+                            "name": "Hand of Healing/Harm",
+                            "description": "Spend Focus to heal or deal necrotic damage."
+                        }
+                    ]
+                },
+                {
+                    "name": "Warrior of Shadow",
+                    "features": [
+                        {
+                            "level": 3,
+                            "name": "Shadow Arts",
+                            "description": "Cast Darkness, gain Darkvision, Minor Illusion."
+                        }
+                    ]
+                },
+                {
+                    "name": "Warrior of the Elements",
+                    "features": [
+                        {
+                            "level": 3,
+                            "name": "Elemental Attunement",
+                            "description": "Reach and elemental damage for unarmed strikes."
+                        }
+                    ]
+                },
+                {
+                    "name": "Warrior of the Open Hand",
+                    "features": [
+                        {
+                            "level": 3,
+                            "name": "Open Hand Technique",
+                            "description": "Addle, Push, or Topple on Flurry of Blows."
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "paladin_2024",
+            "name": "Paladin",
+            "source": "PHB 2024",
+            "is2024": true,
+            "hitDice": "d10",
+            "primaryAbility": [
+                "Strength",
+                "Charisma"
+            ],
+            "savingThrows": [
+                "Wisdom",
+                "Charisma"
+            ],
+            "proficiencies": {
+                "skills": {
+                    "choose": 2,
+                    "from": [
+                        "Athletics",
+                        "Insight",
+                        "Intimidation",
+                        "Medicine",
+                        "Persuasion",
+                        "Religion"
+                    ]
+                },
+                "weapons": [
+                    "Simple",
+                    "Martial"
+                ],
+                "armor": [
+                    "Light",
+                    "Medium",
+                    "Heavy",
+                    "Shields"
+                ]
+            },
+            "startingEquipment": {
+                "choiceA": [
+                    "Chain Mail",
+                    "Shield",
+                    "Longsword",
+                    "6 Javelins",
+                    "Holy Symbol",
+                    "Priest's Pack",
+                    "9 GP"
+                ],
+                "choiceB": [
+                    "150 GP"
+                ]
+            },
+            "levels": {
+                "1": {
+                    "features": [
+                        {
+                            "name": "Lay on Hands",
+                            "description": "Pool of healing = 5x Paladin level. Bonus Action."
+                        },
+                        {
+                            "name": "Spellcasting",
+                            "description": "Charisma-based slot casting. 2 Prepared spells from lvl 1."
+                        },
+                        {
+                            "name": "Weapon Mastery",
+                            "description": "Choose two kinds of weapons to use their mastery properties."
+                        }
+                    ]
+                },
+                "2": {
+                    "features": [
+                        {
+                            "name": "Fighting Style",
+                            "description": "Gain a Fighting Style feat."
+                        },
+                        {
+                            "name": "Paladin's Smite",
+                            "description": "Divine Smite is always prepared. Can cast once for free per Long Rest."
+                        }
+                    ]
+                },
+                "3": {
+                    "features": [
+                        {
+                            "name": "Paladin Subclass",
+                            "description": "Choose an Oath."
+                        },
+                        {
+                            "name": "Channel Divinity",
+                            "description": "Divine Sense + Subclass options."
+                        }
+                    ]
+                }
+            },
+            "subclasses": [
+                {
+                    "name": "Oath of Devotion",
+                    "features": [
+                        {
+                            "level": 3,
+                            "name": "Sacred Weapon",
+                            "description": "Add CHA to attack rolls."
+                        }
+                    ]
+                },
+                {
+                    "name": "Oath of Glory",
+                    "features": [
+                        {
+                            "level": 3,
+                            "name": "Peerless Athlete",
+                            "description": "Bonus to athletics and jumping."
+                        }
+                    ]
+                },
+                {
+                    "name": "Oath of the Ancients",
+                    "features": [
+                        {
+                            "level": 3,
+                            "name": "Nature's Wrath",
+                            "description": "Restrain a creature with vines."
+                        }
+                    ]
+                },
+                {
+                    "name": "Oath of Vengeance",
+                    "features": [
+                        {
+                            "level": 3,
+                            "name": "Vow of Enmity",
+                            "description": "Advantage on attacks against one target."
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "ranger_2024",
+            "name": "Ranger",
+            "source": "PHB 2024",
+            "is2024": true,
+            "hitDice": "d10",
+            "primaryAbility": [
+                "Dexterity",
+                "Wisdom"
+            ],
+            "savingThrows": [
+                "Strength",
+                "Dexterity"
+            ],
+            "proficiencies": {
+                "skills": {
+                    "choose": 3,
+                    "from": [
+                        "Animal Handling",
+                        "Athletics",
+                        "Insight",
+                        "Investigation",
+                        "Nature",
+                        "Perception",
+                        "Stealth",
+                        "Survival"
+                    ]
+                },
+                "weapons": [
+                    "Simple",
+                    "Martial"
+                ],
+                "armor": [
+                    "Light",
+                    "Medium",
+                    "Shields"
+                ]
+            },
+            "startingEquipment": {
+                "choiceA": [
+                    "Studded Leather Armor",
+                    "Scimitar",
+                    "Shortsword",
+                    "Longbow",
+                    "20 Arrows",
+                    "Quiver",
+                    "Explorer's Pack",
+                    "8 GP"
+                ],
+                "choiceB": [
+                    "150 GP"
+                ]
+            },
+            "levels": {
+                "1": {
+                    "features": [
+                        {
+                            "name": "Favored Enemy",
+                            "description": "Always have Hunter's Mark prepared. Can cast twice for free per Long Rest."
+                        },
+                        {
+                            "name": "Weapon Mastery",
+                            "description": "Choose two kinds of weapons to use their mastery properties."
+                        },
+                        {
+                            "name": "Deft Explorer",
+                            "description": "Choose one skill to gain Expertise, plus two languages."
+                        }
+                    ]
+                },
+                "2": {
+                    "features": [
+                        {
+                            "name": "Fighting Style",
+                            "description": "Gain a Fighting Style feat."
+                        },
+                        {
+                            "name": "Spellcasting",
+                            "description": "Wisdom-based slot casting. 2 Prepared spells from lvl 1."
+                        }
+                    ]
+                },
+                "3": {
+                    "features": [
+                        {
+                            "name": "Ranger Subclass",
+                            "description": "Choose a Conclave."
+                        }
+                    ]
+                }
+            },
+            "subclasses": [
+                {
+                    "name": "Beast Master",
+                    "features": [
+                        {
+                            "level": 3,
+                            "name": "Primal Companion",
+                            "description": "Summon a Land, Sea, or Sky beast."
+                        }
+                    ]
+                },
+                {
+                    "name": "Fey Wanderer",
+                    "features": [
+                        {
+                            "level": 3,
+                            "name": "Dreadful Strikes",
+                            "description": "Extra psychic damage on hits."
+                        }
+                    ]
+                },
+                {
+                    "name": "Gloom Stalker",
+                    "features": [
+                        {
+                            "level": 3,
+                            "name": "Dread Ambusher",
+                            "description": "Bonus to initiative, speed, and damage on first turn."
+                        }
+                    ]
+                },
+                {
+                    "name": "Hunter",
+                    "features": [
+                        {
+                            "level": 3,
+                            "name": "Hunter's Lore",
+                            "description": "Know resistances/vulnerabilities of Hunter's Mark target."
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "rogue_2024",
+            "name": "Rogue",
+            "source": "PHB 2024",
+            "is2024": true,
+            "hitDice": "d8",
+            "primaryAbility": [
+                "Dexterity"
+            ],
+            "savingThrows": [
+                "Dexterity",
+                "Intelligence"
+            ],
+            "proficiencies": {
+                "skills": {
+                    "choose": 4,
+                    "from": [
+                        "Acrobatics",
+                        "Athletics",
+                        "Deception",
+                        "Insight",
+                        "Intimidation",
+                        "Investigation",
+                        "Perception",
+                        "Persuasion",
+                        "Sleight of Hand",
+                        "Stealth"
+                    ]
+                },
+                "weapons": [
+                    "Simple",
+                    "Martial (Finesse/Light)"
+                ],
+                "armor": [
+                    "Light"
+                ],
+                "tools": [
+                    "Thieves' Tools"
+                ]
+            },
+            "startingEquipment": {
+                "choiceA": [
+                    "Leather Armor",
+                    "2 Daggers",
+                    "Shortsword",
+                    "Shortbow",
+                    "20 Arrows",
+                    "Quiver",
+                    "Thieves' Tools",
+                    "Burglar's Pack",
+                    "8 GP"
+                ],
+                "choiceB": [
+                    "100 GP"
+                ]
+            },
+            "levels": {
+                "1": {
+                    "features": [
+                        {
+                            "name": "Expertise",
+                            "description": "Double proficiency bonus for two skills."
+                        },
+                        {
+                            "name": "Sneak Attack (1d6)",
+                            "description": "Extra damage on Finesse/Ranged attacks with Advantage or nearby target."
+                        },
+                        {
+                            "name": "Thieves' Cant",
+                            "description": "Know thieves' cant and one extra language."
+                        },
+                        {
+                            "name": "Weapon Mastery",
+                            "description": "Choose two kinds of weapons to use their mastery properties."
+                        }
+                    ]
+                },
+                "2": {
+                    "features": [
+                        {
+                            "name": "Cunning Action",
+                            "description": "Bonus Action to Dash, Disengage, or Hide."
+                        }
+                    ]
+                },
+                "3": {
+                    "features": [
+                        {
+                            "name": "Rogue Subclass",
+                            "description": "Choose a Rooftop."
+                        },
+                        {
+                            "name": "Steady Aim",
+                            "description": "Bonus Action for Advantage if you haven't moved."
+                        }
+                    ]
+                },
+                "5": {
+                    "features": [
+                        {
+                            "name": "Cunning Strike",
+                            "description": "Forgo Sneak Attack dice for effects: Poison (1d6), Trip (1d6), Withdraw (1d6)."
+                        }
+                    ]
+                }
+            },
+            "subclasses": [
+                {
+                    "name": "Arcane Trickster",
+                    "features": [
+                        {
+                            "level": 3,
+                            "name": "Spellcasting",
+                            "description": "INT-based casting with Wizard/Illusion spells."
+                        }
+                    ]
+                },
+                {
+                    "name": "Assassin",
+                    "features": [
+                        {
+                            "level": 3,
+                            "name": "Assassinate",
+                            "description": "Advantage on Initiative and attacks against those who haven't acted."
+                        }
+                    ]
+                },
+                {
+                    "name": "Soulknife",
+                    "features": [
+                        {
+                            "level": 3,
+                            "name": "Psychic Blades",
+                            "description": "Manifest d6 blades of psychic energy."
+                        }
+                    ]
+                },
+                {
+                    "name": "Thief",
+                    "features": [
+                        {
+                            "level": 3,
+                            "name": "Fast Hands",
+                            "description": "Bonus Action to Use Object or Thieves' Tools."
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "sorcerer_2024",
+            "name": "Sorcerer",
+            "source": "PHB 2024",
+            "is2024": true,
+            "hitDice": "d6",
+            "primaryAbility": [
+                "Charisma"
+            ],
+            "savingThrows": [
+                "Constitution",
+                "Charisma"
+            ],
+            "proficiencies": {
+                "skills": {
+                    "choose": 2,
+                    "from": [
+                        "Arcana",
+                        "Deception",
+                        "Insight",
+                        "Intimidation",
+                        "Persuasion",
+                        "Religion"
+                    ]
+                },
+                "weapons": [
+                    "Simple"
+                ],
+                "armor": []
+            },
+            "startingEquipment": {
+                "choiceA": [
+                    "2 Daggers",
+                    "Arcane Focus",
+                    "Dungeoneer's Pack",
+                    "28 GP"
+                ],
+                "choiceB": [
+                    "50 GP"
+                ]
+            },
+            "levels": {
+                "1": {
+                    "features": [
+                        {
+                            "name": "Innate Sorcery",
+                            "description": "Bonus Action to unleash magic for 1 min. +1 Spell Save DC, Advantage on spell attacks."
+                        },
+                        {
+                            "name": "Spellcasting",
+                            "description": "Charisma-based slot casting. 4 Cantrips, 2 Prepared spells."
+                        }
+                    ],
+                    "cantrips": 4,
+                    "spellsPrepared": 2
+                },
+                "2": {
+                    "features": [
+                        {
+                            "name": "Font of Magic",
+                            "description": "Sorcery Points (2) for spell slots or metamagic."
+                        },
+                        {
+                            "name": "Metamagic",
+                            "description": "Choose two options to modify spells."
+                        }
+                    ]
+                },
+                "3": {
+                    "features": [
+                        {
+                            "name": "Sorcerer Subclass",
+                            "description": "Choose an Origin."
+                        }
+                    ]
+                }
+            },
+            "subclasses": [
+                {
+                    "name": "Aberrant Sorcery",
+                    "features": [
+                        {
+                            "level": 3,
+                            "name": "Psionic Spells",
+                            "description": "Bonus psychic spells prepared."
+                        }
+                    ]
+                },
+                {
+                    "name": "Clockwork Sorcery",
+                    "features": [
+                        {
+                            "level": 3,
+                            "name": "Clockwork Spells",
+                            "description": "Bonus order/protection spells prepared."
+                        }
+                    ]
+                },
+                {
+                    "name": "Draconic Sorcery",
+                    "features": [
+                        {
+                            "level": 3,
+                            "name": "Draconic Resilience",
+                            "description": "AC = 13 + DEX. +1 HP per level."
+                        }
+                    ]
+                },
+                {
+                    "name": "Wild Magic Sorcery",
+                    "features": [
+                        {
+                            "level": 3,
+                            "name": "Wild Magic Surge",
+                            "description": "Roll for random effects when casting."
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "warlock_2024",
+            "name": "Warlock",
+            "source": "PHB 2024",
+            "is2024": true,
+            "hitDice": "d8",
+            "primaryAbility": [
+                "Charisma"
+            ],
+            "savingThrows": [
+                "Wisdom",
+                "Charisma"
+            ],
+            "proficiencies": {
+                "skills": {
+                    "choose": 2,
+                    "from": [
+                        "Arcana",
+                        "Deception",
+                        "History",
+                        "Intimidation",
+                        "Investigation",
+                        "Nature",
+                        "Religion"
+                    ]
+                },
+                "weapons": [
+                    "Simple"
+                ],
+                "armor": [
+                    "Light"
+                ]
+            },
+            "startingEquipment": {
+                "choiceA": [
+                    "Leather Armor",
+                    "2 Daggers",
+                    "Sickle",
+                    "Arcane Focus",
+                    "Scholar's Pack",
+                    "15 GP"
+                ],
+                "choiceB": [
+                    "110 GP"
+                ]
+            },
+            "levels": {
+                "1": {
+                    "features": [
+                        {
+                            "name": "Eldritch Invocations",
+                            "description": "Choose one invocation (e.g., Pact of the Blade, Tome, or Chain)."
+                        },
+                        {
+                            "name": "Pact Magic",
+                            "description": "Unique slot system. 2 Cantrips, 2 Prepared spells."
+                        }
+                    ],
+                    "cantrips": 2,
+                    "spellsPrepared": 2
+                },
+                "2": {
+                    "features": [
+                        {
+                            "name": "Eldritch Invocations",
+                            "description": "Choose two more invocations."
+                        },
+                        {
+                            "name": "Magical Cunning",
+                            "description": "Regain half your warlock spell slots as a 1min ritual."
+                        }
+                    ]
+                },
+                "3": {
+                    "features": [
+                        {
+                            "name": "Warlock Subclass",
+                            "description": "Choose a Patron."
+                        }
+                    ]
+                }
+            },
+            "subclasses": [
+                {
+                    "name": "Archfey Patron",
+                    "features": [
+                        {
+                            "level": 3,
+                            "name": "Misty Escape",
+                            "description": "Teleport as a reaction."
+                        }
+                    ]
+                },
+                {
+                    "name": "Celestial Patron",
+                    "features": [
+                        {
+                            "level": 3,
+                            "name": "Healing Light",
+                            "description": "Pool of d6s to heal."
+                        }
+                    ]
+                },
+                {
+                    "name": "Fiend Patron",
+                    "features": [
+                        {
+                            "level": 3,
+                            "name": "Dark One's Blessing",
+                            "description": "Temp HP on kills."
+                        }
+                    ]
+                },
+                {
+                    "name": "Great Old One Patron",
+                    "features": [
+                        {
+                            "level": 3,
+                            "name": "Awakened Mind",
+                            "description": "Telepathy."
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            "id": "wizard_2024",
+            "name": "Wizard",
+            "source": "PHB 2024",
+            "is2024": true,
+            "hitDice": "d6",
+            "primaryAbility": [
+                "Intelligence"
+            ],
+            "savingThrows": [
+                "Intelligence",
+                "Wisdom"
+            ],
+            "proficiencies": {
+                "skills": {
+                    "choose": 2,
+                    "from": [
+                        "Arcana",
+                        "History",
+                        "Insight",
+                        "Investigation",
+                        "Medicine",
+                        "Religion"
+                    ]
+                },
+                "weapons": [
+                    "Simple"
+                ],
+                "armor": []
+            },
+            "startingEquipment": {
+                "choiceA": [
+                    "Quarterstaff",
+                    "Arcane Focus",
+                    "Spellbook",
+                    "Scholar's Pack",
+                    "6 GP"
+                ],
+                "choiceB": [
+                    "80 GP"
+                ]
+            },
+            "levels": {
+                "1": {
+                    "features": [
+                        {
+                            "name": "Arcane Recovery",
+                            "description": "Regain spell slots on short rest once per day."
+                        },
+                        {
+                            "name": "Spellcasting",
+                            "description": "Intelligence-based slot casting. 3 Cantrips, 4 Prepared spells (from 6 in book)."
+                        },
+                        {
+                            "name": "Wizard Scholar",
+                            "description": "Expertise in one professional skill."
+                        }
+                    ],
+                    "cantrips": 3,
+                    "spellsPrepared": 4
+                },
+                "2": {
+                    "features": [
+                        {
+                            "name": "Scholar",
+                            "description": "Expertise in one skill from Arcana, History, Nature, or Religion."
+                        }
+                    ]
+                },
+                "3": {
+                    "features": [
+                        {
+                            "name": "Wizard Subclass",
+                            "description": "Choose a School."
+                        }
+                    ]
+                }
+            },
+            "subclasses": [
+                {
+                    "name": "Abjurer",
+                    "features": [
+                        {
+                            "level": 3,
+                            "name": "Arcane Ward",
+                            "description": "Shield that takes damage for you."
+                        }
+                    ]
+                },
+                {
+                    "name": "Diviner",
+                    "features": [
+                        {
+                            "level": 3,
+                            "name": "Portent",
+                            "description": "Roll outcome substitution."
+                        }
+                    ]
+                },
+                {
+                    "name": "Evoker",
+                    "features": [
+                        {
+                            "level": 3,
+                            "name": "Sculpt Spells",
+                            "description": "Protect allies from AOE spells."
+                        }
+                    ]
+                },
+                {
+                    "name": "Illusionist",
+                    "features": [
+                        {
+                            "level": 3,
+                            "name": "Improved Illusions",
+                            "description": "Cast illusions without verbal components."
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

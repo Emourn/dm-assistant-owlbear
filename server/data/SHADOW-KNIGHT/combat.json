@@ -1,0 +1,23 @@
+{
+  "isActive": true,
+  "battleMap": {
+    "id": "test-map",
+    "tokens": [
+      {
+        "id": "token1",
+        "combatantId": "char1",
+        "position": {
+          "col": 7,
+          "row": 7
+        }
+      }
+    ]
+  },
+  "combatants": [
+    {
+      "id": "char1",
+      "sourceId": "char1",
+      "name": "Hero"
+    }
+  ]
+}

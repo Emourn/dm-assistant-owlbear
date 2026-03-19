@@ -1,0 +1,870 @@
+{
+  "id": "f5d98bbc-a294-4af5-b82f-14c88f4152b0",
+  "name": "Lithia",
+  "system": "dnd5e",
+  "playerName": "dxMourn",
+  "race": "Tiefling",
+  "className": "Paladin",
+  "subclass": "",
+  "level": 1,
+  "background": "Acolyte",
+  "alignment": "",
+  "experience": 0,
+  "abilityScores": {
+    "str": 14,
+    "dex": 13,
+    "con": 15,
+    "int": 11,
+    "wis": 12,
+    "cha": 18
+  },
+  "savingThrows": [
+    "wis",
+    "cha"
+  ],
+  "skills": [
+    {
+      "name": "Acrobatics",
+      "stat": "dex",
+      "proficient": false,
+      "expertise": false,
+      "bonus": 0
+    },
+    {
+      "name": "Animal Handling",
+      "stat": "wis",
+      "proficient": false,
+      "expertise": false,
+      "bonus": 0
+    },
+    {
+      "name": "Arcana",
+      "stat": "int",
+      "proficient": false,
+      "expertise": false,
+      "bonus": 0
+    },
+    {
+      "name": "Athletics",
+      "stat": "str",
+      "proficient": true,
+      "expertise": false,
+      "bonus": 0
+    },
+    {
+      "name": "Deception",
+      "stat": "cha",
+      "proficient": false,
+      "expertise": false,
+      "bonus": 0
+    },
+    {
+      "name": "History",
+      "stat": "int",
+      "proficient": false,
+      "expertise": false,
+      "bonus": 0
+    },
+    {
+      "name": "Insight",
+      "stat": "wis",
+      "proficient": true,
+      "expertise": false,
+      "bonus": 0,
+      "source": "Background: Acolyte",
+      "sourceId": "background:-acolyte"
+    },
+    {
+      "name": "Intimidation",
+      "stat": "cha",
+      "proficient": false,
+      "expertise": false,
+      "bonus": 0
+    },
+    {
+      "name": "Investigation",
+      "stat": "int",
+      "proficient": false,
+      "expertise": false,
+      "bonus": 0
+    },
+    {
+      "name": "Medicine",
+      "stat": "wis",
+      "proficient": false,
+      "expertise": false,
+      "bonus": 0
+    },
+    {
+      "name": "Nature",
+      "stat": "int",
+      "proficient": false,
+      "expertise": false,
+      "bonus": 0
+    },
+    {
+      "name": "Perception",
+      "stat": "wis",
+      "proficient": true,
+      "expertise": false,
+      "bonus": 0
+    },
+    {
+      "name": "Performance",
+      "stat": "cha",
+      "proficient": false,
+      "expertise": false,
+      "bonus": 0
+    },
+    {
+      "name": "Persuasion",
+      "stat": "cha",
+      "proficient": false,
+      "expertise": false,
+      "bonus": 0
+    },
+    {
+      "name": "Religion",
+      "stat": "int",
+      "proficient": true,
+      "expertise": false,
+      "bonus": 0,
+      "source": "Background: Acolyte",
+      "sourceId": "background:-acolyte"
+    },
+    {
+      "name": "Sleight of Hand",
+      "stat": "dex",
+      "proficient": false,
+      "expertise": false,
+      "bonus": 0
+    },
+    {
+      "name": "Stealth",
+      "stat": "dex",
+      "proficient": false,
+      "expertise": false,
+      "bonus": 0
+    },
+    {
+      "name": "Survival",
+      "stat": "wis",
+      "proficient": false,
+      "expertise": false,
+      "bonus": 0
+    }
+  ],
+  "senses": "Darkvision 60 ft.",
+  "passivePerception": 13,
+  "passiveInvestigation": 10,
+  "passiveInsight": 13,
+  "languages": "Common, Draconic, Elvish",
+  "proficiencies": "Weapons: Simple, Martial, Armor: Light, Medium, Heavy, Shields",
+  "ac": 11,
+  "maxHp": 12,
+  "currentHp": 10,
+  "tempHp": 0,
+  "hitDice": "d10",
+  "speed": "30 ft.",
+  "initiativeMod": 1,
+  "proficiencyBonus": 2,
+  "spellcastingAbility": "cha",
+  "spellSaveDc": 14,
+  "spellAttackMod": 6,
+  "spellSlots": [
+    {
+      "current": 0,
+      "max": 0
+    },
+    {
+      "current": 2,
+      "max": 2
+    },
+    {
+      "current": 0,
+      "max": 0
+    },
+    {
+      "current": 0,
+      "max": 0
+    },
+    {
+      "current": 0,
+      "max": 0
+    },
+    {
+      "current": 0,
+      "max": 0
+    },
+    {
+      "current": 0,
+      "max": 0
+    },
+    {
+      "current": 0,
+      "max": 0
+    },
+    {
+      "current": 0,
+      "max": 0
+    },
+    {
+      "current": 0,
+      "max": 0
+    }
+  ],
+  "spells": [
+    {
+      "id": "97701d0e-b56a-455b-a6eb-3f163acc6478",
+      "name": "Guidance",
+      "level": 0,
+      "school": "Divination",
+      "castingTime": "1 action",
+      "range": "30 feet",
+      "components": {
+        "v": true,
+        "s": true
+      },
+      "duration": "Concentration, up to 1 minute",
+      "concentration": true,
+      "ritual": false,
+      "description": "You touch one willing creature. Once before the spell ends, the target can roll a d4 and add the number rolled to one ability check of its choice. It can roll the die before or after making the ability check.",
+      "prepared": false,
+      "source": "PHB 2024",
+      "is2024": true
+    },
+    {
+      "id": "d55f9a3a-b46d-4358-9fe6-91a16a7b8f9c",
+      "name": "Light",
+      "level": 0,
+      "school": "Evocation",
+      "castingTime": "1 action",
+      "range": "Touch",
+      "components": {
+        "v": true,
+        "s": false,
+        "m": true,
+        "mDesc": "a firefly or phosphorescent moss"
+      },
+      "duration": "1 hour",
+      "concentration": false,
+      "ritual": false,
+      "description": "You touch one Large or smaller object that isn't being worn or carried by someone else. Until the spell ends, the object sheds Bright Light|XPHB in a 20-foot radius and Dim Light|XPHB for an additional 20 feet. The light can be colored as you like.\n\nCovering the object with something opaque blocks the light. The spell ends if you cast it again.",
+      "prepared": false,
+      "source": "XPHB",
+      "isHomebrew": false,
+      "is2024": true
+    },
+    {
+      "id": "18a44e7a-5cc8-4f25-94c8-cb3daf5b32a6",
+      "name": "Fire Bolt",
+      "level": 0,
+      "school": "Evocation",
+      "castingTime": "1 action",
+      "range": "120 feet",
+      "components": {
+        "v": true,
+        "s": true,
+        "m": false
+      },
+      "duration": "Instantaneous",
+      "concentration": false,
+      "ritual": false,
+      "description": "You hurl a mote of fire at a creature or an object within range. Make a ranged spell attack against the target. On a hit, the target takes 1d10 Fire damage. A flammable object hit by this spell starts burning|XPHB if it isn't being worn or carried.",
+      "prepared": false,
+      "source": "XPHB",
+      "higherLevels": "**Cantrip Upgrade.** The damage increases by 1d10 when you reach levels 5 (2d10), 11 (3d10), and 17 (4d10).",
+      "isHomebrew": false,
+      "is2024": true
+    },
+    {
+      "id": "a91a9fe4-19d4-4dac-b07f-12a0ae18883b",
+      "name": "Thaumaturgy",
+      "level": 0,
+      "school": "Transmutation",
+      "castingTime": "1 action",
+      "range": "30 feet",
+      "components": {
+        "v": true,
+        "s": false,
+        "m": false
+      },
+      "duration": "1 minute",
+      "concentration": false,
+      "ritual": false,
+      "description": "You manifest a minor wonder within range. You create one of the effects below within range. If you cast this spell multiple times, you can have up to three of its 1-minute effects active at a time.\n\n**Altered Eyes.** You alter the appearance of your eyes for 1 minute.\n\n**Booming Voice.** Your voice booms up to three times as loud as normal for 1 minute. For the duration, you have Advantage|XPHB on Charisma (Intimidation|XPHB) checks.\n\n**Fire Play.** You cause flames to flicker, brighten, dim, or change color for 1 minute.\n\n**Invisible Hand.** You instantaneously cause an unlocked door or window to fly open or slam shut.\n\n**Phantom Sound.** You create an instantaneous sound that originates from a point of your choice within range, such as a rumble of thunder, the cry of a raven, or ominous whispers.\n\n**Tremors.** You cause harmless tremors in the ground for 1 minute.",
+      "prepared": false,
+      "source": "XPHB",
+      "isHomebrew": false,
+      "is2024": true
+    },
+    {
+      "id": "534ae499-59b6-4600-b6cb-7b70270dd549",
+      "name": "Divine Smite",
+      "level": 1,
+      "school": "Evocation",
+      "castingTime": "1 bonus",
+      "range": "Self",
+      "components": {
+        "v": true,
+        "s": false,
+        "m": false
+      },
+      "duration": "Instantaneous",
+      "concentration": false,
+      "ritual": false,
+      "description": "The target takes an extra 2d8 Radiant damage from the attack. The damage increases by 1d8 if the target is a Fiend or an Undead.",
+      "prepared": false,
+      "source": "XPHB",
+      "higherLevels": "**Using a Higher-Level Spell Slot.** The damage increases by 2d8|1-9|1d8 for each spell slot level above 1.",
+      "isHomebrew": false,
+      "is2024": true
+    },
+    {
+      "id": "6fde12ac-aaac-49e2-b7fd-d24f7287ee9c",
+      "name": "Bless",
+      "level": 1,
+      "school": "Enchantment",
+      "castingTime": "1 action",
+      "range": "30 feet",
+      "components": {
+        "v": true,
+        "s": true,
+        "m": true,
+        "mDesc": "a Holy Symbol worth 5+ GP"
+      },
+      "duration": "Concentration, 1 minute",
+      "concentration": true,
+      "ritual": false,
+      "description": "You bless up to three creatures within range. Whenever a target makes an attack roll or a saving throw before the spell ends, the target adds 1d4 to the attack roll or save.",
+      "prepared": false,
+      "source": "XPHB",
+      "higherLevels": "**Using a Higher-Level Spell Slot.** You can target one additional creature for each spell slot level above 1.",
+      "isHomebrew": false,
+      "is2024": true
+    },
+    {
+      "id": "5d0ea851-cf0c-4471-8164-5235732d903f",
+      "name": "Shield of Faith",
+      "level": 1,
+      "school": "Abjuration",
+      "castingTime": "1 bonus",
+      "range": "60 feet",
+      "components": {
+        "v": true,
+        "s": true,
+        "m": true,
+        "mDesc": "a prayer scroll"
+      },
+      "duration": "Concentration, 10 minutes",
+      "concentration": true,
+      "ritual": false,
+      "description": "A shimmering field surrounds a creature of your choice within range, granting it a +2 bonus to AC for the duration.",
+      "prepared": false,
+      "source": "XPHB",
+      "isHomebrew": false,
+      "is2024": true
+    }
+  ],
+  "inventory": [
+    {
+      "id": "76414828-30d3-417b-b69a-ef6b9accee35",
+      "name": "Shield",
+      "quantity": 1,
+      "weight": 6,
+      "isEquipped": false,
+      "isAttuned": false,
+      "description": "Wielding a shield increases your AC by 2.",
+      "type": "armor",
+      "effects": [
+        {
+          "id": "a1db5aa1-cb65-40dc-ab96-c1022cca9390",
+          "type": "add_ac_bonus",
+          "value": 2,
+          "target": "ac",
+          "note": "Shield"
+        }
+      ]
+    },
+    {
+      "id": "3be3a9c2-cbaf-4077-86cc-28a721b62ccd",
+      "name": "Chain Mail",
+      "quantity": 1,
+      "weight": 55,
+      "isEquipped": false,
+      "isAttuned": false,
+      "description": "Heavy Armor. AC 16. Str 13 req. Disadv on Stealth.",
+      "type": "armor",
+      "effects": [
+        {
+          "id": "ad9c2645-ba08-45cc-90b8-3222db79aec3",
+          "type": "set_ac",
+          "value": "16 + DEX (MAX 0)",
+          "note": "Chain Mail"
+        }
+      ]
+    },
+    {
+      "id": "8cf6cb62-afa9-436d-b8ba-0891d0c99cc6",
+      "name": "Longsword",
+      "quantity": 1,
+      "weight": 3,
+      "isEquipped": false,
+      "isAttuned": false,
+      "description": "",
+      "type": "weapon",
+      "damage": "1d8",
+      "effects": []
+    },
+    {
+      "id": "95e034e6-70c3-4861-bd94-14c46e1893a0",
+      "name": "Javelin",
+      "quantity": 6,
+      "weight": 2,
+      "isEquipped": false,
+      "isAttuned": false,
+      "description": "",
+      "type": "weapon",
+      "damage": "1d6",
+      "effects": []
+    },
+    {
+      "id": "762cb159-4973-4e7f-a675-e4ab9844edb6",
+      "name": "Amulet",
+      "quantity": 1,
+      "weight": 1,
+      "isEquipped": false,
+      "isAttuned": false,
+      "description": "For an Amulet to be an effective Holy Symbol, it must be worn or held.",
+      "type": "magic",
+      "effects": []
+    },
+    {
+      "id": "86a0e7d7-b9ca-4e45-b300-2e2832e899ee",
+      "name": "Backpack",
+      "quantity": 1,
+      "weight": 5,
+      "isEquipped": false,
+      "isAttuned": false,
+      "description": "A container for carrying gear.",
+      "type": "gear",
+      "effects": []
+    },
+    {
+      "id": "16886df6-9edc-4b7b-a4c7-54faf0f52e32",
+      "name": "Rations",
+      "quantity": 7,
+      "weight": 2,
+      "isEquipped": false,
+      "isAttuned": false,
+      "description": "Rations consist of travel-ready food, including jerky, dried fruit, hardtack, and nuts. See \"Malnutrition|XPHB\" for the risks of not eating.",
+      "type": "magic",
+      "effects": []
+    },
+    {
+      "id": "deb25b06-0ddf-4400-9409-68320c581bed",
+      "name": "Robe",
+      "quantity": 1,
+      "weight": 4,
+      "isEquipped": false,
+      "isAttuned": false,
+      "description": "A Robe has vocational or ceremonial significance. Some events and locations admit only people wearing a Robe bearing certain colors or symbols.",
+      "type": "magic",
+      "effects": []
+    },
+    {
+      "id": "56d7d6ee-fd5a-46d6-9c5f-2c949e5083bb",
+      "name": "Blanket",
+      "quantity": 1,
+      "weight": 3,
+      "isEquipped": false,
+      "isAttuned": false,
+      "description": "While wrapped in a blanket, you have Advantage|XPHB on saving throws against extreme cold|XDMG (see the Dungeon Master's Guide|XDMG).",
+      "type": "magic",
+      "effects": []
+    },
+    {
+      "id": "db3aa2bc-6744-44bf-8506-326689b8a216",
+      "name": "Tinderbox",
+      "quantity": 1,
+      "weight": 1,
+      "isEquipped": false,
+      "isAttuned": false,
+      "description": "A Tinderbox is a small container holding flint, fire steel, and tinder (usually dry cloth soaked in light oil) used to kindle a fire. Using it to light a Candle|XPHB, Lamp|XPHB, Hooded Lantern|XPHB|Lantern, or Torch|XPHB—or anything else with exposed fuel—takes a Bonus Action|XPHB. Lighting any other fire takes 1 minute.",
+      "type": "magic",
+      "effects": []
+    },
+    {
+      "id": "a8f9d6e0-ebde-4e03-a4a6-6b4a624b48cb",
+      "name": "Lamp",
+      "quantity": 1,
+      "weight": 1,
+      "isEquipped": false,
+      "isAttuned": false,
+      "description": "A Lamp burns Oil|XPHB as fuel to cast Bright Light|XPHB in a 15-foot radius and Dim Light|XPHB for an additional 30 feet.",
+      "type": "magic",
+      "effects": []
+    },
+    {
+      "id": "886ca977-b9ed-4284-9cb3-40ad327f5bb5",
+      "name": "Holy Water",
+      "quantity": 1,
+      "weight": 1,
+      "isEquipped": false,
+      "isAttuned": false,
+      "description": "When you take the Attack|XPHB action, you can replace one of your attacks with throwing a flask of Holy Water. Target one creature you can see within 20 feet of yourself. The target must succeed on a Dexterity saving throw (8 plus your Dexterity modifier and Proficiency|XPHB|Proficiency Bonus) or take 2d8 Radiant damage if it is a Fiend or an Undead.",
+      "type": "magic",
+      "effects": []
+    },
+    {
+      "id": "9d0a0139-9e73-4817-a8d2-d04181448cfc",
+      "name": "Fire Bolt",
+      "quantity": 1,
+      "weight": 0,
+      "isEquipped": true,
+      "isAttuned": false,
+      "description": "V/S",
+      "type": "weapon",
+      "damage": "1d10 Fire (Atk: +6)"
+    },
+    {
+      "id": "e0e73edc-a263-4fd1-9219-815beaf0bfc8",
+      "name": "Calligrapher's Supplies",
+      "quantity": 1,
+      "weight": 0,
+      "isEquipped": false,
+      "isAttuned": false,
+      "description": "Starting equipment from Acolyte",
+      "type": "gear"
+    },
+    {
+      "id": "e94e4496-0ade-4b1d-87ee-3cf2ac506c61",
+      "name": "Book (prayers)",
+      "quantity": 1,
+      "weight": 0,
+      "isEquipped": false,
+      "isAttuned": false,
+      "description": "Starting equipment from Acolyte",
+      "type": "gear"
+    },
+    {
+      "id": "1c16a16c-08b7-4564-9945-1fd67a876305",
+      "name": "Holy Symbol",
+      "quantity": 1,
+      "weight": 0,
+      "isEquipped": false,
+      "isAttuned": false,
+      "description": "Starting equipment from Acolyte",
+      "type": "gear"
+    },
+    {
+      "id": "d63b2611-b88c-445b-b9d6-9d72924a96ab",
+      "name": "Parchment (10 sheets)",
+      "quantity": 1,
+      "weight": 0,
+      "isEquipped": false,
+      "isAttuned": false,
+      "description": "Starting equipment from Acolyte",
+      "type": "gear"
+    },
+    {
+      "id": "beaa6d75-6ce5-42d7-92f1-ab8fb57ac4d4",
+      "name": "Robe",
+      "quantity": 1,
+      "weight": 0,
+      "isEquipped": false,
+      "isAttuned": false,
+      "description": "Starting equipment from Acolyte",
+      "type": "gear"
+    },
+    {
+      "id": "037544b3-1992-419c-8ae1-327674f5887c",
+      "name": "8 gp",
+      "quantity": 1,
+      "weight": 0,
+      "isEquipped": false,
+      "isAttuned": false,
+      "description": "Starting equipment from Acolyte",
+      "type": "gear"
+    }
+  ],
+  "currencies": {
+    "cp": 0,
+    "sp": 0,
+    "ep": 0,
+    "gp": 59,
+    "pp": 0
+  },
+  "resources": [],
+  "actions": [],
+  "features": [
+    {
+      "id": "fdbd97bb-4dac-4190-a933-5ca87292dd1b",
+      "name": "Core Paladin Traits",
+      "source": "Class: Paladin",
+      "description": "PHB-2024 109",
+      "hasUses": false
+    },
+    {
+      "id": "1f3a99d1-ec6b-431f-a233-13ab937d7a32",
+      "name": "Lay on Hands",
+      "source": "Class: Paladin",
+      "description": "Pool of healing = 5x Paladin level. Bonus Action.",
+      "hasUses": false,
+      "is2024": true
+    },
+    {
+      "id": "f75f8327-5954-49d2-9efa-fdd9db3592b8",
+      "name": "As a Bonus Action, you can touch a creature (which could be yourself) and restore a number HP to that creature, up to the maximum amount remaining in the pool.",
+      "source": "Class: Paladin",
+      "description": "",
+      "hasUses": false
+    },
+    {
+      "id": "a734a6fd-c620-4a37-85ca-d9032264c843",
+      "name": "You can also expend 5 HP from the pool of healing to remove the Poisoned condition from the creature; those points don’t also restore HP to the creature.",
+      "source": "Class: Paladin",
+      "description": "",
+      "hasUses": false
+    },
+    {
+      "id": "1e382d7f-581d-4551-8388-85e7eb00d52f",
+      "name": "| Lay On Hands: Healing Pool: 5 / Long Rest",
+      "source": "Class: Paladin",
+      "description": "1 Bonus Action",
+      "hasUses": false
+    },
+    {
+      "id": "24da4b68-1091-433a-a9e1-71d2eaaad13f",
+      "name": "| Lay On Hands: Heal: 1 Bonus Action",
+      "source": "Class: Paladin",
+      "description": "",
+      "hasUses": false
+    },
+    {
+      "id": "e7baa7dc-a47e-4de8-86f4-bb7a31ab5d7b",
+      "name": "| Lay On Hands: Purify Poison: 1 Bonus Action",
+      "source": "Class: Paladin",
+      "description": "",
+      "hasUses": false
+    },
+    {
+      "id": "2f9f3853-bf74-4680-aca3-1739c99b580b",
+      "name": "Spellcasting",
+      "source": "Class: Paladin",
+      "description": "Charisma-based slot casting. 2 Prepared spells from lvl 1.",
+      "hasUses": false,
+      "is2024": true
+    },
+    {
+      "id": "c510384d-cda2-424e-98d5-5772460eea8b",
+      "name": "Weapon Mastery",
+      "source": "Class: Paladin",
+      "description": "Choose two kinds of weapons to use their mastery properties.",
+      "hasUses": false,
+      "is2024": true
+    },
+    {
+      "id": "0d78f8db-d76a-49bd-9d5e-1d692ee2e558",
+      "name": "Creature Type",
+      "source": "Class: Paladin",
+      "description": "PHB-2024 197\nYou are a Humanoid.",
+      "hasUses": false
+    },
+    {
+      "id": "fd11c83a-5ec1-40dc-ae2a-e2773e50a513",
+      "name": "Size",
+      "source": "Class: Paladin",
+      "description": "PHB-2024\nYou are Medium or Small, chosen when you select this species.",
+      "hasUses": false
+    },
+    {
+      "id": "3c52997f-74bc-40f1-bf03-32d89f900166",
+      "name": "Speed",
+      "source": "Class: Paladin",
+      "description": "PHB-2024 197\nYou have a Speed of 30 ft.",
+      "hasUses": false
+    },
+    {
+      "id": "28a5cb7e-4e5c-473c-92ce-924b9773181e",
+      "name": "Darkvision",
+      "source": "Class: Paladin",
+      "description": "PHB-2024 197\nYou have Darkvision with a range of 60 ft.",
+      "hasUses": false
+    },
+    {
+      "id": "14a6c981-c815-467b-9ee3-1ae56b89aa48",
+      "name": "Fiendish Legacy",
+      "source": "Class: Paladin",
+      "description": "PHB-2024 197\nChoose a legacy from the Fiendish Legacies table. You gain the level 1 benefit of that legacy.",
+      "hasUses": false
+    },
+    {
+      "id": "a53e6916-cbff-46cf-a675-abd958e93b0a",
+      "name": "| Infernal Legacy •",
+      "source": "Class: Paladin",
+      "description": "You have resistance to Fire damage and you gain the spells outlined in the Fiendish Legacies table.",
+      "hasUses": false
+    },
+    {
+      "id": "5f66141e-21fe-430d-86e7-5ad605045344",
+      "name": "Fiendish Legacy Spells",
+      "source": "Class: Paladin",
+      "description": "PHB-2024 197",
+      "hasUses": false
+    },
+    {
+      "id": "202baa0e-551e-4184-bc70-9114bf4d30ef",
+      "name": "| Charisma •",
+      "source": "Class: Paladin",
+      "description": "You know the Thaumaturgy cantrip. When you cast it with this trait, the spell uses Charisma.",
+      "hasUses": false
+    },
+    {
+      "id": "e88f66d5-7917-4221-bebb-656b25eb84f5",
+      "name": "Otherworldly Presence",
+      "source": "Class: Paladin",
+      "description": "PHB-2024 197",
+      "hasUses": false
+    },
+    {
+      "id": "bdeeaaf5-1b4e-446b-adf8-8ebade06404c",
+      "name": "Languages",
+      "source": "Class: Paladin",
+      "description": "PHB-2024 37\nYour character knows at least three languages: Common plus two languages you roll or choose from the Standard Languages table. Knowledge of a language means your character can communicate in it, read it, and write it.",
+      "hasUses": false
+    },
+    {
+      "id": "c99b9e3d-873f-4157-acab-6a831ea5083d",
+      "name": "Acolyte Ability Score Improvements",
+      "source": "Class: Paladin",
+      "description": "PHB-2024 178",
+      "hasUses": false
+    },
+    {
+      "id": "b8c4b891-808e-48f4-8f8b-fae8b804c66e",
+      "name": "| Increase two scores (+2 / +1) •",
+      "source": "Class: Paladin",
+      "description": "",
+      "hasUses": false
+    },
+    {
+      "id": "9691eb4e-e270-4578-844c-adbff3071954",
+      "name": "Magic Initiate (Cleric)",
+      "source": "Class: Paladin",
+      "description": "PHB-2024 201\nTwo Cantrips. You learn two cantrips of your choice from the Cleric spell list. Int., Wis., or Cha. is your spellcasting ability for this feat's spells.",
+      "hasUses": false
+    },
+    {
+      "id": "4857446b-da94-4f29-ba2c-fa545ef6d4e5",
+      "name": "Level 1 Spell",
+      "source": "Class: Paladin",
+      "description": "Choose a level 1 spell from the Cleric spell list\nYou always have that spell prepared\nYou can cast it once without a spell slot, and you regain the ability to cast it in that way when you finish a Long Rest\nYou can also cast the spell using any spell slots you have.",
+      "hasUses": false
+    },
+    {
+      "id": "58c667fe-f0ec-4a7c-a52e-fcdf354c4bf9",
+      "name": "Spell Change",
+      "source": "Class: Paladin",
+      "description": "Whenever you gain a new level, you can replace one of the spells you chose for this feat with a different spell of the same level from the chosen spell list.",
+      "hasUses": false
+    },
+    {
+      "id": "b5f54aa8-f045-4122-b06c-342781a3fc6d",
+      "name": "Repeatable",
+      "source": "Class: Paladin",
+      "description": "You can take this feat more than once, but you must choose a different spell list each time.",
+      "hasUses": false
+    },
+    {
+      "id": "16a80adc-9582-48f0-9f42-ffa95143492f",
+      "name": "| Mace (Sap) •",
+      "source": "Class: Paladin",
+      "description": "Sap. If you hit a creature with a Mace, that creature has Disadvantage on its next attack roll before the start of your next turn.",
+      "hasUses": false
+    },
+    {
+      "id": "cc3dc2fb-52c9-45c6-80ed-778421eedc85",
+      "name": "| Shortsword (Vex) •",
+      "source": "Class: Paladin",
+      "description": "Vex. If you hit a creature with a Shortsword and deal damage to it, you have Advantage on your next attack roll against that creature before the end of your next turn.",
+      "hasUses": false
+    },
+    {
+      "id": "3453f43b-abe8-419c-92e6-ba5f6277f6d8",
+      "name": "| Sap (Mace): 1 Action",
+      "source": "Class: Paladin",
+      "description": "",
+      "hasUses": false
+    },
+    {
+      "id": "1a7ee5ae-2a5d-427a-ae9b-94531f8caa7b",
+      "name": "| Vex (Shortsword): 1 Action",
+      "source": "Class: Paladin",
+      "description": "",
+      "hasUses": false
+    },
+    {
+      "id": "ac2aec59-cfca-42f8-a40f-981dff21a886",
+      "name": "Magic Initiate (Cleric)",
+      "source": "Background: Acolyte",
+      "description": "You devoted yourself to service in a temple, either nestled in a town or secluded in a sacred grove.",
+      "hasUses": false,
+      "is2024": true
+    }
+  ],
+  "feats": [],
+  "racialTraits": [
+    {
+      "id": "3e32b687-fba6-4540-b3a3-c3cdbddfe6db",
+      "name": "Darkvision",
+      "source": "Species: Tiefling",
+      "description": "You have Darkvision with a range of 60 feet.",
+      "is2024": true,
+      "hasUses": false
+    },
+    {
+      "id": "96086aa9-7801-457d-9408-57ae131c0cff",
+      "name": "Fiendish Legacy",
+      "source": "Species: Tiefling",
+      "description": "Choose Abyssal, Chthonic, or Infernal. Grants resistance and spells at level 1, 3, and 5.",
+      "is2024": true,
+      "hasUses": false
+    },
+    {
+      "id": "1e565488-3373-44f2-8dba-b727342d0de1",
+      "name": "Otherworldly Presence",
+      "source": "Species: Tiefling",
+      "description": "You know the Thaumaturgy cantrip.",
+      "is2024": true,
+      "hasUses": false
+    }
+  ],
+  "masteredWeapons": [],
+  "conditions": [],
+  "deathSaves": {
+    "successes": 0,
+    "failures": 0
+  },
+  "exhaustion": 0,
+  "resistances": [
+    "fire"
+  ],
+  "immunities": [],
+  "vulnerabilities": [],
+  "conditionImmunities": [],
+  "damageNotes": "Resistances - Fire",
+  "personalityTraits": "",
+  "ideals": "",
+  "bonds": "",
+  "flaws": "",
+  "backstory": "",
+  "notes": "",
+  "provenance": {
+    "origin": "dnd-beyond-pdf",
+    "edition": "2024",
+    "sourceSummary": "D&D Beyond PDF • Lithia.pdf",
+    "importedAt": 1773880926173
+  },
+  "darkvision": 60
+}

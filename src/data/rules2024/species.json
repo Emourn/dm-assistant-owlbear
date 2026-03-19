@@ -1,0 +1,272 @@
+{
+    "species": [
+        {
+            "name": "Aasimar",
+            "source": "XPHB",
+            "creatureType": "Humanoid",
+            "size": [
+                "Medium",
+                "Small"
+            ],
+            "speed": 30,
+            "traits": [
+                {
+                    "name": "Celestial Resistance",
+                    "description": "You have Resistance to Necrotic damage and Radiant damage."
+                },
+                {
+                    "name": "Darkvision",
+                    "description": "You have Darkvision with a range of 60 feet."
+                },
+                {
+                    "name": "Healing Hands",
+                    "description": "As a Magic action, you touch a creature and roll a number of d4s equal to your Proficiency Bonus. The creature regains a number of Hit Points equal to the total rolled. (1/Long Rest)"
+                },
+                {
+                    "name": "Light Bearer",
+                    "description": "You know the Light cantrip. Charisma is your spellcasting ability for it."
+                },
+                {
+                    "name": "Celestial Revelation",
+                    "level": 3,
+                    "description": "As a Bonus Action, you can transform for 1 minute (Choose: Heavenly Wings, Inner Radiance, or Necrotic Shroud). Extra damage equals your Proficiency Bonus once per turn. (1/Long Rest)"
+                }
+            ]
+        },
+        {
+            "name": "Dragonborn",
+            "source": "XPHB",
+            "creatureType": "Humanoid",
+            "size": [
+                "Medium"
+            ],
+            "speed": 30,
+            "traits": [
+                {
+                    "name": "Draconic Ancestry",
+                    "description": "Your lineage stems from a dragon progenitor. Choose the kind of dragon (Black, Blue, Brass, Bronze, Copper, Gold, Green, Red, Silver, White)."
+                },
+                {
+                    "name": "Breath Weapon",
+                    "description": "Replace one attack with a 15-foot Cone or 30-foot Line. Damage 1d10 (scaling). Dex Save for half. Uses: Proficiency Bonus/Long Rest."
+                },
+                {
+                    "name": "Damage Resistance",
+                    "description": "You have Resistance to the damage type determined by your Draconic Ancestry."
+                },
+                {
+                    "name": "Darkvision",
+                    "description": "You have Darkvision with a range of 60 feet."
+                },
+                {
+                    "name": "Draconic Flight",
+                    "level": 5,
+                    "description": "As a Bonus Action, sprout spectral wings for 10 minutes. Fly Speed equal to your Speed. (1/Long Rest)"
+                }
+            ]
+        },
+        {
+            "name": "Dwarf",
+            "source": "XPHB",
+            "creatureType": "Humanoid",
+            "size": [
+                "Medium"
+            ],
+            "speed": 30,
+            "traits": [
+                {
+                    "name": "Darkvision",
+                    "description": "You have Darkvision with a range of 120 feet."
+                },
+                {
+                    "name": "Dwarven Resilience",
+                    "description": "Resistance to Poison damage and Advantage on saves against the Poisoned condition."
+                },
+                {
+                    "name": "Dwarven Toughness",
+                    "description": "Your Hit Point maximum increases by 1, and it increases by 1 again whenever you gain a level."
+                },
+                {
+                    "name": "Stonecunning",
+                    "description": "As a Bonus Action, gain Tremorsense (60ft) for 10 minutes while on a stone surface. Uses: Proficiency Bonus/Long Rest."
+                }
+            ]
+        },
+        {
+            "name": "Elf",
+            "source": "XPHB",
+            "creatureType": "Humanoid",
+            "size": [
+                "Medium"
+            ],
+            "speed": 30,
+            "traits": [
+                {
+                    "name": "Darkvision",
+                    "description": "You have Darkvision with a range of 60 feet."
+                },
+                {
+                    "name": "Elven Lineage",
+                    "description": "Choose Drow, High Elf, or Wood Elf. Grants cantrip at level 1, spell at level 3, and spell at level 5."
+                },
+                {
+                    "name": "Fey Ancestry",
+                    "description": "Advantage on saving throws you make to avoid or end the Charmed condition."
+                },
+                {
+                    "name": "Keen Senses",
+                    "description": "You have proficiency in Insight, Perception, or Survival."
+                },
+                {
+                    "name": "Trance",
+                    "description": "Long Rest takes 4 hours of meditation. Magic can't put you to sleep."
+                }
+            ]
+        },
+        {
+            "name": "Gnome",
+            "source": "XPHB",
+            "creatureType": "Humanoid",
+            "size": [
+                "Small"
+            ],
+            "speed": 30,
+            "traits": [
+                {
+                    "name": "Darkvision",
+                    "description": "You have Darkvision with a range of 60 feet."
+                },
+                {
+                    "name": "Gnomish Cunning",
+                    "description": "Advantage on Intelligence, Wisdom, and Charisma saving throws."
+                },
+                {
+                    "name": "Gnomish Lineage",
+                    "description": "Choose Forest Gnome (Minor Illusion, Speak with Animals) or Rock Gnome (Mending, Prestidigitation + clockwork devices)."
+                }
+            ]
+        },
+        {
+            "name": "Goliath",
+            "source": "XPHB",
+            "creatureType": "Humanoid",
+            "size": [
+                "Medium"
+            ],
+            "speed": 35,
+            "traits": [
+                {
+                    "name": "Giant Ancestry",
+                    "description": "Choose Cloud (Teleport), Fire (Extra Fire Damage), Frost (Cold Damage + Slow), Hill (Knock Prone), Stone (Reduce Damage), or Storm (Thunder Reaction). Uses: Proficiency Bonus/Long Rest."
+                },
+                {
+                    "name": "Large Form",
+                    "level": 5,
+                    "description": "Bonus Action to become Large for 10 minutes. Advantage on Strength checks, Speed +10. (1/Long Rest)"
+                },
+                {
+                    "name": "Powerful Build",
+                    "description": "Advantage on saves to end Grappled. Count as one size larger for carrying capacity."
+                }
+            ]
+        },
+        {
+            "name": "Halfling",
+            "source": "XPHB",
+            "creatureType": "Humanoid",
+            "size": [
+                "Small"
+            ],
+            "speed": 30,
+            "traits": [
+                {
+                    "name": "Brave",
+                    "description": "Advantage on saving throws you make to avoid or end the Frightened condition."
+                },
+                {
+                    "name": "Halfling Nimbleness",
+                    "description": "Move through the space of any creature that is a size larger than you."
+                },
+                {
+                    "name": "Luck",
+                    "description": "When you roll a 1 on the d20 of a D20 Test, you can reroll the die."
+                },
+                {
+                    "name": "Naturally Stealthy",
+                    "description": "You can take the Hide action even when obscured only by a creature at least one size larger than you."
+                }
+            ]
+        },
+        {
+            "name": "Human",
+            "source": "XPHB",
+            "creatureType": "Humanoid",
+            "size": [
+                "Medium",
+                "Small"
+            ],
+            "speed": 30,
+            "traits": [
+                {
+                    "name": "Resourceful",
+                    "description": "Gain Heroic Inspiration whenever you finish a Long Rest."
+                },
+                {
+                    "name": "Skillful",
+                    "description": "Gain proficiency in one skill of your choice."
+                },
+                {
+                    "name": "Versatile",
+                    "description": "Gain an Origin feat of your choice."
+                }
+            ]
+        },
+        {
+            "name": "Orc",
+            "source": "XPHB",
+            "creatureType": "Humanoid",
+            "size": [
+                "Medium"
+            ],
+            "speed": 30,
+            "traits": [
+                {
+                    "name": "Adrenaline Rush",
+                    "description": "Dash as a Bonus Action and gain Temporary HP (Proficiency Bonus). Uses: Proficiency Bonus/Long or Short Rest."
+                },
+                {
+                    "name": "Darkvision",
+                    "description": "You have Darkvision with a range of 120 feet."
+                },
+                {
+                    "name": "Relentless Endurance",
+                    "description": "When reduced to 0 HP, drop to 1 HP instead. (1/Long Rest)"
+                }
+            ]
+        },
+        {
+            "name": "Tiefling",
+            "source": "XPHB",
+            "creatureType": "Humanoid",
+            "size": [
+                "Medium",
+                "Small"
+            ],
+            "speed": 30,
+            "traits": [
+                {
+                    "name": "Darkvision",
+                    "description": "You have Darkvision with a range of 60 feet."
+                },
+                {
+                    "name": "Fiendish Legacy",
+                    "description": "Choose Abyssal, Chthonic, or Infernal. Grants resistance and spells at level 1, 3, and 5."
+                },
+                {
+                    "name": "Otherworldly Presence",
+                    "description": "You know the Thaumaturgy cantrip."
+                }
+            ]
+        }
+    ]
+}

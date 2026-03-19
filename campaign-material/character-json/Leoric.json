@@ -1,0 +1,350 @@
+{
+  "name": "Leoric Neverember",
+  "about": "Human Wizard level 1\n\nBackground: Noble\n\nPlayer: dxMourn\n\nCurrent HP: 7/7\n\nInitiative: +2\n\nPassive Insight 11, Passive Investigation 17, Passive Perception 11\n\nCurrency: 35 GP\n\nIdeals: Conocimiento: \"La ignorancia es la única verdadera prisión. El misterio de mi cicatriz y del Imperio de Netheril debe ser resuelto, sin importar el costo o quién intente ocultar la verdad\". \n\nExcelencia: \"Soy un Neverember y fui entrenado por Alustriel Silverhand. Se espera grandeza de mí, y no aceptaré nada menos que la perfección\n\nBonds: La Deuda del Libro: \"Mi hermano sacrificó el último recuerdo de su madre para que yo pudiera entrar a Candlekeep... Esa carga\n\nFlaws: Incompetencia Social: \"Tanto tiempo encerrado entre mis tomos y artefactos ha hecho que no sea el mejor relacionándome con los demas. Aunque intento dar lo mejor\n\nBackstory: Eres el hijo legítimo de Lord Dagult Neverember. Lord Protector de Neverwinter. \n\nTu papá te ama, genuinamente. No es el hombre más cálido del mundo, pero le importas lo suficiente como para haberte dado la mejor educación que el dinero y la influencia pueden comprar. Tiró de su influencia para que fueras aceptado como el estudiante personal de Alustriel Silverhand, una de las archimagas más poderosas aún vivas, en la ciudad de Silverymoon. \n\nPasaste una porción significativa de tu juventud allí, estudiando las artes arcanas bajo la tutoría de Alustriel. Eres talentoso, y eres determinado. Eres, de todas las maneras, destinado para la grandeza. \n\nUn día, explorando el vaúl de Alustriel con su permiso, encontraste algo que no debías. Un pequeño, artefacto antiguo, de origen Netherese. Pulsaba con energía como ninguna magia que alguna vez hayas estudiado. Algo sobre el artefacto te llamó. \n\nCuando lo tocaste, detonó silenciosamente. Sin fuego, sin fuerza. Un pulso blanco y caluroso atravesó tu cuerpo y dejó atrás una cicatriz arcana. El artefacto después murió totalmente. Inerte. Una piedra sin vida. Lo has conservado desde ese entonces. \n\nAlustriel te examinó después y te dijo que \"tuvieras cuidado\", y no explicó más. \n\nLa cicatriz no duele, a veces cosquillea, cerca de magia fuerte. Nunca has podido entender qué era el artefacto, y lo que te hizo. Y Alustriel no habla de ello. \n\nEn tu determinación por encontrar respuestas, te dirigiste a Candlekeep, la librería más grande y de mayor reconocimiento. Tenías seguridad de que adentro encontrarías tus respuestas, pero no\n\nNotes: -La relación con su padre no es unidireccional, él quiere a su padre, pero… sí existe un tipo de preferencia absurda que Leoric no comprende. Ha hecho lo posible para que esto no sea así, que el trato para con su hermano sea justo, pero su padre simplemente es incapaz de actuar de otra manera. \n\n-Tuvo un compañero de cuarto llamado Hanniel Woodenfall mientras estudiaba en Silverymoon, y hasta el día de hoy mantienen contacto. Fue una amistad inesperada, pero muy bien recibida por Leoric, un buen contraste a sus relaciones dentro de la villa de su padre. \n\n-La madre de Leoric falleció durante el parto; él solo tiene los recuerdos prestados de su padre y el retrato de ella colgado en su cuarto como referencia de qué tipo de mujer era… Sin embargo, a la mujer que ha llamado madre durante toda su vida ha sido una criada que atendía en la villa. Gwendolyn Autumnbloom ha vivido para la familia Neverember; le enseñó lo poco que conocía sobre la nobleza, etiqueta, sutilezas y especificidades que nadie más le enseñaría, claro. Leoric siempre ha sido algo complicado para expresarse de manera efectiva, pero eso no le quita el cariño que le tiene. \n\n-Alustriel estuvo gratamente complacida al observar que Leoric no solo tenía un talento innato para él la magia, sino que también poseía una mente brillante e inquisitiva que lo hacía querer estudiar más y tomarse cada momento del tutelaje con absoluta seriedad. Quizás la falta de filtro a la hora de tratar con la nobleza no era lo más ideal, pero para el aprendizaje de lo arcano esto era ideal. \n\n-El miedo más profundo de Leoric es, coincidentemente, su realidad o, mejor dicho, lo que él percibe como realidad, sea una mera ilusión… un sinsentido cruel que él ha tratado de racionalizar por demasiado tiempo. La soledad que ha sentido por su desconexión con los demás, el resentimiento que sienten los demás hacia su persona, sea real o no, el sentirse más máquina que persona… esos\n\nmiedos palidecen ante el tener alguna confirmación de que todo es algún tipo de broma cruel; un juego ilusorio en el cual él por algún motivo está involucrado. \n\n-Leoric ha cometido varios errores, sí, pero algo que no puede permitirse es dejarse manipular; él ya ha visto cómo estos juegos se desenvuelven entre los nobles como si de un simple juego de cartas se tratase. Ha sufrido de traiciones pequeñas; la mayor ha sido por su padre al siempre mostrarse abierto a la posibilidad de no tratar a su hermano como lo hace y, sin embargo… Leoric sabe que Lord Neverember nunca estará dispuesto a cambiar. Más allá de lo que le genera remordimiento, es (al menos lo que él siente) como el acto de traición más grande que pudo haberle hecho a alguien: el robarle parte de su pasado a su propio hermano. Genuinamente, él desea corregir esto de cualquier manera, aunque quizá ese barco ya zarpó hace mucho tiempo. \n\n-El juego crudo e infantil que es el “poder” no se compara en lo absoluto con tener conocimiento. No existe ningún tipo de interés en él por entregar algo a cambio de poder… Sin embargo, con lo que respecta al conocimiento… él podría decir que ya entregó el máximo precio que estaba dispuesto a pagar y que no lo volvería a hacer, pero… él mismo no sabe qué tan ciertas son esas palabras. Leoric trata de jugar en lo que él considera un tablero totalmente distinto e igual de peligroso.",
+  "size": "Medium",
+  "type": "Humanoid",
+  "subtype": "Human",
+  "group": "Player Character",
+  "alignment": "Neutral Good",
+  "armor_class": {
+    "value": 12,
+    "special": "Current HP 7/7"
+  },
+  "hp": {
+    "value": 7,
+    "hit_dice": "d6"
+  },
+  "speed": {
+    "walk": 30,
+    "fly": null,
+    "swim": null,
+    "climb": null,
+    "burrow": null,
+    "hover": null,
+    "lightwalking": null,
+    "notes": null
+  },
+  "stats": {
+    "strength": 10,
+    "dexterity": 15,
+    "constitution": 13,
+    "intelligence": 20,
+    "wisdom": 12,
+    "charisma": 6
+  },
+  "saving_throws": {
+    "strength_save": 0,
+    "dexterity_save": 2,
+    "constitution_save": 1,
+    "intelligence_save": 7,
+    "wisdom_save": 3,
+    "charisma_save": -2
+  },
+  "perception": 11,
+  "skills": {
+    "acrobatics": 2,
+    "animal_handling": 1,
+    "arcana": 7,
+    "athletics": 0,
+    "deception": -2,
+    "history": 7,
+    "insight": 1,
+    "intimidation": -2,
+    "investigation": 7,
+    "medicine": 1,
+    "nature": 7,
+    "perception": 1,
+    "performance": -2,
+    "persuasion": 0,
+    "religion": 7,
+    "sleight_of_hand": 4,
+    "stealth": 2,
+    "survival": 1
+  },
+  "damage_vulnerabilities": null,
+  "damage_resistances": null,
+  "damage_immunities": null,
+  "condition_immunities": null,
+  "senses": null,
+  "languages": [
+    "Common",
+    "Draconic",
+    "Netherese"
+  ],
+  "items": [
+    "Dagger",
+    "Dagger",
+    "Rapier (equipped)",
+    "Spellbook",
+    "Star Ruby",
+    "Perfume",
+    "Backpack",
+    "Playing Cards",
+    "Fine Clothes",
+    "(EX)Magical Item",
+    "Oil x10",
+    "Parchment x10",
+    "Tinderbox",
+    "Book",
+    "Lamp",
+    "Ink Pen",
+    "Ink",
+    "(EX)Magical Item",
+    "Ray of Frost (equipped)",
+    "Gaming Set",
+    "Fine Clothes",
+    "Perfume",
+    "29 gp"
+  ],
+  "equipment": null,
+  "challenge_rating": null,
+  "cr": null,
+  "actions": [
+    {
+      "name": "Dagger",
+      "desc": "Attack: +4 to hit. Hit: 1d4.",
+      "attack_bonus": 4,
+      "stat_bonus": [
+        "DEX"
+      ],
+      "damage_dice": "1d4",
+      "limit": null
+    },
+    {
+      "name": "Rapier",
+      "desc": "Attack: +4 to hit. Hit: 1d8. Martial, Finesse, Vex",
+      "attack_bonus": 4,
+      "stat_bonus": [
+        "DEX"
+      ],
+      "damage_dice": "1d8",
+      "limit": null
+    },
+    {
+      "name": "Ray of Frost",
+      "desc": "Attack: +7 to hit. V/S",
+      "attack_bonus": 7,
+      "stat_bonus": [
+        "INT"
+      ],
+      "damage_dice": null,
+      "limit": null
+    }
+  ],
+  "bonus_actions": null,
+  "lair_actions": null,
+  "mythic_actions": null,
+  "reactions": null,
+  "legendary_desc": null,
+  "legendary_actions": null,
+  "special_abilities": [
+    {
+      "name": "Core Wizard Traits",
+      "desc": "Class: Wizard\n\nPHB-2024 165",
+      "attack_bonus": null,
+      "stat_bonus": [],
+      "damage_dice": null,
+      "limit": null
+    },
+    {
+      "name": "Spellcasting",
+      "desc": "Class: Wizard\n\nIntelligence-based slot casting. 3 Cantrips, 4 Prepared spells (from 6 in book).",
+      "attack_bonus": null,
+      "stat_bonus": [],
+      "damage_dice": null,
+      "limit": null
+    },
+    {
+      "name": "Ritual Adept",
+      "desc": "Class: Wizard\n\nPHB-2024 166",
+      "attack_bonus": null,
+      "stat_bonus": [],
+      "damage_dice": null,
+      "limit": null
+    },
+    {
+      "name": "Arcane Recovery",
+      "desc": "Class: Wizard\n\nRegain spell slots on short rest once per day.",
+      "attack_bonus": null,
+      "stat_bonus": [],
+      "damage_dice": null,
+      "limit": null
+    },
+    {
+      "name": "You can use this feature once per Long Rest.",
+      "desc": "Class: Wizard",
+      "attack_bonus": null,
+      "stat_bonus": [],
+      "damage_dice": null,
+      "limit": null
+    },
+    {
+      "name": "1 / Long Rest",
+      "desc": "Class: Wizard\n\nSpecial",
+      "attack_bonus": null,
+      "stat_bonus": [],
+      "damage_dice": null,
+      "limit": null
+    },
+    {
+      "name": "Size",
+      "desc": "Class: Wizard\n\nPHB-2024 194\nYour Size is Medium or Small, chosen when you select this species.",
+      "attack_bonus": null,
+      "stat_bonus": [],
+      "damage_dice": null,
+      "limit": null
+    },
+    {
+      "name": "Speed",
+      "desc": "Class: Wizard\n\nPHB-2024 194\nYour Speed is 30 ft.",
+      "attack_bonus": null,
+      "stat_bonus": [],
+      "damage_dice": null,
+      "limit": null
+    },
+    {
+      "name": "Resourceful",
+      "desc": "Class: Wizard\n\nPHB-2024 194\nYou gain Heroic Inspiration whenever you finish a Long Rest.",
+      "attack_bonus": null,
+      "stat_bonus": [],
+      "damage_dice": null,
+      "limit": null
+    },
+    {
+      "name": "Skillful",
+      "desc": "Class: Wizard\n\nPHB-2024 193\nYou gain proficiency in one skill of your choice.",
+      "attack_bonus": null,
+      "stat_bonus": [],
+      "damage_dice": null,
+      "limit": null
+    },
+    {
+      "name": "Versatile",
+      "desc": "Class: Wizard\n\nPHB-2024 194\nYou gain an Origin feat of your choice.",
+      "attack_bonus": null,
+      "stat_bonus": [],
+      "damage_dice": null,
+      "limit": null
+    },
+    {
+      "name": "Languages",
+      "desc": "Class: Wizard\n\nPHB-2024 37\nYour character knows at least three languages: Common plus two languages you roll or choose from",
+      "attack_bonus": null,
+      "stat_bonus": [],
+      "damage_dice": null,
+      "limit": null
+    },
+    {
+      "name": "the Standard Languages table",
+      "desc": "Class: Wizard\n\nKnowledge of a language means your character can communicate in it, read it, and write it.",
+      "attack_bonus": null,
+      "stat_bonus": [],
+      "damage_dice": null,
+      "limit": null
+    },
+    {
+      "name": "Magic Initiate (Wizard)",
+      "desc": "Class: Wizard\n\nPHB-2024 201\nTwo Cantrips. You learn two cantrips of your choice from the Wizard spell list. Int., Wis., or Cha. is your spellcasting ability for this feat's spells.",
+      "attack_bonus": null,
+      "stat_bonus": [],
+      "damage_dice": null,
+      "limit": null
+    },
+    {
+      "name": "Level 1 Spell",
+      "desc": "Class: Wizard\n\nChoose a level 1 spell from the Wizard spell list\nYou always have that spell prepared\nYou can cast it once without a spell slot, and you regain the ability to cast it in that way when you finish a Long Rest\nYou can also cast the spell using any spell slots you have.",
+      "attack_bonus": null,
+      "stat_bonus": [],
+      "damage_dice": null,
+      "limit": null
+    },
+    {
+      "name": "Spell Change",
+      "desc": "Class: Wizard\n\nWhenever you gain a new level, you can replace one of the spells you chose for this feat with a different spell of the same level from the chosen spell list.",
+      "attack_bonus": null,
+      "stat_bonus": [],
+      "damage_dice": null,
+      "limit": null
+    },
+    {
+      "name": "Repeatable",
+      "desc": "Class: Wizard\n\nYou can take this feat more than once.",
+      "attack_bonus": null,
+      "stat_bonus": [],
+      "damage_dice": null,
+      "limit": null
+    },
+    {
+      "name": "Intelligence -",
+      "desc": "Class: Wizard",
+      "attack_bonus": null,
+      "stat_bonus": [],
+      "damage_dice": null,
+      "limit": null
+    },
+    {
+      "name": "Noble Ability Score Improvements",
+      "desc": "Class: Wizard\n\nPHB-2024 182",
+      "attack_bonus": null,
+      "stat_bonus": [],
+      "damage_dice": null,
+      "limit": null
+    },
+    {
+      "name": "Increase two scores (+2 / +1) -",
+      "desc": "Class: Wizard",
+      "attack_bonus": null,
+      "stat_bonus": [],
+      "damage_dice": null,
+      "limit": null
+    },
+    {
+      "name": "Wizard Scholar",
+      "desc": "Class: Wizard\n\nExpertise in one professional skill.",
+      "attack_bonus": null,
+      "stat_bonus": [],
+      "damage_dice": null,
+      "limit": null
+    },
+    {
+      "name": "Skilled",
+      "desc": "XPHB\n\nYou gain proficiency in any combination of three Skill List; SkillsXPHBskills or toolsitemstype=tool;artisan's tools;instrument;gaming set of your choice.\n\n**Repeatable.** You can take this feat more than once.",
+      "attack_bonus": null,
+      "stat_bonus": [],
+      "damage_dice": null,
+      "limit": null
+    }
+  ],
+  "spell_slots": [
+    {
+      "level": 1,
+      "limit": {
+        "name": "1st-level Spell Slots",
+        "description": "2/2 available",
+        "uses": 2,
+        "resets": [
+          "long"
+        ]
+      }
+    }
+  ],
+  "spells": [
+    "Cantrip: Blade Ward",
+    "Cantrip: Detect Magic [R]",
+    "Cantrip: Find Familiar [R]",
+    "Cantrip: Identify [R]",
+    "Cantrip: Light",
+    "Cantrip: Mending",
+    "Cantrip: Ray of Frost",
+    "Cantrip: Toll the Dead",
+    "1st Level: Chromatic Orb",
+    "1st Level: Mage Armor",
+    "1st Level: Magic Missile",
+    "1st Level: Protection from Evil and Good",
+    "1st Level: Shield"
+  ],
+  "spell_dc": "DC 15",
+  "spell_attack": "+7",
+  "limits": null,
+  "source": "D&D Beyond PDF - Leoric.pdf"
+}

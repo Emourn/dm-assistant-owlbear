@@ -1,0 +1,456 @@
+{
+  "id": "b89628ae-75bd-4c85-81b5-4ba98ee438a2",
+  "title": "dd",
+  "isActive": true,
+  "isSetupComplete": true,
+  "round": 1,
+  "campaignId": "bfa82e98-2db0-49a0-b994-ad5102e0584b",
+  "combatants": [
+    {
+      "id": "51535d87-05b7-4722-b8df-8abcb0612232",
+      "type": "player",
+      "name": "Dwarf Cleric",
+      "ac": 9,
+      "maxHp": 9,
+      "currentHp": 9,
+      "tempHp": 0,
+      "speed": "30 ft(Walking)",
+      "initiativeMod": -1,
+      "initiativeScore": 19,
+      "dexterityScore": 8,
+      "conditions": [],
+      "abilityScores": {
+        "str": 14,
+        "dex": 8,
+        "con": 10,
+        "int": 12,
+        "wis": 15,
+        "cha": 13
+      },
+      "savingThrowProficiencies": [
+        "str",
+        "dex",
+        "con",
+        "int",
+        "wis",
+        "cha"
+      ],
+      "proficiencyBonus": 2,
+      "spellcastingAbility": "wis",
+      "spellSaveDc": 12,
+      "spellAttackMod": 0,
+      "spellSlots": [
+        {
+          "current": 0,
+          "max": 0
+        },
+        {
+          "current": 2,
+          "max": 2
+        },
+        {
+          "current": 0,
+          "max": 0
+        },
+        {
+          "current": 0,
+          "max": 0
+        },
+        {
+          "current": 0,
+          "max": 0
+        },
+        {
+          "current": 0,
+          "max": 0
+        },
+        {
+          "current": 0,
+          "max": 0
+        },
+        {
+          "current": 0,
+          "max": 0
+        },
+        {
+          "current": 0,
+          "max": 0
+        },
+        {
+          "current": 0,
+          "max": 0
+        }
+      ],
+      "isConcentrating": false,
+      "exhaustion": 0,
+      "sourceId": "a2547cab-9637-4759-bade-a794d0b1f42b",
+      "hasAction": true,
+      "hasBonusAction": true,
+      "hasReaction": true
+    },
+    {
+      "id": "f22e62cc-44c7-43d6-8992-1ee08f772902",
+      "type": "monster",
+      "name": "Dryad",
+      "ac": 11,
+      "maxHp": 22,
+      "currentHp": 22,
+      "tempHp": 0,
+      "speed": "walk 30 ft",
+      "initiativeMod": 1,
+      "initiativeScore": 11,
+      "dexterityScore": 12,
+      "abilityScores": {
+        "str": 10,
+        "dex": 12,
+        "con": 11,
+        "int": 14,
+        "wis": 15,
+        "cha": 18
+      },
+      "proficiencyBonus": 2,
+      "savingThrowProficiencies": [],
+      "legendaryActionsMax": 0,
+      "legendaryActionsRemaining": 0,
+      "conditions": [],
+      "monsterData": {
+        "name": "Dryad",
+        "source": "MM",
+        "page": 121,
+        "srd": true,
+        "referenceSources": [
+          "SKT",
+          "GoS",
+          "BGDIA",
+          "EGW",
+          "MOT",
+          "IDRotF",
+          "CM",
+          "WBtW",
+          "CRCotN",
+          "JttRC",
+          "KftGV",
+          "PSI",
+          "ToFW",
+          "BMT",
+          "VEoR",
+          "QftIS",
+          "XMtS",
+          "SCC-CK",
+          "SCC-ARiR"
+        ],
+        "reprintedAs": [
+          "Dryad|XMM"
+        ],
+        "size": [
+          "M"
+        ],
+        "type": "fey",
+        "alignment": [
+          "N"
+        ],
+        "ac": 11,
+        "hp": 22,
+        "speed": {
+          "walk": 30
+        },
+        "str": 10,
+        "dex": 12,
+        "con": 11,
+        "int": 14,
+        "wis": 15,
+        "cha": 18,
+        "skill": {
+          "perception": "+4",
+          "stealth": "+5"
+        },
+        "senses": [
+          "darkvision 60 ft."
+        ],
+        "passive": 14,
+        "languages": [
+          "Elvish",
+          "Sylvan"
+        ],
+        "cr": "1",
+        "spellcasting": [
+          {
+            "name": "Innate Spellcasting",
+            "type": "spellcasting",
+            "headerEntries": [
+              "The dryad's innate spellcasting ability is Charisma (spell save {@dc 14}). The dryad can innately cast the following spells, requiring no material components:"
+            ],
+            "will": [
+              "{@spell druidcraft}"
+            ],
+            "daily": {
+              "3e": [
+                "{@spell entangle}",
+                "{@spell goodberry}"
+              ],
+              "1e": [
+                "{@spell barkskin}",
+                "{@spell pass without trace}",
+                "{@spell shillelagh}"
+              ]
+            },
+            "ability": "cha"
+          }
+        ],
+        "trait": [
+          {
+            "name": "Magic Resistance",
+            "entries": [
+              "The dryad has advantage on saving throws against spells and other magical effects."
+            ]
+          },
+          {
+            "name": "Speak with Beasts and Plants",
+            "entries": [
+              "The dryad can communicate with beasts and plants as if they shared a language."
+            ]
+          },
+          {
+            "name": "Tree Stride",
+            "entries": [
+              "Once on her turn, the dryad can use 10 feet of her movement to step magically into one living tree within her reach and emerge from a second living tree within 60 feet of the first tree, appearing in an unoccupied space within 5 feet of the second tree. Both trees must be large or bigger."
+            ]
+          }
+        ],
+        "action": [
+          {
+            "name": "Club",
+            "entries": [
+              "{@atk mw} {@hit 2} to hit ({@hit 6} to hit with shillelagh), reach 5 ft., one target. {@h}2 ({@damage 1d4}) bludgeoning damage, or 8 ({@damage 1d8 + 4}) bludgeoning damage with shillelagh."
+            ]
+          },
+          {
+            "name": "Fey Charm",
+            "entries": [
+              "The dryad targets one humanoid or beast that she can see within 30 feet of her. If the target can see the dryad, it must succeed on a {@dc 14} Wisdom saving throw or be magically {@condition charmed}. The {@condition charmed} creature regards the dryad as a trusted friend to be heeded and protected. Although the target isn't under the dryad's control, it takes the dryad's requests or actions in the most favorable way it can.",
+              "Each time the dryad or its allies do anything harmful to the target, it can repeat the saving throw, ending the effect on itself on a success. Otherwise, the effect lasts 24 hours or until the dryad dies, is on a different plane of existence from the target, or ends the effect as a bonus action. If a target's saving throw is successful, the target is immune to the dryad's Fey Charm for the next 24 hours.",
+              "The dryad can have no more than one humanoid and up to three beasts {@condition charmed} at a time."
+            ]
+          }
+        ],
+        "environment": [
+          "forest"
+        ],
+        "soundClip": {
+          "type": "internal",
+          "path": "bestiary/dryad.mp3"
+        },
+        "attachedItems": [
+          "club|phb"
+        ],
+        "traitTags": [
+          "Magic Resistance",
+          "Tree Stride"
+        ],
+        "senseTags": [
+          "D"
+        ],
+        "languageTags": [
+          "E",
+          "S"
+        ],
+        "damageTags": [
+          "B"
+        ],
+        "spellcastingTags": [
+          "I"
+        ],
+        "miscTags": [
+          "MLW",
+          "MW"
+        ],
+        "conditionInflict": [
+          "charmed"
+        ],
+        "conditionInflictSpell": [
+          "restrained"
+        ],
+        "savingThrowForced": [
+          "wisdom"
+        ],
+        "savingThrowForcedSpell": [
+          "strength"
+        ],
+        "hasToken": true,
+        "hasFluff": true,
+        "hasFluffImages": true,
+        "currentHp": 22,
+        "maxHp": 22
+      },
+      "cr": "1",
+      "spellSlots": [
+        {
+          "current": 0,
+          "max": 0
+        },
+        {
+          "current": 0,
+          "max": 0
+        },
+        {
+          "current": 0,
+          "max": 0
+        },
+        {
+          "current": 0,
+          "max": 0
+        },
+        {
+          "current": 0,
+          "max": 0
+        },
+        {
+          "current": 0,
+          "max": 0
+        },
+        {
+          "current": 0,
+          "max": 0
+        },
+        {
+          "current": 0,
+          "max": 0
+        },
+        {
+          "current": 0,
+          "max": 0
+        },
+        {
+          "current": 0,
+          "max": 0
+        }
+      ],
+      "isConcentrating": false,
+      "exhaustion": 0,
+      "portraitUrl": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/main/bestiary/tokens/MM/Dryad.webp",
+      "hasAction": true,
+      "hasBonusAction": true,
+      "hasReaction": true
+    }
+  ],
+  "activeCombatantId": "51535d87-05b7-4722-b8df-8abcb0612232",
+  "turnState": {
+    "hasAction": true,
+    "hasBonusAction": true,
+    "hasReaction": true,
+    "extraActions": 0,
+    "hasHasteAction": false,
+    "hasCastLeveledSpell": false,
+    "hasCastBonusActionSpell": false,
+    "hasUsedHasteAction": false,
+    "movementRemaining": 30,
+    "movementUsedFt": 0,
+    "notes": ""
+  },
+  "log": [
+    {
+      "id": "a7b49928-2934-4250-a463-70558325eb1c",
+      "timestamp": 1773353393605,
+      "round": 0,
+      "message": "Encounter \"dd\" created.",
+      "type": "system"
+    },
+    {
+      "id": "3e546f34-de5b-4da9-94dd-1edeb9803653",
+      "round": 0,
+      "timestamp": 1773353418960,
+      "message": "Dryad rolled Initiative: 11 (Roll: 10, Mod: 1)",
+      "type": "roll",
+      "combatantId": "f22e62cc-44c7-43d6-8992-1ee08f772902",
+      "details": {
+        "total": 11,
+        "rolls": [
+          10
+        ],
+        "modifier": 1,
+        "notation": "1d20+1",
+        "isCrit": false,
+        "isFumble": false,
+        "advantageMode": "normal"
+      }
+    },
+    {
+      "id": "d30db623-bdb9-46e8-bd07-ee30ceee9058",
+      "round": 0,
+      "timestamp": 1773353418960,
+      "message": "Dwarf Cleric rolled Initiative: 19 (Roll: 20, Mod: -1)",
+      "type": "roll",
+      "combatantId": "51535d87-05b7-4722-b8df-8abcb0612232",
+      "details": {
+        "total": 19,
+        "rolls": [
+          20
+        ],
+        "modifier": -1,
+        "notation": "1d20-1",
+        "isCrit": true,
+        "isFumble": false,
+        "advantageMode": "normal"
+      }
+    },
+    {
+      "id": "64ffdc32-7413-47e0-926a-8cca5705e4f6",
+      "timestamp": 1773353422080,
+      "round": 1,
+      "message": "Combat started! Round 1 begins.",
+      "type": "system"
+    },
+    {
+      "id": "3a192004-8b11-4785-8753-052050181f31",
+      "timestamp": 1773353422080,
+      "round": 1,
+      "message": "Dwarf Cleric's turn.",
+      "type": "system",
+      "combatantId": "51535d87-05b7-4722-b8df-8abcb0612232"
+    }
+  ],
+  "battleMap": {
+    "gridWidth": 20,
+    "gridHeight": 20,
+    "cellSizePx": 40,
+    "gridColor": "rgba(75, 85, 99, 0.4)",
+    "backgroundColor": "#111827",
+    "tokens": [
+      {
+        "id": "d06eb5cb-720b-4c1e-a150-439fd1e86e4c",
+        "combatantId": "f22e62cc-44c7-43d6-8992-1ee08f772902",
+        "name": "Dryad",
+        "position": {
+          "col": 0,
+          "row": 0
+        },
+        "size": 1,
+        "color": "#ef4444",
+        "faction": "enemy",
+        "elevation": 0,
+        "showHealthBar": true,
+        "showNameLabel": true
+      },
+      {
+        "id": "a4571950-923f-4bde-9ad8-e3c4e6ba086c",
+        "combatantId": "51535d87-05b7-4722-b8df-8abcb0612232",
+        "name": "Dwarf Cleric",
+        "position": {
+          "col": 0,
+          "row": 0
+        },
+        "size": 1,
+        "color": "#3b82f6",
+        "faction": "player",
+        "elevation": 0,
+        "showHealthBar": true,
+        "showNameLabel": true
+      }
+    ],
+    "shapes": [],
+    "freehandPaths": [],
+    "fogOfWar": [],
+    "fogOfWarFreehand": []
+  },
+  "mapSetupComplete": true
+}

@@ -1,0 +1,1019 @@
+FIXING VECNA.PDF — TEXT EXTRACTION (pdfplumber)
+Total Pages: 16
+============================================================
+
+
+--- PAGE 1 ---
+(cid:0)(cid:2)(cid:3)(cid:4)(cid:5)(cid:3)(cid:6)(cid:7)(cid:8)(cid:9)(cid:8)(cid:2)(cid:10)(cid:11)(cid:3)(cid:12)(cid:13)(cid:7)(cid:14)(cid:8)(cid:6)(cid:2)(cid:15)(cid:3)(cid:16)(cid:10)(cid:14)(cid:3)(cid:17)(cid:10)(cid:14)(cid:3)(cid:10)(cid:18)(cid:19)(cid:20)(cid:10)(cid:11)(cid:11)(cid:5)(cid:3)(cid:8)(cid:2)(cid:18)(cid:11)(cid:20)(cid:21)(cid:13)(cid:21)(cid:22)(cid:3)(cid:0)(cid:3)(cid:17)(cid:10)(cid:14)(cid:3)(cid:9)(cid:6)(cid:8)(cid:2)(cid:9)
+(cid:19)(cid:6)(cid:3)(cid:6)(cid:7)(cid:8)(cid:9)(cid:8)(cid:2)(cid:10)(cid:11)(cid:11)(cid:5)(cid:3)(cid:23)(cid:10)(cid:12)(cid:13)(cid:3)(cid:19)(cid:23)(cid:13)(cid:3)(cid:24)(cid:11)(cid:10)(cid:5)(cid:13)(cid:7)(cid:14)(cid:3)(cid:25)(cid:8)(cid:2)(cid:21)(cid:3)(cid:23)(cid:8)(cid:4)(cid:3)(cid:17)(cid:23)(cid:13)(cid:2)(cid:3)(cid:19)(cid:23)(cid:13)(cid:5)(cid:3)(cid:17)(cid:13)(cid:2)(cid:19)(cid:3)(cid:19)(cid:6)
+(cid:26)(cid:13)(cid:10)(cid:19)(cid:23)(cid:3)(cid:27)(cid:6)(cid:20)(cid:14)(cid:13)(cid:3)(cid:25)(cid:6)(cid:7)(cid:3)(cid:19)(cid:23)(cid:13)(cid:3)(cid:28)(cid:2)(cid:21)(cid:3)(cid:19)(cid:8)(cid:4)(cid:13)(cid:3)(cid:8)(cid:2)(cid:3)(cid:29)(cid:23)(cid:10)(cid:24)(cid:19)(cid:13)(cid:7)(cid:3)(cid:30)(cid:22)(cid:3)(cid:31)(cid:23)(cid:13)(cid:5)(cid:3)(cid:17)(cid:6)(cid:20)(cid:11)(cid:21)(cid:3)(cid:25)(cid:10)(cid:18)(cid:13)
+(cid:6)(cid:25)(cid:25)(cid:3)(cid:17)(cid:8)(cid:19)(cid:23)(cid:3) (cid:19)(cid:7)(cid:10)(cid:23)(cid:21)(cid:15)(cid:3)(cid:9)(cid:13)(cid:19)(cid:3)(cid:19)(cid:23)(cid:13)(cid:3)(cid:24)(cid:8)(cid:13)(cid:18)(cid:13)(cid:3)(cid:6)(cid:25)(cid:3)(cid:19)(cid:23)(cid:13)(cid:3)!(cid:6)(cid:21)(cid:3)(cid:6)(cid:25)(cid:3) (cid:13)(cid:12)(cid:13)(cid:2)(cid:3)"(cid:10)(cid:7)(cid:19)(cid:14)(cid:15)(cid:3)(cid:10)(cid:2)(cid:21)
+(cid:19)(cid:23)(cid:13)(cid:2)(cid:3)(cid:19)(cid:23)(cid:13)(cid:3)(cid:26)(cid:10)(cid:7)#(cid:3)"(cid:6)(cid:17)(cid:13)(cid:7)(cid:14)(cid:3)(cid:17)(cid:6)(cid:20)(cid:11)(cid:21)(cid:3)(cid:21)(cid:13)(cid:24)(cid:6)(cid:14)(cid:8)(cid:19)(cid:3)(cid:19)(cid:23)(cid:13)(cid:4)(cid:3)(cid:8)(cid:2)(cid:19)(cid:6)(cid:3)(cid:31)(cid:6)(cid:12)(cid:10)(cid:9)(cid:22)(cid:3)(cid:27)(cid:13)(cid:7)(cid:13)
+(cid:19)(cid:23)(cid:13)(cid:5)(cid:3)(cid:17)(cid:6)(cid:20)(cid:11)(cid:21)(cid:3)(cid:13)(cid:2)(cid:18)(cid:6)(cid:20)(cid:2)(cid:19)(cid:13)(cid:7)(cid:3)(cid:16)(cid:10)(cid:14)(cid:3)(cid:10)(cid:2)(cid:21)(cid:3)(cid:17)(cid:6)(cid:20)(cid:11)(cid:21)(cid:3)(cid:13)(cid:8)(cid:19)(cid:23)(cid:13)(cid:7)(cid:3)(cid:9)(cid:13)(cid:19)(cid:3)(cid:19)(cid:23)(cid:13)(cid:3) (cid:17)(cid:6)(cid:7)(cid:21)(cid:3)(cid:6)(cid:25)
+(cid:16)(cid:10)(cid:14)(cid:3)(cid:25)(cid:7)(cid:6)(cid:4)(cid:3)(cid:23)(cid:8)(cid:4)(cid:3)(cid:6)(cid:7)(cid:3)(cid:19)(cid:23)(cid:13)(cid:5)(cid:3)(cid:17)(cid:6)(cid:20)(cid:11)(cid:21)(cid:3)(cid:18)(cid:6)(cid:2)(cid:12)(cid:8)(cid:2)(cid:18)(cid:13)(cid:3)(cid:16)(cid:10)(cid:14)(cid:3)(cid:19)(cid:6)(cid:3)(cid:23)(cid:13)(cid:11)(cid:24)(cid:3)(cid:19)(cid:23)(cid:13)(cid:4)(cid:3)(cid:7)(cid:8)(cid:21)
+(cid:19)(cid:23)(cid:13)(cid:3)(cid:4)(cid:20)(cid:11)(cid:8)(cid:12)(cid:13)(cid:7)(cid:14)(cid:13)(cid:3)(cid:6)(cid:25)(cid:3)$(cid:13)(cid:18)(cid:2)(cid:10)(cid:22)(cid:3)(cid:0)(cid:3)(cid:14)(cid:18)(cid:7)(cid:10)(cid:24)(cid:24)(cid:13)(cid:21)(cid:3)(cid:19)(cid:23)(cid:8)(cid:14)(cid:3)(cid:8)(cid:21)(cid:13)(cid:10)(cid:3)%(cid:13)(cid:18)(cid:10)(cid:20)(cid:14)(cid:13)(cid:3)(cid:19)(cid:23)(cid:13)(cid:3) (cid:6)(cid:16)(cid:15)
+(cid:10)(cid:14)(cid:3)(cid:0)(cid:3)(cid:20)(cid:2)(cid:21)(cid:13)(cid:7)(cid:14)(cid:19)(cid:10)(cid:2)(cid:21)(cid:3)(cid:8)(cid:19)(cid:15)(cid:3)(cid:23)(cid:10)(cid:14)(cid:3)%(cid:13)(cid:13)(cid:2)(cid:3)(cid:11)(cid:6)(cid:14)(cid:19)(cid:3)(cid:19)(cid:6)(cid:3)(cid:16)(cid:10)(cid:14)(cid:3)(cid:14)(cid:8)(cid:2)(cid:18)(cid:13)(cid:3)(cid:10)(cid:7)(cid:7)(cid:8)(cid:12)(cid:8)(cid:2)(cid:9)(cid:3)(cid:8)(cid:2)
+(cid:31)(cid:6)(cid:12)(cid:10)(cid:9)(cid:15)(cid:3)(cid:24)(cid:11)(cid:20)(cid:14)(cid:22)(cid:22)(cid:3)!(cid:10)(cid:12)(cid:13)(cid:2)(cid:11)(cid:6)(cid:25)(cid:19)(cid:3)(cid:17)(cid:6)(cid:20)(cid:11)(cid:21)(cid:2)&(cid:19)(cid:3)(cid:14)(cid:8)(cid:4)(cid:24)(cid:11)(cid:5)(cid:3)(cid:11)(cid:13)(cid:19)(cid:3)(cid:23)(cid:8)(cid:4)(cid:3)(cid:17)(cid:10)(cid:11)#(cid:3)(cid:6)(cid:20)(cid:19)(cid:22)
+
+--- PAGE 2 ---
+the Rod of Seven Parts, and it occured to be at that removed the entire secrets mechanic from the
+point to have the final piece of the Rod have a shard of adventure as well.
+the obelisk in the base of it. The very last bit in Eldritch Eye has Vecna
+With the basics now in mind, I could begin fixing materializing within a ritual chamber and tells Zalryr
+Vecna Eve of Ruin so that it would make sense and flow that he is impressed with the characters, that they are a
+at my table. The following pages detail how I've fixed it new point of interest and that he will keep his eye on
+for my players. them, then he bestows onto them one of two charms,
+Charm of the Creeping Hand or Charm of the Eldritch
+LEVELS 1 TO 4 Eye. Vecna then disappears. I liked this Nest of the
+Eldritch Eye adventure, except by the time we got to Eve
+Eve of Ruin wanted players to start off at level 10. This
+of Ruin, there was never a mention of them meeting
+is supposed to be a beyond epid adventure that also ties
+Vecna, nor anything stated about these charms. I get
+with with celebrating 50 years of the game. I wasn't a
+why they didn't say anything in the core adventure, Nest
+fan of starting them off at level 10, especially if I was
+was a pre-order perk but after the book was released it
+going to be running this for new players.Jumping in at
+was another $5.00 to spend, so it would have likely
+level 10 and there is just no skin in the game. I felt
+caused a much larger issue and a nest (pun intended) of
+having them start off at level 1 and move their way up
+complaints from the community about having to
+would be an excellent way to start off and also to help
+purchase a pre-adventure in order to have all the needed
+build that connection to the adventure.
+material to run the core adventure. As it is, I did have
+I run D&D for new players quite a bit. I've often run
+the Nest adventure, so I made use of it and as such, I
+them through Death House, an introductory adventure
+incorporated the charms and them meeting Vecna into
+found in Curse of Strahd. It's a well balanced adventure
+the overall story.
+that takes players from level 1 to level 3. The Mists
+As the players adventure forth, they are free to spend
+snatch them up from their home area and deposit them
+the charms however they wish, but once they are spent,
+into the famed Domain of Dread, in front of the Durst
+they cannot be recharge, at least, not until the meet
+family home, also referred to as the Death House. Why
+Vecna again. While Eve of Ruin has them meeting
+this is a perfect adventure, the players can literally be
+Vecna only at the end, in my fix Vecna will pop up from
+from any location, any setting. They could be from
+time to time and recharge their charms, there is a larger
+Forgotten Realms, Krynn, Kara-Tur, anywhere. The
+reason for this, as it was a way for me to maintain a
+mists is the element that will bring them together.
+connection with the players to the overall story, to have
+For the most part, Death House can be played as it is
+a link directly to Vecna.
+laid out. The heaviest edit I made to it was having the
+By the time they end Nest of the Eldritch Eye they
+Durst family be followers ofVecna. While I never flat
+should be right at level 4. The 4th level adventure picks
+out tell my players this, they may find a diary that
+up right after Nest. Lord Neverember thanks them,
+speaks of it, but too will notice that the cult spirits that
+provides the just rewards, but also mentions that there
+show up towards the end, some will have the symbol of
+are possibly other Cult members in Neverwinter. He
+Vecna on the backs of their hands, the hand with an eye
+suggests that the players check out the graveyard first.
+in it's center.
+This is not something that I specifically mentioned in
+Once they have completed Death House, the mists
+the video, I instead left it a touch vague as to how the
+will deposit them at the gates ofNeverwinter. Vecna:
+players will progress, but in the 2nd section I'll explain
+Nest of the Eldritch Eye was also a very well made
+the exact adventure I did with my players where they
+adventure, and was designed for 4 to 6 characters that
+find a shard piece and advance to Sigil (which was also
+were level 3. This was a perfect and natural segway into
+not mentioned in the video).
+the players getting familiar with Vecna. It is likely that
+they know the name Vecna but not the who. This was
+LEVELS 4 TO 7
+another fix that I really wanted to address. Eve of Ruin
+starts the characters off at level 10, and just puts them Eve of Ruin uses the term "shunt" to explain how to
+right into the action. There was no buildup or meaning players move from one area to another, it was a cheap
+behind it. They simply arrive one day in front of a way of saying that they were teleported without
+powerful wizard and are tasked with saving the otherwise explaining exactly how. I didn't like that
+multiverse. By having them start off at level 1 and go explanation but from it stemmed a super simple
+through the Eldritch Eye adventure, they are now connection with the obelisks. In my fixed version,
+organically in the mix. Plus a small tweak to Vecna's Alustriel has an obelisk (tho I admit, I've never
+charms that they get help to sell their connection. explained how she got it so feel free to explore that) and
+When the characters move through Eldritch Eye, they it has shard pieces missing.
+encounter a cult ofVecna member named Zalryr. Zalryr The characters find a shard piece back when they are
+is helping to sacrifice townsfolk in an attempt to steal level 4 and it brings them into Sigil. Alustriel is
+their secrets and that supposedly beings Vecna back. somewhat surprised to see them but this ultimately
+Yes, a secret that one can whisper to the wind is what kickstarts off the core of the adventure. She suspected
+can bring Vecna back. I disliked this very much so I that the obelisk allowed for teleportation, but she was
+2
+
+--- PAGE 3 ---
+unsure exactly how. It appears that by holding a piece of touch of mystery, but too the characters realize that
+it that that piece would allow teleportation TO to their charms have been either replaced with the one
+obelisk. She also mentions that she has a friend, they didn't have previously, or that what they had has
+another powerful wizard named Mordenkainen been recharged.
+researching the obelisk as well. During the course of the Their vision will grow dark again and when it comes
+conversation she shows the characters around and back they find that they are standing in front of the large
+explains everything about Sigil. This is, more or less, a palace as found in Chapter 5 of the Witchlight book,
+filling in moment for players that are not familiar with Palace of Heart's Desire. For the most part this chapter
+Sigil or the Lady of Pain, but the conversation also fills can be played out as it is presented, however, in the
+in some gaps about who Vecna was and what he has orginal Witchlight adventure the bronze frog statue
+done in the past. belonged to a different NPC, in this version it will be in
+Alustriel goes on to explain that Vecna was, many Zybilna's palace.
+years ago, attempting to destory the multiverse, and that Palace of Heart's Desire is designed for level 8
+he had infultrated Sigil because of it's doors and it's characters, so I'll water it down a bit for 5th level
+connection to other planes, that it would be an easy way characters, but it is an involved adventure so by the time
+to move from one plane to another and take them down. they are finished with it they should be right around
+The battle is detailed out in old Advanced Dungeons level 7. The ending of the original version of this has
+and Dragons module, Die Vecna Die! While Alustriel is them freeing Zybilna and as a reward she grants them a
+not in that module, for my fix, she was, as at the end of single casting of the Wish spell. In the fix, she will tell
+it, the Lady of Pain rewards the players with a deed to a them that they will get the Wish spell at a later time but
+house. Alustriel explains that the house they are also too offer up the contents of the frog's mouth. She
+currently in is what the Lady of Pain granted to her for also tells them to tell Alustriel that she will be visting
+helping to put an end to Vecna all those years ago. soon.
+Alustriel also tells about the Maze, a prison of sorts In later parts of the adventure, we'll use Iggwilv's stat
+where the Lady of Pain tossed Vecna, but that is an block from Wild Beyond the Witchlight. With the shard
+element that we get in to a bit later. from the frog's mouth in hand the characters can now
+Alustriel turns the attention back to the obelisk and return back to Sigil.
+it's shards. She knows where one such piece is located,
+inside the mouth of a bronze frog statue. Eve of Ruin LEVELS 8 TO 10
+features Tasha, another powerful wizard, however, they
+Alustriel is joined now with Mordenkainen as she
+make it very convoluted. Tasha was the daughter of
+continues to study the obelisk. In Eve of Ruin,
+Baba Yaga, same person that created Baba Yaga's
+Mordenkainen is not.. Mordenkainen. Instead it is the
+Dancing Hut. Tasha would later become a touch .. evil
+Vampire Kas that is pretending to be Mord. Since we've
+and would be known in Greyhawk as Iggwilv. She
+removed the Crown of Lies and Kas from this Fix, the
+would travel the the abyss and learn secrets of demons
+wizard that we see really is Mordenkainen.
+and how to summon them and she would do some
+Mordenkainen introduces himself but immediately
+unsavory things. Eventually Iggwilv would see the errors
+begins to speak about the obelisk, how it allows one to
+of her ways and would attempt to atone for her actions
+find the next part of it, but also speaks of another object
+and become known as Zybilna. Zybilna is featured
+that has similar properties. He says that he needs to
+heavily in the adventure Wild Beyond the Witchlight.
+research something and vanishes in a puff of smoke.
+Historically in that book, because of her attempts as
+Alustriel mentions that a contact of hers reached out
+atonement, she would become an archfey but is
+from Candlekeep, that a book there talks about an
+someone that remained friends with both Alustriel and
+obelisk with the powers of teleportation. She will task
+Mordenkainen.
+the characters to go there and get it for her. I'm not a
+Alustriel tells the characters that Zybilna is in
+fan of high level NPCs tossing out fetch quests because. .
+possession of the frog statue. Alustriel also suspects
+why wouldn't they simply go get the item in question
+that a property of the obelisk would allow for one to
+themselves? In this instance, I'm going to add a
+touch it and concentrate on the location of a shard piece
+throwback easter egg to something that was talked
+and that it would take them within an area of where it
+about in the 4th Edition Forgotten Realms Player's
+could be located. They players touch the obelisk and
+Guide, that she and her sister Laruel hid inside
+their vision grows dark, slowly a red washed scene
+Candlekeep in an attempt to destroy it's wards. .
+forms and it is of a town with endless streets and alley
+Candlekeep is warded so that not just anyone can
+ways that stretch on forever. Those that are familiar
+enter. A powerful lich named Larloch was attempting to
+with past lore should recognize this as being the Maze,
+absorb the wards so that he could become a god.
+although I admit it would be out of game knowledge.
+Alustriel and her sister went in to destroy those wards
+Looming over the sky is a vision ofVecna, he has a bit
+to prevent him from ascending. Alustriel will make a
+of dialogue with the characters and teases that they are
+comment here about not being allowed back in, even
+travelling in his realm and that they are the final key.
+though she helped to prevent Larloch from absorbing
+This is left as a mystery, because all good stories need a
+the wards, she did destroy some and in the process,
+V:cna
+3
+
+--- PAGE 4 ---
+several volumes of books were also destroyed. The A vision ofVecna appears and tells Zalryr that he is
+monks would spend much time trying to repair the no longer needed, all he was was a means to get the
+damage. Including this small line, "I am not exactly players into this specific location. Zalryr falls dead as
+allowed back in the library", while it is in a much larger the image ofVecna fades. In one of Zalryr's hands is the
+context, it explains why she is sending the characters on book that he stole, in the other is an obsidian shard.
+the fetch quest and not going herself. She hands the Taking both the players can return to Sigil.
+characters a key that will allow them to travel, via a door Alustriel will place the shard into the obelisk as
+from her santuary and into the library. Of course, if she Mordenkainen examines the book. He will confirm that
+contained the ability to destroy a ward, it stands to the obelisk, when made whole will allow teleportation to
+reason she can bypass a ward now. She just won't risk a specific area, tho he does not know exactly where.
+being physically seen there. She tells the characters to What he also learns and finds curious is that the obelisk
+meet with a Sarah and that she will give them the book acts in a similar way to another artifact, the Rod of
+to bring back. Seven Parts, that by holding a part of it that you will
+Once in Candlekeep, they will find that the book has know where the next part is located.
+been stolen. The area where the book was, instead is a Mordenkainen will detail out the Rod of Seven Parts,
+burnt circle inset into the wall. Large enough to step it's history, and that it was once a Rod called the Rod of
+into if there was something to step into, as it is, it's just Law but it was so powerful that it was broken into seven
+a chared circle on the wall. Characters that have any pieces and scattered throughout the multiverse. The
+unspent charms left will feel a sting from the charm. three wizards, Mordenkainen, Alustriel, and Zulbina all
+Should they touch a chared part of the wall they will get guess that somehow the Rod and the Obelisk are
+a vision of the sewer section from the adventure portion connected but they are now sure exactly how. They also
+of Nest of the Eldritch Eye that they went through back surmise that Vecna is attempting to break free from the
+at when they were level 3 when they were in Maze. They also figure that the Rod of Seven Parts
+Neverwinter. could be used in stopping Vecna, but the problem is,
+Should they travel to Neverwinter, and keep in mind, they don't have a clue as to where to find any of the
+it's a long trip from Candlekeep to Neverwinter, they parts.
+can get provisions and mounts from the keep's Court of In Eve of Ruin, they did know where to find the first
+Air. Should they return to Sigil, they will find part, but again, I'm not a fan of powerful NPCs tasking
+Mordenkainen, Alustriel, and Zybilna there. Alustriel PCs with fetch quests when those NPCs could just go
+will ask of the book and upon finding that it was stolen get it themselves. By having the NPCs have no clue
+and hearing of their vision of the sewers will deduce where the first part of the Rod is to begin with, this
+that they should go there to Neverwinter to retrieve it. It solves that issue.
+is suggested that Mordenkainen provide a teleport as a Also to, Alustriel, Zybilna, and Kas (as Mordenkainen)
+fast means of transportation. cast a Wish spell to stop Vecna, only it explains that Kas
+That part may be optional, you may desire instead to ruins the spell and it doesn't work and instead
+have a cross country trek. This is what I ultimately did summons the players. Since we are used the obelisk as
+for my table because it gave them a breather and an the catalyst to move the players into Sigil originally, we
+opportunity to explore the wilderness and have some can't use the Wish spell in the same way, but I do want
+random encounters and fights and gain some to make use of it. This is the Wish spell that Zybilna
+experience. mentioned that she would cast when it was needed.
+Once back at Neverwinter, Lord Neverember will In the hands of players, a Wish spell can go many
+welcome them back but expresses at being nervous that different ways. While I don't like railroading, it will be
+the cult activity may be back so he welcomes them to key that a wish to stop Vecna is what is wished for.
+investigate once more. They will return to the original While they can, and should be free to wish for anything,
+sewers as found in the Nest of the Eldritch Eye it would otherwise be a challenge to continue the
+adventure only to discover that Zalryr has returned. adventure but I mainly wanted to tie in a connection
+Should the characters have otherwise dispatched of him point with Quests from the Infinite Staircase here,
+in the beginning, then this can just as easily be another something that I once speculated about in another
+high ranking cult ofVecna member. Either way, he will video. Alustriel will heavily suggest that they wish for
+scramble to the ritual chamber and sink into a portal stopping Vecna. As an alternative, should they use the
+and disappear. wish for something else, touching the obelisk could
+Following him and the players find themselves in a possibly kick start the next part.
+cavern with walls that are black and smooth. The idea is Wishing for Vecna to be stopped would initially
+to have this discription come off as if it's inside the appear to do nothing, but then the characters will have a
+obelisk. One side of the walls is slightly purple and it is vision of stairs that stretch on into infinity, with some
+here that Zalryr stands.Just beyond it the characters stairwells ending at closed doors. Their vision will have
+can see a city with endless streets, again this is a them float past doors and see one that is open. They will
+depiction of the Maze, but they don't know it yet. move towards it and just at the threshold they can see
+inside. The inner area should depict a piece of artwork
+Fixing V ~ c.'la
+
+--- PAGE 5 ---
+from the Web's Edge part of the Eve of Ruin adventure corpse of Brigetta, a nursemaid of the Durst family.
+where we see the corpse of an adventurer leaning Shortly thereafter Strahd will appear. In this fix (and
+against a massive door, only in this vision there are five this is a part that I did not include in the video) I had
+living adventurers, one by one they are killed by two possible things happen. Either it plays out exactly
+something the characters cannot see, however, as the as it does in Eve or after dealing with Strahd, there will
+last one falls, it turns to face the characters and be a dialogue between them and Strahd in which HE
+whisperes "Web's Edge". The open door that the explains that he wants Vecna returned to the Domain of
+players saw this all through closes and a gust of wind Dread, and while he recognizes that they are seeking all
+has them flaoting again, backwards to where they of the parts of the Rod, that another past associate of
+inisially started this odd vision. They catch a glimps of a Vecna's may be able to help and that they should seek
+large blue figure then all is dark. As mentioned, I out Kas in Torvag. I ultimately ditched this idea because
+wanted this connection with the genie Nafas and the we had never established Kas previously in this
+Infinite Staircase to be in here, I just though it would be adventure, but it could still be an interesting thing to
+a fun nod, PLUS it's been revealed that Nafas does develope.
+exactly this, he hears wishes and can take an element
+from one plane and plop it into another in order to grant LEVEL 15
+someone's wish. The implication is that the players are
+The next part of the adventure has them going to Krynn,
+the wish incarnate.
+at this point they should be level 15 and seeking the fifth
+Coming to in the sanctum, Alustriel will be standing
+part of the Rod. Night of Blue Fire can play out as it
+over the characters, Mordenkainen will look bemused
+exists in Eve of Ruin's Chapter 6.
+and question how a wish spell could possibly take down
+a god. After the players explain what they say, everyone
+LEVEL 16
+deduces that the Wish spell may have worked after all,
+as Mordenkainen is familiar with where Web's Edge is, Chapter 7 of Eve of Ruin, Tomb of Wayward Souls,
+but too, they all suspect that that may be where the 1st while is a good enough fit, I wanted to have an element
+part of the Rod of Seven Parts is. of deep thinking and major puzzle solving here. This
+part of the adventure revolves around Acererak, the lich
+LEVELS 11-13 that built the famed Tomb of Horrors.
+I looked at Tomb of Annihilation but it took players
+Mordenkainen will teleport them to the entrance of
+from level 1 to level 11. Here, they are starting off at
+Web's Edge and the remainder of Eve of Ruin's
+level 16 so it would be a touch challenging to up the
+chapters 2 to chapter 4 can play out page for page. The
+difficultly from 11 to 16. Tomb of Horrors, found in
+biggest thing to remember is to remove any elements of
+Tales from the Yawning Portal is perfect for characters
+Kas.
+of level 13 but because it's mostly puzzles and traps, it
+should be fairly easy to up it's difficulty to match level
+LEVEL 14
+16 characters.
+Once the players are level 14, they will be tasked with One could easily use this chapter as is and change up
+finding the fourth piece of the Rod of Seven Parts and the very ending of it to my fix, but for me, I really liked
+Chapter 5 of Eve of Ruin has them going to Ravenloft's many of the aspects of the Tomb of Horror adventure so
+Death House. Remember, back when they were level 1, it was an easy mesh to combine the storyline of
+their entire adventure started off at Death House so this Wayward Souls into the location of Tomb of Horrors.
+is a direct call back and connection point to that This is also where I wanted to add a major twist to
+adventure. The idea in all of this fix it to establish those the overall adventure and include two more artifacts,
+connections, to give the players a sense of belonging the Hand ofVecna and the Eye ofVecna, so a very
+and that they are actively helping to save the multiverse. specific reason that we'll reveal a bit later.
+There is a part in this version of Death House in While the 6th piece of the Rod of Seven Parts will still
+which they will run across a statue of Strahd. A be included in this section, as mentioned, I also want
+manifestation ofVecna will come forth from it in which two other things to be found .. the Hand and Eye of
+Vecna again speaks to the players, taunting to see if they Vecna. The addition of these two items will be tricky
+have figured out how they are his key and he touts that within itself, as if a player chooses to attune themselves
+together they will reshape everything. They again will to either one, it can cause their alignment to shift to
+feel the sting of the charms, and will find that the Neutral Evil. In the context of this adventure, the Eye of
+charms have once again been recharged. He then Vecna will have it's base properties, giving one
+merges back into the statue. truesight, the ability to use an action as if you were
+To give a further connection, just like the 1st time wearing a ring of x-ray vision, Clairvoyance, Crown of
+they encountered the Death House, the cult members Madness, Distinegrate, Dominate Monster, and Eyebite.
+below, some will be Vecna followers, but others will The Hand ofVecna allows one's Strength to go up to
+follow Strahd. In the Eve of Ruin version of Death 20, any attack made with the hand deals an extra 2d8
+House, the fourth piece of the Rod is found within the
+F'xiru Vecna
+5
+
+--- PAGE 6 ---
+cold damage, and you can cast Finger of Death, Sleep, Seven Parts for himself. Kas isn't in our fixed version.
+Slow, and Teleport. It too will shift one to Neutral Evil, The players will return to Sigil and where oringally it
+and yeah, it'll cast the suggestion spell on you was Kas that took the Rod of Seven Parts, instead
+demanding that you commit an evil act. Mordenkainen, similar to how Kas WAS going to obtain
+Should the same person attune to both the hand and the rod, states that he can fortify it so that it cannot
+the eye .. and keep in mind, by doing this, you've got to shatter again, but too wants to try one expierment with
+chop off your own hand and shove Vecna's onto your it.
+stump, and your own eye must be plucked out in order Undoubtably, one of the three wizards will see that
+to replace it with Vecna's eye, but attuning to both will the players are in possession of the Hand and Eye of
+grant to you, in addition to what we just previously Vecna, they will warn heavily against using them, eh,
+mentioned, they will grant to you immunity to disease attuning to them. But.. players being players. . might just
+and poision, you won't become exhausted by using the do it anyways. . As I've mentioned, I'm not a fan of
+eye's x-ray vision, you'll experience premonitions of railroading, so I might have it in place that should they
+danger, you can't be surprised, if you start a turn at 1 hit decide to hack a hand off and pluck an eye out that
+point, you'll regain ldlO hit points, heh .. and if a Alustreil will cast a spell that will stave off any negative
+creature you are fighting has a skeleton, you can or ill effects .. for a short amount of time .. The important
+attempt to turn it's bones to jelly just by touching it, and part here is that they have the eye and specifically the
+once every 30 days, you can cast the Wish spell. hand when they finally confront Vecna in his god form.
+As for where the 6th part of the rod of seven parts will As Mornenkainen is handed the assembled Rod of
+be found .. In the original version of Chapter 7, it's found Seven Parts, Zybilna points out that the bottom of the
+in an area being guarded by Rerak, a false lich. In the staff is entwined around a blackened stone, in fact, that
+Tomb of Horrors there is a chamber called the Crypt of stone looks remarkably like a shard of obsidian, the
+Acererak the Demilich. It's a puzzle of sorts to get INTO same material as the obelisk.
+that crypt, but once inside, you find a bench with a skull While Mordenkainen examines the Rod, Alustriel
+sitting on it, it is explained that the skull is Acererak's begins to look even closer at the Obelisk, although she
+and it really doesn't do anything other than kick up cannot find any more missing parts. Zybilna points out,
+some sinister dust .. Instead, we are going to place the "The Tip." and points to the very top of the obelisk. It
+the black throne from Eve of Ruin's 7th chapter, and appears that even though the obelisk looks complete,
+sitting upon it, instead of Acererak or Rerak, it will be .. from the vantage point on the ground it.. looks ..
+Vecna in his archlich form and he clearly has both eyes complete. . but examining it closer it is indeed, missing a
+and both hands, albeit they are glowing a ghostly red .. shard at the top.
+Vecna, in the Eve of Ruin book is depicted as being, for Alustriel stares at it in disbelief. "I've looked over
+the most part, whole, excpet that his eye and hand glow every square inch of this thing, there is no way that I
+red. This is EXACTLY how the characters will see him could have missed that!"
+now. The players begin to feel that familiar sting again but
+I wanted Vecna to appear for the players to encounter this time it is amplified, the three wizards visiably notice
+at a certain point and this really was a logical location. It this and Mordenkainen and Zybilna help usher them to
+won't be an easy encounter, but do keep in mind that an empty bedroom. Moments later Alustreil enters with
+Vecna is using the characters as they are ultimately the clerics of Silverymoon to aid them. She then speaks,
+key into opening a rift that will allow him to leave his "I know why I missed that piece at the top. There
+prison and reenter the multiverse. appears to be a type of connection between you and the
+Vecna is going to entertain the characters in a fight, obelisk. When you left, the obelisk appeared whole, I
+and will "die" when he's been reduced to 1/2 his hit could not see where it was missing the shard piece.
+points or more, again, as depicted in his archlich stat With you in there next to it, only then did it show that it
+block. When he "dies" his bones and armor will cumble was missing."
+to dust but remaining behind will be his eye, hand, and Mordenkainen then speaks, "That also explains why
+the 6th piece of the Rod of Seven Parts. the shard pieces acted in a similar way to the rod parts!
+Somehow the rod, the obelisk, and these adventurers
+LEVEL 17 are connected."
+Then Zybilna speaks, "And so. . what happens if we
+Chapter B's, The Dragon Queen's Pride, can be run as
+plug in the top piece?"
+is, again adhearing to our fixed storyline, so if there is a
+Alustriel states, "I'm more concerned with their
+mention of Kas, remove that element.
+connection to the obelisk and why they damn nearly
+fainted just a moment ago!"
+LEVELS 18 AND 19
+Mordenkainen chimes in, "I've a feeling we all know
+Chapter 9's The Betrayer Revealed as well as the what happens when we plug this last shard into the
+remainder of the Eve of Ruin adventure sees a major obelisk, and I think we know that we must help these
+change in my fix. In Eve of Ruin this is where Kas drops brave adventurerers, what helpless, powerless souls
+his disguse as Mordenkainen and takes the Rod of would we three wizards be ifwe didn't offer our help?"
+
+--- PAGE 7 ---
+Mord continues, "Elminster and Dalamar charged me years ago and they have a personal beef with Vecna so
+with certain responsibilites, and if those two old they are eager to help.
+bastards want to stay at that house with the suit of Back in Advanced Dungeons and Dragons lore, Vecna
+armor that spys on them, then it is up to us to help and killed the original Circle of Eight, Mordenkainen
+stop Vecna." gathered up their remains and made clones of them.
+That last little part is a small easter egg nod to the These are those clones and is a nod to the game's lore.
+Dragon Magazine articles called the Wizards Three, While the battle can be as fierce and as grand as you
+something that I've featured at length on the channel if need it to be, it is still a team of 11 casters plus the party
+you want to watch that. going up against an army of thousands. BUT, do keep in
+Mordenkainen takes the rod, motions for everyone to mind that there is an opposing Army looking to take
+step outside onto the balcony and begins to perform a down Vecna as well, of course, it's made up of a bunch
+spell. "This should help make the rod stable so that it of demons .. The takeaway element here is to give to the
+does not break apart, but I wanted everyone out here to characters an epic battle, something they can sink their
+soak in the remains of the day. Night is falling soon and teeth into before the final showdown, remember too,
+I have a feeling it will be an Eve that we will not soon that they have the might of Mordenkainen, his Circle of
+forget." Eight, Alustreil, and Zybilna to help them. When there is
+It bothered me that the name of the adventure was a sizable break in the army's march, one or more of the
+called The Eve of Ruin but there was never a reference players will feel the stinging sensation that has been
+to .. any part of it taking place on any given evening. This happening throughout the adventure.
+simple little bit of dialogue combined with the theater of The view within the rift shimmers, and the energy at
+the mind of standing on a balcony outside at dusk fixes it's edges begins to solidify. It's as if the rift opening has
+that. merged with the interior of Alustriel's Sanctuary.
+From this point, they will take the Rod of Seven Parts Both Alustreil and Mordenkainen look visibly shaken.
+and place it into the Obelisk's top, a rift opens, The landscape within the rift is of a sprawling city, the
+shattering the obelisk, the Rod of Seven Parts falls to streets are empty, alley ways turn at impossible angles,
+the ground. I really liked the artwork that Beedle and and everything appears to loop endlessly, it is the same
+Grim did for their version of Dungeon Master's Screen city that the players have been seeing in their vision,
+and it depicted Vecna rushing into the Alustriel's only this .. this looks more tangible, more real.
+Sanctum. I wanted to include that image in my fix, so Mordenkainen speaks, "I was wondering when she
+this is it. was going to appear."
+With the rift open, spiders from everywhere begin Mordenkainen, of course, is referring to The Lady of
+pouring into the Sanctum, we immediately see Pain. Alustriel gives a quick explanation to the players
+Mordenkainen stumble and as he is falling he does a that the Lady of Pain, to protect Sigil, has created a
+hand movement and disappears! Alustreil, Zybilna, and prison of sorts where she stores those who would
+the party are left to deal with this rush of spiders and threaten the city on a grand scale, she calls this prison,
+they notice a Spiderdragon making it's way towards the The Maze and it was always suspected that she trapped
+opening. Vecna in such a maze many years ago when he
+This will not be an easy battle, oh, and I do want to infiltrated Sigil. Evidently, that is now confirmed.
+point out that while in the art we DO see Vecna leading Alustriel replies, "She can't help, she won't help, just
+the charge, he is not at this point, this is simply a large as she couldn't all those years ago, she's bound. She'll
+battle. I really like the idea presented in Chapter 10, protect Sigil, but she won't interfere with what we must
+with two warring sides pitted against each other; those do next."
+that are fighting with Vecna and those opposed to him Mordenkainen looks at everyone and says. . "Well
+and I really didn't want to rob the players of such an then, Shall we go destroy the god of secrets?"
+epic battle and it IS a major battle, demons vs demons, With that, Mordenkainen and the Circle of 8 begin to
+and while the official adventure states this: march forth into the landscape before them .. Then
+"The troops are so numerous and powerful on both Zybilna yells out for them to stop but it is too late, the
+sides that even 19th level characters can't materially moment they cross the threshold, all 9 of them are
+affect the war by joining in the fighting .." I WANT them reduced to a fine black crystaline dust.
+to be able to have an impact and by having Zybilna, "No .. no .. ! No!" Alustriel cries out.. Zybilna speaks
+Alustriel, and Mordenekainen join in, then an impact with a heavy tone because she's just figured something
+could be had. . But. . we did just see Mordenkainen do out. . "Sigil.. it's known as The Cage. . the city of doors ..
+something and vanish. but also .. the city of. .. secrets. .."
+After several rounds of fighting, just as the And as if in reply, a raspy voice can be heard. . "and I..
+Spiderdragon makes it to the opening, Mordenkainen am the god of secrets. .." and with that, Vecna himself
+reappears but so too pop in eight more mages, as he has does kindav a float, slide, walk action coming from the
+summoned forth this Circle of Eight. This is a group of rift and moves into the sanctuary itself.
+powerful mages that he assembled many upon many Alustrile yells at the Lady of Pain, "You were
+supposed to destroy him! remove him from existance!"
+r XlPu Vecna 7
+
+--- PAGE 8 ---
+Zybilna says, "She did. . by imprisoning him with the I did put in a built in Easy Mode. The Rod of Seven
+maze." Parts can shift one's alignment to a lawful alignment if
+Vecna smiles, "and thanks to my loyal subjects, it is held. While Vecna is already of a Lawful Alignment,
+helping me with my ritual, I am free. Now watch me Lawful Evil, I instead am taking a liberty for the Rod to
+unmake .. everything." shift one's alignment to Lawful Good. I decided this, not
+And with that the battle is on again, and now. . you're as a cop-out, but again, as an easy mode. Should a
+fighting a god. player have attuned toV ecna's Hand, and again that is
+done by lopping off one's own hand and shoving the
+LEVEL20 Vecna Hand onto the stump, they need to hold the Rod
+in that hand. Because the Hand ofVecna really does
+This is where there is a major challenge and something
+belong toV ecna this alignment shift will effect him and
+I failed to include in the video. While the epic battle just
+not the player. It should weaken him down to a point
+prior took players from level 18 to 19, at the start of this
+where he won't know what is going on and will allow
+phase, they hit level 20 and there was nothing I had in
+the players to do as they see fit.
+place for them to rest to gain level 20 abilities. BUT
+Either way, this battle will end with the characters
+then it hit me, The Lady of Pain is there in the
+being triumphant or with their total failure.
+background. While she cannot putV ecna into a new
+Maze at this point, she can place the players into one, at
+VECNA WINS
+least long enough for them to rest and level up. Once
+they have done that she willingly lets them out. At one of my tables the players have already stated that
+One of the major fixes and perhaps the entire reason I they are going to team up withV ecna and help him
+started this fix to begin with was because Wizards of the remake the multiverse.Joy.
+Coast told us, in all of their marketing material that In Eve of Ruin we are given a brief one line that states
+we'd be facingV ecna, the God of Secrets, yet, what we that shouldV ecna win that the "multiverse becomes a
+got instead ofVecna in his archlich form. They didn't terrible place indeed." And that's it. My fix had to
+even upgrade his statblock from the Vecna Dossier that continue.
+came out a couple of years back. This was a ripoff of ShouldV ecna win, I have two endings. One I'll be
+me, and as mentioned, this was the specific reason that doing 100% with one table as they are older players and
+I wanted to provide a fix. One of my Discord members would get a kick out this; Vecna will unmake everything,
+created up a Vecna the Whispered One stat block that 5th edition won't exist, 4th edition will revert back to
+was miles above what we got in Eve of Ruin, you can 3.5. 3.5 will disolve to 3rd, 3rd will become 2nd edition,
+take a look at it here: Vecna the WhisRered One. and we will go all the way back to the pamphlet version
+This new stat block is powerful, nasty, and should of the game, which will also include Eldritch Wizardry.
+provide an actual challenge. In Eve of Ruin we are told Vecna will explain that that's what he's been trying to do
+thatV ecna doesn't pay the characters any mind at all all along, revert the game back to it's basics, to it's
+unless they directly challege him, that he is too busy beginning to where he was first spoken about. That he
+trying to perform his ritual. In this fixed version, he is hasn't been the evil one all along, that he instead was
+very much active. trying to rid the multiverse of the evil corporate
+Big Bad Evil Guys must have a bit of dialgue, right? overlords. He hopes that the progenitors of this reset do
+They are compelled to explain everything, what their not make the same mistakes. From this point, that game
+overall goal has been all along. In this, Vecna is no table will begin playing the pamphlet version of
+different. He will explain that the Obelisks were build by Dungeons and Dragons.
+the Netherese, that he used the obelisks to wipe out all The more realistic ending would haveV ecna and the
+knowledge of the Netherese, but in doing so learned of characters floating on a large rock in space as the
+an even older race known as the Spellweavers that multiverse unravels around them. Planes would shift,
+actually taught the Netherese how to build the obelisks some would collide, others would disappear, and even
+and that they worshipped an even more ancient god some might emerge that had been long forgotten.V ecna
+known asJ ergal, the Lord of the End of Everything. would truely become the master of the multiverse, buit
+Vecna goes on to explain that he has been using the thenJergal would finally come forth. This is the
+characters to help unlock the Maze by completing one cliffhanger I'd leave it at; Why?
+such Obelisk and with it made hole, it allowed a rift to Why wouldV ecna want to meet withJergal? To kill
+be opened, which is turn allows Vecna to escape, that him so thatV ecna could be the true Lord of the End of
+the last part of the Rod of Seven Parts held the final Everything? Or would we find out thatJergal was
+part of the obelisk. BUT, in order to have his full power, actually pullingV ecna's strings all along? Would we
+his full body must be restored, and thankfully, the discover thatJergal held power a multifold of magnitude
+characters also retrieved his hand and eye, all they need over whatV ecna had or would be find that by Vecna's
+to do is hand them over. unmaking of the multiverse, that he unmade whatever
+This is the end all battle of the Adventure. It won't be prisonJergal had been held in thus cementing that
+easy and it won't be fair.V ecna will use everythin in his Vecna was indeed the most powerful? That would be
+power to win. the final tease that I would leave the players with.
+
+--- PAGE 9 ---
+more to come. With Vecna gone, many of a cult
+VECNALOSES
+followers, as mentioned, will give up, possibly turn
+Should the player otherwise dispatch ofVecna, in Eve themselves in. Some, however, will possibly seek out
+of Ruin we are given three short paragraphs of what the characters as they will feel that in the sacrifice of
+happens. Vecna is banished to Greyhawk, and they get a those characters that they themselves will be elevated to
+celebration as heroes. a position of new powers and could become the new
+This was an epic adventure that was supposed to be a
+Vecna. .
+celebration of 50 years of the game! It needs and epic
+Other Cult ofVecna members will swear that white
+beyond epic ending! My fix goes on to explain that they are no longer hearing from vecna. . that something
+defeating Vecna, should the players manage to relieve is quitely whispering back to them. . that something
+him of all of his hit points, the day is saved, however,
+seems to have stepped into the void that Vecna left
+several significant events AND consequences will
+behind. . With Vecna gone, there is a great power
+unfold, both immediately as well as long term. vacuum left to fill, and other powerful beings are likely
+Remember that the official Eve of Ruin adventure going to attempt to step in, new threats will certainly
+gives us a brief "you return to Sigil and get a party
+pop up, for while Vecna has been defeated, his actions
+thrown for you" ending should you win. I wanted
+have forever altered the Multiverse.
+something more epic, something grand. One single
+paragraph ending just isn't going to cut it, we just
+FINAL THOUGHTS
+defeated the God of Secrets, we've completed a damn
+long campaign! While my fix may not be perfect for every table, it's
+These are the immediate things that will happen; going to work just fine for mine. I've mentioned some
+Order is restored, any magical residuals from his Ritual very specific elements up to this point as to why and
+begin to dissolve. Vecna had a far reach into the magics what my fixes attempt to accomplish. This ends part 1
+of undead, being able to raise them, command them. of my fix. Part 2 is more of my "liner notes" and bullet
+Followers ofVecna, cult members, will find that their points.
+connection has been severed. Necromancers, will find As I've mentioned, I'm not a fan of railroading and
+that their command over the undead isn't as strong, that while I encourage my players to go full on crazy and
+many undead are finally able to rest in peace as it was explore and do what they want, I do have in mind an
+Vecna that was bridging that gap between death and overall arc that I would like the players to experience.
+To that end, this next part will have my basic notes and
+necromancer.
+Vecna's control over certain towns, and these would points that I ultimately wanted to touch upon. Keep in
+be where his followers were strongest in numbers, think mind too, that I am fixing the storyline itself, certain
+Neverwinter here, begin to celebrate their newfound elments, such as specific battles and exact map
+freedom, while they may not know the heroes that saved locations, DMs will need to craft those elements to work
+them, travel to those locations will like find that at their own tables.
+conversation is thick about Vecna's fall and the relief One last thing, in my "liner notes" to follow, some of
+that they now know. the level suggestions may not match up with either the
+While the Cult ofVecna no longer has a connection video or the overview. As mentioned, these are notes
+TO Vecna, he .. no longer "communicates" with them, and bullet points. There will be plenty of space for the
+some members may seek to elevate themselves and characters to gain experience and level up between the
+secure a powerful position while others may simply flee notes. There will also be a few things in the notes
+or even turn themselves in. Regardless, the tattoos of (consider these bonuses) that never made it into the
+Vecna on the backs of everyone's hands will slowly fade video or even in the overview as they were ultimately
+over a 24 hour period. cut. I've left them in because I wanted to provide to you
+everything that I came up with should you decide to use
+True to the official adventure, celebrations will be had
+it and make it your own.
+in the character's honor for putting an end to Vecna, but
+too a solem remembrance will be had over the fall of
+Mordenkainen and his Circle of Eight. . but. . there is a
+glimmer of hope here. . If the Hand of Vecna was
+attuned and someone that held the Rod of Seven Parts. .
+they might just find that the evil intent that the hand
+once commanded. . now commands good and life ..
+Where the hand once appeared as a shrivelled up
+mumified hand, now it is meaty and full of life, who
+knows .. it might even grant the possibility of bringing
+someone back to life if they have not been departed for
+too long .. The Eye ofVecna would have similar features
+and functions ...
+While things appear to have a happy ending, a good
+story isn't grand unless there is a hint of something
+F;xirgVecna
+9
+
+--- PAGE 10 ---
+FIXING VECNA - NOTES AND POINTS
+TART THE PLAYERS OFF AT LEVEL 1 AND HAVE THEM • Lord Neverember asks them to travel to Mount
+advance up to level 20 during the course of Hotenow as there was a group of dwarves that were
+the adventure. Focus on connection points to bring some rare black diamonds in two days ago
+and investments. Connect different parts of in exchange for a !of of food and supplies. It is a
+the adventure that take place later with parts friendly group and Lord N fears something has
+that they will move through at the start. happened. He tasks the adventurers with finding
+Biggest exaple is that we will start off in Curse them. Use material from AD&D's Dwarves Deep to
+of Strahd's Death House and in Chapter 5 of Eve of flesh out an adventure. Madbeards would be fun to
+Ruin we will revisit Death House. include. One of the black diamonds will look
+different, it will be tossed out as worthless but once a
+NOTES: player picks it up and examines it .. together with the
+party they are teleported to Sigil.
+• Remove the secrets mechanic, sure Vecna is the God
+of Secrets but how this works is lame. Speaking a
+LEVEL5
+secret into the air and it's lost forever but then
+somehow gives you abilities to take down a god? For godsakes, remove the word 'shunt' it sounds too
+That's goofy. Remove it. much like ... Figure out logical ways for teleporting to
+• Remove Kas moonlighting as Mordenkainen. I could work.
+easily explain that the Dark Powers want Vecna and
+• Alustriel has an obelisk in her santuary, it stands 12'
+are willing to let Kas free in exchange, but what if we
+tall and has missing pieces. those pieces allow one to
+instead have the players meet Kas and he agrees to
+teleport to it. by holding the shard or touching the
+help them take down Vecna instead?
+obelisk you will know the area that another piece is
+• Remove Charm of Exile.
+at. The last piece of the RoSP has a black obelisk
+shard in the bottom of it, because of this the power
+LEVEL 1
+that lets one know where to find other parts of the
+Use these locations/ adventures: Rod itself has leeched into the obelisk and that's why
+it lets the players know where to go to find other
+• Characters can be created and start in any setting,
+shard pieces.
+FR, Ebberron, Greyhawk, etc. because the mists will
+• Alus can explain who Vecna is, help them to
+collect them and take them to:
+understand their vision. She can also explain the
+• Death House -found in Curse ofStrahd
+Lady of Pain, and how Vecna once tried to take over
+• Durst family is actually followers ofVecna Some
+Sigil. (move this to later once mord is present)
+spirits will have Vecna tattoos on their hands
+• next shard piece is in a frogs mouth, the one found in
+• Mists will deposit them at the gates of Neverwinter
+Wild Beyond the Witchlight. Play out the final
+adventure Palace oft he Heart's Desire from
+LEVELS 2, 3, AND 4
+witchlight.
+• use Nest of the Eldritch Eye, the preorder adventure • vecna appears to them when they teleport from sigil
+from Eve of Ruin. to witchlight and recharges their charms and teases
+• Starts players off at level 3 so water it down a small that they are a key to releasing him
+amount so that they can run it at level 2. • in room with three versions of tasha explain
+• Have the map for this area show back up in a later difference betweeen tasha, iggwilv, and zybilna
+chapter, after they discover that a book explaining • after freeing '.ZYB, she doesn't give them the wish
+the obelisk has been stolen (what happens if they kill spell now, instead it's done later -we want to tie in
+Zalryr? -have it be another high ranking Vecna cult infinite staircase at that time.
+member instead in that chapter). • obelisk shard is inside frog's mouth, a bag of holding
+• Vecna shows up, gives players charms, either that been incorporated into a statue!
+creeping hand or eldritch eye. Have these charms be • after this they are not deposited at the carnival, but
+able to be rechaged throughout the adventure, this is instead return to sigil
+Vecna's connection to him, kindav like Voldemort
+and Harry, only the stinging is in their hands and not
+their heads.
+Fixing V ~ c.'la
+0
+
+--- PAGE 11 ---
+LEVELS 6, 7, 8, 9 • Vecna is done with zalryr, just needed him as bait to
+get players into this chamber. V kills Z on the spot,
+They return to Sigil and find Alustriel and players will find book that explains the teleportation
+Mordenkainen looking over the obelisk properties of the obelisk but also a shard to it as well,
+they have to search zalryr to find these.
+• mordenkainen introduces himself
+• return to sigil
+• remove everything about Mord being Kas in disguise,
+this is the real mord. remove crown of lies, it's too
+LEVEL 10 AND 11
+stupid.
+• if players don't share vision of vecna have mord ask Alustriel, Mordenkainen, and Zybilna are here. A takes
+how alustriel came to have such a nice place in sigil, the shard and places it into the obelisk. Mord takes
+then explain the vecna vision book and begins to read through it, confirms that the
+• if players do share vision of vecna Alus can explain obeleisk has teleportation properties but also tells the
+who vecna is, help them to understand their vision players about the Rod of Seven Parts and explains how
+• mord recognizes something about how the obelisk they both, the obelisk and the rod, can influence where
+works, he leaves to "research something". He is the next parts are. He finds that curious. Zybilna just
+actually leaving to research the rod of seven parts watches.
+because it has the same properties as the obelisk in
+• remember give players down time let them explore
+that concentrating on it will help you find another
+• next morning Mord expresses that he feels that
+part.
+because the obelisk and rod are connected that
+• There is a book that Alus needs, players can find it in
+perhaps they need to find all the parts of the rod,
+Candlekeep but she cannot go back because she
+except no one knows where the begin looking.
+cannot return. look up spellplague and weave -this is
+• Zybilna grants the wish spell now. Players can wish
+why she cannot go into that library
+for anything (this could be bad -what if they wish for
+• she has a key to enter just can't go in herself
+gold? or an elephant sized parakeet like the last time
+• book has been stolen
+they had a wish spell? or even worse, what if they
+• sarah siotta had the book (no relation to nintra just
+wish for the deck of many things?). Highly encourage
+same last name.
+that they listed to Mordenkainen and Alustriel and
+• players feel sting again from their charm, find a spot
+Zyb when they say that they should wish to stop
+on the wall in a back area and get a vision of the
+Vecna.
+sewers from when they were going to the nest of the
+• tie in vision of Quests from the Infinite Staircase
+eldritch eye adventure. They should deduce that they
+here, major missed opportunity. In this vision they
+need to return to the original vecna cult hideout in
+will see the door from Web's Edge and instead of the
+Neverwinter.
+skeleton in front of it, it's an adventurerer, a large
+• travel by horse or return to sigil and have
+spider grows close to the adventurer and bits it! They
+mordenkainen teleport them. going by horse gives
+see the adventurer slowly turn towards them and
+them a chance to earn a lot more experience via
+whisper "Web's Edge!" vision will fade but they will
+random enoucnters.
+see the genie Nafas briefly.
+• Neverember welcomes them back, doesn't want the
+• Alus -maybe the wish spell didn't work
+cult to return so encourages them to investigate.
+• Mord -perhaps it did. I know where webs edge is, its
+• Zalryr is in the sewers again. if they killed him
+part of the underdark and its always been rumored
+previously, make it another high ranking official. He
+that that's where the first part of the rod is.
+is reading the book that he stole from Candlekeep
+Underdark is massive so never knew where to start
+and when seeing the players he runs to the ritual
+looking. Perhaps the wish spell is telling us exactly
+room.
+where to look.
+• summons a portal and drops into it
+• if players follow = inside obelisk . this is actually a
+window between the outside world and the maze
+that vecna is trapped in. once the obelisk has been
+restored it will allow vecna to escape the maze. alude
+to the adventure that mark and scott played in three
+years ago where they found a broken obelisk and
+started to put the pieces back together, remind them
+out of game that their characters had a vision of a
+red city. Sad that they all died from the mind flayer
+later.
+F'xiru Vecna
+11
+
+--- PAGE 12 ---
+• might need to water this chaper down, it's heavy with
+LEVELS 12 AND 13
+fights and thy likely could advance two levels here.
+• Run lambent Zenith and Ruined Colossus as is
+• change lambet zenith to The Clarivoyant, their old LEVEL 16
+ship from last year. Yes, their old ship that was
+Tomb ofWayard Souls, created by Acererak who also
+stolen is now the one that they will return to. grab
+made Tomb of Annihilation and Tomb of Horrors. 6th
+old notes to see what gear they had some will still be
+part of the rod is here.
+on board but most will be missing. Give T his cup of
+everlasting tea back.
+• replace everything with ToH, this is a thinking part
+• they will likely accuse current stranded crew of being
+of the adventure, lots of puzzels and traps.
+the ones that stole clarivoyant, but they can produce
+• players will find hand of vecna and eye of vecna here
+a bill of sale, they didn't steal it but they also didn't
+as well.
+know it was stolen when they bought it.
+• remove Rerak, instead it's vecna in archlich form, or
+• optional -have all crew members dead. this solves
+rather it's a manifestation of sorts, a projection that
+what to do with them at the end of the adventure, you
+they will fight. it can be the same stat block that eve
+know they won't let them remain stranded.
+of ruin provides because it's lame and not difficult.
+• return to sigl and then go to eberron. careful T
+• i don't like that rerak ends up aiding excavation
+knowsa lot about it's lore.
+team, another reason to remove him from the
+• Mark is gonna want to attune to the docent. remind
+adventure
+him he'll have to rip an eye out.
+• after fight they will find hand and eye and 6th shard
+• they all will want to help free landro from the
+piece.
+mountain. he is fused into it, don't let them.
+• returning to sigil alus, mord, and zyb will see they
+adventure could end here as they are stubborn
+have the hand and eye. warn against using them.
+enough to stay here until they die of old age trying to
+• can alus cast a spell to ward off the negative effects
+excavate.
+of the hand or eye?
+LEVEL 14
+LEVEL 17
+We return to Death House, a favorite adventure of mine.
+Dragon Queen's Pride. . I hate to say it but this is my
+least favorite part of the adventure. Would tiamt really
+• strong callback to 1st adventure of his campaign
+be running a casino? gonna take a risk and run it as is,
+because it too is Death House.
+tho I have some concerns:
+• include another vision of vecna, same sting as before,
+also recharges charms.
+• do we have mordenkainen in here somewhere? His
+• after getting piece 4 of the rod and confronting
+travelling tower IS in Avernus after all.
+strahd, if the players explain they are looking to stop
+• venatrix how do I stop the players from taking this
+vecna, strahd seems amused. He can turn from foe
+and keeping it?
+to "enemy of my enemy is my friend" and openly tells
+• how do I stop the players from taking the unicorn as
+the players that he will grant them transportation to
+their own "treasure" seeing as they've done it
+Tovag where Kas the Betrayer dwells. That he
+before?
+(strahd) will instruct the mists to let Kas help them
+• do we pause when they reach the belvedere and take
+because Strahd would rather have vecna imprisoned
+a trip to Horseshoe?
+there instead of Kas. This is a direct nod to Vecna
+• remember scott's purple worm joke, $100 says he'll
+Lives!
+tell it.
+• Kas won't have his sword but knows where to find it,
+he agrees but insists that the sword is the only thing
+that can kill V.
+• Lord Strahd will have sword of kas -what??? why?
+LEVEL 15
+Run Night of Blue Fire as is.
+• 5th part of rod
+• double amount of dragons
+• floating boulders -tease yoda
+• fake soth is in this not the real so Kas will make an
+escape and leave the party to seek Soth out in order
+to get his sword back. where do we have kas come
+back in at?
+Fixing V ~ c.'la
+2
+
+--- PAGE 13 ---
+• explains that the players were his puppets that he
+LEVEL 18, 19, AND 20
+used them to complete the obelisk and complete the
+Major change from Eve of Ruin, as Mordenkainen isn't
+rod (which held the last piece of the obelisk) so that
+Kas. there is no betrayer to be revealed. Rest of he could escape the Maze.
+adventure will also be altered quite a bit. Do we have • what if a player rips out an eye and shoves V's in?
+Kas return here? If so, how does he enter Sigil?
+what is a player lops off their hand and slaps V's on?
+what if it's the same player?
+• Mordenkainen assembles the full rod
+• offer than it can make vecna weaker if the hand of
+• Zybilna sees that the obelisk is missing a piece at the
+vecna holds the rod of seven parts that it will shift his
+top
+alignment and give the players a slight advantage
+• 7th piece of the rod contains that last obelisk piece
+• fight should not be fair nor easy. if players die they
+• characters pass out due to another vecna vision
+die.
+• mordenkainen needs to mention Wizards Three
+• have everyone step onto balcony that overlooks the
+VECNA WINS
+city, dusk is falling, eve. Even tho we can't really see
+the sun, this is more symbolic than anything else. Vecna will take players with him so they can witness the
+• rift opens once rod is placed into obelisk end and the ultimate remaking.
+• match the artwork from DMs screen from Beedle
+• he remakes the multiverse
+and GRIM's website, include spiderdragon
+• option 1 : undoes META style all of D&D and takes it
+• mordenkainen falls but vanishes before he hits the
+back to the old white book days. Mark wants to play
+ground
+super old school rules so this would be great to
+• massive battle can be seen, monsters pour into the
+explain why we are doing this.
+santum -players can quell their thirst for blood and
+• Option 2 : vecna and players are on a rock in space
+battle here.
+watching the multiverse unfold and remake itself.
+• have kas return here? maybe he found a way to the
+• he meetsJergal but we don't know why
+battle and enters here to help? don't want to rob
+• what the future for the characters? does V kill them?
+players of fun victory before the real storm hits tho.
+shove them off the rock and watch and laugh as they
+• more spiderdragons
+float in space forever?
+• moar spiderdragons
+• and another. spiderdragons are cool.
+VECNALOSES
+• make battle grand and fierce.
+• mordenkainen returns and bring circle of eight with Big celebration but also there are hints of things to yet
+him they help turn the tide of the epic battle, it can come:
+go on for several rounds tho.
+• rift shimmers and slides a bit and then stops and • players are rewarded with a big celebration and a
+becomes solid. permanent home in Sigil
+• lady of pain shows up and pits the characters into • other towns celebrate that vecna is gone tho they
+their own maze. this is more of a place of protection may not know who saved them
+really, outside of time and space, here they can heal • negative things also happen -while some cult of
+up and level up. need to add something more tho, vecna members will give up and turn themselves in,
+going from level 18 to 20 should be more than just some will attempt to elevate themselves and may
+an epic battle. even attempt to become a lich.
+• after levelling up LoP releases them • something is whispering back and has stepped into
+• mord and Co8 rush the rift only to crumble to black the void that vecna was in, that entity might be even
+dust. yes, we just killed Mordenkainen and 8 worse (tease cthulhu here)
+powerful wizards.
+VECNAFIGHT
+Use Timmy's Vecna the Whisgered One stat block,
+it's much better and more powerful than the archlich
+version WotC provided plus they already fought the
+archligh version earler.
+• don't pull vecna's punches.
+• give epic villian speech -netherese built obelisk
+based on ancient spellweaver obelisk, they
+worshipedJergal the lord of the end of everything,
+vecna wants to meet this guy, we don't know why
+(yet).
+• vecna wants his hand and eye back
+F;xirgVecna
+13
+
+--- PAGE 14 ---
+FIXING VECNA - PLAYERS GONE WILD
+HAT IF THE PLAYERS DECIDE THAT THEY HAVE HAD I was correct in my prediction when they went
+enough of everything and want to join through Eberron, they attempted to free Landro from
+[Vecna's cause and help him to remake the the mountain, not because they felt bad for him, but
+multiverse? While Vecna is Lawful Evil, he instead because they wanted a big damn machine to
+will certainly not turn the help away. He march around inside of. After Landro blew up, they
+may not see the player's characters as insisted on trying to find another colossus as there were
+followers or worshipers, but he will see many strewn all over the landscape. Finally they
+them as a possible tool or means to meet his final decided to try to collect parts and build their own. They
+objective of remaking the multiverse. figured that by having a massive robot on their side that
+I was compelled to offer this scenario up because. .. at that could help them if they decided to fight Alustreil,
+one of the sessions that I run, my players have chosen to Mordenkainen, Zybilna, or any other powerful being. It
+do exactly this, join Vecna. They went through my initial is a great time to be a dungeon master ..
+Death House at level 1, as previously detailed in this I finally decided to have an out of game chat with
+document, just fine. Then as they went through the Nest them about their actions and possible ramifications.
+of the Eldritch Eye .. they encountered Zalryr first, they While I'm fine with them taking the amount of player
+held no punches and dispatched of him. Of course the agency that they are, I did explain to them that there
+cultists heard the sounds of battle and rushed in, only to would likely be other NPCs that pop up at different
+find their leader dead on the floor. One player did an points that they could go all murder hobo against if that
+arcane check and recognized the tattoo. . then in haste was the path they really wanted to go down, but I also
+drew a similar tattoo made of Zalryr's blood onto the warned them that this would not be an easy adventure
+back of his hand .. and they proceeded to convince the to begin with, even less so should they side with Vecna.
+cultists that Vecna had sent them to get rid of Zalryr, While we are still moving through the adventure,
+that he wasn't performing and bringing enough people currently they are in the middle of the 2nd visit to Death
+to Vecna's side. . House. Vecna will encounter them here and I'll change
+The party then commanded each cultist to go forth up the dialogue between Strahd and the players, but
+and spread the word that there were 6 new leaders to who knows how this will ultimately turn out.
+direct them all, that they would be visiting each hideout
+to "check up" on things. The Vecna cult members then I'm honestly rather surprised that they are still alive.
+scattered and only after they had left did the "runic
+circle hiss and flash with lurid light". Vecna coalesced To that end, I wrote down only four bullet points:
+into his apparition of the skull and one glowing green
+eye and spoke:
+"Zalryr was such a disappointment, but I find you six
+to be six points of interest. Yes, you have great potential!
+We will meet again, but until then, I've got my eye on
+you!" and then the apparition exlodes just as it does in
+the NotEE adventure, passing streaks of shadows
+through each character, bestowing upon them one of
+the two charms.
+I had already made most of my bullet point notes as
+detailed out in the previous section, and while I knew
+that I could keep most of them and leave the adventure
+as is, the biggest challenge would come about when
+they decided to reveal to the NPCs, mainly
+Mordenkainen, Alustriel, and Zybilna what they were
+really doing.
+Should they reveal that they are working to help
+Vecna when they first encounter Alustriel, well, at that
+point they'd only be around level 5, she'd wipe the floor
+with them and use their bones to make cookies. Even
+waiting until the end, once they have reached level 20 Good luck to you should your players decide to team up
+could be a challenge because, depending on how they with Vecna, it won't be easy for them, hell, the
+reveal themselves, the Lady of Pain could just toss them adventure won't be easy regardless, but less so if they
+into a Maze (like she does to give them a breather at the side with him.
+end so they can heal up and level up) and never let them The remaining pages are blank for your own notes.
+out.
+Fixing V � c.'la
+
+--- PAGE 15 ---
+Vecna Was Here
+
+--- PAGE 16 ---
+Fixing Vecna
+16

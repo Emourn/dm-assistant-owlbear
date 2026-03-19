@@ -1,0 +1,182 @@
+{
+    "glossary": [
+        {
+            "term": "Strength",
+            "definition": "Strength measures bodily power, athletic training, and the extent to which you can exert raw physical force.",
+            "ruleRef": "PHB 2024 p.38",
+            "category": "Ability Score",
+            "details": "Used for: Athletics checks, Melee attack/damage rolls, Carrying capacity, Strength saving throws."
+        },
+        {
+            "term": "Dexterity",
+            "definition": "Dexterity measures agility, reflexes, and balance.",
+            "ruleRef": "PHB 2024 p.38",
+            "category": "Ability Score",
+            "details": "Used for: Acrobatics, Sleight of Hand, Stealth checks, Ranged and Finesse attack/damage rolls, Initiative, Armor Class, Dexterity saving throws."
+        },
+        {
+            "term": "Constitution",
+            "definition": "Constitution measures health, stamina, and vital force.",
+            "ruleRef": "PHB 2024 p.39",
+            "category": "Ability Score",
+            "details": "Used for: Hit Point maximum, Constitution saving throws (including Concentration)."
+        },
+        {
+            "term": "Intelligence",
+            "definition": "Intelligence measures mental acuity, accuracy of recall, and the ability to reason.",
+            "ruleRef": "PHB 2024 p.39",
+            "category": "Ability Score",
+            "details": "Used for: Arcana, History, Investigation, Nature, Religion checks, Intelligence saving throws, Spellcasting for Wizards."
+        },
+        {
+            "term": "Wisdom",
+            "definition": "Wisdom reflects how attuned you are to the world around you and represents perceptiveness and intuition.",
+            "ruleRef": "PHB 2024 p.39",
+            "category": "Ability Score",
+            "details": "Used for: Animal Handling, Insight, Medicine, Perception, Survival checks, Wisdom saving throws, Spellcasting for Clerics/Druids."
+        },
+        {
+            "term": "Charisma",
+            "definition": "Charisma measures your ability to interact effectively with others.",
+            "ruleRef": "PHB 2024 p.39",
+            "category": "Ability Score",
+            "details": "Used for: Deception, Intimidation, Performance, Persuasion checks, Charisma saving throws, Spellcasting for Bards/Paladins/Sorcerers/Warlocks."
+        },
+        {
+            "term": "Blinded",
+            "definition": "You can't see, and any check that requires sight automatically fails.",
+            "ruleRef": "PHB 2024 p.358",
+            "category": "Condition",
+            "details": "Attack rolls against you have Advantage. Your attack rolls have Disadvantage."
+        },
+        {
+            "term": "Charmed",
+            "definition": "You can't attack the charmer or target the charmer with harmful abilities or magical effects. The charmer has Advantage on any check to interact socially with you.",
+            "ruleRef": "PHB 2024 p.358",
+            "category": "Condition"
+        },
+        {
+            "term": "Deafened",
+            "definition": "You can't hear, and any check that requires hearing automatically fails.",
+            "ruleRef": "PHB 2024 p.359",
+            "category": "Condition"
+        },
+        {
+            "term": "Frightened",
+            "definition": "You have Disadvantage on Ability Checks and Attack Rolls while the source of your fear is within line of sight. You can't willingly move closer to the source of your fear.",
+            "ruleRef": "PHB 2024 p.359",
+            "category": "Condition"
+        },
+        {
+            "term": "Grappled",
+            "definition": "Your Speed is 0 and can't increase. You have Disadvantage on Attack Rolls against any creature other than the grappler.",
+            "ruleRef": "PHB 2024 p.360",
+            "category": "Condition",
+            "details": "The grappler can drag or carry you, but the grappler's Speed is halved unless you are Tiny or two or more sizes smaller than the grappler."
+        },
+        {
+            "term": "Incapacitated",
+            "definition": "You can't take Actions or Reactions. Your Concentration is broken. You can't speak.",
+            "ruleRef": "PHB 2024 p.361",
+            "category": "Condition",
+            "details": "If you are Incapacitated when you roll Initiative, you have Disadvantage on the roll."
+        },
+        {
+            "term": "Invisible",
+            "definition": "You aren't affected by any effect that requires its target to be seen. You have Advantage on Attack Rolls.",
+            "ruleRef": "PHB 2024 p.361",
+            "category": "Condition",
+            "details": "Attack rolls against you have Disadvantage. You are heavily obscured for the purpose of hiding."
+        },
+        {
+            "term": "Paralyzed",
+            "definition": "You are Incapacitated and can't move or speak. You automatically fail Strength and Dexterity saving throws.",
+            "ruleRef": "PHB 2024 p.362",
+            "category": "Condition",
+            "details": "Attack rolls against you have Advantage. Any attack that hits you is a Critical Hit if the attacker is within 5 feet of you."
+        },
+        {
+            "term": "Petrified",
+            "definition": "You are transformed into an inanimate substance. You are Incapacitated and can't move or speak. You have Resistance to all damage.",
+            "ruleRef": "PHB 2024 p.362",
+            "category": "Condition",
+            "details": "You automatically fail Strength and Dexterity saving throws. You are immune to Poison."
+        },
+        {
+            "term": "Poisoned",
+            "definition": "You have Disadvantage on Attack Rolls and Ability Checks.",
+            "ruleRef": "PHB 2024 p.363",
+            "category": "Condition"
+        },
+        {
+            "term": "Prone",
+            "definition": "Your only movement option is to crawl unless you stand up. You have Disadvantage on Attack Rolls.",
+            "ruleRef": "PHB 2024 p.363",
+            "category": "Condition",
+            "details": "Attack rolls against you have Advantage if the attacker is within 5 feet. Otherwise, the attack roll has Disadvantage."
+        },
+        {
+            "term": "Restrained",
+            "definition": "Your Speed is 0 and can't increase. You have Disadvantage on Attack Rolls and Dexterity saving throws.",
+            "ruleRef": "PHB 2024 p.364",
+            "category": "Condition",
+            "details": "Attack rolls against you have Advantage."
+        },
+        {
+            "term": "Stunned",
+            "definition": "You are Incapacitated and can't move. You can speak only falteringly. You automatically fail Strength and Dexterity saving throws.",
+            "ruleRef": "PHB 2024 p.365",
+            "category": "Condition",
+            "details": "Attack rolls against you have Advantage."
+        },
+        {
+            "term": "Unconscious",
+            "definition": "You are Incapacitated, can't move or speak, and are unaware of your surroundings. You drop whatever you are holding and fall Prone.",
+            "ruleRef": "PHB 2024 p.365",
+            "category": "Condition",
+            "details": "You automatically fail Strength and Dexterity saving throws. Attack rolls against you have Advantage. Any attack that hits you is a Critical Hit if the attacker is within 5 feet of you."
+        },
+        {
+            "term": "Action",
+            "definition": "The main thing you do on your turn.",
+            "ruleRef": "PHB 2024 p.10",
+            "category": "Action Economy",
+            "details": "Examples: Attack, Cast a Spell, Dash, Disengage, Dodge, Help, Hide, Ready, Search, Utilize."
+        },
+        {
+            "term": "Bonus Action",
+            "definition": "An additional action you can take on your turn if a special ability, spell, or feature allows it.",
+            "ruleRef": "PHB 2024 p.11",
+            "category": "Action Economy",
+            "details": "You can take only one Bonus Action on your turn."
+        },
+        {
+            "term": "Reaction",
+            "definition": "An instant response to a trigger, which can occur on your turn or someone else's.",
+            "ruleRef": "PHB 2024 p.11",
+            "category": "Action Economy",
+            "details": "Once you take a Reaction, you can't take another until the start of your next turn."
+        },
+        {
+            "term": "Armor Class",
+            "definition": "AC represents how hard it is for opponents to land a damaging blow on you.",
+            "ruleRef": "PHB 2024 p.37",
+            "category": "Combat",
+            "details": "Calculated as 10 + Dexterity modifier + Armor/Shield bonuses."
+        },
+        {
+            "term": "Proficiency Bonus",
+            "definition": "A bonus added to d20 tests where you have proficiency. It scales with your total level.",
+            "ruleRef": "PHB 2024 p.37",
+            "category": "Core Rule",
+            "details": "Level 1-4: +2, Level 5-8: +3, Level 9-12: +4, Level 13-16: +5, Level 17-20: +6."
+        },
+        {
+            "term": "Concentration",
+            "definition": "Some spells require you to maintain concentration to keep their magic active.",
+            "ruleRef": "PHB 2024 p.236",
+            "category": "Magic",
+            "details": "If you take damage, you must succeed on a Con save (DC 10 or half damage taken) or lose the spell. You lose concentration if you are Incapacitated or die."
+        }
+    ]
+}

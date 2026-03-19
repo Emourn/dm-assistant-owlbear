@@ -1,0 +1,380 @@
+{
+  "name": "Coronal",
+  "about": "Elf Artificer level 1\n\nBackground: Archaeologist\n\nPlayer: dxMourn\n\nCurrent HP: 9/9\n\nInitiative: +2\n\nPassive Insight 16, Passive Investigation 16, Passive Perception 16\n\nCurrency: 33 GP",
+  "size": "Medium",
+  "type": "Humanoid",
+  "subtype": "Elf",
+  "group": "Player Character",
+  "alignment": "",
+  "armor_class": {
+    "value": 12,
+    "special": "Current HP 9/9"
+  },
+  "hp": {
+    "value": 9,
+    "hit_dice": "1d8"
+  },
+  "speed": {
+    "walk": 30,
+    "fly": null,
+    "swim": null,
+    "climb": null,
+    "burrow": null,
+    "hover": null,
+    "lightwalking": null,
+    "notes": null
+  },
+  "stats": {
+    "strength": 8,
+    "dexterity": 15,
+    "constitution": 13,
+    "intelligence": 19,
+    "wisdom": 18,
+    "charisma": 15
+  },
+  "saving_throws": {
+    "strength_save": -1,
+    "dexterity_save": 2,
+    "constitution_save": 3,
+    "intelligence_save": 6,
+    "wisdom_save": 4,
+    "charisma_save": 2
+  },
+  "perception": 16,
+  "skills": {
+    "acrobatics": 4,
+    "animal_handling": 4,
+    "arcana": 6,
+    "athletics": -1,
+    "deception": 2,
+    "history": 6,
+    "insight": 6,
+    "intimidation": 2,
+    "investigation": 6,
+    "medicine": 4,
+    "nature": 4,
+    "perception": 6,
+    "performance": 2,
+    "persuasion": 2,
+    "religion": 4,
+    "sleight_of_hand": 2,
+    "stealth": 2,
+    "survival": 6
+  },
+  "damage_vulnerabilities": null,
+  "damage_resistances": null,
+  "damage_immunities": "magical sleep",
+  "condition_immunities": null,
+  "senses": [
+    "Darkvision 60 ft."
+  ],
+  "languages": [
+    "Common",
+    "Elvish",
+    "Gnomish"
+  ],
+  "items": [
+    "Studded Leather",
+    "Dagger",
+    "Thieves' Tools",
+    "Tinker's Tools",
+    "Backpack",
+    "Caltrops x20",
+    "Crowbar",
+    "Oil x2",
+    "Rations x10",
+    "Rope",
+    "Tinderbox",
+    "Torch x10",
+    "Waterskin",
+    "Cartographer's Tools",
+    "Bullseye Lantern",
+    "Map",
+    "Shovel",
+    "Tent",
+    "Map or Scroll Case",
+    "Traveler's Clothes",
+    "Poison Spray (equipped)"
+  ],
+  "equipment": null,
+  "challenge_rating": null,
+  "cr": null,
+  "actions": [
+    {
+      "name": "Magical Tinkering",
+      "desc": "Class: Artificer (Level 1)\n\n1st-level artificer feature\n\nYou've learned how to invest a spark of magic into mundane objects. To use this ability, you must have thieves' toolsPHB or artisan's toolsPHB in hand. You then touch a Tiny nonmagical object as an action and give it one of the following magical properties of your choice:\n\n- The object sheds bright light in a 5-foot radius and dim light for an additional 5 feet.\n- Whenever tapped by a creature, the object emits a recorded message that can be heard up to 10 feet away. You utter the message when you bestow this property on the object, and the recording can be no more than 6 seconds long.\n- The object continuously emits your choice of an odor or a nonverbal sound (wind, waves, chirping, or the like). The chosen phenomenon is perceivable up to 10 feet away.\n- A static visual effect appears on one of the object's surfaces. This effect can be a picture, up to 25 words of text, lines and shapes, or a mixture of these elements, as you like.\n\nThe chosen property lasts indefinitely. As an action, you can touch the object and end the property early.\n\nYou can bestow magic on multiple objects, touching one object each time you use this feature, though a single object can only bear one property at a time. The maximum number of objects you can affect with this feature at one time is equal to your Intelligence modifier (minimum of one object). If you try to exceed your maximum, the oldest property immediately ends, and then the new property applies.",
+      "attack_bonus": null,
+      "stat_bonus": [],
+      "damage_dice": null,
+      "limit": null
+    },
+    {
+      "name": "Dagger",
+      "desc": "Attack: +4 to hit. Hit: 1d4.",
+      "attack_bonus": 4,
+      "stat_bonus": [
+        "DEX"
+      ],
+      "damage_dice": "1d4",
+      "limit": null
+    },
+    {
+      "name": "Poison Spray",
+      "desc": "Attack: +6 to hit. Hit: 1d12 Poison (Atk: +6). V/S",
+      "attack_bonus": 6,
+      "stat_bonus": [
+        "INT"
+      ],
+      "damage_dice": "1d12 Poison (Atk: +6)",
+      "limit": null
+    }
+  ],
+  "bonus_actions": null,
+  "lair_actions": null,
+  "mythic_actions": null,
+  "reactions": null,
+  "legendary_desc": null,
+  "legendary_actions": null,
+  "special_abilities": [
+    {
+      "name": "Core Artificer Traits",
+      "desc": "Class: Artificer\n\nEFotA 7",
+      "attack_bonus": null,
+      "stat_bonus": [],
+      "damage_dice": null,
+      "limit": null
+    },
+    {
+      "name": "Spellcasting",
+      "desc": "Class: Artificer\n\nEFotA 7\nYou can channel magical energy through objects. Intelligence is your spellcasting ability for your Artificer spells (Spell DC 14, Spell Attack +6). You can use Thieves' Tools, Tinker's Tools, or another kind of Artisan's Tools as a Spellcasting Focus for your Artificer spells.",
+      "attack_bonus": null,
+      "stat_bonus": [],
+      "damage_dice": null,
+      "limit": null
+    },
+    {
+      "name": "Tinker’s Magic",
+      "desc": "Class: Artificer\n\nEFotA 8\nYou know the Mending cantrip.",
+      "attack_bonus": null,
+      "stat_bonus": [],
+      "damage_dice": null,
+      "limit": null
+    },
+    {
+      "name": "As a Magic action while holding Tinker's Tools, you can create one item in an unoccupied space within 5 ft",
+      "desc": "Class: Artificer\n\nof yourself, from the provided list\nThe item lasts until you finish a Long Rest, at which point it vanishes\nYou can use this feature 4 times per Long Rest.",
+      "attack_bonus": null,
+      "stat_bonus": [],
+      "damage_dice": null,
+      "limit": null
+    },
+    {
+      "name": "4 / Long Rest",
+      "desc": "Class: Artificer\n\n1 Action",
+      "attack_bonus": null,
+      "stat_bonus": [],
+      "damage_dice": null,
+      "limit": null
+    },
+    {
+      "name": "Creature Type",
+      "desc": "Class: Artificer\n\nPHB-2024 190\nYou are a Humanoid.",
+      "attack_bonus": null,
+      "stat_bonus": [],
+      "damage_dice": null,
+      "limit": null
+    },
+    {
+      "name": "Size",
+      "desc": "Class: Artificer\n\nPHB-2024 190\nYou are Medium.",
+      "attack_bonus": null,
+      "stat_bonus": [],
+      "damage_dice": null,
+      "limit": null
+    },
+    {
+      "name": "Speed",
+      "desc": "Class: Artificer\n\nPHB-2024 190\nYour speed is 30 ft.",
+      "attack_bonus": null,
+      "stat_bonus": [],
+      "damage_dice": null,
+      "limit": null
+    },
+    {
+      "name": "Darkvision",
+      "desc": "Class: Artificer\n\nPHB-2024 190\nYou have Darkvision with a range of 60 ft.",
+      "attack_bonus": null,
+      "stat_bonus": [],
+      "damage_dice": null,
+      "limit": null
+    },
+    {
+      "name": "Elven Lineage",
+      "desc": "Class: Artificer\n\nPHB-2024 190\nChoose a lineage from the Elven Lineages table. You gain the level 1 benefit of that lineage.",
+      "attack_bonus": null,
+      "stat_bonus": [],
+      "damage_dice": null,
+      "limit": null
+    },
+    {
+      "name": "High Elf Lineage -",
+      "desc": "Class: Artificer\n\nYou gain the spells outlined in the Elven Lineages table, and whenever you finish a Long Rest, you can replace the cantrip at level 1 with a different cantrip from the Wizard spell list.",
+      "attack_bonus": null,
+      "stat_bonus": [],
+      "damage_dice": null,
+      "limit": null
+    },
+    {
+      "name": "Elven Lineage Spells",
+      "desc": "Class: Artificer\n\nPHB-2024 189",
+      "attack_bonus": null,
+      "stat_bonus": [],
+      "damage_dice": null,
+      "limit": null
+    },
+    {
+      "name": "High Elf",
+      "desc": "Class: Artificer\n\nIntelligence -",
+      "attack_bonus": null,
+      "stat_bonus": [],
+      "damage_dice": null,
+      "limit": null
+    },
+    {
+      "name": "Fey Ancestry",
+      "desc": "Class: Artificer\n\nPHB-2024 190\nYou have Advantage on saving throws you make to avoid or end the Charmed condition.",
+      "attack_bonus": null,
+      "stat_bonus": [],
+      "damage_dice": null,
+      "limit": null
+    },
+    {
+      "name": "Keen Senses",
+      "desc": "Class: Artificer\n\nPHB-2024 190\nYou have proficiency in the Insight, Perception, or Survival skill.",
+      "attack_bonus": null,
+      "stat_bonus": [],
+      "damage_dice": null,
+      "limit": null
+    },
+    {
+      "name": "Trance",
+      "desc": "Class: Artificer\n\nPHB-2024 190\nYou don’t need to sleep, and magic can’t put you to sleep. You can finish a Long Rest in 4 hours if you spend those hours in a trancelike meditation, during which you retain consciousness.",
+      "attack_bonus": null,
+      "stat_bonus": [],
+      "damage_dice": null,
+      "limit": null
+    },
+    {
+      "name": "Languages",
+      "desc": "Class: Artificer\n\nPHB-2024 37\nYour character knows at least three languages: Common plus two languages you roll or choose from the Standard Languages table. Knowledge of a language means your character can communicate in it, read it, and write it.",
+      "attack_bonus": null,
+      "stat_bonus": [],
+      "damage_dice": null,
+      "limit": null
+    },
+    {
+      "name": "Skilled",
+      "desc": "Class: Artificer\n\nPHB-2024 201\nYou gain proficiency in any combination of three skills or tools of your choice.",
+      "attack_bonus": null,
+      "stat_bonus": [],
+      "damage_dice": null,
+      "limit": null
+    },
+    {
+      "name": "Repeatable",
+      "desc": "Class: Artificer\n\nYou can take this feat more than once.",
+      "attack_bonus": null,
+      "stat_bonus": [],
+      "damage_dice": null,
+      "limit": null
+    },
+    {
+      "name": "Archaeologist Ability Score Increase",
+      "desc": "Class: Artificer\n\nEFotA 26",
+      "attack_bonus": null,
+      "stat_bonus": [],
+      "damage_dice": null,
+      "limit": null
+    },
+    {
+      "name": "Increase two scores (+2 / +1)",
+      "desc": "Class: Artificer\n\nEFotA",
+      "attack_bonus": null,
+      "stat_bonus": [],
+      "damage_dice": null,
+      "limit": null
+    },
+    {
+      "name": "Background Feature",
+      "desc": "Background: Archaeologist\n\n- **Ability Scores:** Dexterity, Intelligence, Wisdom\n- **Feat:** SkilledXPHB\n- **Skill Proficiencies:** HistoryXPHB and SurvivalXPHB\n- **Tool Proficiencies:** Cartographer's ToolsXPHB\n- **Equipment:** Choose A or B: (A) Cartographer's ToolsXPHB, Bullseye LanternXPHB, MapXPHB, Map or Scroll CaseXPHB, ShovelXPHB, TentXPHB, Traveler's ClothesXPHB, 17 GP; or (B) 50 GP",
+      "attack_bonus": null,
+      "stat_bonus": [],
+      "damage_dice": null,
+      "limit": null
+    },
+    {
+      "name": "Tinker's Magic",
+      "desc": "Class: Artificer (Level 1)\n\nYou know the MendingXPHB cantrip.\n\nAs a MagicXPHB action while holding Tinker's ToolsXPHB, you can create one item in an unoccupied space within 5 feet of yourself, choosing the item from the following list:\n\n- Ball BearingsXPHB\n- BasketXPHB\n- BedrollXPHB\n- BellXPHB\n- BlanketXPHB\n- Block and TackleXPHB\n- Glass BottleXPHBBottle, Glass\n- BucketXPHB\n- CaltropsXPHB\n- CandleXPHB\n- CrowbarXPHB\n- FlaskXPHB\n- Grappling HookXPHB\n- Hunting TrapXPHB\n- JugXPHB\n- LampXPHB\n- ManaclesXPHB\n- NetXPHB\n- OilXPHB\n- PaperXPHB\n- ParchmentXPHB\n- PoleXPHB\n- PouchXPHB\n- RopeXPHB\n- SackXPHB\n- ShovelXPHB\n- Iron SpikesXPHBSpikes, Iron\n- StringXPHB\n- TinderboxXPHB\n- TorchXPHB\n- VialXPHB\n\nSee the rules for the item in the Player's HandbookXPHB. The item lasts until you finish a Long RestXPHB, at which point it vanishes.\n\nYou can use this feature a number of times equal to your Intelligence modifier (minimum of once), and you regain all expended uses when you finish a Long RestXPHB.",
+      "attack_bonus": null,
+      "stat_bonus": [],
+      "damage_dice": null,
+      "limit": null
+    },
+    {
+      "name": "Magical Tinkering",
+      "desc": "Class: Artificer (Level 1)\n\n1st-level artificer feature\n\nYou've learned how to invest a spark of magic into mundane objects. To use this ability, you must have thieves' toolsPHB or artisan's toolsPHB in hand. You then touch a Tiny nonmagical object as an action and give it one of the following magical properties of your choice:\n\n- The object sheds bright light in a 5-foot radius and dim light for an additional 5 feet.\n- Whenever tapped by a creature, the object emits a recorded message that can be heard up to 10 feet away. You utter the message when you bestow this property on the object, and the recording can be no more than 6 seconds long.\n- The object continuously emits your choice of an odor or a nonverbal sound (wind, waves, chirping, or the like). The chosen phenomenon is perceivable up to 10 feet away.\n- A static visual effect appears on one of the object's surfaces. This effect can be a picture, up to 25 words of text, lines and shapes, or a mixture of these elements, as you like.\n\nThe chosen property lasts indefinitely. As an action, you can touch the object and end the property early.\n\nYou can bestow magic on multiple objects, touching one object each time you use this feature, though a single object can only bear one property at a time. The maximum number of objects you can affect with this feature at one time is equal to your Intelligence modifier (minimum of one object). If you try to exceed your maximum, the oldest property immediately ends, and then the new property applies.",
+      "attack_bonus": null,
+      "stat_bonus": [],
+      "damage_dice": null,
+      "limit": null
+    },
+    {
+      "name": "Optional Rule: Firearm Proficiency",
+      "desc": "Class: Artificer (Level 1)\n\nThe secrets of creating and operating gunpowder weapons have been discovered in various corners of the D&D multiverse. If your Dungeon Master uses the rules on firearms in chapter 9DMG9Firearms of the Dungeon Master's GuideDMG and your artificer has been exposed to the operation of such weapons, your artificer is proficient with them.",
+      "attack_bonus": null,
+      "stat_bonus": [],
+      "damage_dice": null,
+      "limit": null
+    }
+  ],
+  "spell_slots": [
+    {
+      "level": 1,
+      "limit": {
+        "name": "1st-level Spell Slots",
+        "description": "2/2 available",
+        "uses": 2,
+        "resets": [
+          "long"
+        ]
+      }
+    }
+  ],
+  "spells": [
+    "Cantrip: Alarm [R]",
+    "Cantrip: Detect Magic [R]",
+    "Cantrip: Identify [R]",
+    "Cantrip: Mage Hand",
+    "Cantrip: Mending",
+    "Cantrip: Poison Spray",
+    "Cantrip: Prestidigitation",
+    "Cantrip: Purify Food and Drink [R]",
+    "1st Level: Absorb Elements",
+    "1st Level: Catapult",
+    "1st Level: Cure Wounds",
+    "1st Level: Disguise Self",
+    "1st Level: Expeditious Retreat",
+    "1st Level: Faerie Fire",
+    "1st Level: False Life",
+    "1st Level: Feather Fall",
+    "1st Level: Grease",
+    "1st Level: Jump",
+    "1st Level: Longstrider",
+    "1st Level: Sanctuary",
+    "1st Level: Snare"
+  ],
+  "spell_dc": "DC 14",
+  "spell_attack": "+6",
+  "limits": null,
+  "source": "D&D Beyond PDF - Coronal.pdf"
+}

@@ -1,0 +1,56 @@
+{
+  "name": "dm-assistant",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --open",
+    "dev:owlbear": "vite --open owlbear.html",
+    "build": "tsc -b && vite build",
+    "build:owlbear": "npm run build",
+    "lint": "eslint .",
+    "test": "vitest run",
+    "preflight": "npm run lint && npm run test && npm run build",
+    "preview": "vite preview",
+    "server": "tsx server/index.ts",
+    "multiplayer": "concurrently \"npm run dev\" \"npm run server\"",
+    "dm-start": "npm run multiplayer"
+  },
+  "dependencies": {
+    "@owlbear-rodeo/sdk": "^3.1.0",
+    "concurrently": "^9.2.1",
+    "cors": "^2.8.6",
+    "express": "^5.2.1",
+    "lucide-react": "^0.575.0",
+    "pdf-parse": "^2.4.5",
+    "pdfjs-dist": "^5.4.624",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router-dom": "^7.13.1",
+    "socket.io": "^4.8.3",
+    "socket.io-client": "^4.8.3",
+    "zustand": "^5.0.11"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.8.0",
+    "@tailwindcss/vite": "^4.2.1",
+    "@types/express": "^5.0.6",
+    "@types/pdfjs-dist": "^2.10.377",
+    "@types/react": "^18.3.3",
+    "@types/react-dom": "^18.3.0",
+    "@vitejs/plugin-react": "^5.1.4",
+    "eslint": "^9.8.0",
+    "eslint-plugin-react-hooks": "^5.1.0-rc.0",
+    "eslint-plugin-react-refresh": "^0.4.9",
+    "globals": "^15.9.0",
+    "tailwindcss": "^4.2.1",
+    "tsx": "^4.21.0",
+    "typescript": "^5.5.3",
+    "typescript-eslint": "^8.0.0",
+    "vite": "^7.3.1",
+    "vitest": "^4.0.18"
+  },
+  "overrides": {
+    "eslint": "$eslint"
+  }
+}

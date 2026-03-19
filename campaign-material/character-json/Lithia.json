@@ -1,0 +1,398 @@
+{
+  "name": "Lithia",
+  "about": "Tiefling Paladin level 1\n\nBackground: Acolyte\n\nPlayer: dxMourn\n\nCurrent HP: 10/12\n\nInitiative: +1\n\nPassive Insight 13, Passive Investigation 10, Passive Perception 13\n\nCurrency: 59 GP",
+  "size": "Medium",
+  "type": "Humanoid",
+  "subtype": "Tiefling",
+  "group": "Player Character",
+  "alignment": "",
+  "armor_class": {
+    "value": 11,
+    "special": "Current HP 10/12"
+  },
+  "hp": {
+    "value": 12,
+    "hit_dice": "d10"
+  },
+  "speed": {
+    "walk": 30,
+    "fly": null,
+    "swim": null,
+    "climb": null,
+    "burrow": null,
+    "hover": null,
+    "lightwalking": null,
+    "notes": null
+  },
+  "stats": {
+    "strength": 14,
+    "dexterity": 13,
+    "constitution": 15,
+    "intelligence": 11,
+    "wisdom": 12,
+    "charisma": 18
+  },
+  "saving_throws": {
+    "strength_save": 2,
+    "dexterity_save": 1,
+    "constitution_save": 2,
+    "intelligence_save": 0,
+    "wisdom_save": 3,
+    "charisma_save": 6
+  },
+  "perception": 13,
+  "skills": {
+    "acrobatics": 1,
+    "animal_handling": 1,
+    "arcana": 0,
+    "athletics": 4,
+    "deception": 4,
+    "history": 0,
+    "insight": 3,
+    "intimidation": 4,
+    "investigation": 0,
+    "medicine": 1,
+    "nature": 0,
+    "perception": 3,
+    "performance": 4,
+    "persuasion": 4,
+    "religion": 2,
+    "sleight_of_hand": 1,
+    "stealth": 1,
+    "survival": 1
+  },
+  "damage_vulnerabilities": null,
+  "damage_resistances": "fire",
+  "damage_immunities": null,
+  "condition_immunities": null,
+  "senses": [
+    "Darkvision 60 ft."
+  ],
+  "languages": [
+    "Common",
+    "Draconic",
+    "Elvish"
+  ],
+  "items": [
+    "Shield",
+    "Chain Mail",
+    "Longsword",
+    "Javelin x6",
+    "Amulet",
+    "Backpack",
+    "Rations x7",
+    "Robe",
+    "Blanket",
+    "Tinderbox",
+    "Lamp",
+    "Holy Water",
+    "Fire Bolt (equipped)",
+    "Calligrapher's Supplies",
+    "Book (prayers)",
+    "Holy Symbol",
+    "Parchment (10 sheets)",
+    "Robe",
+    "8 gp"
+  ],
+  "equipment": null,
+  "challenge_rating": null,
+  "cr": null,
+  "actions": [
+    {
+      "name": "Longsword",
+      "desc": "Attack: +4 to hit. Hit: 1d8.",
+      "attack_bonus": 4,
+      "stat_bonus": [
+        "STR"
+      ],
+      "damage_dice": "1d8",
+      "limit": null
+    },
+    {
+      "name": "Javelin",
+      "desc": "Attack: +4 to hit. Hit: 1d6.",
+      "attack_bonus": 4,
+      "stat_bonus": [
+        "STR"
+      ],
+      "damage_dice": "1d6",
+      "limit": null
+    },
+    {
+      "name": "Fire Bolt",
+      "desc": "Attack: +6 to hit. Hit: 1d10 Fire (Atk: +6). V/S",
+      "attack_bonus": 6,
+      "stat_bonus": [
+        "CHA"
+      ],
+      "damage_dice": "1d10 Fire (Atk: +6)",
+      "limit": null
+    }
+  ],
+  "bonus_actions": null,
+  "lair_actions": null,
+  "mythic_actions": null,
+  "reactions": null,
+  "legendary_desc": null,
+  "legendary_actions": null,
+  "special_abilities": [
+    {
+      "name": "Core Paladin Traits",
+      "desc": "Class: Paladin\n\nPHB-2024 109",
+      "attack_bonus": null,
+      "stat_bonus": [],
+      "damage_dice": null,
+      "limit": null
+    },
+    {
+      "name": "Lay on Hands",
+      "desc": "Class: Paladin\n\nPool of healing = 5x Paladin level. Bonus Action.",
+      "attack_bonus": null,
+      "stat_bonus": [],
+      "damage_dice": null,
+      "limit": null
+    },
+    {
+      "name": "As a Bonus Action, you can touch a creature (which could be yourself) and restore a number HP to that creature, up to the maximum amount remaining in the pool.",
+      "desc": "Class: Paladin",
+      "attack_bonus": null,
+      "stat_bonus": [],
+      "damage_dice": null,
+      "limit": null
+    },
+    {
+      "name": "You can also expend 5 HP from the pool of healing to remove the Poisoned condition from the creature; those points don’t also restore HP to the creature.",
+      "desc": "Class: Paladin",
+      "attack_bonus": null,
+      "stat_bonus": [],
+      "damage_dice": null,
+      "limit": null
+    },
+    {
+      "name": "Lay On Hands: Healing Pool: 5 / Long Rest",
+      "desc": "Class: Paladin\n\n1 Bonus Action",
+      "attack_bonus": null,
+      "stat_bonus": [],
+      "damage_dice": null,
+      "limit": null
+    },
+    {
+      "name": "Lay On Hands: Heal: 1 Bonus Action",
+      "desc": "Class: Paladin",
+      "attack_bonus": null,
+      "stat_bonus": [],
+      "damage_dice": null,
+      "limit": null
+    },
+    {
+      "name": "Lay On Hands: Purify Poison: 1 Bonus Action",
+      "desc": "Class: Paladin",
+      "attack_bonus": null,
+      "stat_bonus": [],
+      "damage_dice": null,
+      "limit": null
+    },
+    {
+      "name": "Spellcasting",
+      "desc": "Class: Paladin\n\nCharisma-based slot casting. 2 Prepared spells from lvl 1.",
+      "attack_bonus": null,
+      "stat_bonus": [],
+      "damage_dice": null,
+      "limit": null
+    },
+    {
+      "name": "Weapon Mastery",
+      "desc": "Class: Paladin\n\nChoose two kinds of weapons to use their mastery properties.",
+      "attack_bonus": null,
+      "stat_bonus": [],
+      "damage_dice": null,
+      "limit": null
+    },
+    {
+      "name": "Creature Type",
+      "desc": "Class: Paladin\n\nPHB-2024 197\nYou are a Humanoid.",
+      "attack_bonus": null,
+      "stat_bonus": [],
+      "damage_dice": null,
+      "limit": null
+    },
+    {
+      "name": "Size",
+      "desc": "Class: Paladin\n\nPHB-2024\nYou are Medium or Small, chosen when you select this species.",
+      "attack_bonus": null,
+      "stat_bonus": [],
+      "damage_dice": null,
+      "limit": null
+    },
+    {
+      "name": "Speed",
+      "desc": "Class: Paladin\n\nPHB-2024 197\nYou have a Speed of 30 ft.",
+      "attack_bonus": null,
+      "stat_bonus": [],
+      "damage_dice": null,
+      "limit": null
+    },
+    {
+      "name": "Darkvision",
+      "desc": "Class: Paladin\n\nPHB-2024 197\nYou have Darkvision with a range of 60 ft.",
+      "attack_bonus": null,
+      "stat_bonus": [],
+      "damage_dice": null,
+      "limit": null
+    },
+    {
+      "name": "Fiendish Legacy",
+      "desc": "Class: Paladin\n\nPHB-2024 197\nChoose a legacy from the Fiendish Legacies table. You gain the level 1 benefit of that legacy.",
+      "attack_bonus": null,
+      "stat_bonus": [],
+      "damage_dice": null,
+      "limit": null
+    },
+    {
+      "name": "Infernal Legacy -",
+      "desc": "Class: Paladin\n\nYou have resistance to Fire damage and you gain the spells outlined in the Fiendish Legacies table.",
+      "attack_bonus": null,
+      "stat_bonus": [],
+      "damage_dice": null,
+      "limit": null
+    },
+    {
+      "name": "Fiendish Legacy Spells",
+      "desc": "Class: Paladin\n\nPHB-2024 197",
+      "attack_bonus": null,
+      "stat_bonus": [],
+      "damage_dice": null,
+      "limit": null
+    },
+    {
+      "name": "Charisma -",
+      "desc": "Class: Paladin\n\nYou know the Thaumaturgy cantrip. When you cast it with this trait, the spell uses Charisma.",
+      "attack_bonus": null,
+      "stat_bonus": [],
+      "damage_dice": null,
+      "limit": null
+    },
+    {
+      "name": "Otherworldly Presence",
+      "desc": "Class: Paladin\n\nPHB-2024 197",
+      "attack_bonus": null,
+      "stat_bonus": [],
+      "damage_dice": null,
+      "limit": null
+    },
+    {
+      "name": "Languages",
+      "desc": "Class: Paladin\n\nPHB-2024 37\nYour character knows at least three languages: Common plus two languages you roll or choose from the Standard Languages table. Knowledge of a language means your character can communicate in it, read it, and write it.",
+      "attack_bonus": null,
+      "stat_bonus": [],
+      "damage_dice": null,
+      "limit": null
+    },
+    {
+      "name": "Acolyte Ability Score Improvements",
+      "desc": "Class: Paladin\n\nPHB-2024 178",
+      "attack_bonus": null,
+      "stat_bonus": [],
+      "damage_dice": null,
+      "limit": null
+    },
+    {
+      "name": "Increase two scores (+2 / +1) -",
+      "desc": "Class: Paladin",
+      "attack_bonus": null,
+      "stat_bonus": [],
+      "damage_dice": null,
+      "limit": null
+    },
+    {
+      "name": "Magic Initiate (Cleric)",
+      "desc": "Class: Paladin\n\nPHB-2024 201\nTwo Cantrips. You learn two cantrips of your choice from the Cleric spell list. Int., Wis., or Cha. is your spellcasting ability for this feat's spells.",
+      "attack_bonus": null,
+      "stat_bonus": [],
+      "damage_dice": null,
+      "limit": null
+    },
+    {
+      "name": "Level 1 Spell",
+      "desc": "Class: Paladin\n\nChoose a level 1 spell from the Cleric spell list\nYou always have that spell prepared\nYou can cast it once without a spell slot, and you regain the ability to cast it in that way when you finish a Long Rest\nYou can also cast the spell using any spell slots you have.",
+      "attack_bonus": null,
+      "stat_bonus": [],
+      "damage_dice": null,
+      "limit": null
+    },
+    {
+      "name": "Spell Change",
+      "desc": "Class: Paladin\n\nWhenever you gain a new level, you can replace one of the spells you chose for this feat with a different spell of the same level from the chosen spell list.",
+      "attack_bonus": null,
+      "stat_bonus": [],
+      "damage_dice": null,
+      "limit": null
+    },
+    {
+      "name": "Repeatable",
+      "desc": "Class: Paladin\n\nYou can take this feat more than once, but you must choose a different spell list each time.",
+      "attack_bonus": null,
+      "stat_bonus": [],
+      "damage_dice": null,
+      "limit": null
+    },
+    {
+      "name": "Mace (Sap) -",
+      "desc": "Class: Paladin\n\nSap. If you hit a creature with a Mace, that creature has Disadvantage on its next attack roll before the start of your next turn.",
+      "attack_bonus": null,
+      "stat_bonus": [],
+      "damage_dice": null,
+      "limit": null
+    },
+    {
+      "name": "Shortsword (Vex) -",
+      "desc": "Class: Paladin\n\nVex. If you hit a creature with a Shortsword and deal damage to it, you have Advantage on your next attack roll against that creature before the end of your next turn.",
+      "attack_bonus": null,
+      "stat_bonus": [],
+      "damage_dice": null,
+      "limit": null
+    },
+    {
+      "name": "Sap (Mace): 1 Action",
+      "desc": "Class: Paladin",
+      "attack_bonus": null,
+      "stat_bonus": [],
+      "damage_dice": null,
+      "limit": null
+    },
+    {
+      "name": "Vex (Shortsword): 1 Action",
+      "desc": "Class: Paladin",
+      "attack_bonus": null,
+      "stat_bonus": [],
+      "damage_dice": null,
+      "limit": null
+    }
+  ],
+  "spell_slots": [
+    {
+      "level": 1,
+      "limit": {
+        "name": "1st-level Spell Slots",
+        "description": "2/2 available",
+        "uses": 2,
+        "resets": [
+          "long"
+        ]
+      }
+    }
+  ],
+  "spells": [
+    "Cantrip: Fire Bolt",
+    "Cantrip: Guidance",
+    "Cantrip: Light",
+    "Cantrip: Thaumaturgy",
+    "1st Level: Bless",
+    "1st Level: Divine Smite",
+    "1st Level: Shield of Faith"
+  ],
+  "spell_dc": "DC 14",
+  "spell_attack": "+6",
+  "limits": null,
+  "source": "D&D Beyond PDF - Lithia.pdf"
+}

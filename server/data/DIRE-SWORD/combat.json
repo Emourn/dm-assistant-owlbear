@@ -1,0 +1,79 @@
+{
+  "id": "b63b307b-64bb-4949-b7e8-d8a378b91097",
+  "title": "Tactical Combat - Death House - Third Floor",
+  "isActive": true,
+  "round": 1,
+  "activeCombatantId": "c2dccd8e-c710-4c9e-ac0b-f4e341f00be7",
+  "combatants": [
+    {
+      "id": "c2dccd8e-c710-4c9e-ac0b-f4e341f00be7",
+      "type": "monster",
+      "name": "Specter",
+      "portraitUrl": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/main/bestiary/tokens/XMM/Specter.webp",
+      "ac": 12,
+      "maxHp": 22,
+      "currentHp": 22,
+      "tempHp": 0,
+      "conditions": [],
+      "initiativeScore": 11,
+      "isConcentrating": false,
+      "speed": "walk 30 ft, fly 50 ft"
+    }
+  ],
+  "log": [
+    {
+      "id": "076da4f0-f185-4841-aea0-79b1123e593a",
+      "timestamp": 1773354821988,
+      "round": 0,
+      "message": "Tactical engagement initiated from Death House - Third Floor.",
+      "type": "system"
+    },
+    {
+      "id": "255f785d-0147-4188-b5da-161ffe098924",
+      "round": 0,
+      "timestamp": 1773354834866,
+      "message": "Specter rolled Initiative: 11 (Roll: 9, Mod: 2)",
+      "type": "roll",
+      "combatantId": "c2dccd8e-c710-4c9e-ac0b-f4e341f00be7",
+      "details": {
+        "total": 11,
+        "rolls": [
+          9
+        ],
+        "modifier": 2,
+        "notation": "1d20+2",
+        "isCrit": false,
+        "isFumble": false,
+        "advantageMode": "normal"
+      }
+    },
+    {
+      "id": "ab0f0a5e-3451-4fe2-a445-13be3f1f4bc6",
+      "timestamp": 1773354845743,
+      "round": 1,
+      "message": "Combat started! Round 1 begins.",
+      "type": "system"
+    },
+    {
+      "id": "3116385e-0774-4fb4-bdec-e67402b6321c",
+      "timestamp": 1773354845743,
+      "round": 1,
+      "message": "Specter's turn.",
+      "type": "system",
+      "combatantId": "c2dccd8e-c710-4c9e-ac0b-f4e341f00be7"
+    }
+  ],
+  "turnState": {
+    "hasAction": true,
+    "hasBonusAction": true,
+    "hasReaction": true,
+    "extraActions": 0,
+    "hasHasteAction": false,
+    "hasCastLeveledSpell": false,
+    "hasCastBonusActionSpell": false,
+    "hasUsedHasteAction": false,
+    "movementRemaining": 30,
+    "movementUsedFt": 0,
+    "notes": ""
+  }
+}

@@ -1,0 +1,326 @@
+[
+    {
+        "name": "Blinded",
+        "icon": "eye-off",
+        "type": "condition",
+        "flavor": "Light vanishes, leaving only shadows and the sound of your own heart.",
+        "description": "A blinded creature can't see and automatically fails any ability check that requires sight. Attack rolls against the creature have advantage, and the creature's attack rolls have disadvantage.",
+        "coaching": {
+            "instruction": "Tell the player their character cannot see! They automatically fail any checks involving sight (like Perception).",
+            "maths": "Attacks AGAINST them have Advantage (Roll two 20-sided dice, take the HIGHER). Their own Attacks have Disadvantage (Roll two 20-sided dice, take the LOWER).",
+            "save": "Usually caused by a spell or effect. Check the source for a Dexterity (DEX) or Constitution (CON) Saving Throw."
+        }
+    },
+    {
+        "name": "Charmed",
+        "icon": "heart",
+        "type": "condition",
+        "flavor": "A warmth spreads through your mind, and your enemy suddenly feels like a lifelong friend.",
+        "description": "A charmed creature can't attack the charmer or target the charmer with harmful abilities or magical effects. The charmer has advantage on any ability check to interact socially with the creature.",
+        "coaching": {
+            "instruction": "Tell the player they cannot attack the person who charmed them or target them with harmful effects.",
+            "maths": "The Charmer gets Advantage (Roll two 20-sided dice, take the HIGHER) on all social interactions with the charmed creature.",
+            "save": "Prompt the player for a Wisdom (WIS) Saving Throw at the end of their turns if the effect allows it."
+        }
+    },
+    {
+        "name": "Deafened",
+        "icon": "ear-off",
+        "type": "condition",
+        "flavor": "A ringing silence fills your ears, drowning out the roar of battle.",
+        "description": "A deafened creature can't hear and automatically fails any ability check that requires hearing.",
+        "coaching": {
+            "instruction": "Tell the player they can't hear anything! They automatically fail any checks involving hearing (like Perception to hear footsteps).",
+            "maths": "No math penalties beyond automatic failure on hearing-based checks.",
+            "save": "Usually a Constitution (CON) Saving Throw to resist or end the effect."
+        }
+    },
+    {
+        "name": "Frightened",
+        "icon": "alert-triangle",
+        "type": "condition",
+        "flavor": "Your breath hitches and your knees shake as a primal terror grips your soul.",
+        "description": "A frightened creature has disadvantage on ability checks and attack rolls while the source of its fear is within line of sight. The creature can't willingly move closer to the source of its fear.",
+        "coaching": {
+            "instruction": "Tell the player they are terrified! They cannot move closer to the source of their fear and must stay away if possible.",
+            "maths": "They have Disadvantage (Roll two 20-sided dice, take the LOWER) on all Attack Rolls and Ability Checks while they can see the source of fear.",
+            "save": "Prompt a Wisdom (WIS) Saving Throw at the end of each of their turns."
+        }
+    },
+    {
+        "name": "Grappled",
+        "icon": "grip-horizontal",
+        "type": "condition",
+        "flavor": "Iron-strong hands lock around your limbs, rooting you to the spot.",
+        "description": "A grappled creature's speed becomes 0, and it can't benefit from any bonus to its speed.",
+        "coaching": {
+            "instruction": "Tell the player they are being held! Their Speed is effectively 0 until they break free.",
+            "maths": "To escape, the player must use their Action to make a Strength (Athletics) or Dexterity (Acrobatics) check against the grappler's Strength (Athletics) score.",
+            "save": "Escaping requires an Action. Prompt a Strength (Athletics) or Dexterity (Acrobatics) check."
+        }
+    },
+    {
+        "name": "Incapacitated",
+        "icon": "ban",
+        "type": "condition",
+        "flavor": "Your body goes limp, the world fading into a blurry haze of inaction.",
+        "description": "An incapacitated creature can't take actions or reactions.",
+        "coaching": {
+            "instruction": "Tell the player they are stunned or overwhelmed! They cannot take any Actions or Reactions this turn.",
+            "maths": "Note: This also breaks Concentration on spells automatically.",
+            "save": "Usually part of a larger condition like Paralyzed or Stunned."
+        }
+    },
+    {
+        "name": "Invisible",
+        "icon": "ghost",
+        "type": "condition",
+        "flavor": "You vanish from sight, becoming a mere ripple in the air.",
+        "description": "An invisible creature is impossible to see without the aid of magic or a special sense. Attack rolls against the creature have disadvantage, and the creature's attack rolls have advantage.",
+        "coaching": {
+            "instruction": "Tell the player they are hidden! Enemies cannot see them unless they have special magic.",
+            "maths": "Attacks AGAINST them have Disadvantage (Roll twice, take LOWER). Their own Attacks have Advantage (Roll twice, take HIGHER).",
+            "save": "No save needed, but they can be traced by noise or tracks."
+        }
+    },
+    {
+        "name": "Paralyzed",
+        "icon": "lock",
+        "type": "condition",
+        "flavor": "Your muscles lock like stone, and you can only watch in horror as danger approaches.",
+        "description": "A paralyzed creature is incapacitated and can't move or speak. The creature automatically fails Strength and Dexterity saving throws. Attack rolls against the creature have advantage. Any attack that hits the creature is a critical hit if the attacker is within 5 feet of the creature.",
+        "coaching": {
+            "instruction": "CRITICAL: Tell the player they are frozen! They cannot move, speak, or take any actions.",
+            "maths": "They fail Strength (STR) and Dexterity (DEX) Saving Throws automatically. Attacks against them from within 5 feet are AUTOMATIC CRITICAL HITS (Double the damage dice).",
+            "save": "Prompt a Wisdom (WIS) or Constitution (CON) Saving Throw (depending on the source) at the end of each turn."
+        }
+    },
+    {
+        "name": "Petrified",
+        "icon": "mountain",
+        "type": "condition",
+        "flavor": "The blood in your veins turns to silt, and your skin hardens into cold, gray stone.",
+        "description": "A petrified creature is transformed into a solid inanimate substance. The creature is incapacitated, can't move or speak, and is unaware of its surroundings. Attack rolls against the creature have advantage. The creature automatically fails Strength and Dexterity saving throws. The creature has resistance to all damage.",
+        "coaching": {
+            "instruction": "Tell the player they have turned to stone! They are unaware of their surroundings and cannot act.",
+            "maths": "They have Resistance (Take HALF damage) to all damage. They fail Strength (STR) and Dexterity (DEX) Saving Throws automatically.",
+            "save": "Requires powerful magic (like Greater Restoration) to cure."
+        }
+    },
+    {
+        "name": "Poisoned",
+        "icon": "skull",
+        "type": "condition",
+        "flavor": "Bile rises in your throat and your vision swims as toxins course through your veins.",
+        "description": "A poisoned creature has disadvantage on attack rolls and ability checks.",
+        "coaching": {
+            "instruction": "Tell the player they feel sick! The toxins make it hard to focus or move accurately.",
+            "maths": "They have Disadvantage (Roll two 20-sided dice, take the LOWER) on all Attack Rolls and Ability Checks.",
+            "save": "Prompt a Constitution (CON) Saving Throw at the end of each of their turns."
+        }
+    },
+    {
+        "name": "Prone",
+        "icon": "arrow-down",
+        "type": "condition",
+        "flavor": "You've been knocked to the dirt, the world suddenly looking much larger from below.",
+        "description": "A prone creature's only movement option is to crawl. The creature has disadvantage on attack rolls. An attack roll against the creature has advantage if the attacker is within 5 feet of the creature. Otherwise, the attack roll has disadvantage.",
+        "coaching": {
+            "instruction": "Tell the player they are on the ground! They must spend HALF their total speed to stand back up.",
+            "maths": "Their own attacks have Disadvantage. Enemies within 5 feet have Advantage to hit them. Enemies further away have Disadvantage to hit them.",
+            "save": "Standing up requires half their total movement speed."
+        }
+    },
+    {
+        "name": "Restrained",
+        "icon": "link",
+        "type": "condition",
+        "flavor": "Vines, chains, or magic bind you tight, pinning your arms to your sides.",
+        "description": "A restrained creature's speed becomes 0. Attack rolls against the creature have advantage, and the creature's attack rolls have disadvantage. The creature has disadvantage on Dexterity saving throws.",
+        "coaching": {
+            "instruction": "Tell the player they are bound! Their Speed is 0 and they are an easy target.",
+            "maths": "They have Disadvantage on their own Attacks and Dexterity (DEX) Saving Throws. Enemies have Advantage to hit them.",
+            "save": "Check the source (like a web or spell) for how to escape, usually a Strength (STR) check or DEX save."
+        }
+    },
+    {
+        "name": "Stunned",
+        "icon": "zap",
+        "type": "condition",
+        "flavor": "A flash of light or a heavy blow leaves your mind spinning and your limbs heavy.",
+        "description": "A stunned creature is incapacitated, can't move, and can speak only falteringly. The creature automatically fails Strength and Dexterity saving throws. Attack rolls against the creature have advantage.",
+        "coaching": {
+            "instruction": "Tell the player they are dazed! They cannot move or take any Actions or Reactions.",
+            "maths": "They fail Strength (STR) and Dexterity (DEX) Saving Throws automatically. Enemies have Advantage to hit them.",
+            "save": "Prompt a Constitution (CON) Saving Throw at the end of each of their turns."
+        }
+    },
+    {
+        "name": "Unconscious",
+        "icon": "moon",
+        "type": "condition",
+        "flavor": "Darkness claims you, and the noises of the world fade into a distant hum.",
+        "description": "An unconscious creature is incapacitated, can't move or speak, and is unaware of its surroundings. The creature drops whatever it's holding and falls prone. The creature automatically fails Strength and Dexterity saving throws. Attack rolls against the creature have advantage. Any attack that hits the creature is a critical hit if the attacker is within 5 feet of the creature.",
+        "coaching": {
+            "instruction": "Tell the player they have passed out! They drop everything and fall Prone.",
+            "maths": "They fail Strength (STR) and Dexterity (DEX) Saving Throws automatically. Attacks from within 5 feet are AUTOMATIC CRITICAL HITS.",
+            "save": "If they have 0 Hit Points (HP), they must make a Death Saving Throw at the start of their turn."
+        }
+    },
+    {
+        "name": "Exhaustion",
+        "icon": "battery-low",
+        "type": "condition",
+        "flavor": "Every step feels like wading through deep mud, and your eyes burn with fatigue.",
+        "description": "Exhaustion has 6 levels. Level 1: Disadvantage on ability checks. Level 2: Speed halved. Level 3: Disadvantage on attack rolls and saving throws. Level 4: Hit point maximum halved. Level 5: Speed reduced to 0. Level 6: Death.",
+        "coaching": {
+            "instruction": "Tell the player they are worn out! Check their Exhaustion Level for specific penalties.",
+            "maths": "Level 1: Disadvantage on Ability Checks. Level 2: Speed is cut in half. Level 3: Disadvantage on Attacks and Saving Throws.",
+            "save": "A Long Rest reduces Exhaustion by 1 level (if they have food and water)."
+        }
+    },
+    {
+        "name": "Concentrating",
+        "icon": "brain",
+        "type": "condition",
+        "flavor": "A portion of your will is tethered to a magical effect, requiring constant mental focus.",
+        "description": "Some spells require you to maintain concentration. Taking damage requires a Constitution saving throw (DC = 10 or half the damage taken, whichever is higher). Being incapacitated or killed also ends concentration.",
+        "coaching": {
+            "instruction": "Tell the player they are now Concentrating. If they take damage, they must make a roll to keep the spell going.",
+            "maths": "The Difficulty Class (DC) for the check is 10, OR half of the damage taken (whichever is higher).",
+            "save": "Prompt a Constitution (CON) Saving Throw every time they take damage."
+        }
+    },
+    {
+        "name": "Dodging",
+        "icon": "shield",
+        "type": "condition",
+        "flavor": "You focus entirely on avoiding incoming blows, weaving and parrying with heightened awareness.",
+        "description": "Until the start of your next turn, any attack roll made against you has disadvantage if you can see the attacker, and you make Dexterity saving throws with advantage.",
+        "coaching": {
+            "instruction": "Tell the player they are focusing on defense! They are much harder to hit.",
+            "maths": "Enemies have Disadvantage (Roll twice, take LOWER) to hit them. The player has Advantage (Roll twice, take HIGHER) on Dexterity (DEX) Saving Throws.",
+            "save": "Benefit ends if the creature is Incapacitated or their Speed drops to 0."
+        }
+    },
+    {
+        "name": "Surprised",
+        "icon": "alert-circle",
+        "type": "condition",
+        "flavor": "A sudden ambush leaves you frozen for a heartbeat, unable to react to the unfolding chaos.",
+        "description": "A surprised creature can't move or take actions on its first turn of the combat, and it can't take a reaction until that turn ends.",
+        "coaching": {
+            "instruction": "Tell the player they were caught off guard! They cannot move or act on this first turn of combat.",
+            "maths": "They also cannot use any Reactions (like Opportunity Attacks) until after their first turn finishes.",
+            "save": "Determined at the start of combat by comparing Dexterity (Stealth) vs. Wisdom (Perception)."
+        }
+    },
+    {
+        "name": "Bless",
+        "icon": "sparkles",
+        "type": "buff",
+        "flavor": "Divine favor descends upon the warrior, guiding their strikes and shielding their spirit.",
+        "description": "The creature adds a d4 to every attack roll or saving throw it makes.",
+        "coaching": {
+            "instruction": "Tell the player they are Blessed! They get a bonus to every swing and every save.",
+            "maths": "Add 1 four-sided die (d4) to every Attack Roll and every Saving Throw.",
+            "save": "Lasts for 1 minute or until the caster loses Concentration."
+        }
+    },
+    {
+        "name": "Bardic Inspiration",
+        "icon": "music",
+        "type": "buff",
+        "flavor": "A stirring melody or words of encouragement bolsters the heart in the heat of battle.",
+        "description": "Within the next 10 minutes, the creature can roll the Inspiration die and add the number rolled to one ability check, attack roll, or saving throw it makes.",
+        "coaching": {
+            "instruction": "Tell the player they have an Inspiration Die they can use to turn a failure into a success!",
+            "maths": "Add one die (usually a d6, d8, or d10) to a roll of their choice. They can decide to use it AFTER seeing the initial roll.",
+            "save": "Expires after 10 minutes if not used."
+        }
+    },
+    {
+        "name": "Shield of Faith",
+        "icon": "shield-plus",
+        "type": "buff",
+        "flavor": "A faint, translucent shield of holy light orbits the creature.",
+        "description": "A shimmering field appears and surrounds the creature, granting it a +2 bonus to AC for the duration.",
+        "coaching": {
+            "instruction": "Tell the player they are shielded by faith! Their Armor Class is increased.",
+            "maths": "Add +2 to their total Armor Class (AC) score.",
+            "save": "Lasts for 10 minutes or until the caster loses Concentration."
+        }
+    },
+    {
+        "name": "Heroism",
+        "icon": "swords",
+        "type": "buff",
+        "flavor": "Unstoppable bravery surges through the creature, deadening fear and knitting wounds.",
+        "description": "The creature is immune to being frightened and gains temporary hit points at the start of each of its turns.",
+        "coaching": {
+            "instruction": "Tell the player they feel invincible! They cannot be Frightened while this lasts.",
+            "maths": "They gain Temporary Hit Points (Temp HP) equal to the caster's Ability Modifier at the START of every turn.",
+            "save": "Lasts for 1 minute or until the caster loses Concentration."
+        }
+    },
+    {
+        "name": "Enlarged",
+        "icon": "maximize",
+        "type": "buff",
+        "flavor": "The creature swells with primal power, towering over its foes.",
+        "description": "The creature's size doubles in all dimensions. It has advantage on Strength checks and Strength saving throws. The creature's weapons deal an extra 1d4 damage.",
+        "coaching": {
+            "instruction": "Tell the player they have grown to a massive size! They are stronger and hit harder.",
+            "maths": "They have Advantage (Roll twice, take HIGHER) on Strength (STR) Checks and Saving Throws. Add 1 four-sided die (1d4) to all weapon damage.",
+            "save": "Lasts for 1 minute or until the caster loses Concentration."
+        }
+    },
+    {
+        "name": "Guidance",
+        "icon": "compass",
+        "type": "buff",
+        "flavor": "A brief flash of insight or a steadying hand guides a crucial effort.",
+        "description": "Once before the spell ends, the creature can roll a d4 and add the number rolled to one ability check of its choice.",
+        "coaching": {
+            "instruction": "Tell the player they have divine guidance. They can use it on their next non-combat check.",
+            "maths": "Add 1 four-sided die (d4) to one Ability Check (like picking a lock or climbing a wall).",
+            "save": "Lasts for 1 minute or until used/replaced."
+        }
+    },
+    {
+        "name": "Resistance",
+        "icon": "shield-check",
+        "type": "buff",
+        "flavor": "Magical resilience hardens the soul against impending danger.",
+        "description": "Once before the spell ends, the creature can roll a d4 and add the number rolled to one saving throw of its choice.",
+        "coaching": {
+            "instruction": "Tell the player their skin feels tougher. They can use this on a life-or-death saving throw.",
+            "maths": "Add 1 four-sided die (d4) to one Saving Throw.",
+            "save": "Lasts for 1 minute or until used/replaced."
+        }
+    },
+    {
+        "name": "Haste",
+        "icon": "wind",
+        "type": "buff",
+        "flavor": "Time seems to crawl as the creature moves with blurring, supernatural speed.",
+        "description": "The creature's speed is doubled, it gains a +2 bonus to AC, it has advantage on Dexterity saving throws, and it gains an additional action on each of its turns.",
+        "coaching": {
+            "instruction": "CRITICAL: Tell the player they are moving at god-like speeds! They are a blur on the battlefield.",
+            "maths": "Double their Speed. Add +2 to Armor Class (AC). Advantage (Roll twice, take HIGHER) on Dexterity (DEX) Saving Throws. They get ONE extra Action.",
+            "save": "When this ends, they are stunned for 1 turn as lethargy sets in."
+        }
+    },
+    {
+        "name": "Sleep",
+        "icon": "moon",
+        "type": "condition",
+        "flavor": "Your eyelids grow heavy as a magical slumber pulls you down into a dreamless void.",
+        "description": "The creature falls unconscious. This ends if the creature takes damage, or someone uses their action to shake them awake.",
+        "coaching": {
+            "instruction": "Tell the player their character has fallen into a magical slumber! They are Unconscious.",
+            "maths": "NO ROLL REQUIRED: Sleep affects creatures based on their current Hit Points (HP). It ends automatically if they take damage or are shaken awake.",
+            "save": "Ends if damaged or if an ally uses an Action to wake them."
+        }
+    }
+]

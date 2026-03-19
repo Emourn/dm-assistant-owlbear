@@ -1,0 +1,300 @@
+@import "tailwindcss";
+
+@theme {
+  --color-obsidian: #1c1917;
+  /* Stone 900 */
+  --color-obsidian-dark: #0c0a09;
+  /* Stone 950 */
+  --color-slate-dark: #292524;
+  /* Stone 800 */
+  --color-slate-darker: #1c1917;
+  /* Stone 900 */
+  --color-parchment: #fafaf9;
+  /* Stone 50 */
+  --color-parchment-muted: #d6d3d1;
+  /* Stone 300 */
+  --color-blood: #991b1b;
+  /* Red 800 */
+  --color-blood-dark: #7f1d1d;
+  /* Red 900 */
+  --color-gold: #d97706;
+  /* Amber 600 */
+  --color-gold-light: #f59e0b;
+  /* Amber 500 */
+  --color-arcane: #6b21a8;
+  /* Purple 800 */
+  --color-arcane-light: #9333ea;
+  /* Purple 600 */
+  --color-veil: #0f766e;
+  /* Teal 700 */
+
+  --font-cinzel: 'Cinzel', serif;
+  --font-inter: 'Inter', sans-serif;
+}
+
+@layer base {
+  @keyframes pulse-gold {
+
+    0%,
+    100% {
+      box-shadow: 0 0 10px rgba(255, 215, 0, 0.4);
+    }
+
+    50% {
+      box-shadow: 0 0 25px rgba(255, 215, 0, 0.8);
+    }
+  }
+
+  @keyframes shake {
+
+    0%,
+    100% {
+      transform: translateX(0);
+    }
+
+    20% {
+      transform: translateX(-4px) rotate(-1deg);
+    }
+
+    40% {
+      transform: translateX(4px) rotate(1deg);
+    }
+
+    60% {
+      transform: translateX(-4px) rotate(-1deg);
+    }
+
+    80% {
+      transform: translateX(4px) rotate(1deg);
+    }
+  }
+
+  @keyframes heal-glow {
+    0% {
+      transform: scale(1);
+      opacity: 1;
+    }
+
+    50% {
+      transform: scale(1.15);
+      opacity: 1;
+      filter: brightness(1.5);
+    }
+
+    100% {
+      transform: scale(1);
+      opacity: 1;
+    }
+  }
+
+  @keyframes token-pulse {
+
+    0%,
+    100% {
+      transform: scale(1.05);
+    }
+
+    50% {
+      transform: scale(1.1);
+    }
+  }
+
+  @keyframes fadeSlideUp {
+    from {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+
+    to {
+      opacity: 1;
+    }
+  }
+}
+
+:root {
+  background-color: var(--color-obsidian-dark);
+  color: var(--color-parchment);
+  font-family: var(--font-inter);
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-cinzel);
+}
+
+/* Custom scrollbar for webkit */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(12, 10, 9, 0.9);
+  border-left: 1px solid rgba(217, 119, 6, 0.1);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--color-stone-800, #292524);
+  border: 1px solid rgba(217, 119, 6, 0.2);
+  border-radius: 2px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-gold-light, #f59e0b);
+  border-color: var(--color-gold, #d97706);
+}
+
+.custom-scrollbar::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+  background: var(--color-stone-800, #292524);
+  border: 1px solid rgba(217, 119, 6, 0.2);
+  border-radius: 2px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+  background: var(--color-gold, #d97706);
+}
+
+/* Low HP heartbeat pulse for HeroCards */
+@keyframes pulse-slow {
+
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.7;
+  }
+}
+
+.animate-pulse-slow {
+  animation: pulse-slow 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+.glass-panel {
+  background: rgba(12, 10, 9, 0.7);
+  /* Deep Obsidian Dark */
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(217, 119, 6, 0.15);
+  /* Faint gold border */
+  box-shadow:
+    0 4px 20px rgba(0, 0, 0, 0.6),
+    /* Heavy drop shadow */
+    inset 0 1px 1px rgba(255, 255, 255, 0.05);
+  /* Subtle top highlight */
+}
+
+/* Immersive Backgrounds */
+.bg-camp {
+  background-image: url('/assets/bg/camp_bg_1772668909854.png');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+}
+
+.bg-combat {
+  background-image: url('/assets/bg/combat_bg_1772668922273.png');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+}
+
+.bg-desk {
+  background-image: url('/assets/bg/desk_bg_1772668947818.png');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  background-repeat: no-repeat;
+}
+
+/* App Shell Backgrounds */
+.bg-sidebar {
+  background-image: url('/assets/bg/sidebar_bg_1772669856004.png');
+  background-size: cover;
+  background-position: left top;
+  background-repeat: repeat-y;
+}
+
+.bg-header {
+  background-image: url('/assets/bg/header_bg_1772669868023.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+/* Reusing Header Leather for Modals/Toasts */
+.bg-modal {
+  background-image: url('/assets/bg/header_bg_1772669868023.png');
+  background-size: cover;
+  background-position: center;
+}
+
+/* Interactive Hover States */
+.hover-glow-gold:hover {
+  text-shadow: 0 0 10px rgba(217, 119, 6, 0.8);
+  box-shadow: inset 0 0 15px rgba(217, 119, 6, 0.15);
+}
+
+/* Premium Typography Effects */
+.text-engraved-gold {
+  color: var(--color-gold);
+  text-shadow:
+    0 1px 1px rgba(255, 255, 255, 0.1),
+    /* Highlight */
+    0 -1px 2px rgba(0, 0, 0, 0.9),
+    /* Deep engraving shadow */
+    0 2px 4px rgba(0, 0, 0, 0.8);
+  /* Drop shadow */
+}
+
+.text-blood-ink {
+  color: var(--color-blood);
+  text-shadow:
+    0 1px 1px rgba(0, 0, 0, 0.5),
+    0 0 4px rgba(153, 27, 27, 0.4);
+}
+
+/* Ornate Divider */
+.ornate-divider {
+  width: 100%;
+  height: 24px;
+  background-image: url('/assets/bg/ornate_divider_1772668960171.png');
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.8;
+  margin: 1rem 0;
+}

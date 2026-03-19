@@ -1,0 +1,254 @@
+{
+    "entities": [
+        {
+            "name": "Rose Durst",
+            "aliases": [
+                "rose",
+                "rosavalda",
+                "rosavalda durst"
+            ],
+            "category": "npc",
+            "description": "Rosavalda 'Rose' Durst is the ten-year-old daughter of Gustav and Elisabeth Durst. She is a thin, pale girl who wears a dirty but once-expensive dress. In life, she was a protective older sister who shielded her brother Thorn from the horrors of their parents' cult activities. In the modern Death House, she and Thorn are ghostly projections of the house itself — unable to enter the building, they plead with strangers to go inside and save their baby brother Walter from the 'monster in the basement.' Rose knows about the 'hand mark' (the symbol of Vecna), calling it 'the grown-up tattoo.' She can share that her parents went to the basement and never came back, and that she heard chanting.",
+            "source": "Curse of Strahd, p.211 / Fixing Vecna"
+        },
+        {
+            "name": "Thorn Durst",
+            "aliases": [
+                "thorn",
+                "thorvaldur",
+                "thorvaldur durst"
+            ],
+            "category": "npc",
+            "description": "Thorvaldur 'Thorn' Durst is the seven-year-old son of the Durst family and Rose's younger brother. He is a quiet, trembling boy who clutches a tattered stuffed doll — his favorite toy. He rarely speaks, preferring to hide behind his sister Rose. Like Rose, he is a ghostly projection of the house's dark history, trapped outside the estate for eternity. He won't speak directly but may point at the house and tremble when asked about the monster inside.",
+            "source": "Curse of Strahd, p.211"
+        },
+        {
+            "name": "The Nursemaid",
+            "aliases": [
+                "nursemaid",
+                "margaret"
+            ],
+            "category": "npc",
+            "description": "Margaret was a young woman employed by the Durst family as nursemaid to baby Walter. Gustav Durst had an affair with her, and when Elisabeth discovered the pregnancy, she flew into a jealous rage. After Walter was born, Elisabeth took the baby and had the cult sacrifice him in the basement ritual chamber. Margaret died of grief and starvation, locked in the nursery (Area 7 of the upper floor). Her spirit remains bound to the nursery, appearing as a Specter if the crib or doll is disturbed. She will not attack if players show compassion to the doll.",
+            "source": "Curse of Strahd, p.216"
+        },
+        {
+            "name": "Gustav Durst",
+            "aliases": [
+                "gustav"
+            ],
+            "category": "npc",
+            "description": "The patriarch of the Durst family and a wealthy noble from a long line of Barovian landholders. Behind his stern facade, Gustav led a double life: he and Elisabeth were the founders and leaders of a secret cult dedicated to dark powers — in this campaign's version, followers of Vecna. Gustav had an affair with the nursemaid Margaret, fathering a bastard child (Walter). He appears in portraits throughout the house as a stern man with cold, calculating eyes and a gold signet ring bearing the symbol of Vecna (an eye within a palm).",
+            "source": "Curse of Strahd / Fixing Vecna"
+        },
+        {
+            "name": "Elisabeth Durst",
+            "aliases": [
+                "elisabeth"
+            ],
+            "category": "npc",
+            "description": "The matriarch of the Durst house, a woman consumed by jealousy, cruelty, and fanatical devotion to the cult of Vecna. When she learned of Gustav's affair with the nursemaid Margaret, she arranged for Margaret's baby Walter to be taken and sacrificed in the basement ritual chamber. Her journal (found in the master bedroom) describes 'the Master's teachings' and references secret meetings in the basement. One entry reads: 'The hand reveals what the eye conceals' — a classic Vecna phrase. Elisabeth's ghost may still haunt the master bedroom.",
+            "source": "Curse of Strahd / Fixing Vecna"
+        },
+        {
+            "name": "Vecna",
+            "aliases": [
+                "vecna, the undying king",
+                "the undying king",
+                "the whispering king",
+                "the arch-lich",
+                "the maimed god"
+            ],
+            "category": "npc",
+            "description": "Vecna, also known as the Undying King, the Whispered One, and the Maimed God, is one of the most powerful and feared beings in all the multiverse. Originally a mortal wizard of unparalleled ambition, Vecna achieved lichdom and eventually ascended to godhood. He is the god of secrets, necromancy, and forbidden knowledge. His holy symbol is an eye resting in the palm of a hand — representing the Eye and Hand of Vecna, his two most infamous artifacts. In this campaign, the Durst family are secret followers of Vecna, and his influence permeates Death House through hidden symbols, cult rituals, and the dark energy that sustains the building itself. He is the architect behind the campaign's overarching threat.",
+            "source": "Multiple D&D Sourcebooks / Fixing Vecna"
+        },
+        {
+            "name": "Vecna Symbol",
+            "aliases": [
+                "eye of vecna symbol",
+                "hand and eye",
+                "signet ring"
+            ],
+            "category": "lore",
+            "description": "An eye within an open palm — this is the sacred sign of Vecna, the Whispering King. In the Durst Estate, this symbol is hidden in plain sight: engraved inside a gold signet ring in the master bedroom, carved into a chess king piece in the Den of Wolves, stitched into the collar of a robed figure in the upper hall portraits, and inscribed on the pillars of the basement ritual chamber. The symbol signifies the family's secret allegiance to the Arch-Lich and connects Death House to the larger Vecna plotline.",
+            "source": "Fixing Vecna"
+        },
+        {
+            "name": "Strahd von Zarovich",
+            "aliases": [
+                "strahd",
+                "count strahd",
+                "the devil strahd"
+            ],
+            "category": "npc",
+            "description": "Count Strahd von Zarovich is the vampire lord of Barovia and the master of Castle Ravenloft. Once a proud and ambitious conqueror, he made a dark pact with the entity known as Vampyr to gain eternal life, then murdered his brother Sergei in a jealous rage over the woman Tatyana. The Dark Powers of the Shadowfell trapped Strahd in Barovia for eternity as punishment, making him both the land's ruler and its prisoner. He is charming, brilliant, and utterly evil — a predator who wears the mask of tragic romance to lure his prey.",
+            "source": "Curse of Strahd"
+        },
+        {
+            "name": "Barovia",
+            "aliases": [
+                "barovia",
+                "land of barovia",
+                "the valley of barovia"
+            ],
+            "category": "location",
+            "description": "Barovia is a demiplane of dread in the Shadowfell, a dark valley surrounded by impassable mountains and perpetual mist. The land is cursed: the sun never fully shines, the people live in constant fear, and escape is nearly impossible. It is ruled by Count Strahd von Zarovich from Castle Ravenloft. The village of Barovia sits in the shadow of the castle, its residents trapped in an endless cycle of suffering. The Mists of Barovia can reach into other planes to snatch unsuspecting travelers and deposit them here — which is exactly how the player characters arrive.",
+            "source": "Curse of Strahd"
+        },
+        {
+            "name": "Death House",
+            "aliases": [
+                "durst estate",
+                "the durst house",
+                "durst manor"
+            ],
+            "category": "location",
+            "description": "Death House is a haunted townhouse in the village of Barovia, once home to the Durst family. Outwardly, it appears as a weathered but grand three-story estate with dark stone walls and hollow-eyed windows. Inside, it is a labyrinth of haunted rooms, ghostly echoes, and dark secrets. The house has three main levels — Ground Floor, Upper Floor, and a hidden Dungeon Level containing the cult's ritual chamber. The building itself is semi-sentient: if the players try to leave without completing the ritual sacrifice in the basement, the house seals all exits and becomes actively hostile, spawning scythe blades from walls and toxic smoke.",
+            "source": "Curse of Strahd, p.211-220"
+        },
+        {
+            "name": "Longsword",
+            "aliases": [
+                "longsword"
+            ],
+            "category": "item",
+            "description": "A versatile martial melee weapon with a straight, double-edged blade about 3.5 feet long. It can be wielded with one hand for 1d8 slashing damage, or with two hands for 1d10 slashing damage (versatile property). It weighs 3 lb. and costs 15 gp. In Death House, a dusty longsword can be pried from the decorative suit of armor standing in the grand foyer (Area 2).",
+            "source": "PHB / Curse of Strahd"
+        },
+        {
+            "name": "Silver Necklace",
+            "aliases": [
+                "silver necklace"
+            ],
+            "category": "item",
+            "description": "A fine silver chain necklace, tarnished with age but still valuable. Found on the vanity table in the master bedroom of Death House. Worth approximately 25 gp.",
+            "source": "Curse of Strahd"
+        },
+        {
+            "name": "Ruby Brooch",
+            "aliases": [
+                "ruby brooch"
+            ],
+            "category": "item",
+            "description": "An ornate brooch set with a deep red ruby, crafted in an old Barovian style. Found among the scattered jewelry on the vanity table in the master bedroom. Worth approximately 40 gp.",
+            "source": "Curse of Strahd"
+        },
+        {
+            "name": "Signet Ring (Vecna)",
+            "aliases": [
+                "gold ring",
+                "signet ring",
+                "gold ring (vecna)"
+            ],
+            "category": "item",
+            "description": "A heavy gold signet ring found in the master bedroom of Death House. Inside the band is an engraving of an eye within a palm — the Mark of Vecna. This ring was used by Gustav Durst and other high-ranking members of the cult to identify one another. It is key evidence connecting the Durst family to the cult of Vecna and serves as foreshadowing for the campaign's larger plotline.",
+            "source": "Fixing Vecna"
+        },
+        {
+            "name": "Wolf",
+            "aliases": [
+                "animated wolf",
+                "wolves"
+            ],
+            "category": "monster",
+            "description": "In Death House, two wolf heads mounted on the walls of the Den of Wolves (Area 3) can spring to life as animated attackers if disturbed. They use the standard Wolf stat block (CR 1/4). Wolves have pack tactics (advantage on attack rolls if an ally is within 5 feet of the target) and can knock targets prone with their bite on a failed DC 11 Strength save.",
+            "source": "Monster Manual / Curse of Strahd"
+        },
+        {
+            "name": "Animated Armor",
+            "aliases": [
+                "animated armor",
+                "suit of armor"
+            ],
+            "category": "monster",
+            "description": "A suit of plate armor magically endowed with a semblance of life. AC 18, HP 33, CR 1. It attacks with a Multiattack (two slam attacks, +4 to hit, 1d6+2 bludgeoning damage each). In Death House, the suit of armor standing in the grand foyer (Area 2) is decorative and does not animate — but it appears to track visitors' movements with its visor.",
+            "source": "Monster Manual"
+        },
+        {
+            "name": "Specter",
+            "aliases": [
+                "specter",
+                "spectral nursemaid"
+            ],
+            "category": "monster",
+            "description": "A terrifying incorporeal undead born from violence and hatred. AC 12, HP 22 (5d8), CR 1. It is resistant to most damage types and immune to necrotic and poison damage. Its Life Drain attack (+4 to hit, 3d6 necrotic damage, reduces HP maximum) makes it extremely dangerous for low-level parties. In Death House, the specter in the nursery (Area 7) is the spirit of Margaret, the nursemaid. She manifests if the crib or doll is disturbed, but will not attack players who show kindness to the doll or speak compassionately.",
+            "source": "Monster Manual / Curse of Strahd, p.216"
+        },
+        {
+            "name": "Neverwinter",
+            "aliases": [
+                "neverwinter",
+                "city of neverwinter",
+                "jewel of the north"
+            ],
+            "category": "location",
+            "description": "A large, cosmopolitan city on the Sword Coast of Faerûn (the Forgotten Realms), known as the 'Jewel of the North.' It is a major hub of civilization, commerce, and adventure. Many campaigns begin here or use it as a home base. Characters from various settings may have originated from Neverwinter before the Mists of Barovia snatched them away.",
+            "source": "Sword Coast Adventurer's Guide"
+        },
+        {
+            "name": "Shambling Mound",
+            "aliases": ["shambling mound", "lorghoth", "lorghoth the decayer"],
+            "category": "monster",
+            "description": "A massive, shambling heap of rotting vegetation animated by fell magic. AC 15, HP 136 (16d10+48), CR 5. It has two slam attacks (+7, 2d8+4 bludgeoning) and can Engulf a Medium or smaller creature (DC 14 Str save, restrained, blinded, suffocating, takes 2d8+4 bludgeoning at start of each turn). It is IMMUNE to lightning damage — lightning actually heals it. In Death House, 'Lorghoth the Decayer' is the cult's failed attempt to summon a dark power; it erupts from the floor of the ritual chamber if the party refuses the sacrifice.",
+            "source": "Monster Manual / Curse of Strahd"
+        },
+        {
+            "name": "Lord Neverember",
+            "aliases": ["neverember", "dagult neverember", "lord neverember", "lord protector"],
+            "category": "npc",
+            "description": "Dagult Neverember is the Lord Protector of Neverwinter and formerly the Open Lord of Waterdeep. A pragmatic, ambitious, and calculating ruler who values results over sentiment. He maintains order through a network of trusted agents rather than a formal militia. He employs the Fearnehart siblings and, in this campaign, summons the player characters to investigate cult activity in the western ruins of Neverwinter.",
+            "source": "Sword Coast Adventurer's Guide / Fixing Vecna"
+        },
+        {
+            "name": "Kevori Fearnehart",
+            "aliases": ["kevori", "kevori fearnehart"],
+            "category": "npc",
+            "description": "A lean, sharp-eyed scout and investigator employed by Lord Neverember. She is Delvin's older sister — professional, direct, and efficient. She and Delvin have been tracking suspicious cult activity in Neverwinter's western ruins for four months. After the party is taken by the mists, Kevori continues her mission. She is the one who discovers Delvin's body after his failed infiltration, her scream marking the transition from Death House to the Nest of the Eldritch Eye.",
+            "source": "Nest of the Eldritch Eye / Fixing Vecna"
+        },
+        {
+            "name": "Delvin Fearnehart",
+            "aliases": ["delvin", "delvin fearnehart"],
+            "category": "npc",
+            "description": "Kevori's younger brother — warm, casual, likeable, with an easy smile and relaxed posture. A skilled scout and investigator working for Lord Neverember. The players meet him before the mists and are meant to like him. While the party is trapped in Death House (experiencing days), weeks pass in Neverwinter. During that time, Delvin infiltrates the cult alone and is killed. His body is found clutching a mysterious eye artifact, marking the beginning of the Nest of the Eldritch Eye adventure.",
+            "source": "Nest of the Eldritch Eye / Fixing Vecna"
+        },
+        {
+            "name": "Walter Durst",
+            "aliases": ["walter", "walter durst", "baby walter"],
+            "category": "npc",
+            "description": "The bastard son of Gustav Durst and the nursemaid Margaret. Walter was an infant when Elisabeth Durst, consumed by jealousy, had him taken from Margaret and sacrificed on the cult's altar in the basement of Death House. His remains lie in the ritual chamber. His crypt slab in the dungeon bears his name, though it is empty. Walter's story — pieced together from Elisabeth's journal, Margaret's specter, and the basement altar — is the tragic core of Death House.",
+            "source": "Curse of Strahd / Fixing Vecna"
+        },
+        {
+            "name": "Cloak of Protection",
+            "aliases": ["cloak of protection"],
+            "category": "item",
+            "description": "A fine cloak of deep crimson, stitched with protective glyphs along the hem. While wearing this cloak, you gain a +1 bonus to AC and saving throws. Requires attunement. Found in the secret room (Area 9) of Death House, hidden behind a bookshelf in the library. This is the most valuable magic item in Death House and a significant power boost for a level 1-2 party.",
+            "source": "DMG / Curse of Strahd"
+        },
+        {
+            "name": "Broom of Animated Attack",
+            "aliases": ["broom of animated attack", "animated broom"],
+            "category": "monster",
+            "description": "A seemingly ordinary broom that springs to life when disturbed. AC 15, HP 17 (5d4+5), speed 0 ft (fly 50 ft, hover). It makes two melee attacks per turn: Broomstick (+3 to hit, 1d4+1 bludgeoning). Found in the storage room (Area 14) of Death House's third floor. While comedic in concept, it is genuinely dangerous for low-level characters — high AC, decent damage, and it won't stop until destroyed.",
+            "source": "Curse of Strahd, p.226"
+        },
+        {
+            "name": "Eldritch Eye",
+            "aliases": ["eldritch eye", "the eye", "eye artifact"],
+            "category": "item",
+            "description": "A heavy metallic orb that pulses like a heartbeat. It resonates with hidden magic and feels slightly warm in the hand. In this campaign it is the stolen focus from the cult beneath Neverwinter, and it anchors the next chapter of the Vecna plot.",
+            "source": "Fixing Vecna"
+        }
+    ]
+}
+
+
+
+
+
+
+
+

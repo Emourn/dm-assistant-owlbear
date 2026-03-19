@@ -1,0 +1,137 @@
+[
+  {
+    "id": "action-attack",
+    "name": "Attack",
+    "type": "action",
+    "source": "Basic Rules",
+    "description": "Make one melee or ranged attack. Certain features, such as the Extra Attack feature of the fighter, allow you to make more than one attack with this action.",
+    "icon": "sword",
+    "costs": [
+      { "resource": "action", "amount": 1 }
+    ]
+  },
+  {
+    "id": "action-cast-spell",
+    "name": "Cast a Spell",
+    "type": "action",
+    "source": "Basic Rules",
+    "description": "Cast a spell with a casting time of 1 action.",
+    "icon": "sparkles",
+    "costs": [
+      { "resource": "action", "amount": 1 }
+    ]
+  },
+  {
+    "id": "action-dash",
+    "name": "Dash",
+    "type": "action",
+    "source": "Basic Rules",
+    "description": "Gain extra movement for the current turn equal to your speed.",
+    "icon": "fast-forward",
+    "costs": [
+      { "resource": "action", "amount": 1 }
+    ]
+  },
+  {
+    "id": "action-disengage",
+    "name": "Disengage",
+    "type": "action",
+    "source": "Basic Rules",
+    "description": "Your movement doesn't provoke opportunity attacks for the rest of the turn.",
+    "icon": "shield-off",
+    "costs": [
+      { "resource": "action", "amount": 1 }
+    ]
+  },
+  {
+    "id": "action-dodge",
+    "name": "Dodge",
+    "type": "action",
+    "source": "Basic Rules",
+    "description": "Focus entirely on avoiding attacks. Until the start of your next turn, any attack roll made against you has disadvantage if you can see the attacker, and you make Dexterity saving throws with advantage.",
+    "icon": "shield-check",
+    "costs": [
+      { "resource": "action", "amount": 1 }
+    ],
+    "effects": [
+      { "type": "addCondition", "condition": "Dodging" }
+    ]
+  },
+  {
+    "id": "action-help",
+    "name": "Help",
+    "type": "action",
+    "source": "Basic Rules",
+    "description": "Aid a friendly creature in completing a task, granting advantage on their next ability check, or distract an enemy to grant advantage to an ally's next attack roll.",
+    "icon": "handshake",
+    "costs": [
+      { "resource": "action", "amount": 1 }
+    ]
+  },
+  {
+    "id": "action-hide",
+    "name": "Hide",
+    "type": "action",
+    "source": "Basic Rules",
+    "description": "Make a Dexterity (Stealth) check in an attempt to hide.",
+    "icon": "eye-off",
+    "costs": [
+      { "resource": "action", "amount": 1 }
+    ]
+  },
+  {
+    "id": "action-ready",
+    "name": "Ready",
+    "type": "action",
+    "source": "Basic Rules",
+    "description": "Wait for a particular circumstance before you act, allowing you to use your reaction to act later in the round.",
+    "icon": "clock",
+    "costs": [
+      { "resource": "action", "amount": 1 }
+    ]
+  },
+  {
+    "id": "bonus-cast-spell",
+    "name": "Cast a Spell",
+    "type": "bonus",
+    "source": "Basic Rules",
+    "description": "Cast a spell with a casting time of 1 bonus action.",
+    "icon": "sparkles",
+    "costs": [
+      { "resource": "bonus", "amount": 1 }
+    ]
+  },
+  {
+    "id": "bonus-offhand-attack",
+    "name": "Two-Weapon Fighting",
+    "type": "bonus",
+    "source": "Basic Rules",
+    "description": "Make an attack with a light melee weapon that you're holding in the other hand, assuming you attacked with a light melee weapon this turn.",
+    "icon": "swords",
+    "costs": [
+      { "resource": "bonus", "amount": 1 }
+    ]
+  },
+  {
+    "id": "reaction-opportunity",
+    "name": "Opportunity Attack",
+    "type": "reaction",
+    "source": "Basic Rules",
+    "description": "Make one melee attack against a hostile creature that moves out of your reach.",
+    "icon": "crosshair",
+    "costs": [
+      { "resource": "reaction", "amount": 1 }
+    ]
+  },
+  {
+    "id": "reaction-cast-spell",
+    "name": "Cast a Spell",
+    "type": "reaction",
+    "source": "Basic Rules",
+    "description": "Cast a spell with a casting time of 1 reaction.",
+    "icon": "sparkles",
+    "costs": [
+      { "resource": "reaction", "amount": 1 }
+    ]
+  }
+]

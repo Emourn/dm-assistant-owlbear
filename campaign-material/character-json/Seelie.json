@@ -1,0 +1,447 @@
+{
+  "name": "Seelie",
+  "about": "Elf Druid level 1\n\nBackground: Guide\n\nPlayer: dxMourn\n\nCurrent HP: 9/9\n\nInitiative: +2\n\nPassive Insight 16, Passive Investigation 8, Passive Perception 16\n\nCurrency: 12 GP",
+  "size": "Medium",
+  "type": "Humanoid",
+  "subtype": "Elf",
+  "group": "Player Character",
+  "alignment": "",
+  "armor_class": {
+    "value": 12,
+    "special": "Current HP 9/9"
+  },
+  "hp": {
+    "value": 9,
+    "hit_dice": "d8"
+  },
+  "speed": {
+    "walk": 30,
+    "fly": null,
+    "swim": null,
+    "climb": null,
+    "burrow": null,
+    "hover": null,
+    "lightwalking": null,
+    "notes": null
+  },
+  "stats": {
+    "strength": 11,
+    "dexterity": 14,
+    "constitution": 13,
+    "intelligence": 7,
+    "wisdom": 19,
+    "charisma": 10
+  },
+  "saving_throws": {
+    "strength_save": 0,
+    "dexterity_save": 2,
+    "constitution_save": 1,
+    "intelligence_save": 0,
+    "wisdom_save": 6,
+    "charisma_save": 0
+  },
+  "perception": 16,
+  "skills": {
+    "acrobatics": 2,
+    "animal_handling": 6,
+    "arcana": 0,
+    "athletics": 0,
+    "deception": 0,
+    "history": -2,
+    "insight": 6,
+    "intimidation": 0,
+    "investigation": -2,
+    "medicine": 4,
+    "nature": -2,
+    "perception": 6,
+    "performance": 0,
+    "persuasion": 0,
+    "religion": -2,
+    "sleight_of_hand": 2,
+    "stealth": 4,
+    "survival": 6
+  },
+  "damage_vulnerabilities": null,
+  "damage_resistances": null,
+  "damage_immunities": "magical sleep",
+  "condition_immunities": null,
+  "senses": [
+    "Darkvision 60 ft."
+  ],
+  "languages": [
+    "Common",
+    "Druidic",
+    "Elvish",
+    "Lantanese"
+  ],
+  "items": [
+    "Shield",
+    "Leather",
+    "Sickle",
+    "Shortbow",
+    "Backpack",
+    "Cartographer's Tools",
+    "Bedroll",
+    "Tent",
+    "Herbalism Kit",
+    "Arrows x20",
+    "Staff",
+    "Traveler's Clothes",
+    "Crowbar",
+    "Hammer",
+    "Piton x10",
+    "Rations (1 day) x10",
+    "Rope, Hempen (50 feet)",
+    "Tinderbox",
+    "Torch x10",
+    "Waterskin",
+    "Bedroll",
+    "Mess Kit",
+    "Rations (1 day) x10",
+    "Rope, Hempen (50 feet)",
+    "Tinderbox",
+    "Torch x10",
+    "Waterskin",
+    "Oil x2",
+    "Rations x10",
+    "Rope",
+    "Bedroll",
+    "Thorn Whip (equipped)",
+    "Starry Wisp (equipped)",
+    "Shillelagh (equipped)",
+    "Shortbow",
+    "20 Arrows",
+    "Cartographer's Tools",
+    "Quiver",
+    "Tent",
+    "Traveler's Clothes",
+    "3 gp"
+  ],
+  "equipment": null,
+  "challenge_rating": null,
+  "cr": null,
+  "actions": [
+    {
+      "name": "Sickle",
+      "desc": "Attack: +2 to hit. Hit: 1d4.",
+      "attack_bonus": 2,
+      "stat_bonus": [
+        "STR"
+      ],
+      "damage_dice": "1d4",
+      "limit": null
+    },
+    {
+      "name": "Shortbow",
+      "desc": "Attack: +4 to hit. Hit: 1d6.",
+      "attack_bonus": 4,
+      "stat_bonus": [
+        "DEX"
+      ],
+      "damage_dice": "1d6",
+      "limit": null
+    },
+    {
+      "name": "Staff",
+      "desc": "Attack: +6 to hit. Hit: 1d6 bludgeoning. Weapon: simple",
+      "attack_bonus": 6,
+      "stat_bonus": [
+        "WIS"
+      ],
+      "damage_dice": "1d6 bludgeoning",
+      "limit": null
+    },
+    {
+      "name": "Thorn Whip",
+      "desc": "Attack: +6 to hit. Hit: 1d6 Piercing (Atk: +6). V/S/M",
+      "attack_bonus": 6,
+      "stat_bonus": [
+        "WIS"
+      ],
+      "damage_dice": "1d6 Piercing (Atk: +6)",
+      "limit": null
+    },
+    {
+      "name": "Starry Wisp",
+      "desc": "Attack: +6 to hit. V/S",
+      "attack_bonus": 6,
+      "stat_bonus": [
+        "WIS"
+      ],
+      "damage_dice": null,
+      "limit": null
+    },
+    {
+      "name": "Shillelagh",
+      "desc": "Attack: +2 to hit. D: 1m, V/S/M",
+      "attack_bonus": 2,
+      "stat_bonus": [
+        "STR"
+      ],
+      "damage_dice": null,
+      "limit": null
+    }
+  ],
+  "bonus_actions": null,
+  "lair_actions": null,
+  "mythic_actions": null,
+  "reactions": null,
+  "legendary_desc": null,
+  "legendary_actions": null,
+  "special_abilities": [
+    {
+      "name": "Core Druid Traits",
+      "desc": "Class: Druid\n\nPHB-2024 79",
+      "attack_bonus": null,
+      "stat_bonus": [],
+      "damage_dice": null,
+      "limit": null
+    },
+    {
+      "name": "Spellcasting",
+      "desc": "Class: Druid\n\nWisdom-based slot casting. 2 Cantrips, 4 Prepared spells.",
+      "attack_bonus": null,
+      "stat_bonus": [],
+      "damage_dice": null,
+      "limit": null
+    },
+    {
+      "name": "Druidic",
+      "desc": "Class: Druid\n\nSpeak and leave hidden messages in Druidic.",
+      "attack_bonus": null,
+      "stat_bonus": [],
+      "damage_dice": null,
+      "limit": null
+    },
+    {
+      "name": "You can use Druidic to leave hidden message",
+      "desc": "Class: Druid\n\nYou and others who know Druidic automatically spot such a message\nOthers spot the message’s presence with a successful DC 15 Intelligence (Investigation) check but can’t decipher it without magic.",
+      "attack_bonus": null,
+      "stat_bonus": [],
+      "damage_dice": null,
+      "limit": null
+    },
+    {
+      "name": "Leave Druidic Message: Special",
+      "desc": "Class: Druid",
+      "attack_bonus": null,
+      "stat_bonus": [],
+      "damage_dice": null,
+      "limit": null
+    },
+    {
+      "name": "Primal Order",
+      "desc": "Class: Druid\n\nChoose Magician (+1 Cantrip, Bonus to Arcana/Nature) or Warden (Martial Weapons, Medium Armor).",
+      "attack_bonus": null,
+      "stat_bonus": [],
+      "damage_dice": null,
+      "limit": null
+    },
+    {
+      "name": "Magician -",
+      "desc": "Class: Druid\n\nYou know one extra cantrip from the Druid spell list. You also gain a +4 bonus to Intelligence (Arcana or Nature) checks.",
+      "attack_bonus": null,
+      "stat_bonus": [],
+      "damage_dice": null,
+      "limit": null
+    },
+    {
+      "name": "Creature Type",
+      "desc": "Class: Druid\n\nPHB-2024 190\nYou are a Humanoid.",
+      "attack_bonus": null,
+      "stat_bonus": [],
+      "damage_dice": null,
+      "limit": null
+    },
+    {
+      "name": "Size",
+      "desc": "Class: Druid\n\nPHB-2024 190\nYou are Medium.",
+      "attack_bonus": null,
+      "stat_bonus": [],
+      "damage_dice": null,
+      "limit": null
+    },
+    {
+      "name": "Speed",
+      "desc": "Class: Druid\n\nPHB-2024 190\nYour speed is 30 ft.",
+      "attack_bonus": null,
+      "stat_bonus": [],
+      "damage_dice": null,
+      "limit": null
+    },
+    {
+      "name": "Darkvision",
+      "desc": "Class: Druid\n\nPHB-2024 190\nYou have Darkvision with a range of 60 ft.",
+      "attack_bonus": null,
+      "stat_bonus": [],
+      "damage_dice": null,
+      "limit": null
+    },
+    {
+      "name": "Elven Lineage",
+      "desc": "Class: Druid\n\nPHB-2024 190\nChoose a lineage from the Elven Lineages table. You gain the level 1 benefit of that lineage.",
+      "attack_bonus": null,
+      "stat_bonus": [],
+      "damage_dice": null,
+      "limit": null
+    },
+    {
+      "name": "High Elf Lineage -",
+      "desc": "Class: Druid\n\nYou gain the spells outlined in the Elven Lineages table, and whenever you finish a Long Rest, you can replace the cantrip at level 1 with a different cantrip from the Wizard spell list.",
+      "attack_bonus": null,
+      "stat_bonus": [],
+      "damage_dice": null,
+      "limit": null
+    },
+    {
+      "name": "Elven Lineage Spells",
+      "desc": "Class: Druid\n\nPHB-2024 189",
+      "attack_bonus": null,
+      "stat_bonus": [],
+      "damage_dice": null,
+      "limit": null
+    },
+    {
+      "name": "High Elf",
+      "desc": "Class: Druid\n\nWisdom -",
+      "attack_bonus": null,
+      "stat_bonus": [],
+      "damage_dice": null,
+      "limit": null
+    },
+    {
+      "name": "Fey Ancestry",
+      "desc": "Class: Druid\n\nPHB-2024 190\nYou have Advantage on saving throws you make to avoid or end the Charmed condition.",
+      "attack_bonus": null,
+      "stat_bonus": [],
+      "damage_dice": null,
+      "limit": null
+    },
+    {
+      "name": "Keen Senses",
+      "desc": "Class: Druid\n\nPHB-2024 190\nYou have proficiency in the Insight, Perception, or Survival skill.",
+      "attack_bonus": null,
+      "stat_bonus": [],
+      "damage_dice": null,
+      "limit": null
+    },
+    {
+      "name": "Trance",
+      "desc": "Class: Druid\n\nPHB-2024 190\nYou don’t need to sleep, and magic can’t put you to sleep. You can finish a Long Rest in 4 hours if you spend those hours in a trancelike meditation, during which you retain consciousness.",
+      "attack_bonus": null,
+      "stat_bonus": [],
+      "damage_dice": null,
+      "limit": null
+    },
+    {
+      "name": "Languages",
+      "desc": "Class: Druid\n\nPHB-2024 37\nYour character knows at least three languages: Common plus two languages you roll or choose from the Standard Languages table. Knowledge of a language means your character can communicate in it, read it, and write it.",
+      "attack_bonus": null,
+      "stat_bonus": [],
+      "damage_dice": null,
+      "limit": null
+    },
+    {
+      "name": "Guide Ability Score Improvements",
+      "desc": "Class: Druid\n\nPHB-2024 181",
+      "attack_bonus": null,
+      "stat_bonus": [],
+      "damage_dice": null,
+      "limit": null
+    },
+    {
+      "name": "Increase three scores (+1 / +1 / +1) -",
+      "desc": "Class: Druid",
+      "attack_bonus": null,
+      "stat_bonus": [],
+      "damage_dice": null,
+      "limit": null
+    },
+    {
+      "name": "Magic Initiate (Druid)",
+      "desc": "Class: Druid\n\nPHB-2024 201\nTwo Cantrips. You learn two cantrips of your choice from the Druid spell list. Int., Wis., or Cha. is your spellcasting ability for this feat's spells.",
+      "attack_bonus": null,
+      "stat_bonus": [],
+      "damage_dice": null,
+      "limit": null
+    },
+    {
+      "name": "Level 1 Spell",
+      "desc": "Class: Druid\n\nChoose a level 1 spell from the Druid spell list\nYou always have that spell prepared\nYou can cast it once without a spell slot, and you regain the ability to cast it in that way when you finish a Long Rest\nYou can also cast the spell using any spell slots you have.",
+      "attack_bonus": null,
+      "stat_bonus": [],
+      "damage_dice": null,
+      "limit": null
+    },
+    {
+      "name": "Spell Change",
+      "desc": "Class: Druid\n\nWhenever you gain a new level, you can replace one of the spells you chose for this feat with a different spell of the same level from the chosen spell list.",
+      "attack_bonus": null,
+      "stat_bonus": [],
+      "damage_dice": null,
+      "limit": null
+    },
+    {
+      "name": "Repeatable",
+      "desc": "Class: Druid\n\nYou can take this feat more than once, but you must choose a different spell list each time.",
+      "attack_bonus": null,
+      "stat_bonus": [],
+      "damage_dice": null,
+      "limit": null
+    },
+    {
+      "name": "Wisdom -",
+      "desc": "Class: Druid",
+      "attack_bonus": null,
+      "stat_bonus": [],
+      "damage_dice": null,
+      "limit": null
+    }
+  ],
+  "spell_slots": [
+    {
+      "level": 1,
+      "limit": {
+        "name": "1st-level Spell Slots",
+        "description": "2/2 available",
+        "uses": 2,
+        "resets": [
+          "long"
+        ]
+      }
+    }
+  ],
+  "spells": [
+    "Cantrip: Detect Magic [R]",
+    "Cantrip: Detect Poison and Disease [R]",
+    "Cantrip: Druidcraft",
+    "Cantrip: Elementalism",
+    "Cantrip: Message",
+    "Cantrip: Purify Food and Drink [R]",
+    "Cantrip: Shillelagh",
+    "Cantrip: Speak with Animals [R]",
+    "Cantrip: Starry Wisp",
+    "Cantrip: Thorn Whip",
+    "1st Level: Absorb Elements",
+    "1st Level: Animal Friendship",
+    "1st Level: Beast Bond",
+    "1st Level: Charm Person",
+    "1st Level: Create or Destroy Water",
+    "1st Level: Cure Wounds",
+    "1st Level: Earth Tremor",
+    "1st Level: Entangle",
+    "1st Level: Faerie Fire",
+    "1st Level: Fog Cloud",
+    "1st Level: Goodberry",
+    "1st Level: Healing Word",
+    "1st Level: Ice Knife",
+    "1st Level: Jump",
+    "1st Level: Longstrider",
+    "1st Level: Protection from Evil and Good",
+    "1st Level: Thunderwave"
+  ],
+  "spell_dc": "DC 14",
+  "spell_attack": "+6",
+  "limits": null,
+  "source": "D&D Beyond PDF - Seelie.pdf"
+}

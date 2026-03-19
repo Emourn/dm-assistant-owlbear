@@ -1,0 +1,504 @@
+VVeeccnnaa:: NNeesstt ooff tthhee
+Eldritch Eye
+Eldritch Eye
+Vecna: Nest of the Eldritch Eye
+Vecna: Nest of the Eldritch Eye is a fifth edition Dungeons & Dragons adventure for four to six char-
+acters of level 3. This adventure takes place in the city of Neverwinter on the Sword Coast. A sinister
+cult has crept into the city’s bowels, and the characters must infiltrate the cult’s hideout and root out
+its members before harm befalls the city.
+Credits
+Lead Designer: Christopher Perkins Game Architects: Jeremy Crawford, Christo-
+Art Director: Fury Galuzzi pher Perkins
+Designer: Makenzie De Armas Studio Art Director: Josh Herman
+Rules Developer: Ron Lundeen Senior Producer: Dan Tovar
+Editors: Christopher Perkins, Patrick Renie Producer: Siera Bruggeman
+Graphic Designer: Bowen Welles Product Manager: Brian Perry
+Cover Illustrator: Greg Staples
+D&D Beyond
+Cartographer: Marco Bernardini
+Illustrator: Greg Staples
+Product Manager: Jeff Turriff
+Consultants: Rico Corazon, James Mendez,
+Digital Designers: Jay Jani, Adam Walton
+Pam Punzalan
+DDUUNNGGEEOONNSS && DDRRAAGGOONNSS,, DD&&DD,, WWiizzaarrddss ooff tthhee CCooaasstt,, FFoorrggootttteenn RReeaallmmss,, tthhee ddrraaggoonn aammppeerrssaanndd,, PPllaayyeerr’’ss HHaannddbbooookk,, MMoonnsstteerr MMaannuuaall,, DDuunnggeeoonn MMaasstteerr’’ss GGuuiiddee,, DD&&DD AAddvveennttuurreerrss
+LLeeaagguuee,, aallll ootthheerr WWiizzaarrddss ooff tthhee CCooaasstt pprroodduucctt nnaammeess,, aanndd tthheeiirr rreessppeeccttiivvee llooggooss aarree ttrraaddeemmaarrkkss ooff WWiizzaarrddss ooff tthhee CCooaasstt iinn tthhee UUSSAA aanndd ootthheerr ccoouunnttrriieess.. AAllll cchhaarraacctteerrss aanndd tthheeiirr ddiissttiinnccttiivvee
+lliikkeenneesssseess aarree pprrooppeerrttyy ooff WWiizzaarrddss ooff tthhee CCooaasstt.. TThhiiss mmaatteerriiaall iiss pprrootteecctteedd uunnddeerr tthhee ccooppyyrriigghhtt llaawwss ooff tthhee UUnniitteedd SSttaatteess ooff AAmmeerriiccaa.. AAnnyy rreepprroodduuccttiioonn oorr uunnaauutthhoorriizzeedd uussee ooff tthhee mmaatteerriiaall oorr
+aarrttwwoorrkk ccoonnttaaiinneedd hheerreeiinn iiss pprroohhiibbiitteedd wwiitthhoouutt tthhee eexxpprreessss wwrriitttteenn ppeerrmmiissssiioonn ooff WWiizzaarrddss ooff tthhee CCooaasstt..
+©©22002233 WWiizzaarrddss ooff tthhee CCooaasstt LLLLCC,, PPOO BBooxx 770077,, RReennttoonn,, WWAA 9988005577--00770077,, UUSSAA.. MMaannuuffaaccttuurreedd bbyy HHaassbbrroo SSAA,, RRuuee EEmmiillee--BBooéécchhaatt 3311,, 22880000 DDeelléémmoonntt,, CCHH.. RReepprreesseenntteedd bbyy HHaassbbrroo EEuurrooppee,,
+44 TThhee SSqquuaarree,, SSttoocckklleeyy PPaarrkk,, UUxxbbrriiddggee,, MMiiddddlleesseexx,, UUBB1111 11EETT,, UUKK..
+Running the Beginning the
+Adventure Adventure
+This adventure is designed to be playable in Begin the adventure by reading aloud the fol-
+two or three hours. The characters are con- lowing:
+tracted by Lord Protector Dagult Neverember
+of Neverwinter to patrol the city. When a dead The city of Neverwinter stands proudly on
+man is found clutching a withered eyeball, the the Sword Coast, west and north of
+characters are tasked with uncovering the Dessarin Valley. Fifty years ago, the city was
+cause of the man’s death. This leads the char- nearly destroyed by the eruption of Mount
+acters to investigate the city’s old catacombs Hotenow. Today, the city stands mostly
+and confront cultists of the lich-god Vecna. rebuilt. It bustles with skilled tradespeople,
+intrepid adventurers, and hardy townsfolk.
+Text that appears in a box like this is meant Leadership in Neverwinter falls to Dagult
+to be read aloud or paraphrased for the play- Neverember, lord protector of the city—and
+ers when their characters first arrive at a your employer. The city lacks a formal mili-
+location or under a specific circumstance, as tia, so Lord Neverember often hires merce-
+described in the text. naries and adventurers such as yourselves
+to keep the city secure.
+When a creature’s name appears in bold
+type, that’s a visual clue pointing you to its stat Regardless of whether the characters know
+block as a way of saying, “Hey, DM, get this each other prior to their arrival in Neverwinter,
+creature’s stat block ready. You’re going to they are assigned to patrol the city together.
+need it.” All monster stat blocks referenced in The first few days of the patrol are uneventful
+this adventure can be found in the Monster (unless you decide otherwise), allowing the
+Manual. characters to familiarize themselves with the
+You can make the adventure easier or harder, city.
+or adjust it for smaller or larger groups of
+Dead Man’s Message
+player characters, by adjusting the number of
+monsters or by adding or removing encounters.
+After the characters’ first few days patrolling
+the city, tragedy strikes. Read or paraphrase
+the following:
+An anguished scream erupts from a nearby
+alley. The sound comes from a slender
+human woman clad in the light leather
+armor of a scout or investigator. Clutched in
+her arms is the dead body of a human man
+clad in a tattered gray robe. The man and
+woman bear a striking resemblance to each
+other.
+With a dull thump, a desiccated eyeball
+rolls out of the dead man’s palm.
+3
+The dead man is Delvin Fearnehart, an inves- Into Neverwinter’s
+tigator in Lord Neverember’s employ; the
+woman holding his body is Kevori Fearnehart, Catacombs
+Delvin’s sister. A character who succeeds on a
+DC 8 Intelligence (History) check recognizes
+Several months ago, cultists dedicated to
+both Delvin and Kevori as mercenaries
+Vecna commandeered sections of Neverwin-
+employed by Lord Neverember to patrol the
+ter’s catacombs for their nefarious purposes.
+city.
+The sect the characters are pursuing is in the
+If the characters question Kevori (neutral
+western ruins of the city.
+good, human scout), she shares the following
+Unless you decide otherwise, the characters
+information:
+encounter no difficulties following the eyeball’s
+Investigators for Hire. Kevori and her
+directions to a dilapidated entrance into the
+brother were tasked by Lord Neverember to
+city’s western catacombs. Read or paraphrase
+investigate suspicious cult activity in the city.
+the following:
+Rendezvous Gone Wrong. Kevori came here
+to rendezvous with Delvin after he’d infiltrated
+The withered eyeball aims its empty gaze
+a potential cult hideout.
+down an alley strewn with rubble. Rats
+What She Knows. The only clue Kevori has
+scurry between chunks of old stone and
+is the desiccated eyeball that dropped from
+dusty crates. At the back of the alley is a set
+Delvin’s hand.
+of moldering wood boards, propped up just
+Kevori requests the characters’ aid in uncov-
+enough to block a dark tunnel leading below
+ering who or what killed her brother while she
+the surface.
+returns to the Hall of Justice to inform Lord
+Neverember of these developments. She
+The boards blocking the entrance to the cata-
+implores the characters to avenge her brother’s
+combs can be moved easily, revealing a sloping
+death, but she also reminds the characters that
+tunnel (area N1).
+Lord Neverember values information and will
+pay more for capturing cultists alive. Area Features
+Investigating the Eyeball
+This adventure explores only a small section of
+Neverwinter’s sprawling catacombs. Unless
+The eyeball serves as both a map and a key to
+otherwise stated, areas of the catacombs
+the cult’s hideout. When a creature holding the
+shown in this adventure have the following fea-
+eyeball speaks the key phrase, “Hail the Undy-
+tures:
+ing,” the eyeball glows with green light before
+spinning to look in the direction of the cult’s Ceilings. The ceilings throughout the cata-
+hideout (acting like a compass). combs are 10 feet high and made of roughly
+A detect magic spell or similar effect reveals hewn stone.
+an aura of divination magic around the eyeball. Eyeball Compass. The activated eyeball con-
+Casting identify while targeting the eyeball tinuously points in the direction of the cult
+reveals its function and its key phrase. Alterna- hideout’s entrance (area N11). The eyeball is
+tively, a character can rifle through Delvin’s also needed to unlock the door in area N11.
+pockets and find a slip of parchment with the Light. Rusted wall sconces hold lit torches. The
+key phrase scribbled on it. area is dimly lit.
+Following the activated eyeball’s directions Walls and Floors. Walls are constructed of
+leads the characters to a catacomb entrance in stone blocks and are slick with moisture,
+one of the still-ruined sections of Neverwinter making climbing impossible without magic or
+(see “Into Neverwinter’s Catacombs”). gear. Floors are made from a mix of stone
+slabs and packed earth.
+Area Locations
+The following locations are keyed to the Nest of
+the Eldritch Eye map.
+4
+5
+N1: Entrance Tunnel N4: Cinerary Rotunda
+The tunnel proceeds at a downward slope,
+Glossy urns and cinerary boxes line the
+bringing the characters 20 feet beneath street
+walls of this vaulted rotunda. Drifting in the
+level.
+center of the room above a drain is a
+N2: Half-Collapsed Chamber
+ghostly, transparent, humanoid figure. The
+figure is clad in plate armor, and where a
+The soft lapping of water echoes through head should be, there is instead a feature-
+this wide chamber. Wood and stone debris less, luminescent orb.
+from collapsed buildings litter the area.
+Brackish water floods nearly half of the The neutral ghost haunting this area has no
+chamber, getting deeper toward a dark tun- memory of its name or existence in life—a fact
+nel to the west. which pains it greatly. Upon noticing the char-
+acters enter, the ghost beseeches them for help
+Characters who have a passive Wisdom (Per- in recovering its previous identity. If the charac-
+ception) score of 12 or higher notice the ters refuse, the ghost sulks but isn’t hostile.
+entrance to a cramped tunnel hidden behind Discovering the Ghost’s Identity. The ghost
+some collapsed rubble to the south. A character is the spirit of the knight entombed in area N6.
+who spends 1 minute clearing the rubble opens Clues regarding the ghost’s identity can be
+the entrance to a crawlspace (area N7). found in areas N5 and N6. A character who
+Making a Skiff. Characters have the option searches the rotunda for 10 minutes finds no
+of assembling a makeshift skiff from the debris clues related to the ghost in this room.
+here to make traversing the flooded area eas- To regain its identity, the ghost must hear its
+ier. A character attempting to assemble a skiff full name: Chanelle Hallwinter. If a character
+must make a DC 11 Wisdom (Survival) check. speaks this name aloud within 20 feet of the
+On a successful check, the character makes a ghost, the featureless orb of the ghost’s head
+skiff sturdy enough to support up to two coalesces into the face of a middle-aged human
+Medium or smaller creatures. woman with braided hair, and the ghost’s mem-
+While riding a skiff, a creature can use its ories return. The ghost is grateful to the charac-
+movement to propel the skiff up to 20 feet in a ters and resolves to aid them.
+direction of its choice. What the Ghost Knows. At first, the ghost
+remembers nothing about Delvin, the cult, or
+N3: Flooded Tunnel
+the catacombs. Once the ghost’s identity has
+The water filling this tunnel is 3 feet deep; been restored, it remembers not only its life as
+without the use of a skiff or other water vehicle, Chanelle Hallwinter but also what it has wit-
+the water counts as difficult terrain for Medium nessed while haunting these catacombs. The
+or larger creatures that lack a swimming speed, ghost can share the following information with
+while Small and smaller creatures must swim the characters:
+to traverse the tunnel. Catacomb Invaders. A small group of
+Water Weird. A neutral evil water weird Humanoids descended into the catacombs sev-
+lurks here. It tries to ambush and kill any crea- eral months ago, whispering about strange ritu-
+ture that enters the tunnel. als and secrets.
+Upon entering the tunnel for the first time, a
+Delvin. Chanelle saw a man matching Delvin’s
+character who has a passive Wisdom (Percep-
+description flee through the rotunda from
+tion) score of 15 or higher notices odd waves
+deeper within the catacombs, pursued by an
+and currents that suggest the presence of a
+individual in a hooded gray robe.
+creature in the water. If a character’s passive
+Zombie Infestation. The crypt to the south of
+Wisdom (Perception) score is lower than 15,
+the rotunda was desecrated and now swarms
+the character has disadvantage on their initia-
+with zombies.
+tive roll when the water weird attacks.
+6
+N5: Tomb of the Mage Discovering the Ghost’s Identity. Charac-
+ters who search this tomb for clues find the fol-
+lowing pieces of information:
+The smell of old parchment fills this tomb.
+Bookshelves carrying various tomes and Family Crest. Engraved on the lid of the sar-
+scholarly implements stand against the cophagus is a coat of arms depicting a
+walls. At the center is a stone, gold-painted blunted six-point crown. A character who suc-
+sarcophagus, the sides of which bear a ceeds on a DC 10 Intelligence (History) check
+beautiful relief carving of two humanoid recognizes this symbol as the crest of the
+women exploring a forest together. Hallwinter family, whose lineage produced
+renowned knights throughout the Sword
+This is the tomb of Makalia Siannodel, a Coast.
+female elf mage and the partner of the knight Relief Details. One of the figures depicted in
+entombed in area N6. the sarcophagus’s relief carving wears armor
+Discovering the Ghost’s Identity. Charac- that matches the armor of the ghost in area
+ters who search this tomb find treasure (see N4.
+“Treasure” below) and the following clues: Treasure. Most items stored in this tomb
+Golden Locket. A heart-shaped golden locket have rusted, but one shield remains intact. This
+sits on one of the bookshelves. The locket is shield is a cursed shield of missile attraction;
+locked but can be either pried open with a suc- however, if the characters restore the ghost’s
+cessful DC 11 Strength (Athletics) check or identity, Chanelle Hallwinter gratefully gives
+picked open with a successful DC 10 Dexterity the shield to the characters and removes the
+(Sleight of Hand) check using thieves’ tools. curse, transforming the shield into a +1 shield.
+Inside is a small portrait of a human woman, Secret Passage. A character who searches
+next to which is the inscription, “My dearest the tomb for secret doors and succeeds on a
+Chanelle.” DC 14 Wisdom (Perception) check sees the
+Relief Details. One of the figures depicted in faint outline of a doorway at the back of the
+the sarcophagus’s relief carving wears armor tomb. The door is unlocked, swings open with a
+that matches the armor of the ghost in area N4. gentle push, and leads to area N8.
+Treasure. Nestled among the bookshelves
+N7: Crawlspace
+are five incense sticks (worth 10 gp each) and a
+component pouch. A character who inspects The cramped passage is large enough to
+the area and succeeds on a DC 15 Intelligence accommodate Small and smaller creatures;
+(Investigation) check also finds a hidden com- Medium creatures must squeeze to move
+partment in one of the shelved books. Inside is through it.
+a spell scroll of protection from evil and good. Disturbed Rubble. When a creature enters
+the crawlspace for the first time, its movement
+N6: Tomb of the Knight
+disturbs some of the rubble above. The crea-
+ture must succeed on a DC 12 Dexterity saving
+A stone, gold-painted sarcophagus rests in
+throw to reach the other side of the crawlspace
+the center of this tomb. The sides of the sar-
+unscathed. On a failed save, the creature takes
+cophagus bear a relief depicting two women
+7 (3d4) bludgeoning damage from the falling
+gazing lovingly over a field and a city, and
+rubble.
+the lid has a faintly distinguishable family
+crest carved into it. Old weapons and deco- N8: Forked Tunnel
+rated armor line the walls of this room.
+The tunnel splits three ways: north toward a
+This is the tomb of Chanelle Hallwinter, a tight crawlspace, west toward a stone door,
+female human knight and the partner of the and south toward a foul-smelling chamber.
+mage entombed in area N5. This is also the
+tomb of the ghost found in area N4. At the end of the west tunnel is a secret door
+to area N6. From this side, the door is clearly
+visible and pulls open easily.
+7
+N9: Sewerage Chamber Once one of the two options has been done
+successfully, the shrine glows with white light,
+and all zombies in the area immediately col-
+A foul stench rises from the murky sewage
+lapse with the unconscious condition for 24
+that fills most of this large chamber. Three
+hours. The condition ends early for a zombie if
+four-foot-tall burbling masses slink through
+it takes damage.
+the muck.
+N11: Door of the Eldritch Eye
+The sewage is 1 foot deep and difficult terrain.
+The three burbling masses are awakened A double door made of green-tinged stone
+piles of undead sludge, sloughed from the cult’s seals off further progression into the cata-
+twisted experiments (each uses the gray ooze combs. Facing the double door is a large
+stat block but is an Undead instead of Ooze). carving of a grinning skull; one eye socket
+The masses ignore the room’s difficult terrain bears a wide eyeball with a jeweled iris,
+and attack if approached. while the other is an empty divot.
+N10: Crypt of the Silenced Singers
+The double door is locked and has no key-
+holes. To open the door from the north side, a
+What was once a serene crypt now lies in
+desiccated eyeball (such as the one obtained
+ruin. Two chipped stone pillars brace the
+from Delvin) must be placed in the divot of the
+vaulted ceiling. Tombs are cracked open,
+grinning skull. Once placed there, the eyeball
+and reanimated corpses prowl the room. At
+pulses with sickly green light, and the double
+the center of the room’s back wall is a dirt-
+door swings open to reveal a staircase leading
+ied and desecrated shrine bearing the image
+further down. If the eyeball is removed from the
+of a blank scroll.
+divot, the door remains open for 1 minute
+before closing and locking on its own. A knock
+Eight zombies shamble around this crypt.
+spell or similar magic also opens the door.
+The zombies are hungry and immediately
+Neither magic nor an eyeball is needed to
+attack upon seeing a creature unless that crea-
+open the double door from the south. On the
+ture succeeds on a DC 16 Dexterity (Stealth)
+door’s south side is a stone pedal; stepping on
+check.
+it causes the double door to swing open.
+Shrine to Oghma. A character who exam-
+ines the shrine and succeeds on a DC 10 Intel- N12: Hall of the Whispered One
+ligence (Religion) check recognizes the image
+The bottom of the stairway opens into a wide
+on the shrine as the holy symbol of Oghma, god
+sanctuary with a vaulted ceiling. Stone pews
+of knowledge and patron to bards and wizards.
+are arranged in orderly rows. Black candles
+If the check succeeds by 3 or more, the charac-
+burning green flames occupy niches along the
+ter intuits that rededicating the shrine to
+walls. Atop a pulpit at the far end of the hall
+Oghma could help against the zombies in the
+stands a jagged sculpture of an emaciated hand
+area.
+with one eyeball in its palm.
+To rededicate the shrine, a creature must
+A character who succeeds on a DC 11 Intelli-
+first use an action to clean it. Once the filth is
+gence (Religion) check recognizes the sculp-
+cleaned off, a creature can use an action to do
+ture as the symbol of Vecna, a powerful lich
+one of the following:
+and god of secrets known and feared on many
+ Make a DC 14 Charisma (Performance) worlds.
+check using an instrument within 5 feet of Any loud noises here awaken the cultists in
+the shrine, performing a song dedicated to area N13, who investigate at once.
+Oghma.
+ Touch the shrine and expend a spell slot of
+1st level or higher.
+8
+N13: Cultist Quarters N14: Eldritch Library
+If the occupants of this room were lured to area
+Crooked shelves filled with books and
+N12 by noise there, omit the last sentence of
+scrolls stand against the walls. In the center
+the following boxed text:
+of the room is a square table covered in
+scribbled notes and ink-stained parchment.
+Makeshift cots are strewn about two adjoin-
+ing caverns separated by an open doorway.
+Several individuals in gray robes slumber The notes spread across the table detail the
+here peacefully despite the flickering torch- cult’s experiments and history. A character who
+light. spends at least 10 minutes studying the notes
+learns the following:
+Seven cultists sleep in these two chambers. Cult Experiments. The cult’s leader, Zalryr, is
+Each cultist wears a hooded gray robe that has experimenting with ways to magically siphon
+a desiccated eyeball (like the one obtained from secrets from an individual’s soul. Early exper-
+Delvin) tucked in one pocket. iments reduced volunteers to piles of necrotic
+Being Sneaky. To move through these rooms sludge, which were disposed of in the sewer-
+without waking the cultists, a creature must age (area N9).
+succeed on a DC 14 Dexterity (Stealth) check. Others? The cultists here are but one sect of
+On a failed check, 1d4 of the cultists wake up. many that have infiltrated Neverwinter. The
+Awake cultists are hostile but easily cowed. A other sects have chosen different areas of the
+character can use an action to make a DC 12 city’s catacombs as their respective hideouts.
+Charisma (Intimidation) check. On a successful
+Trapped Lockbox. A character who inspects
+check, all awake cultists that can see or hear
+the shelves and succeeds on a DC 10 Intelli-
+the character surrender.
+gence (Investigation) check finds a small ebony
+Interrogating the Cultists. Characters can
+box. The box is locked; Zalryr in area N15 has
+attempt to glean more information from cap-
+the key. The box can be picked open by a crea-
+tured cultists by making a DC 10 Charisma
+ture that makes a successful DC 13 Dexterity
+(Intimidation or Persuasion) check. On a suc-
+(Sleight of Hand) check using thieves’ tools, or
+cessful check, a character learns one of the fol-
+it can be forced open with a successful DC 15
+lowing pieces of information:
+Strength (Athletics) check.
+Cult Leader. The cult’s leader is Zalryr, who is The box is trapped. A creature that opens the
+conducting a profane experiment in the ritual box by any means other than using the proper
+chamber (area N15). Zalryr aims to “draw key must make a DC 13 Constitution saving
+secrets from the depths of the mortal soul.” throw, taking 7 (2d6) necrotic damage on a
+Cult Worship. The cultists all serve Vecna, failed saved or half as much damage on a suc-
+whom they refer to as the Whispered One. cessful one. This trap can’t be detected or dis-
+Delvin’s Fate. Zalryr uncovered the presence armed.
+of a spy recently. That spy was chased from Inside the box are two potions of healing
+the catacombs and assassinated for his trans- (greater).
+gression. The cultists’ description of the spy
+N15: Ritual Chamber
+confirms it was Delvin Fearnehart.
+Treasure. A character who searches these
+Cacophonous whispers echo through this
+rooms and makes a successful DC 12 Intelli-
+expansive cave. An imposing human cultist
+gence (Investigation) check finds two gray
+in a sweeping robe stands against the wall,
+cultist robes and three gaudy jeweled rings
+chanting. His oily hair is slicked back, and
+worth 10 gp each. If the check succeeds by 3 or
+his skin is gaunt and gray.
+more, the character also finds a hat of disguise
+tucked beneath one of the unused cots.
+9
+Vecna bestows one of two supernatural gifts
+Carved into the floor before him is a runic
+on each character. Have each player roll a die,
+circle that pulses with sickly green light.
+with the result determining which charm their
+Two cultists—one human, one elf—stand
+character receives: the charm of the creeping
+inside the circle, heads thrown back and
+hand if the die roll is an odd number or the
+mouths agape. Their leader commands,
+charm of the eldritch eye if the die roll is an
+“Now! Release your secrets unto me! Let the
+even number. While in possession of either
+truths hidden in your soul come forth and
+charm, the character has the unshakeable feel-
+become stronger!” As if in response, the
+ing that they are being watched. See the next
+cultists’ silhouettes warp into two lanky
+section for descriptions of these charms.
+shadowy entities.
+Vecna’s Supernatural
+Zalryr (neutral evil, human cult fanatic)
+Gifts
+stands at the north end of the room, conducting
+an experiment on the two cultists standing
+inside the runic circle. Zalryr’s experiment has Vecna is known to bestow supernatural gifts on
+magically siphoned the secrets from the mortals who impress him, regardless of their
+cultists’ souls to create the two shadowy enti- affiliations. The following charms are two of his
+ties (each uses the shadow stat block). favorites.
+Each cultist, including Zalryr, wears a
+Charm of the Creeping
+hooded gray robe that has a desiccated eyeball
+(like the one obtained from Delvin) tucked in Hand
+one pocket.
+Upon noticing the characters, Zalryr com- Supernatural Gift (Charm)
+mands the cultists and the shadowy entities to Once per turn, when you hit a creature with an
+attack. The cultists and entities fight to their attack roll using a weapon or an unarmed
+deaths, but Zalryr surrenders when he is strike, you can infuse your strike with life-steal-
+reduced to 10 hit points or fewer. ing energy. Your attack then deals an extra
+Vecna Appears! When Zalryr either surren- 1d10 necrotic damage, and you gain 5 tempo-
+ders or is slain, read or paraphrase the follow- rary hit points. Once used five times, the charm
+ing: vanishes.
+Charm of the Eldritch Eye
+The runic circle suddenly hisses and flashes
+with lurid light. As if being extinguished, the Supernatural Gift (Charm)
+glow of the runes dims as shadowy smoke You can cast clairvoyance as an action, without
+rises from the carvings. The smoke gathers using a spell slot and requiring no material
+in the center of the chamber, where it coa- components. Once used three times, the charm
+lesces into an apparition of an emaciated vanishes.
+skull with one glowing green eye.
+Concluding the
+The apparition speaks in a hissing bari-
+tone. “Good news, Zalryr. Though your
+Adventure
+efforts have been disappointing, you have
+brought me new... points of interest.” The
+The characters can take any captives, leave the
+apparition swivels to look at each of you in
+catacombs, and report to Lord Neverember
+turn. “Yes, there is great potential here. May
+without further incident. Lord Neverember is
+we meet again—but until then, I have my eye
+grateful for the characters’ efforts and pays
+on you.” The apparition then explodes into
+each character a base sum of 100 gp for the
+streaks of shadow, passing through each of
+job, plus an additional 10 gp each for each
+you with a whispered scream before vanish-
+cultist captured alive (25 gp each for Zalryr).
+ing.
+10
+Continuing the
+Campaign
+Though this sect of cultists has been neutral-
+ized, others still lurk in the shadows of Never-
+winter, with even more nefarious schemes in
+service of Vecna. Lord Neverember might call
+on the characters to continue rooting out these
+cultists, culminating in an adventure through
+the sprawling catacombs beneath Neverwin-
+ter’s Neverdeath Graveyard. If you need help
+planning further, Vecna: Eve of Ruin contains
+more information about cult activities in
+Neverdeath Graveyard and provides an excel-
+lent campaign that follows Vecna’s machina-
+tions.
+11
+12

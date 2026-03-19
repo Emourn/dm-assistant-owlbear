@@ -1,0 +1,1814 @@
+[
+  {
+    "id": "4f73293c-9073-4959-b92c-fed44867adf8",
+    "name": "Dwarf Cleric",
+    "system": "dnd5e",
+    "playerName": "dxMourn",
+    "race": "Dwarf",
+    "className": "Cleric",
+    "subclass": "",
+    "level": 1,
+    "background": "Acolyte",
+    "alignment": "",
+    "experience": 0,
+    "abilityScores": {
+      "str": 14,
+      "dex": 8,
+      "con": 10,
+      "int": 12,
+      "wis": 15,
+      "cha": 13
+    },
+    "savingThrows": [
+      "str",
+      "dex",
+      "con",
+      "int",
+      "wis",
+      "cha"
+    ],
+    "skills": [
+      {
+        "name": "Acrobatics",
+        "stat": "dex",
+        "proficient": false,
+        "expertise": false,
+        "bonus": 0
+      },
+      {
+        "name": "Animal Handling",
+        "stat": "wis",
+        "proficient": false,
+        "expertise": false,
+        "bonus": 0
+      },
+      {
+        "name": "Arcana",
+        "stat": "int",
+        "proficient": false,
+        "expertise": false,
+        "bonus": 0
+      },
+      {
+        "name": "Athletics",
+        "stat": "str",
+        "proficient": false,
+        "expertise": false,
+        "bonus": 0
+      },
+      {
+        "name": "Deception",
+        "stat": "cha",
+        "proficient": false,
+        "expertise": false,
+        "bonus": 0
+      },
+      {
+        "name": "History",
+        "stat": "int",
+        "proficient": false,
+        "expertise": false,
+        "bonus": 0
+      },
+      {
+        "name": "Insight",
+        "stat": "wis",
+        "proficient": true,
+        "expertise": false,
+        "bonus": 0
+      },
+      {
+        "name": "Intimidation",
+        "stat": "cha",
+        "proficient": false,
+        "expertise": false,
+        "bonus": 0
+      },
+      {
+        "name": "Investigation",
+        "stat": "int",
+        "proficient": false,
+        "expertise": false,
+        "bonus": 0
+      },
+      {
+        "name": "Medicine",
+        "stat": "wis",
+        "proficient": true,
+        "expertise": false,
+        "bonus": 0
+      },
+      {
+        "name": "Nature",
+        "stat": "int",
+        "proficient": false,
+        "expertise": false,
+        "bonus": 0
+      },
+      {
+        "name": "Perception",
+        "stat": "wis",
+        "proficient": true,
+        "expertise": false,
+        "bonus": 0
+      },
+      {
+        "name": "Performance",
+        "stat": "cha",
+        "proficient": false,
+        "expertise": false,
+        "bonus": 0
+      },
+      {
+        "name": "Persuasion",
+        "stat": "cha",
+        "proficient": false,
+        "expertise": false,
+        "bonus": 0
+      },
+      {
+        "name": "Religion",
+        "stat": "int",
+        "proficient": true,
+        "expertise": false,
+        "bonus": 0
+      },
+      {
+        "name": "Sleight of Hand",
+        "stat": "dex",
+        "proficient": false,
+        "expertise": false,
+        "bonus": 0
+      },
+      {
+        "name": "Stealth",
+        "stat": "dex",
+        "proficient": false,
+        "expertise": false,
+        "bonus": 0
+      },
+      {
+        "name": "Survival",
+        "stat": "wis",
+        "proficient": false,
+        "expertise": false,
+        "bonus": 0
+      }
+    ],
+    "senses": "Darkvision 120 ft.",
+    "passivePerception": 14,
+    "passiveInvestigation": 11,
+    "passiveInsight": 14,
+    "languages": "Common, Dwarvish, Halfling",
+    "proficiencies": "=== ARMOR === \nLight Armor, Medium Armor, Shields \n\n=== WEAPONS === \nSimple Weapons \n\n=== TOOLS === \nCalligrapher's Supplies \n\n=== LANGUAGES === \nCommon, Dwarvish, Halfling",
+    "ac": 9,
+    "maxHp": 8,
+    "currentHp": 8,
+    "tempHp": 0,
+    "hitDice": "1d8",
+    "speed": "30 ft(Walking)",
+    "initiativeMod": -1,
+    "proficiencyBonus": 2,
+    "spellcastingAbility": "wis",
+    "spellSaveDc": 12,
+    "spellAttackMod": 4,
+    "spellSlots": [
+      {
+        "current": 0,
+        "max": 0
+      },
+      {
+        "current": 2,
+        "max": 2
+      },
+      {
+        "current": 0,
+        "max": 0
+      },
+      {
+        "current": 0,
+        "max": 0
+      },
+      {
+        "current": 0,
+        "max": 0
+      },
+      {
+        "current": 0,
+        "max": 0
+      },
+      {
+        "current": 0,
+        "max": 0
+      },
+      {
+        "current": 0,
+        "max": 0
+      },
+      {
+        "current": 0,
+        "max": 0
+      },
+      {
+        "current": 0,
+        "max": 0
+      }
+    ],
+    "spells": [
+      {
+        "id": "cef113db-b284-4e4a-b97c-ce513e723150",
+        "name": "Light",
+        "level": 0,
+        "school": "Evocation",
+        "castingTime": "1 action",
+        "range": "Touch",
+        "components": {
+          "v": true,
+          "s": false,
+          "m": true,
+          "mDesc": "a firefly or phosphorescent moss"
+        },
+        "duration": "1 hour",
+        "concentration": false,
+        "ritual": false,
+        "description": "You touch one Large or smaller object that isn't being worn or carried by someone else. Until the spell ends, the object sheds Bright Light|XPHB in a 20-foot radius and Dim Light|XPHB for an additional 20 feet. The light can be colored as you like.\n\nCovering the object with something opaque blocks the light. The spell ends if you cast it again.",
+        "prepared": true,
+        "isHomebrew": false,
+        "source": "XPHB"
+      },
+      {
+        "id": "60a6e3c8-9397-4d46-85af-d3b144b88393",
+        "name": "Sacred Flame",
+        "level": 0,
+        "school": "Evocation",
+        "castingTime": "1 action",
+        "range": "60 feet",
+        "components": {
+          "v": true,
+          "s": true,
+          "m": false
+        },
+        "duration": "Instantaneous",
+        "concentration": false,
+        "ritual": false,
+        "description": "Flame-like radiance descends on a creature that you can see within range. The target must succeed on a Dexterity saving throw or take 1d8 Radiant damage. The target gains no benefit from Half Cover|XPHB or Three-Quarters Cover|XPHB for this save.",
+        "higherLevels": "**Cantrip Upgrade.** The damage increases by 1d8 when you reach levels 5 (2d8), 11 (3d8), and 17 (4d8).",
+        "prepared": true,
+        "isHomebrew": false,
+        "source": "XPHB"
+      },
+      {
+        "id": "81d04262-78e4-4901-a736-9d3a75eb6d7a",
+        "name": "Thaumaturgy",
+        "level": 0,
+        "school": "Transmutation",
+        "castingTime": "1 action",
+        "range": "30 feet",
+        "components": {
+          "v": true,
+          "s": false,
+          "m": false
+        },
+        "duration": "1 minute",
+        "concentration": false,
+        "ritual": false,
+        "description": "You manifest a minor wonder within range. You create one of the effects below within range. If you cast this spell multiple times, you can have up to three of its 1-minute effects active at a time.\n\n**Altered Eyes.** You alter the appearance of your eyes for 1 minute.\n\n**Booming Voice.** Your voice booms up to three times as loud as normal for 1 minute. For the duration, you have Advantage|XPHB on Charisma (Intimidation|XPHB) checks.\n\n**Fire Play.** You cause flames to flicker, brighten, dim, or change color for 1 minute.\n\n**Invisible Hand.** You instantaneously cause an unlocked door or window to fly open or slam shut.\n\n**Phantom Sound.** You create an instantaneous sound that originates from a point of your choice within range, such as a rumble of thunder, the cry of a raven, or ominous whispers.\n\n**Tremors.** You cause harmless tremors in the ground for 1 minute.",
+        "prepared": true,
+        "isHomebrew": false,
+        "source": "XPHB"
+      },
+      {
+        "id": "6ce88e73-be9c-47ad-a13f-f942ef13bf34",
+        "name": "Toll the Dead",
+        "level": 0,
+        "school": "Necromancy",
+        "castingTime": "1 action",
+        "range": "60 feet",
+        "components": {
+          "v": true,
+          "s": true,
+          "m": false
+        },
+        "duration": "Instantaneous",
+        "concentration": false,
+        "ritual": false,
+        "description": "You point at one creature you can see within range, and the single chime of a dolorous bell is audible within 10 feet of the target. The target must succeed on a Wisdom saving throw or take 1d8 Necrotic damage. If the target is missing any of its Hit Points|XPHB, it instead takes 1d12 Necrotic damage.",
+        "higherLevels": "**Cantrip Upgrade.** The damage increases by one die when you reach levels 5 (2d8 or 2d12), 11 (3d8 or 3d12), and 17 (4d8 or 4d12).",
+        "prepared": true,
+        "isHomebrew": false,
+        "source": "XPHB"
+      },
+      {
+        "id": "35a0e822-4c95-4ab8-9a40-8e910c9373d5",
+        "name": "Bless",
+        "level": 1,
+        "school": "Enchantment",
+        "castingTime": "1 action",
+        "range": "30 feet",
+        "components": {
+          "v": true,
+          "s": true,
+          "m": true,
+          "mDesc": "a Holy Symbol worth 5+ GP"
+        },
+        "duration": "Concentration, 1 minute",
+        "concentration": true,
+        "ritual": false,
+        "description": "You bless up to three creatures within range. Whenever a target makes an attack roll or a saving throw before the spell ends, the target adds 1d4 to the attack roll or save.",
+        "higherLevels": "**Using a Higher-Level Spell Slot.** You can target one additional creature for each spell slot level above 1.",
+        "prepared": true,
+        "isHomebrew": false,
+        "source": "XPHB"
+      },
+      {
+        "id": "d9e919da-7d97-4666-8b55-fd516e83e184",
+        "name": "Cure Wounds",
+        "level": 1,
+        "school": "Abjuration",
+        "castingTime": "1 action",
+        "range": "Touch",
+        "components": {
+          "v": true,
+          "s": true,
+          "m": false
+        },
+        "duration": "Instantaneous",
+        "concentration": false,
+        "ritual": false,
+        "description": "A creature you touch regains a number of Hit Points|XPHB equal to 2d8 plus your spellcasting ability modifier.",
+        "higherLevels": "**Using a Higher-Level Spell Slot.** The healing increases by 2d8|1-9|2d8 for each spell slot level above 1.",
+        "prepared": true,
+        "isHomebrew": false,
+        "source": "XPHB"
+      },
+      {
+        "id": "099bf0fb-e49f-4979-b7bd-9267fa5e01ca",
+        "name": "Guiding Bolt",
+        "level": 1,
+        "school": "Evocation",
+        "castingTime": "1 action",
+        "range": "120 feet",
+        "components": {
+          "v": true,
+          "s": true,
+          "m": false
+        },
+        "duration": "1 round",
+        "concentration": false,
+        "ritual": false,
+        "description": "You hurl a bolt of light toward a creature within range. Make a ranged spell attack against the target. On a hit, it takes 4d6 Radiant damage, and the next attack roll made against it before the end of your next turn has Advantage|XPHB.",
+        "higherLevels": "**Using a Higher-Level Spell Slot.** The damage increases by 4d6|1-9|1d6 for each spell slot level above 1.",
+        "prepared": true,
+        "isHomebrew": false,
+        "source": "XPHB"
+      },
+      {
+        "id": "e3e70c16-5376-47ec-8c08-a3393f02b3f0",
+        "name": "Shield of Faith",
+        "level": 1,
+        "school": "Abjuration",
+        "castingTime": "1 bonus",
+        "range": "60 feet",
+        "components": {
+          "v": true,
+          "s": true,
+          "m": true,
+          "mDesc": "a prayer scroll"
+        },
+        "duration": "Concentration, 10 minutes",
+        "concentration": true,
+        "ritual": false,
+        "description": "A shimmering field surrounds a creature of your choice within range, granting it a +2 bonus to AC for the duration.",
+        "prepared": true,
+        "isHomebrew": false,
+        "source": "XPHB"
+      },
+      {
+        "id": "902b0044-cace-4967-8c64-9108c9015531",
+        "name": "Bane",
+        "level": 1,
+        "school": "Enchantment",
+        "castingTime": "1 action",
+        "range": "30 feet",
+        "components": {
+          "v": true,
+          "s": true,
+          "m": true,
+          "mDesc": "a drop of blood"
+        },
+        "duration": "Concentration, 1 minute",
+        "concentration": true,
+        "ritual": false,
+        "description": "Up to three creatures of your choice that you can see within range must each make a Charisma saving throw. Whenever a target that fails this save makes an attack roll or a saving throw before the spell ends, the target must subtract 1d4 from the attack roll or save.",
+        "higherLevels": "**Using a Higher-Level Spell Slot.** You can target one additional creature for each spell slot level above 1.",
+        "prepared": true,
+        "isHomebrew": false,
+        "source": "XPHB"
+      },
+      {
+        "id": "a1bf988a-35c6-4c9a-931e-3a74f9b92049",
+        "name": "Protection from Evil and Good",
+        "level": 1,
+        "school": "Abjuration",
+        "castingTime": "1 action",
+        "range": "Touch",
+        "components": {
+          "v": true,
+          "s": true,
+          "m": true,
+          "mDesc": "a flask of Holy Water worth 25+ GP, which the spell consumes"
+        },
+        "duration": "Concentration, 10 minutes",
+        "concentration": true,
+        "ritual": false,
+        "description": "Until the spell ends, one willing creature you touch is protected against creatures that are Aberrations, Celestials, Elementals, Fey, Fiends, or Undead. The protection grants several benefits. Creatures of those types have Disadvantage|XPHB on attack rolls against the target. The target also can't be possessed by or gain the Charmed|XPHB or Frightened|XPHB conditions from them. If the target is already possessed, Charmed|XPHB, or Frightened|XPHB by such a creature, the target has Advantage|XPHB on any new saving throw against the relevant effect.",
+        "prepared": true,
+        "isHomebrew": false,
+        "source": "XPHB"
+      },
+      {
+        "id": "2687766a-7211-40b4-9a11-ced640436210",
+        "name": "Purify Food and Drink [R]",
+        "level": 0,
+        "school": "",
+        "castingTime": "",
+        "range": "",
+        "components": {
+          "v": false,
+          "s": false,
+          "m": false
+        },
+        "duration": "",
+        "concentration": false,
+        "ritual": false,
+        "description": "",
+        "prepared": true
+      },
+      {
+        "id": "46afa8d5-d31e-4c1b-a414-e488f5368d6b",
+        "name": "Command",
+        "level": 1,
+        "school": "Enchantment",
+        "castingTime": "1 action",
+        "range": "60 feet",
+        "components": {
+          "v": true,
+          "s": false,
+          "m": false
+        },
+        "duration": "Instantaneous",
+        "concentration": false,
+        "ritual": false,
+        "description": "You speak a one-word command to a creature you can see within range. The target must succeed on a Wisdom saving throw or follow the command on its next turn. Choose the command from these options:\n\nThe target moves toward you by the shortest and most direct route, ending its turn if it moves within 5 feet of you.\nThe target drops whatever it is holding and then ends its turn.\nThe target spends its turn moving away from you by the fastest available means.\nThe target has the Prone|XPHB condition and then ends its turn.\nOn its turn, the target doesn't move and takes no action or Bonus Action|XPHB.",
+        "higherLevels": "**Using a Higher-Level Spell Slot.** You can affect one additional creature for each spell slot level above 1.",
+        "prepared": true,
+        "isHomebrew": false,
+        "source": "XPHB"
+      },
+      {
+        "id": "0eb34167-6b24-48bc-9b45-e63a8d8e4c2b",
+        "name": "Sanctuary",
+        "level": 1,
+        "school": "Abjuration",
+        "castingTime": "1 bonus",
+        "range": "30 feet",
+        "components": {
+          "v": true,
+          "s": true,
+          "m": true,
+          "mDesc": "a shard of glass from a mirror"
+        },
+        "duration": "1 minute",
+        "concentration": false,
+        "ritual": false,
+        "description": "You ward a creature within range. Until the spell ends, any creature who targets the warded creature with an attack roll or a damaging spell must succeed on a Wisdom saving throw or either choose a new target or lose the attack or spell. This spell doesn't protect the warded creature from areas of effect.\n\nThe spell ends if the warded creature makes an attack roll, casts a spell, or deals damage.",
+        "prepared": true,
+        "isHomebrew": false,
+        "source": "XPHB"
+      },
+      {
+        "id": "4ae6eb6b-0033-46a0-af87-405a026d3cdf",
+        "name": "Create or Destroy Water",
+        "level": 1,
+        "school": "Transmutation",
+        "castingTime": "1 action",
+        "range": "30 feet",
+        "components": {
+          "v": true,
+          "s": true,
+          "m": true,
+          "mDesc": "a mix of water and sand"
+        },
+        "duration": "Instantaneous",
+        "concentration": false,
+        "ritual": false,
+        "description": "You do one of the following:\n\nYou create up to 10 gallons of clean water within range in an open container. Alternatively, the water falls as rain in a 30-foot Cube [Area of Effect]|XPHB|Cube within range, extinguishing exposed flames there.\nYou destroy up to 10 gallons of water in an open container within range. Alternatively, you destroy fog in a 30-foot Cube [Area of Effect]|XPHB|Cube within range.",
+        "higherLevels": "**Using a Higher-Level Spell Slot.** You create or destroy 10 additional gallons of water, or the size of the Cube [Area of Effect]|XPHB|Cube increases by 5 feet, for each spell slot level above 1.",
+        "prepared": true,
+        "isHomebrew": false,
+        "source": "XPHB"
+      },
+      {
+        "id": "8a2d722e-8488-4a97-9485-2c3f5af916bf",
+        "name": "Detect Evil and Good",
+        "level": 1,
+        "school": "Divination",
+        "castingTime": "1 action",
+        "range": "Self",
+        "components": {
+          "v": true,
+          "s": true,
+          "m": false
+        },
+        "duration": "Concentration, 10 minutes",
+        "concentration": true,
+        "ritual": false,
+        "description": "For the duration, you sense the location of any Aberration, Celestial, Elemental, Fey, Fiend, or Undead within 30 feet of yourself. You also sense whether the Hallow|XPHB spell is active there and, if so, where.\n\nThe spell is blocked by 1 foot of stone, dirt, or wood; 1 inch of metal; or a thin sheet of lead.",
+        "prepared": true,
+        "isHomebrew": false,
+        "source": "XPHB"
+      },
+      {
+        "id": "b438f27e-5166-4b2c-8270-7875ab3eaeb5",
+        "name": "Detect Poison and Disease [R]",
+        "level": 0,
+        "school": "",
+        "castingTime": "",
+        "range": "",
+        "components": {
+          "v": false,
+          "s": false,
+          "m": false
+        },
+        "duration": "",
+        "concentration": false,
+        "ritual": false,
+        "description": "",
+        "prepared": true
+      },
+      {
+        "id": "2e4bb1b2-4588-4e05-a2cc-275bf4f85675",
+        "name": "Detect Magic [R]",
+        "level": 0,
+        "school": "",
+        "castingTime": "",
+        "range": "",
+        "components": {
+          "v": false,
+          "s": false,
+          "m": false
+        },
+        "duration": "",
+        "concentration": false,
+        "ritual": false,
+        "description": "",
+        "prepared": true
+      },
+      {
+        "id": "e570849e-f110-4cfe-8717-11d6ad4f8892",
+        "name": "Healing Word",
+        "level": 1,
+        "school": "Abjuration",
+        "castingTime": "1 bonus",
+        "range": "60 feet",
+        "components": {
+          "v": true,
+          "s": false,
+          "m": false
+        },
+        "duration": "Instantaneous",
+        "concentration": false,
+        "ritual": false,
+        "description": "A creature of your choice that you can see within range regains Hit Points|XPHB equal to 2d4 plus your spellcasting ability modifier.",
+        "higherLevels": "**Using a Higher-Level Spell Slot.** The healing increases by 2d4|1-9|2d4 for each spell slot level above 1.",
+        "prepared": true,
+        "isHomebrew": false,
+        "source": "XPHB"
+      },
+      {
+        "id": "b99b10eb-b333-495c-aaf8-215db3ac37cf",
+        "name": "Inflict Wounds",
+        "level": 1,
+        "school": "Necromancy",
+        "castingTime": "1 action",
+        "range": "Touch",
+        "components": {
+          "v": true,
+          "s": true,
+          "m": false
+        },
+        "duration": "Instantaneous",
+        "concentration": false,
+        "ritual": false,
+        "description": "A creature you touch makes a Constitution saving throw, taking 2d10 Necrotic damage on a failed save or half as much damage on a successful one.",
+        "higherLevels": "**Using a Higher-Level Spell Slot.** The damage increases by 2d10|1-9|1d10 for each spell slot level above 1.",
+        "prepared": true,
+        "isHomebrew": false,
+        "source": "XPHB"
+      }
+    ],
+    "inventory": [
+      {
+        "id": "67229a4e-2ffb-4a6b-b7ad-ce9b85f46ec3",
+        "name": "Chain Shirt",
+        "quantity": 1,
+        "weight": 20,
+        "isEquipped": true,
+        "isAttuned": false,
+        "description": "Made of interlocking metal rings, a chain shirt is worn between layers of clothing or leather. This armor offers modest protection to the wearer's upper body and allows the sound of the rings rubbing against one another to be muffled by outer layers.",
+        "type": "armor",
+        "acBonus": 13
+      },
+      {
+        "id": "0218953e-7990-414d-b696-3c67b876066a",
+        "name": "Mace",
+        "quantity": 1,
+        "weight": 4,
+        "isEquipped": true,
+        "isAttuned": false,
+        "description": "Simple, Sap",
+        "type": "weapon",
+        "damage": "1d6+2 Bludgeoning (Atk: +4)"
+      },
+      {
+        "id": "98e43883-c439-45e2-81be-2423bb6ef2ba",
+        "name": "Bedroll",
+        "quantity": 1,
+        "weight": 7,
+        "isEquipped": false,
+        "isAttuned": false,
+        "description": "",
+        "type": "magic"
+      },
+      {
+        "id": "4ba7a6e6-66bb-4442-8416-37fc6a218de2",
+        "name": "Mess Kit",
+        "quantity": 1,
+        "weight": 1,
+        "isEquipped": false,
+        "isAttuned": false,
+        "description": "This tin box contains a cup and simple cutlery. The box clamps together, and one side can be used as a cooking pan and the other as a plate or shallow bowl.",
+        "type": "magic"
+      },
+      {
+        "id": "143149b5-4965-4819-bc81-54e2da3f11a6",
+        "name": "Rations (1 day)",
+        "quantity": 10,
+        "weight": 2,
+        "isEquipped": false,
+        "isAttuned": false,
+        "description": "Rations consist of travel-ready food, including jerky, dried fruit, hardtack, and nuts. See \"Malnutrition|XPHB\" for the risks of not eating.",
+        "type": "magic"
+      },
+      {
+        "id": "1796a1f6-ef3b-4c83-9f0b-ce47c6c75f55",
+        "name": "Rope, Hempen (50 feet)",
+        "quantity": 1,
+        "weight": 10,
+        "isEquipped": false,
+        "isAttuned": false,
+        "description": "",
+        "type": "gear"
+      },
+      {
+        "id": "aca3d84c-fdd7-4bf0-ab88-7be4b6eae8c8",
+        "name": "Tinderbox",
+        "quantity": 1,
+        "weight": 1,
+        "isEquipped": false,
+        "isAttuned": false,
+        "description": "This small container holds flint, fire steel, and tinder (usually dry cloth soaked in light oil) used to kindle a fire. Using it to light a torch—or anything else with abundant, exposed fuel—takes an action. Lighting any other fire takes 1 minute.",
+        "type": "magic"
+      },
+      {
+        "id": "9905f28b-be71-4ae3-8b60-3bf43fbd4d2c",
+        "name": "Torch",
+        "quantity": 10,
+        "weight": 1,
+        "isEquipped": false,
+        "isAttuned": false,
+        "description": "A torch burns for 1 hour, providing bright light in a 20-foot radius and dim light for an additional 20 feet. If you make a melee attack with a burning torch and hit, it deals 1 fire damage.",
+        "type": "magic"
+      },
+      {
+        "id": "942fceb5-f309-4d9c-94ee-1f91b54f77fe",
+        "name": "Waterskin",
+        "quantity": 1,
+        "weight": 5,
+        "isEquipped": false,
+        "isAttuned": false,
+        "description": "A waterskin can hold up to 4 pints of liquid.",
+        "type": "magic"
+      }
+    ],
+    "currencies": {
+      "cp": 0,
+      "sp": 0,
+      "ep": 0,
+      "gp": 60,
+      "pp": 0
+    },
+    "resources": [],
+    "actions": [
+      {
+        "id": "5abb9360-5696-4a31-9050-7ec6e1146a10",
+        "name": "You have Resistance to Poison damage",
+        "type": "bonus",
+        "source": "Class: Cleric",
+        "description": "You also have Advantage on saving throws you make to avoid or end the Poisoned condition. \n\n* Dwarven Toughness • PHB-2024 188 \nYour HP maximum increases by 1. \n\n* Stonecunning • PHB-2024 188 \nAs a Bonus Action, you gain Tremorsense with a range of 60 ft. for 10 minutes. You must be on or touching a natural or worked stone surface to use this Tremorsense.\n\nYou can use this Bonus Action 2 times per Long Rest. \n\n   | Stonecunning (Tremorsense): 2 / Long Rest • 1 Bonus Action \n\n* Languages • PHB-2024 37 \nYour character knows at least three languages: Common plus two languages you roll or choose from the Standard Languages table. Knowledge of a language means your character can communicate in it, read it, and write it. \n\n\n=== FEATS === \n\n* Acolyte Ability Score Improvements • PHB-2024 178 \n\n* Magic Initiate (Cleric) • PHB-2024 201",
+        "isCustom": false,
+        "featureId": "8c642e62-5206-4504-9507-1977af24f74c"
+      }
+    ],
+    "features": [
+      {
+        "id": "eb7098f2-5e10-43d1-bf99-803608e691c4",
+        "name": "You know one extra cantrip from the Cleric spell list",
+        "source": "Class: Cleric",
+        "description": "You also have a +2 bonus to your Arcana and Religion checks. \n\n\n=== DWARF SPECIES TRAITS === \n\n* Creature Type • PHB-2024 188",
+        "hasUses": false
+      },
+      {
+        "id": "5745bf0a-0f6e-4d8c-be8f-1d1ae9af3cfa",
+        "name": "You are a Humanoid",
+        "source": "Class: Cleric",
+        "description": "* Size • PHB-2024 188",
+        "hasUses": false
+      },
+      {
+        "id": "a2393f4d-932b-4930-8d2f-37e2ae54da5b",
+        "name": "You are Medium",
+        "source": "Class: Cleric",
+        "description": "* Speed • PHB-2024 188 \nYour speed is 30 ft. \n\n* Darkvision • PHB-2024 188 \nYou have Darkvision with a range of 120 ft. \n\n* Dwarven Resilience • PHB-2024 188",
+        "hasUses": false
+      },
+      {
+        "id": "8c642e62-5206-4504-9507-1977af24f74c",
+        "name": "You have Resistance to Poison damage",
+        "source": "Class: Cleric",
+        "description": "You also have Advantage on saving throws you make to avoid or end the Poisoned condition. \n\n* Dwarven Toughness • PHB-2024 188 \nYour HP maximum increases by 1. \n\n* Stonecunning • PHB-2024 188 \nAs a Bonus Action, you gain Tremorsense with a range of 60 ft. for 10 minutes. You must be on or touching a natural or worked stone surface to use this Tremorsense.\n\nYou can use this Bonus Action 2 times per Long Rest. \n\n   | Stonecunning (Tremorsense): 2 / Long Rest • 1 Bonus Action \n\n* Languages • PHB-2024 37 \nYour character knows at least three languages: Common plus two languages you roll or choose from the Standard Languages table. Knowledge of a language means your character can communicate in it, read it, and write it. \n\n\n=== FEATS === \n\n* Acolyte Ability Score Improvements • PHB-2024 178 \n\n* Magic Initiate (Cleric) • PHB-2024 201",
+        "hasUses": false
+      },
+      {
+        "id": "d0c96c07-18e8-41cb-b4ba-55c293fbd5e0",
+        "name": "Two Cantrips",
+        "source": "Class: Cleric",
+        "description": "You learn two cantrips of your choice from the Cleric spell list. Int., Wis., or Cha. is your spellcasting ability for this feat's spells. \n\nLevel 1 Spell. Choose a level 1 spell from the Cleric spell list. You always have that spell prepared. You can cast it once without a spell slot, and you regain the ability to cast it in that way when you finish a Long Rest. You can also cast the spell using any spell slots you have.",
+        "hasUses": false
+      },
+      {
+        "id": "fcfdf03c-921e-42b3-88f5-5f2b8bbda942",
+        "name": "Spell Change",
+        "source": "Class: Cleric",
+        "description": "Whenever you gain a new level, you can replace one of the spells you chose for this feat with a different spell of the same level from the chosen spell list.",
+        "hasUses": false
+      },
+      {
+        "id": "5e73bf37-14ad-4a98-8b51-dc39f5189db0",
+        "name": "Repeatable",
+        "source": "Class: Cleric",
+        "description": "You can take this feat more than once, but you must choose a different spell list each time.",
+        "hasUses": false
+      },
+      {
+        "id": "440a6f78-c240-448e-8956-ad04e032ff16",
+        "name": "Divine Domain",
+        "source": "Class: Cleric (Level 1)",
+        "description": "Choose one domain related to your deity from the list of available domains. Each domain is detailed in their own feature, and each one provides examples of gods associated with it. Your choice grants you domain spells and other features when you choose it at 1st level. It also grants you additional ways to use Channel Divinity when you gain that feature at 2nd level, and additional benefits at 6th, 8th, and 17th levels.\n\n**Domain Spells.** Each domain has a list of spells—its domain spells—that you gain at the cleric levels noted in the domain description. Once you gain a domain spell, you always have it prepared, and it doesn't count against the number of spells you can prepare each day.\n\nIf you have a domain spell that doesn't appear on the cleric spell list, the spell is nonetheless a cleric spell for you.",
+        "hasUses": false,
+        "usesCurrent": 0,
+        "source5eTools": "PHB"
+      },
+      {
+        "id": "0b2bd0a3-d535-4679-ac31-46ca7013c4f3",
+        "name": "Spellcasting",
+        "source": "Class: Cleric (Level 1)",
+        "description": "You have learned to cast spells through prayer and meditation. See chapter 7|XPHB|7 for the rules on spellcasting. The information below details how you use those rules with Cleric spells, which appear on the Cleric spell list|spells|class=Cleric later in the class's description.\n\n**Cantrips.** You know three cantrips of your choice from the Cleric spell list|spells|class=Cleric. Guidance|XPHB, Sacred Flame|XPHB, and Thaumaturgy|XPHB are recommended.\n\nWhenever you gain a Cleric level, you can replace one of your cantrips with another cantrip of your choice from the Cleric spell list|spells|class=Cleric.\n\nWhen you reach Cleric levels 4 and 10, you learn another cantrip of your choice from the Cleric spell list|spells|class=Cleric, as shown in the Cantrips column of the Cleric Features table.\n\n**Spell Slots.** The Cleric Features table shows how many spell slots you have to cast your level 1+ spells. You regain all expended slots when you finish a Long Rest|XPHB.\n\n**Prepared Spells of Level 1+.** You prepare the list of level 1+ spells that are available for you to cast with this feature. To start, choose four level 1 spells from the Cleric spell list|spells|class=Cleric. Bless|XPHB, Cure Wounds|XPHB, Guiding Bolt|XPHB, and Shield of Faith|XPHB are recommended.\n\nThe number of spells on your list increases as you gain Cleric levels, as shown in the Prepared Spells column of the Cleric Features table. Whenever that number increases, choose additional spells from the Cleric spell list|spells|class=Cleric until the number of spells on your list matches the number on the table. The chosen spells must be of a level for which you have spell slots. For example, if you're a level 3 Cleric, your list of prepared spells can include six spells of levels 1 and 2 in any combination.\n\nIf another Cleric feature gives you spells that you always have prepared, those spells don't count against the number of spells you can prepare with this feature, but those spells otherwise count as Cleric spells for you.\n\n**Changing Your Prepared Spells.** Whenever you finish a Long Rest|XPHB, you can change your list of prepared spells, replacing any of the spells there with other Cleric spells for which you have spell slots.\n\n**Spellcasting Ability.** Wisdom is your spellcasting ability for your Cleric spells.\n\n**Spellcasting Focus.** You can use a Holy Symbol|XPHB as a Spellcasting Focus|XPHB for your Cleric spells.",
+        "hasUses": false,
+        "usesCurrent": 0,
+        "source5eTools": "XPHB"
+      },
+      {
+        "id": "9864469e-6eea-4899-96dc-90b40eaf4eae",
+        "name": "Divine Order",
+        "source": "Class: Cleric (Level 1)",
+        "description": "You have dedicated yourself to one of the following sacred roles of your choice.",
+        "hasUses": false,
+        "usesCurrent": 0,
+        "source5eTools": "XPHB"
+      },
+      {
+        "id": "1eae010d-66bd-4df9-b3ef-86a4812f7a09",
+        "name": "Protector",
+        "source": "Class: Cleric (Level 1)",
+        "description": "Trained for battle, you gain proficiency with Martial weapons|items|type=martial weapon and training with Heavy armor|items|type=Heavy Armor.",
+        "hasUses": false,
+        "usesCurrent": 0,
+        "source5eTools": "XPHB"
+      },
+      {
+        "id": "f18da001-1cc8-40c5-a99c-34071cb1eff5",
+        "name": "Thaumaturge",
+        "source": "Class: Cleric (Level 1)",
+        "description": "You know one extra cantrip from the Cleric spell list|spells|class=Cleric. In addition, your mystical connection to the divine gives you a bonus to your Intelligence (Arcana|XPHB or Religion|XPHB) checks. The bonus equals your Wisdom modifier (minimum of +1).",
+        "hasUses": false,
+        "usesCurrent": 0,
+        "source5eTools": "XPHB"
+      }
+    ],
+    "feats": [],
+    "racialTraits": [],
+    "masteredWeapons": [],
+    "conditions": [],
+    "deathSaves": {
+      "successes": 0,
+      "failures": 0
+    },
+    "exhaustion": 0,
+    "resistances": [],
+    "immunities": [],
+    "vulnerabilities": [],
+    "conditionImmunities": [],
+    "damageNotes": "",
+    "personalityTraits": "",
+    "ideals": "",
+    "bonds": "",
+    "flaws": "",
+    "backstory": "",
+    "notes": "",
+    "provenance": {
+      "origin": "manual",
+      "edition": "unknown",
+      "sourceSummary": "Manual Entry"
+    }
+  },
+  {
+    "id": "4432acf6-f98b-40e4-bc3b-4ea966c46eb8",
+    "name": "Leoric Neverember",
+    "system": "dnd5e",
+    "playerName": "dxMourn",
+    "race": "Human",
+    "className": "Wizard",
+    "subclass": "",
+    "level": 1,
+    "background": "Noble",
+    "alignment": "Neutral Good",
+    "experience": 0,
+    "abilityScores": {
+      "str": 10,
+      "dex": 15,
+      "con": 13,
+      "int": 20,
+      "wis": 12,
+      "cha": 6
+    },
+    "savingThrows": [
+      "int",
+      "wis"
+    ],
+    "skills": [
+      {
+        "name": "Acrobatics",
+        "stat": "dex",
+        "proficient": false,
+        "expertise": false,
+        "bonus": 0
+      },
+      {
+        "name": "Animal Handling",
+        "stat": "wis",
+        "proficient": false,
+        "expertise": false,
+        "bonus": 0
+      },
+      {
+        "name": "Arcana",
+        "stat": "int",
+        "proficient": true,
+        "expertise": false,
+        "bonus": 0
+      },
+      {
+        "name": "Athletics",
+        "stat": "str",
+        "proficient": false,
+        "expertise": false,
+        "bonus": 0
+      },
+      {
+        "name": "Deception",
+        "stat": "cha",
+        "proficient": false,
+        "expertise": false,
+        "bonus": 0
+      },
+      {
+        "name": "History",
+        "stat": "int",
+        "proficient": true,
+        "expertise": false,
+        "bonus": 0,
+        "source": "Background: Noble",
+        "sourceId": "background:-noble"
+      },
+      {
+        "name": "Insight",
+        "stat": "wis",
+        "proficient": false,
+        "expertise": false,
+        "bonus": 0
+      },
+      {
+        "name": "Intimidation",
+        "stat": "cha",
+        "proficient": false,
+        "expertise": false,
+        "bonus": 0
+      },
+      {
+        "name": "Investigation",
+        "stat": "int",
+        "proficient": true,
+        "expertise": false,
+        "bonus": 0
+      },
+      {
+        "name": "Medicine",
+        "stat": "wis",
+        "proficient": false,
+        "expertise": false,
+        "bonus": 0
+      },
+      {
+        "name": "Nature",
+        "stat": "int",
+        "proficient": true,
+        "expertise": false,
+        "bonus": 0
+      },
+      {
+        "name": "Perception",
+        "stat": "wis",
+        "proficient": false,
+        "expertise": false,
+        "bonus": 0
+      },
+      {
+        "name": "Performance",
+        "stat": "cha",
+        "proficient": false,
+        "expertise": false,
+        "bonus": 0
+      },
+      {
+        "name": "Persuasion",
+        "stat": "cha",
+        "proficient": true,
+        "expertise": false,
+        "bonus": 0,
+        "source": "Background: Noble",
+        "sourceId": "background:-noble"
+      },
+      {
+        "name": "Religion",
+        "stat": "int",
+        "proficient": true,
+        "expertise": false,
+        "bonus": 0
+      },
+      {
+        "name": "Sleight of Hand",
+        "stat": "dex",
+        "proficient": true,
+        "expertise": false,
+        "bonus": 0
+      },
+      {
+        "name": "Stealth",
+        "stat": "dex",
+        "proficient": false,
+        "expertise": false,
+        "bonus": 0
+      },
+      {
+        "name": "Survival",
+        "stat": "wis",
+        "proficient": false,
+        "expertise": false,
+        "bonus": 0
+      }
+    ],
+    "senses": "",
+    "passivePerception": 11,
+    "passiveInvestigation": 17,
+    "passiveInsight": 11,
+    "languages": "Common, Draconic, Netherese",
+    "proficiencies": "Weapons: Simple, Armor: ",
+    "ac": 12,
+    "maxHp": 7,
+    "currentHp": 7,
+    "tempHp": 0,
+    "hitDice": "d6",
+    "speed": "30 ft",
+    "initiativeMod": 2,
+    "proficiencyBonus": 2,
+    "spellcastingAbility": "int",
+    "spellSaveDc": 15,
+    "spellAttackMod": 7,
+    "spellSlots": [
+      {
+        "current": 0,
+        "max": 0
+      },
+      {
+        "current": 2,
+        "max": 2
+      },
+      {
+        "current": 0,
+        "max": 0
+      },
+      {
+        "current": 0,
+        "max": 0
+      },
+      {
+        "current": 0,
+        "max": 0
+      },
+      {
+        "current": 0,
+        "max": 0
+      },
+      {
+        "current": 0,
+        "max": 0
+      },
+      {
+        "current": 0,
+        "max": 0
+      },
+      {
+        "current": 0,
+        "max": 0
+      },
+      {
+        "current": 0,
+        "max": 0
+      }
+    ],
+    "spells": [
+      {
+        "id": "c77f3f13-1a42-446c-b56e-1cefe80d54d8",
+        "name": "Blade Ward",
+        "level": 0,
+        "school": "Abjuration",
+        "castingTime": "1 action",
+        "range": "Self",
+        "components": {
+          "v": true,
+          "s": true,
+          "m": false
+        },
+        "duration": "Concentration, 1 minute",
+        "concentration": true,
+        "ritual": false,
+        "description": "Whenever a creature makes an attack roll against you before the spell ends, the attacker subtracts 1d4 from the attack roll.",
+        "prepared": false,
+        "source": "XPHB",
+        "isHomebrew": false,
+        "is2024": true
+      },
+      {
+        "id": "b432e0d8-2faf-4a80-b347-cc3629b29a1f",
+        "name": "Ray of Frost",
+        "level": 0,
+        "school": "Evocation",
+        "castingTime": "1 action",
+        "range": "60 feet",
+        "components": {
+          "v": true,
+          "s": true,
+          "m": false
+        },
+        "duration": "Instantaneous",
+        "concentration": false,
+        "ritual": false,
+        "description": "A frigid beam of blue-white light streaks toward a creature within range. Make a ranged spell attack against the target. On a hit, it takes 1d8 Cold damage, and its Speed|XPHB is reduced by 10 feet until the start of your next turn.",
+        "prepared": false,
+        "source": "XPHB",
+        "higherLevels": "**Cantrip Upgrade.** The damage increases by 1d8 when you reach levels 5 (2d8), 11 (3d8), and 17 (4d8).",
+        "isHomebrew": false,
+        "is2024": true
+      },
+      {
+        "id": "4f69d554-7126-46b7-b36b-47d272ee592d",
+        "name": "Toll the Dead",
+        "level": 0,
+        "school": "Necromancy",
+        "castingTime": "1 action",
+        "range": "60 feet",
+        "components": {
+          "v": true,
+          "s": true,
+          "m": false
+        },
+        "duration": "Instantaneous",
+        "concentration": false,
+        "ritual": false,
+        "description": "You point at one creature you can see within range, and the single chime of a dolorous bell is audible within 10 feet of the target. The target must succeed on a Wisdom saving throw or take 1d8 Necrotic damage. If the target is missing any of its Hit Points|XPHB, it instead takes 1d12 Necrotic damage.",
+        "prepared": false,
+        "source": "XPHB",
+        "higherLevels": "**Cantrip Upgrade.** The damage increases by one die when you reach levels 5 (2d8 or 2d12), 11 (3d8 or 3d12), and 17 (4d8 or 4d12).",
+        "isHomebrew": false,
+        "is2024": true
+      },
+      {
+        "id": "94c483c2-de49-45ce-8a07-1aac7b743f1a",
+        "name": "Light",
+        "level": 0,
+        "school": "Evocation",
+        "castingTime": "1 action",
+        "range": "Touch",
+        "components": {
+          "v": true,
+          "s": false,
+          "m": true,
+          "mDesc": "a firefly or phosphorescent moss"
+        },
+        "duration": "1 hour",
+        "concentration": false,
+        "ritual": false,
+        "description": "You touch one Large or smaller object that isn't being worn or carried by someone else. Until the spell ends, the object sheds Bright Light|XPHB in a 20-foot radius and Dim Light|XPHB for an additional 20 feet. The light can be colored as you like.\n\nCovering the object with something opaque blocks the light. The spell ends if you cast it again.",
+        "prepared": false,
+        "source": "XPHB",
+        "isHomebrew": false,
+        "is2024": true
+      },
+      {
+        "id": "c68cc937-8626-4806-aed0-88736fa73f30",
+        "name": "Mending",
+        "level": 0,
+        "school": "Transmutation",
+        "castingTime": "1 minute",
+        "range": "Touch",
+        "components": {
+          "v": true,
+          "s": true,
+          "m": true,
+          "mDesc": "two lodestones"
+        },
+        "duration": "Instantaneous",
+        "concentration": false,
+        "ritual": false,
+        "description": "This spell repairs a single break or tear in an object you touch, such as a broken chain link, two halves of a broken key, a torn cloak, or a leaking wineskin. As long as the break or tear is no larger than 1 foot in any dimension, you mend it, leaving no trace of the former damage.\n\nThis spell can physically repair a magic item, but it can't restore magic to such an object.",
+        "prepared": false,
+        "source": "XPHB",
+        "isHomebrew": false,
+        "is2024": true
+      },
+      {
+        "id": "accd1e7f-69ad-48b9-a1ee-d1e488cb2c95",
+        "name": "Chromatic Orb",
+        "level": 1,
+        "school": "Evocation",
+        "castingTime": "1 action",
+        "range": "90 feet",
+        "components": {
+          "v": true,
+          "s": true,
+          "m": true,
+          "mDesc": "a diamond worth 50+ GP"
+        },
+        "duration": "Instantaneous",
+        "concentration": false,
+        "ritual": false,
+        "description": "You hurl an orb of energy at a target within range. Choose Acid, Cold, Fire, Lightning, Poison, or Thunder for the type of orb you create, and then make a ranged spell attack against the target. On a hit, the target takes 3d8 damage of the chosen type.\n\nIf you roll the same number on two or more of the d8s, the orb leaps to a different target of your choice within 30 feet of the target. Make an attack roll against the new target, and make a new damage roll. The orb can't leap again unless you cast the spell with a level 2+ spell slot.",
+        "prepared": false,
+        "source": "XPHB",
+        "higherLevels": "**Using a Higher-Level Spell Slot.** The damage increases by 3d8|1-9|1d8 for each spell slot level above 1. The orb can leap a maximum number of times equal to the level of the slot expended, and a creature can be targeted only once by each casting of this spell.",
+        "isHomebrew": false,
+        "is2024": true
+      },
+      {
+        "id": "4ccaf1f4-2d7f-4117-a49f-a7f58230ae18",
+        "name": "Find Familiar [R]",
+        "level": 0,
+        "school": "",
+        "castingTime": "1h + 10m",
+        "range": "10 ft.",
+        "components": {
+          "v": true,
+          "s": true,
+          "m": true
+        },
+        "duration": "Instantaneous",
+        "concentration": false,
+        "ritual": true,
+        "description": "Wizard",
+        "prepared": false,
+        "source": "Wizard"
+      },
+      {
+        "id": "47b8e4e0-b0d8-479a-96aa-8fb341595e05",
+        "name": "Shield",
+        "level": 1,
+        "school": "Abjuration",
+        "castingTime": "1 reaction",
+        "range": "Self",
+        "components": {
+          "v": true,
+          "s": true,
+          "m": false
+        },
+        "duration": "1 round",
+        "concentration": false,
+        "ritual": false,
+        "description": "An imperceptible barrier of magical force protects you. Until the start of your next turn, you have a +5 bonus to AC, including against the triggering attack, and you take no damage from Magic Missile|XPHB.",
+        "prepared": false,
+        "source": "XPHB",
+        "isHomebrew": false,
+        "is2024": true
+      },
+      {
+        "id": "fc84294c-2c38-46fb-9bbf-4e9cc070e785",
+        "name": "Magic Missile",
+        "level": 1,
+        "school": "Evocation",
+        "castingTime": "1 action",
+        "range": "120 feet",
+        "components": {
+          "v": true,
+          "s": true,
+          "m": false
+        },
+        "duration": "Instantaneous",
+        "concentration": false,
+        "ritual": false,
+        "description": "You create three glowing darts of magical force. Each dart strikes a creature of your choice that you can see within range. A dart deals 1d4 + 1 Force damage to its target. The darts all strike simultaneously, and you can direct them to hit one creature or several.",
+        "prepared": false,
+        "source": "XPHB",
+        "higherLevels": "**Using a Higher-Level Spell Slot.** The spell creates one more dart for each spell slot level above 1.",
+        "isHomebrew": false,
+        "is2024": true
+      },
+      {
+        "id": "cb7ef6fd-a7b3-4379-9b52-68036581b16c",
+        "name": "Identify [R]",
+        "level": 0,
+        "school": "",
+        "castingTime": "11m",
+        "range": "Touch",
+        "components": {
+          "v": true,
+          "s": true,
+          "m": true
+        },
+        "duration": "Instantaneous",
+        "concentration": false,
+        "ritual": true,
+        "description": "Wizard",
+        "prepared": false,
+        "source": "Wizard"
+      },
+      {
+        "id": "8e676fa9-c031-495b-8d78-92c062df8655",
+        "name": "Detect Magic [R]",
+        "level": 0,
+        "school": "",
+        "castingTime": "1A",
+        "range": "Self/30 ft. Sphere",
+        "components": {
+          "v": true,
+          "s": true,
+          "m": false
+        },
+        "duration": "Concentration, up to 10 minutes",
+        "concentration": true,
+        "ritual": true,
+        "description": "Wizard",
+        "prepared": false,
+        "source": "Wizard"
+      },
+      {
+        "id": "666cef0d-6859-4421-a395-d5e104424f17",
+        "name": "Mage Armor",
+        "level": 1,
+        "school": "Abjuration",
+        "castingTime": "1 action",
+        "range": "Touch",
+        "components": {
+          "v": true,
+          "s": true,
+          "m": true,
+          "mDesc": "a piece of cured leather"
+        },
+        "duration": "8 hours",
+        "concentration": false,
+        "ritual": false,
+        "description": "You touch a willing creature who isn't wearing armor. Until the spell ends, the target's base AC becomes 13 plus its Dexterity modifier. The spell ends early if the target dons armor.",
+        "prepared": false,
+        "source": "XPHB",
+        "isHomebrew": false,
+        "is2024": true
+      },
+      {
+        "id": "dfe67aaa-660b-4f68-8525-11daf27f93cf",
+        "name": "Protection from Evil and Good",
+        "level": 1,
+        "school": "Abjuration",
+        "castingTime": "1 action",
+        "range": "Touch",
+        "components": {
+          "v": true,
+          "s": true,
+          "m": true,
+          "mDesc": "a flask of Holy Water worth 25+ GP, which the spell consumes"
+        },
+        "duration": "Concentration, 10 minutes",
+        "concentration": true,
+        "ritual": false,
+        "description": "Until the spell ends, one willing creature you touch is protected against creatures that are Aberrations, Celestials, Elementals, Fey, Fiends, or Undead. The protection grants several benefits. Creatures of those types have Disadvantage|XPHB on attack rolls against the target. The target also can't be possessed by or gain the Charmed|XPHB or Frightened|XPHB conditions from them. If the target is already possessed, Charmed|XPHB, or Frightened|XPHB by such a creature, the target has Advantage|XPHB on any new saving throw against the relevant effect.",
+        "prepared": false,
+        "source": "XPHB",
+        "isHomebrew": false,
+        "is2024": true
+      }
+    ],
+    "inventory": [
+      {
+        "id": "8940b5db-2c07-48b4-b61c-0a78d0fa83ad",
+        "name": "Dagger",
+        "quantity": 1,
+        "weight": 1,
+        "isEquipped": false,
+        "isAttuned": false,
+        "description": "",
+        "type": "weapon",
+        "damage": "1d4",
+        "effects": []
+      },
+      {
+        "id": "febcd2af-fc0c-46be-bd98-071176c5db37",
+        "name": "Dagger",
+        "quantity": 1,
+        "weight": 1,
+        "isEquipped": false,
+        "isAttuned": false,
+        "description": "",
+        "type": "weapon",
+        "damage": "1d4",
+        "effects": []
+      },
+      {
+        "id": "6908cf1e-69b1-4232-b491-d505190357cb",
+        "name": "Rapier",
+        "quantity": 1,
+        "weight": 2,
+        "isEquipped": true,
+        "isAttuned": false,
+        "description": "Martial, Finesse, Vex",
+        "type": "weapon",
+        "damage": "1d8",
+        "effects": []
+      },
+      {
+        "id": "e42bf5f5-b3e5-48da-ba61-b86e493eda08",
+        "name": "Spellbook",
+        "quantity": 1,
+        "weight": 3,
+        "isEquipped": false,
+        "isAttuned": false,
+        "description": "Essential for wizards, a spellbook is a leather-bound tome with 100 blank vellum pages suitable for recording spells.",
+        "type": "magic",
+        "effects": []
+      },
+      {
+        "id": "28515704-edf9-40a0-9b0c-dd6d3ea3de64",
+        "name": "Star Ruby",
+        "quantity": 1,
+        "weight": 0,
+        "isEquipped": false,
+        "isAttuned": false,
+        "description": "A translucent ruby with white star-shaped center gemstone.",
+        "type": "magic",
+        "effects": []
+      },
+      {
+        "id": "bf937ab2-5f4f-4a92-b71c-092ae4918b1c",
+        "name": "Perfume",
+        "quantity": 1,
+        "weight": 0,
+        "isEquipped": false,
+        "isAttuned": false,
+        "description": "Perfume comes in a 4-ounce vial. For 1 hour after applying Perfume to yourself, you have Advantage|XPHB on Charisma (Persuasion|XPHB) checks made to influence an Indifferent Humanoid within 5 feet of yourself.",
+        "type": "magic",
+        "effects": []
+      },
+      {
+        "id": "cc18db3e-2a5f-4bfd-aa5e-2e78a1489bd4",
+        "name": "Backpack",
+        "quantity": 1,
+        "weight": 5,
+        "isEquipped": false,
+        "isAttuned": false,
+        "description": "A container for carrying gear.",
+        "type": "gear",
+        "effects": []
+      },
+      {
+        "id": "3f7b7b6e-3989-4807-b31b-7a8053b5d6c8",
+        "name": "Playing Cards",
+        "quantity": 1,
+        "weight": 0,
+        "isEquipped": false,
+        "isAttuned": false,
+        "description": "Wisdom\nDiscern whether someone is cheating (10), or win the game (20)",
+        "type": "magic",
+        "effects": []
+      },
+      {
+        "id": "90e5458f-8c93-4fd5-83fa-b8bddb30a084",
+        "name": "Fine Clothes",
+        "quantity": 1,
+        "weight": 6,
+        "isEquipped": false,
+        "isAttuned": false,
+        "description": "Fine Clothes are made of expensive fabrics and adorned with expertly crafted details. Some events and locations admit only people wearing these clothes.",
+        "type": "magic",
+        "effects": []
+      },
+      {
+        "id": "69d134f8-da77-4104-b22f-188461d5f556",
+        "name": "(EX)Magical Item",
+        "quantity": 1,
+        "weight": 2,
+        "isEquipped": false,
+        "isAttuned": false,
+        "description": "",
+        "type": "gear"
+      },
+      {
+        "id": "67e1f49c-22d9-47b5-b4e7-b764e34a7350",
+        "name": "Oil",
+        "quantity": 10,
+        "weight": 1,
+        "isEquipped": false,
+        "isAttuned": false,
+        "description": "You can douse a creature, object, or space with Oil or use it as fuel, as detailed below.\n\n**Dousing a Creature or an Object.** When you take the Attack|XPHB action, you can replace one of your attacks with throwing an Oil flask. Target one creature or object within 20 feet of yourself. The target must succeed on a Dexterity saving throw (8 plus your Dexterity modifier and Proficiency|XPHB|Proficiency Bonus) or be covered in oil. If the target takes Fire damage before the oil dries (after 1 minute), the target takes an extra 5 Fire damage from burning oil.\n\n**Dousing a Space.** You can take the Utilize|XPHB action to pour an Oil flask on level ground to cover a 5-foot-square area within 5 feet of yourself. If lit, the oil burns until the end of the turn 2 rounds from when the oil was lit (or 12 seconds) and deals 5 Fire damage to any creature that enters the area or ends its turn there. A creature can take this damage only once per turn.\n\n**Fuel.** Oil serves as fuel for Lamps and Lanterns. Once lit, a flask of Oil burns for 6 hours in a Lamp or Lantern. That duration doesn't need to be consecutive; you can extinguish the burning Oil (as a Utilize|XPHB action) and rekindle it again until it has burned for a total of 6 hours.",
+        "type": "magic",
+        "effects": []
+      },
+      {
+        "id": "6b66cece-4eca-4f13-bc72-dbebef173509",
+        "name": "Parchment",
+        "quantity": 10,
+        "weight": 0,
+        "isEquipped": false,
+        "isAttuned": false,
+        "description": "One sheet of Parchment can hold about 250 handwritten words.",
+        "type": "magic",
+        "effects": []
+      },
+      {
+        "id": "f84dc991-2321-4ee2-b82b-2a0df499b050",
+        "name": "Tinderbox",
+        "quantity": 1,
+        "weight": 1,
+        "isEquipped": false,
+        "isAttuned": false,
+        "description": "A Tinderbox is a small container holding flint, fire steel, and tinder (usually dry cloth soaked in light oil) used to kindle a fire. Using it to light a Candle|XPHB, Lamp|XPHB, Hooded Lantern|XPHB|Lantern, or Torch|XPHB—or anything else with exposed fuel—takes a Bonus Action|XPHB. Lighting any other fire takes 1 minute.",
+        "type": "magic",
+        "effects": []
+      },
+      {
+        "id": "8e397497-7086-45ac-9d96-2585c194cf4a",
+        "name": "Book",
+        "quantity": 1,
+        "weight": 5,
+        "isEquipped": false,
+        "isAttuned": false,
+        "description": "A Book contains fiction or nonfiction. If you consult an accurate nonfiction Book about its topic, you gain a +5 bonus to Intelligence (Arcana|XPHB, History|XPHB, Nature|XPHB, or Religion|XPHB) checks you make about that topic.",
+        "type": "magic",
+        "effects": []
+      },
+      {
+        "id": "f6b25c34-246c-478b-a382-2dbe204a7246",
+        "name": "Lamp",
+        "quantity": 1,
+        "weight": 1,
+        "isEquipped": false,
+        "isAttuned": false,
+        "description": "A Lamp burns Oil|XPHB as fuel to cast Bright Light|XPHB in a 15-foot radius and Dim Light|XPHB for an additional 30 feet.",
+        "type": "magic",
+        "effects": []
+      },
+      {
+        "id": "c9385a29-8739-4e37-8889-49c5e64eadea",
+        "name": "Ink Pen",
+        "quantity": 1,
+        "weight": 0,
+        "isEquipped": false,
+        "isAttuned": false,
+        "description": "Using Ink|XPHB, an Ink Pen is used to write or draw.",
+        "type": "magic",
+        "effects": []
+      },
+      {
+        "id": "540b7404-3321-41c2-9fa4-2f69cc33ce7f",
+        "name": "Ink",
+        "quantity": 1,
+        "weight": 0,
+        "isEquipped": false,
+        "isAttuned": false,
+        "description": "Ink comes in a 1-ounce bottle, which provides enough ink to write about 500 pages.",
+        "type": "magic",
+        "effects": []
+      },
+      {
+        "id": "7e8f2eb2-b361-4ad6-9a0e-cdcb58df1308",
+        "name": "(EX)Magical Item",
+        "quantity": 1,
+        "weight": 2,
+        "isEquipped": false,
+        "isAttuned": false,
+        "description": "",
+        "type": "gear"
+      },
+      {
+        "id": "fbaa60da-04f9-4754-93a1-7af948301d9e",
+        "name": "Ray of Frost",
+        "quantity": 1,
+        "weight": 0,
+        "isEquipped": true,
+        "isAttuned": false,
+        "description": "V/S",
+        "type": "weapon",
+        "damage": ""
+      },
+      {
+        "id": "f2ea85cd-6c0c-4bab-98dd-5676da0e9b09",
+        "name": "Gaming Set",
+        "quantity": 1,
+        "weight": 0,
+        "isEquipped": false,
+        "isAttuned": false,
+        "description": "Starting equipment from Noble",
+        "type": "gear"
+      },
+      {
+        "id": "fe284e6f-67c9-4fd5-bc00-474640cb79a1",
+        "name": "Fine Clothes",
+        "quantity": 1,
+        "weight": 0,
+        "isEquipped": false,
+        "isAttuned": false,
+        "description": "Starting equipment from Noble",
+        "type": "gear"
+      },
+      {
+        "id": "e30b1b9e-5b65-499d-8cab-87686e9de8ba",
+        "name": "Perfume",
+        "quantity": 1,
+        "weight": 0,
+        "isEquipped": false,
+        "isAttuned": false,
+        "description": "Starting equipment from Noble",
+        "type": "gear"
+      },
+      {
+        "id": "64253018-47e1-4b9a-8f55-c3d65f378239",
+        "name": "29 gp",
+        "quantity": 1,
+        "weight": 0,
+        "isEquipped": false,
+        "isAttuned": false,
+        "description": "Starting equipment from Noble",
+        "type": "gear"
+      }
+    ],
+    "currencies": {
+      "cp": 0,
+      "sp": 0,
+      "ep": 0,
+      "gp": 35,
+      "pp": 0
+    },
+    "resources": [],
+    "actions": [],
+    "features": [
+      {
+        "id": "bd9ebbae-a390-4b29-be01-b7fa6498e389",
+        "name": "Core Wizard Traits",
+        "source": "Class: Wizard",
+        "description": "PHB-2024 165",
+        "hasUses": false
+      },
+      {
+        "id": "941b5390-86a1-4986-9ead-b190aa17e832",
+        "name": "Spellcasting",
+        "source": "Class: Wizard",
+        "description": "Intelligence-based slot casting. 3 Cantrips, 4 Prepared spells (from 6 in book).",
+        "hasUses": false,
+        "is2024": true
+      },
+      {
+        "id": "a7f487e0-1ff9-41bb-9a8a-b067a99964b1",
+        "name": "Ritual Adept",
+        "source": "Class: Wizard",
+        "description": "PHB-2024 166",
+        "hasUses": false
+      },
+      {
+        "id": "3f078ca8-44de-4365-854a-b1ff86c64ab2",
+        "name": "Arcane Recovery",
+        "source": "Class: Wizard",
+        "description": "Regain spell slots on short rest once per day.",
+        "hasUses": false,
+        "is2024": true
+      },
+      {
+        "id": "4852e520-cdb2-43e0-a6f5-ed7af1745f6b",
+        "name": "You can use this feature once per Long Rest.",
+        "source": "Class: Wizard",
+        "description": "",
+        "hasUses": false
+      },
+      {
+        "id": "a1665932-76be-4afa-b100-085bf8494976",
+        "name": "| 1 / Long Rest",
+        "source": "Class: Wizard",
+        "description": "Special",
+        "hasUses": false
+      },
+      {
+        "id": "833f844b-3af7-4f0d-a02c-cd9252e7247c",
+        "name": "Size",
+        "source": "Class: Wizard",
+        "description": "PHB-2024 194\nYour Size is Medium or Small, chosen when you select this species.",
+        "hasUses": false
+      },
+      {
+        "id": "1d543dd8-67ea-48c4-95db-dba241e861e9",
+        "name": "Speed",
+        "source": "Class: Wizard",
+        "description": "PHB-2024 194\nYour Speed is 30 ft.",
+        "hasUses": false
+      },
+      {
+        "id": "ca79e2cd-b9f0-47d1-b9ee-4a182b219770",
+        "name": "Resourceful",
+        "source": "Class: Wizard",
+        "description": "PHB-2024 194\nYou gain Heroic Inspiration whenever you finish a Long Rest.",
+        "hasUses": false
+      },
+      {
+        "id": "a88af0a6-d821-46cb-8a91-64f7af00fee2",
+        "name": "Skillful",
+        "source": "Class: Wizard",
+        "description": "PHB-2024 193\nYou gain proficiency in one skill of your choice.",
+        "hasUses": false
+      },
+      {
+        "id": "289d1e36-8c12-4c88-8e09-858df581b992",
+        "name": "Versatile",
+        "source": "Class: Wizard",
+        "description": "PHB-2024 194\nYou gain an Origin feat of your choice.",
+        "hasUses": false
+      },
+      {
+        "id": "a258aa2f-67e3-4105-99a8-4071e76085ae",
+        "name": "Languages",
+        "source": "Class: Wizard",
+        "description": "PHB-2024 37\nYour character knows at least three languages: Common plus two languages you roll or choose from",
+        "hasUses": false
+      },
+      {
+        "id": "7c1563bf-5b56-4f56-b70d-e1d6d067a14d",
+        "name": "the Standard Languages table",
+        "source": "Class: Wizard",
+        "description": "Knowledge of a language means your character can communicate in it, read it, and write it.",
+        "hasUses": false
+      },
+      {
+        "id": "efed12ea-5048-4eff-876d-f44cf22729e4",
+        "name": "Magic Initiate (Wizard)",
+        "source": "Class: Wizard",
+        "description": "PHB-2024 201\nTwo Cantrips. You learn two cantrips of your choice from the Wizard spell list. Int., Wis., or Cha. is your spellcasting ability for this feat's spells.",
+        "hasUses": false
+      },
+      {
+        "id": "2a2fb266-979d-42af-b6e4-0782169a6512",
+        "name": "Level 1 Spell",
+        "source": "Class: Wizard",
+        "description": "Choose a level 1 spell from the Wizard spell list\nYou always have that spell prepared\nYou can cast it once without a spell slot, and you regain the ability to cast it in that way when you finish a Long Rest\nYou can also cast the spell using any spell slots you have.",
+        "hasUses": false
+      },
+      {
+        "id": "9fea3783-5be3-4834-b20b-9913f8834e87",
+        "name": "Spell Change",
+        "source": "Class: Wizard",
+        "description": "Whenever you gain a new level, you can replace one of the spells you chose for this feat with a different spell of the same level from the chosen spell list.",
+        "hasUses": false
+      },
+      {
+        "id": "97e0e61e-354f-45a9-873b-a4f965d161fd",
+        "name": "Repeatable",
+        "source": "Class: Wizard",
+        "description": "You can take this feat more than once.",
+        "hasUses": false
+      },
+      {
+        "id": "b08b0c98-37d3-4756-9264-52bdc3fcf1f6",
+        "name": "| Intelligence •",
+        "source": "Class: Wizard",
+        "description": "",
+        "hasUses": false
+      },
+      {
+        "id": "d1d08cb8-1389-48de-b60d-bf801f58f844",
+        "name": "Noble Ability Score Improvements",
+        "source": "Class: Wizard",
+        "description": "PHB-2024 182",
+        "hasUses": false
+      },
+      {
+        "id": "4be96fb9-e21f-4053-a589-27372f4835cf",
+        "name": "| Increase two scores (+2 / +1) •",
+        "source": "Class: Wizard",
+        "description": "",
+        "hasUses": false
+      },
+      {
+        "id": "3ff59a1f-87a7-47ad-aa84-5c7f551b0725",
+        "name": "Wizard Scholar",
+        "source": "Class: Wizard",
+        "description": "Expertise in one professional skill.",
+        "is2024": true,
+        "hasUses": false
+      }
+    ],
+    "feats": [
+      {
+        "id": "feat_skilled_xphb",
+        "name": "Skilled",
+        "source": "XPHB",
+        "description": "You gain proficiency in any combination of three Skill List; Skills|XPHB|skills or tools|items|type=tool;artisan's tools;instrument;gaming set of your choice.\n\n**Repeatable.** You can take this feat more than once.",
+        "hasUses": false,
+        "isFeat": true,
+        "source5eTools": "XPHB",
+        "is2024": true
+      }
+    ],
+    "racialTraits": [
+      {
+        "id": "8037accc-4478-4bb0-9155-89d9275b8c29",
+        "name": "Resourceful",
+        "source": "Species: Human",
+        "description": "Gain Heroic Inspiration whenever you finish a Long Rest.",
+        "is2024": true,
+        "hasUses": false
+      },
+      {
+        "id": "8e32a471-8ce3-413e-a4ae-fd870468c574",
+        "name": "Skillful",
+        "source": "Species: Human",
+        "description": "Gain proficiency in one skill of your choice.",
+        "is2024": true,
+        "hasUses": false
+      },
+      {
+        "id": "81dbbf62-15dc-45f2-a158-68304f819b80",
+        "name": "Versatile",
+        "source": "Species: Human",
+        "description": "Gain an Origin feat of your choice.",
+        "is2024": true,
+        "hasUses": false
+      }
+    ],
+    "masteredWeapons": [],
+    "conditions": [],
+    "deathSaves": {
+      "successes": 0,
+      "failures": 0
+    },
+    "exhaustion": 0,
+    "resistances": [],
+    "immunities": [],
+    "vulnerabilities": [],
+    "conditionImmunities": [],
+    "damageNotes": "",
+    "personalityTraits": "",
+    "ideals": "Conocimiento: \"La ignorancia es la única verdadera prisión. El misterio de mi cicatriz y del Imperio de Netheril debe ser resuelto, sin importar el costo o quién intente ocultar la verdad\". \n\nExcelencia: \"Soy un Neverember y fui entrenado por Alustriel Silverhand. Se espera grandeza de mí, y no aceptaré nada menos que la perfección",
+    "bonds": "La Deuda del Libro: \"Mi hermano sacrificó el último recuerdo de su madre para que yo pudiera entrar a Candlekeep... Esa carga",
+    "flaws": "Incompetencia Social: \"Tanto tiempo encerrado entre mis tomos y artefactos ha hecho que no sea el mejor relacionándome con los demas. Aunque intento dar lo mejor",
+    "backstory": "Eres el hijo legítimo de Lord Dagult Neverember. Lord Protector de Neverwinter. \n\nTu papá te ama, genuinamente. No es el hombre más cálido del mundo, pero le importas lo suficiente como para haberte dado la mejor educación que el dinero y la influencia pueden comprar. Tiró de su influencia para que fueras aceptado como el estudiante personal de Alustriel Silverhand, una de las archimagas más poderosas aún vivas, en la ciudad de Silverymoon. \n\nPasaste una porción significativa de tu juventud allí, estudiando las artes arcanas bajo la tutoría de Alustriel. Eres talentoso, y eres determinado. Eres, de todas las maneras, destinado para la grandeza. \n\nUn día, explorando el vaúl de Alustriel con su permiso, encontraste algo que no debías. Un pequeño, artefacto antiguo, de origen Netherese. Pulsaba con energía como ninguna magia que alguna vez hayas estudiado. Algo sobre el artefacto te llamó. \n\nCuando lo tocaste, detonó silenciosamente. Sin fuego, sin fuerza. Un pulso blanco y caluroso atravesó tu cuerpo y dejó atrás una cicatriz arcana. El artefacto después murió totalmente. Inerte. Una piedra sin vida. Lo has conservado desde ese entonces. \n\nAlustriel te examinó después y te dijo que \"tuvieras cuidado\", y no explicó más. \n\nLa cicatriz no duele, a veces cosquillea, cerca de magia fuerte. Nunca has podido entender qué era el artefacto, y lo que te hizo. Y Alustriel no habla de ello. \n\nEn tu determinación por encontrar respuestas, te dirigiste a Candlekeep, la librería más grande y de mayor reconocimiento. Tenías seguridad de que adentro encontrarías tus respuestas, pero no",
+    "notes": "-La relación con su padre no es unidireccional, él quiere a su padre, pero… sí existe un tipo de preferencia absurda que Leoric no comprende. Ha hecho lo posible para que esto no sea así, que el trato para con su hermano sea justo, pero su padre simplemente es incapaz de actuar de otra manera.  \n\n-Tuvo un compañero de cuarto llamado Hanniel Woodenfall mientras estudiaba en Silverymoon, y hasta el día de hoy mantienen contacto. Fue una amistad inesperada, pero muy bien recibida por Leoric, un buen contraste a sus relaciones dentro de la villa de su padre.  \n\n-La madre de Leoric falleció durante el parto; él solo tiene los recuerdos prestados de su padre y el retrato de ella colgado en su cuarto como referencia de qué tipo de mujer era… Sin embargo, a la mujer que ha llamado madre durante toda su vida ha sido una criada que atendía en la villa. Gwendolyn Autumnbloom ha vivido para la familia Neverember; le enseñó lo poco que conocía sobre la nobleza, etiqueta, sutilezas y especificidades que nadie más le enseñaría, claro. Leoric siempre ha sido algo complicado para expresarse de manera efectiva, pero eso no le quita el cariño que le tiene. \n\n-Alustriel estuvo gratamente complacida al observar que Leoric no solo tenía un talento innato para él la magia, sino que también poseía una mente brillante e inquisitiva que lo hacía querer estudiar más y tomarse cada momento del tutelaje con absoluta seriedad. Quizás la falta de filtro a la hora de tratar con la nobleza no era lo más ideal, pero para el aprendizaje de lo arcano esto era ideal.  \n\n-El miedo más profundo de Leoric es, coincidentemente, su realidad o, mejor dicho, lo que él percibe como realidad, sea una mera ilusión… un sinsentido cruel que él ha tratado de racionalizar por demasiado tiempo. La soledad que ha sentido por su desconexión con los demás, el resentimiento que sienten los demás hacia su persona, sea real o no, el sentirse más máquina que persona… esos\n\nmiedos palidecen ante el tener alguna confirmación de que todo es algún tipo de broma cruel; un juego ilusorio en el cual él por algún motivo está involucrado. \n\n-Leoric ha cometido varios errores, sí, pero algo que no puede permitirse es dejarse manipular; él ya ha visto cómo estos juegos se desenvuelven entre los nobles como si de un simple juego de cartas se tratase. Ha sufrido de traiciones pequeñas; la mayor ha sido por su padre al siempre mostrarse abierto a la posibilidad de no tratar a su hermano como lo hace y, sin embargo… Leoric sabe que Lord Neverember nunca estará dispuesto a cambiar. Más allá de lo que le genera remordimiento, es (al menos lo que él siente) como el acto de traición más grande que pudo haberle hecho a alguien: el robarle parte de su pasado a su propio hermano. Genuinamente, él desea corregir esto de cualquier manera, aunque quizá ese barco ya zarpó hace mucho tiempo. \n\n-El juego crudo e infantil que es el “poder” no se compara en lo absoluto con tener conocimiento. No existe ningún tipo de interés en él por entregar algo a cambio de poder… Sin embargo, con lo que respecta al conocimiento… él podría decir que ya entregó el máximo precio que estaba dispuesto a pagar y que no lo volvería a hacer, pero… él mismo no sabe qué tan ciertas son esas palabras. Leoric trata de jugar en lo que él considera un tablero totalmente distinto e igual de peligroso.",
+    "provenance": {
+      "origin": "dnd-beyond-pdf",
+      "edition": "2024",
+      "sourceSummary": "D&D Beyond PDF • Leoric.pdf",
+      "importedAt": 1773875781941
+    }
+  }
+]

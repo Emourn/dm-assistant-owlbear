@@ -1,0 +1,189 @@
+export const CORE_RULE_DESCRIPTIONS: Record<string, { name: string; description: string; whenToUse: string }> = {
+    'magic-action': {
+        name: 'Magic Action',
+        description: 'A new standardized action in 2024. You take this action to cast a spell that has a casting time of an action, or to use a magic item that requires an action.',
+        whenToUse: 'Whenever a creature casts a spell or uses a magical feature/item that takes an action.'
+    },
+    'study-action': {
+        name: 'Study Action',
+        description: 'You make an Intelligence check to recall information about a creature, object, or location. This includes checking for a monster\'s resistances, vulnerabilities, or special traits.',
+        whenToUse: 'Ask for a Study check (Arcana, History, Nature, etc.) when a player wants to "recall lore" or analyze a threat.'
+    },
+    'search-action': {
+        name: 'Search Action',
+        description: 'You make a Wisdom check to spot something that isn\'t obvious. Use this to find hidden doors, traps, or concealed creatures.',
+        whenToUse: 'Ask for a Search check (Perception, Investigation) when a player is actively looking for something hidden.'
+    },
+    'influence-action': {
+        name: 'Influence Action',
+        description: 'You attempt to influence a creature\'s attitude through social interaction. DC is usually 15 or the creature\'s Intelligence score.',
+        whenToUse: 'Ask for an Influence check (Persuasion, Deception, Intimidation) to change how an NPC feels about the party.'
+    },
+    'utilize-action': {
+        name: 'Utilize Action',
+        description: 'Used to interact with an object or feature of the environment. This replaces "Use an Object" for non-magical interactions.',
+        whenToUse: 'Opening a door, pulling a lever, using a tool, or drinking a mundane potion.'
+    },
+    'surprise': {
+        name: 'Surprise (2024)',
+        description: 'In the 2024 rules, there is no "Surprise Round." Surprised creatures instead have **Disadvantage on their Initiative roll**.',
+        whenToUse: 'When one side of a conflict catches the other unaware. Also note: surprised creatures cannot take reactions until their first turn ends.'
+    },
+    'legendary-action': {
+        name: 'Legendary Action',
+        description: 'In newer 2024 monster design, Legendary Actions are often being replaced by giving monsters **multiple Reactions** per round.',
+        whenToUse: 'Use these at THE END of another creature\'s turn. Monsters regain spent legendary actions/reactions at the start of THEIR turn.'
+    },
+    'attack-action': {
+        name: 'The Attack Action',
+        description: 'The most common action in combat. You roll a twenty-sided die (d20), add your Attack Bonus, and compare it to the target\'s Armor Class (AC).',
+        whenToUse: 'Ask for this whenever a player swings a sword, fires a bow, or uses a spell that says "Make a ranged spell attack."'
+    },
+    'saving-throw': {
+        name: 'Saving Throws (Saves)',
+        description: 'A Save is a roll to *resist* something bad. Instead of the attacker rolling to hit, the **target** rolls to see if they can dodge, endure, or shrug off the effect. The roll must equal or beat the "Difficulty Class" (DC).',
+        whenToUse: 'Ask for a save when a spell (like Fireball) or an ability (like a Dragon\'s Breath) automatically hits an area, and creatures inside it try to take less damage.'
+    },
+    'damage-roll': {
+        name: 'Roll for Damage',
+        description: 'Once an attack hits or a save is failed, you roll dice to see how much "health" (Hit Points) the target loses. Different weapons and spells use different dice (d4, d6, d8, d10, d12).',
+        whenToUse: 'Do this immediately after confirming an attack has hit or a saving throw has failed.'
+    },
+    'target-selection': {
+        name: 'Selecting Targets',
+        description: 'Before rolling any dice, the attacker must specify exactly who or what they are aiming at. Some effects target one creature, while others target everyone in a specific area (like a 20-foot circle).',
+        whenToUse: 'Always the first step of any offensive action. Make sure the player knows who they are trying to hit!'
+    }
+};
+
+export const ABILITY_DESCRIPTIONS: Record<string, { name: string; description: string; saves: string; skills: string[] }> = {
+    str: {
+        name: 'Strength',
+        description: 'Measures bodily power, athletic training, and raw physical force. A Strength check can model any attempt to lift, push, pull, or break something, to force your body through a space, or to otherwise apply brute force.',
+        saves: 'Strength saving throws are used to resist being physically moved or restrained — for example, resisting a shove, breaking free from restraints, or bracing against a forceful blast.',
+        skills: ['Athletics'],
+    },
+    dex: {
+        name: 'Dexterity',
+        description: 'Measures agility, reflexes, and balance. Dexterity is used for ranged attacks, finesse weapons, and determines your Armor Class (unarmored or light armor). It also determines your Initiative.',
+        saves: 'Dexterity saving throws are the most common — dodge a fireball, avoid a trap, duck a breath weapon. "Roll a DEX save" when something is coming at them and they need to get out of the way.',
+        skills: ['Acrobatics', 'Sleight of Hand', 'Stealth'],
+    },
+    con: {
+        name: 'Constitution',
+        description: 'Measures health, stamina, and vital force. Constitution determines your Hit Points (HP). There are no skills tied to Constitution. CON checks are rare but might be used for holding breath, forced marches, or resisting poison.',
+        saves: 'Constitution saving throws resist poisons, diseases, exhaustion, and maintaining concentration on spells when taking damage.',
+        skills: [],
+    },
+    int: {
+        name: 'Intelligence',
+        description: 'Measures mental acuity, accuracy of recall, and the ability to reason. Intelligence is the spellcasting ability for Wizards, Artificers, and some subclasses. Ask for INT checks when a character needs to recall information.',
+        saves: 'Intelligence saving throws resist mind-affecting illusions, psychic damage, and effects that assault the mind directly (like a Mind Flayer\'s Mind Blast).',
+        skills: ['Arcana', 'History', 'Investigation', 'Nature', 'Religion'],
+    },
+    wis: {
+        name: 'Wisdom',
+        description: 'Reflects perceptiveness and intuition. Wisdom is the spellcasting ability for Clerics, Druids, and Rangers. WIS determines Passive Perception, the most commonly used passive score.',
+        saves: 'Wisdom saving throws resist charm effects, fear effects, and possession. "Roll a WIS save" when something tries to control, frighten, or deceive their senses.',
+        skills: ['Animal Handling', 'Insight', 'Medicine', 'Perception', 'Survival'],
+    },
+    cha: {
+        name: 'Charisma',
+        description: 'Measures force of personality, confidence, and eloquence. Charisma is the spellcasting ability for Bards, Paladins, Sorcerers, and Warlocks. It represents both social grace and raw willpower.',
+        saves: 'Charisma saving throws resist banishment, planar effects, and forced soul extraction. "Roll a CHA save" when something tries to unmake or displace their very being.',
+        skills: ['Deception', 'Intimidation', 'Performance', 'Persuasion'],
+    },
+};
+
+export const SKILL_DESCRIPTIONS: Record<string, { description: string; whenToUse: string; exampleDC: string }> = {
+    'Acrobatics': {
+        description: 'Covers your attempt to stay on your feet in a tricky situation, such as trying to run across ice, balance on a tightrope, or stay upright on a ship\'s deck.',
+        whenToUse: 'Ask for an Acrobatics check when a player wants to: perform aerial maneuvers, land on their feet, tumble through enemy space, maintain balance, escape a grapple using agility.',
+        exampleDC: 'DC 10: Walk a plank • DC 15: Tumble through enemy space • DC 20: Backflip off a wall',
+    },
+    'Animal Handling': {
+        description: 'Measures your ability to calm, control, or understand an animal\'s intentions. It covers riding mounts, training animals, and calming frightened beasts.',
+        whenToUse: 'Ask for Animal Handling when a player wants to: calm a spooked horse, convince a wild animal not to attack, ride a mount during combat, train an animal.',
+        exampleDC: 'DC 10: Calm a trained horse • DC 15: Control an untrained mount • DC 20: Befriend a wild beast',
+    },
+    'Arcana': {
+        description: 'Measures your ability to recall lore about spells, magic items, planes of existence, and magical beasts. This is the "do I know what that spell is" check.',
+        whenToUse: 'Ask for Arcana when a player wants to: identify a spell being cast, recall magical lore, understand magical glyphs or runes, know about planar creatures.',
+        exampleDC: 'DC 10: Identify a common spell • DC 15: Recall obscure magical lore • DC 20: Understand rare planar phenomena',
+    },
+    'Athletics': {
+        description: 'Covers difficult situations you encounter while climbing, jumping, or swimming. Also used for grappling and shoving in combat.',
+        whenToUse: 'Ask for Athletics when a player wants to: climb a wall, jump a chasm, swim in rough waters, grapple or shove a creature, break down a door.',
+        exampleDC: 'DC 10: Climb a rough wall • DC 15: Swim in choppy water • DC 20: Climb a slippery cliff face',
+    },
+    'Deception': {
+        description: 'Determines whether you can convincingly hide the truth, either verbally or through actions. Covers everything from misleading others through ambiguity to telling outright lies.',
+        whenToUse: 'Ask for Deception when a player wants to: lie convincingly, disguise their intentions, create a diversion, fast-talk a guard, maintain a false identity.',
+        exampleDC: 'DC 10: Tell a simple lie • DC 15: Deceive a suspicious NPC • DC 20: Fool a seasoned interrogator',
+    },
+    'History': {
+        description: 'Measures your ability to recall lore about historical events, legendary people, ancient kingdoms, past disputes, and recent wars.',
+        whenToUse: 'Ask for History when a player wants to: recall historical facts, identify ancient symbols, know about a noble lineage, understand cultural significance of a place.',
+        exampleDC: 'DC 10: Common historical knowledge • DC 15: Obscure regional history • DC 20: Ancient lost civilizations',
+    },
+    'Insight': {
+        description: 'Determines whether you can detect the true intentions of a creature — reading body language, speech habits, and changes in mannerisms.',
+        whenToUse: 'Ask for Insight when a player wants to: determine if someone is lying, sense an ambush, read a creature\'s mood, detect hidden motives. This is the classic "can I tell if they\'re lying?"',
+        exampleDC: 'DC 10: Notice obvious discomfort • DC 15: Detect a well-crafted lie • DC 20: Read a master deceiver',
+    },
+    'Intimidation': {
+        description: 'Measures your ability to influence someone through overt threats, hostile actions, and physical violence. This includes attempting to pry information out of a prisoner.',
+        whenToUse: 'Ask for Intimidation when a player wants to: threaten an NPC, demand information, use physical presence to cow someone, force a creature to back down.',
+        exampleDC: 'DC 10: Intimidate a commoner • DC 15: Cow a bandit • DC 20: Stare down a veteran warrior',
+    },
+    'Investigation': {
+        description: 'Measures your ability to look for clues and make deductions based on those clues. This is the "active searching" skill — piecing together clues to reach a conclusion.',
+        whenToUse: 'Ask for Investigation when a player wants to: search for hidden compartments, deduce a trap\'s mechanism, find clues at a crime scene, research in a library, see through an illusion.',
+        exampleDC: 'DC 10: Find a hidden drawer • DC 15: Deduce a trap mechanism • DC 20: Piece together fragmented clues',
+    },
+    'Medicine': {
+        description: 'Lets you try to stabilize a dying companion or diagnose an illness.',
+        whenToUse: 'Ask for Medicine when a player wants to: stabilize a dying creature (DC 10), diagnose a disease or poison, determine cause of death, treat wounds without magic.',
+        exampleDC: 'DC 10: Stabilize a dying creature • DC 15: Diagnose a disease • DC 20: Identify a rare poison',
+    },
+    'Nature': {
+        description: 'Measures your ability to recall lore about terrain, plants, animals, weather, and natural cycles.',
+        whenToUse: 'Ask for Nature when a player wants to: identify a plant or animal, predict weather, recall terrain information, know about natural hazards, identify a natural phenomenon.',
+        exampleDC: 'DC 10: Identify common plants • DC 15: Recall regional ecology • DC 20: Identify rare magical herbs',
+    },
+    'Perception': {
+        description: 'Measures your general awareness of surroundings and keenness of senses. This is the most commonly rolled skill in D&D. Passive Perception is always "on."',
+        whenToUse: 'Ask for Perception when a player wants to: spot a hiding creature, hear sounds through a door, notice something unusual, detect an approaching enemy. Use Passive Perception for checks they don\'t actively make.',
+        exampleDC: 'DC 10: Notice an open door • DC 15: Hear whispers through a wall • DC 20: Spot a camouflaged creature',
+    },
+    'Performance': {
+        description: 'Determines how well you can delight an audience with music, dance, acting, storytelling, or some other form of entertainment.',
+        whenToUse: 'Ask for Performance when a player wants to: entertain a crowd, impress a noble, use a Bardic performance, act in a disguise (in a theatrical sense), play an instrument.',
+        exampleDC: 'DC 10: Perform at a tavern • DC 15: Impress a noble audience • DC 20: Give a legendary performance',
+    },
+    'Persuasion': {
+        description: 'Measures your ability to influence someone with tact, social graces, or good nature. Persuasion uses good faith — if using threats, that\'s Intimidation.',
+        whenToUse: 'Ask for Persuasion when a player wants to: convince an NPC to help, negotiate a better price, make a diplomatic appeal, sway a crowd with a speech.',
+        exampleDC: 'DC 10: Ask a friendly NPC for a favor • DC 15: Negotiate with a merchant • DC 20: Sway a hostile noble',
+    },
+    'Religion': {
+        description: 'Measures your ability to recall lore about deities, rites and prayers, religious hierarchies, holy symbols, and the practices of secret cults.',
+        whenToUse: 'Ask for Religion when a player wants to: identify a deity\'s symbol, recall religious lore, understand a religious ceremony, know about undead or fiends.',
+        exampleDC: 'DC 10: Recognize a common deity • DC 15: Recall obscure religious doctrine • DC 20: Identify an ancient cult ritual',
+    },
+    'Sleight of Hand': {
+        description: 'Measures your manual trickery — pickpocketing, planting something, or performing legerdemain. Also used for disabling tiny mechanical devices like traps.',
+        whenToUse: 'Ask for Sleight of Hand when a player wants to: pick a pocket, plant an item on someone, conceal an item, cheat at a dice game, perform a card trick.',
+        exampleDC: 'DC 10: Palm a coin • DC 15: Pick a pocket • DC 20: Swap an item unnoticed mid-conversation',
+    },
+    'Stealth': {
+        description: 'Measures your attempt to conceal yourself from enemies, slink past guards, slip away without being noticed, or sneak up on someone.',
+        whenToUse: 'Ask for Stealth when a player wants to: hide from enemies, move silently, sneak past guards, follow someone without being noticed. Contests against Perception.',
+        exampleDC: 'DC 10: Hide behind full cover • DC 15: Sneak past an attentive guard • DC 20: Move silently across creaky floorboards',
+    },
+    'Survival': {
+        description: 'Measures your ability to follow tracks, hunt wild game, guide your group through wastelands, predict weather, or avoid natural hazards.',
+        whenToUse: 'Ask for Survival when a player wants to: track a creature, forage for food, navigate in the wilderness, find shelter, identify animal tracks.',
+        exampleDC: 'DC 10: Follow fresh tracks • DC 15: Track in rain • DC 20: Follow a creature that covered its tracks',
+    },
+};

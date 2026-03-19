@@ -1,0 +1,148 @@
+[
+    {
+        "id": "empty-dungeon",
+        "name": "Empty Dungeon",
+        "description": "A standard 20x20 stone floor.",
+        "gridWidth": 20,
+        "gridHeight": 20,
+        "backgroundColor": "#1c1917",
+        "gridColor": "rgba(120, 113, 108, 0.2)",
+        "shapes": []
+    },
+    {
+        "id": "small-room",
+        "name": "Small Chamber",
+        "description": "10x10 stone room with walls.",
+        "gridWidth": 12,
+        "gridHeight": 12,
+        "backgroundColor": "#0c0a09",
+        "gridColor": "rgba(120, 113, 108, 0.4)",
+        "shapes": [
+            {
+                "id": "wall-top",
+                "type": "rectangle",
+                "points": [
+                    {
+                        "col": 1,
+                        "row": 1
+                    },
+                    {
+                        "col": 11,
+                        "row": 1
+                    }
+                ],
+                "style": {
+                    "stroke": "#78716c",
+                    "strokeWidth": 4,
+                    "fill": "rgba(0,0,0,0)",
+                    "dashed": false
+                },
+                "label": "Wall",
+                "isBlockingLoS": true,
+                "isBlockingTerrain": true
+            },
+            {
+                "id": "wall-bottom",
+                "type": "rectangle",
+                "points": [
+                    {
+                        "col": 1,
+                        "row": 11
+                    },
+                    {
+                        "col": 11,
+                        "row": 11
+                    }
+                ],
+                "style": {
+                    "stroke": "#78716c",
+                    "strokeWidth": 4,
+                    "fill": "rgba(0,0,0,0)",
+                    "dashed": false
+                },
+                "label": "Wall",
+                "isBlockingLoS": true,
+                "isBlockingTerrain": true
+            },
+            {
+                "id": "wall-left",
+                "type": "rectangle",
+                "points": [
+                    {
+                        "col": 1,
+                        "row": 1
+                    },
+                    {
+                        "col": 1,
+                        "row": 11
+                    }
+                ],
+                "style": {
+                    "stroke": "#78716c",
+                    "strokeWidth": 4,
+                    "fill": "rgba(0,0,0,0)",
+                    "dashed": false
+                },
+                "label": "Wall",
+                "isBlockingLoS": true,
+                "isBlockingTerrain": true
+            },
+            {
+                "id": "wall-right",
+                "type": "rectangle",
+                "points": [
+                    {
+                        "col": 11,
+                        "row": 1
+                    },
+                    {
+                        "col": 11,
+                        "row": 11
+                    }
+                ],
+                "style": {
+                    "stroke": "#78716c",
+                    "strokeWidth": 4,
+                    "fill": "rgba(0,0,0,0)",
+                    "dashed": false
+                },
+                "label": "Wall",
+                "isBlockingLoS": true,
+                "isBlockingTerrain": true
+            }
+        ]
+    },
+    {
+        "id": "forest-glade",
+        "name": "Forest Glade",
+        "description": "30x30 green clearing.",
+        "gridWidth": 30,
+        "gridHeight": 30,
+        "backgroundColor": "#064e3b",
+        "gridColor": "rgba(16, 185, 129, 0.2)",
+        "shapes": [
+            {
+                "id": "bush-1",
+                "type": "circle",
+                "points": [
+                    {
+                        "col": 5,
+                        "row": 5
+                    },
+                    {
+                        "col": 7,
+                        "row": 7
+                    }
+                ],
+                "style": {
+                    "stroke": "#065f46",
+                    "strokeWidth": 2,
+                    "fill": "rgba(22, 163, 74, 0.4)",
+                    "dashed": false
+                },
+                "label": "Bush",
+                "isDifficultTerrain": true
+            }
+        ]
+    }
+]

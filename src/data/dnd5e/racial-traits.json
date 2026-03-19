@@ -1,0 +1,211 @@
+[
+    {
+        "id": "dragonborn-breath-weapon",
+        "name": "Breath Weapon",
+        "type": "action",
+        "source": "Dragonborn",
+        "description": "You can use your action to exhale destructive energy. Your draconic ancestry determines the size, shape, and damage type of the exhalation. When you use your breath weapon, each creature in the area of the exhalation must make a saving throw, the type of which is determined by your draconic ancestry. The DC for this saving throw equals 8 + your Constitution modifier + your proficiency bonus. A creature takes 2d6 damage on a failed save, and half as much damage on a successful one. The damage increases to 3d6 at 6th level, 4d6 at 11th level, and 5d6 at 16th level. After you use your breath weapon, you can't use it again until you complete a short or long rest.",
+        "icon": "flame",
+        "costs": [
+            {
+                "resource": "action",
+                "amount": 1
+            },
+            {
+                "resource": "featureUse",
+                "featureId": "dragonborn-breath-weapon",
+                "amount": 1
+            }
+        ],
+        "prerequisites": [
+            {
+                "type": "hasResource",
+                "resource": "featureUse",
+                "itemId": "dragonborn-breath-weapon"
+            }
+        ]
+    },
+    {
+        "id": "orc-aggressive",
+        "name": "Aggressive",
+        "type": "bonus",
+        "source": "Orc",
+        "description": "As a bonus action, you can move up to your speed toward an enemy of your choice that you can see or hear. You must end this move closer to the enemy than you started.",
+        "icon": "fast-forward",
+        "costs": [
+            {
+                "resource": "bonus",
+                "amount": 1
+            }
+        ]
+    },
+    {
+        "id": "goblin-nimble-escape",
+        "name": "Nimble Escape",
+        "type": "bonus",
+        "source": "Goblin",
+        "description": "You can take the Disengage or Hide action as a bonus action on each of your turns.",
+        "icon": "eye-off",
+        "costs": [
+            {
+                "resource": "bonus",
+                "amount": 1
+            }
+        ]
+    },
+    {
+        "id": "half-orc-relentless-endurance",
+        "name": "Relentless Endurance",
+        "type": "free",
+        "source": "Half-Orc",
+        "description": "When you are reduced to 0 hit points but not killed outright, you can drop to 1 hit point instead. You can't use this feature again until you finish a long rest.",
+        "icon": "heart-crack",
+        "costs": [
+            {
+                "resource": "featureUse",
+                "featureId": "half-orc-relentless-endurance",
+                "amount": 1
+            }
+        ],
+        "prerequisites": [
+            {
+                "type": "hasResource",
+                "resource": "featureUse",
+                "itemId": "half-orc-relentless-endurance"
+            }
+        ]
+    },
+    {
+        "id": "halfling-lucky",
+        "name": "Lucky",
+        "type": "free",
+        "source": "Halfling",
+        "description": "When you roll a 1 on the d20 for an attack roll, ability check, or saving throw, you can reroll the die and must use the new roll.",
+        "icon": "clover",
+        "costs": []
+    },
+    {
+        "id": "halfling-brave",
+        "name": "Brave",
+        "type": "free",
+        "source": "Halfling",
+        "description": "You have advantage on saving throws against being frightened.",
+        "icon": "shield",
+        "costs": []
+    },
+    {
+        "id": "elf-fey-ancestry",
+        "name": "Fey Ancestry",
+        "type": "free",
+        "source": "Elf",
+        "description": "You have advantage on saving throws against being charmed, and magic can't put you to sleep.",
+        "icon": "sparkles",
+        "costs": []
+    },
+    {
+        "id": "elf-trance",
+        "name": "Trance",
+        "type": "free",
+        "source": "Elf",
+        "description": "Elves don't need to sleep. Instead, they meditate deeply, remaining semiconscious, for 4 hours a day. (The Common word for such meditation is 'trance.') While meditating, you can dream after a fashion; such dreams are actually mental exercises that have become reflexive through years of practice. After resting in this way, you gain the same benefit that a human does from 8 hours of sleep.",
+        "icon": "moon",
+        "costs": []
+    },
+    {
+        "id": "dwarf-dwarven-resilience",
+        "name": "Dwarven Resilience",
+        "type": "free",
+        "source": "Dwarf",
+        "description": "You have advantage on saving throws against poison, and you have resistance against poison damage.",
+        "icon": "shield-check",
+        "costs": []
+    },
+    {
+        "id": "dwarf-stonecunning",
+        "name": "Stonecunning",
+        "type": "free",
+        "source": "Dwarf",
+        "description": "Whenever you make an Intelligence (History) check related to the origin of stonework, you are considered proficient in the History skill and add double your proficiency bonus to the check, instead of your normal proficiency bonus.",
+        "icon": "mountain",
+        "costs": []
+    },
+    {
+        "id": "gnome-gnome-cunning",
+        "name": "Gnome Cunning",
+        "type": "free",
+        "source": "Gnome",
+        "description": "You have advantage on all Intelligence, Wisdom, and Charisma saving throws against magic.",
+        "icon": "brain",
+        "costs": []
+    },
+    {
+        "id": "tiefling-hellish-rebuke",
+        "name": "Hellish Rebuke",
+        "type": "reaction",
+        "source": "Tiefling",
+        "description": "When you reach 3rd level, you can cast the Hellish Rebuke spell as a 2nd-level spell once with this trait and regain the ability to do so when you finish a long rest. Charisma is your spellcasting ability for this spell. In response to being damaged, the creature that damaged you must make a Dexterity saving throw. A creature takes 3d10 fire damage on a failed save, or half as much damage on a successful one.",
+        "icon": "flame",
+        "costs": [
+            {
+                "resource": "reaction",
+                "amount": 1
+            },
+            {
+                "resource": "featureUse",
+                "featureId": "tiefling-hellish-rebuke",
+                "amount": 1
+            }
+        ],
+        "prerequisites": [
+            {
+                "type": "hasResource",
+                "resource": "featureUse",
+                "itemId": "tiefling-hellish-rebuke"
+            }
+        ]
+    },
+    {
+        "id": "tiefling-darkness",
+        "name": "Darkness (Infernal Legacy)",
+        "type": "action",
+        "source": "Tiefling",
+        "description": "When you reach 5th level, you can cast the Darkness spell once with this trait and regain the ability to do so when you finish a long rest. Charisma is your spellcasting ability for this spell.",
+        "icon": "cloud",
+        "costs": [
+            {
+                "resource": "action",
+                "amount": 1
+            },
+            {
+                "resource": "featureUse",
+                "featureId": "tiefling-darkness",
+                "amount": 1
+            }
+        ],
+        "prerequisites": [
+            {
+                "type": "hasResource",
+                "resource": "featureUse",
+                "itemId": "tiefling-darkness"
+            }
+        ]
+    },
+    {
+        "id": "half-orc-savage-attacks",
+        "name": "Savage Attacks",
+        "type": "free",
+        "source": "Half-Orc",
+        "description": "When you score a critical hit with a melee weapon attack, you can roll one of the weapon's damage dice one additional time and add it to the extra damage of the critical hit.",
+        "icon": "swords",
+        "costs": []
+    },
+    {
+        "id": "human-extra-feat",
+        "name": "Extra Feat (Variant Human)",
+        "type": "free",
+        "source": "Human (Variant)",
+        "description": "You gain one feat of your choice. This feat should be selected during character creation.",
+        "icon": "star",
+        "costs": []
+    }
+]

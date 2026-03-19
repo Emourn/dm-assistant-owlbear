@@ -1,0 +1,1552 @@
+{
+  "id": "863b7f69-b496-48f3-94f4-8f4ac1920e5f",
+  "name": "Seelie",
+  "system": "dnd5e",
+  "playerName": "dxMourn",
+  "race": "Elf",
+  "className": "Druid",
+  "subclass": "",
+  "level": 1,
+  "background": "Guide",
+  "alignment": "",
+  "experience": 0,
+  "abilityScores": {
+    "str": 11,
+    "dex": 14,
+    "con": 13,
+    "int": 7,
+    "wis": 19,
+    "cha": 10
+  },
+  "savingThrows": [
+    "int",
+    "wis"
+  ],
+  "skills": [
+    {
+      "name": "Acrobatics",
+      "stat": "dex",
+      "proficient": false,
+      "expertise": false,
+      "bonus": 0
+    },
+    {
+      "name": "Animal Handling",
+      "stat": "wis",
+      "proficient": true,
+      "expertise": false,
+      "bonus": 0
+    },
+    {
+      "name": "Arcana",
+      "stat": "int",
+      "proficient": true,
+      "expertise": false,
+      "bonus": 0
+    },
+    {
+      "name": "Athletics",
+      "stat": "str",
+      "proficient": false,
+      "expertise": false,
+      "bonus": 0
+    },
+    {
+      "name": "Deception",
+      "stat": "cha",
+      "proficient": false,
+      "expertise": false,
+      "bonus": 0
+    },
+    {
+      "name": "History",
+      "stat": "int",
+      "proficient": false,
+      "expertise": false,
+      "bonus": 0
+    },
+    {
+      "name": "Insight",
+      "stat": "wis",
+      "proficient": true,
+      "expertise": false,
+      "bonus": 0,
+      "source": "Species: Elf",
+      "sourceId": "species:-elf"
+    },
+    {
+      "name": "Intimidation",
+      "stat": "cha",
+      "proficient": false,
+      "expertise": false,
+      "bonus": 0
+    },
+    {
+      "name": "Investigation",
+      "stat": "int",
+      "proficient": false,
+      "expertise": false,
+      "bonus": 0
+    },
+    {
+      "name": "Medicine",
+      "stat": "wis",
+      "proficient": false,
+      "expertise": false,
+      "bonus": 0
+    },
+    {
+      "name": "Nature",
+      "stat": "int",
+      "proficient": false,
+      "expertise": false,
+      "bonus": 0
+    },
+    {
+      "name": "Perception",
+      "stat": "wis",
+      "proficient": true,
+      "expertise": false,
+      "bonus": 0,
+      "source": "Species: Elf",
+      "sourceId": "species:-elf"
+    },
+    {
+      "name": "Performance",
+      "stat": "cha",
+      "proficient": false,
+      "expertise": false,
+      "bonus": 0
+    },
+    {
+      "name": "Persuasion",
+      "stat": "cha",
+      "proficient": false,
+      "expertise": false,
+      "bonus": 0
+    },
+    {
+      "name": "Religion",
+      "stat": "int",
+      "proficient": false,
+      "expertise": false,
+      "bonus": 0
+    },
+    {
+      "name": "Sleight of Hand",
+      "stat": "dex",
+      "proficient": false,
+      "expertise": false,
+      "bonus": 0
+    },
+    {
+      "name": "Stealth",
+      "stat": "dex",
+      "proficient": true,
+      "expertise": false,
+      "bonus": 0,
+      "source": "Background: Guide",
+      "sourceId": "background:-guide"
+    },
+    {
+      "name": "Survival",
+      "stat": "wis",
+      "proficient": true,
+      "expertise": false,
+      "bonus": 0,
+      "source": "Background: Guide",
+      "sourceId": "background:-guide"
+    }
+  ],
+  "senses": "Darkvision 60 ft.",
+  "passivePerception": 16,
+  "passiveInvestigation": 8,
+  "passiveInsight": 16,
+  "languages": "Common, Druidic, Elvish, Lantanese",
+  "proficiencies": "Weapons: Simple, Armor: Light",
+  "ac": 12,
+  "maxHp": 9,
+  "currentHp": 9,
+  "tempHp": 0,
+  "hitDice": "d8",
+  "speed": "30 ft.",
+  "initiativeMod": 2,
+  "proficiencyBonus": 2,
+  "spellcastingAbility": "wis",
+  "spellSaveDc": 14,
+  "spellAttackMod": 6,
+  "spellSlots": [
+    {
+      "current": 0,
+      "max": 0
+    },
+    {
+      "current": 2,
+      "max": 2
+    },
+    {
+      "current": 0,
+      "max": 0
+    },
+    {
+      "current": 0,
+      "max": 0
+    },
+    {
+      "current": 0,
+      "max": 0
+    },
+    {
+      "current": 0,
+      "max": 0
+    },
+    {
+      "current": 0,
+      "max": 0
+    },
+    {
+      "current": 0,
+      "max": 0
+    },
+    {
+      "current": 0,
+      "max": 0
+    },
+    {
+      "current": 0,
+      "max": 0
+    }
+  ],
+  "spells": [
+    {
+      "id": "ec59bf63-a7b1-42fd-a5e1-ffeef2a08d8e",
+      "name": "Thorn Whip",
+      "level": 0,
+      "school": "Transmutation",
+      "castingTime": "1 action",
+      "range": "30 feet",
+      "components": {
+        "v": true,
+        "s": true,
+        "m": true,
+        "mDesc": "the stem of a plant with thorns"
+      },
+      "duration": "Instantaneous",
+      "concentration": false,
+      "ritual": false,
+      "description": "You create a vine-like whip covered in thorns that lashes out at your command toward a creature in range. Make a melee spell attack against the target. On a hit, the target takes 1d6 Piercing damage, and if it is Large or smaller, you can pull it up to 10 feet closer to you.",
+      "prepared": false,
+      "source": "XPHB",
+      "higherLevels": "**Cantrip Upgrade.** The damage increases by 1d6 when you reach levels 5 (2d6), 11 (3d6), and 17 (4d6).",
+      "isHomebrew": false,
+      "is2024": true
+    },
+    {
+      "id": "1bb99de8-d117-4190-b8e9-3ea89296f80e",
+      "name": "Druidcraft",
+      "level": 0,
+      "school": "Transmutation",
+      "castingTime": "1 action",
+      "range": "30 feet",
+      "components": {
+        "v": true,
+        "s": true,
+        "m": false
+      },
+      "duration": "Instantaneous",
+      "concentration": false,
+      "ritual": false,
+      "description": "Whispering to the spirits of nature, you create one of the following effects within range.\n\n**Weather Sensor.** You create a Tiny, harmless sensory effect that predicts what the weather will be at your location for the next 24 hours. The effect might manifest as a golden orb for clear skies, a cloud for rain, falling snowflakes for snow, and so on. This effect persists for 1 round.\n\n**Bloom.** You instantly make a flower blossom, a seed pod open, or a leaf bud bloom.\n\n**Sensory Effect.** You create a harmless sensory effect, such as falling leaves, spectral dancing fairies, a gentle breeze, the sound of an animal, or the faint odor of skunk. The effect must fit in a 5-foot Cube [Area of Effect]|XPHB|Cube.\n\n**Fire Play.** You light or snuff out a candle, a torch, or a campfire.",
+      "prepared": false,
+      "source": "XPHB",
+      "isHomebrew": false,
+      "is2024": true
+    },
+    {
+      "id": "d1f0ed00-5a28-4928-82c7-67e3023a3136",
+      "name": "Starry Wisp",
+      "level": 0,
+      "school": "Evocation",
+      "castingTime": "1 action",
+      "range": "60 feet",
+      "components": {
+        "v": true,
+        "s": true,
+        "m": false
+      },
+      "duration": "Instantaneous",
+      "concentration": false,
+      "ritual": false,
+      "description": "You launch a mote of light at one creature or object within range. Make a ranged spell attack against the target. On a hit, the target takes 1d8 Radiant damage, and until the end of your next turn, it emits Dim Light|XPHB in a 10-foot radius and can't benefit from the Invisible|XPHB condition.",
+      "prepared": false,
+      "source": "XPHB",
+      "higherLevels": "**Cantrip Upgrade.** The damage increases by 1d8 when you reach levels 5 (2d8), 11 (3d8), and 17 (4d8).",
+      "isHomebrew": false,
+      "is2024": true
+    },
+    {
+      "id": "3bb17a10-4072-478e-83fc-69611794dfa8",
+      "name": "Shillelagh",
+      "level": 0,
+      "school": "Transmutation",
+      "castingTime": "1 bonus",
+      "range": "Self",
+      "components": {
+        "v": true,
+        "s": true,
+        "m": true,
+        "mDesc": "mistletoe"
+      },
+      "duration": "1 minute",
+      "concentration": false,
+      "ritual": false,
+      "description": "A Club or Quarterstaff you are holding is imbued with nature's power. For the duration, you can use your spellcasting ability instead of Strength for the attack and damage rolls of melee attacks using that weapon, and the weapon's damage die becomes a d8. If the attack deals damage, it can be Force damage or the weapon's normal damage type (your choice).\n\nThe spell ends early if you cast it again or if you let go of the weapon.",
+      "prepared": false,
+      "source": "XPHB",
+      "higherLevels": "**Cantrip Upgrade.** The damage die changes when you reach levels 5 (d10), 11 (d12), and 17 (2d6).",
+      "isHomebrew": false,
+      "is2024": true
+    },
+    {
+      "id": "1c47d178-b1b9-45df-98c4-8c04dc606dea",
+      "name": "Elementalism",
+      "level": 0,
+      "school": "Transmutation",
+      "castingTime": "1 action",
+      "range": "30 feet",
+      "components": {
+        "v": true,
+        "s": true,
+        "m": false
+      },
+      "duration": "Instantaneous",
+      "concentration": false,
+      "ritual": false,
+      "description": "You exert control over the elements, creating one of the following effects within range.\n\n**Beckon Air.** You create a breeze strong enough to ripple cloth, stir dust, rustle leaves, and close open doors and shutters, all in a 5-foot Cube [Area of Effect]|XPHB|Cube. Doors and shutters being held open by someone or something aren't affected.\n\n**Beckon Earth.** You create a thin shroud of dust or sand that covers surfaces in a 5-foot-square area, or you cause a single word to appear in your handwriting in a patch of dirt or sand.\n\n**Beckon Fire.** You create a thin cloud of harmless embers and colored, scented smoke in a 5-foot Cube [Area of Effect]|XPHB|Cube. You choose the color and scent, and the embers can light candles, torches, or lamps in that area. The smoke's scent lingers for 1 minute.\n\n**Beckon Water.** You create a spray of cool mist that lightly dampens creatures and objects in a 5-foot Cube [Area of Effect]|XPHB|Cube. Alternatively, you create 1 cup of clean water either in an open container or on a surface, and the water evaporates in 1 minute.\n\n**Sculpt Element.** You cause dirt, sand, fire, smoke, mist, or water that can fit in a 1-foot Cube [Area of Effect]|XPHB|Cube to assume a crude shape (such as that of a creature) for 1 hour.",
+      "prepared": false,
+      "source": "XPHB",
+      "isHomebrew": false,
+      "is2024": true
+    },
+    {
+      "id": "b6b32a2a-791e-4794-8b67-8e0e2b5476f7",
+      "name": "Message",
+      "level": 0,
+      "school": "Transmutation",
+      "castingTime": "1 action",
+      "range": "120 feet",
+      "components": {
+        "v": false,
+        "s": true,
+        "m": true,
+        "mDesc": "a copper wire"
+      },
+      "duration": "1 round",
+      "concentration": false,
+      "ritual": false,
+      "description": "You point toward a creature within range and whisper a message. The target (and only the target) hears the message and can reply in a whisper that only you can hear.\n\nYou can cast this spell through solid objects if you are familiar with the target and know it is beyond the barrier. Magical silence; 1 foot of stone, metal, or wood; or a thin sheet of lead blocks the spell.",
+      "prepared": false,
+      "source": "XPHB",
+      "isHomebrew": false,
+      "is2024": true
+    },
+    {
+      "id": "e2b16e93-1ab9-49d5-8815-919b90237dae",
+      "name": "Healing Word",
+      "level": 1,
+      "school": "Abjuration",
+      "castingTime": "1 bonus action",
+      "range": "60 feet",
+      "components": {
+        "v": true
+      },
+      "duration": "Instantaneous",
+      "concentration": false,
+      "ritual": false,
+      "description": "A creature of your choice that you can see within range regains hit points equal to 2d4 + your spellcasting ability modifier.",
+      "prepared": false,
+      "source": "PHB 2024",
+      "higherLevels": "The healing increases by 2d4 for each slot level above 1st.",
+      "is2024": true,
+      "effects": [
+        {
+          "type": "heal",
+          "dice": "2d4",
+          "addAbilityModifier": true
+        }
+      ]
+    },
+    {
+      "id": "98a7cfae-a0a2-4a8a-a677-f2ae7cf7860b",
+      "name": "Entangle",
+      "level": 1,
+      "school": "Conjuration",
+      "castingTime": "1 action",
+      "range": "90 feet",
+      "components": {
+        "v": true,
+        "s": true,
+        "m": false
+      },
+      "duration": "Concentration, 1 minute",
+      "concentration": true,
+      "ritual": false,
+      "description": "Grasping plants sprout from the ground in a 20-foot square within range. For the duration, these plants turn the ground in the area into Difficult Terrain|XPHB. They disappear when the spell ends.\n\nEach creature (other than you) in the area when you cast the spell must succeed on a Strength saving throw or have the Restrained|XPHB condition until the spell ends. A Restrained|XPHB creature can take an action to make a Strength (Athletics|XPHB) check against your spell save DC. On a success, it frees itself from the grasping plants and is no longer Restrained|XPHB by them.",
+      "prepared": false,
+      "source": "XPHB",
+      "isHomebrew": false,
+      "is2024": true
+    },
+    {
+      "id": "c456f45d-2279-44f4-86e0-3753612e662b",
+      "name": "Faerie Fire",
+      "level": 1,
+      "school": "Evocation",
+      "castingTime": "1 action",
+      "range": "60 feet",
+      "components": {
+        "v": true,
+        "s": false,
+        "m": false
+      },
+      "duration": "Concentration, 1 minute",
+      "concentration": true,
+      "ritual": false,
+      "description": "Objects in a 20-foot Cube [Area of Effect]|XPHB|Cube within range are outlined in blue, green, or violet light (your choice). Each creature in the Cube [Area of Effect]|XPHB|Cube is also outlined if it fails a Dexterity saving throw. For the duration, objects and affected creatures shed Dim Light|XPHB in a 10-foot radius and can't benefit from the Invisible|XPHB condition.\n\nAttack|XPHB rolls against an affected creature or object have Advantage|XPHB if the attacker can see it.",
+      "prepared": false,
+      "source": "XPHB",
+      "isHomebrew": false,
+      "is2024": true
+    },
+    {
+      "id": "7f4b2181-506d-42ea-9ebd-7387a1e8bb69",
+      "name": "Speak with Animals [R]",
+      "level": 0,
+      "school": "",
+      "castingTime": "1A",
+      "range": "Self",
+      "components": {
+        "v": true,
+        "s": true,
+        "m": false
+      },
+      "duration": "10 minutes",
+      "concentration": false,
+      "ritual": true,
+      "description": "Druidic (Always Prepared)",
+      "prepared": true,
+      "source": "Druidic (Always Prepared)"
+    },
+    {
+      "id": "97912893-991c-4d3c-b382-197358a32050",
+      "name": "Absorb Elements",
+      "level": 1,
+      "school": "Abjuration",
+      "castingTime": "1 reaction",
+      "range": "Self",
+      "components": {
+        "v": false,
+        "s": true,
+        "m": false
+      },
+      "duration": "1 round",
+      "concentration": false,
+      "ritual": false,
+      "description": "The spell captures some of the incoming energy, lessening its effect on you and storing it for your next melee attack. You have resistance to the triggering damage type until the start of your next turn. Also, the first time you hit with a melee attack on your next turn, the target takes an extra 1d6 damage of the triggering type, and the spell ends.",
+      "prepared": false,
+      "source": "XGE",
+      "higherLevels": "**At Higher Levels.** When you cast this spell using a spell slot of 2nd level or higher, the extra damage increases by 1d6|1-9|1d6 for each slot level above 1st.",
+      "isHomebrew": false,
+      "is2024": false
+    },
+    {
+      "id": "a776950c-e97f-43ee-8f25-5fa81bb0521d",
+      "name": "Beast Bond",
+      "level": 1,
+      "school": "Divination",
+      "castingTime": "1 action",
+      "range": "Touch",
+      "components": {
+        "v": true,
+        "s": true,
+        "m": true,
+        "mDesc": "a bit of fur wrapped in a cloth"
+      },
+      "duration": "Concentration, 10 minutes",
+      "concentration": true,
+      "ritual": false,
+      "description": "You establish a telepathic link with one beast you touch that is friendly to you or charmed by you. The spell fails if the beast's Intelligence score is 4 or higher. Until the spell ends, the link is active while you and the beast are within line of sight of each other. Through the link, the beast can understand your telepathic messages to it, and it can telepathically communicate simple emotions and concepts back to you. While the link is active, the beast gains advantage on attack rolls against any creature within 5 feet of you that you can see.",
+      "prepared": false,
+      "source": "XGE",
+      "isHomebrew": false,
+      "is2024": false
+    },
+    {
+      "id": "3eaea440-fe86-44ec-a288-80fbb07cf744",
+      "name": "Earth Tremor",
+      "level": 1,
+      "school": "Evocation",
+      "castingTime": "1 action",
+      "range": "10 feet",
+      "components": {
+        "v": true,
+        "s": true,
+        "m": false
+      },
+      "duration": "Instantaneous",
+      "concentration": false,
+      "ritual": false,
+      "description": "You cause a tremor in the ground within range. Each creature other than you in that area must make a Dexterity saving throw. On a failed save, a creature takes 1d6 bludgeoning damage and is knocked prone. If the ground in that area is loose earth or stone, it becomes difficult terrain||3 until cleared, with each 5-foot-diameter portion requiring at least 1 minute to clear by hand.",
+      "prepared": false,
+      "source": "XGE",
+      "higherLevels": "**At Higher Levels.** When you cast this spell using a spell slot of 2nd level or higher, the damage increases by 1d6|1-9|1d6 for each slot level above 1st.",
+      "isHomebrew": false,
+      "is2024": false
+    },
+    {
+      "id": "c4cbd7fb-498c-4360-b281-d18123529c7f",
+      "name": "Ice Knife",
+      "level": 1,
+      "school": "Conjuration",
+      "castingTime": "1 action",
+      "range": "60 feet",
+      "components": {
+        "v": false,
+        "s": true,
+        "m": true,
+        "mDesc": "a drop of water or a piece of ice"
+      },
+      "duration": "Instantaneous",
+      "concentration": false,
+      "ritual": false,
+      "description": "You create a shard of ice and fling it at one creature within range. Make a ranged spell attack against the target. On a hit, the target takes 1d10 Piercing damage. Hit or miss, the shard then explodes. The target and each creature within 5 feet of it must succeed on a Dexterity saving throw or take 2d6 Cold damage.",
+      "prepared": false,
+      "source": "XPHB",
+      "higherLevels": "**Using a Higher-Level Spell Slot.** The Cold damage increases by 2d6|1-9|1d6 for each spell slot level above 1.",
+      "isHomebrew": false,
+      "is2024": true
+    },
+    {
+      "id": "1bcd00ff-0dfe-4b51-9e4f-0b921a7c5017",
+      "name": "Animal Friendship",
+      "level": 1,
+      "school": "Enchantment",
+      "castingTime": "1 action",
+      "range": "30 feet",
+      "components": {
+        "v": true,
+        "s": true,
+        "m": true,
+        "mDesc": "a morsel of food"
+      },
+      "duration": "24 hours",
+      "concentration": false,
+      "ritual": false,
+      "description": "Target a Beast that you can see within range. The target must succeed on a Wisdom saving throw or have the Charmed|XPHB condition for the duration. If you or one of your allies deals damage to the target, the spells ends.",
+      "prepared": false,
+      "source": "XPHB",
+      "higherLevels": "**Using a Higher-Level Spell Slot.** You can target one additional Beast for each spell slot level above 1.",
+      "isHomebrew": false,
+      "is2024": true
+    },
+    {
+      "id": "6c826045-e42d-4d73-8a2e-3390b495f732",
+      "name": "Fog Cloud",
+      "level": 1,
+      "school": "Conjuration",
+      "castingTime": "1 action",
+      "range": "120 feet",
+      "components": {
+        "v": true,
+        "s": true,
+        "m": false
+      },
+      "duration": "Concentration, 1 hour",
+      "concentration": true,
+      "ritual": false,
+      "description": "You create a 20-foot-radius Sphere [Area of Effect]|XPHB|Sphere of fog centered on a point within range. The Sphere [Area of Effect]|XPHB|Sphere is Heavily Obscured|XPHB. It lasts for the duration or until a strong wind (such as one created by Gust of Wind|XPHB) disperses it.",
+      "prepared": false,
+      "source": "XPHB",
+      "higherLevels": "**Using a Higher-Level Spell Slot.** The fog's radius increases by 20 feet for each spell slot level above 1.",
+      "isHomebrew": false,
+      "is2024": true
+    },
+    {
+      "id": "198bf38d-1a4e-4775-8515-d1e6830f9a8d",
+      "name": "Protection from Evil and Good",
+      "level": 1,
+      "school": "Abjuration",
+      "castingTime": "1 action",
+      "range": "Touch",
+      "components": {
+        "v": true,
+        "s": true,
+        "m": true,
+        "mDesc": "a flask of Holy Water worth 25+ GP, which the spell consumes"
+      },
+      "duration": "Concentration, 10 minutes",
+      "concentration": true,
+      "ritual": false,
+      "description": "Until the spell ends, one willing creature you touch is protected against creatures that are Aberrations, Celestials, Elementals, Fey, Fiends, or Undead. The protection grants several benefits. Creatures of those types have Disadvantage|XPHB on attack rolls against the target. The target also can't be possessed by or gain the Charmed|XPHB or Frightened|XPHB conditions from them. If the target is already possessed, Charmed|XPHB, or Frightened|XPHB by such a creature, the target has Advantage|XPHB on any new saving throw against the relevant effect.",
+      "prepared": false,
+      "source": "XPHB",
+      "isHomebrew": false,
+      "is2024": true
+    },
+    {
+      "id": "f76db358-ab39-4b77-b655-a25c26da14de",
+      "name": "Purify Food and Drink [R]",
+      "level": 0,
+      "school": "",
+      "castingTime": "1A + 10m",
+      "range": "10 ft./5 ft. Sphere",
+      "components": {
+        "v": true,
+        "s": true,
+        "m": false
+      },
+      "duration": "Instantaneous",
+      "concentration": false,
+      "ritual": true,
+      "description": "Druid",
+      "prepared": false,
+      "source": "Druid"
+    },
+    {
+      "id": "358141cf-8b2c-4134-82e6-e3aa8522315f",
+      "name": "Goodberry",
+      "level": 1,
+      "school": "Conjuration",
+      "castingTime": "1 action",
+      "range": "Touch",
+      "components": {
+        "v": true,
+        "s": true,
+        "m": true,
+        "mDesc": "a sprig of mistletoe"
+      },
+      "duration": "24 hours",
+      "concentration": false,
+      "ritual": false,
+      "description": "Ten berries appear in your hand and are infused with magic for the duration. A creature can take a Bonus Action|XPHB to eat one berry. Eating a berry restores 1 Hit Points|XPHB|Hit Point, and the berry provides enough nourishment to sustain a creature for one day.\n\nUneaten berries disappear when the spell ends.",
+      "prepared": false,
+      "source": "XPHB",
+      "isHomebrew": false,
+      "is2024": true
+    },
+    {
+      "id": "d831154f-f34a-4b51-93dd-934540b14862",
+      "name": "Charm Person",
+      "level": 1,
+      "school": "Enchantment",
+      "castingTime": "1 action",
+      "range": "30 feet",
+      "components": {
+        "v": true,
+        "s": true,
+        "m": false
+      },
+      "duration": "1 hour",
+      "concentration": false,
+      "ritual": false,
+      "description": "One Humanoid you can see within range makes a Wisdom saving throw. It does so with Advantage|XPHB if you or your allies are fighting it. On a failed save, the target has the Charmed|XPHB condition until the spell ends or until you or your allies damage it. The Charmed|XPHB creature is Friendly [Attitude]|XPHB|Friendly to you. When the spell ends, the target knows it was Charmed|XPHB by you.",
+      "prepared": false,
+      "source": "XPHB",
+      "higherLevels": "**Using a Higher-Level Spell Slot.** You can target one additional creature for each spell slot level above 1.",
+      "isHomebrew": false,
+      "is2024": true
+    },
+    {
+      "id": "5e71ce09-9d55-4a40-bfc9-fc170c637cec",
+      "name": "Jump",
+      "level": 1,
+      "school": "Transmutation",
+      "castingTime": "1 bonus",
+      "range": "Touch",
+      "components": {
+        "v": true,
+        "s": true,
+        "m": true,
+        "mDesc": "a grasshopper's hind leg"
+      },
+      "duration": "1 minute",
+      "concentration": false,
+      "ritual": false,
+      "description": "You touch a willing creature. Once on each of its turns until the spell ends, that creature can jump up to 30 feet by spending 10 feet of movement.",
+      "prepared": false,
+      "source": "XPHB",
+      "higherLevels": "**Using a Higher-Level Spell Slot.** You can target one additional creature for each spell slot level above 1.",
+      "isHomebrew": false,
+      "is2024": true
+    },
+    {
+      "id": "86370e7e-b04e-4dac-b3e7-8a53189a7a58",
+      "name": "Longstrider",
+      "level": 1,
+      "school": "Transmutation",
+      "castingTime": "1 action",
+      "range": "Touch",
+      "components": {
+        "v": true,
+        "s": true,
+        "m": true,
+        "mDesc": "a pinch of dirt"
+      },
+      "duration": "1 hour",
+      "concentration": false,
+      "ritual": false,
+      "description": "You touch a creature. The target's Speed|XPHB increases by 10 feet until the spell ends.",
+      "prepared": false,
+      "source": "XPHB",
+      "higherLevels": "**Using a Higher-Level Spell Slot.** You can target one additional creature for each spell slot level above 1.",
+      "isHomebrew": false,
+      "is2024": true
+    },
+    {
+      "id": "a271ad11-2f33-4b14-98e0-da5c1dbfa55e",
+      "name": "Create or Destroy Water",
+      "level": 1,
+      "school": "Transmutation",
+      "castingTime": "1 action",
+      "range": "30 feet",
+      "components": {
+        "v": true,
+        "s": true,
+        "m": true,
+        "mDesc": "a mix of water and sand"
+      },
+      "duration": "Instantaneous",
+      "concentration": false,
+      "ritual": false,
+      "description": "You do one of the following:\n\nYou create up to 10 gallons of clean water within range in an open container. Alternatively, the water falls as rain in a 30-foot Cube [Area of Effect]|XPHB|Cube within range, extinguishing exposed flames there.\nYou destroy up to 10 gallons of water in an open container within range. Alternatively, you destroy fog in a 30-foot Cube [Area of Effect]|XPHB|Cube within range.",
+      "prepared": false,
+      "source": "XPHB",
+      "higherLevels": "**Using a Higher-Level Spell Slot.** You create or destroy 10 additional gallons of water, or the size of the Cube [Area of Effect]|XPHB|Cube increases by 5 feet, for each spell slot level above 1.",
+      "isHomebrew": false,
+      "is2024": true
+    },
+    {
+      "id": "17f8cbb9-8225-43fb-ae02-d3cd3ed30249",
+      "name": "Cure Wounds",
+      "level": 1,
+      "school": "Abjuration",
+      "castingTime": "1 action",
+      "range": "Touch",
+      "components": {
+        "v": true,
+        "s": true
+      },
+      "duration": "Instantaneous",
+      "concentration": false,
+      "ritual": false,
+      "description": "A creature you touch regains a number of hit points equal to 2d8 + your spellcasting ability modifier.",
+      "prepared": false,
+      "source": "PHB 2024",
+      "higherLevels": "The healing increases by 2d8 for each slot level above 1st.",
+      "is2024": true,
+      "effects": [
+        {
+          "type": "heal",
+          "dice": "2d8",
+          "addAbilityModifier": true
+        }
+      ]
+    },
+    {
+      "id": "0aed9ec5-2a63-49f8-b0c5-08b5f4bf62ae",
+      "name": "Detect Poison and Disease [R]",
+      "level": 0,
+      "school": "",
+      "castingTime": "1A + 10m",
+      "range": "Self/30 ft. Sphere",
+      "components": {
+        "v": true,
+        "s": true,
+        "m": true
+      },
+      "duration": "Concentration, up to 10 minutes",
+      "concentration": true,
+      "ritual": true,
+      "description": "Druid",
+      "prepared": false,
+      "source": "Druid"
+    },
+    {
+      "id": "49aa13fa-8c17-4310-b284-81f3c62a79ba",
+      "name": "Detect Magic [R]",
+      "level": 0,
+      "school": "",
+      "castingTime": "1A + 10m",
+      "range": "Self/30 ft. Sphere",
+      "components": {
+        "v": true,
+        "s": true,
+        "m": false
+      },
+      "duration": "Concentration, up to 10 minutes",
+      "concentration": true,
+      "ritual": true,
+      "description": "Druid",
+      "prepared": false,
+      "source": "Druid"
+    },
+    {
+      "id": "aa404273-51ea-4ae1-8f91-035fe3ce9093",
+      "name": "Thunderwave",
+      "level": 1,
+      "school": "Evocation",
+      "castingTime": "1 action",
+      "range": "Self",
+      "components": {
+        "v": true,
+        "s": true,
+        "m": false
+      },
+      "duration": "Instantaneous",
+      "concentration": false,
+      "ritual": false,
+      "description": "You unleash a wave of thunderous energy. Each creature in a 15-foot Cube [Area of Effect]|XPHB|Cube originating from you makes a Constitution saving throw. On a failed save, a creature takes 2d8 Thunder damage and is pushed 10 feet away from you. On a successful save, a creature takes half as much damage only.\n\nIn addition, unsecured objects that are entirely within the Cube [Area of Effect]|XPHB|Cube are pushed 10 feet away from you, and a thunderous boom is audible within 300 feet.",
+      "prepared": false,
+      "source": "XPHB",
+      "higherLevels": "**Using a Higher-Level Spell Slot.** The damage increases by 2d8|1-9|1d8 for each spell slot level above 1.",
+      "isHomebrew": false,
+      "is2024": true
+    }
+  ],
+  "inventory": [
+    {
+      "id": "0d9a191f-ce24-4edb-941e-d91eed31230c",
+      "name": "Shield",
+      "quantity": 1,
+      "weight": 6,
+      "isEquipped": false,
+      "isAttuned": false,
+      "description": "Wielding a shield increases your AC by 2.",
+      "type": "armor",
+      "effects": [
+        {
+          "id": "cf15cb34-fc3d-4c4d-8640-90c8f053eb5c",
+          "type": "add_ac_bonus",
+          "value": 2,
+          "target": "ac",
+          "note": "Shield"
+        }
+      ]
+    },
+    {
+      "id": "16f63fc1-cd4e-4b96-813a-fa563288c54c",
+      "name": "Leather",
+      "quantity": 1,
+      "weight": 10,
+      "isEquipped": false,
+      "isAttuned": false,
+      "description": "Light Armor. 11 + Dex.",
+      "type": "armor",
+      "effects": [
+        {
+          "id": "571be07e-e8c9-4c92-8a51-b146fcb702e4",
+          "type": "set_ac",
+          "value": "11 + DEX",
+          "note": "Leather Armor"
+        }
+      ]
+    },
+    {
+      "id": "b6d307bd-92a5-4179-ae31-7a498cc5d3ad",
+      "name": "Sickle",
+      "quantity": 1,
+      "weight": 2,
+      "isEquipped": false,
+      "isAttuned": false,
+      "description": "",
+      "type": "weapon",
+      "damage": "1d4",
+      "effects": []
+    },
+    {
+      "id": "514cff54-1115-4053-9ba8-3d6107291175",
+      "name": "Shortbow",
+      "quantity": 1,
+      "weight": 2,
+      "isEquipped": false,
+      "isAttuned": false,
+      "description": "",
+      "type": "weapon",
+      "damage": "1d6",
+      "effects": []
+    },
+    {
+      "id": "f3ca4d6d-0ea0-431a-a783-0a19b8efd04c",
+      "name": "Backpack",
+      "quantity": 1,
+      "weight": 5,
+      "isEquipped": false,
+      "isAttuned": false,
+      "description": "A container for carrying gear.",
+      "type": "gear",
+      "effects": []
+    },
+    {
+      "id": "10b0509a-6a98-48e9-9b7d-d8ec2633a371",
+      "name": "Cartographer's Tools",
+      "quantity": 1,
+      "weight": 6,
+      "isEquipped": false,
+      "isAttuned": false,
+      "description": "Wisdom\nDraft a map of a small area (15)\nMap|XPHB",
+      "type": "magic",
+      "effects": []
+    },
+    {
+      "id": "d786f23e-d4f8-45ac-a72a-02ec84f9a387",
+      "name": "Bedroll",
+      "quantity": 1,
+      "weight": 7,
+      "isEquipped": false,
+      "isAttuned": false,
+      "description": "Starting equipment from Guide",
+      "type": "gear",
+      "effects": []
+    },
+    {
+      "id": "3635cca1-451d-4c35-b0f8-43730b7fc1bc",
+      "name": "Tent",
+      "quantity": 1,
+      "weight": 20,
+      "isEquipped": false,
+      "isAttuned": false,
+      "description": "A Tent sleeps up to two Small or Medium creatures.",
+      "type": "magic",
+      "effects": []
+    },
+    {
+      "id": "65143299-7883-4025-a878-9e043f2169d4",
+      "name": "Herbalism Kit",
+      "quantity": 1,
+      "weight": 3,
+      "isEquipped": false,
+      "isAttuned": false,
+      "description": "Intelligence\nIdentify a plant (10)\nAntitoxin|XPHB, Candle|XPHB, Healer's Kit|XPHB, Potion of Healing|XDMG",
+      "type": "magic",
+      "effects": []
+    },
+    {
+      "id": "e5032276-16cb-4213-974b-2ea0b90080d7",
+      "name": "Arrows",
+      "quantity": 20,
+      "weight": 1,
+      "isEquipped": false,
+      "isAttuned": false,
+      "description": "Arrows are used with a weapon that has the ammunition property to make a ranged attack. Each time you attack with the weapon, you expend one piece of ammunition. Drawing the ammunition from a quiver, case, or other container is part of the attack (you need a free hand to load a one-handed weapon). At the end of the battle, you can recover half your expended ammunition by taking a minute to search the battlefield.\n\nArrows are typically stored in a Quiver|XPHB (bought separately).",
+      "type": "magic",
+      "effects": []
+    },
+    {
+      "id": "d8be0771-33c7-428b-bf7f-12eb0f0f715a",
+      "name": "Staff",
+      "quantity": 1,
+      "weight": 4,
+      "isEquipped": false,
+      "isAttuned": false,
+      "description": "Weapon: simple",
+      "type": "weapon",
+      "damage": "1d6 bludgeoning",
+      "effects": []
+    },
+    {
+      "id": "a3bb3bf3-662f-4245-990f-85c91aae8f29",
+      "name": "Traveler's Clothes",
+      "quantity": 1,
+      "weight": 4,
+      "isEquipped": false,
+      "isAttuned": false,
+      "description": "Traveler's Clothes are resilient garments designed for travel in various environments.",
+      "type": "magic",
+      "effects": []
+    },
+    {
+      "id": "abec78dd-c140-44a2-b898-fb63dc235744",
+      "name": "Crowbar",
+      "quantity": 1,
+      "weight": 5,
+      "isEquipped": false,
+      "isAttuned": false,
+      "description": "Using a Crowbar gives you Advantage|XPHB on Strength checks where the Crowbar's leverage can be applied.",
+      "type": "magic",
+      "effects": []
+    },
+    {
+      "id": "35e35428-04e7-45f3-8a50-a4a9a42c2607",
+      "name": "Hammer",
+      "quantity": 1,
+      "weight": 3,
+      "isEquipped": false,
+      "isAttuned": false,
+      "description": "",
+      "type": "magic",
+      "effects": []
+    },
+    {
+      "id": "edc451c0-968e-4418-af8b-b0a55dab43b8",
+      "name": "Piton",
+      "quantity": 10,
+      "weight": 0.25,
+      "isEquipped": false,
+      "isAttuned": false,
+      "description": "",
+      "type": "magic",
+      "effects": []
+    },
+    {
+      "id": "0edffed6-8ecc-4772-b48c-3e5f04aa43e6",
+      "name": "Rations (1 day)",
+      "quantity": 10,
+      "weight": 2,
+      "isEquipped": false,
+      "isAttuned": false,
+      "description": "Rations consist of dry foods suitable for extended travel, including jerky, dried fruit, hardtack, and nuts.",
+      "type": "magic",
+      "effects": []
+    },
+    {
+      "id": "3165a4b7-42a0-458b-9b7a-4492de673d3b",
+      "name": "Rope, Hempen (50 feet)",
+      "quantity": 1,
+      "weight": 10,
+      "isEquipped": false,
+      "isAttuned": false,
+      "description": "",
+      "type": "gear"
+    },
+    {
+      "id": "067e1824-242a-436a-8845-a9ce6599d532",
+      "name": "Tinderbox",
+      "quantity": 1,
+      "weight": 1,
+      "isEquipped": false,
+      "isAttuned": false,
+      "description": "A Tinderbox is a small container holding flint, fire steel, and tinder (usually dry cloth soaked in light oil) used to kindle a fire. Using it to light a Candle|XPHB, Lamp|XPHB, Hooded Lantern|XPHB|Lantern, or Torch|XPHB—or anything else with exposed fuel—takes a Bonus Action|XPHB. Lighting any other fire takes 1 minute.",
+      "type": "magic",
+      "effects": []
+    },
+    {
+      "id": "fcc262d7-09a6-475f-850e-2383f34ae990",
+      "name": "Torch",
+      "quantity": 10,
+      "weight": 1,
+      "isEquipped": false,
+      "isAttuned": false,
+      "description": "A Torch burns for 1 hour, casting Bright Light|XPHB in a 20-foot radius and Dim Light|XPHB for an additional 20 feet. When you take the Attack|XPHB action, you can attack with the Torch, using it as a Simple Melee weapon. On a hit, the target takes 1 Fire damage.",
+      "type": "magic",
+      "effects": []
+    },
+    {
+      "id": "ce132c9b-b2b7-4b1a-a74b-6f1e0a1c1845",
+      "name": "Waterskin",
+      "quantity": 1,
+      "weight": 5,
+      "isEquipped": false,
+      "isAttuned": false,
+      "description": "A Waterskin holds up to 4 pints. If you don't drink sufficient water, you risk dehydration.",
+      "type": "magic",
+      "effects": []
+    },
+    {
+      "id": "bb950701-06ba-4733-8238-28744e55b1d5",
+      "name": "Bedroll",
+      "quantity": 1,
+      "weight": 7,
+      "isEquipped": false,
+      "isAttuned": false,
+      "description": "A sleeping roll.",
+      "type": "gear",
+      "effects": []
+    },
+    {
+      "id": "4cdd845d-1478-42bb-80d0-bfcd42b9db56",
+      "name": "Mess Kit",
+      "quantity": 1,
+      "weight": 1,
+      "isEquipped": false,
+      "isAttuned": false,
+      "description": "Eating utensils.",
+      "type": "gear",
+      "effects": []
+    },
+    {
+      "id": "f5504242-cbf2-4f1b-afce-21f6e357100b",
+      "name": "Rations (1 day)",
+      "quantity": 10,
+      "weight": 2,
+      "isEquipped": false,
+      "isAttuned": false,
+      "description": "Rations consist of dry foods suitable for extended travel, including jerky, dried fruit, hardtack, and nuts.",
+      "type": "magic",
+      "effects": []
+    },
+    {
+      "id": "dcd8fc92-e684-4b31-94e0-cc3cba1dc24c",
+      "name": "Rope, Hempen (50 feet)",
+      "quantity": 1,
+      "weight": 10,
+      "isEquipped": false,
+      "isAttuned": false,
+      "description": "",
+      "type": "gear"
+    },
+    {
+      "id": "e368794c-8136-4330-8452-7b161c53347d",
+      "name": "Tinderbox",
+      "quantity": 1,
+      "weight": 1,
+      "isEquipped": false,
+      "isAttuned": false,
+      "description": "A Tinderbox is a small container holding flint, fire steel, and tinder (usually dry cloth soaked in light oil) used to kindle a fire. Using it to light a Candle|XPHB, Lamp|XPHB, Hooded Lantern|XPHB|Lantern, or Torch|XPHB—or anything else with exposed fuel—takes a Bonus Action|XPHB. Lighting any other fire takes 1 minute.",
+      "type": "magic",
+      "effects": []
+    },
+    {
+      "id": "358b2765-d6ce-480c-94c7-7361ddeffa6d",
+      "name": "Torch",
+      "quantity": 10,
+      "weight": 1,
+      "isEquipped": false,
+      "isAttuned": false,
+      "description": "A Torch burns for 1 hour, casting Bright Light|XPHB in a 20-foot radius and Dim Light|XPHB for an additional 20 feet. When you take the Attack|XPHB action, you can attack with the Torch, using it as a Simple Melee weapon. On a hit, the target takes 1 Fire damage.",
+      "type": "magic",
+      "effects": []
+    },
+    {
+      "id": "1cbdfcbf-f3ff-4b9f-9215-f9e2604c7657",
+      "name": "Waterskin",
+      "quantity": 1,
+      "weight": 5,
+      "isEquipped": false,
+      "isAttuned": false,
+      "description": "A Waterskin holds up to 4 pints. If you don't drink sufficient water, you risk dehydration.",
+      "type": "magic",
+      "effects": []
+    },
+    {
+      "id": "d250adf7-3981-4e00-8424-ca86ed030978",
+      "name": "Oil",
+      "quantity": 2,
+      "weight": 1,
+      "isEquipped": false,
+      "isAttuned": false,
+      "description": "You can douse a creature, object, or space with Oil or use it as fuel, as detailed below.\n\n**Dousing a Creature or an Object.** When you take the Attack|XPHB action, you can replace one of your attacks with throwing an Oil flask. Target one creature or object within 20 feet of yourself. The target must succeed on a Dexterity saving throw (8 plus your Dexterity modifier and Proficiency|XPHB|Proficiency Bonus) or be covered in oil. If the target takes Fire damage before the oil dries (after 1 minute), the target takes an extra 5 Fire damage from burning oil.\n\n**Dousing a Space.** You can take the Utilize|XPHB action to pour an Oil flask on level ground to cover a 5-foot-square area within 5 feet of yourself. If lit, the oil burns until the end of the turn 2 rounds from when the oil was lit (or 12 seconds) and deals 5 Fire damage to any creature that enters the area or ends its turn there. A creature can take this damage only once per turn.\n\n**Fuel.** Oil serves as fuel for Lamps and Lanterns. Once lit, a flask of Oil burns for 6 hours in a Lamp or Lantern. That duration doesn't need to be consecutive; you can extinguish the burning Oil (as a Utilize|XPHB action) and rekindle it again until it has burned for a total of 6 hours.",
+      "type": "magic",
+      "effects": []
+    },
+    {
+      "id": "5dda57ea-ffa3-4890-919c-6736a3090dca",
+      "name": "Rations",
+      "quantity": 10,
+      "weight": 2,
+      "isEquipped": false,
+      "isAttuned": false,
+      "description": "Rations consist of travel-ready food, including jerky, dried fruit, hardtack, and nuts. See \"Malnutrition|XPHB\" for the risks of not eating.",
+      "type": "magic",
+      "effects": []
+    },
+    {
+      "id": "6a57572e-2eec-48a7-9f64-e7ba3b04695e",
+      "name": "Rope",
+      "quantity": 1,
+      "weight": 5,
+      "isEquipped": false,
+      "isAttuned": false,
+      "description": "As a Utilize|XPHB action, you can tie a knot with Rope if you succeed on a 10 Dexterity (Sleight of Hand|XPHB) check. The Rope can be burst with a successful 20 Strength (Athletics|XPHB) check.\n\nYou can bind an unwilling creature with the Rope only if the creature has the Grappled|XPHB, Incapacitated|XPHB, or Restrained|XPHB condition. If the creature's legs are bound, the creature has the Restrained|XPHB condition until it escapes. Escaping the Rope requires the creature to make a successful 15 Dexterity (Acrobatics|XPHB) check as an action.",
+      "type": "magic",
+      "effects": []
+    },
+    {
+      "id": "5a822881-0c19-4ea4-9692-7ce6e13d4ebc",
+      "name": "Bedroll",
+      "quantity": 1,
+      "weight": 7,
+      "isEquipped": false,
+      "isAttuned": false,
+      "description": "A sleeping roll.",
+      "type": "gear",
+      "effects": []
+    },
+    {
+      "id": "d59e9752-f033-4a6a-8911-3835e271fd88",
+      "name": "Thorn Whip",
+      "quantity": 1,
+      "weight": 0,
+      "isEquipped": true,
+      "isAttuned": false,
+      "description": "V/S/M",
+      "type": "weapon",
+      "damage": "1d6 Piercing (Atk: +6)"
+    },
+    {
+      "id": "0f20db82-0dbd-4808-8481-eef66e4a0662",
+      "name": "Starry Wisp",
+      "quantity": 1,
+      "weight": 0,
+      "isEquipped": true,
+      "isAttuned": false,
+      "description": "V/S",
+      "type": "weapon",
+      "damage": ""
+    },
+    {
+      "id": "433e5787-c896-467e-9511-eaa1dface1de",
+      "name": "Shillelagh",
+      "quantity": 1,
+      "weight": 0,
+      "isEquipped": true,
+      "isAttuned": false,
+      "description": "D: 1m, V/S/M",
+      "type": "weapon",
+      "damage": ""
+    },
+    {
+      "id": "333ce16d-7bee-491a-bcf0-39e226279428",
+      "name": "Shortbow",
+      "quantity": 1,
+      "weight": 0,
+      "isEquipped": false,
+      "isAttuned": false,
+      "description": "Starting equipment from Guide",
+      "type": "gear"
+    },
+    {
+      "id": "4f7268e5-2593-46c7-8ba0-33203555a500",
+      "name": "20 Arrows",
+      "quantity": 1,
+      "weight": 0,
+      "isEquipped": false,
+      "isAttuned": false,
+      "description": "Starting equipment from Guide",
+      "type": "gear"
+    },
+    {
+      "id": "3227d657-3e20-4e10-998b-208cb2252a5a",
+      "name": "Cartographer's Tools",
+      "quantity": 1,
+      "weight": 0,
+      "isEquipped": false,
+      "isAttuned": false,
+      "description": "Starting equipment from Guide",
+      "type": "gear"
+    },
+    {
+      "id": "2ec0a948-ffd7-45ff-9be8-6e1129d77e71",
+      "name": "Quiver",
+      "quantity": 1,
+      "weight": 0,
+      "isEquipped": false,
+      "isAttuned": false,
+      "description": "Starting equipment from Guide",
+      "type": "gear"
+    },
+    {
+      "id": "09717239-d945-4152-a244-10c5bd6be203",
+      "name": "Tent",
+      "quantity": 1,
+      "weight": 0,
+      "isEquipped": false,
+      "isAttuned": false,
+      "description": "Starting equipment from Guide",
+      "type": "gear"
+    },
+    {
+      "id": "679e5635-1454-4518-a07a-954b8132e695",
+      "name": "Traveler's Clothes",
+      "quantity": 1,
+      "weight": 0,
+      "isEquipped": false,
+      "isAttuned": false,
+      "description": "Starting equipment from Guide",
+      "type": "gear"
+    },
+    {
+      "id": "ff8b880a-11c3-41a8-be2e-01420be38345",
+      "name": "3 gp",
+      "quantity": 1,
+      "weight": 0,
+      "isEquipped": false,
+      "isAttuned": false,
+      "description": "Starting equipment from Guide",
+      "type": "gear"
+    }
+  ],
+  "currencies": {
+    "cp": 0,
+    "sp": 0,
+    "ep": 0,
+    "gp": 12,
+    "pp": 0
+  },
+  "resources": [],
+  "actions": [],
+  "features": [
+    {
+      "id": "6825d8fc-a587-4cbc-a35b-543eea2aceee",
+      "name": "Core Druid Traits",
+      "source": "Class: Druid",
+      "description": "PHB-2024 79",
+      "hasUses": false
+    },
+    {
+      "id": "bece1e91-8bfa-4b86-8d5a-70a18bea95fe",
+      "name": "Spellcasting",
+      "source": "Class: Druid",
+      "description": "Wisdom-based slot casting. 2 Cantrips, 4 Prepared spells.",
+      "hasUses": false,
+      "is2024": true
+    },
+    {
+      "id": "e3745732-eac5-4abc-9bae-e7ad85ace6da",
+      "name": "Druidic",
+      "source": "Class: Druid",
+      "description": "Speak and leave hidden messages in Druidic.",
+      "hasUses": false,
+      "is2024": true
+    },
+    {
+      "id": "009a8dbd-d0cc-4d5b-91fa-e090681da1b6",
+      "name": "You can use Druidic to leave hidden message",
+      "source": "Class: Druid",
+      "description": "You and others who know Druidic automatically spot such a message\nOthers spot the message’s presence with a successful DC 15 Intelligence (Investigation) check but can’t decipher it without magic.",
+      "hasUses": false
+    },
+    {
+      "id": "9c3f6962-0608-4ddd-a146-9a4efc355b9f",
+      "name": "| Leave Druidic Message: Special",
+      "source": "Class: Druid",
+      "description": "",
+      "hasUses": false
+    },
+    {
+      "id": "c0e04749-d5fd-4062-ab83-6600bb2c2327",
+      "name": "Primal Order",
+      "source": "Class: Druid",
+      "description": "Choose Magician (+1 Cantrip, Bonus to Arcana/Nature) or Warden (Martial Weapons, Medium Armor).",
+      "hasUses": false,
+      "is2024": true
+    },
+    {
+      "id": "9cf3cf01-b65a-4c85-b1f4-9ea74b20a744",
+      "name": "| Magician •",
+      "source": "Class: Druid",
+      "description": "You know one extra cantrip from the Druid spell list. You also gain a +4 bonus to Intelligence (Arcana or Nature) checks.",
+      "hasUses": false
+    },
+    {
+      "id": "15744f9a-d7b3-435e-9b95-1935a8b96db5",
+      "name": "Creature Type",
+      "source": "Class: Druid",
+      "description": "PHB-2024 190\nYou are a Humanoid.",
+      "hasUses": false
+    },
+    {
+      "id": "06d2932a-275b-403a-bf43-34cfe5433124",
+      "name": "Size",
+      "source": "Class: Druid",
+      "description": "PHB-2024 190\nYou are Medium.",
+      "hasUses": false
+    },
+    {
+      "id": "c8b035e0-bd60-4270-8bb7-6c0d5b722768",
+      "name": "Speed",
+      "source": "Class: Druid",
+      "description": "PHB-2024 190\nYour speed is 30 ft.",
+      "hasUses": false
+    },
+    {
+      "id": "b0f1f9ef-3296-4599-90f2-be32edd46ebd",
+      "name": "Darkvision",
+      "source": "Class: Druid",
+      "description": "PHB-2024 190\nYou have Darkvision with a range of 60 ft.",
+      "hasUses": false
+    },
+    {
+      "id": "762215a7-220d-4dc2-b7a8-7c47d0e7a976",
+      "name": "Elven Lineage",
+      "source": "Class: Druid",
+      "description": "PHB-2024 190\nChoose a lineage from the Elven Lineages table. You gain the level 1 benefit of that lineage.",
+      "hasUses": false
+    },
+    {
+      "id": "740b0b52-d667-4a81-8369-c11a7ed1a6ae",
+      "name": "| High Elf Lineage •",
+      "source": "Class: Druid",
+      "description": "You gain the spells outlined in the Elven Lineages table, and whenever you finish a Long Rest, you can replace the cantrip at level 1 with a different cantrip from the Wizard spell list.",
+      "hasUses": false
+    },
+    {
+      "id": "4d269c51-c416-4084-90ba-e8f6290d8f0a",
+      "name": "Elven Lineage Spells",
+      "source": "Class: Druid",
+      "description": "PHB-2024 189",
+      "hasUses": false
+    },
+    {
+      "id": "b07d6a47-c999-44e5-b4a9-4e3e5d90a6b4",
+      "name": "| High Elf",
+      "source": "Class: Druid",
+      "description": "Wisdom •",
+      "hasUses": false
+    },
+    {
+      "id": "080ff531-8edd-4a09-8fa9-dd9d08a181d2",
+      "name": "Fey Ancestry",
+      "source": "Class: Druid",
+      "description": "PHB-2024 190\nYou have Advantage on saving throws you make to avoid or end the Charmed condition.",
+      "hasUses": false
+    },
+    {
+      "id": "f53a2183-7a20-4b57-b738-06d11b97babc",
+      "name": "Keen Senses",
+      "source": "Class: Druid",
+      "description": "PHB-2024 190\nYou have proficiency in the Insight, Perception, or Survival skill.",
+      "hasUses": false
+    },
+    {
+      "id": "0ddecbf1-036e-4f05-b26c-5b6d32b86db2",
+      "name": "Trance",
+      "source": "Class: Druid",
+      "description": "PHB-2024 190\nYou don’t need to sleep, and magic can’t put you to sleep. You can finish a Long Rest in 4 hours if you spend those hours in a trancelike meditation, during which you retain consciousness.",
+      "hasUses": false
+    },
+    {
+      "id": "98ecdc12-3400-422d-bb92-68fbfa24a2a3",
+      "name": "Languages",
+      "source": "Class: Druid",
+      "description": "PHB-2024 37\nYour character knows at least three languages: Common plus two languages you roll or choose from the Standard Languages table. Knowledge of a language means your character can communicate in it, read it, and write it.",
+      "hasUses": false
+    },
+    {
+      "id": "5e9fa9ba-78f0-4bae-9a64-23a4899e0d93",
+      "name": "Guide Ability Score Improvements",
+      "source": "Class: Druid",
+      "description": "PHB-2024 181",
+      "hasUses": false
+    },
+    {
+      "id": "20d71539-5e8e-4fb4-b365-50362d5a67c5",
+      "name": "Increase three scores (+1 / +1 / +1) •",
+      "source": "Class: Druid",
+      "description": "",
+      "hasUses": false
+    },
+    {
+      "id": "2930ecd9-6428-4a0b-9e32-c6ea0fc76c46",
+      "name": "Magic Initiate (Druid)",
+      "source": "Class: Druid",
+      "description": "PHB-2024 201\nTwo Cantrips. You learn two cantrips of your choice from the Druid spell list. Int., Wis., or Cha. is your spellcasting ability for this feat's spells.",
+      "hasUses": false
+    },
+    {
+      "id": "b20f226f-c46d-42a4-acd1-c750676bdcb6",
+      "name": "Level 1 Spell",
+      "source": "Class: Druid",
+      "description": "Choose a level 1 spell from the Druid spell list\nYou always have that spell prepared\nYou can cast it once without a spell slot, and you regain the ability to cast it in that way when you finish a Long Rest\nYou can also cast the spell using any spell slots you have.",
+      "hasUses": false
+    },
+    {
+      "id": "5d6c706f-c614-4456-8ee3-ce6011a29352",
+      "name": "Spell Change",
+      "source": "Class: Druid",
+      "description": "Whenever you gain a new level, you can replace one of the spells you chose for this feat with a different spell of the same level from the chosen spell list.",
+      "hasUses": false
+    },
+    {
+      "id": "32a33f24-878f-4c37-8024-27f83d516f0a",
+      "name": "Repeatable",
+      "source": "Class: Druid",
+      "description": "You can take this feat more than once, but you must choose a different spell list each time.",
+      "hasUses": false
+    },
+    {
+      "id": "1656800d-36d1-4b43-8ad5-010acbb18d87",
+      "name": "| Wisdom •",
+      "source": "Class: Druid",
+      "description": "",
+      "hasUses": false
+    },
+    {
+      "id": "145d948f-6006-4beb-bfad-ff903bc99788",
+      "name": "Magic Initiate (Druid)",
+      "source": "Background: Guide",
+      "description": "You came of age outdoors, far from settled lands.",
+      "hasUses": false,
+      "is2024": true
+    }
+  ],
+  "feats": [],
+  "racialTraits": [
+    {
+      "id": "cd32d150-abd1-428c-9304-b4d08dffd421",
+      "name": "Darkvision",
+      "source": "Species: Elf",
+      "description": "You have Darkvision with a range of 60 feet.",
+      "is2024": true,
+      "hasUses": false
+    },
+    {
+      "id": "95fc3a84-2fcb-4a2d-b8fd-63b64b42731a",
+      "name": "Elven Lineage",
+      "source": "Species: Elf",
+      "description": "Choose Drow, High Elf, or Wood Elf. Grants cantrip at level 1, spell at level 3, and spell at level 5.",
+      "is2024": true,
+      "hasUses": false
+    },
+    {
+      "id": "4745f6ff-8eaf-4e8b-bfbc-3707627aba2b",
+      "name": "Fey Ancestry",
+      "source": "Species: Elf",
+      "description": "Advantage on saving throws you make to avoid or end the Charmed condition.",
+      "is2024": true,
+      "hasUses": false
+    },
+    {
+      "id": "9d4f848d-7b01-4dca-9163-e0b0aee72c90",
+      "name": "Keen Senses",
+      "source": "Species: Elf",
+      "description": "You have proficiency in Insight, Perception, or Survival.",
+      "is2024": true,
+      "hasUses": false
+    },
+    {
+      "id": "e53b4124-34bc-48f0-9395-6e9488781a99",
+      "name": "Trance",
+      "source": "Species: Elf",
+      "description": "Long Rest takes 4 hours of meditation. Magic can't put you to sleep.",
+      "is2024": true,
+      "hasUses": false
+    }
+  ],
+  "masteredWeapons": [],
+  "conditions": [],
+  "deathSaves": {
+    "successes": 0,
+    "failures": 0
+  },
+  "exhaustion": 0,
+  "resistances": [],
+  "immunities": [
+    "magical sleep"
+  ],
+  "vulnerabilities": [],
+  "conditionImmunities": [],
+  "damageNotes": "Immunities - Magical Sleep",
+  "personalityTraits": "",
+  "ideals": "",
+  "bonds": "",
+  "flaws": "",
+  "backstory": "",
+  "notes": "",
+  "provenance": {
+    "origin": "dnd-beyond-pdf",
+    "edition": "mixed",
+    "sourceSummary": "D&D Beyond PDF • Seelie.pdf",
+    "importedAt": 1773880926100
+  },
+  "darkvision": 60
+}

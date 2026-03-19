@@ -1,0 +1,906 @@
+{
+  "id": "8546e58d-a46b-401f-9ed7-30590aa3fcf6",
+  "name": "Lasair",
+  "system": "dnd5e",
+  "playerName": "dxMourn",
+  "race": "Dragonborn",
+  "className": "Sorcerer",
+  "subclass": "",
+  "level": 1,
+  "background": "Criminal",
+  "alignment": "",
+  "experience": 0,
+  "abilityScores": {
+    "str": 13,
+    "dex": 17,
+    "con": 14,
+    "int": 9,
+    "wis": 14,
+    "cha": 18
+  },
+  "savingThrows": [
+    "con",
+    "cha"
+  ],
+  "skills": [
+    {
+      "name": "Acrobatics",
+      "stat": "dex",
+      "proficient": false,
+      "expertise": false,
+      "bonus": 0
+    },
+    {
+      "name": "Animal Handling",
+      "stat": "wis",
+      "proficient": false,
+      "expertise": false,
+      "bonus": 0
+    },
+    {
+      "name": "Arcana",
+      "stat": "int",
+      "proficient": false,
+      "expertise": false,
+      "bonus": 0
+    },
+    {
+      "name": "Athletics",
+      "stat": "str",
+      "proficient": false,
+      "expertise": false,
+      "bonus": 0
+    },
+    {
+      "name": "Deception",
+      "stat": "cha",
+      "proficient": true,
+      "expertise": false,
+      "bonus": 0
+    },
+    {
+      "name": "History",
+      "stat": "int",
+      "proficient": false,
+      "expertise": false,
+      "bonus": 0
+    },
+    {
+      "name": "Insight",
+      "stat": "wis",
+      "proficient": false,
+      "expertise": false,
+      "bonus": 0
+    },
+    {
+      "name": "Intimidation",
+      "stat": "cha",
+      "proficient": true,
+      "expertise": false,
+      "bonus": 0
+    },
+    {
+      "name": "Investigation",
+      "stat": "int",
+      "proficient": false,
+      "expertise": false,
+      "bonus": 0
+    },
+    {
+      "name": "Medicine",
+      "stat": "wis",
+      "proficient": false,
+      "expertise": false,
+      "bonus": 0
+    },
+    {
+      "name": "Nature",
+      "stat": "int",
+      "proficient": false,
+      "expertise": false,
+      "bonus": 0
+    },
+    {
+      "name": "Perception",
+      "stat": "wis",
+      "proficient": false,
+      "expertise": false,
+      "bonus": 0
+    },
+    {
+      "name": "Performance",
+      "stat": "cha",
+      "proficient": false,
+      "expertise": false,
+      "bonus": 0
+    },
+    {
+      "name": "Persuasion",
+      "stat": "cha",
+      "proficient": false,
+      "expertise": false,
+      "bonus": 0
+    },
+    {
+      "name": "Religion",
+      "stat": "int",
+      "proficient": false,
+      "expertise": false,
+      "bonus": 0
+    },
+    {
+      "name": "Sleight of Hand",
+      "stat": "dex",
+      "proficient": true,
+      "expertise": false,
+      "bonus": 0,
+      "source": "Background: Criminal",
+      "sourceId": "background:-criminal"
+    },
+    {
+      "name": "Stealth",
+      "stat": "dex",
+      "proficient": true,
+      "expertise": false,
+      "bonus": 0,
+      "source": "Background: Criminal",
+      "sourceId": "background:-criminal"
+    },
+    {
+      "name": "Survival",
+      "stat": "wis",
+      "proficient": false,
+      "expertise": false,
+      "bonus": 0
+    }
+  ],
+  "senses": "Darkvision 60 ft.",
+  "passivePerception": 12,
+  "passiveInvestigation": 9,
+  "passiveInsight": 12,
+  "languages": "Common, Draconic, Elvish",
+  "proficiencies": "Weapons: Simple, Armor: ",
+  "ac": 13,
+  "maxHp": 8,
+  "currentHp": 8,
+  "tempHp": 0,
+  "hitDice": "d6",
+  "speed": "30 ft.",
+  "initiativeMod": 5,
+  "proficiencyBonus": 2,
+  "spellcastingAbility": "cha",
+  "spellSaveDc": 14,
+  "spellAttackMod": 6,
+  "spellSlots": [
+    {
+      "current": 0,
+      "max": 0
+    },
+    {
+      "current": 2,
+      "max": 2
+    },
+    {
+      "current": 0,
+      "max": 0
+    },
+    {
+      "current": 0,
+      "max": 0
+    },
+    {
+      "current": 0,
+      "max": 0
+    },
+    {
+      "current": 0,
+      "max": 0
+    },
+    {
+      "current": 0,
+      "max": 0
+    },
+    {
+      "current": 0,
+      "max": 0
+    },
+    {
+      "current": 0,
+      "max": 0
+    },
+    {
+      "current": 0,
+      "max": 0
+    }
+  ],
+  "spells": [
+    {
+      "id": "061d47ad-25d9-4d9d-8389-e2e41ab5d9ea",
+      "name": "Control Flames",
+      "level": 0,
+      "school": "Transmutation",
+      "castingTime": "1 action",
+      "range": "60 feet",
+      "components": {
+        "v": false,
+        "s": true,
+        "m": false
+      },
+      "duration": "Instantaneous",
+      "concentration": false,
+      "ritual": false,
+      "description": "You choose nonmagical flame that you can see within range and that fits within a 5-foot cube. You affect it in one of the following ways:\n\n• You instantaneously expand the flame 5 feet in one direction, provided that wood or other fuel is present in the new location.\n• You instantaneously extinguish the flames within the cube.\n• You double or halve the area of bright light and dim light cast by the flame, change its color, or both. The change lasts for 1 hour.\n• You cause simple shapes—such as the vague form of a creature, an inanimate object, or a location—to appear within the flames and animate as you like. The shapes last for 1 hour.\n\nIf you cast this spell multiple times, you can have up to three non-instantaneous effects created by it active at a time, and you can dismiss such an effect as an action.",
+      "prepared": false,
+      "source": "XGE",
+      "isHomebrew": false,
+      "is2024": false
+    },
+    {
+      "id": "5833470e-0bbb-4206-a427-c6e37751c733",
+      "name": "Sorcerous Burst",
+      "level": 0,
+      "school": "Evocation",
+      "castingTime": "1 action",
+      "range": "120 feet",
+      "components": {
+        "v": true,
+        "s": true,
+        "m": false
+      },
+      "duration": "Instantaneous",
+      "concentration": false,
+      "ritual": false,
+      "description": "You cast sorcerous energy at one creature or object within range. Make a ranged attack roll against the target. On a hit, the target takes 1d8 damage of a type you choose: Acid, Cold, Fire, Lightning, Poison, Psychic, or Thunder.\n\nIf you roll an 8 on a d8 for this spell, you can roll another d8, and add it to the damage. When you cast this spell, the maximum number of these d8s you can add to the spell's damage equals your spellcasting ability modifier.",
+      "prepared": false,
+      "source": "XPHB",
+      "higherLevels": "**Cantrip Upgrade.** The damage increases by 1d8 when you reach levels 5 (2d8), 11 (3d8), and 17 (4d8).",
+      "isHomebrew": false,
+      "is2024": true
+    },
+    {
+      "id": "810a77d5-3ec9-48d5-9f32-cd6187fe7154",
+      "name": "Gust",
+      "level": 0,
+      "school": "Transmutation",
+      "castingTime": "1 action",
+      "range": "30 feet",
+      "components": {
+        "v": true,
+        "s": true,
+        "m": false
+      },
+      "duration": "Instantaneous",
+      "concentration": false,
+      "ritual": false,
+      "description": "You seize the air and compel it to create one of the following effects at a point you can see within range:\n\n• One Medium or smaller creature that you choose must succeed on a Strength saving throw or be pushed up to 5 feet away from you.\n• You create a small blast of air capable of moving one object that is neither held nor carried and that weighs no more than 5 pounds. The object is pushed up to 10 feet away from you. It isn't pushed with enough force to cause damage.\n• You create a harmless sensory effect using air, such as causing leaves to rustle, wind to slam shutters closed, or your clothing to ripple in a breeze.",
+      "prepared": false,
+      "source": "XGE",
+      "isHomebrew": false,
+      "is2024": false
+    },
+    {
+      "id": "29c2f8c6-acf0-4795-94a7-f24ba04351eb",
+      "name": "Mind Sliver",
+      "level": 0,
+      "school": "Enchantment",
+      "castingTime": "1 action",
+      "range": "60 feet",
+      "components": {
+        "v": true,
+        "s": false,
+        "m": false
+      },
+      "duration": "Instantaneous",
+      "concentration": false,
+      "ritual": false,
+      "description": "You try to temporarily sliver the mind of one creature you can see within range. The target must succeed on an Intelligence saving throw or take 1d6 Psychic damage and subtract 1d4 from the next saving throw it makes before the end of your next turn.",
+      "prepared": false,
+      "source": "XPHB",
+      "higherLevels": "**Cantrip Upgrade.** The damage increases by 1d6 when you reach levels 5 (2d6), 11 (3d6), and 17 (4d6).",
+      "isHomebrew": false,
+      "is2024": true
+    },
+    {
+      "id": "631d2412-8eb8-4227-90f4-a048a628f7a7",
+      "name": "Shield",
+      "level": 1,
+      "school": "Abjuration",
+      "castingTime": "1 reaction",
+      "range": "Self",
+      "components": {
+        "v": true,
+        "s": true,
+        "m": false
+      },
+      "duration": "1 round",
+      "concentration": false,
+      "ritual": false,
+      "description": "An imperceptible barrier of magical force protects you. Until the start of your next turn, you have a +5 bonus to AC, including against the triggering attack, and you take no damage from Magic Missile|XPHB.",
+      "prepared": false,
+      "source": "XPHB",
+      "isHomebrew": false,
+      "is2024": true
+    },
+    {
+      "id": "a32d14aa-7f77-43f9-a92b-a434e60470ec",
+      "name": "Witch Bolt",
+      "level": 1,
+      "school": "Evocation",
+      "castingTime": "1 action",
+      "range": "60 feet",
+      "components": {
+        "v": true,
+        "s": true,
+        "m": true,
+        "mDesc": "a twig struck by lightning"
+      },
+      "duration": "Concentration, 1 minute",
+      "concentration": true,
+      "ritual": false,
+      "description": "A beam of crackling energy lances toward a creature within range, forming a sustained arc of lightning between you and the target. Make a ranged spell attack against it. On a hit, the target takes 2d12 Lightning damage.\n\nOn each of your subsequent turns, you can take a Bonus Action|XPHB to deal 1d12 Lightning damage to the target automatically, even if the first attack missed.\n\nThe spell ends if the target is ever outside the spell's range or if it has Total Cover|XPHB from you.",
+      "prepared": false,
+      "source": "XPHB",
+      "higherLevels": "**Using a Higher-Level Spell Slot.** The initial damage increases by 2d12|1-9|1d12 for each spell slot level above 1.",
+      "isHomebrew": false,
+      "is2024": true
+    }
+  ],
+  "inventory": [
+    {
+      "id": "02f3c929-45f8-4b16-adc6-ec1465545ccb",
+      "name": "Spear",
+      "quantity": 1,
+      "weight": 3,
+      "isEquipped": false,
+      "isAttuned": false,
+      "description": "",
+      "type": "weapon",
+      "damage": "1d6",
+      "effects": []
+    },
+    {
+      "id": "5cea17cd-bbfc-446c-a70d-787c8fd63b4a",
+      "name": "Dagger",
+      "quantity": 1,
+      "weight": 1,
+      "isEquipped": false,
+      "isAttuned": false,
+      "description": "",
+      "type": "weapon",
+      "damage": "1d4",
+      "effects": []
+    },
+    {
+      "id": "fe64d996-5720-45d8-9710-88ef54bdd156",
+      "name": "Dagger",
+      "quantity": 1,
+      "weight": 1,
+      "isEquipped": false,
+      "isAttuned": false,
+      "description": "",
+      "type": "weapon",
+      "damage": "1d4",
+      "effects": []
+    },
+    {
+      "id": "bed35781-c1bd-4e8c-93d3-38c9929ee093",
+      "name": "Crystal",
+      "quantity": 1,
+      "weight": 1,
+      "isEquipped": false,
+      "isAttuned": false,
+      "description": "",
+      "type": "magic",
+      "effects": []
+    },
+    {
+      "id": "caeebb1e-0267-48b1-90f7-0e8e62185ed2",
+      "name": "Backpack",
+      "quantity": 1,
+      "weight": 5,
+      "isEquipped": false,
+      "isAttuned": false,
+      "description": "A container for carrying gear.",
+      "type": "gear",
+      "effects": []
+    },
+    {
+      "id": "219851b3-7a89-4cc5-a03d-bc7c80ea369f",
+      "name": "Caltrops",
+      "quantity": 20,
+      "weight": 2,
+      "isEquipped": false,
+      "isAttuned": false,
+      "description": "As a Utilize|XPHB action, you can spread Caltrops from their bag to cover a 5-foot-square area within 5 feet of yourself. A creature that enters this area for the first time on a turn must succeed on a 15 Dexterity saving throw or take 1 Piercing damage and have its Speed|XPHB reduced to 0 until the start of its next turn. It takes 10 minutes to recover the Caltrops.",
+      "type": "magic",
+      "effects": []
+    },
+    {
+      "id": "76523832-616d-40d3-a020-53abd91b6081",
+      "name": "Crowbar",
+      "quantity": 1,
+      "weight": 5,
+      "isEquipped": false,
+      "isAttuned": false,
+      "description": "Using a Crowbar gives you Advantage|XPHB on Strength checks where the Crowbar's leverage can be applied.",
+      "type": "magic",
+      "effects": []
+    },
+    {
+      "id": "626baff6-210e-4b34-bfee-32de8aed2737",
+      "name": "Oil",
+      "quantity": 2,
+      "weight": 1,
+      "isEquipped": false,
+      "isAttuned": false,
+      "description": "You can douse a creature, object, or space with Oil or use it as fuel, as detailed below.\n\n**Dousing a Creature or an Object.** When you take the Attack|XPHB action, you can replace one of your attacks with throwing an Oil flask. Target one creature or object within 20 feet of yourself. The target must succeed on a Dexterity saving throw (8 plus your Dexterity modifier and Proficiency|XPHB|Proficiency Bonus) or be covered in oil. If the target takes Fire damage before the oil dries (after 1 minute), the target takes an extra 5 Fire damage from burning oil.\n\n**Dousing a Space.** You can take the Utilize|XPHB action to pour an Oil flask on level ground to cover a 5-foot-square area within 5 feet of yourself. If lit, the oil burns until the end of the turn 2 rounds from when the oil was lit (or 12 seconds) and deals 5 Fire damage to any creature that enters the area or ends its turn there. A creature can take this damage only once per turn.\n\n**Fuel.** Oil serves as fuel for Lamps and Lanterns. Once lit, a flask of Oil burns for 6 hours in a Lamp or Lantern. That duration doesn't need to be consecutive; you can extinguish the burning Oil (as a Utilize|XPHB action) and rekindle it again until it has burned for a total of 6 hours.",
+      "type": "magic",
+      "effects": []
+    },
+    {
+      "id": "cd4518ba-7e0f-4944-936c-93770e7abaef",
+      "name": "Rations",
+      "quantity": 10,
+      "weight": 2,
+      "isEquipped": false,
+      "isAttuned": false,
+      "description": "Rations consist of travel-ready food, including jerky, dried fruit, hardtack, and nuts. See \"Malnutrition|XPHB\" for the risks of not eating.",
+      "type": "magic",
+      "effects": []
+    },
+    {
+      "id": "8533252a-687e-42eb-a4eb-2cc77de0906b",
+      "name": "Rope",
+      "quantity": 1,
+      "weight": 5,
+      "isEquipped": false,
+      "isAttuned": false,
+      "description": "As a Utilize|XPHB action, you can tie a knot with Rope if you succeed on a 10 Dexterity (Sleight of Hand|XPHB) check. The Rope can be burst with a successful 20 Strength (Athletics|XPHB) check.\n\nYou can bind an unwilling creature with the Rope only if the creature has the Grappled|XPHB, Incapacitated|XPHB, or Restrained|XPHB condition. If the creature's legs are bound, the creature has the Restrained|XPHB condition until it escapes. Escaping the Rope requires the creature to make a successful 15 Dexterity (Acrobatics|XPHB) check as an action.",
+      "type": "magic",
+      "effects": []
+    },
+    {
+      "id": "5e5f6711-3ebc-4096-9123-24674ebbc81c",
+      "name": "Tinderbox",
+      "quantity": 1,
+      "weight": 1,
+      "isEquipped": false,
+      "isAttuned": false,
+      "description": "A Tinderbox is a small container holding flint, fire steel, and tinder (usually dry cloth soaked in light oil) used to kindle a fire. Using it to light a Candle|XPHB, Lamp|XPHB, Hooded Lantern|XPHB|Lantern, or Torch|XPHB—or anything else with exposed fuel—takes a Bonus Action|XPHB. Lighting any other fire takes 1 minute.",
+      "type": "magic",
+      "effects": []
+    },
+    {
+      "id": "546ff0bf-d0e3-44ea-8a4d-dab6eab591cc",
+      "name": "Torch",
+      "quantity": 10,
+      "weight": 1,
+      "isEquipped": false,
+      "isAttuned": false,
+      "description": "A Torch burns for 1 hour, casting Bright Light|XPHB in a 20-foot radius and Dim Light|XPHB for an additional 20 feet. When you take the Attack|XPHB action, you can attack with the Torch, using it as a Simple Melee weapon. On a hit, the target takes 1 Fire damage.",
+      "type": "magic",
+      "effects": []
+    },
+    {
+      "id": "6c0df820-0e0f-4cdd-9ef7-7f761555c42c",
+      "name": "Waterskin",
+      "quantity": 1,
+      "weight": 5,
+      "isEquipped": false,
+      "isAttuned": false,
+      "description": "A Waterskin holds up to 4 pints. If you don't drink sufficient water, you risk dehydration.",
+      "type": "magic",
+      "effects": []
+    },
+    {
+      "id": "cbea9d76-1f74-4996-8e07-8542d5ade0d5",
+      "name": "Dagger",
+      "quantity": 1,
+      "weight": 1,
+      "isEquipped": false,
+      "isAttuned": false,
+      "description": "",
+      "type": "weapon",
+      "damage": "1d4",
+      "effects": []
+    },
+    {
+      "id": "aceb4c0f-ac16-4c02-912f-74ae488faf4a",
+      "name": "Dagger",
+      "quantity": 1,
+      "weight": 1,
+      "isEquipped": false,
+      "isAttuned": false,
+      "description": "",
+      "type": "weapon",
+      "damage": "1d4",
+      "effects": []
+    },
+    {
+      "id": "5bff455d-f240-4bf2-a6cd-8da1b13cb974",
+      "name": "Thieves' Tools",
+      "quantity": 1,
+      "weight": 1,
+      "isEquipped": false,
+      "isAttuned": false,
+      "description": "Dexterity\nPick a lock (15), or disarm a trap (15)",
+      "type": "magic",
+      "effects": []
+    },
+    {
+      "id": "7c4c2030-619a-4e5c-bf6f-92ab3f4ac510",
+      "name": "Crowbar",
+      "quantity": 1,
+      "weight": 5,
+      "isEquipped": false,
+      "isAttuned": false,
+      "description": "Using a Crowbar gives you Advantage|XPHB on Strength checks where the Crowbar's leverage can be applied.",
+      "type": "magic",
+      "effects": []
+    },
+    {
+      "id": "82837706-9e5b-464a-aa59-2e2b7f77c43b",
+      "name": "Pouch",
+      "quantity": 1,
+      "weight": 1,
+      "isEquipped": false,
+      "isAttuned": false,
+      "description": "A Pouch holds up to 6 pounds within one-fifth of a cubic foot.",
+      "type": "magic",
+      "effects": []
+    },
+    {
+      "id": "f6d614ca-2a06-45dd-aee4-b44b149126b6",
+      "name": "Pouch",
+      "quantity": 1,
+      "weight": 1,
+      "isEquipped": false,
+      "isAttuned": false,
+      "description": "A Pouch holds up to 6 pounds within one-fifth of a cubic foot.",
+      "type": "magic",
+      "effects": []
+    },
+    {
+      "id": "2bdb44ad-b59e-4f79-9566-e8e2ad882313",
+      "name": "Traveler's Clothes",
+      "quantity": 1,
+      "weight": 4,
+      "isEquipped": false,
+      "isAttuned": false,
+      "description": "Traveler's Clothes are resilient garments designed for travel in various environments.",
+      "type": "magic",
+      "effects": []
+    },
+    {
+      "id": "bdc9bfa2-84b2-4a8e-a747-19389779594f",
+      "name": "Sorcerous Burst",
+      "quantity": 1,
+      "weight": 0,
+      "isEquipped": true,
+      "isAttuned": false,
+      "description": "V/S",
+      "type": "weapon",
+      "damage": "1d8 Acid (Atk: +6)"
+    },
+    {
+      "id": "aefc97b1-10bf-460a-adec-241f95cc71d6",
+      "name": "2 Daggers",
+      "quantity": 1,
+      "weight": 0,
+      "isEquipped": false,
+      "isAttuned": false,
+      "description": "Starting equipment from Criminal",
+      "type": "gear"
+    },
+    {
+      "id": "1c710ace-8c07-4330-896d-c6d9c7e15755",
+      "name": "Thieves' Tools",
+      "quantity": 1,
+      "weight": 0,
+      "isEquipped": false,
+      "isAttuned": false,
+      "description": "Starting equipment from Criminal",
+      "type": "gear"
+    },
+    {
+      "id": "aa1d3425-b1e3-43d6-9187-bab4921adebc",
+      "name": "Crowbar",
+      "quantity": 1,
+      "weight": 0,
+      "isEquipped": false,
+      "isAttuned": false,
+      "description": "Starting equipment from Criminal",
+      "type": "gear"
+    },
+    {
+      "id": "f19deca8-49b0-406e-ae8a-d4fa88d5b820",
+      "name": "2 Pouches",
+      "quantity": 1,
+      "weight": 0,
+      "isEquipped": false,
+      "isAttuned": false,
+      "description": "Starting equipment from Criminal",
+      "type": "gear"
+    },
+    {
+      "id": "c4811634-b2cd-4a55-b6e0-ab4882ee39e7",
+      "name": "Traveler's Clothes",
+      "quantity": 1,
+      "weight": 0,
+      "isEquipped": false,
+      "isAttuned": false,
+      "description": "Starting equipment from Criminal",
+      "type": "gear"
+    },
+    {
+      "id": "934ca2cf-4742-4a42-af32-1d0c69e178ac",
+      "name": "16 gp",
+      "quantity": 1,
+      "weight": 0,
+      "isEquipped": false,
+      "isAttuned": false,
+      "description": "Starting equipment from Criminal",
+      "type": "gear"
+    }
+  ],
+  "currencies": {
+    "cp": 0,
+    "sp": 0,
+    "ep": 0,
+    "gp": 44,
+    "pp": 0
+  },
+  "resources": [],
+  "actions": [
+    {
+      "id": "8e8bef0c-051b-4781-b3be-2a1e1165197c",
+      "name": "Draconic Flight",
+      "type": "bonus",
+      "source": "Class: Sorcerer",
+      "description": "PHB-2024 187\nOnce per Long Rest as a Bonus Action, you gain temporary flight for 10 minutes or until you retract the wings (no action required) or have the Incapacitated condition. During that time, you have a Fly Speed equal to your Speed.",
+      "isCustom": false,
+      "featureId": "e5e0162a-a401-40b4-a08a-acce6959d068"
+    },
+    {
+      "id": "3220a9a8-8ba9-4e41-8684-bea752e42b0d",
+      "name": "Draconic Flight",
+      "type": "bonus",
+      "source": "Species: Dragonborn",
+      "description": "As a Bonus Action, sprout spectral wings for 10 minutes. Fly Speed equal to your Speed. (1/Long Rest)",
+      "isCustom": false,
+      "featureId": "6bf70455-4699-4928-a69d-71e55999cdea"
+    },
+    {
+      "id": "8eadfcfb-ddeb-416e-a7ec-4928868b27b9",
+      "name": "Innate Sorcery",
+      "type": "bonus",
+      "source": "Class: Sorcerer",
+      "description": "Bonus Action to unleash magic for 1 min. +1 Spell Save DC, Advantage on spell attacks.",
+      "isCustom": false,
+      "featureId": "3c56ae7f-791e-436b-98d5-c9fe4a347d50"
+    }
+  ],
+  "features": [
+    {
+      "id": "c75c9f50-7e7a-4906-93f1-aefc8ca56d6f",
+      "name": "Core Sorcerer Traits",
+      "source": "Class: Sorcerer",
+      "description": "PHB-2024 139",
+      "hasUses": false
+    },
+    {
+      "id": "d8d92d6e-464b-42d8-96ad-c00b1948a79a",
+      "name": "Spellcasting",
+      "source": "Class: Sorcerer",
+      "description": "Charisma-based slot casting. 4 Cantrips, 2 Prepared spells.",
+      "hasUses": false,
+      "is2024": true
+    },
+    {
+      "id": "3c56ae7f-791e-436b-98d5-c9fe4a347d50",
+      "name": "Innate Sorcery",
+      "source": "Class: Sorcerer",
+      "description": "Bonus Action to unleash magic for 1 min. +1 Spell Save DC, Advantage on spell attacks.",
+      "hasUses": false,
+      "is2024": true
+    },
+    {
+      "id": "c3960a8a-4d57-4171-a854-41d368d14129",
+      "name": "Creature Type",
+      "source": "Class: Sorcerer",
+      "description": "PHB-2024 187\nYou are a Humanoid.",
+      "hasUses": false
+    },
+    {
+      "id": "e1a7f6b9-cc90-4a7c-bf81-4b3988a3c29b",
+      "name": "Size",
+      "source": "Class: Sorcerer",
+      "description": "PHB-2024 187\nYour size is Medium.",
+      "hasUses": false
+    },
+    {
+      "id": "789386af-e985-4f2b-a612-851b4f009d5f",
+      "name": "Speed",
+      "source": "Class: Sorcerer",
+      "description": "PHB-2024 187\nYour speed is 30 ft.",
+      "hasUses": false
+    },
+    {
+      "id": "50de0452-e3b8-4f94-bca1-320a9a4f4955",
+      "name": "Draconic Ancestry",
+      "source": "Class: Sorcerer",
+      "description": "PHB-2024 187\nYou gain a breath weapon and damage resistance with your chosen dragon type.",
+      "hasUses": false
+    },
+    {
+      "id": "719106a0-8a8e-4469-af10-8847a1c2dc81",
+      "name": "| White Dragon •",
+      "source": "Class: Sorcerer",
+      "description": "You have a White Dragon ancestor.",
+      "hasUses": false
+    },
+    {
+      "id": "acbd49ac-5ea3-4124-a13f-55e6cf56187a",
+      "name": "Breath Weapon",
+      "source": "Class: Sorcerer",
+      "description": "PHB-2024 187\nWhen you take the Attack action on your turn, you can replace one of your attacks with an exhalation of magical energy. You can use your Breath Weapon 2 times per Long Rest.",
+      "hasUses": false
+    },
+    {
+      "id": "626ac424-86d6-4745-a41f-aa0741cb263f",
+      "name": "| Breath Weapon (Cold) •",
+      "source": "Class: Sorcerer",
+      "description": "When you take the Attack action on your turn, you can replace one attack with a breath weapon that is a 15-ft. Cone or a 30-ft. Line that’s 5 ft. wide (choose the shape each time). Each creature must make a DC 12 Dex. saving throw taking 1d10 Cold damage on a failed save or half as much damage on a success.",
+      "hasUses": false
+    },
+    {
+      "id": "704ddbff-dbf8-45bb-8b78-0382ea55cbbe",
+      "name": "2 / Long Rest",
+      "source": "Class: Sorcerer",
+      "description": "1 Action",
+      "hasUses": false
+    },
+    {
+      "id": "2e2e1d3b-f10f-495b-bf50-8b1a05ee1a35",
+      "name": "Damage Resistance",
+      "source": "Class: Sorcerer",
+      "description": "PHB-2024 187\nYou have Resistance to the damage type determined by your Draconic Ancestry trait.",
+      "hasUses": false
+    },
+    {
+      "id": "78fd63d6-621b-4d68-94e4-c6110bf7068f",
+      "name": "| Draconic Resistance (Cold) •",
+      "source": "Class: Sorcerer",
+      "description": "You have resistance to Cold damage.",
+      "hasUses": false
+    },
+    {
+      "id": "0b85ba4a-3707-4d60-97f0-1d53bdea3cf0",
+      "name": "Darkvision",
+      "source": "Class: Sorcerer",
+      "description": "PHB-2024 187\nYou have Darkvision with a range of 60 ft.",
+      "hasUses": false
+    },
+    {
+      "id": "e5e0162a-a401-40b4-a08a-acce6959d068",
+      "name": "Draconic Flight",
+      "source": "Class: Sorcerer",
+      "description": "PHB-2024 187\nOnce per Long Rest as a Bonus Action, you gain temporary flight for 10 minutes or until you retract the wings (no action required) or have the Incapacitated condition. During that time, you have a Fly Speed equal to your Speed.",
+      "hasUses": false
+    },
+    {
+      "id": "8dcd5a50-28a6-417a-bd1d-f9cf5d65f13d",
+      "name": "Languages",
+      "source": "Class: Sorcerer",
+      "description": "PHB-2024 37\nYour character knows at least three languages: Common plus two languages you roll or choose from the Standard Languages table. Knowledge of a language means your character can communicate in it, read it, and write it.",
+      "hasUses": false
+    },
+    {
+      "id": "24b9447a-9936-44b5-ac4c-54a905c7b0b9",
+      "name": "Initiative Swap",
+      "source": "Class: Sorcerer",
+      "description": "Immediately after you roll Initiative, you can swap your Initiative with the Initiative of one willing ally in the same combat\nYou can’t make this swap if you or the ally has the Incapacitated condition.",
+      "hasUses": false
+    },
+    {
+      "id": "91a0a36d-115d-42fa-86b3-11a75bc951d2",
+      "name": "Criminal Ability Score Improvements",
+      "source": "Class: Sorcerer",
+      "description": "PHB-2024 179",
+      "hasUses": false
+    },
+    {
+      "id": "661f87fb-0de2-4aa1-bb46-ceb9ac3fa87c",
+      "name": "| Increase two scores (+2 / +1) •",
+      "source": "Class: Sorcerer",
+      "description": "",
+      "hasUses": false
+    }
+  ],
+  "feats": [
+    {
+      "id": "feat_alert_2024",
+      "name": "Alert",
+      "category": "General",
+      "level": 4,
+      "description": "You gain a bonus to initiative rolls equal to your Proficiency Bonus. You can't be surprised while you are conscious. Other creatures don't gain advantage on attack rolls against you as a result of being unseen by you.",
+      "source": "PHB 2024",
+      "is2024": true,
+      "effects": [
+        {
+          "type": "add_initiative_bonus",
+          "value": "@pb"
+        }
+      ]
+    }
+  ],
+  "racialTraits": [
+    {
+      "id": "eb043e99-c4c2-46df-a4d2-70a7cfb6c3b3",
+      "name": "Draconic Ancestry",
+      "source": "Species: Dragonborn",
+      "description": "Your lineage stems from a dragon progenitor. Choose the kind of dragon (Black, Blue, Brass, Bronze, Copper, Gold, Green, Red, Silver, White).",
+      "is2024": true,
+      "hasUses": false
+    },
+    {
+      "id": "ea10bbd7-f9dc-48aa-b1f4-f107ae6c717a",
+      "name": "Breath Weapon",
+      "source": "Species: Dragonborn",
+      "description": "Replace one attack with a 15-foot Cone or 30-foot Line. Damage 1d10 (scaling). Dex Save for half. Uses: Proficiency Bonus/Long Rest.",
+      "is2024": true,
+      "hasUses": false
+    },
+    {
+      "id": "58431587-efde-4030-ae7e-e8d04b815188",
+      "name": "Damage Resistance",
+      "source": "Species: Dragonborn",
+      "description": "You have Resistance to the damage type determined by your Draconic Ancestry.",
+      "is2024": true,
+      "hasUses": false
+    },
+    {
+      "id": "43f29d78-cc87-4182-b25f-b61f9af9d426",
+      "name": "Darkvision",
+      "source": "Species: Dragonborn",
+      "description": "You have Darkvision with a range of 60 feet.",
+      "is2024": true,
+      "hasUses": false
+    },
+    {
+      "id": "6bf70455-4699-4928-a69d-71e55999cdea",
+      "name": "Draconic Flight",
+      "source": "Species: Dragonborn",
+      "description": "As a Bonus Action, sprout spectral wings for 10 minutes. Fly Speed equal to your Speed. (1/Long Rest)",
+      "is2024": true,
+      "hasUses": false
+    }
+  ],
+  "masteredWeapons": [],
+  "conditions": [],
+  "deathSaves": {
+    "successes": 0,
+    "failures": 0
+  },
+  "exhaustion": 0,
+  "resistances": [
+    "cold"
+  ],
+  "immunities": [],
+  "vulnerabilities": [],
+  "conditionImmunities": [],
+  "damageNotes": "Resistances - Cold",
+  "personalityTraits": "",
+  "ideals": "",
+  "bonds": "",
+  "flaws": "",
+  "backstory": "Lasair es un Dragonborn cuyo huevo fue robado en Athkatla antes de eclosionar. Durante el transporte, figuras encapuchadas lo mantuvieron expuesto a una piedra negra y vítrea que zumbaba con una frecuencia antinatural, contaminando su magia antes de que naciera. Una redada dispersó a los contrabandistas y el huevo fue encontrado por una pareja humilde que lo crió con amor incondicional, dándole nombre, hogar e identidad. Años después, quienes lo robaron regresaron a reclamarlo. Sus padres adoptivos murieron para que él pudiera huir. \n\nMovido por la venganza, se hizo investigador en Neverwinter, donde encontró en Kevori y Delvin Fearnehart algo que no buscaba: una familia y un ancla. Ese par de hermanos le recuerdan a aquellas dos personas que alguna vez tuvo y significaron tanto para él. \n\nLa piedra le dejó dos heridas que no dejan de crecer. La primera es su Magia Salvaje, violenta e impredecible, que viene acompañada de fracturas temporales: episodios en los que revive sus peores recuerdos con total intensidad sensorial, a veces mezclados con visiones del futuro o con los ecos de personas recién muertas que caminan a su lado sin saberlo. Su mente nunca está en silencio. La segunda es física: cada vez que fuerza su magia, sus escamas se oscurecen y cristalizan en obsidiana negra, el mismo material de aquella piedra. Empezó con una astilla en un nudillo. Ahora se extiende, y no se detiene. \n\nEn sus sueños, una piedra enorme grita con miles de voces en una frecuencia que solo él puede escuchar. Sabe que lo que le hicieron fue deliberado. Lo que ignora es quiénes son realmente sus responsables, qué era esa piedra, y si la obsidiana que lo consume tiene remedio.",
+  "notes": "",
+  "provenance": {
+    "origin": "dnd-beyond-pdf",
+    "edition": "mixed",
+    "sourceSummary": "D&D Beyond PDF • Lasair.pdf",
+    "importedAt": 1773880925839
+  },
+  "darkvision": 60
+}

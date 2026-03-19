@@ -1,0 +1,83 @@
+{
+    "feats": [
+        {
+            "id": "feat_alert_2024",
+            "name": "Alert",
+            "category": "General",
+            "level": 4,
+            "description": "You gain a bonus to initiative rolls equal to your Proficiency Bonus. You can't be surprised while you are conscious. Other creatures don't gain advantage on attack rolls against you as a result of being unseen by you.",
+            "source": "PHB 2024",
+            "is2024": true,
+            "effects": [
+                {
+                    "type": "add_initiative_bonus",
+                    "value": "@pb"
+                }
+            ]
+        },
+        {
+            "id": "feat_tough_2024",
+            "name": "Tough",
+            "category": "General",
+            "level": 4,
+            "description": "Your hit point maximum increases by an amount equal to twice your level when you gain this feat. Whenever you gain a level thereafter, your hit point maximum increases by an additional 2 hit points.",
+            "source": "PHB 2024",
+            "is2024": true,
+            "effects": [
+                {
+                    "type": "modify_hp_max",
+                    "value": "@level * 2"
+                }
+            ]
+        },
+        {
+            "id": "feat_musicians_2024",
+            "name": "Musician",
+            "category": "Origin",
+            "description": "You gain proficiency with three Musical Instruments of your choice. Furthermore, after you finish a Short or Long Rest, you can give Heroic Inspiration to a number of allies equal to your Proficiency Bonus.",
+            "source": "PHB 2024",
+            "is2024": true
+        },
+        {
+            "id": "feat_crafter_2024",
+            "name": "Crafter",
+            "category": "Origin",
+            "description": "You gain proficiency with three Artisan's Tools of your choice. Furthermore, you receive a 20 percent discount on nonmagical items you buy.",
+            "source": "PHB 2024",
+            "is2024": true
+        },
+        {
+            "id": "feat_healer_2024",
+            "name": "Healer",
+            "category": "General",
+            "level": 4,
+            "description": "When you use a Healer's Kit to stabilize a creature, they regain 1 HP. When you restore HP with a spell or Healer's Kit, you can reroll a 1 on a die.",
+            "source": "PHB 2024",
+            "is2024": true
+        },
+        {
+            "id": "feat_lucky_2024",
+            "name": "Lucky",
+            "category": "Origin",
+            "description": "You have Luck Points equal to your Proficiency Bonus. You can spend them to gain Advantage on a roll or impose Disadvantage on an attack against you.",
+            "source": "PHB 2024",
+            "is2024": true,
+            "effects": [
+                {
+                    "type": "add_resource",
+                    "target": "Luck Points",
+                    "value": "@pb",
+                    "payload": "long"
+                }
+            ]
+        },
+        {
+            "id": "feat_savage_attacker_2024",
+            "name": "Savage Attacker",
+            "category": "Origin",
+            "description": "Once per turn when you hit a creature with a Melee weapon, you can reroll the weapon's damage dice and use either total.",
+            "source": "PHB 2024",
+            "is2024": true
+        }
+    ]
+}

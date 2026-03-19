@@ -1,0 +1,894 @@
+{
+  "id": "416e113f-6296-4be4-b90d-fe562252fdfa",
+  "name": "Cassius Neverember",
+  "system": "dnd5e",
+  "playerName": "dxMourn",
+  "race": "Human",
+  "className": "Warlock",
+  "subclass": "",
+  "level": 1,
+  "background": "Wayfarer",
+  "alignment": "Chaotic Neutral",
+  "experience": 0,
+  "abilityScores": {
+    "str": 12,
+    "dex": 16,
+    "con": 16,
+    "int": 10,
+    "wis": 14,
+    "cha": 16
+  },
+  "savingThrows": [
+    "wis",
+    "cha"
+  ],
+  "skills": [
+    {
+      "name": "Acrobatics",
+      "stat": "dex",
+      "proficient": false,
+      "expertise": false,
+      "bonus": 0
+    },
+    {
+      "name": "Animal Handling",
+      "stat": "wis",
+      "proficient": false,
+      "expertise": false,
+      "bonus": 0
+    },
+    {
+      "name": "Arcana",
+      "stat": "int",
+      "proficient": false,
+      "expertise": false,
+      "bonus": 0
+    },
+    {
+      "name": "Athletics",
+      "stat": "str",
+      "proficient": false,
+      "expertise": false,
+      "bonus": 0
+    },
+    {
+      "name": "Deception",
+      "stat": "cha",
+      "proficient": true,
+      "expertise": false,
+      "bonus": 0
+    },
+    {
+      "name": "History",
+      "stat": "int",
+      "proficient": false,
+      "expertise": false,
+      "bonus": 0
+    },
+    {
+      "name": "Insight",
+      "stat": "wis",
+      "proficient": true,
+      "expertise": false,
+      "bonus": 0,
+      "source": "Background: Wayfarer",
+      "sourceId": "background:-wayfarer"
+    },
+    {
+      "name": "Intimidation",
+      "stat": "cha",
+      "proficient": true,
+      "expertise": false,
+      "bonus": 0
+    },
+    {
+      "name": "Investigation",
+      "stat": "int",
+      "proficient": false,
+      "expertise": false,
+      "bonus": 0
+    },
+    {
+      "name": "Medicine",
+      "stat": "wis",
+      "proficient": false,
+      "expertise": false,
+      "bonus": 0
+    },
+    {
+      "name": "Nature",
+      "stat": "int",
+      "proficient": false,
+      "expertise": false,
+      "bonus": 0
+    },
+    {
+      "name": "Perception",
+      "stat": "wis",
+      "proficient": false,
+      "expertise": false,
+      "bonus": 0
+    },
+    {
+      "name": "Performance",
+      "stat": "cha",
+      "proficient": false,
+      "expertise": false,
+      "bonus": 0
+    },
+    {
+      "name": "Persuasion",
+      "stat": "cha",
+      "proficient": true,
+      "expertise": false,
+      "bonus": 0
+    },
+    {
+      "name": "Religion",
+      "stat": "int",
+      "proficient": false,
+      "expertise": false,
+      "bonus": 0
+    },
+    {
+      "name": "Sleight of Hand",
+      "stat": "dex",
+      "proficient": false,
+      "expertise": false,
+      "bonus": 0
+    },
+    {
+      "name": "Stealth",
+      "stat": "dex",
+      "proficient": true,
+      "expertise": false,
+      "bonus": 0,
+      "source": "Background: Wayfarer",
+      "sourceId": "background:-wayfarer"
+    },
+    {
+      "name": "Survival",
+      "stat": "wis",
+      "proficient": false,
+      "expertise": false,
+      "bonus": 0
+    }
+  ],
+  "senses": "",
+  "passivePerception": 12,
+  "passiveInvestigation": 10,
+  "passiveInsight": 14,
+  "languages": "Common, Dwarvish, Mulhorandi",
+  "proficiencies": "Weapons: Simple, Armor: Light",
+  "ac": 13,
+  "maxHp": 11,
+  "currentHp": 10,
+  "tempHp": 0,
+  "hitDice": "d8",
+  "speed": "30 ft.",
+  "initiativeMod": 5,
+  "proficiencyBonus": 2,
+  "spellcastingAbility": "cha",
+  "spellSaveDc": 13,
+  "spellAttackMod": 5,
+  "spellSlots": [
+    {
+      "current": 0,
+      "max": 0
+    },
+    {
+      "current": 1,
+      "max": 1
+    },
+    {
+      "current": 0,
+      "max": 0
+    },
+    {
+      "current": 0,
+      "max": 0
+    },
+    {
+      "current": 0,
+      "max": 0
+    },
+    {
+      "current": 0,
+      "max": 0
+    },
+    {
+      "current": 0,
+      "max": 0
+    },
+    {
+      "current": 0,
+      "max": 0
+    },
+    {
+      "current": 0,
+      "max": 0
+    },
+    {
+      "current": 0,
+      "max": 0
+    }
+  ],
+  "spells": [
+    {
+      "id": "0c1aad58-fba9-419e-a553-20f8395b71c3",
+      "name": "Eldritch Blast",
+      "level": 0,
+      "school": "Evocation",
+      "castingTime": "1 action",
+      "range": "120 feet",
+      "components": {
+        "v": true,
+        "s": true,
+        "m": false
+      },
+      "duration": "Instantaneous",
+      "concentration": false,
+      "ritual": false,
+      "description": "You hurl a beam of crackling energy. Make a ranged spell attack against one creature or object in range. On a hit, the target takes 1d10 Force damage.",
+      "prepared": false,
+      "source": "XPHB",
+      "higherLevels": "**Cantrip Upgrade.** The spell creates two beams at level 5, three beams at level 11, and four beams at level 17. You can direct the beams at the same target or at different ones. Make a separate attack roll for each beam.",
+      "isHomebrew": false,
+      "is2024": true
+    },
+    {
+      "id": "5fd679c7-c005-41c6-aba6-7da64a619564",
+      "name": "Mage Hand",
+      "level": 0,
+      "school": "Conjuration",
+      "castingTime": "1 action",
+      "range": "30 feet",
+      "components": {
+        "v": true,
+        "s": true,
+        "m": false
+      },
+      "duration": "1 minute",
+      "concentration": false,
+      "ritual": false,
+      "description": "A spectral, floating hand appears at a point you choose within range. The hand lasts for the duration. The hand vanishes if it is ever more than 30 feet away from you or if you cast this spell again.\n\nWhen you cast the spell, you can use the hand to manipulate an object, open an unlocked door or container, stow or retrieve an item from an open container, or pour the contents out of a vial.\n\nAs a Magic|XPHB action on your later turns, you can control the hand thus again. As part of that action, you can move the hand up to 30 feet.\n\nThe hand can't attack, activate magic items, or carry more than 10 pounds.",
+      "prepared": false,
+      "source": "XPHB",
+      "isHomebrew": false,
+      "is2024": true
+    },
+    {
+      "id": "1aea3cf8-c724-499d-9bcf-5dd8aa0a0b55",
+      "name": "Hellish Rebuke",
+      "level": 1,
+      "school": "Evocation",
+      "castingTime": "1 reaction",
+      "range": "60 feet",
+      "components": {
+        "v": true,
+        "s": true,
+        "m": false
+      },
+      "duration": "Instantaneous",
+      "concentration": false,
+      "ritual": false,
+      "description": "The creature that damaged you is momentarily surrounded by green flames. It makes a Dexterity saving throw, taking 2d10 Fire damage on a failed save or half as much damage on a successful one.",
+      "prepared": false,
+      "source": "XPHB",
+      "higherLevels": "**Using a Higher-Level Spell Slot.** The damage increases by 2d10|1-9|1d10 for each spell slot level above 1.",
+      "isHomebrew": false,
+      "is2024": true
+    },
+    {
+      "id": "326c7812-1fc0-483b-970c-b2b6f9e4a00f",
+      "name": "Tasha's Hideous Laughter",
+      "level": 1,
+      "school": "Enchantment",
+      "castingTime": "1 action",
+      "range": "30 feet",
+      "components": {
+        "v": true,
+        "s": true,
+        "m": true,
+        "mDesc": "a tart and a feather"
+      },
+      "duration": "Concentration, 1 minute",
+      "concentration": true,
+      "ritual": false,
+      "description": "One creature of your choice that you can see within range makes a Wisdom saving throw. On a failed save, it has the Prone|XPHB and Incapacitated|XPHB conditions for the duration. During that time, it laughs uncontrollably if it's capable of laughter, and it can't end the Prone|XPHB condition on itself.\n\nAt the end of each of its turns and each time it takes damage, it makes another Wisdom saving throw. The target has Advantage|XPHB on the save if the save is triggered by damage. On a successful save, the spell ends.",
+      "prepared": false,
+      "source": "XPHB",
+      "higherLevels": "**Using a Higher-Level Spell Slot.** You can target one additional creature for each spell slot level above 1.",
+      "isHomebrew": false,
+      "is2024": true
+    }
+  ],
+  "inventory": [
+    {
+      "id": "777454ea-e7ac-4073-b72d-3ed56f07fe11",
+      "name": "Leather",
+      "quantity": 1,
+      "weight": 10,
+      "isEquipped": false,
+      "isAttuned": false,
+      "description": "Light Armor. 11 + Dex.",
+      "type": "armor",
+      "effects": [
+        {
+          "id": "80bf1927-5584-409f-9cd9-5f5e318dd63c",
+          "type": "set_ac",
+          "value": "11 + DEX",
+          "note": "Leather Armor"
+        }
+      ]
+    },
+    {
+      "id": "32b2eefd-8b0b-4190-9de9-fff4822ca2f7",
+      "name": "Dagger",
+      "quantity": 1,
+      "weight": 1,
+      "isEquipped": false,
+      "isAttuned": false,
+      "description": "",
+      "type": "weapon",
+      "damage": "1d4",
+      "effects": []
+    },
+    {
+      "id": "e9449562-6dc0-46b6-bae3-fcceb6367442",
+      "name": "Dagger",
+      "quantity": 1,
+      "weight": 1,
+      "isEquipped": false,
+      "isAttuned": false,
+      "description": "",
+      "type": "weapon",
+      "damage": "1d4",
+      "effects": []
+    },
+    {
+      "id": "e5898f23-b6e5-429f-a076-dbbeb5f96896",
+      "name": "Dagger",
+      "quantity": 1,
+      "weight": 1,
+      "isEquipped": false,
+      "isAttuned": false,
+      "description": "",
+      "type": "weapon",
+      "damage": "1d4",
+      "effects": []
+    },
+    {
+      "id": "69df43af-d311-4bc8-af9d-5ef019ff0390",
+      "name": "Dagger",
+      "quantity": 1,
+      "weight": 1,
+      "isEquipped": false,
+      "isAttuned": false,
+      "description": "",
+      "type": "weapon",
+      "damage": "1d4",
+      "effects": []
+    },
+    {
+      "id": "05e949be-05d6-4a40-8db5-202885887ff3",
+      "name": "Sickle",
+      "quantity": 1,
+      "weight": 2,
+      "isEquipped": true,
+      "isAttuned": false,
+      "description": "Simple, Light, Nick",
+      "type": "weapon",
+      "damage": "1d4",
+      "effects": []
+    },
+    {
+      "id": "6f8e3929-f32f-465c-94f1-21504a81068a",
+      "name": "Backpack",
+      "quantity": 1,
+      "weight": 5,
+      "isEquipped": false,
+      "isAttuned": false,
+      "description": "A container for carrying gear.",
+      "type": "gear",
+      "effects": []
+    },
+    {
+      "id": "52c715d0-8c39-4f9b-8f15-0e3597bcb16c",
+      "name": "Pouch",
+      "quantity": 1,
+      "weight": 1,
+      "isEquipped": false,
+      "isAttuned": false,
+      "description": "A Pouch holds up to 6 pounds within one-fifth of a cubic foot.",
+      "type": "magic",
+      "effects": []
+    },
+    {
+      "id": "b0fde982-1ea6-452a-857f-d015e1e3cf32",
+      "name": "Pouch",
+      "quantity": 1,
+      "weight": 1,
+      "isEquipped": false,
+      "isAttuned": false,
+      "description": "A Pouch holds up to 6 pounds within one-fifth of a cubic foot.",
+      "type": "magic",
+      "effects": []
+    },
+    {
+      "id": "3b599fcb-24b6-4971-a179-8cebc3c431cb",
+      "name": "Bedroll",
+      "quantity": 1,
+      "weight": 7,
+      "isEquipped": false,
+      "isAttuned": false,
+      "description": "Starting equipment from Wayfarer",
+      "type": "gear",
+      "effects": []
+    },
+    {
+      "id": "b3ec26ab-3eda-4460-876b-a8bf0d8f6117",
+      "name": "Book",
+      "quantity": 1,
+      "weight": 5,
+      "isEquipped": false,
+      "isAttuned": false,
+      "description": "A Book contains fiction or nonfiction. If you consult an accurate nonfiction Book about its topic, you gain a +5 bonus to Intelligence (Arcana|XPHB, History|XPHB, Nature|XPHB, or Religion|XPHB) checks you make about that topic.",
+      "type": "magic",
+      "effects": []
+    },
+    {
+      "id": "31a0e455-43ae-46e0-a85e-287aefbbc045",
+      "name": "Playing Cards",
+      "quantity": 1,
+      "weight": 0,
+      "isEquipped": false,
+      "isAttuned": false,
+      "description": "Wisdom\nDiscern whether someone is cheating (10), or win the game (20)",
+      "type": "magic",
+      "effects": []
+    },
+    {
+      "id": "254da8b4-dac6-4665-a8ec-31997edb9c51",
+      "name": "Thieves' Tools",
+      "quantity": 1,
+      "weight": 1,
+      "isEquipped": false,
+      "isAttuned": false,
+      "description": "Dexterity\nPick a lock (15), or disarm a trap (15)",
+      "type": "magic",
+      "effects": []
+    },
+    {
+      "id": "8ceb0054-f9e4-47a3-b373-97f0f066d8a4",
+      "name": "Orb",
+      "quantity": 1,
+      "weight": 3,
+      "isEquipped": false,
+      "isAttuned": false,
+      "description": "",
+      "type": "magic",
+      "effects": []
+    },
+    {
+      "id": "a64e99e9-2390-49aa-a479-72774486eb48",
+      "name": "Traveler's Clothes",
+      "quantity": 1,
+      "weight": 4,
+      "isEquipped": false,
+      "isAttuned": false,
+      "description": "Traveler's Clothes are resilient garments designed for travel in various environments.",
+      "type": "magic",
+      "effects": []
+    },
+    {
+      "id": "6cf413ff-499a-42eb-8b74-3e40663e55c0",
+      "name": "Oil",
+      "quantity": 10,
+      "weight": 1,
+      "isEquipped": false,
+      "isAttuned": false,
+      "description": "You can douse a creature, object, or space with Oil or use it as fuel, as detailed below.\n\n**Dousing a Creature or an Object.** When you take the Attack|XPHB action, you can replace one of your attacks with throwing an Oil flask. Target one creature or object within 20 feet of yourself. The target must succeed on a Dexterity saving throw (8 plus your Dexterity modifier and Proficiency|XPHB|Proficiency Bonus) or be covered in oil. If the target takes Fire damage before the oil dries (after 1 minute), the target takes an extra 5 Fire damage from burning oil.\n\n**Dousing a Space.** You can take the Utilize|XPHB action to pour an Oil flask on level ground to cover a 5-foot-square area within 5 feet of yourself. If lit, the oil burns until the end of the turn 2 rounds from when the oil was lit (or 12 seconds) and deals 5 Fire damage to any creature that enters the area or ends its turn there. A creature can take this damage only once per turn.\n\n**Fuel.** Oil serves as fuel for Lamps and Lanterns. Once lit, a flask of Oil burns for 6 hours in a Lamp or Lantern. That duration doesn't need to be consecutive; you can extinguish the burning Oil (as a Utilize|XPHB action) and rekindle it again until it has burned for a total of 6 hours.",
+      "type": "magic",
+      "effects": []
+    },
+    {
+      "id": "78bfceb4-ed79-47e5-aaca-0475168f95c6",
+      "name": "Parchment",
+      "quantity": 10,
+      "weight": 0,
+      "isEquipped": false,
+      "isAttuned": false,
+      "description": "One sheet of Parchment can hold about 250 handwritten words.",
+      "type": "magic",
+      "effects": []
+    },
+    {
+      "id": "1d29cab7-49cd-4495-a40f-fa6d29ef93ee",
+      "name": "Tinderbox",
+      "quantity": 1,
+      "weight": 1,
+      "isEquipped": false,
+      "isAttuned": false,
+      "description": "A Tinderbox is a small container holding flint, fire steel, and tinder (usually dry cloth soaked in light oil) used to kindle a fire. Using it to light a Candle|XPHB, Lamp|XPHB, Hooded Lantern|XPHB|Lantern, or Torch|XPHB—or anything else with exposed fuel—takes a Bonus Action|XPHB. Lighting any other fire takes 1 minute.",
+      "type": "magic",
+      "effects": []
+    },
+    {
+      "id": "6dbb7df4-7d6a-419b-97f4-702be5ab493f",
+      "name": "Book",
+      "quantity": 1,
+      "weight": 5,
+      "isEquipped": false,
+      "isAttuned": false,
+      "description": "A Book contains fiction or nonfiction. If you consult an accurate nonfiction Book about its topic, you gain a +5 bonus to Intelligence (Arcana|XPHB, History|XPHB, Nature|XPHB, or Religion|XPHB) checks you make about that topic.",
+      "type": "magic",
+      "effects": []
+    },
+    {
+      "id": "24d3a449-e01c-4139-be91-400ca9e7f1eb",
+      "name": "Lamp",
+      "quantity": 1,
+      "weight": 1,
+      "isEquipped": false,
+      "isAttuned": false,
+      "description": "A Lamp burns Oil|XPHB as fuel to cast Bright Light|XPHB in a 15-foot radius and Dim Light|XPHB for an additional 30 feet.",
+      "type": "magic",
+      "effects": []
+    },
+    {
+      "id": "3024c605-43a2-4ed4-8a29-4e5414888afd",
+      "name": "Ink Pen",
+      "quantity": 1,
+      "weight": 0,
+      "isEquipped": false,
+      "isAttuned": false,
+      "description": "Using Ink|XPHB, an Ink Pen is used to write or draw.",
+      "type": "magic",
+      "effects": []
+    },
+    {
+      "id": "beb34106-8bf5-48aa-9ad7-fa01afce06df",
+      "name": "Ink",
+      "quantity": 1,
+      "weight": 0,
+      "isEquipped": false,
+      "isAttuned": false,
+      "description": "Ink comes in a 1-ounce bottle, which provides enough ink to write about 500 pages.",
+      "type": "magic",
+      "effects": []
+    },
+    {
+      "id": "5766a08e-683b-41da-b25c-6e17c3660748",
+      "name": "Eldritch Blast",
+      "quantity": 1,
+      "weight": 0,
+      "isEquipped": true,
+      "isAttuned": false,
+      "description": "V/S",
+      "type": "weapon",
+      "damage": ""
+    },
+    {
+      "id": "80d6fd54-2a29-4048-bfc9-bac94b171106",
+      "name": "2 Daggers",
+      "quantity": 1,
+      "weight": 0,
+      "isEquipped": false,
+      "isAttuned": false,
+      "description": "Starting equipment from Wayfarer",
+      "type": "gear"
+    },
+    {
+      "id": "d6597798-d044-421d-b15f-042bab94df25",
+      "name": "Thieves' Tools",
+      "quantity": 1,
+      "weight": 0,
+      "isEquipped": false,
+      "isAttuned": false,
+      "description": "Starting equipment from Wayfarer",
+      "type": "gear"
+    },
+    {
+      "id": "7aa51b4a-91a0-44dc-b80c-af54131ede3e",
+      "name": "Gaming Set",
+      "quantity": 1,
+      "weight": 0,
+      "isEquipped": false,
+      "isAttuned": false,
+      "description": "Starting equipment from Wayfarer",
+      "type": "gear"
+    },
+    {
+      "id": "6c345fdf-3237-4ecd-84ee-c2777076a8cf",
+      "name": "2 Pouches",
+      "quantity": 1,
+      "weight": 0,
+      "isEquipped": false,
+      "isAttuned": false,
+      "description": "Starting equipment from Wayfarer",
+      "type": "gear"
+    },
+    {
+      "id": "66ae4d81-b15f-4347-8e1b-4f61fefeec02",
+      "name": "Traveler's Clothes",
+      "quantity": 1,
+      "weight": 0,
+      "isEquipped": false,
+      "isAttuned": false,
+      "description": "Starting equipment from Wayfarer",
+      "type": "gear"
+    },
+    {
+      "id": "6c53c03c-a35c-4ce9-89cc-de849a871091",
+      "name": "16 gp",
+      "quantity": 1,
+      "weight": 0,
+      "isEquipped": false,
+      "isAttuned": false,
+      "description": "Starting equipment from Wayfarer",
+      "type": "gear"
+    }
+  ],
+  "currencies": {
+    "cp": 0,
+    "sp": 0,
+    "ep": 0,
+    "gp": 31,
+    "pp": 0
+  },
+  "resources": [
+    {
+      "id": "490426f3-1ae3-4824-b1c2-c4a12c24bf19",
+      "name": "Luck Points",
+      "current": 2,
+      "max": 2,
+      "resetOn": "long"
+    }
+  ],
+  "actions": [
+    {
+      "id": "1ecee4f0-4957-46ff-94e5-05cdb462d3a2",
+      "name": "| Pact of the Blade",
+      "type": "bonus",
+      "source": "Class: Warlock",
+      "description": "br-2024\nAs a Bonus Action, you can conjure a pact weapon in your hand, or create a bond with a magic weapon you touch. You can’t bond with a magic weapon if someone else attuned to it or another Warlock is bonded with it. Until the bond ends, you’re proficient with it and can use it as a Spellcasting Focus.",
+      "isCustom": false,
+      "featureId": "8afe37fe-bb8c-4eca-a174-3065504b9c9d"
+    }
+  ],
+  "features": [
+    {
+      "id": "e131da08-c358-4f6f-8784-66e53b8b3e7c",
+      "name": "Core Warlock Traits",
+      "source": "Class: Warlock",
+      "description": "PHB-2024 153",
+      "hasUses": false
+    },
+    {
+      "id": "5f1d7d9f-7257-4e3c-9452-f2345dea34ab",
+      "name": "Eldritch Invocations",
+      "source": "Class: Warlock",
+      "description": "Choose one invocation (e.g., Pact of the Blade, Tome, or Chain).",
+      "hasUses": false,
+      "is2024": true
+    },
+    {
+      "id": "8afe37fe-bb8c-4eca-a174-3065504b9c9d",
+      "name": "| Pact of the Blade",
+      "source": "Class: Warlock",
+      "description": "br-2024\nAs a Bonus Action, you can conjure a pact weapon in your hand, or create a bond with a magic weapon you touch. You can’t bond with a magic weapon if someone else attuned to it or another Warlock is bonded with it. Until the bond ends, you’re proficient with it and can use it as a Spellcasting Focus.",
+      "hasUses": false
+    },
+    {
+      "id": "7527b79d-c963-4e31-b39a-45e879e9548c",
+      "name": "Whenever you attack with the bonded weapon, you can use your Cha",
+      "source": "Class: Warlock",
+      "description": "instead of Str\nor Dex.; and you can cause it to deal Necrotic, Psychic, or Radiant damage or its normal damage type.",
+      "hasUses": false
+    },
+    {
+      "id": "7585767f-894c-45c3-a3bf-7e5b1b1fab55",
+      "name": "Your bond with the weapons ends if you use this feature’s Bonus Action again, if the weapon is more than 5 ft",
+      "source": "Class: Warlock",
+      "description": "away from you for more than 1 minute, or if you die\nA conjured weapon disappears when the bond ends.",
+      "hasUses": false
+    },
+    {
+      "id": "31f471f1-30b0-4d58-9e2c-9dc2d2c99970",
+      "name": "| Pact of the Blade: Conjure: 1 Bonus Action",
+      "source": "Class: Warlock",
+      "description": "",
+      "hasUses": false
+    },
+    {
+      "id": "35fc6b5c-96ca-400e-aae9-5e33a9e80874",
+      "name": "| Pact of the Blade: Bond: 1 Bonus Action",
+      "source": "Class: Warlock",
+      "description": "",
+      "hasUses": false
+    },
+    {
+      "id": "dba0a3fc-a614-486b-b5e0-27e4a2d137b3",
+      "name": "Pact Magic",
+      "source": "Class: Warlock",
+      "description": "Unique slot system. 2 Cantrips, 2 Prepared spells.",
+      "hasUses": false,
+      "is2024": true
+    },
+    {
+      "id": "09aed341-9a25-4000-b672-34d7c71bd567",
+      "name": "Size",
+      "source": "Class: Warlock",
+      "description": "PHB-2024 194\nYour Size is Medium or Small, chosen when you select this species.",
+      "hasUses": false
+    },
+    {
+      "id": "bab40fe4-d4fa-4118-b081-8bdd33bea98b",
+      "name": "Speed",
+      "source": "Class: Warlock",
+      "description": "PHB-2024 194\nYour Speed is 30 ft.",
+      "hasUses": false
+    },
+    {
+      "id": "d411563f-5c87-4433-9336-dd615608ab18",
+      "name": "Resourceful",
+      "source": "Class: Warlock",
+      "description": "PHB-2024 194\nYou gain Heroic Inspiration whenever you finish a Long Rest.",
+      "hasUses": false
+    },
+    {
+      "id": "ddae28cc-a8d7-492d-80f6-08444d96c126",
+      "name": "Skillful",
+      "source": "Class: Warlock",
+      "description": "PHB-2024 193\nYou gain proficiency in one skill of your choice.",
+      "hasUses": false
+    },
+    {
+      "id": "b449f1b9-6ad5-42c4-b654-2e4c8a680918",
+      "name": "Versatile",
+      "source": "Class: Warlock",
+      "description": "PHB-2024 194\nYou gain an Origin feat of your choice.",
+      "hasUses": false
+    },
+    {
+      "id": "291dfd91-f663-405f-9880-4a20a67da419",
+      "name": "Languages",
+      "source": "Class: Warlock",
+      "description": "PHB-2024 37\nYour character knows at least three languages: Common plus two languages you roll or choose from the Standard Languages table. Knowledge of a language means your character can communicate in it, read it, and write it.",
+      "hasUses": false
+    },
+    {
+      "id": "2c8e6a2f-1029-4f73-afa9-f5335f429c53",
+      "name": "Alert",
+      "source": "Class: Warlock",
+      "description": "PHB-2024 200\nInitiative Proficiency. When you roll Initiative, add +2 to the roll.",
+      "hasUses": false
+    },
+    {
+      "id": "17ce91be-443a-4542-821e-d723c8713121",
+      "name": "Initiative Swap",
+      "source": "Class: Warlock",
+      "description": "Immediately after you roll Initiative, you can swap your Initiative with the Initiative of one willing ally in the same combat\nYou can’t make this swap if you or the ally has the Incapacitated condition.",
+      "hasUses": false
+    },
+    {
+      "id": "5e8a42e7-ac6a-4490-8e70-05635683c7d5",
+      "name": "Advantage",
+      "source": "Class: Warlock",
+      "description": "When you roll a d20 for a D20 Test, you can spend 1 Luck Point to give yourself Advantage on the roll.",
+      "hasUses": false
+    },
+    {
+      "id": "d6acc733-b700-421a-bdfd-227c733b1fb4",
+      "name": "Disadvantage",
+      "source": "Class: Warlock",
+      "description": "When a creature rolls a d20 for an attack roll against you, you can spend 1 Luck Point to impose Disadvantage on that roll.",
+      "hasUses": false
+    },
+    {
+      "id": "f333ab10-1eb5-44e5-bc84-5d70637a7f70",
+      "name": "| Luck Points: 2 / Long Rest",
+      "source": "Class: Warlock",
+      "description": "Special",
+      "hasUses": false
+    },
+    {
+      "id": "8aeba277-4c5d-4354-a7bc-baa31c0b2fc5",
+      "name": "Wayfarer Ability Score Improvements",
+      "source": "Class: Warlock",
+      "description": "PHB-2024 185",
+      "hasUses": false
+    },
+    {
+      "id": "d2d51e11-898f-4ba2-94ca-1c2b7962226f",
+      "name": "| Increase three scores (+1 / +1 / +1) •",
+      "source": "Class: Warlock",
+      "description": "",
+      "hasUses": false
+    }
+  ],
+  "feats": [
+    {
+      "id": "541a6751-d9eb-4c6a-a8a4-a90b36c8894d",
+      "name": "Alert",
+      "category": "General",
+      "level": 4,
+      "description": "You gain a bonus to initiative rolls equal to your Proficiency Bonus. You can't be surprised while you are conscious. Other creatures don't gain advantage on attack rolls against you as a result of being unseen by you.",
+      "source": "PHB 2024",
+      "is2024": true,
+      "effects": [
+        {
+          "type": "add_initiative_bonus",
+          "value": "@pb"
+        }
+      ]
+    },
+    {
+      "id": "feat_lucky_2024",
+      "name": "Lucky",
+      "category": "Origin",
+      "description": "You have Luck Points equal to your Proficiency Bonus. You can spend them to gain Advantage on a roll or impose Disadvantage on an attack against you.",
+      "source": "PHB 2024",
+      "is2024": true,
+      "effects": [
+        {
+          "type": "add_resource",
+          "target": "Luck Points",
+          "value": "@pb",
+          "payload": "long"
+        }
+      ]
+    }
+  ],
+  "racialTraits": [
+    {
+      "id": "932e6655-8d7c-40e0-9d6f-8110e922600f",
+      "name": "Resourceful",
+      "source": "Species: Human",
+      "description": "Gain Heroic Inspiration whenever you finish a Long Rest.",
+      "is2024": true,
+      "hasUses": false
+    },
+    {
+      "id": "31ab6f3d-19f8-4264-9717-1b96592fa224",
+      "name": "Skillful",
+      "source": "Species: Human",
+      "description": "Gain proficiency in one skill of your choice.",
+      "is2024": true,
+      "hasUses": false
+    },
+    {
+      "id": "95a05568-b970-4783-8b6c-485c5cc13526",
+      "name": "Versatile",
+      "source": "Species: Human",
+      "description": "Gain an Origin feat of your choice.",
+      "is2024": true,
+      "hasUses": false
+    }
+  ],
+  "masteredWeapons": [],
+  "conditions": [],
+  "deathSaves": {
+    "successes": 0,
+    "failures": 0
+  },
+  "exhaustion": 0,
+  "resistances": [],
+  "immunities": [],
+  "vulnerabilities": [],
+  "conditionImmunities": [],
+  "damageNotes": "",
+  "personalityTraits": "",
+  "ideals": "",
+  "bonds": "",
+  "flaws": "",
+  "backstory": "",
+  "notes": "",
+  "provenance": {
+    "origin": "dnd-beyond-pdf",
+    "edition": "2024",
+    "sourceSummary": "D&D Beyond PDF • Cassius.pdf",
+    "importedAt": 1773880926010
+  }
+}

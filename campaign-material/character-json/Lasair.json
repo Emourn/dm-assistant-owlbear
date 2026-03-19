@@ -1,0 +1,350 @@
+{
+  "name": "Lasair",
+  "about": "Dragonborn Sorcerer level 1\n\nBackground: Criminal\n\nPlayer: dxMourn\n\nCurrent HP: 8/8\n\nInitiative: +5\n\nPassive Insight 12, Passive Investigation 9, Passive Perception 12\n\nCurrency: 44 GP\n\nBackstory: Lasair es un Dragonborn cuyo huevo fue robado en Athkatla antes de eclosionar. Durante el transporte, figuras encapuchadas lo mantuvieron expuesto a una piedra negra y vítrea que zumbaba con una frecuencia antinatural, contaminando su magia antes de que naciera. Una redada dispersó a los contrabandistas y el huevo fue encontrado por una pareja humilde que lo crió con amor incondicional, dándole nombre, hogar e identidad. Años después, quienes lo robaron regresaron a reclamarlo. Sus padres adoptivos murieron para que él pudiera huir. \n\nMovido por la venganza, se hizo investigador en Neverwinter, donde encontró en Kevori y Delvin Fearnehart algo que no buscaba: una familia y un ancla. Ese par de hermanos le recuerdan a aquellas dos personas que alguna vez tuvo y significaron tanto para él. \n\nLa piedra le dejó dos heridas que no dejan de crecer. La primera es su Magia Salvaje, violenta e impredecible, que viene acompañada de fracturas temporales: episodios en los que revive sus peores recuerdos con total intensidad sensorial, a veces mezclados con visiones del futuro o con los ecos de personas recién muertas que caminan a su lado sin saberlo. Su mente nunca está en silencio. La segunda es física: cada vez que fuerza su magia, sus escamas se oscurecen y cristalizan en obsidiana negra, el mismo material de aquella piedra. Empezó con una astilla en un nudillo. Ahora se extiende, y no se detiene. \n\nEn sus sueños, una piedra enorme grita con miles de voces en una frecuencia que solo él puede escuchar. Sabe que lo que le hicieron fue deliberado. Lo que ignora es quiénes son realmente sus responsables, qué era esa piedra, y si la obsidiana que lo consume tiene remedio.",
+  "size": "Medium",
+  "type": "Humanoid",
+  "subtype": "Dragonborn",
+  "group": "Player Character",
+  "alignment": "",
+  "armor_class": {
+    "value": 13,
+    "special": "Current HP 8/8"
+  },
+  "hp": {
+    "value": 8,
+    "hit_dice": "d6"
+  },
+  "speed": {
+    "walk": 30,
+    "fly": null,
+    "swim": null,
+    "climb": null,
+    "burrow": null,
+    "hover": null,
+    "lightwalking": null,
+    "notes": null
+  },
+  "stats": {
+    "strength": 13,
+    "dexterity": 17,
+    "constitution": 14,
+    "intelligence": 9,
+    "wisdom": 14,
+    "charisma": 18
+  },
+  "saving_throws": {
+    "strength_save": 1,
+    "dexterity_save": 3,
+    "constitution_save": 4,
+    "intelligence_save": -1,
+    "wisdom_save": 2,
+    "charisma_save": 6
+  },
+  "perception": 12,
+  "skills": {
+    "acrobatics": 3,
+    "animal_handling": 2,
+    "arcana": -1,
+    "athletics": 1,
+    "deception": 6,
+    "history": -1,
+    "insight": 2,
+    "intimidation": 6,
+    "investigation": -1,
+    "medicine": 2,
+    "nature": -1,
+    "perception": 2,
+    "performance": 4,
+    "persuasion": 4,
+    "religion": -1,
+    "sleight_of_hand": 5,
+    "stealth": 5,
+    "survival": 2
+  },
+  "damage_vulnerabilities": null,
+  "damage_resistances": "cold",
+  "damage_immunities": null,
+  "condition_immunities": null,
+  "senses": [
+    "Darkvision 60 ft."
+  ],
+  "languages": [
+    "Common",
+    "Draconic",
+    "Elvish"
+  ],
+  "items": [
+    "Spear",
+    "Dagger",
+    "Dagger",
+    "Crystal",
+    "Backpack",
+    "Caltrops x20",
+    "Crowbar",
+    "Oil x2",
+    "Rations x10",
+    "Rope",
+    "Tinderbox",
+    "Torch x10",
+    "Waterskin",
+    "Dagger",
+    "Dagger",
+    "Thieves' Tools",
+    "Crowbar",
+    "Pouch",
+    "Pouch",
+    "Traveler's Clothes",
+    "Sorcerous Burst (equipped)",
+    "2 Daggers",
+    "Thieves' Tools",
+    "Crowbar",
+    "2 Pouches",
+    "Traveler's Clothes",
+    "16 gp"
+  ],
+  "equipment": null,
+  "challenge_rating": null,
+  "cr": null,
+  "actions": [
+    {
+      "name": "Spear",
+      "desc": "Attack: +3 to hit. Hit: 1d6.",
+      "attack_bonus": 3,
+      "stat_bonus": [
+        "STR"
+      ],
+      "damage_dice": "1d6",
+      "limit": null
+    },
+    {
+      "name": "Dagger",
+      "desc": "Attack: +5 to hit. Hit: 1d4.",
+      "attack_bonus": 5,
+      "stat_bonus": [
+        "DEX"
+      ],
+      "damage_dice": "1d4",
+      "limit": null
+    },
+    {
+      "name": "Sorcerous Burst",
+      "desc": "Attack: +6 to hit. Hit: 1d8 Acid (Atk: +6). V/S",
+      "attack_bonus": 6,
+      "stat_bonus": [
+        "CHA"
+      ],
+      "damage_dice": "1d8 Acid (Atk: +6)",
+      "limit": null
+    }
+  ],
+  "bonus_actions": [
+    {
+      "name": "Draconic Flight",
+      "desc": "Class: Sorcerer\n\nPHB-2024 187\nOnce per Long Rest as a Bonus Action, you gain temporary flight for 10 minutes or until you retract the wings (no action required) or have the Incapacitated condition. During that time, you have a Fly Speed equal to your Speed.",
+      "attack_bonus": null,
+      "stat_bonus": [],
+      "damage_dice": null,
+      "limit": null
+    },
+    {
+      "name": "Innate Sorcery",
+      "desc": "Class: Sorcerer\n\nBonus Action to unleash magic for 1 min. +1 Spell Save DC, Advantage on spell attacks.",
+      "attack_bonus": null,
+      "stat_bonus": [],
+      "damage_dice": null,
+      "limit": null
+    }
+  ],
+  "lair_actions": null,
+  "mythic_actions": null,
+  "reactions": null,
+  "legendary_desc": null,
+  "legendary_actions": null,
+  "special_abilities": [
+    {
+      "name": "Core Sorcerer Traits",
+      "desc": "Class: Sorcerer\n\nPHB-2024 139",
+      "attack_bonus": null,
+      "stat_bonus": [],
+      "damage_dice": null,
+      "limit": null
+    },
+    {
+      "name": "Spellcasting",
+      "desc": "Class: Sorcerer\n\nCharisma-based slot casting. 4 Cantrips, 2 Prepared spells.",
+      "attack_bonus": null,
+      "stat_bonus": [],
+      "damage_dice": null,
+      "limit": null
+    },
+    {
+      "name": "Innate Sorcery",
+      "desc": "Class: Sorcerer\n\nBonus Action to unleash magic for 1 min. +1 Spell Save DC, Advantage on spell attacks.",
+      "attack_bonus": null,
+      "stat_bonus": [],
+      "damage_dice": null,
+      "limit": null
+    },
+    {
+      "name": "Creature Type",
+      "desc": "Class: Sorcerer\n\nPHB-2024 187\nYou are a Humanoid.",
+      "attack_bonus": null,
+      "stat_bonus": [],
+      "damage_dice": null,
+      "limit": null
+    },
+    {
+      "name": "Size",
+      "desc": "Class: Sorcerer\n\nPHB-2024 187\nYour size is Medium.",
+      "attack_bonus": null,
+      "stat_bonus": [],
+      "damage_dice": null,
+      "limit": null
+    },
+    {
+      "name": "Speed",
+      "desc": "Class: Sorcerer\n\nPHB-2024 187\nYour speed is 30 ft.",
+      "attack_bonus": null,
+      "stat_bonus": [],
+      "damage_dice": null,
+      "limit": null
+    },
+    {
+      "name": "Draconic Ancestry",
+      "desc": "Class: Sorcerer\n\nPHB-2024 187\nYou gain a breath weapon and damage resistance with your chosen dragon type.",
+      "attack_bonus": null,
+      "stat_bonus": [],
+      "damage_dice": null,
+      "limit": null
+    },
+    {
+      "name": "White Dragon -",
+      "desc": "Class: Sorcerer\n\nYou have a White Dragon ancestor.",
+      "attack_bonus": null,
+      "stat_bonus": [],
+      "damage_dice": null,
+      "limit": null
+    },
+    {
+      "name": "Breath Weapon",
+      "desc": "Class: Sorcerer\n\nPHB-2024 187\nWhen you take the Attack action on your turn, you can replace one of your attacks with an exhalation of magical energy. You can use your Breath Weapon 2 times per Long Rest.",
+      "attack_bonus": null,
+      "stat_bonus": [],
+      "damage_dice": null,
+      "limit": null
+    },
+    {
+      "name": "Breath Weapon (Cold) -",
+      "desc": "Class: Sorcerer\n\nWhen you take the Attack action on your turn, you can replace one attack with a breath weapon that is a 15-ft. Cone or a 30-ft. Line that’s 5 ft. wide (choose the shape each time). Each creature must make a DC 12 Dex. saving throw taking 1d10 Cold damage on a failed save or half as much damage on a success.",
+      "attack_bonus": null,
+      "stat_bonus": [],
+      "damage_dice": null,
+      "limit": null
+    },
+    {
+      "name": "2 / Long Rest",
+      "desc": "Class: Sorcerer\n\n1 Action",
+      "attack_bonus": null,
+      "stat_bonus": [],
+      "damage_dice": null,
+      "limit": null
+    },
+    {
+      "name": "Damage Resistance",
+      "desc": "Class: Sorcerer\n\nPHB-2024 187\nYou have Resistance to the damage type determined by your Draconic Ancestry trait.",
+      "attack_bonus": null,
+      "stat_bonus": [],
+      "damage_dice": null,
+      "limit": null
+    },
+    {
+      "name": "Draconic Resistance (Cold) -",
+      "desc": "Class: Sorcerer\n\nYou have resistance to Cold damage.",
+      "attack_bonus": null,
+      "stat_bonus": [],
+      "damage_dice": null,
+      "limit": null
+    },
+    {
+      "name": "Darkvision",
+      "desc": "Class: Sorcerer\n\nPHB-2024 187\nYou have Darkvision with a range of 60 ft.",
+      "attack_bonus": null,
+      "stat_bonus": [],
+      "damage_dice": null,
+      "limit": null
+    },
+    {
+      "name": "Draconic Flight",
+      "desc": "Class: Sorcerer\n\nPHB-2024 187\nOnce per Long Rest as a Bonus Action, you gain temporary flight for 10 minutes or until you retract the wings (no action required) or have the Incapacitated condition. During that time, you have a Fly Speed equal to your Speed.",
+      "attack_bonus": null,
+      "stat_bonus": [],
+      "damage_dice": null,
+      "limit": null
+    },
+    {
+      "name": "Languages",
+      "desc": "Class: Sorcerer\n\nPHB-2024 37\nYour character knows at least three languages: Common plus two languages you roll or choose from the Standard Languages table. Knowledge of a language means your character can communicate in it, read it, and write it.",
+      "attack_bonus": null,
+      "stat_bonus": [],
+      "damage_dice": null,
+      "limit": null
+    },
+    {
+      "name": "Initiative Swap",
+      "desc": "Class: Sorcerer\n\nImmediately after you roll Initiative, you can swap your Initiative with the Initiative of one willing ally in the same combat\nYou can’t make this swap if you or the ally has the Incapacitated condition.",
+      "attack_bonus": null,
+      "stat_bonus": [],
+      "damage_dice": null,
+      "limit": null
+    },
+    {
+      "name": "Criminal Ability Score Improvements",
+      "desc": "Class: Sorcerer\n\nPHB-2024 179",
+      "attack_bonus": null,
+      "stat_bonus": [],
+      "damage_dice": null,
+      "limit": null
+    },
+    {
+      "name": "Increase two scores (+2 / +1) -",
+      "desc": "Class: Sorcerer",
+      "attack_bonus": null,
+      "stat_bonus": [],
+      "damage_dice": null,
+      "limit": null
+    },
+    {
+      "name": "Alert",
+      "desc": "PHB 2024\n\nYou gain a bonus to initiative rolls equal to your Proficiency Bonus. You can't be surprised while you are conscious. Other creatures don't gain advantage on attack rolls against you as a result of being unseen by you.",
+      "attack_bonus": null,
+      "stat_bonus": [],
+      "damage_dice": null,
+      "limit": null
+    }
+  ],
+  "spell_slots": [
+    {
+      "level": 1,
+      "limit": {
+        "name": "1st-level Spell Slots",
+        "description": "2/2 available",
+        "uses": 2,
+        "resets": [
+          "long"
+        ]
+      }
+    }
+  ],
+  "spells": [
+    "Cantrip: Control Flames",
+    "Cantrip: Gust",
+    "Cantrip: Mind Sliver",
+    "Cantrip: Sorcerous Burst",
+    "1st Level: Shield",
+    "1st Level: Witch Bolt"
+  ],
+  "spell_dc": "DC 14",
+  "spell_attack": "+6",
+  "limits": null,
+  "source": "D&D Beyond PDF - Lasair.pdf"
+}

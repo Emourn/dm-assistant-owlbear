@@ -1,0 +1,406 @@
+{
+    "backgrounds": [
+        {
+            "name": "Acolyte",
+            "source": "XPHB",
+            "ability": [
+                "int",
+                "wis",
+                "cha"
+            ],
+            "feat": "Magic Initiate (Cleric)",
+            "skills": [
+                "Insight",
+                "Religion"
+            ],
+            "tool": "Calligrapher's Supplies",
+            "equipment": [
+                "Calligrapher's Supplies",
+                "Book (prayers)",
+                "Holy Symbol",
+                "Parchment (10 sheets)",
+                "Robe",
+                "8 gp"
+            ],
+            "gold": 50,
+            "description": "You devoted yourself to service in a temple, either nestled in a town or secluded in a sacred grove."
+        },
+        {
+            "name": "Artisan",
+            "source": "XPHB",
+            "ability": [
+                "str",
+                "dex",
+                "int"
+            ],
+            "feat": "Crafter",
+            "skills": [
+                "Investigation",
+                "Persuasion"
+            ],
+            "tool": "Artisan's Tools",
+            "equipment": [
+                "Artisan's Tools",
+                "2 Pouches",
+                "Traveler's Clothes",
+                "32 gp"
+            ],
+            "gold": 50,
+            "description": "You began mopping floors and scrubbing counters in an artisan's workshop."
+        },
+        {
+            "name": "Charlatan",
+            "source": "XPHB",
+            "ability": [
+                "dex",
+                "con",
+                "cha"
+            ],
+            "feat": "Skilled",
+            "skills": [
+                "Deception",
+                "Sleight of Hand"
+            ],
+            "tool": "Forgery Kit",
+            "equipment": [
+                "Forgery Kit",
+                "Costume",
+                "Fine Clothes",
+                "15 gp"
+            ],
+            "gold": 50,
+            "description": "You prey on unfortunates who were in the market for a comforting lie."
+        },
+        {
+            "name": "Criminal",
+            "source": "XPHB",
+            "ability": [
+                "dex",
+                "con",
+                "int"
+            ],
+            "feat": "Alert",
+            "skills": [
+                "Sleight of Hand",
+                "Stealth"
+            ],
+            "tool": "Thieves' Tools",
+            "equipment": [
+                "2 Daggers",
+                "Thieves' Tools",
+                "Crowbar",
+                "2 Pouches",
+                "Traveler's Clothes",
+                "16 gp"
+            ],
+            "gold": 50,
+            "description": "You eked out a living in dark alleyways, cutting purses or burgling shops."
+        },
+        {
+            "name": "Entertainer",
+            "source": "XPHB",
+            "ability": [
+                "str",
+                "dex",
+                "cha"
+            ],
+            "feat": "Musician",
+            "skills": [
+                "Acrobatics",
+                "Performance"
+            ],
+            "tool": "Musical Instrument",
+            "equipment": [
+                "Musical Instrument",
+                "2 Costumes",
+                "Mirror",
+                "Perfume",
+                "Traveler's Clothes",
+                "11 gp"
+            ],
+            "gold": 50,
+            "description": "You spent much of your youth following roving fairs and carnivals."
+        },
+        {
+            "name": "Farmer",
+            "source": "XPHB",
+            "ability": [
+                "str",
+                "con",
+                "wis"
+            ],
+            "feat": "Tough",
+            "skills": [
+                "Animal Handling",
+                "Nature"
+            ],
+            "tool": "Carpenter's Tools",
+            "equipment": [
+                "Sickle",
+                "Carpenter's Tools",
+                "Healer's Kit",
+                "Iron Pot",
+                "Shovel",
+                "Traveler's Clothes",
+                "30 gp"
+            ],
+            "gold": 50,
+            "description": "You grew up close to the land, tending animals and cultivating the earth."
+        },
+        {
+            "name": "Guard",
+            "source": "XPHB",
+            "ability": [
+                "str",
+                "int",
+                "wis"
+            ],
+            "feat": "Alert",
+            "skills": [
+                "Athletics",
+                "Perception"
+            ],
+            "tool": "Gaming Set",
+            "equipment": [
+                "Spear",
+                "Light Crossbow",
+                "20 Bolts",
+                "Gaming Set",
+                "Hooded Lantern",
+                "Manacles",
+                "Quiver",
+                "Traveler's Clothes",
+                "12 gp"
+            ],
+            "gold": 50,
+            "description": "You were trained to keep one eye looking outside the wall and your other eye looking inside."
+        },
+        {
+            "name": "Guide",
+            "source": "XPHB",
+            "ability": [
+                "dex",
+                "con",
+                "wis"
+            ],
+            "feat": "Magic Initiate (Druid)",
+            "skills": [
+                "Stealth",
+                "Survival"
+            ],
+            "tool": "Cartographer's Tools",
+            "equipment": [
+                "Shortbow",
+                "20 Arrows",
+                "Cartographer's Tools",
+                "Bedroll",
+                "Quiver",
+                "Tent",
+                "Traveler's Clothes",
+                "3 gp"
+            ],
+            "gold": 50,
+            "description": "You came of age outdoors, far from settled lands."
+        },
+        {
+            "name": "Hermit",
+            "source": "XPHB",
+            "ability": [
+                "con",
+                "wis",
+                "cha"
+            ],
+            "feat": "Healer",
+            "skills": [
+                "Medicine",
+                "Religion"
+            ],
+            "tool": "Herbalism Kit",
+            "equipment": [
+                "Quarterstaff",
+                "Herbalism Kit",
+                "Bedroll",
+                "Book (philosophy)",
+                "Lamp",
+                "Oil (3 flasks)",
+                "Traveler's Clothes",
+                "16 gp"
+            ],
+            "gold": 50,
+            "description": "You spent your early years secluded in a hut or monastery."
+        },
+        {
+            "name": "Merchant",
+            "source": "XPHB",
+            "ability": [
+                "con",
+                "int",
+                "cha"
+            ],
+            "feat": "Lucky",
+            "skills": [
+                "Animal Handling",
+                "Persuasion"
+            ],
+            "tool": "Navigator's Tools",
+            "equipment": [
+                "Navigator's Tools",
+                "2 Pouches",
+                "Traveler's Clothes",
+                "22 gp"
+            ],
+            "gold": 50,
+            "description": "You were apprenticed to a trader, learning the fundamentals of commerce."
+        },
+        {
+            "name": "Noble",
+            "source": "XPHB",
+            "ability": [
+                "str",
+                "int",
+                "cha"
+            ],
+            "feat": "Skilled",
+            "skills": [
+                "History",
+                "Persuasion"
+            ],
+            "tool": "Gaming Set",
+            "equipment": [
+                "Gaming Set",
+                "Fine Clothes",
+                "Perfume",
+                "29 gp"
+            ],
+            "gold": 50,
+            "description": "You were raised in a castle, surrounded by wealth, power, and privilege."
+        },
+        {
+            "name": "Sage",
+            "source": "XPHB",
+            "ability": [
+                "con",
+                "int",
+                "wis"
+            ],
+            "feat": "Magic Initiate (Wizard)",
+            "skills": [
+                "Arcana",
+                "History"
+            ],
+            "tool": "Calligrapher's Supplies",
+            "equipment": [
+                "Quarterstaff",
+                "Calligrapher's Supplies",
+                "Book (history)",
+                "Parchment (8 sheets)",
+                "Robe",
+                "8 gp"
+            ],
+            "gold": 50,
+            "description": "You spent your formative years in manors and monasteries, studying books and scrolls."
+        },
+        {
+            "name": "Sailor",
+            "source": "XPHB",
+            "ability": [
+                "str",
+                "dex",
+                "wis"
+            ],
+            "feat": "Tavern Brawler",
+            "skills": [
+                "Acrobatics",
+                "Perception"
+            ],
+            "tool": "Navigator's Tools",
+            "equipment": [
+                "Dagger",
+                "Navigator's Tools",
+                "Rope",
+                "Traveler's Clothes",
+                "20 gp"
+            ],
+            "gold": 50,
+            "description": "You lived as a seafarer, wind at your back and decks swaying beneath your feet."
+        },
+        {
+            "name": "Scribe",
+            "source": "XPHB",
+            "ability": [
+                "dex",
+                "int",
+                "wis"
+            ],
+            "feat": "Skilled",
+            "skills": [
+                "Investigation",
+                "Perception"
+            ],
+            "tool": "Calligrapher's Supplies",
+            "equipment": [
+                "Calligrapher's Supplies",
+                "Fine Clothes",
+                "Lamp",
+                "Oil (3 flasks)",
+                "Parchment (12 sheets)",
+                "23 gp"
+            ],
+            "gold": 50,
+            "description": "You spent formative years in a scriptorium, dedicated to the preservation of knowledge."
+        },
+        {
+            "name": "Soldier",
+            "source": "XPHB",
+            "ability": [
+                "str",
+                "dex",
+                "con"
+            ],
+            "feat": "Savage Attacker",
+            "skills": [
+                "Athletics",
+                "Intimidation"
+            ],
+            "tool": "Gaming Set",
+            "equipment": [
+                "Spear",
+                "Shortbow",
+                "20 Arrows",
+                "Gaming Set",
+                "Healer's Kit",
+                "Quiver",
+                "Traveler's Clothes",
+                "14 gp"
+            ],
+            "gold": 50,
+            "description": "You began training for war as soon as you reached adulthood."
+        },
+        {
+            "name": "Wayfarer",
+            "source": "XPHB",
+            "ability": [
+                "dex",
+                "wis",
+                "cha"
+            ],
+            "feat": "Lucky",
+            "skills": [
+                "Insight",
+                "Stealth"
+            ],
+            "tool": "Thieves' Tools",
+            "equipment": [
+                "2 Daggers",
+                "Thieves' Tools",
+                "Gaming Set",
+                "Bedroll",
+                "2 Pouches",
+                "Traveler's Clothes",
+                "16 gp"
+            ],
+            "gold": 50,
+            "description": "You grew up on the streets surrounded by similarly ill-fated castoffs."
+        }
+    ]
+}

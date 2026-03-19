@@ -1,0 +1,552 @@
+{
+    "masteryProperties": [
+        {
+            "name": "Cleave",
+            "description": "If you hit a creature with a melee attack roll, you can make a second attack against another creature within 5 ft that is also within reach. (1/turn, no ability mod to damage unless negative)."
+        },
+        {
+            "name": "Graze",
+            "description": "If your attack roll misses a creature, you deal damage equal to the ability modifier used for the attack."
+        },
+        {
+            "name": "Nick",
+            "description": "The extra attack of the Light property can be made as part of the Attack action instead of as a Bonus Action. (1/turn)."
+        },
+        {
+            "name": "Push",
+            "description": "If you hit a creature, you can push it up to 10 feet straight away if it is Large or smaller."
+        },
+        {
+            "name": "Sap",
+            "description": "If you hit a creature, it has Disadvantage on its next attack roll before the start of your next turn."
+        },
+        {
+            "name": "Slow",
+            "description": "If you hit a creature and deal damage, reduce its Speed by 10 feet until the start of your next turn."
+        },
+        {
+            "name": "Topple",
+            "description": "If you hit a creature, force a Con save (DC 8 + mod + Prof) or it has the Prone condition."
+        },
+        {
+            "name": "Vex",
+            "description": "If you hit a creature and deal damage, you have Advantage on your next attack roll against it before the end of your next turn."
+        }
+    ],
+    "weapons": [
+        {
+            "name": "Club",
+            "category": "Simple",
+            "type": "Melee",
+            "damage": "1d4",
+            "damageType": "Bludgeoning",
+            "properties": [
+                "Light"
+            ],
+            "mastery": "Slow",
+            "weight": 2,
+            "cost": "0.1 gp"
+        },
+        {
+            "name": "Dagger",
+            "category": "Simple",
+            "type": "Melee",
+            "damage": "1d4",
+            "damageType": "Piercing",
+            "properties": [
+                "Finesse",
+                "Light",
+                "Thrown (Range 20/60)"
+            ],
+            "mastery": "Nick",
+            "weight": 1,
+            "cost": "2 gp"
+        },
+        {
+            "name": "Handaxe",
+            "category": "Simple",
+            "type": "Melee",
+            "damage": "1d6",
+            "damageType": "Slashing",
+            "properties": [
+                "Light",
+                "Thrown (Range 20/60)"
+            ],
+            "mastery": "Vex",
+            "weight": 2,
+            "cost": "5 gp"
+        },
+        {
+            "name": "Javelin",
+            "category": "Simple",
+            "type": "Melee",
+            "damage": "1d6",
+            "damageType": "Piercing",
+            "properties": [
+                "Thrown (Range 30/120)"
+            ],
+            "mastery": "Slow",
+            "weight": 2,
+            "cost": "0.5 gp"
+        },
+        {
+            "name": "Light Hammer",
+            "category": "Simple",
+            "type": "Melee",
+            "damage": "1d4",
+            "damageType": "Bludgeoning",
+            "properties": [
+                "Light",
+                "Thrown (Range 20/60)"
+            ],
+            "mastery": "Nick",
+            "weight": 2,
+            "cost": "2 gp"
+        },
+        {
+            "name": "Mace",
+            "category": "Simple",
+            "type": "Melee",
+            "damage": "1d6",
+            "damageType": "Bludgeoning",
+            "properties": [],
+            "mastery": "Sap",
+            "weight": 4,
+            "cost": "5 gp"
+        },
+        {
+            "name": "Quarterstaff",
+            "category": "Simple",
+            "type": "Melee",
+            "damage": "1d6",
+            "damageType": "Bludgeoning",
+            "properties": [
+                "Versatile (1d8)"
+            ],
+            "mastery": "Topple",
+            "weight": 4,
+            "cost": "0.2 gp"
+        },
+        {
+            "name": "Sickle",
+            "category": "Simple",
+            "type": "Melee",
+            "damage": "1d4",
+            "damageType": "Slashing",
+            "properties": [
+                "Light"
+            ],
+            "mastery": "Nick",
+            "weight": 2,
+            "cost": "1 gp"
+        },
+        {
+            "name": "Spear",
+            "category": "Simple",
+            "type": "Melee",
+            "damage": "1d6",
+            "damageType": "Piercing",
+            "properties": [
+                "Thrown (Range 20/60)",
+                "Versatile (1d8)"
+            ],
+            "mastery": "Sap",
+            "weight": 3,
+            "cost": "1 gp"
+        },
+        {
+            "name": "Light Crossbow",
+            "category": "Simple",
+            "type": "Ranged",
+            "damage": "1d8",
+            "damageType": "Piercing",
+            "properties": [
+                "Ammunition (Range 80/320)",
+                "Loading",
+                "Two-Handed"
+            ],
+            "mastery": "Slow",
+            "weight": 5,
+            "cost": "25 gp"
+        },
+        {
+            "name": "Shortbow",
+            "category": "Simple",
+            "type": "Ranged",
+            "damage": "1d6",
+            "damageType": "Piercing",
+            "properties": [
+                "Ammunition (Range 80/320)",
+                "Two-Handed"
+            ],
+            "mastery": "Vex",
+            "weight": 2,
+            "cost": "25 gp"
+        },
+        {
+            "name": "Sling",
+            "category": "Simple",
+            "type": "Ranged",
+            "damage": "1d4",
+            "damageType": "Bludgeoning",
+            "properties": [
+                "Ammunition (Range 30/120)"
+            ],
+            "mastery": "Slow",
+            "weight": 0,
+            "cost": "0.1 gp"
+        },
+        {
+            "name": "Battleaxe",
+            "category": "Martial",
+            "type": "Melee",
+            "damage": "1d8",
+            "damageType": "Slashing",
+            "properties": [
+                "Versatile (1d10)"
+            ],
+            "mastery": "Topple",
+            "weight": 4,
+            "cost": "10 gp"
+        },
+        {
+            "name": "Flail",
+            "category": "Martial",
+            "type": "Melee",
+            "damage": "1d8",
+            "damageType": "Bludgeoning",
+            "properties": [],
+            "mastery": "Sap",
+            "weight": 2,
+            "cost": "10 gp"
+        },
+        {
+            "name": "Glaive",
+            "category": "Martial",
+            "type": "Melee",
+            "damage": "1d10",
+            "damageType": "Slashing",
+            "properties": [
+                "Heavy",
+                "Reach",
+                "Two-Handed"
+            ],
+            "mastery": "Graze",
+            "weight": 6,
+            "cost": "20 gp"
+        },
+        {
+            "name": "Greataxe",
+            "category": "Martial",
+            "type": "Melee",
+            "damage": "1d12",
+            "damageType": "Slashing",
+            "properties": [
+                "Heavy",
+                "Two-Handed"
+            ],
+            "mastery": "Cleave",
+            "weight": 7,
+            "cost": "30 gp"
+        },
+        {
+            "name": "Greatsword",
+            "category": "Martial",
+            "type": "Melee",
+            "damage": "2d6",
+            "damageType": "Slashing",
+            "properties": [
+                "Heavy",
+                "Two-Handed"
+            ],
+            "mastery": "Graze",
+            "weight": 6,
+            "cost": "50 gp"
+        },
+        {
+            "name": "Halberd",
+            "category": "Martial",
+            "type": "Melee",
+            "damage": "1d10",
+            "damageType": "Slashing",
+            "properties": [
+                "Heavy",
+                "Reach",
+                "Two-Handed"
+            ],
+            "mastery": "Cleave",
+            "weight": 6,
+            "cost": "20 gp"
+        },
+        {
+            "name": "Longsword",
+            "category": "Martial",
+            "type": "Melee",
+            "damage": "1d8",
+            "damageType": "Slashing",
+            "properties": [
+                "Versatile (1d10)"
+            ],
+            "mastery": "Sap",
+            "weight": 3,
+            "cost": "15 gp"
+        },
+        {
+            "name": "Maul",
+            "category": "Martial",
+            "type": "Melee",
+            "damage": "2d6",
+            "damageType": "Bludgeoning",
+            "properties": [
+                "Heavy",
+                "Two-Handed"
+            ],
+            "mastery": "Topple",
+            "weight": 10,
+            "cost": "10 gp"
+        },
+        {
+            "name": "Morningstar",
+            "category": "Martial",
+            "type": "Melee",
+            "damage": "1d8",
+            "damageType": "Piercing",
+            "properties": [],
+            "mastery": "Sap",
+            "weight": 4,
+            "cost": "15 gp"
+        },
+        {
+            "name": "Pike",
+            "category": "Martial",
+            "type": "Melee",
+            "damage": "1d10",
+            "damageType": "Piercing",
+            "properties": [
+                "Heavy",
+                "Reach",
+                "Two-Handed"
+            ],
+            "mastery": "Push",
+            "weight": 18,
+            "cost": "5 gp"
+        },
+        {
+            "name": "Rapier",
+            "category": "Martial",
+            "type": "Melee",
+            "damage": "1d8",
+            "damageType": "Piercing",
+            "properties": [
+                "Finesse"
+            ],
+            "mastery": "Vex",
+            "weight": 2,
+            "cost": "25 gp"
+        },
+        {
+            "name": "Scimitar",
+            "category": "Martial",
+            "type": "Melee",
+            "damage": "1d6",
+            "damageType": "Slashing",
+            "properties": [
+                "Finesse",
+                "Light"
+            ],
+            "mastery": "Nick",
+            "weight": 3,
+            "cost": "25 gp"
+        },
+        {
+            "name": "Shortsword",
+            "category": "Martial",
+            "type": "Melee",
+            "damage": "1d6",
+            "damageType": "Piercing",
+            "properties": [
+                "Finesse",
+                "Light"
+            ],
+            "mastery": "Vex",
+            "weight": 2,
+            "cost": "10 gp"
+        },
+        {
+            "name": "Warhammer",
+            "category": "Martial",
+            "type": "Melee",
+            "damage": "1d8",
+            "damageType": "Bludgeoning",
+            "properties": [
+                "Versatile (1d10)"
+            ],
+            "mastery": "Push",
+            "weight": 5,
+            "cost": "15 gp"
+        },
+        {
+            "name": "Longbow",
+            "category": "Martial",
+            "type": "Ranged",
+            "damage": "1d8",
+            "damageType": "Piercing",
+            "properties": [
+                "Ammunition (Range 150/600)",
+                "Heavy",
+                "Two-Handed"
+            ],
+            "mastery": "Slow",
+            "weight": 2,
+            "cost": "50 gp"
+        }
+    ],
+    "armor": [
+        {
+            "name": "Padded Armor",
+            "type": "LA",
+            "ac": 11,
+            "stealth": true,
+            "weight": 8,
+            "cost": "5 gp",
+            "description": "Light Armor. 11 + Dex. Disadv on Stealth."
+        },
+        {
+            "name": "Leather Armor",
+            "type": "LA",
+            "ac": 11,
+            "weight": 10,
+            "cost": "10 gp",
+            "description": "Light Armor. 11 + Dex."
+        },
+        {
+            "name": "Studded Leather Armor",
+            "type": "LA",
+            "ac": 12,
+            "weight": 13,
+            "cost": "45 gp",
+            "description": "Light Armor. 12 + Dex."
+        },
+        {
+            "name": "Hide Armor",
+            "type": "MA",
+            "ac": 12,
+            "weight": 12,
+            "cost": "10 gp",
+            "description": "Medium Armor. 12 + Dex (Max 2)."
+        },
+        {
+            "name": "Chain Shirt",
+            "type": "MA",
+            "ac": 13,
+            "weight": 20,
+            "cost": "50 gp",
+            "description": "Medium Armor. 13 + Dex (Max 2)."
+        },
+        {
+            "name": "Scale Mail",
+            "type": "MA",
+            "ac": 14,
+            "stealth": true,
+            "weight": 45,
+            "cost": "50 gp",
+            "description": "Medium Armor. 14 + Dex (Max 2). Disadv on Stealth."
+        },
+        {
+            "name": "Breastplate",
+            "type": "MA",
+            "ac": 14,
+            "weight": 20,
+            "cost": "400 gp",
+            "description": "Medium Armor. 14 + Dex (Max 2)."
+        },
+        {
+            "name": "Half Plate Armor",
+            "type": "MA",
+            "ac": 15,
+            "stealth": true,
+            "weight": 40,
+            "cost": "750 gp",
+            "description": "Medium Armor. 15 + Dex (Max 2). Disadv on Stealth."
+        },
+        {
+            "name": "Ring Mail",
+            "type": "HA",
+            "ac": 14,
+            "stealth": true,
+            "weight": 40,
+            "cost": "30 gp",
+            "description": "Heavy Armor. AC 14. Disadv on Stealth."
+        },
+        {
+            "name": "Chain Mail",
+            "type": "HA",
+            "ac": 16,
+            "strength": 13,
+            "stealth": true,
+            "weight": 55,
+            "cost": "75 gp",
+            "description": "Heavy Armor. AC 16. Str 13 req. Disadv on Stealth."
+        },
+        {
+            "name": "Splint Armor",
+            "type": "HA",
+            "ac": 17,
+            "strength": 15,
+            "stealth": true,
+            "weight": 60,
+            "cost": "200 gp",
+            "description": "Heavy Armor. AC 17. Str 15 req. Disadv on Stealth."
+        },
+        {
+            "name": "Plate Armor",
+            "type": "HA",
+            "ac": 18,
+            "strength": 15,
+            "stealth": true,
+            "weight": 65,
+            "cost": "1500 gp",
+            "description": "Heavy Armor. AC 18. Str 15 req. Disadv on Stealth."
+        },
+        {
+            "name": "Shield",
+            "type": "S",
+            "ac": 2,
+            "weight": 6,
+            "cost": "10 gp",
+            "description": "Wielding a shield increases your AC by 2."
+        }
+    ],
+    "gear": [
+        {
+            "name": "Backpack",
+            "weight": 5,
+            "description": "A container for carrying gear."
+        },
+        {
+            "name": "Bedroll",
+            "weight": 7,
+            "description": "A sleeping roll."
+        },
+        {
+            "name": "Mess Kit",
+            "weight": 1,
+            "description": "Eating utensils."
+        },
+        {
+            "name": "Healer's Kit",
+            "weight": 3,
+            "description": "Used to stabilize a creature."
+        },
+        {
+            "name": "Explorer's Pack",
+            "weight": 0,
+            "description": "Essential survival gear."
+        },
+        {
+            "name": "Scholar's Pack",
+            "weight": 0,
+            "description": "Pack for scholars and mages."
+        }
+    ]
+}

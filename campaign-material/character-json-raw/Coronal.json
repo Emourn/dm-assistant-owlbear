@@ -1,0 +1,1214 @@
+{
+  "id": "6d3a4060-b6ce-4c07-a8cb-b0c0caf7c26f",
+  "name": "Coronal",
+  "system": "dnd5e",
+  "playerName": "dxMourn",
+  "race": "Elf",
+  "className": "Artificer",
+  "subclass": "",
+  "level": 1,
+  "background": "Archaeologist",
+  "alignment": "",
+  "experience": 0,
+  "abilityScores": {
+    "str": 8,
+    "dex": 15,
+    "con": 13,
+    "int": 19,
+    "wis": 18,
+    "cha": 15
+  },
+  "savingThrows": [
+    "con",
+    "int"
+  ],
+  "skills": [
+    {
+      "name": "Acrobatics",
+      "stat": "dex",
+      "proficient": true,
+      "expertise": false,
+      "bonus": 0
+    },
+    {
+      "name": "Animal Handling",
+      "stat": "wis",
+      "proficient": false,
+      "expertise": false,
+      "bonus": 0
+    },
+    {
+      "name": "Arcana",
+      "stat": "int",
+      "proficient": true,
+      "expertise": false,
+      "bonus": 0
+    },
+    {
+      "name": "Athletics",
+      "stat": "str",
+      "proficient": false,
+      "expertise": false,
+      "bonus": 0
+    },
+    {
+      "name": "Deception",
+      "stat": "cha",
+      "proficient": false,
+      "expertise": false,
+      "bonus": 0
+    },
+    {
+      "name": "History",
+      "stat": "int",
+      "proficient": true,
+      "expertise": false,
+      "bonus": 0,
+      "source": "Background: Archaeologist",
+      "sourceId": "background:-archaeologist"
+    },
+    {
+      "name": "Insight",
+      "stat": "wis",
+      "proficient": true,
+      "expertise": false,
+      "bonus": 0,
+      "source": "Species: Elf",
+      "sourceId": "species:-elf"
+    },
+    {
+      "name": "Intimidation",
+      "stat": "cha",
+      "proficient": false,
+      "expertise": false,
+      "bonus": 0
+    },
+    {
+      "name": "Investigation",
+      "stat": "int",
+      "proficient": true,
+      "expertise": false,
+      "bonus": 0
+    },
+    {
+      "name": "Medicine",
+      "stat": "wis",
+      "proficient": false,
+      "expertise": false,
+      "bonus": 0
+    },
+    {
+      "name": "Nature",
+      "stat": "int",
+      "proficient": false,
+      "expertise": false,
+      "bonus": 0
+    },
+    {
+      "name": "Perception",
+      "stat": "wis",
+      "proficient": true,
+      "expertise": false,
+      "bonus": 0,
+      "source": "Species: Elf",
+      "sourceId": "species:-elf"
+    },
+    {
+      "name": "Performance",
+      "stat": "cha",
+      "proficient": false,
+      "expertise": false,
+      "bonus": 0
+    },
+    {
+      "name": "Persuasion",
+      "stat": "cha",
+      "proficient": false,
+      "expertise": false,
+      "bonus": 0
+    },
+    {
+      "name": "Religion",
+      "stat": "int",
+      "proficient": false,
+      "expertise": false,
+      "bonus": 0
+    },
+    {
+      "name": "Sleight of Hand",
+      "stat": "dex",
+      "proficient": false,
+      "expertise": false,
+      "bonus": 0
+    },
+    {
+      "name": "Stealth",
+      "stat": "dex",
+      "proficient": false,
+      "expertise": false,
+      "bonus": 0
+    },
+    {
+      "name": "Survival",
+      "stat": "wis",
+      "proficient": true,
+      "expertise": false,
+      "bonus": 0,
+      "source": "Background: Archaeologist",
+      "sourceId": "background:-archaeologist"
+    }
+  ],
+  "senses": "Darkvision 60 ft.",
+  "passivePerception": 16,
+  "passiveInvestigation": 16,
+  "passiveInsight": 16,
+  "languages": "Common, Elvish, Gnomish",
+  "proficiencies": "Armor: light, medium, shield; Weapons: simple, [object Object]; Skills: Choose 2 from arcana, history, investigation, medicine, nature, perception, sleight of hand; Tools: {@item thieves' tools|PHB}, {@item tinker's tools|PHB}, one type of {@item artisan's tools|PHB} of your choice",
+  "ac": 12,
+  "maxHp": 9,
+  "currentHp": 9,
+  "tempHp": 0,
+  "hitDice": "1d8",
+  "speed": "30 ft.",
+  "initiativeMod": 2,
+  "proficiencyBonus": 2,
+  "spellcastingAbility": "int",
+  "spellSaveDc": 14,
+  "spellAttackMod": 6,
+  "spellSlots": [
+    {
+      "current": 0,
+      "max": 0
+    },
+    {
+      "current": 2,
+      "max": 2
+    },
+    {
+      "current": 0,
+      "max": 0
+    },
+    {
+      "current": 0,
+      "max": 0
+    },
+    {
+      "current": 0,
+      "max": 0
+    },
+    {
+      "current": 0,
+      "max": 0
+    },
+    {
+      "current": 0,
+      "max": 0
+    },
+    {
+      "current": 0,
+      "max": 0
+    },
+    {
+      "current": 0,
+      "max": 0
+    },
+    {
+      "current": 0,
+      "max": 0
+    }
+  ],
+  "spells": [
+    {
+      "id": "86ad4d2c-1e5f-4716-93d0-b3b2f536365d",
+      "name": "Prestidigitation",
+      "level": 0,
+      "school": "Transmutation",
+      "castingTime": "1 action",
+      "range": "10 feet",
+      "components": {
+        "v": true,
+        "s": true,
+        "m": false
+      },
+      "duration": "1 hour",
+      "concentration": false,
+      "ritual": false,
+      "description": "You create a magical effect within range. Choose the effect from the options below. If you cast this spell multiple times, you can have up to three of its non-instantaneous effects active at a time.\n\n**Sensory Effect.** You create an instantaneous, harmless sensory effect, such as a shower of sparks, a puff of wind, faint musical notes, or an odd odor.\n\n**Fire Play.** You instantaneously light or snuff out a candle, a torch, or a small campfire.\n\n**Clean or Soil.** You instantaneously clean or soil an object no larger than 1 cubic foot.\n\n**Minor Sensation.** You chill, warm, or flavor up to 1 cubic foot of nonliving material for 1 hour.\n\n**Magic Mark.** You make a color, a small mark, or a symbol appear on an object or a surface for 1 hour.\n\n**Minor Creation.** You create a nonmagical trinket or an illusory image that can fit in your hand. It lasts until the end of your next turn. A trinket can deal no damage and has no monetary worth.",
+      "prepared": false,
+      "source": "XPHB",
+      "isHomebrew": false,
+      "is2024": true
+    },
+    {
+      "id": "9d8cf5af-b35b-4468-bda3-a44412117c63",
+      "name": "Poison Spray",
+      "level": 0,
+      "school": "Necromancy",
+      "castingTime": "1 action",
+      "range": "30 feet",
+      "components": {
+        "v": true,
+        "s": true,
+        "m": false
+      },
+      "duration": "Instantaneous",
+      "concentration": false,
+      "ritual": false,
+      "description": "You spray toxic mist at a creature within range. Make a ranged spell attack against the target. On a hit, the target takes 1d12 Poison damage.",
+      "prepared": false,
+      "source": "XPHB",
+      "higherLevels": "**Cantrip Upgrade.** The damage increases by 1d12 when you reach levels 5 (2d12), 11 (3d12), and 17 (4d12).",
+      "isHomebrew": false,
+      "is2024": true
+    },
+    {
+      "id": "e4ca908b-81e3-41f0-88ac-c27e0bda67a5",
+      "name": "Mage Hand",
+      "level": 0,
+      "school": "Conjuration",
+      "castingTime": "1 action",
+      "range": "30 feet",
+      "components": {
+        "v": true,
+        "s": true,
+        "m": false
+      },
+      "duration": "1 minute",
+      "concentration": false,
+      "ritual": false,
+      "description": "A spectral, floating hand appears at a point you choose within range. The hand lasts for the duration. The hand vanishes if it is ever more than 30 feet away from you or if you cast this spell again.\n\nWhen you cast the spell, you can use the hand to manipulate an object, open an unlocked door or container, stow or retrieve an item from an open container, or pour the contents out of a vial.\n\nAs a Magic|XPHB action on your later turns, you can control the hand thus again. As part of that action, you can move the hand up to 30 feet.\n\nThe hand can't attack, activate magic items, or carry more than 10 pounds.",
+      "prepared": false,
+      "source": "XPHB",
+      "isHomebrew": false,
+      "is2024": true
+    },
+    {
+      "id": "4f155ecd-03ca-43aa-b88d-54e72b77d087",
+      "name": "Mending",
+      "level": 0,
+      "school": "Transmutation",
+      "castingTime": "1 minute",
+      "range": "Touch",
+      "components": {
+        "v": true,
+        "s": true,
+        "m": true,
+        "mDesc": "two lodestones"
+      },
+      "duration": "Instantaneous",
+      "concentration": false,
+      "ritual": false,
+      "description": "This spell repairs a single break or tear in an object you touch, such as a broken chain link, two halves of a broken key, a torn cloak, or a leaking wineskin. As long as the break or tear is no larger than 1 foot in any dimension, you mend it, leaving no trace of the former damage.\n\nThis spell can physically repair a magic item, but it can't restore magic to such an object.",
+      "prepared": true,
+      "source": "XPHB",
+      "isHomebrew": false,
+      "is2024": true
+    },
+    {
+      "id": "00450878-08b1-4b68-9bac-812619098c13",
+      "name": "Identify [R]",
+      "level": 0,
+      "school": "",
+      "castingTime": "1m",
+      "range": "Touch",
+      "components": {
+        "v": true,
+        "s": true,
+        "m": true
+      },
+      "duration": "Instantaneous",
+      "concentration": false,
+      "ritual": true,
+      "description": "Artificer",
+      "prepared": false,
+      "source": "Artificer"
+    },
+    {
+      "id": "8b18d797-2140-4709-a9a4-c34c58967d57",
+      "name": "Catapult",
+      "level": 1,
+      "school": "Transmutation",
+      "castingTime": "1 action",
+      "range": "60 feet",
+      "components": {
+        "v": false,
+        "s": true,
+        "m": false
+      },
+      "duration": "Instantaneous",
+      "concentration": false,
+      "ritual": false,
+      "description": "Choose one object weighing 1 to 5 pounds within range that isn't being worn or carried. The object flies in a straight line up to 90 feet in a direction you choose before falling to the ground, stopping early if it impacts against a solid surface. If the object would strike a creature, that creature must make a Dexterity saving throw. On a failed save, the object strikes the target and stops moving. When the object strikes something, the object and what it strikes each take 3d8 bludgeoning damage.",
+      "prepared": false,
+      "source": "XGE",
+      "higherLevels": "**At Higher Levels.** When you cast this spell using a spell slot of 2nd level or higher, the maximum weight of objects that you can target with this spell increases by 5 pounds, and the damage increases by 3d8|1-9|1d8, for each slot level above 1st.",
+      "isHomebrew": false,
+      "is2024": false
+    },
+    {
+      "id": "255ec1c6-7396-4c72-9577-fbf4a429ccac",
+      "name": "Faerie Fire",
+      "level": 1,
+      "school": "Evocation",
+      "castingTime": "1 action",
+      "range": "60 feet",
+      "components": {
+        "v": true,
+        "s": false,
+        "m": false
+      },
+      "duration": "Concentration, 1 minute",
+      "concentration": true,
+      "ritual": false,
+      "description": "Objects in a 20-foot Cube [Area of Effect]|XPHB|Cube within range are outlined in blue, green, or violet light (your choice). Each creature in the Cube [Area of Effect]|XPHB|Cube is also outlined if it fails a Dexterity saving throw. For the duration, objects and affected creatures shed Dim Light|XPHB in a 10-foot radius and can't benefit from the Invisible|XPHB condition.\n\nAttack|XPHB rolls against an affected creature or object have Advantage|XPHB if the attacker can see it.",
+      "prepared": false,
+      "source": "XPHB",
+      "isHomebrew": false,
+      "is2024": true
+    },
+    {
+      "id": "8ec167ea-e6a1-413b-8fe1-ced84a820289",
+      "name": "False Life",
+      "level": 1,
+      "school": "Necromancy",
+      "castingTime": "1 action",
+      "range": "Self",
+      "components": {
+        "v": true,
+        "s": true,
+        "m": true,
+        "mDesc": "a drop of alcohol"
+      },
+      "duration": "Instantaneous",
+      "concentration": false,
+      "ritual": false,
+      "description": "You gain 2d4 + 4 Temporary Hit Points|XPHB.",
+      "prepared": false,
+      "source": "XPHB",
+      "higherLevels": "**Using a Higher-Level Spell Slot.** You gain 5 additional Temporary Hit Points|XPHB for each spell slot level above 1.",
+      "isHomebrew": false,
+      "is2024": true
+    },
+    {
+      "id": "f378bb97-8525-4346-83af-ade9c5ab433d",
+      "name": "Feather Fall",
+      "level": 1,
+      "school": "Transmutation",
+      "castingTime": "1 reaction",
+      "range": "60 feet",
+      "components": {
+        "v": true,
+        "s": false,
+        "m": true,
+        "mDesc": "a small feather or piece of down"
+      },
+      "duration": "1 minute",
+      "concentration": false,
+      "ritual": false,
+      "description": "Choose up to five falling creatures within range. A falling creature's rate of descent slows to 60 feet per round until the spell ends. If a creature lands before the spell ends, the creature takes no damage from the fall, and the spell ends for that creature.",
+      "prepared": false,
+      "source": "XPHB",
+      "isHomebrew": false,
+      "is2024": true
+    },
+    {
+      "id": "6e0e684f-3165-442d-ba50-3b7917f5d4b4",
+      "name": "Purify Food and Drink [R]",
+      "level": 0,
+      "school": "",
+      "castingTime": "1A + 10m",
+      "range": "10 ft./5 ft. Sphere",
+      "components": {
+        "v": true,
+        "s": true,
+        "m": false
+      },
+      "duration": "Instantaneous",
+      "concentration": false,
+      "ritual": true,
+      "description": "Artificer",
+      "prepared": false,
+      "source": "Artificer"
+    },
+    {
+      "id": "ade2c16c-b1d9-4e68-8818-58dc515b5d09",
+      "name": "Grease",
+      "level": 1,
+      "school": "Conjuration",
+      "castingTime": "1 action",
+      "range": "60 feet",
+      "components": {
+        "v": true,
+        "s": true,
+        "m": true,
+        "mDesc": "a bit of pork rind or butter"
+      },
+      "duration": "1 minute",
+      "concentration": false,
+      "ritual": false,
+      "description": "Nonflammable grease covers the ground in a 10-foot square centered on a point within range and turns it into Difficult Terrain|XPHB for the duration.\n\nWhen the grease appears, each creature standing in its area must succeed on a Dexterity saving throw or have the Prone|XPHB condition. A creature that enters the area or ends its turn there must also succeed on that save or fall Prone|XPHB.",
+      "prepared": false,
+      "source": "XPHB",
+      "isHomebrew": false,
+      "is2024": true
+    },
+    {
+      "id": "52363089-2c97-43d9-af0a-fa45c75cd63d",
+      "name": "Jump",
+      "level": 1,
+      "school": "Transmutation",
+      "castingTime": "1 bonus",
+      "range": "Touch",
+      "components": {
+        "v": true,
+        "s": true,
+        "m": true,
+        "mDesc": "a grasshopper's hind leg"
+      },
+      "duration": "1 minute",
+      "concentration": false,
+      "ritual": false,
+      "description": "You touch a willing creature. Once on each of its turns until the spell ends, that creature can jump up to 30 feet by spending 10 feet of movement.",
+      "prepared": false,
+      "source": "XPHB",
+      "higherLevels": "**Using a Higher-Level Spell Slot.** You can target one additional creature for each spell slot level above 1.",
+      "isHomebrew": false,
+      "is2024": true
+    },
+    {
+      "id": "7b84c2b6-547d-415f-a396-c3ecc50392cd",
+      "name": "Sanctuary",
+      "level": 1,
+      "school": "Abjuration",
+      "castingTime": "1 bonus",
+      "range": "30 feet",
+      "components": {
+        "v": true,
+        "s": true,
+        "m": true,
+        "mDesc": "a shard of glass from a mirror"
+      },
+      "duration": "1 minute",
+      "concentration": false,
+      "ritual": false,
+      "description": "You ward a creature within range. Until the spell ends, any creature who targets the warded creature with an attack roll or a damaging spell must succeed on a Wisdom saving throw or either choose a new target or lose the attack or spell. This spell doesn't protect the warded creature from areas of effect.\n\nThe spell ends if the warded creature makes an attack roll, casts a spell, or deals damage.",
+      "prepared": false,
+      "source": "XPHB",
+      "isHomebrew": false,
+      "is2024": true
+    },
+    {
+      "id": "7c95b33f-c0c5-4397-a57e-ce6511c7b85e",
+      "name": "Longstrider",
+      "level": 1,
+      "school": "Transmutation",
+      "castingTime": "1 action",
+      "range": "Touch",
+      "components": {
+        "v": true,
+        "s": true,
+        "m": true,
+        "mDesc": "a pinch of dirt"
+      },
+      "duration": "1 hour",
+      "concentration": false,
+      "ritual": false,
+      "description": "You touch a creature. The target's Speed|XPHB increases by 10 feet until the spell ends.",
+      "prepared": false,
+      "source": "XPHB",
+      "higherLevels": "**Using a Higher-Level Spell Slot.** You can target one additional creature for each spell slot level above 1.",
+      "isHomebrew": false,
+      "is2024": true
+    },
+    {
+      "id": "acda20eb-0afb-4eb9-aa97-784b48c9db7d",
+      "name": "Cure Wounds",
+      "level": 1,
+      "school": "Abjuration",
+      "castingTime": "1 action",
+      "range": "Touch",
+      "components": {
+        "v": true,
+        "s": true
+      },
+      "duration": "Instantaneous",
+      "concentration": false,
+      "ritual": false,
+      "description": "A creature you touch regains a number of hit points equal to 2d8 + your spellcasting ability modifier.",
+      "prepared": false,
+      "source": "PHB 2024",
+      "higherLevels": "The healing increases by 2d8 for each slot level above 1st.",
+      "is2024": true,
+      "effects": [
+        {
+          "type": "heal",
+          "dice": "2d8",
+          "addAbilityModifier": true
+        }
+      ]
+    },
+    {
+      "id": "e44ec421-42bb-40f7-a6b7-eaa5e80ec9ce",
+      "name": "Detect Magic [R]",
+      "level": 0,
+      "school": "",
+      "castingTime": "1A + 10m",
+      "range": "Self/30 ft. Sphere",
+      "components": {
+        "v": true,
+        "s": true,
+        "m": false
+      },
+      "duration": "Concentration, up to 10 minutes",
+      "concentration": true,
+      "ritual": true,
+      "description": "Artificer",
+      "prepared": false,
+      "source": "Artificer"
+    },
+    {
+      "id": "cce8a256-09b4-49db-bc36-a370f23ef1b6",
+      "name": "Disguise Self",
+      "level": 1,
+      "school": "Illusion",
+      "castingTime": "1 action",
+      "range": "Self",
+      "components": {
+        "v": true,
+        "s": true,
+        "m": false
+      },
+      "duration": "1 hour",
+      "concentration": false,
+      "ritual": false,
+      "description": "You make yourself—including your clothing, armor, weapons, and other belongings on your person—look different until the spell ends. You can seem 1 foot shorter or taller and can appear heavier or lighter. You must adopt a form that has the same basic arrangement of limbs as you have. Otherwise, the extent of the illusion is up to you.\n\nThe changes wrought by this spell fail to hold up to physical inspection. For example, if you use this spell to add a hat to your outfit, objects pass through the hat, and anyone who touches it would feel nothing.\n\nTo discern that you are disguised, a creature must take the Study|XPHB action to inspect your appearance and succeed on an Intelligence (Investigation|XPHB) check against your spell save DC.",
+      "prepared": false,
+      "source": "XPHB",
+      "isHomebrew": false,
+      "is2024": true
+    },
+    {
+      "id": "57a23528-f0e3-4c40-bf88-ec563251bd5c",
+      "name": "Expeditious Retreat",
+      "level": 1,
+      "school": "Transmutation",
+      "castingTime": "1 bonus",
+      "range": "Self",
+      "components": {
+        "v": true,
+        "s": true,
+        "m": false
+      },
+      "duration": "Concentration, 10 minutes",
+      "concentration": true,
+      "ritual": false,
+      "description": "You take the Dash|XPHB action, and until the spell ends, you can take that action again as a Bonus Action|XPHB.",
+      "prepared": false,
+      "source": "XPHB",
+      "isHomebrew": false,
+      "is2024": true
+    },
+    {
+      "id": "1f39db01-ad83-4e70-a51a-8c390631ed86",
+      "name": "Alarm [R]",
+      "level": 0,
+      "school": "",
+      "castingTime": "11m",
+      "range": "30 ft./20 ft. Cube",
+      "components": {
+        "v": true,
+        "s": true,
+        "m": true
+      },
+      "duration": "8 hours",
+      "concentration": false,
+      "ritual": true,
+      "description": "Artificer",
+      "prepared": false,
+      "source": "Artificer"
+    },
+    {
+      "id": "01a6917e-32b8-42b4-94a3-eea494c832a0",
+      "name": "Absorb Elements",
+      "level": 1,
+      "school": "Abjuration",
+      "castingTime": "1 reaction",
+      "range": "Self",
+      "components": {
+        "v": false,
+        "s": true,
+        "m": false
+      },
+      "duration": "1 round",
+      "concentration": false,
+      "ritual": false,
+      "description": "The spell captures some of the incoming energy, lessening its effect on you and storing it for your next melee attack. You have resistance to the triggering damage type until the start of your next turn. Also, the first time you hit with a melee attack on your next turn, the target takes an extra 1d6 damage of the triggering type, and the spell ends.",
+      "prepared": false,
+      "source": "XGE",
+      "higherLevels": "**At Higher Levels.** When you cast this spell using a spell slot of 2nd level or higher, the extra damage increases by 1d6|1-9|1d6 for each slot level above 1st.",
+      "isHomebrew": false,
+      "is2024": false
+    },
+    {
+      "id": "667bbe12-138c-488b-b215-2b16329b98ef",
+      "name": "Snare",
+      "level": 1,
+      "school": "Abjuration",
+      "castingTime": "1 minute",
+      "range": "Touch",
+      "components": {
+        "v": false,
+        "s": true,
+        "m": true,
+        "mDesc": "25 feet of rope, which the spell consumes"
+      },
+      "duration": "8 hours",
+      "concentration": false,
+      "ritual": false,
+      "description": "As you cast this spell, you use the rope to create a circle with a 5-foot radius on the ground or the floor. When you finish casting, the rope disappears and the circle becomes a magic trap.\n\nThis trap is nearly invisible, requiring a successful Intelligence (Investigation) check against your spell save DC to be discerned.\n\nThe trap triggers when a Small, Medium, or Large creature moves onto the ground or the floor in the spell's radius. That creature must succeed on a Dexterity saving throw or be magically hoisted into the air, leaving it hanging upside down 3 feet above the ground or the floor. The creature is restrained there until the spell ends.\n\nA restrained creature can make a Dexterity saving throw at the end of each of its turns, ending the effect on itself on a success. Alternatively, the creature or someone else who can reach it can use an action to make an Intelligence (Arcana) check against your spell save DC. On a success, the restrained effect ends.\n\nAfter the trap is triggered, the spell ends when no creature is restrained by it.",
+      "prepared": false,
+      "source": "XGE",
+      "isHomebrew": false,
+      "is2024": false
+    }
+  ],
+  "inventory": [
+    {
+      "id": "26d3c301-25c9-4f48-a569-dd5b817e336f",
+      "name": "Studded Leather",
+      "quantity": 1,
+      "weight": 13,
+      "isEquipped": false,
+      "isAttuned": false,
+      "description": "Light Armor. 12 + Dex.",
+      "type": "armor",
+      "effects": [
+        {
+          "id": "c066358e-c809-4f49-aa1c-18a7e2181083",
+          "type": "set_ac",
+          "value": "12 + DEX",
+          "note": "Studded Leather Armor"
+        }
+      ]
+    },
+    {
+      "id": "fa0f87bb-4053-45b7-8ed0-7c849472d29d",
+      "name": "Dagger",
+      "quantity": 1,
+      "weight": 1,
+      "isEquipped": false,
+      "isAttuned": false,
+      "description": "",
+      "type": "weapon",
+      "damage": "1d4",
+      "effects": []
+    },
+    {
+      "id": "3458e5b2-3580-44bf-91ed-9134b43ab07f",
+      "name": "Thieves' Tools",
+      "quantity": 1,
+      "weight": 1,
+      "isEquipped": false,
+      "isAttuned": false,
+      "description": "Dexterity\nPick a lock (15), or disarm a trap (15)",
+      "type": "magic",
+      "effects": []
+    },
+    {
+      "id": "793433a7-aa86-48d9-b2c9-1f983732cb55",
+      "name": "Tinker's Tools",
+      "quantity": 1,
+      "weight": 10,
+      "isEquipped": false,
+      "isAttuned": false,
+      "description": "Dexterity\nAssemble a Tiny item composed of scrap, which falls apart in 1 minute (20)\nMusket|XPHB, Pistol|XPHB, Bell|XPHB, Bullseye Lantern|XPHB, Flask|XPHB, Hooded Lantern|XPHB, Hunting Trap|XPHB, Lock|XPHB, Manacles|XPHB, Mirror|XPHB, Shovel|XPHB, Signal Whistle|XPHB, Tinderbox|XPHB",
+      "type": "magic",
+      "effects": []
+    },
+    {
+      "id": "b3c08128-a304-484c-aa58-7107b63664c7",
+      "name": "Backpack",
+      "quantity": 1,
+      "weight": 5,
+      "isEquipped": false,
+      "isAttuned": false,
+      "description": "A container for carrying gear.",
+      "type": "gear",
+      "effects": []
+    },
+    {
+      "id": "1c1fe1b3-c2d6-4e51-8b78-aa42512d18ad",
+      "name": "Caltrops",
+      "quantity": 20,
+      "weight": 2,
+      "isEquipped": false,
+      "isAttuned": false,
+      "description": "As a Utilize|XPHB action, you can spread Caltrops from their bag to cover a 5-foot-square area within 5 feet of yourself. A creature that enters this area for the first time on a turn must succeed on a 15 Dexterity saving throw or take 1 Piercing damage and have its Speed|XPHB reduced to 0 until the start of its next turn. It takes 10 minutes to recover the Caltrops.",
+      "type": "magic",
+      "effects": []
+    },
+    {
+      "id": "8ae841b4-c1ec-4225-8784-910b70fe0361",
+      "name": "Crowbar",
+      "quantity": 1,
+      "weight": 5,
+      "isEquipped": false,
+      "isAttuned": false,
+      "description": "Using a Crowbar gives you Advantage|XPHB on Strength checks where the Crowbar's leverage can be applied.",
+      "type": "magic",
+      "effects": []
+    },
+    {
+      "id": "da00b06c-5976-4eea-817f-6e57c71879a1",
+      "name": "Oil",
+      "quantity": 2,
+      "weight": 1,
+      "isEquipped": false,
+      "isAttuned": false,
+      "description": "You can douse a creature, object, or space with Oil or use it as fuel, as detailed below.\n\n**Dousing a Creature or an Object.** When you take the Attack|XPHB action, you can replace one of your attacks with throwing an Oil flask. Target one creature or object within 20 feet of yourself. The target must succeed on a Dexterity saving throw (8 plus your Dexterity modifier and Proficiency|XPHB|Proficiency Bonus) or be covered in oil. If the target takes Fire damage before the oil dries (after 1 minute), the target takes an extra 5 Fire damage from burning oil.\n\n**Dousing a Space.** You can take the Utilize|XPHB action to pour an Oil flask on level ground to cover a 5-foot-square area within 5 feet of yourself. If lit, the oil burns until the end of the turn 2 rounds from when the oil was lit (or 12 seconds) and deals 5 Fire damage to any creature that enters the area or ends its turn there. A creature can take this damage only once per turn.\n\n**Fuel.** Oil serves as fuel for Lamps and Lanterns. Once lit, a flask of Oil burns for 6 hours in a Lamp or Lantern. That duration doesn't need to be consecutive; you can extinguish the burning Oil (as a Utilize|XPHB action) and rekindle it again until it has burned for a total of 6 hours.",
+      "type": "magic",
+      "effects": []
+    },
+    {
+      "id": "942fa73a-aadf-4985-9aaa-a275358357c3",
+      "name": "Rations",
+      "quantity": 10,
+      "weight": 2,
+      "isEquipped": false,
+      "isAttuned": false,
+      "description": "Rations consist of travel-ready food, including jerky, dried fruit, hardtack, and nuts. See \"Malnutrition|XPHB\" for the risks of not eating.",
+      "type": "magic",
+      "effects": []
+    },
+    {
+      "id": "f33e84ce-6149-4075-8c37-dfecffa79229",
+      "name": "Rope",
+      "quantity": 1,
+      "weight": 5,
+      "isEquipped": false,
+      "isAttuned": false,
+      "description": "As a Utilize|XPHB action, you can tie a knot with Rope if you succeed on a 10 Dexterity (Sleight of Hand|XPHB) check. The Rope can be burst with a successful 20 Strength (Athletics|XPHB) check.\n\nYou can bind an unwilling creature with the Rope only if the creature has the Grappled|XPHB, Incapacitated|XPHB, or Restrained|XPHB condition. If the creature's legs are bound, the creature has the Restrained|XPHB condition until it escapes. Escaping the Rope requires the creature to make a successful 15 Dexterity (Acrobatics|XPHB) check as an action.",
+      "type": "magic",
+      "effects": []
+    },
+    {
+      "id": "c2f4edfd-2e2e-46f1-805f-068c881248cd",
+      "name": "Tinderbox",
+      "quantity": 1,
+      "weight": 1,
+      "isEquipped": false,
+      "isAttuned": false,
+      "description": "A Tinderbox is a small container holding flint, fire steel, and tinder (usually dry cloth soaked in light oil) used to kindle a fire. Using it to light a Candle|XPHB, Lamp|XPHB, Hooded Lantern|XPHB|Lantern, or Torch|XPHB—or anything else with exposed fuel—takes a Bonus Action|XPHB. Lighting any other fire takes 1 minute.",
+      "type": "magic",
+      "effects": []
+    },
+    {
+      "id": "bea36716-3234-46e6-be83-a316770eff06",
+      "name": "Torch",
+      "quantity": 10,
+      "weight": 1,
+      "isEquipped": false,
+      "isAttuned": false,
+      "description": "A Torch burns for 1 hour, casting Bright Light|XPHB in a 20-foot radius and Dim Light|XPHB for an additional 20 feet. When you take the Attack|XPHB action, you can attack with the Torch, using it as a Simple Melee weapon. On a hit, the target takes 1 Fire damage.",
+      "type": "magic",
+      "effects": []
+    },
+    {
+      "id": "f07c81f4-d136-4d26-92e2-0fdb42f81ebb",
+      "name": "Waterskin",
+      "quantity": 1,
+      "weight": 5,
+      "isEquipped": false,
+      "isAttuned": false,
+      "description": "A Waterskin holds up to 4 pints. If you don't drink sufficient water, you risk dehydration.",
+      "type": "magic",
+      "effects": []
+    },
+    {
+      "id": "55eada71-b95f-47c1-a7c9-aa4b3d5f39fa",
+      "name": "Cartographer's Tools",
+      "quantity": 1,
+      "weight": 6,
+      "isEquipped": false,
+      "isAttuned": false,
+      "description": "Wisdom\nDraft a map of a small area (15)\nMap|XPHB",
+      "type": "magic",
+      "effects": []
+    },
+    {
+      "id": "6cf777d3-d216-4403-b502-d977aa9b6525",
+      "name": "Bullseye Lantern",
+      "quantity": 1,
+      "weight": 2,
+      "isEquipped": false,
+      "isAttuned": false,
+      "description": "A Bullseye Lantern burns Oil as fuel to cast Bright Light|XPHB in a 60-foot Cone and Dim Light|XPHB for an additional 60 feet.",
+      "type": "magic",
+      "effects": []
+    },
+    {
+      "id": "574a8bac-18e9-43ce-98ba-e0d271884d60",
+      "name": "Map",
+      "quantity": 0,
+      "weight": 0,
+      "isEquipped": false,
+      "isAttuned": false,
+      "description": "If you consult an accurate Map, you gain a +5 bonus to Wisdom (Survival|XPHB) checks you make to find your way in the place represented on it.",
+      "type": "magic",
+      "effects": []
+    },
+    {
+      "id": "bccea643-9d45-4e5d-9338-83ad04411daf",
+      "name": "Shovel",
+      "quantity": 1,
+      "weight": 5,
+      "isEquipped": false,
+      "isAttuned": false,
+      "description": "Working for 1 hour, you can use a Shovel to dig a hole that is 5 feet on each side in soil or similar material.",
+      "type": "magic",
+      "effects": []
+    },
+    {
+      "id": "c4b87196-cb3f-42e4-afb4-a3bbdb8ef608",
+      "name": "Tent",
+      "quantity": 1,
+      "weight": 20,
+      "isEquipped": false,
+      "isAttuned": false,
+      "description": "A Tent sleeps up to two Small or Medium creatures.",
+      "type": "magic",
+      "effects": []
+    },
+    {
+      "id": "3bd8955c-e559-43fa-aa42-4dde2d641dcd",
+      "name": "Map or Scroll Case",
+      "quantity": 1,
+      "weight": 1,
+      "isEquipped": false,
+      "isAttuned": false,
+      "description": "A Map or Scroll Case|XPHB holds up to 10 sheets of paper or 5 sheets of parchment.",
+      "type": "magic",
+      "effects": []
+    },
+    {
+      "id": "2a3fa5ff-013c-490f-b698-4b3ec635e0c1",
+      "name": "Traveler's Clothes",
+      "quantity": 1,
+      "weight": 4,
+      "isEquipped": false,
+      "isAttuned": false,
+      "description": "Traveler's Clothes are resilient garments designed for travel in various environments.",
+      "type": "magic",
+      "effects": []
+    },
+    {
+      "id": "4f95133a-4759-4d0e-8124-55662e4b4b62",
+      "name": "Poison Spray",
+      "quantity": 1,
+      "weight": 0,
+      "isEquipped": true,
+      "isAttuned": false,
+      "description": "V/S",
+      "type": "weapon",
+      "damage": "1d12 Poison (Atk: +6)"
+    }
+  ],
+  "currencies": {
+    "cp": 0,
+    "sp": 0,
+    "ep": 0,
+    "gp": 33,
+    "pp": 0
+  },
+  "resources": [],
+  "actions": [
+    {
+      "id": "33ed27bc-66cf-42f1-8419-45a3a255c2e2",
+      "name": "Magical Tinkering",
+      "type": "action",
+      "source": "Class: Artificer (Level 1)",
+      "description": "1st-level artificer feature\n\nYou've learned how to invest a spark of magic into mundane objects. To use this ability, you must have thieves' tools|PHB or artisan's tools|PHB in hand. You then touch a Tiny nonmagical object as an action and give it one of the following magical properties of your choice:\n\n• The object sheds bright light in a 5-foot radius and dim light for an additional 5 feet.\n• Whenever tapped by a creature, the object emits a recorded message that can be heard up to 10 feet away. You utter the message when you bestow this property on the object, and the recording can be no more than 6 seconds long.\n• The object continuously emits your choice of an odor or a nonverbal sound (wind, waves, chirping, or the like). The chosen phenomenon is perceivable up to 10 feet away.\n• A static visual effect appears on one of the object's surfaces. This effect can be a picture, up to 25 words of text, lines and shapes, or a mixture of these elements, as you like.\n\nThe chosen property lasts indefinitely. As an action, you can touch the object and end the property early.\n\nYou can bestow magic on multiple objects, touching one object each time you use this feature, though a single object can only bear one property at a time. The maximum number of objects you can affect with this feature at one time is equal to your Intelligence modifier (minimum of one object). If you try to exceed your maximum, the oldest property immediately ends, and then the new property applies.",
+      "isCustom": false,
+      "featureId": "95e9c0dc-d93f-485d-bca8-c2004e7b6e57"
+    }
+  ],
+  "features": [
+    {
+      "id": "c25c24c5-b6bd-4cb8-82a4-d621a8d21aa2",
+      "name": "Core Artificer Traits",
+      "source": "Class: Artificer",
+      "description": "EFotA 7",
+      "hasUses": false
+    },
+    {
+      "id": "74379296-b38a-4ebe-984f-69ea38325459",
+      "name": "Spellcasting",
+      "source": "Class: Artificer",
+      "description": "EFotA 7\nYou can channel magical energy through objects. Intelligence is your spellcasting ability for your Artificer spells (Spell DC 14, Spell Attack +6). You can use Thieves' Tools, Tinker's Tools, or another kind of Artisan's Tools as a Spellcasting Focus for your Artificer spells.",
+      "hasUses": false
+    },
+    {
+      "id": "1f1fd38b-91b8-447a-8554-a8c62940d678",
+      "name": "Tinker’s Magic",
+      "source": "Class: Artificer",
+      "description": "EFotA 8\nYou know the Mending cantrip.",
+      "hasUses": false
+    },
+    {
+      "id": "a1e713fe-7860-437e-b2f1-40cd576a2647",
+      "name": "As a Magic action while holding Tinker's Tools, you can create one item in an unoccupied space within 5 ft",
+      "source": "Class: Artificer",
+      "description": "of yourself, from the provided list\nThe item lasts until you finish a Long Rest, at which point it vanishes\nYou can use this feature 4 times per Long Rest.",
+      "hasUses": false
+    },
+    {
+      "id": "58998e22-2ac4-4032-8c76-a0b80edd59c6",
+      "name": "| 4 / Long Rest",
+      "source": "Class: Artificer",
+      "description": "1 Action",
+      "hasUses": false
+    },
+    {
+      "id": "b956eb53-99df-4693-8ed1-a909afaa3fd6",
+      "name": "Creature Type",
+      "source": "Class: Artificer",
+      "description": "PHB-2024 190\nYou are a Humanoid.",
+      "hasUses": false
+    },
+    {
+      "id": "4b3ed35d-2f74-4d6a-a750-ad84417124a1",
+      "name": "Size",
+      "source": "Class: Artificer",
+      "description": "PHB-2024 190\nYou are Medium.",
+      "hasUses": false
+    },
+    {
+      "id": "754cd46f-db00-4986-b308-68eeb5bd74a4",
+      "name": "Speed",
+      "source": "Class: Artificer",
+      "description": "PHB-2024 190\nYour speed is 30 ft.",
+      "hasUses": false
+    },
+    {
+      "id": "4d452aa9-0131-440e-baf9-1d01ca602576",
+      "name": "Darkvision",
+      "source": "Class: Artificer",
+      "description": "PHB-2024 190\nYou have Darkvision with a range of 60 ft.",
+      "hasUses": false
+    },
+    {
+      "id": "f35cc4af-9dbd-4682-ba66-6f0b0b4831ea",
+      "name": "Elven Lineage",
+      "source": "Class: Artificer",
+      "description": "PHB-2024 190\nChoose a lineage from the Elven Lineages table. You gain the level 1 benefit of that lineage.",
+      "hasUses": false
+    },
+    {
+      "id": "a42a5803-7d6f-473c-914b-ee770b443577",
+      "name": "High Elf Lineage •",
+      "source": "Class: Artificer",
+      "description": "You gain the spells outlined in the Elven Lineages table, and whenever you finish a Long Rest, you can replace the cantrip at level 1 with a different cantrip from the Wizard spell list.",
+      "hasUses": false
+    },
+    {
+      "id": "14ec6c41-9f9e-42e1-919b-ec407291f94e",
+      "name": "Elven Lineage Spells",
+      "source": "Class: Artificer",
+      "description": "PHB-2024 189",
+      "hasUses": false
+    },
+    {
+      "id": "efa8734d-fa32-4abf-add9-d8a08866b7b7",
+      "name": "| High Elf",
+      "source": "Class: Artificer",
+      "description": "Intelligence •",
+      "hasUses": false
+    },
+    {
+      "id": "12af2e35-1422-4a26-aa71-c731a082f54c",
+      "name": "Fey Ancestry",
+      "source": "Class: Artificer",
+      "description": "PHB-2024 190\nYou have Advantage on saving throws you make to avoid or end the Charmed condition.",
+      "hasUses": false
+    },
+    {
+      "id": "0ec99e8c-121e-4b00-8311-1b43a63bf784",
+      "name": "Keen Senses",
+      "source": "Class: Artificer",
+      "description": "PHB-2024 190\nYou have proficiency in the Insight, Perception, or Survival skill.",
+      "hasUses": false
+    },
+    {
+      "id": "b8eff640-d5c1-4709-ae25-4a6920bcfddf",
+      "name": "Trance",
+      "source": "Class: Artificer",
+      "description": "PHB-2024 190\nYou don’t need to sleep, and magic can’t put you to sleep. You can finish a Long Rest in 4 hours if you spend those hours in a trancelike meditation, during which you retain consciousness.",
+      "hasUses": false
+    },
+    {
+      "id": "e6b8397d-2284-4f92-8f6a-fe74b060dc6a",
+      "name": "Languages",
+      "source": "Class: Artificer",
+      "description": "PHB-2024 37\nYour character knows at least three languages: Common plus two languages you roll or choose from the Standard Languages table. Knowledge of a language means your character can communicate in it, read it, and write it.",
+      "hasUses": false
+    },
+    {
+      "id": "92edbac0-3bd0-4643-bd9a-a40e6200d514",
+      "name": "Skilled",
+      "source": "Class: Artificer",
+      "description": "PHB-2024 201\nYou gain proficiency in any combination of three skills or tools of your choice.",
+      "hasUses": false
+    },
+    {
+      "id": "8295ac40-ab1c-4efa-8b9c-a60afce438ad",
+      "name": "Repeatable",
+      "source": "Class: Artificer",
+      "description": "You can take this feat more than once.",
+      "hasUses": false
+    },
+    {
+      "id": "1fcbfa04-f01f-4534-abce-96e10306833e",
+      "name": "Archaeologist Ability Score Increase",
+      "source": "Class: Artificer",
+      "description": "EFotA 26",
+      "hasUses": false
+    },
+    {
+      "id": "b497345c-7b6d-4110-afa1-ad78bc35461d",
+      "name": "| Increase two scores (+2 / +1)",
+      "source": "Class: Artificer",
+      "description": "EFotA",
+      "hasUses": false
+    },
+    {
+      "id": "cbf583f0-08e2-4f36-a4de-ff212885ea7e",
+      "name": "Background Feature",
+      "source": "Background: Archaeologist",
+      "description": "• **Ability Scores:** Dexterity, Intelligence, Wisdom\n• **Feat:** Skilled|XPHB\n• **Skill Proficiencies:** History|XPHB and Survival|XPHB\n• **Tool Proficiencies:** Cartographer's Tools|XPHB\n• **Equipment:** Choose A or B: (A) Cartographer's Tools|XPHB, Bullseye Lantern|XPHB, Map|XPHB, Map or Scroll Case|XPHB, Shovel|XPHB, Tent|XPHB, Traveler's Clothes|XPHB, 17 GP; or (B) 50 GP",
+      "hasUses": false,
+      "source5eTools": "EFA",
+      "is2024": false
+    },
+    {
+      "id": "151367ed-930e-460d-ae4e-589cc34196fa",
+      "name": "Spellcasting",
+      "source": "Class: Artificer (Level 1)",
+      "description": "1st-level artificer feature\n\nYou've studied the workings of magic and how to cast spells, channeling the magic through objects. To observers, you don't appear to be casting spells in a conventional way; you appear to produce wonders from mundane items and outlandish inventions.\n\n**Tools Required.** You produce your artificer spell effects through your tools. You must have a spellcasting focus—specifically thieves' tools|phb or some kind of artisan's tools|phb|artisan's tool—in hand when you cast any spell with this Spellcasting feature (meaning the spell has an 'M' component when you cast it). You must be proficient with the tool to use it in this way. See chapter 5|PHB|4, \"Equipment,\" in the Player's Handbook|PHB for descriptions of these tools.\n\nAfter you gain the Infuse Item feature at 2nd level, you can also use any item bearing one of your infusions as a spellcasting focus.\n\n**The Magic of Artifice.** As an artificer, you use tools when you cast your spells. When describing your spellcasting, think about how you're using a tool to perform the spell effect. If you cast cure wounds using alchemist's supplies|PHB, you could be quickly producing a salve. If you cast it using tinker's tools|PHB, you might have a miniature mechanical spider that binds wounds. When you cast poison spray, you could fling foul chemicals or use a wand that spits venom. The effect of the spell is the same as for a spellcaster of any other class, but your method of spellcasting is special.\n\nThe same principle applies when you prepare your spells. As an artificer, you don't study a spellbook or pray to prepare your spells. Instead, you work with your tools and create the specialized items you'll use to produce your effects. If you replace cure wounds with heat metal, you might be altering the device you use to heal—perhaps modifying a tool so that it channels heat instead of healing energy.\n\nSuch details don't limit you in any way or provide you with any benefit beyond the spell's effects. You don't have to justify how you're using tools to cast a spell. But describing your spellcasting creatively is a fun way to distinguish yourself from other spellcasters.\n\n**Cantrips (0-Level Spells).** At 1st level, you know two cantrips of your choice from the artificer spell list|spells|level=0|class=Artificer. At higher levels, you learn additional artificer cantrips of your choice, as shown in the Cantrips Known column of the Artificer table.\n\nWhen you gain a level in this class, you can replace one of the artificer cantrips you know with another cantrip from the artificer spell list.\n\n**Preparing and Casting Spells.** The Artificer table shows how many spell slots you have to cast your artificer spells. To cast one of your artificer spells of 1st level or higher, you must expend a slot of the spell's level or higher. You regain all expended spell slots when you finish a long rest.\n\nYou prepare the list of artificer spells that are available for you to cast, choosing from the artificer spell list|spells|class=Artificer. When you do so, choose a number of artificer spells equal to your Intelligence modifier + half your artificer level, rounded down (minimum of one spell). The spells must be of a level for which you have spell slots.\n\nFor example, if you are a 5th-level artificer, you have four 1st-level and two 2nd-level spell slots. With an Intelligence of 14, your list of prepared spells can include four spells of 1st or 2nd level, in any combination. If you prepare the 1st-level spell cure wounds, you can cast it using a 1st-level or a 2nd-level slot. Casting the spell doesn't remove it from your list of prepared spells.\n\nYou can change your list of prepared spells when you finish a long rest. Preparing a new list of artificer spells requires time spent tinkering with your spellcasting focuses: at least 1 minute per spell level for each spell on your list.\n\n**Spellcasting Ability.** Intelligence is your spellcasting ability for your artificer spells; your understanding of the theory behind magic allows you to wield these spells with superior skill. You use your Intelligence whenever an artificer spell refers to your spellcasting ability. In addition, you use your Intelligence modifier when setting the saving throw DC for an artificer spell you cast and when making an attack roll with one.\n\nyour spellcasting ability modifier\n\n**Ritual Casting.** You can cast an artificer spell as a ritual if that spell has the ritual tag and you have the spell prepared.",
+      "hasUses": false,
+      "usesCurrent": 0,
+      "source5eTools": "TCE",
+      "is2024": false
+    },
+    {
+      "id": "5df1f84f-d2d4-4aa7-bad6-cc0e08563737",
+      "name": "Tinker's Magic",
+      "source": "Class: Artificer (Level 1)",
+      "description": "You know the Mending|XPHB cantrip.\n\nAs a Magic|XPHB action while holding Tinker's Tools|XPHB, you can create one item in an unoccupied space within 5 feet of yourself, choosing the item from the following list:\n\n• Ball Bearings|XPHB\n• Basket|XPHB\n• Bedroll|XPHB\n• Bell|XPHB\n• Blanket|XPHB\n• Block and Tackle|XPHB\n• Glass Bottle|XPHB|Bottle, Glass\n• Bucket|XPHB\n• Caltrops|XPHB\n• Candle|XPHB\n• Crowbar|XPHB\n• Flask|XPHB\n• Grappling Hook|XPHB\n• Hunting Trap|XPHB\n• Jug|XPHB\n• Lamp|XPHB\n• Manacles|XPHB\n• Net|XPHB\n• Oil|XPHB\n• Paper|XPHB\n• Parchment|XPHB\n• Pole|XPHB\n• Pouch|XPHB\n• Rope|XPHB\n• Sack|XPHB\n• Shovel|XPHB\n• Iron Spikes|XPHB|Spikes, Iron\n• String|XPHB\n• Tinderbox|XPHB\n• Torch|XPHB\n• Vial|XPHB\n\nSee the rules for the item in the Player's Handbook|XPHB. The item lasts until you finish a Long Rest|XPHB, at which point it vanishes.\n\nYou can use this feature a number of times equal to your Intelligence modifier (minimum of once), and you regain all expended uses when you finish a Long Rest|XPHB.",
+      "hasUses": false,
+      "usesCurrent": 0,
+      "source5eTools": "TCE",
+      "is2024": false
+    },
+    {
+      "id": "95e9c0dc-d93f-485d-bca8-c2004e7b6e57",
+      "name": "Magical Tinkering",
+      "source": "Class: Artificer (Level 1)",
+      "description": "1st-level artificer feature\n\nYou've learned how to invest a spark of magic into mundane objects. To use this ability, you must have thieves' tools|PHB or artisan's tools|PHB in hand. You then touch a Tiny nonmagical object as an action and give it one of the following magical properties of your choice:\n\n• The object sheds bright light in a 5-foot radius and dim light for an additional 5 feet.\n• Whenever tapped by a creature, the object emits a recorded message that can be heard up to 10 feet away. You utter the message when you bestow this property on the object, and the recording can be no more than 6 seconds long.\n• The object continuously emits your choice of an odor or a nonverbal sound (wind, waves, chirping, or the like). The chosen phenomenon is perceivable up to 10 feet away.\n• A static visual effect appears on one of the object's surfaces. This effect can be a picture, up to 25 words of text, lines and shapes, or a mixture of these elements, as you like.\n\nThe chosen property lasts indefinitely. As an action, you can touch the object and end the property early.\n\nYou can bestow magic on multiple objects, touching one object each time you use this feature, though a single object can only bear one property at a time. The maximum number of objects you can affect with this feature at one time is equal to your Intelligence modifier (minimum of one object). If you try to exceed your maximum, the oldest property immediately ends, and then the new property applies.",
+      "hasUses": false,
+      "usesCurrent": 0,
+      "source5eTools": "TCE",
+      "is2024": false
+    },
+    {
+      "id": "4ceb5c59-1c3d-4ec4-9f45-dbdd9af909ab",
+      "name": "Optional Rule: Firearm Proficiency",
+      "source": "Class: Artificer (Level 1)",
+      "description": "The secrets of creating and operating gunpowder weapons have been discovered in various corners of the D&D multiverse. If your Dungeon Master uses the rules on firearms in chapter 9|DMG|9|Firearms of the Dungeon Master's Guide|DMG and your artificer has been exposed to the operation of such weapons, your artificer is proficient with them.",
+      "hasUses": false,
+      "usesCurrent": 0,
+      "source5eTools": "TCE",
+      "is2024": false
+    }
+  ],
+  "feats": [
+    {
+      "id": "48c2d218-8034-4cd1-8262-cf793a58f685",
+      "name": "Skilled",
+      "source": "XPHB",
+      "description": "You gain proficiency in any combination of three Skill List; Skills|XPHB|skills or tools|items|type=tool;artisan's tools;instrument;gaming set of your choice.\n\n**Repeatable.** You can take this feat more than once.",
+      "hasUses": false,
+      "isFeat": true,
+      "source5eTools": "XPHB",
+      "is2024": true
+    }
+  ],
+  "racialTraits": [
+    {
+      "id": "03ac1ed5-dd34-4854-8177-eb02ce14067a",
+      "name": "Darkvision",
+      "source": "Species: Elf",
+      "description": "You have Darkvision with a range of 60 feet.",
+      "is2024": true,
+      "hasUses": false
+    },
+    {
+      "id": "43a6e81e-e6b9-43e1-b7ed-ae9309907ed5",
+      "name": "Elven Lineage",
+      "source": "Species: Elf",
+      "description": "Choose Drow, High Elf, or Wood Elf. Grants cantrip at level 1, spell at level 3, and spell at level 5.",
+      "is2024": true,
+      "hasUses": false
+    },
+    {
+      "id": "d808177a-7fd9-4042-b637-0c80262f6f10",
+      "name": "Fey Ancestry",
+      "source": "Species: Elf",
+      "description": "Advantage on saving throws you make to avoid or end the Charmed condition.",
+      "is2024": true,
+      "hasUses": false
+    },
+    {
+      "id": "0d5cbac6-e594-4f1a-a490-ac2ab3237b2d",
+      "name": "Keen Senses",
+      "source": "Species: Elf",
+      "description": "You have proficiency in Insight, Perception, or Survival.",
+      "is2024": true,
+      "hasUses": false
+    },
+    {
+      "id": "c9feb15a-38a1-4f6d-ad4e-43346361d8bc",
+      "name": "Trance",
+      "source": "Species: Elf",
+      "description": "Long Rest takes 4 hours of meditation. Magic can't put you to sleep.",
+      "is2024": true,
+      "hasUses": false
+    }
+  ],
+  "masteredWeapons": [],
+  "conditions": [],
+  "deathSaves": {
+    "successes": 0,
+    "failures": 0
+  },
+  "exhaustion": 0,
+  "resistances": [],
+  "immunities": [
+    "magical sleep"
+  ],
+  "vulnerabilities": [],
+  "conditionImmunities": [],
+  "damageNotes": "Immunities - Magical Sleep",
+  "personalityTraits": "",
+  "ideals": "",
+  "bonds": "",
+  "flaws": "",
+  "backstory": "",
+  "notes": "",
+  "provenance": {
+    "origin": "dnd-beyond-pdf",
+    "edition": "mixed",
+    "sourceSummary": "D&D Beyond PDF • Coronal.pdf",
+    "importedAt": 1773880922179
+  },
+  "darkvision": 60
+}

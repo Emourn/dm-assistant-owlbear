@@ -1,0 +1,3526 @@
+[
+  {
+    "id": "6dccf375-85ef-430f-9bc5-8e17221d936a",
+    "name": "",
+    "system": "dnd5e",
+    "playerName": "",
+    "race": "Half-Elf",
+    "className": "Sorcerer",
+    "subclass": "",
+    "level": 15,
+    "background": "Sage",
+    "alignment": "",
+    "experience": 0,
+    "abilityScores": {
+      "str": 11,
+      "dex": 11,
+      "con": 10,
+      "int": 10,
+      "wis": 10,
+      "cha": 12
+    },
+    "savingThrows": [
+      "con",
+      "cha"
+    ],
+    "skills": [
+      {
+        "name": "Acrobatics",
+        "stat": "dex",
+        "proficient": true,
+        "expertise": false,
+        "bonus": 0
+      },
+      {
+        "name": "Animal Handling",
+        "stat": "wis",
+        "proficient": true,
+        "expertise": false,
+        "bonus": 0
+      },
+      {
+        "name": "Arcana",
+        "stat": "int",
+        "proficient": false,
+        "expertise": false,
+        "bonus": 0
+      },
+      {
+        "name": "Athletics",
+        "stat": "str",
+        "proficient": false,
+        "expertise": false,
+        "bonus": 0
+      },
+      {
+        "name": "Deception",
+        "stat": "cha",
+        "proficient": false,
+        "expertise": false,
+        "bonus": 0
+      },
+      {
+        "name": "History",
+        "stat": "int",
+        "proficient": false,
+        "expertise": false,
+        "bonus": 0
+      },
+      {
+        "name": "Insight",
+        "stat": "wis",
+        "proficient": false,
+        "expertise": false,
+        "bonus": 0
+      },
+      {
+        "name": "Intimidation",
+        "stat": "cha",
+        "proficient": false,
+        "expertise": false,
+        "bonus": 0
+      },
+      {
+        "name": "Investigation",
+        "stat": "int",
+        "proficient": false,
+        "expertise": false,
+        "bonus": 0
+      },
+      {
+        "name": "Medicine",
+        "stat": "wis",
+        "proficient": false,
+        "expertise": false,
+        "bonus": 0
+      },
+      {
+        "name": "Nature",
+        "stat": "int",
+        "proficient": false,
+        "expertise": false,
+        "bonus": 0
+      },
+      {
+        "name": "Perception",
+        "stat": "wis",
+        "proficient": false,
+        "expertise": false,
+        "bonus": 0
+      },
+      {
+        "name": "Performance",
+        "stat": "cha",
+        "proficient": false,
+        "expertise": false,
+        "bonus": 0
+      },
+      {
+        "name": "Persuasion",
+        "stat": "cha",
+        "proficient": false,
+        "expertise": false,
+        "bonus": 0
+      },
+      {
+        "name": "Religion",
+        "stat": "int",
+        "proficient": false,
+        "expertise": false,
+        "bonus": 0
+      },
+      {
+        "name": "Sleight of Hand",
+        "stat": "dex",
+        "proficient": false,
+        "expertise": false,
+        "bonus": 0
+      },
+      {
+        "name": "Stealth",
+        "stat": "dex",
+        "proficient": false,
+        "expertise": false,
+        "bonus": 0
+      },
+      {
+        "name": "Survival",
+        "stat": "wis",
+        "proficient": false,
+        "expertise": false,
+        "bonus": 0
+      }
+    ],
+    "senses": "Darkvision 60 ft",
+    "passivePerception": 10,
+    "passiveInvestigation": 10,
+    "passiveInsight": 10,
+    "languages": "Common, Dwarvish, Elvish",
+    "proficiencies": "",
+    "ac": 10,
+    "maxHp": 10,
+    "currentHp": 10,
+    "tempHp": 0,
+    "hitDice": "8d8",
+    "speed": "30 ft",
+    "initiativeMod": 0,
+    "proficiencyBonus": 2,
+    "spellcastingAbility": "none",
+    "spellSaveDc": 10,
+    "spellAttackMod": 2,
+    "spellSlots": [
+      {
+        "current": 0,
+        "max": 0
+      },
+      {
+        "current": 4,
+        "max": 4
+      },
+      {
+        "current": 4,
+        "max": 4
+      },
+      {
+        "current": 4,
+        "max": 4
+      },
+      {
+        "current": 4,
+        "max": 4
+      },
+      {
+        "current": 4,
+        "max": 4
+      },
+      {
+        "current": 4,
+        "max": 4
+      },
+      {
+        "current": 0,
+        "max": 0
+      },
+      {
+        "current": 0,
+        "max": 0
+      },
+      {
+        "current": 0,
+        "max": 0
+      }
+    ],
+    "spells": [
+      {
+        "id": "spell_acid_splash_PHB",
+        "name": "Acid Splash",
+        "level": 0,
+        "school": "Conjuration",
+        "castingTime": "1 action",
+        "range": "60 feet",
+        "components": {
+          "v": true,
+          "s": true,
+          "m": false
+        },
+        "duration": "Instantaneous",
+        "concentration": false,
+        "ritual": false,
+        "description": "You hurl a bubble of acid. Choose one creature you can see within range, or choose two creatures you can see within range that are within 5 feet of each other. A target must succeed on a Dexterity saving throw or take 1d6 acid damage.\n\nThis spell's damage increases by 1d6 when you reach 5th level (2d6), 11th level (3d6), and 17th level (4d6).",
+        "prepared": false,
+        "isHomebrew": false
+      },
+      {
+        "id": "spell_awaken_PHB",
+        "name": "Awaken",
+        "level": 5,
+        "school": "Transmutation",
+        "castingTime": "8 hours",
+        "range": "Touch",
+        "components": {
+          "v": true,
+          "s": true,
+          "m": true,
+          "mDesc": "an agate worth at least 1,000 gp, which the spell consumes"
+        },
+        "duration": "Instantaneous",
+        "concentration": false,
+        "ritual": false,
+        "description": "After spending the casting time tracing magical pathways within a precious gemstone, you touch a Huge or smaller beast or plant. The target must have either no Intelligence score or an Intelligence of 3 or less. The target gains an Intelligence of 10. The target also gains the ability to speak one language you know. If the target is a plant, it gains the ability to move its limbs, roots, vines, creepers, and so forth, and it gains senses similar to a human's. Your DM chooses statistics appropriate for the awakened plant, such as the statistics for the awakened shrub or the awakened tree.\n\nThe awakened beast or plant is charmed by you for 30 days or until you or your companions do anything harmful to it. When the charmed condition ends, the awakened creature chooses whether to remain friendly to you, based on how you treated it while it was charmed.",
+        "prepared": false,
+        "isHomebrew": false
+      },
+      {
+        "id": "spell_blight_PHB",
+        "name": "Blight",
+        "level": 4,
+        "school": "Necromancy",
+        "castingTime": "1 action",
+        "range": "30 feet",
+        "components": {
+          "v": true,
+          "s": true,
+          "m": false
+        },
+        "duration": "Instantaneous",
+        "concentration": false,
+        "ritual": false,
+        "description": "Necromantic energy washes over a creature of your choice that you can see within range, draining moisture and vitality from it. The target must make a Constitution saving throw. The target takes 8d8 necrotic damage on a failed save, or half as much damage on a successful one. This spell has no effect on undead or constructs.\n\nIf you target a plant creature or a magical plant, it makes the saving throw with disadvantage, and the spell deals maximum damage to it.\n\nIf you target a nonmagical plant that isn't a creature, such as a tree or shrub, it doesn't make a saving throw, it simply withers and dies.",
+        "higherLevels": "**At Higher Levels.** When you cast this spell using a spell slot of 5th level or higher, the damage increases by 8d8|4-9|1d8 for each slot level above 4th.",
+        "prepared": false,
+        "isHomebrew": false
+      }
+    ],
+    "inventory": [],
+    "currencies": {
+      "cp": 0,
+      "sp": 0,
+      "ep": 0,
+      "gp": 0,
+      "pp": 0
+    },
+    "resources": [],
+    "actions": [],
+    "features": [],
+    "feats": [],
+    "conditions": [],
+    "deathSaves": {
+      "successes": 0,
+      "failures": 0
+    },
+    "exhaustion": 0,
+    "personalityTraits": "",
+    "ideals": "",
+    "bonds": "",
+    "flaws": "",
+    "backstory": "",
+    "notes": "",
+    "importedData": {
+      "class": {
+        "name": "Sorcerer",
+        "source": "PHB",
+        "hitDice": "1d6",
+        "hdFaces": 6,
+        "savesRaw": [
+          "con",
+          "cha"
+        ],
+        "saves": "CON, CHA",
+        "armorProficiencies": "None",
+        "weaponProficiencies": "{@item dagger|phb|daggers}, {@item dart|phb|darts}, {@item sling|phb|slings}, {@item quarterstaff|phb|quarterstaffs}, {@item light crossbow|phb|light crossbows}",
+        "startingProficiencies": {
+          "weapons": [
+            "{@item dagger|phb|daggers}",
+            "{@item dart|phb|darts}",
+            "{@item sling|phb|slings}",
+            "{@item quarterstaff|phb|quarterstaffs}",
+            "{@item light crossbow|phb|light crossbows}"
+          ],
+          "skills": [
+            {
+              "choose": {
+                "from": [
+                  "arcana",
+                  "deception",
+                  "insight",
+                  "intimidation",
+                  "persuasion",
+                  "religion"
+                ],
+                "count": 2
+              }
+            }
+          ]
+        },
+        "startingEquipment": {
+          "additionalFromBackground": true,
+          "default": [
+            "(a) a {@item light crossbow|phb} and {@item crossbow bolts (20)|phb|20 bolts} or (b) any {@filter simple weapon|items|source=phb|category=basic|type=simple weapon}",
+            "(a) a {@item component pouch|phb} or (b) an {@item arcane focus|phb}",
+            "(a) a {@item dungeoneer's pack|phb} or (b) an {@item explorer's pack|phb}",
+            "Two {@item dagger|phb|daggers}"
+          ],
+          "goldAlternative": "{@dice 3d4 × 10|3d4 × 10|Starting Gold}",
+          "defaultData": [
+            {
+              "a": [
+                "light crossbow|phb",
+                "crossbow bolts (20)|phb"
+              ],
+              "b": [
+                {
+                  "equipmentType": "weaponSimple"
+                }
+              ]
+            },
+            {
+              "a": [
+                "component pouch|phb"
+              ],
+              "b": [
+                {
+                  "equipmentType": "focusSpellcastingArcane"
+                }
+              ]
+            },
+            {
+              "a": [
+                "dungeoneer's pack|phb"
+              ],
+              "b": [
+                "explorer's pack|phb"
+              ]
+            },
+            {
+              "_": [
+                {
+                  "item": "dagger|phb",
+                  "quantity": 2
+                }
+              ]
+            }
+          ]
+        },
+        "subclassTitle": "Sorcerous Origin",
+        "description": "**Hit Dice:** 1d6\n**Saving Throws:** CON, CHA\n**Armor:** None\n**Weapons:** {@item dagger|phb|daggers}, {@item dart|phb|darts}, {@item sling|phb|slings}, {@item quarterstaff|phb|quarterstaffs}, {@item light crossbow|phb|light crossbows}\n\n**Features:** Spellcasting, Sorcerous Origin, Font of Magic, Metamagic, Metamagic Options, Ability Score Improvement, Sorcerous Versatility, Magical Guidance, Sorcerous Origin feature, Ability Score Improvement, Metamagic, Ability Score Improvement, Sorcerous Origin feature, Ability Score Improvement, Metamagic, Sorcerous Origin feature, Ability Score Improvement, Sorcerous Restoration",
+        "classFeatures": [
+          "Spellcasting|Sorcerer||1",
+          {
+            "classFeature": "Sorcerous Origin|Sorcerer||1",
+            "gainSubclassFeature": true
+          },
+          "Font of Magic|Sorcerer||2",
+          "Metamagic|Sorcerer||3",
+          "Metamagic Options|Sorcerer||3|TCE",
+          "Ability Score Improvement|Sorcerer||4",
+          "Sorcerous Versatility|Sorcerer||4|TCE",
+          "Magical Guidance|Sorcerer||5|TCE",
+          {
+            "classFeature": "Sorcerous Origin feature|Sorcerer||6",
+            "gainSubclassFeature": true
+          },
+          "Ability Score Improvement|Sorcerer||8",
+          "Metamagic|Sorcerer||10",
+          "Ability Score Improvement|Sorcerer||12",
+          {
+            "classFeature": "Sorcerous Origin feature|Sorcerer||14",
+            "gainSubclassFeature": true
+          },
+          "Ability Score Improvement|Sorcerer||16",
+          "Metamagic|Sorcerer||17",
+          {
+            "classFeature": "Sorcerous Origin feature|Sorcerer||18",
+            "gainSubclassFeature": true
+          },
+          "Ability Score Improvement|Sorcerer||19",
+          "Sorcerous Restoration|Sorcerer||20"
+        ]
+      },
+      "background": {
+        "name": "Sage",
+        "source": "PHB",
+        "skillProficiencies": [
+          {
+            "arcana": true,
+            "history": true
+          }
+        ],
+        "languageProficiencies": [
+          {
+            "anyStandard": 2
+          }
+        ],
+        "startingEquipment": [
+          {
+            "_": [
+              "ink (1-ounce bottle)|phb",
+              {
+                "special": "quill"
+              },
+              {
+                "special": "small knife"
+              },
+              {
+                "special": "letter from a dead colleague posing a question you have not yet been able to answer"
+              },
+              "common clothes|phb",
+              {
+                "item": "pouch|phb",
+                "containsValue": 1000
+              }
+            ]
+          }
+        ],
+        "description": "• **Skill Proficiencies:** Arcana, History\n• **Languages:** Two of your choice\n• **Equipment:** A Ink (1-ounce bottle)|phb|bottle of black ink, a quill, a small knife, a letter from a dead colleague posing a question you have not yet been able to answer, a set of common clothes|phb, and a belt pouch|phb containing 10 gp\n\n**Feature: Researcher.** When you attempt to learn or recall a piece of lore, if you do not know that information, you often know where and from whom you can obtain it. Usually, this information comes from a library, scriptorium, university, or a sage or other learned person or creature. Your DM might rule that the knowledge you seek is secreted away in an almost inaccessible place, or that it simply cannot be found. Unearthing the deepest secrets of the multiverse can require an adventure or even a whole campaign.\n\n**Specialty.** To determine the nature of your scholarly training, roll a d8 or choose from the options in the table below.\n\n**Suggested Characteristics.** Sages are defined by their extensive studies, and their characteristics reflect this life of study. Devoted to scholarly pursuits, a sage values knowledge highly—sometimes in its own right, sometimes as a means toward other ideals.",
+        "entries": [
+          {
+            "type": "list",
+            "style": "list-hang-notitle",
+            "items": [
+              {
+                "type": "item",
+                "name": "Skill Proficiencies:",
+                "entry": "{@skill Arcana}, {@skill History}"
+              },
+              {
+                "type": "item",
+                "name": "Languages:",
+                "entry": "Two of your choice"
+              },
+              {
+                "type": "item",
+                "name": "Equipment:",
+                "entry": "A {@item Ink (1-ounce bottle)|phb|bottle of black ink}, a quill, a small knife, a letter from a dead colleague posing a question you have not yet been able to answer, a set of {@item common clothes|phb}, and a belt {@item pouch|phb} containing 10 gp"
+              }
+            ]
+          },
+          {
+            "name": "Feature: Researcher",
+            "type": "entries",
+            "entries": [
+              "When you attempt to learn or recall a piece of lore, if you do not know that information, you often know where and from whom you can obtain it. Usually, this information comes from a library, scriptorium, university, or a sage or other learned person or creature. Your DM might rule that the knowledge you seek is secreted away in an almost inaccessible place, or that it simply cannot be found. Unearthing the deepest secrets of the multiverse can require an adventure or even a whole campaign."
+            ],
+            "data": {
+              "isFeature": true
+            }
+          },
+          {
+            "name": "Specialty",
+            "type": "entries",
+            "entries": [
+              "To determine the nature of your scholarly training, roll a d8 or choose from the options in the table below.",
+              {
+                "type": "table",
+                "colLabels": [
+                  "d8",
+                  "Field of Study"
+                ],
+                "colStyles": [
+                  "col-1 text-center",
+                  "col-11"
+                ],
+                "rows": [
+                  [
+                    "1",
+                    "Alchemist"
+                  ],
+                  [
+                    "2",
+                    "Astronomer"
+                  ],
+                  [
+                    "3",
+                    "Discredited academic"
+                  ],
+                  [
+                    "4",
+                    "Librarian"
+                  ],
+                  [
+                    "5",
+                    "Professor"
+                  ],
+                  [
+                    "6",
+                    "Researcher"
+                  ],
+                  [
+                    "7",
+                    "Wizard's apprentice"
+                  ],
+                  [
+                    "8",
+                    "Scribe"
+                  ]
+                ]
+              }
+            ]
+          },
+          {
+            "name": "Suggested Characteristics",
+            "type": "entries",
+            "entries": [
+              "Sages are defined by their extensive studies, and their characteristics reflect this life of study. Devoted to scholarly pursuits, a sage values knowledge highly—sometimes in its own right, sometimes as a means toward other ideals.",
+              {
+                "type": "table",
+                "colLabels": [
+                  "d8",
+                  "Personality Trait"
+                ],
+                "colStyles": [
+                  "col-1 text-center",
+                  "col-11"
+                ],
+                "rows": [
+                  [
+                    "1",
+                    "I use polysyllabic words that convey the impression of great erudition."
+                  ],
+                  [
+                    "2",
+                    "I've read every book in the world's greatest libraries—or I like to boast that I have."
+                  ],
+                  [
+                    "3",
+                    "I'm used to helping out those who aren't as smart as I am, and I patiently explain anything and everything to others."
+                  ],
+                  [
+                    "4",
+                    "There's nothing I like more than a good mystery."
+                  ],
+                  [
+                    "5",
+                    "I'm willing to listen to every side of an argument before I make my own judgment."
+                  ],
+                  [
+                    "6",
+                    "I... speak... slowly... when talking... to idiots,... which... almost... everyone... is... compared... to me."
+                  ],
+                  [
+                    "7",
+                    "I am horribly, horribly awkward in social situations."
+                  ],
+                  [
+                    "8",
+                    "I'm convinced that people are always trying to steal my secrets."
+                  ]
+                ]
+              },
+              {
+                "type": "table",
+                "colLabels": [
+                  "d6",
+                  "Ideal"
+                ],
+                "colStyles": [
+                  "col-1 text-center",
+                  "col-11"
+                ],
+                "rows": [
+                  [
+                    "1",
+                    "Knowledge. The path to power and self-improvement is through knowledge. (Neutral)"
+                  ],
+                  [
+                    "2",
+                    "Beauty. What is beautiful points us beyond itself toward what is true. (Good)"
+                  ],
+                  [
+                    "3",
+                    "Logic. Emotions must not cloud our logical thinking. (Lawful)"
+                  ],
+                  [
+                    "4",
+                    "No Limits. Nothing should fetter the infinite possibility inherent in all existence. (Chaotic)"
+                  ],
+                  [
+                    "5",
+                    "Power. Knowledge is the path to power and domination. (Evil)"
+                  ],
+                  [
+                    "6",
+                    "Self-Improvement. The goal of a life of study is the betterment of oneself. (Any)"
+                  ]
+                ]
+              },
+              {
+                "type": "table",
+                "colLabels": [
+                  "d6",
+                  "Bond"
+                ],
+                "colStyles": [
+                  "col-1 text-center",
+                  "col-11"
+                ],
+                "rows": [
+                  [
+                    "1",
+                    "It is my duty to protect my students."
+                  ],
+                  [
+                    "2",
+                    "I have an ancient text that holds terrible secrets that must not fall into the wrong hands."
+                  ],
+                  [
+                    "3",
+                    "I work to preserve a library, university, scriptorium, or monastery."
+                  ],
+                  [
+                    "4",
+                    "My life's work is a series of tomes related to a specific field of lore."
+                  ],
+                  [
+                    "5",
+                    "I've been searching my whole life for the answer to a certain question."
+                  ],
+                  [
+                    "6",
+                    "I sold my soul for knowledge. I hope to do great deeds and win it back."
+                  ]
+                ]
+              },
+              {
+                "type": "table",
+                "colLabels": [
+                  "d6",
+                  "Flaw"
+                ],
+                "colStyles": [
+                  "col-1 text-center",
+                  "col-11"
+                ],
+                "rows": [
+                  [
+                    "1",
+                    "I am easily distracted by the promise of information."
+                  ],
+                  [
+                    "2",
+                    "Most people scream and run when they see a demon. I stop and take notes on its anatomy."
+                  ],
+                  [
+                    "3",
+                    "Unlocking an ancient mystery is worth the price of a civilization."
+                  ],
+                  [
+                    "4",
+                    "I overlook obvious solutions in favor of complicated ones."
+                  ],
+                  [
+                    "5",
+                    "I speak without really thinking through my words, invariably insulting others."
+                  ],
+                  [
+                    "6",
+                    "I can't keep a secret to save my life, or anyone else's."
+                  ]
+                ]
+              }
+            ]
+          }
+        ]
+      },
+      "race": {
+        "name": "Half-Elf",
+        "source": "PHB",
+        "speed": 30,
+        "darkvision": 60,
+        "size": [
+          "M"
+        ],
+        "description": "**Age.** Half-elves mature at the same rate humans do and reach adulthood around the age of 20. They live much longer than humans, however, often exceeding 180 years.\n\n**Size.** Half-elves are about the same size as humans, ranging from 5 to 6 feet tall. Your size is Medium.\n\n**Darkvision.** Thanks to your elf blood, you have superior vision in dark and dim conditions. You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light. You can't discern color in darkness, only shades of gray.\n\n**Fey Ancestry.** You have advantage on saving throws against being charmed, and magic can't put you to sleep.\n\n**Skill Versatility.** You gain proficiency in two skills of your choice.\n\n**Languages.** You can speak, read, and write Common, Elvish, and one extra language of your choice.",
+        "ability": [
+          {
+            "cha": 2,
+            "choose": {
+              "from": [
+                "str",
+                "dex",
+                "con",
+                "int",
+                "wis"
+              ],
+              "count": 2
+            }
+          }
+        ],
+        "languageProficiencies": [
+          {
+            "common": true,
+            "elvish": true,
+            "anyStandard": 1
+          }
+        ],
+        "skillProficiencies": [
+          {
+            "any": 2
+          }
+        ],
+        "entries": [
+          {
+            "name": "Age",
+            "type": "entries",
+            "entries": [
+              "Half-elves mature at the same rate humans do and reach adulthood around the age of 20. They live much longer than humans, however, often exceeding 180 years."
+            ]
+          },
+          {
+            "type": "entries",
+            "name": "Size",
+            "entries": [
+              "Half-elves are about the same size as humans, ranging from 5 to 6 feet tall. Your size is Medium."
+            ]
+          },
+          {
+            "name": "Darkvision",
+            "entries": [
+              "Thanks to your elf blood, you have superior vision in dark and dim conditions. You can see in dim light within 60 feet of you as if it were bright light, and in darkness as if it were dim light. You can't discern color in darkness, only shades of gray."
+            ],
+            "type": "entries"
+          },
+          {
+            "name": "Fey Ancestry",
+            "entries": [
+              "You have advantage on saving throws against being {@condition charmed}, and magic can't put you to sleep."
+            ],
+            "type": "entries"
+          },
+          {
+            "name": "Skill Versatility",
+            "entries": [
+              "You gain proficiency in two skills of your choice."
+            ],
+            "type": "entries"
+          },
+          {
+            "name": "Languages",
+            "entries": [
+              "You can speak, read, and write Common, Elvish, and one extra language of your choice."
+            ],
+            "type": "entries"
+          }
+        ]
+      }
+    },
+    "racialTraits": [],
+    "masteredWeapons": []
+  },
+  {
+    "id": "4f73293c-9073-4959-b92c-fed44867adf8",
+    "name": "Dwarf Cleric",
+    "system": "dnd5e",
+    "playerName": "dxMourn",
+    "race": "Dwarf",
+    "className": "Cleric",
+    "subclass": "",
+    "level": 1,
+    "background": "Acolyte",
+    "alignment": "",
+    "experience": 0,
+    "abilityScores": {
+      "str": 14,
+      "dex": 8,
+      "con": 10,
+      "int": 12,
+      "wis": 15,
+      "cha": 13
+    },
+    "savingThrows": [
+      "str",
+      "dex",
+      "con",
+      "int",
+      "wis",
+      "cha"
+    ],
+    "skills": [
+      {
+        "name": "Acrobatics",
+        "stat": "dex",
+        "proficient": false,
+        "expertise": false,
+        "bonus": 0
+      },
+      {
+        "name": "Animal Handling",
+        "stat": "wis",
+        "proficient": false,
+        "expertise": false,
+        "bonus": 0
+      },
+      {
+        "name": "Arcana",
+        "stat": "int",
+        "proficient": false,
+        "expertise": false,
+        "bonus": 0
+      },
+      {
+        "name": "Athletics",
+        "stat": "str",
+        "proficient": false,
+        "expertise": false,
+        "bonus": 0
+      },
+      {
+        "name": "Deception",
+        "stat": "cha",
+        "proficient": false,
+        "expertise": false,
+        "bonus": 0
+      },
+      {
+        "name": "History",
+        "stat": "int",
+        "proficient": false,
+        "expertise": false,
+        "bonus": 0
+      },
+      {
+        "name": "Insight",
+        "stat": "wis",
+        "proficient": true,
+        "expertise": false,
+        "bonus": 0
+      },
+      {
+        "name": "Intimidation",
+        "stat": "cha",
+        "proficient": false,
+        "expertise": false,
+        "bonus": 0
+      },
+      {
+        "name": "Investigation",
+        "stat": "int",
+        "proficient": false,
+        "expertise": false,
+        "bonus": 0
+      },
+      {
+        "name": "Medicine",
+        "stat": "wis",
+        "proficient": true,
+        "expertise": false,
+        "bonus": 0
+      },
+      {
+        "name": "Nature",
+        "stat": "int",
+        "proficient": false,
+        "expertise": false,
+        "bonus": 0
+      },
+      {
+        "name": "Perception",
+        "stat": "wis",
+        "proficient": true,
+        "expertise": false,
+        "bonus": 0
+      },
+      {
+        "name": "Performance",
+        "stat": "cha",
+        "proficient": false,
+        "expertise": false,
+        "bonus": 0
+      },
+      {
+        "name": "Persuasion",
+        "stat": "cha",
+        "proficient": false,
+        "expertise": false,
+        "bonus": 0
+      },
+      {
+        "name": "Religion",
+        "stat": "int",
+        "proficient": true,
+        "expertise": false,
+        "bonus": 0
+      },
+      {
+        "name": "Sleight of Hand",
+        "stat": "dex",
+        "proficient": false,
+        "expertise": false,
+        "bonus": 0
+      },
+      {
+        "name": "Stealth",
+        "stat": "dex",
+        "proficient": false,
+        "expertise": false,
+        "bonus": 0
+      },
+      {
+        "name": "Survival",
+        "stat": "wis",
+        "proficient": false,
+        "expertise": false,
+        "bonus": 0
+      }
+    ],
+    "senses": "Darkvision 120 ft.",
+    "passivePerception": 14,
+    "passiveInvestigation": 14,
+    "passiveInsight": 11,
+    "languages": "Common, Dwarvish, Halfling",
+    "proficiencies": "=== ARMOR === \nLight Armor, Medium Armor, Shields \n\n=== WEAPONS === \nSimple Weapons \n\n=== TOOLS === \nCalligrapher's Supplies \n\n=== LANGUAGES === \nCommon, Dwarvish, Halfling",
+    "ac": 9,
+    "maxHp": 9,
+    "currentHp": 9,
+    "tempHp": 0,
+    "hitDice": "1d8",
+    "speed": "30 ft(Walking)",
+    "initiativeMod": -1,
+    "proficiencyBonus": 2,
+    "spellcastingAbility": "wis",
+    "spellSaveDc": 12,
+    "spellAttackMod": 0,
+    "spellSlots": [
+      {
+        "current": 0,
+        "max": 0
+      },
+      {
+        "current": 2,
+        "max": 2
+      },
+      {
+        "current": 0,
+        "max": 0
+      },
+      {
+        "current": 0,
+        "max": 0
+      },
+      {
+        "current": 0,
+        "max": 0
+      },
+      {
+        "current": 0,
+        "max": 0
+      },
+      {
+        "current": 0,
+        "max": 0
+      },
+      {
+        "current": 0,
+        "max": 0
+      },
+      {
+        "current": 0,
+        "max": 0
+      },
+      {
+        "current": 0,
+        "max": 0
+      }
+    ],
+    "spells": [
+      {
+        "id": "cef113db-b284-4e4a-b97c-ce513e723150",
+        "name": "Light",
+        "level": 0,
+        "school": "Evocation",
+        "castingTime": "1 action",
+        "range": "Touch",
+        "components": {
+          "v": true,
+          "s": false,
+          "m": true,
+          "mDesc": "a firefly or phosphorescent moss"
+        },
+        "duration": "1 hour",
+        "concentration": false,
+        "ritual": false,
+        "description": "You touch one Large or smaller object that isn't being worn or carried by someone else. Until the spell ends, the object sheds Bright Light|XPHB in a 20-foot radius and Dim Light|XPHB for an additional 20 feet. The light can be colored as you like.\n\nCovering the object with something opaque blocks the light. The spell ends if you cast it again.",
+        "prepared": true,
+        "isHomebrew": false,
+        "source": "XPHB"
+      },
+      {
+        "id": "60a6e3c8-9397-4d46-85af-d3b144b88393",
+        "name": "Sacred Flame",
+        "level": 0,
+        "school": "Evocation",
+        "castingTime": "1 action",
+        "range": "60 feet",
+        "components": {
+          "v": true,
+          "s": true,
+          "m": false
+        },
+        "duration": "Instantaneous",
+        "concentration": false,
+        "ritual": false,
+        "description": "Flame-like radiance descends on a creature that you can see within range. The target must succeed on a Dexterity saving throw or take 1d8 Radiant damage. The target gains no benefit from Half Cover|XPHB or Three-Quarters Cover|XPHB for this save.",
+        "higherLevels": "**Cantrip Upgrade.** The damage increases by 1d8 when you reach levels 5 (2d8), 11 (3d8), and 17 (4d8).",
+        "prepared": true,
+        "isHomebrew": false,
+        "source": "XPHB"
+      },
+      {
+        "id": "81d04262-78e4-4901-a736-9d3a75eb6d7a",
+        "name": "Thaumaturgy",
+        "level": 0,
+        "school": "Transmutation",
+        "castingTime": "1 action",
+        "range": "30 feet",
+        "components": {
+          "v": true,
+          "s": false,
+          "m": false
+        },
+        "duration": "1 minute",
+        "concentration": false,
+        "ritual": false,
+        "description": "You manifest a minor wonder within range. You create one of the effects below within range. If you cast this spell multiple times, you can have up to three of its 1-minute effects active at a time.\n\n**Altered Eyes.** You alter the appearance of your eyes for 1 minute.\n\n**Booming Voice.** Your voice booms up to three times as loud as normal for 1 minute. For the duration, you have Advantage|XPHB on Charisma (Intimidation|XPHB) checks.\n\n**Fire Play.** You cause flames to flicker, brighten, dim, or change color for 1 minute.\n\n**Invisible Hand.** You instantaneously cause an unlocked door or window to fly open or slam shut.\n\n**Phantom Sound.** You create an instantaneous sound that originates from a point of your choice within range, such as a rumble of thunder, the cry of a raven, or ominous whispers.\n\n**Tremors.** You cause harmless tremors in the ground for 1 minute.",
+        "prepared": true,
+        "isHomebrew": false,
+        "source": "XPHB"
+      },
+      {
+        "id": "6ce88e73-be9c-47ad-a13f-f942ef13bf34",
+        "name": "Toll the Dead",
+        "level": 0,
+        "school": "Necromancy",
+        "castingTime": "1 action",
+        "range": "60 feet",
+        "components": {
+          "v": true,
+          "s": true,
+          "m": false
+        },
+        "duration": "Instantaneous",
+        "concentration": false,
+        "ritual": false,
+        "description": "You point at one creature you can see within range, and the single chime of a dolorous bell is audible within 10 feet of the target. The target must succeed on a Wisdom saving throw or take 1d8 Necrotic damage. If the target is missing any of its Hit Points|XPHB, it instead takes 1d12 Necrotic damage.",
+        "higherLevels": "**Cantrip Upgrade.** The damage increases by one die when you reach levels 5 (2d8 or 2d12), 11 (3d8 or 3d12), and 17 (4d8 or 4d12).",
+        "prepared": true,
+        "isHomebrew": false,
+        "source": "XPHB"
+      },
+      {
+        "id": "35a0e822-4c95-4ab8-9a40-8e910c9373d5",
+        "name": "Bless",
+        "level": 1,
+        "school": "Enchantment",
+        "castingTime": "1 action",
+        "range": "30 feet",
+        "components": {
+          "v": true,
+          "s": true,
+          "m": true,
+          "mDesc": "a Holy Symbol worth 5+ GP"
+        },
+        "duration": "Concentration, 1 minute",
+        "concentration": true,
+        "ritual": false,
+        "description": "You bless up to three creatures within range. Whenever a target makes an attack roll or a saving throw before the spell ends, the target adds 1d4 to the attack roll or save.",
+        "higherLevels": "**Using a Higher-Level Spell Slot.** You can target one additional creature for each spell slot level above 1.",
+        "prepared": true,
+        "isHomebrew": false,
+        "source": "XPHB"
+      },
+      {
+        "id": "d9e919da-7d97-4666-8b55-fd516e83e184",
+        "name": "Cure Wounds",
+        "level": 1,
+        "school": "Abjuration",
+        "castingTime": "1 action",
+        "range": "Touch",
+        "components": {
+          "v": true,
+          "s": true,
+          "m": false
+        },
+        "duration": "Instantaneous",
+        "concentration": false,
+        "ritual": false,
+        "description": "A creature you touch regains a number of Hit Points|XPHB equal to 2d8 plus your spellcasting ability modifier.",
+        "higherLevels": "**Using a Higher-Level Spell Slot.** The healing increases by 2d8|1-9|2d8 for each spell slot level above 1.",
+        "prepared": true,
+        "isHomebrew": false,
+        "source": "XPHB"
+      },
+      {
+        "id": "099bf0fb-e49f-4979-b7bd-9267fa5e01ca",
+        "name": "Guiding Bolt",
+        "level": 1,
+        "school": "Evocation",
+        "castingTime": "1 action",
+        "range": "120 feet",
+        "components": {
+          "v": true,
+          "s": true,
+          "m": false
+        },
+        "duration": "1 round",
+        "concentration": false,
+        "ritual": false,
+        "description": "You hurl a bolt of light toward a creature within range. Make a ranged spell attack against the target. On a hit, it takes 4d6 Radiant damage, and the next attack roll made against it before the end of your next turn has Advantage|XPHB.",
+        "higherLevels": "**Using a Higher-Level Spell Slot.** The damage increases by 4d6|1-9|1d6 for each spell slot level above 1.",
+        "prepared": true,
+        "isHomebrew": false,
+        "source": "XPHB"
+      },
+      {
+        "id": "e3e70c16-5376-47ec-8c08-a3393f02b3f0",
+        "name": "Shield of Faith",
+        "level": 1,
+        "school": "Abjuration",
+        "castingTime": "1 bonus",
+        "range": "60 feet",
+        "components": {
+          "v": true,
+          "s": true,
+          "m": true,
+          "mDesc": "a prayer scroll"
+        },
+        "duration": "Concentration, 10 minutes",
+        "concentration": true,
+        "ritual": false,
+        "description": "A shimmering field surrounds a creature of your choice within range, granting it a +2 bonus to AC for the duration.",
+        "prepared": true,
+        "isHomebrew": false,
+        "source": "XPHB"
+      },
+      {
+        "id": "902b0044-cace-4967-8c64-9108c9015531",
+        "name": "Bane",
+        "level": 1,
+        "school": "Enchantment",
+        "castingTime": "1 action",
+        "range": "30 feet",
+        "components": {
+          "v": true,
+          "s": true,
+          "m": true,
+          "mDesc": "a drop of blood"
+        },
+        "duration": "Concentration, 1 minute",
+        "concentration": true,
+        "ritual": false,
+        "description": "Up to three creatures of your choice that you can see within range must each make a Charisma saving throw. Whenever a target that fails this save makes an attack roll or a saving throw before the spell ends, the target must subtract 1d4 from the attack roll or save.",
+        "higherLevels": "**Using a Higher-Level Spell Slot.** You can target one additional creature for each spell slot level above 1.",
+        "prepared": true,
+        "isHomebrew": false,
+        "source": "XPHB"
+      },
+      {
+        "id": "a1bf988a-35c6-4c9a-931e-3a74f9b92049",
+        "name": "Protection from Evil and Good",
+        "level": 1,
+        "school": "Abjuration",
+        "castingTime": "1 action",
+        "range": "Touch",
+        "components": {
+          "v": true,
+          "s": true,
+          "m": true,
+          "mDesc": "a flask of Holy Water worth 25+ GP, which the spell consumes"
+        },
+        "duration": "Concentration, 10 minutes",
+        "concentration": true,
+        "ritual": false,
+        "description": "Until the spell ends, one willing creature you touch is protected against creatures that are Aberrations, Celestials, Elementals, Fey, Fiends, or Undead. The protection grants several benefits. Creatures of those types have Disadvantage|XPHB on attack rolls against the target. The target also can't be possessed by or gain the Charmed|XPHB or Frightened|XPHB conditions from them. If the target is already possessed, Charmed|XPHB, or Frightened|XPHB by such a creature, the target has Advantage|XPHB on any new saving throw against the relevant effect.",
+        "prepared": true,
+        "isHomebrew": false,
+        "source": "XPHB"
+      },
+      {
+        "id": "2687766a-7211-40b4-9a11-ced640436210",
+        "name": "Purify Food and Drink [R]",
+        "level": 0,
+        "school": "",
+        "castingTime": "",
+        "range": "",
+        "components": {
+          "v": false,
+          "s": false,
+          "m": false
+        },
+        "duration": "",
+        "concentration": false,
+        "ritual": false,
+        "description": "",
+        "prepared": true
+      },
+      {
+        "id": "46afa8d5-d31e-4c1b-a414-e488f5368d6b",
+        "name": "Command",
+        "level": 1,
+        "school": "Enchantment",
+        "castingTime": "1 action",
+        "range": "60 feet",
+        "components": {
+          "v": true,
+          "s": false,
+          "m": false
+        },
+        "duration": "Instantaneous",
+        "concentration": false,
+        "ritual": false,
+        "description": "You speak a one-word command to a creature you can see within range. The target must succeed on a Wisdom saving throw or follow the command on its next turn. Choose the command from these options:\n\nThe target moves toward you by the shortest and most direct route, ending its turn if it moves within 5 feet of you.\nThe target drops whatever it is holding and then ends its turn.\nThe target spends its turn moving away from you by the fastest available means.\nThe target has the Prone|XPHB condition and then ends its turn.\nOn its turn, the target doesn't move and takes no action or Bonus Action|XPHB.",
+        "higherLevels": "**Using a Higher-Level Spell Slot.** You can affect one additional creature for each spell slot level above 1.",
+        "prepared": true,
+        "isHomebrew": false,
+        "source": "XPHB"
+      },
+      {
+        "id": "0eb34167-6b24-48bc-9b45-e63a8d8e4c2b",
+        "name": "Sanctuary",
+        "level": 1,
+        "school": "Abjuration",
+        "castingTime": "1 bonus",
+        "range": "30 feet",
+        "components": {
+          "v": true,
+          "s": true,
+          "m": true,
+          "mDesc": "a shard of glass from a mirror"
+        },
+        "duration": "1 minute",
+        "concentration": false,
+        "ritual": false,
+        "description": "You ward a creature within range. Until the spell ends, any creature who targets the warded creature with an attack roll or a damaging spell must succeed on a Wisdom saving throw or either choose a new target or lose the attack or spell. This spell doesn't protect the warded creature from areas of effect.\n\nThe spell ends if the warded creature makes an attack roll, casts a spell, or deals damage.",
+        "prepared": true,
+        "isHomebrew": false,
+        "source": "XPHB"
+      },
+      {
+        "id": "4ae6eb6b-0033-46a0-af87-405a026d3cdf",
+        "name": "Create or Destroy Water",
+        "level": 1,
+        "school": "Transmutation",
+        "castingTime": "1 action",
+        "range": "30 feet",
+        "components": {
+          "v": true,
+          "s": true,
+          "m": true,
+          "mDesc": "a mix of water and sand"
+        },
+        "duration": "Instantaneous",
+        "concentration": false,
+        "ritual": false,
+        "description": "You do one of the following:\n\nYou create up to 10 gallons of clean water within range in an open container. Alternatively, the water falls as rain in a 30-foot Cube [Area of Effect]|XPHB|Cube within range, extinguishing exposed flames there.\nYou destroy up to 10 gallons of water in an open container within range. Alternatively, you destroy fog in a 30-foot Cube [Area of Effect]|XPHB|Cube within range.",
+        "higherLevels": "**Using a Higher-Level Spell Slot.** You create or destroy 10 additional gallons of water, or the size of the Cube [Area of Effect]|XPHB|Cube increases by 5 feet, for each spell slot level above 1.",
+        "prepared": true,
+        "isHomebrew": false,
+        "source": "XPHB"
+      },
+      {
+        "id": "8a2d722e-8488-4a97-9485-2c3f5af916bf",
+        "name": "Detect Evil and Good",
+        "level": 1,
+        "school": "Divination",
+        "castingTime": "1 action",
+        "range": "Self",
+        "components": {
+          "v": true,
+          "s": true,
+          "m": false
+        },
+        "duration": "Concentration, 10 minutes",
+        "concentration": true,
+        "ritual": false,
+        "description": "For the duration, you sense the location of any Aberration, Celestial, Elemental, Fey, Fiend, or Undead within 30 feet of yourself. You also sense whether the Hallow|XPHB spell is active there and, if so, where.\n\nThe spell is blocked by 1 foot of stone, dirt, or wood; 1 inch of metal; or a thin sheet of lead.",
+        "prepared": true,
+        "isHomebrew": false,
+        "source": "XPHB"
+      },
+      {
+        "id": "b438f27e-5166-4b2c-8270-7875ab3eaeb5",
+        "name": "Detect Poison and Disease [R]",
+        "level": 0,
+        "school": "",
+        "castingTime": "",
+        "range": "",
+        "components": {
+          "v": false,
+          "s": false,
+          "m": false
+        },
+        "duration": "",
+        "concentration": false,
+        "ritual": false,
+        "description": "",
+        "prepared": true
+      },
+      {
+        "id": "2e4bb1b2-4588-4e05-a2cc-275bf4f85675",
+        "name": "Detect Magic [R]",
+        "level": 0,
+        "school": "",
+        "castingTime": "",
+        "range": "",
+        "components": {
+          "v": false,
+          "s": false,
+          "m": false
+        },
+        "duration": "",
+        "concentration": false,
+        "ritual": false,
+        "description": "",
+        "prepared": true
+      },
+      {
+        "id": "e570849e-f110-4cfe-8717-11d6ad4f8892",
+        "name": "Healing Word",
+        "level": 1,
+        "school": "Abjuration",
+        "castingTime": "1 bonus",
+        "range": "60 feet",
+        "components": {
+          "v": true,
+          "s": false,
+          "m": false
+        },
+        "duration": "Instantaneous",
+        "concentration": false,
+        "ritual": false,
+        "description": "A creature of your choice that you can see within range regains Hit Points|XPHB equal to 2d4 plus your spellcasting ability modifier.",
+        "higherLevels": "**Using a Higher-Level Spell Slot.** The healing increases by 2d4|1-9|2d4 for each spell slot level above 1.",
+        "prepared": true,
+        "isHomebrew": false,
+        "source": "XPHB"
+      },
+      {
+        "id": "b99b10eb-b333-495c-aaf8-215db3ac37cf",
+        "name": "Inflict Wounds",
+        "level": 1,
+        "school": "Necromancy",
+        "castingTime": "1 action",
+        "range": "Touch",
+        "components": {
+          "v": true,
+          "s": true,
+          "m": false
+        },
+        "duration": "Instantaneous",
+        "concentration": false,
+        "ritual": false,
+        "description": "A creature you touch makes a Constitution saving throw, taking 2d10 Necrotic damage on a failed save or half as much damage on a successful one.",
+        "higherLevels": "**Using a Higher-Level Spell Slot.** The damage increases by 2d10|1-9|1d10 for each spell slot level above 1.",
+        "prepared": true,
+        "isHomebrew": false,
+        "source": "XPHB"
+      }
+    ],
+    "inventory": [
+      {
+        "id": "67229a4e-2ffb-4a6b-b7ad-ce9b85f46ec3",
+        "name": "Chain Shirt",
+        "quantity": 1,
+        "weight": 20,
+        "isEquipped": true,
+        "isAttuned": false,
+        "description": "Made of interlocking metal rings, a chain shirt is worn between layers of clothing or leather. This armor offers modest protection to the wearer's upper body and allows the sound of the rings rubbing against one another to be muffled by outer layers.",
+        "type": "armor",
+        "acBonus": 13
+      },
+      {
+        "id": "0218953e-7990-414d-b696-3c67b876066a",
+        "name": "Mace",
+        "quantity": 1,
+        "weight": 4,
+        "isEquipped": true,
+        "isAttuned": false,
+        "description": "Simple, Sap",
+        "type": "weapon",
+        "damage": "1d6+2 Bludgeoning (Atk: +4)"
+      },
+      {
+        "id": "98e43883-c439-45e2-81be-2423bb6ef2ba",
+        "name": "Bedroll",
+        "quantity": 1,
+        "weight": 7,
+        "isEquipped": false,
+        "isAttuned": false,
+        "description": "",
+        "type": "magic"
+      },
+      {
+        "id": "4ba7a6e6-66bb-4442-8416-37fc6a218de2",
+        "name": "Mess Kit",
+        "quantity": 1,
+        "weight": 1,
+        "isEquipped": false,
+        "isAttuned": false,
+        "description": "This tin box contains a cup and simple cutlery. The box clamps together, and one side can be used as a cooking pan and the other as a plate or shallow bowl.",
+        "type": "magic"
+      },
+      {
+        "id": "143149b5-4965-4819-bc81-54e2da3f11a6",
+        "name": "Rations (1 day)",
+        "quantity": 10,
+        "weight": 2,
+        "isEquipped": false,
+        "isAttuned": false,
+        "description": "Rations consist of travel-ready food, including jerky, dried fruit, hardtack, and nuts. See \"Malnutrition|XPHB\" for the risks of not eating.",
+        "type": "magic"
+      },
+      {
+        "id": "1796a1f6-ef3b-4c83-9f0b-ce47c6c75f55",
+        "name": "Rope, Hempen (50 feet)",
+        "quantity": 1,
+        "weight": 10,
+        "isEquipped": false,
+        "isAttuned": false,
+        "description": "",
+        "type": "gear"
+      },
+      {
+        "id": "aca3d84c-fdd7-4bf0-ab88-7be4b6eae8c8",
+        "name": "Tinderbox",
+        "quantity": 1,
+        "weight": 1,
+        "isEquipped": false,
+        "isAttuned": false,
+        "description": "This small container holds flint, fire steel, and tinder (usually dry cloth soaked in light oil) used to kindle a fire. Using it to light a torch—or anything else with abundant, exposed fuel—takes an action. Lighting any other fire takes 1 minute.",
+        "type": "magic"
+      },
+      {
+        "id": "9905f28b-be71-4ae3-8b60-3bf43fbd4d2c",
+        "name": "Torch",
+        "quantity": 10,
+        "weight": 1,
+        "isEquipped": false,
+        "isAttuned": false,
+        "description": "A torch burns for 1 hour, providing bright light in a 20-foot radius and dim light for an additional 20 feet. If you make a melee attack with a burning torch and hit, it deals 1 fire damage.",
+        "type": "magic"
+      },
+      {
+        "id": "942fceb5-f309-4d9c-94ee-1f91b54f77fe",
+        "name": "Waterskin",
+        "quantity": 1,
+        "weight": 5,
+        "isEquipped": false,
+        "isAttuned": false,
+        "description": "A waterskin can hold up to 4 pints of liquid.",
+        "type": "magic"
+      }
+    ],
+    "currencies": {
+      "cp": 0,
+      "sp": 0,
+      "ep": 0,
+      "gp": 60,
+      "pp": 0
+    },
+    "resources": [],
+    "actions": [],
+    "features": [
+      {
+        "id": "eb7098f2-5e10-43d1-bf99-803608e691c4",
+        "name": "You know one extra cantrip from the Cleric spell list",
+        "source": "Class: Cleric",
+        "description": "You also have a +2 bonus to your Arcana and Religion checks. \n\n\n=== DWARF SPECIES TRAITS === \n\n* Creature Type • PHB-2024 188",
+        "hasUses": false
+      },
+      {
+        "id": "5745bf0a-0f6e-4d8c-be8f-1d1ae9af3cfa",
+        "name": "You are a Humanoid",
+        "source": "Class: Cleric",
+        "description": "* Size • PHB-2024 188",
+        "hasUses": false
+      },
+      {
+        "id": "a2393f4d-932b-4930-8d2f-37e2ae54da5b",
+        "name": "You are Medium",
+        "source": "Class: Cleric",
+        "description": "* Speed • PHB-2024 188 \nYour speed is 30 ft. \n\n* Darkvision • PHB-2024 188 \nYou have Darkvision with a range of 120 ft. \n\n* Dwarven Resilience • PHB-2024 188",
+        "hasUses": false
+      },
+      {
+        "id": "8c642e62-5206-4504-9507-1977af24f74c",
+        "name": "You have Resistance to Poison damage",
+        "source": "Class: Cleric",
+        "description": "You also have Advantage on saving throws you make to avoid or end the Poisoned condition. \n\n* Dwarven Toughness • PHB-2024 188 \nYour HP maximum increases by 1. \n\n* Stonecunning • PHB-2024 188 \nAs a Bonus Action, you gain Tremorsense with a range of 60 ft. for 10 minutes. You must be on or touching a natural or worked stone surface to use this Tremorsense.\n\nYou can use this Bonus Action 2 times per Long Rest. \n\n   | Stonecunning (Tremorsense): 2 / Long Rest • 1 Bonus Action \n\n* Languages • PHB-2024 37 \nYour character knows at least three languages: Common plus two languages you roll or choose from the Standard Languages table. Knowledge of a language means your character can communicate in it, read it, and write it. \n\n\n=== FEATS === \n\n* Acolyte Ability Score Improvements • PHB-2024 178 \n\n* Magic Initiate (Cleric) • PHB-2024 201",
+        "hasUses": false
+      },
+      {
+        "id": "d0c96c07-18e8-41cb-b4ba-55c293fbd5e0",
+        "name": "Two Cantrips",
+        "source": "Class: Cleric",
+        "description": "You learn two cantrips of your choice from the Cleric spell list. Int., Wis., or Cha. is your spellcasting ability for this feat's spells. \n\nLevel 1 Spell. Choose a level 1 spell from the Cleric spell list. You always have that spell prepared. You can cast it once without a spell slot, and you regain the ability to cast it in that way when you finish a Long Rest. You can also cast the spell using any spell slots you have.",
+        "hasUses": false
+      },
+      {
+        "id": "fcfdf03c-921e-42b3-88f5-5f2b8bbda942",
+        "name": "Spell Change",
+        "source": "Class: Cleric",
+        "description": "Whenever you gain a new level, you can replace one of the spells you chose for this feat with a different spell of the same level from the chosen spell list.",
+        "hasUses": false
+      },
+      {
+        "id": "5e73bf37-14ad-4a98-8b51-dc39f5189db0",
+        "name": "Repeatable",
+        "source": "Class: Cleric",
+        "description": "You can take this feat more than once, but you must choose a different spell list each time.",
+        "hasUses": false
+      },
+      {
+        "id": "440a6f78-c240-448e-8956-ad04e032ff16",
+        "name": "Divine Domain",
+        "source": "Class: Cleric (Level 1)",
+        "description": "Choose one domain related to your deity from the list of available domains. Each domain is detailed in their own feature, and each one provides examples of gods associated with it. Your choice grants you domain spells and other features when you choose it at 1st level. It also grants you additional ways to use Channel Divinity when you gain that feature at 2nd level, and additional benefits at 6th, 8th, and 17th levels.\n\n**Domain Spells.** Each domain has a list of spells—its domain spells—that you gain at the cleric levels noted in the domain description. Once you gain a domain spell, you always have it prepared, and it doesn't count against the number of spells you can prepare each day.\n\nIf you have a domain spell that doesn't appear on the cleric spell list, the spell is nonetheless a cleric spell for you.",
+        "hasUses": false,
+        "usesCurrent": 0,
+        "source5eTools": "PHB"
+      },
+      {
+        "id": "d5f61649-75a8-4f57-9f4b-3c602d4542be",
+        "name": "Spellcasting",
+        "source": "Class: Cleric (Level 1)",
+        "description": "As a conduit for divine power, you can cast cleric spells. See chapter 10|PHB|10 for the general rules of spellcasting and chapter 11|PHB|11 for a selection of cleric spells|spells|class=cleric.\n\n**Cantrips.** At 1st level, you know three cantrips of your choice from the cleric spell list. You learn additional cleric cantrips of your choice at higher levels, as shown in the Cantrips Known column of the Cleric table.\n\n**Preparing and Casting Spells.** The Cleric table shows how many spell slots you have to cast your cleric spells|spells|class=cleric of 1st level and higher. To cast one of these spells, you must expend a slot of the spell's level or higher. You regain all expended spell slots when you finish a long rest.\n\nYou prepare the list of cleric spells that are available for you to cast, choosing from the cleric spell list. When you do so, choose a number of cleric spells equal to your Wisdom modifier + your cleric level (minimum of one spell). The spells must be of a level for which you have spell slots.\n\nFor example, if you are a 3rd-level cleric, you have four 1st-level and two 2nd-level spell slots. With a Wisdom of 16, your list of prepared spells can include six spells of 1st or 2nd level, in any combination. If you prepare the 1st-level spell cure wounds, you can cast it using a 1st-level or 2nd-level slot. Casting the spell doesn't remove it from your list of prepared spells.\n\nYou can change your list of prepared spells when you finish a long rest. Preparing a new list of cleric spells requires time spent in prayer and meditation: at least 1 minute per spell level for each spell on your list.\n\n**Spellcasting Ability.** Wisdom is your spellcasting ability for your cleric spells. The power of your spells comes from your devotion to your deity. You use your Wisdom whenever a cleric spell refers to your spellcasting ability. In addition, you use your Wisdom modifier when setting the saving throw DC for a cleric spell you cast and when making an attack roll with one.\n\nyour spellcasting ability modifier\n\n**Ritual Casting.** You can cast a cleric spell as a ritual if that spell has the ritual tag and you have the spell prepared.\n\n**Spellcasting Focus.** You can use a holy symbol|phb as a spellcasting focus for your cleric spells.",
+        "hasUses": false,
+        "usesCurrent": 0,
+        "source5eTools": "PHB"
+      },
+      {
+        "id": "9864469e-6eea-4899-96dc-90b40eaf4eae",
+        "name": "Divine Order",
+        "source": "Class: Cleric (Level 1)",
+        "description": "You have dedicated yourself to one of the following sacred roles of your choice.",
+        "hasUses": false,
+        "usesCurrent": 0,
+        "source5eTools": "XPHB"
+      },
+      {
+        "id": "1eae010d-66bd-4df9-b3ef-86a4812f7a09",
+        "name": "Protector",
+        "source": "Class: Cleric (Level 1)",
+        "description": "Trained for battle, you gain proficiency with Martial weapons|items|type=martial weapon and training with Heavy armor|items|type=Heavy Armor.",
+        "hasUses": false,
+        "usesCurrent": 0,
+        "source5eTools": "XPHB"
+      },
+      {
+        "id": "0b2bd0a3-d535-4679-ac31-46ca7013c4f3",
+        "name": "Spellcasting",
+        "source": "Class: Cleric (Level 1)",
+        "description": "You have learned to cast spells through prayer and meditation. See chapter 7|XPHB|7 for the rules on spellcasting. The information below details how you use those rules with Cleric spells, which appear on the Cleric spell list|spells|class=Cleric later in the class's description.\n\n**Cantrips.** You know three cantrips of your choice from the Cleric spell list|spells|class=Cleric. Guidance|XPHB, Sacred Flame|XPHB, and Thaumaturgy|XPHB are recommended.\n\nWhenever you gain a Cleric level, you can replace one of your cantrips with another cantrip of your choice from the Cleric spell list|spells|class=Cleric.\n\nWhen you reach Cleric levels 4 and 10, you learn another cantrip of your choice from the Cleric spell list|spells|class=Cleric, as shown in the Cantrips column of the Cleric Features table.\n\n**Spell Slots.** The Cleric Features table shows how many spell slots you have to cast your level 1+ spells. You regain all expended slots when you finish a Long Rest|XPHB.\n\n**Prepared Spells of Level 1+.** You prepare the list of level 1+ spells that are available for you to cast with this feature. To start, choose four level 1 spells from the Cleric spell list|spells|class=Cleric. Bless|XPHB, Cure Wounds|XPHB, Guiding Bolt|XPHB, and Shield of Faith|XPHB are recommended.\n\nThe number of spells on your list increases as you gain Cleric levels, as shown in the Prepared Spells column of the Cleric Features table. Whenever that number increases, choose additional spells from the Cleric spell list|spells|class=Cleric until the number of spells on your list matches the number on the table. The chosen spells must be of a level for which you have spell slots. For example, if you're a level 3 Cleric, your list of prepared spells can include six spells of levels 1 and 2 in any combination.\n\nIf another Cleric feature gives you spells that you always have prepared, those spells don't count against the number of spells you can prepare with this feature, but those spells otherwise count as Cleric spells for you.\n\n**Changing Your Prepared Spells.** Whenever you finish a Long Rest|XPHB, you can change your list of prepared spells, replacing any of the spells there with other Cleric spells for which you have spell slots.\n\n**Spellcasting Ability.** Wisdom is your spellcasting ability for your Cleric spells.\n\n**Spellcasting Focus.** You can use a Holy Symbol|XPHB as a Spellcasting Focus|XPHB for your Cleric spells.",
+        "hasUses": false,
+        "usesCurrent": 0,
+        "source5eTools": "XPHB"
+      },
+      {
+        "id": "f18da001-1cc8-40c5-a99c-34071cb1eff5",
+        "name": "Thaumaturge",
+        "source": "Class: Cleric (Level 1)",
+        "description": "You know one extra cantrip from the Cleric spell list|spells|class=Cleric. In addition, your mystical connection to the divine gives you a bonus to your Intelligence (Arcana|XPHB or Religion|XPHB) checks. The bonus equals your Wisdom modifier (minimum of +1).",
+        "hasUses": false,
+        "usesCurrent": 0,
+        "source5eTools": "XPHB"
+      }
+    ],
+    "feats": [],
+    "racialTraits": [],
+    "conditions": [],
+    "deathSaves": {
+      "successes": 0,
+      "failures": 0
+    },
+    "exhaustion": 0,
+    "personalityTraits": "",
+    "ideals": "",
+    "bonds": "",
+    "flaws": "",
+    "backstory": "",
+    "notes": "",
+    "masteredWeapons": []
+  },
+  {
+    "id": "d02767e5-57ab-4448-8933-8fb8dd17a583",
+    "name": "",
+    "system": "dnd5e",
+    "playerName": "",
+    "race": "",
+    "className": "",
+    "subclass": "",
+    "level": 1,
+    "background": "",
+    "alignment": "",
+    "experience": 0,
+    "abilityScores": {
+      "str": 10,
+      "dex": 10,
+      "con": 10,
+      "int": 10,
+      "wis": 10,
+      "cha": 10
+    },
+    "savingThrows": [],
+    "skills": [
+      {
+        "name": "Acrobatics",
+        "stat": "dex",
+        "proficient": false,
+        "expertise": false,
+        "bonus": 0
+      },
+      {
+        "name": "Animal Handling",
+        "stat": "wis",
+        "proficient": false,
+        "expertise": false,
+        "bonus": 0
+      },
+      {
+        "name": "Arcana",
+        "stat": "int",
+        "proficient": false,
+        "expertise": false,
+        "bonus": 0
+      },
+      {
+        "name": "Athletics",
+        "stat": "str",
+        "proficient": false,
+        "expertise": false,
+        "bonus": 0
+      },
+      {
+        "name": "Deception",
+        "stat": "cha",
+        "proficient": false,
+        "expertise": false,
+        "bonus": 0
+      },
+      {
+        "name": "History",
+        "stat": "int",
+        "proficient": false,
+        "expertise": false,
+        "bonus": 0
+      },
+      {
+        "name": "Insight",
+        "stat": "wis",
+        "proficient": false,
+        "expertise": false,
+        "bonus": 0
+      },
+      {
+        "name": "Intimidation",
+        "stat": "cha",
+        "proficient": false,
+        "expertise": false,
+        "bonus": 0
+      },
+      {
+        "name": "Investigation",
+        "stat": "int",
+        "proficient": false,
+        "expertise": false,
+        "bonus": 0
+      },
+      {
+        "name": "Medicine",
+        "stat": "wis",
+        "proficient": false,
+        "expertise": false,
+        "bonus": 0
+      },
+      {
+        "name": "Nature",
+        "stat": "int",
+        "proficient": false,
+        "expertise": false,
+        "bonus": 0
+      },
+      {
+        "name": "Perception",
+        "stat": "wis",
+        "proficient": false,
+        "expertise": false,
+        "bonus": 0
+      },
+      {
+        "name": "Performance",
+        "stat": "cha",
+        "proficient": false,
+        "expertise": false,
+        "bonus": 0
+      },
+      {
+        "name": "Persuasion",
+        "stat": "cha",
+        "proficient": false,
+        "expertise": false,
+        "bonus": 0
+      },
+      {
+        "name": "Religion",
+        "stat": "int",
+        "proficient": false,
+        "expertise": false,
+        "bonus": 0
+      },
+      {
+        "name": "Sleight of Hand",
+        "stat": "dex",
+        "proficient": false,
+        "expertise": false,
+        "bonus": 0
+      },
+      {
+        "name": "Stealth",
+        "stat": "dex",
+        "proficient": false,
+        "expertise": false,
+        "bonus": 0
+      },
+      {
+        "name": "Survival",
+        "stat": "wis",
+        "proficient": false,
+        "expertise": false,
+        "bonus": 0
+      }
+    ],
+    "senses": "",
+    "passivePerception": 10,
+    "passiveInvestigation": 10,
+    "passiveInsight": 10,
+    "languages": "Common",
+    "proficiencies": "",
+    "ac": 10,
+    "maxHp": 10,
+    "currentHp": 10,
+    "tempHp": 0,
+    "hitDice": "1d8",
+    "speed": "30 ft",
+    "initiativeMod": 0,
+    "proficiencyBonus": 2,
+    "spellcastingAbility": "none",
+    "spellSaveDc": 10,
+    "spellAttackMod": 2,
+    "spellSlots": [
+      {
+        "current": 0,
+        "max": 0
+      },
+      {
+        "current": 0,
+        "max": 0
+      },
+      {
+        "current": 0,
+        "max": 0
+      },
+      {
+        "current": 0,
+        "max": 0
+      },
+      {
+        "current": 0,
+        "max": 0
+      },
+      {
+        "current": 0,
+        "max": 0
+      },
+      {
+        "current": 0,
+        "max": 0
+      },
+      {
+        "current": 0,
+        "max": 0
+      },
+      {
+        "current": 0,
+        "max": 0
+      },
+      {
+        "current": 0,
+        "max": 0
+      }
+    ],
+    "spells": [],
+    "inventory": [],
+    "currencies": {
+      "cp": 0,
+      "sp": 0,
+      "ep": 0,
+      "gp": 0,
+      "pp": 0
+    },
+    "resources": [],
+    "actions": [],
+    "features": [],
+    "feats": [],
+    "racialTraits": [],
+    "conditions": [],
+    "deathSaves": {
+      "successes": 0,
+      "failures": 0
+    },
+    "exhaustion": 0,
+    "personalityTraits": "",
+    "ideals": "",
+    "bonds": "",
+    "flaws": "",
+    "backstory": "",
+    "notes": "",
+    "masteredWeapons": []
+  },
+  {
+    "id": "3e241067-f0b7-4469-94a7-0645f574080b",
+    "name": "Dwarf Cleric",
+    "system": "dnd5e",
+    "playerName": "dxMourn",
+    "race": "Dwarf",
+    "className": "Cleric",
+    "subclass": "",
+    "level": 1,
+    "background": "Acolyte",
+    "alignment": "",
+    "experience": 0,
+    "abilityScores": {
+      "str": 14,
+      "dex": 8,
+      "con": 10,
+      "int": 12,
+      "wis": 15,
+      "cha": 13
+    },
+    "savingThrows": [
+      "str",
+      "dex",
+      "con",
+      "int",
+      "wis",
+      "cha"
+    ],
+    "skills": [
+      {
+        "name": "Acrobatics",
+        "stat": "dex",
+        "proficient": false,
+        "expertise": false,
+        "bonus": 0
+      },
+      {
+        "name": "Animal Handling",
+        "stat": "wis",
+        "proficient": false,
+        "expertise": false,
+        "bonus": 0
+      },
+      {
+        "name": "Arcana",
+        "stat": "int",
+        "proficient": false,
+        "expertise": false,
+        "bonus": 0
+      },
+      {
+        "name": "Athletics",
+        "stat": "str",
+        "proficient": false,
+        "expertise": false,
+        "bonus": 0
+      },
+      {
+        "name": "Deception",
+        "stat": "cha",
+        "proficient": false,
+        "expertise": false,
+        "bonus": 0
+      },
+      {
+        "name": "History",
+        "stat": "int",
+        "proficient": false,
+        "expertise": false,
+        "bonus": 0
+      },
+      {
+        "name": "Insight",
+        "stat": "wis",
+        "proficient": true,
+        "expertise": false,
+        "bonus": 0
+      },
+      {
+        "name": "Intimidation",
+        "stat": "cha",
+        "proficient": false,
+        "expertise": false,
+        "bonus": 0
+      },
+      {
+        "name": "Investigation",
+        "stat": "int",
+        "proficient": false,
+        "expertise": false,
+        "bonus": 0
+      },
+      {
+        "name": "Medicine",
+        "stat": "wis",
+        "proficient": true,
+        "expertise": false,
+        "bonus": 0
+      },
+      {
+        "name": "Nature",
+        "stat": "int",
+        "proficient": false,
+        "expertise": false,
+        "bonus": 0
+      },
+      {
+        "name": "Perception",
+        "stat": "wis",
+        "proficient": true,
+        "expertise": false,
+        "bonus": 0
+      },
+      {
+        "name": "Performance",
+        "stat": "cha",
+        "proficient": false,
+        "expertise": false,
+        "bonus": 0
+      },
+      {
+        "name": "Persuasion",
+        "stat": "cha",
+        "proficient": false,
+        "expertise": false,
+        "bonus": 0
+      },
+      {
+        "name": "Religion",
+        "stat": "int",
+        "proficient": true,
+        "expertise": false,
+        "bonus": 0
+      },
+      {
+        "name": "Sleight of Hand",
+        "stat": "dex",
+        "proficient": false,
+        "expertise": false,
+        "bonus": 0
+      },
+      {
+        "name": "Stealth",
+        "stat": "dex",
+        "proficient": false,
+        "expertise": false,
+        "bonus": 0
+      },
+      {
+        "name": "Survival",
+        "stat": "wis",
+        "proficient": false,
+        "expertise": false,
+        "bonus": 0
+      }
+    ],
+    "senses": "Darkvision 120 ft.",
+    "passivePerception": 14,
+    "passiveInvestigation": 14,
+    "passiveInsight": 11,
+    "languages": "Common, Dwarvish, Halfling",
+    "proficiencies": "=== ARMOR === \nLight Armor, Medium Armor, Shields \n\n=== WEAPONS === \nSimple Weapons \n\n=== TOOLS === \nCalligrapher's Supplies \n\n=== LANGUAGES === \nCommon, Dwarvish, Halfling",
+    "ac": 9,
+    "maxHp": 9,
+    "currentHp": 9,
+    "tempHp": 0,
+    "hitDice": "1d8",
+    "speed": "30 ft(Walking)",
+    "initiativeMod": -1,
+    "proficiencyBonus": 2,
+    "spellcastingAbility": "wis",
+    "spellSaveDc": 12,
+    "spellAttackMod": 0,
+    "spellSlots": [
+      {
+        "current": 0,
+        "max": 0
+      },
+      {
+        "current": 2,
+        "max": 2
+      },
+      {
+        "current": 0,
+        "max": 0
+      },
+      {
+        "current": 0,
+        "max": 0
+      },
+      {
+        "current": 0,
+        "max": 0
+      },
+      {
+        "current": 0,
+        "max": 0
+      },
+      {
+        "current": 0,
+        "max": 0
+      },
+      {
+        "current": 0,
+        "max": 0
+      },
+      {
+        "current": 0,
+        "max": 0
+      },
+      {
+        "current": 0,
+        "max": 0
+      }
+    ],
+    "spells": [
+      {
+        "id": "680a1b21-6daf-4594-9e97-6447475b4223",
+        "name": "Light",
+        "level": 0,
+        "school": "Evocation",
+        "castingTime": "1 action",
+        "range": "Touch",
+        "components": {
+          "v": true,
+          "s": false,
+          "m": true,
+          "mDesc": "a firefly or phosphorescent moss"
+        },
+        "duration": "1 hour",
+        "concentration": false,
+        "ritual": false,
+        "description": "You touch one Large or smaller object that isn't being worn or carried by someone else. Until the spell ends, the object sheds Bright Light|XPHB in a 20-foot radius and Dim Light|XPHB for an additional 20 feet. The light can be colored as you like.\n\nCovering the object with something opaque blocks the light. The spell ends if you cast it again.",
+        "prepared": true,
+        "isHomebrew": false,
+        "source": "XPHB"
+      },
+      {
+        "id": "5c0d8e90-88ef-46f6-8693-4d41c7af0741",
+        "name": "Sacred Flame",
+        "level": 0,
+        "school": "Evocation",
+        "castingTime": "1 action",
+        "range": "60 feet",
+        "components": {
+          "v": true,
+          "s": true,
+          "m": false
+        },
+        "duration": "Instantaneous",
+        "concentration": false,
+        "ritual": false,
+        "description": "Flame-like radiance descends on a creature that you can see within range. The target must succeed on a Dexterity saving throw or take 1d8 Radiant damage. The target gains no benefit from Half Cover|XPHB or Three-Quarters Cover|XPHB for this save.",
+        "higherLevels": "**Cantrip Upgrade.** The damage increases by 1d8 when you reach levels 5 (2d8), 11 (3d8), and 17 (4d8).",
+        "prepared": true,
+        "isHomebrew": false,
+        "source": "XPHB"
+      },
+      {
+        "id": "e44c27dd-9796-4f5b-b10a-9b6703671ec7",
+        "name": "Thaumaturgy",
+        "level": 0,
+        "school": "Transmutation",
+        "castingTime": "1 action",
+        "range": "30 feet",
+        "components": {
+          "v": true,
+          "s": false,
+          "m": false
+        },
+        "duration": "1 minute",
+        "concentration": false,
+        "ritual": false,
+        "description": "You manifest a minor wonder within range. You create one of the effects below within range. If you cast this spell multiple times, you can have up to three of its 1-minute effects active at a time.\n\n**Altered Eyes.** You alter the appearance of your eyes for 1 minute.\n\n**Booming Voice.** Your voice booms up to three times as loud as normal for 1 minute. For the duration, you have Advantage|XPHB on Charisma (Intimidation|XPHB) checks.\n\n**Fire Play.** You cause flames to flicker, brighten, dim, or change color for 1 minute.\n\n**Invisible Hand.** You instantaneously cause an unlocked door or window to fly open or slam shut.\n\n**Phantom Sound.** You create an instantaneous sound that originates from a point of your choice within range, such as a rumble of thunder, the cry of a raven, or ominous whispers.\n\n**Tremors.** You cause harmless tremors in the ground for 1 minute.",
+        "prepared": true,
+        "isHomebrew": false,
+        "source": "XPHB"
+      },
+      {
+        "id": "b10583af-c7c0-4218-b0eb-90f97391b2ba",
+        "name": "Toll the Dead",
+        "level": 0,
+        "school": "Necromancy",
+        "castingTime": "1 action",
+        "range": "60 feet",
+        "components": {
+          "v": true,
+          "s": true,
+          "m": false
+        },
+        "duration": "Instantaneous",
+        "concentration": false,
+        "ritual": false,
+        "description": "You point at one creature you can see within range, and the single chime of a dolorous bell is audible within 10 feet of the target. The target must succeed on a Wisdom saving throw or take 1d8 Necrotic damage. If the target is missing any of its Hit Points|XPHB, it instead takes 1d12 Necrotic damage.",
+        "higherLevels": "**Cantrip Upgrade.** The damage increases by one die when you reach levels 5 (2d8 or 2d12), 11 (3d8 or 3d12), and 17 (4d8 or 4d12).",
+        "prepared": true,
+        "isHomebrew": false,
+        "source": "XPHB"
+      },
+      {
+        "id": "81c4e266-6156-4ab9-afb6-f15ae16b385d",
+        "name": "Bless",
+        "level": 1,
+        "school": "Enchantment",
+        "castingTime": "1 action",
+        "range": "30 feet",
+        "components": {
+          "v": true,
+          "s": true,
+          "m": true,
+          "mDesc": "a Holy Symbol worth 5+ GP"
+        },
+        "duration": "Concentration, 1 minute",
+        "concentration": true,
+        "ritual": false,
+        "description": "You bless up to three creatures within range. Whenever a target makes an attack roll or a saving throw before the spell ends, the target adds 1d4 to the attack roll or save.",
+        "higherLevels": "**Using a Higher-Level Spell Slot.** You can target one additional creature for each spell slot level above 1.",
+        "prepared": true,
+        "isHomebrew": false,
+        "source": "XPHB"
+      },
+      {
+        "id": "ecaeaf66-bfa0-4d7f-a7e7-36fbee3ad8b0",
+        "name": "Cure Wounds",
+        "level": 1,
+        "school": "Abjuration",
+        "castingTime": "1 action",
+        "range": "Touch",
+        "components": {
+          "v": true,
+          "s": true,
+          "m": false
+        },
+        "duration": "Instantaneous",
+        "concentration": false,
+        "ritual": false,
+        "description": "A creature you touch regains a number of Hit Points|XPHB equal to 2d8 plus your spellcasting ability modifier.",
+        "higherLevels": "**Using a Higher-Level Spell Slot.** The healing increases by 2d8|1-9|2d8 for each spell slot level above 1.",
+        "prepared": true,
+        "isHomebrew": false,
+        "source": "XPHB"
+      },
+      {
+        "id": "f310ff84-ea29-47c5-ac9c-7b3d31b2e825",
+        "name": "Guiding Bolt",
+        "level": 1,
+        "school": "Evocation",
+        "castingTime": "1 action",
+        "range": "120 feet",
+        "components": {
+          "v": true,
+          "s": true,
+          "m": false
+        },
+        "duration": "1 round",
+        "concentration": false,
+        "ritual": false,
+        "description": "You hurl a bolt of light toward a creature within range. Make a ranged spell attack against the target. On a hit, it takes 4d6 Radiant damage, and the next attack roll made against it before the end of your next turn has Advantage|XPHB.",
+        "higherLevels": "**Using a Higher-Level Spell Slot.** The damage increases by 4d6|1-9|1d6 for each spell slot level above 1.",
+        "prepared": true,
+        "isHomebrew": false,
+        "source": "XPHB"
+      },
+      {
+        "id": "502cf739-82b6-4833-b68f-b7ef96977dd6",
+        "name": "Shield of Faith",
+        "level": 1,
+        "school": "Abjuration",
+        "castingTime": "1 bonus",
+        "range": "60 feet",
+        "components": {
+          "v": true,
+          "s": true,
+          "m": true,
+          "mDesc": "a prayer scroll"
+        },
+        "duration": "Concentration, 10 minutes",
+        "concentration": true,
+        "ritual": false,
+        "description": "A shimmering field surrounds a creature of your choice within range, granting it a +2 bonus to AC for the duration.",
+        "prepared": true,
+        "isHomebrew": false,
+        "source": "XPHB"
+      },
+      {
+        "id": "7033cde5-1b14-43f0-8709-960d759aa501",
+        "name": "Bane",
+        "level": 1,
+        "school": "Enchantment",
+        "castingTime": "1 action",
+        "range": "30 feet",
+        "components": {
+          "v": true,
+          "s": true,
+          "m": true,
+          "mDesc": "a drop of blood"
+        },
+        "duration": "Concentration, 1 minute",
+        "concentration": true,
+        "ritual": false,
+        "description": "Up to three creatures of your choice that you can see within range must each make a Charisma saving throw. Whenever a target that fails this save makes an attack roll or a saving throw before the spell ends, the target must subtract 1d4 from the attack roll or save.",
+        "higherLevels": "**Using a Higher-Level Spell Slot.** You can target one additional creature for each spell slot level above 1.",
+        "prepared": true,
+        "isHomebrew": false,
+        "source": "XPHB"
+      },
+      {
+        "id": "42d89e30-539e-450b-b8c1-956307723add",
+        "name": "Protection from Evil and Good",
+        "level": 1,
+        "school": "Abjuration",
+        "castingTime": "1 action",
+        "range": "Touch",
+        "components": {
+          "v": true,
+          "s": true,
+          "m": true,
+          "mDesc": "a flask of Holy Water worth 25+ GP, which the spell consumes"
+        },
+        "duration": "Concentration, 10 minutes",
+        "concentration": true,
+        "ritual": false,
+        "description": "Until the spell ends, one willing creature you touch is protected against creatures that are Aberrations, Celestials, Elementals, Fey, Fiends, or Undead. The protection grants several benefits. Creatures of those types have Disadvantage|XPHB on attack rolls against the target. The target also can't be possessed by or gain the Charmed|XPHB or Frightened|XPHB conditions from them. If the target is already possessed, Charmed|XPHB, or Frightened|XPHB by such a creature, the target has Advantage|XPHB on any new saving throw against the relevant effect.",
+        "prepared": true,
+        "isHomebrew": false,
+        "source": "XPHB"
+      },
+      {
+        "id": "6cc458bd-611f-4b7a-8b41-11296eb87580",
+        "name": "Purify Food and Drink [R]",
+        "level": 0,
+        "school": "",
+        "castingTime": "",
+        "range": "",
+        "components": {
+          "v": false,
+          "s": false,
+          "m": false
+        },
+        "duration": "",
+        "concentration": false,
+        "ritual": false,
+        "description": "",
+        "prepared": true
+      },
+      {
+        "id": "8e756ade-f20a-4237-9bb3-d34bdb8c895e",
+        "name": "Command",
+        "level": 1,
+        "school": "Enchantment",
+        "castingTime": "1 action",
+        "range": "60 feet",
+        "components": {
+          "v": true,
+          "s": false,
+          "m": false
+        },
+        "duration": "Instantaneous",
+        "concentration": false,
+        "ritual": false,
+        "description": "You speak a one-word command to a creature you can see within range. The target must succeed on a Wisdom saving throw or follow the command on its next turn. Choose the command from these options:\n\nThe target moves toward you by the shortest and most direct route, ending its turn if it moves within 5 feet of you.\nThe target drops whatever it is holding and then ends its turn.\nThe target spends its turn moving away from you by the fastest available means.\nThe target has the Prone|XPHB condition and then ends its turn.\nOn its turn, the target doesn't move and takes no action or Bonus Action|XPHB.",
+        "higherLevels": "**Using a Higher-Level Spell Slot.** You can affect one additional creature for each spell slot level above 1.",
+        "prepared": true,
+        "isHomebrew": false,
+        "source": "XPHB"
+      },
+      {
+        "id": "3cd7f0b0-5e09-41bf-a6ea-1ca9dc7c9632",
+        "name": "Sanctuary",
+        "level": 1,
+        "school": "Abjuration",
+        "castingTime": "1 bonus",
+        "range": "30 feet",
+        "components": {
+          "v": true,
+          "s": true,
+          "m": true,
+          "mDesc": "a shard of glass from a mirror"
+        },
+        "duration": "1 minute",
+        "concentration": false,
+        "ritual": false,
+        "description": "You ward a creature within range. Until the spell ends, any creature who targets the warded creature with an attack roll or a damaging spell must succeed on a Wisdom saving throw or either choose a new target or lose the attack or spell. This spell doesn't protect the warded creature from areas of effect.\n\nThe spell ends if the warded creature makes an attack roll, casts a spell, or deals damage.",
+        "prepared": true,
+        "isHomebrew": false,
+        "source": "XPHB"
+      },
+      {
+        "id": "568afc68-ef4e-423d-8977-b292ca47d11f",
+        "name": "Create or Destroy Water",
+        "level": 1,
+        "school": "Transmutation",
+        "castingTime": "1 action",
+        "range": "30 feet",
+        "components": {
+          "v": true,
+          "s": true,
+          "m": true,
+          "mDesc": "a mix of water and sand"
+        },
+        "duration": "Instantaneous",
+        "concentration": false,
+        "ritual": false,
+        "description": "You do one of the following:\n\nYou create up to 10 gallons of clean water within range in an open container. Alternatively, the water falls as rain in a 30-foot Cube [Area of Effect]|XPHB|Cube within range, extinguishing exposed flames there.\nYou destroy up to 10 gallons of water in an open container within range. Alternatively, you destroy fog in a 30-foot Cube [Area of Effect]|XPHB|Cube within range.",
+        "higherLevels": "**Using a Higher-Level Spell Slot.** You create or destroy 10 additional gallons of water, or the size of the Cube [Area of Effect]|XPHB|Cube increases by 5 feet, for each spell slot level above 1.",
+        "prepared": true,
+        "isHomebrew": false,
+        "source": "XPHB"
+      },
+      {
+        "id": "4a89317a-55ee-48be-9b2d-63d0989a092a",
+        "name": "Detect Evil and Good",
+        "level": 1,
+        "school": "Divination",
+        "castingTime": "1 action",
+        "range": "Self",
+        "components": {
+          "v": true,
+          "s": true,
+          "m": false
+        },
+        "duration": "Concentration, 10 minutes",
+        "concentration": true,
+        "ritual": false,
+        "description": "For the duration, you sense the location of any Aberration, Celestial, Elemental, Fey, Fiend, or Undead within 30 feet of yourself. You also sense whether the Hallow|XPHB spell is active there and, if so, where.\n\nThe spell is blocked by 1 foot of stone, dirt, or wood; 1 inch of metal; or a thin sheet of lead.",
+        "prepared": true,
+        "isHomebrew": false,
+        "source": "XPHB"
+      },
+      {
+        "id": "4c4e9b30-7af9-4b30-85a0-82215bc570f2",
+        "name": "Detect Poison and Disease [R]",
+        "level": 0,
+        "school": "",
+        "castingTime": "",
+        "range": "",
+        "components": {
+          "v": false,
+          "s": false,
+          "m": false
+        },
+        "duration": "",
+        "concentration": false,
+        "ritual": false,
+        "description": "",
+        "prepared": true
+      },
+      {
+        "id": "bfbd55c0-3eb2-4427-9819-e761c181768e",
+        "name": "Detect Magic [R]",
+        "level": 0,
+        "school": "",
+        "castingTime": "",
+        "range": "",
+        "components": {
+          "v": false,
+          "s": false,
+          "m": false
+        },
+        "duration": "",
+        "concentration": false,
+        "ritual": false,
+        "description": "",
+        "prepared": true
+      },
+      {
+        "id": "1f5b3f11-ff00-4bcc-abc7-854d7d210471",
+        "name": "Healing Word",
+        "level": 1,
+        "school": "Abjuration",
+        "castingTime": "1 bonus",
+        "range": "60 feet",
+        "components": {
+          "v": true,
+          "s": false,
+          "m": false
+        },
+        "duration": "Instantaneous",
+        "concentration": false,
+        "ritual": false,
+        "description": "A creature of your choice that you can see within range regains Hit Points|XPHB equal to 2d4 plus your spellcasting ability modifier.",
+        "higherLevels": "**Using a Higher-Level Spell Slot.** The healing increases by 2d4|1-9|2d4 for each spell slot level above 1.",
+        "prepared": true,
+        "isHomebrew": false,
+        "source": "XPHB"
+      },
+      {
+        "id": "74bc4e0c-6cee-49eb-aae3-c4ea3a660129",
+        "name": "Inflict Wounds",
+        "level": 1,
+        "school": "Necromancy",
+        "castingTime": "1 action",
+        "range": "Touch",
+        "components": {
+          "v": true,
+          "s": true,
+          "m": false
+        },
+        "duration": "Instantaneous",
+        "concentration": false,
+        "ritual": false,
+        "description": "A creature you touch makes a Constitution saving throw, taking 2d10 Necrotic damage on a failed save or half as much damage on a successful one.",
+        "higherLevels": "**Using a Higher-Level Spell Slot.** The damage increases by 2d10|1-9|1d10 for each spell slot level above 1.",
+        "prepared": true,
+        "isHomebrew": false,
+        "source": "XPHB"
+      }
+    ],
+    "inventory": [
+      {
+        "id": "5f83ec77-ac3b-4705-9042-917a5e16240f",
+        "name": "Chain Shirt",
+        "quantity": 1,
+        "weight": 20,
+        "isEquipped": true,
+        "isAttuned": false,
+        "description": "Made of interlocking metal rings, a chain shirt is worn between layers of clothing or leather. This armor offers modest protection to the wearer's upper body and allows the sound of the rings rubbing against one another to be muffled by outer layers.",
+        "type": "armor",
+        "acBonus": 13
+      },
+      {
+        "id": "3f4cf984-d1cc-421f-8528-3194636151c8",
+        "name": "Mace",
+        "quantity": 1,
+        "weight": 4,
+        "isEquipped": true,
+        "isAttuned": false,
+        "description": "Simple, Sap",
+        "type": "weapon",
+        "damage": "1d6+2 Bludgeoning (Atk: +4)"
+      },
+      {
+        "id": "b4e9274e-562f-4fce-ad31-5e9ed629c2de",
+        "name": "Bedroll",
+        "quantity": 1,
+        "weight": 7,
+        "isEquipped": false,
+        "isAttuned": false,
+        "description": "",
+        "type": "magic"
+      },
+      {
+        "id": "e841efd9-75d2-4023-bfc4-3265c563439e",
+        "name": "Mess Kit",
+        "quantity": 1,
+        "weight": 1,
+        "isEquipped": false,
+        "isAttuned": false,
+        "description": "This tin box contains a cup and simple cutlery. The box clamps together, and one side can be used as a cooking pan and the other as a plate or shallow bowl.",
+        "type": "magic"
+      },
+      {
+        "id": "48547dc1-02a7-428b-97b8-4671ee6227fb",
+        "name": "Rations (1 day)",
+        "quantity": 10,
+        "weight": 2,
+        "isEquipped": false,
+        "isAttuned": false,
+        "description": "Rations consist of travel-ready food, including jerky, dried fruit, hardtack, and nuts. See \"Malnutrition|XPHB\" for the risks of not eating.",
+        "type": "magic"
+      },
+      {
+        "id": "4e8cb750-1d53-4213-bf5d-d52abcf412f9",
+        "name": "Rope, Hempen (50 feet)",
+        "quantity": 1,
+        "weight": 10,
+        "isEquipped": false,
+        "isAttuned": false,
+        "description": "",
+        "type": "gear"
+      },
+      {
+        "id": "a68fb6a6-baac-4f2f-b023-a28e52e97936",
+        "name": "Tinderbox",
+        "quantity": 1,
+        "weight": 1,
+        "isEquipped": false,
+        "isAttuned": false,
+        "description": "This small container holds flint, fire steel, and tinder (usually dry cloth soaked in light oil) used to kindle a fire. Using it to light a torch—or anything else with abundant, exposed fuel—takes an action. Lighting any other fire takes 1 minute.",
+        "type": "magic"
+      },
+      {
+        "id": "2c66bf98-f689-4d41-a351-c5606cf755fc",
+        "name": "Torch",
+        "quantity": 10,
+        "weight": 1,
+        "isEquipped": false,
+        "isAttuned": false,
+        "description": "A torch burns for 1 hour, providing bright light in a 20-foot radius and dim light for an additional 20 feet. If you make a melee attack with a burning torch and hit, it deals 1 fire damage.",
+        "type": "magic"
+      },
+      {
+        "id": "e1ab50d4-5a59-4c3d-a55c-e08fa53edcec",
+        "name": "Waterskin",
+        "quantity": 1,
+        "weight": 5,
+        "isEquipped": false,
+        "isAttuned": false,
+        "description": "A waterskin can hold up to 4 pints of liquid.",
+        "type": "magic"
+      }
+    ],
+    "currencies": {
+      "cp": 0,
+      "sp": 0,
+      "ep": 0,
+      "gp": 60,
+      "pp": 0
+    },
+    "resources": [],
+    "actions": [],
+    "features": [
+      {
+        "id": "b146d85d-f8a2-4e48-8cef-f60e6dc82857",
+        "name": "You know one extra cantrip from the Cleric spell list",
+        "source": "Class: Cleric",
+        "description": "You also have a +2 bonus to your Arcana and Religion checks. \n\n\n=== DWARF SPECIES TRAITS === \n\n* Creature Type • PHB-2024 188",
+        "hasUses": false
+      },
+      {
+        "id": "6711ad1b-825e-48b4-b66b-24e368b1bd49",
+        "name": "You are a Humanoid",
+        "source": "Class: Cleric",
+        "description": "* Size • PHB-2024 188",
+        "hasUses": false
+      },
+      {
+        "id": "72e142e9-4549-4f58-a26f-8caea08f601a",
+        "name": "You are Medium",
+        "source": "Class: Cleric",
+        "description": "* Speed • PHB-2024 188 \nYour speed is 30 ft. \n\n* Darkvision • PHB-2024 188 \nYou have Darkvision with a range of 120 ft. \n\n* Dwarven Resilience • PHB-2024 188",
+        "hasUses": false
+      },
+      {
+        "id": "c243edc6-1f13-4f09-89ef-0cf3ebecbee9",
+        "name": "You have Resistance to Poison damage",
+        "source": "Class: Cleric",
+        "description": "You also have Advantage on saving throws you make to avoid or end the Poisoned condition. \n\n* Dwarven Toughness • PHB-2024 188 \nYour HP maximum increases by 1. \n\n* Stonecunning • PHB-2024 188 \nAs a Bonus Action, you gain Tremorsense with a range of 60 ft. for 10 minutes. You must be on or touching a natural or worked stone surface to use this Tremorsense.\n\nYou can use this Bonus Action 2 times per Long Rest. \n\n   | Stonecunning (Tremorsense): 2 / Long Rest • 1 Bonus Action \n\n* Languages • PHB-2024 37 \nYour character knows at least three languages: Common plus two languages you roll or choose from the Standard Languages table. Knowledge of a language means your character can communicate in it, read it, and write it. \n\n\n=== FEATS === \n\n* Acolyte Ability Score Improvements • PHB-2024 178 \n\n* Magic Initiate (Cleric) • PHB-2024 201",
+        "hasUses": false
+      },
+      {
+        "id": "d1cbc0b9-8703-4fc7-aebb-ee28390c8323",
+        "name": "Two Cantrips",
+        "source": "Class: Cleric",
+        "description": "You learn two cantrips of your choice from the Cleric spell list. Int., Wis., or Cha. is your spellcasting ability for this feat's spells. \n\nLevel 1 Spell. Choose a level 1 spell from the Cleric spell list. You always have that spell prepared. You can cast it once without a spell slot, and you regain the ability to cast it in that way when you finish a Long Rest. You can also cast the spell using any spell slots you have.",
+        "hasUses": false
+      },
+      {
+        "id": "8cef1322-bdf3-4f02-89b0-a5431aca2a00",
+        "name": "Spell Change",
+        "source": "Class: Cleric",
+        "description": "Whenever you gain a new level, you can replace one of the spells you chose for this feat with a different spell of the same level from the chosen spell list.",
+        "hasUses": false
+      },
+      {
+        "id": "56c1be90-9676-46b0-a13a-414ac4a7aed3",
+        "name": "Repeatable",
+        "source": "Class: Cleric",
+        "description": "You can take this feat more than once, but you must choose a different spell list each time.",
+        "hasUses": false
+      },
+      {
+        "id": "bd12d5d6-470f-41af-8d40-cd0856bf4107",
+        "name": "Divine Domain",
+        "source": "Class: Cleric (Level 1)",
+        "description": "Choose one domain related to your deity from the list of available domains. Each domain is detailed in their own feature, and each one provides examples of gods associated with it. Your choice grants you domain spells and other features when you choose it at 1st level. It also grants you additional ways to use Channel Divinity when you gain that feature at 2nd level, and additional benefits at 6th, 8th, and 17th levels.\n\n**Domain Spells.** Each domain has a list of spells—its domain spells—that you gain at the cleric levels noted in the domain description. Once you gain a domain spell, you always have it prepared, and it doesn't count against the number of spells you can prepare each day.\n\nIf you have a domain spell that doesn't appear on the cleric spell list, the spell is nonetheless a cleric spell for you.",
+        "hasUses": false,
+        "usesCurrent": 0,
+        "source5eTools": "PHB"
+      },
+      {
+        "id": "b899e7f0-1077-4591-b621-3753af042640",
+        "name": "Spellcasting",
+        "source": "Class: Cleric (Level 1)",
+        "description": "As a conduit for divine power, you can cast cleric spells. See chapter 10|PHB|10 for the general rules of spellcasting and chapter 11|PHB|11 for a selection of cleric spells|spells|class=cleric.\n\n**Cantrips.** At 1st level, you know three cantrips of your choice from the cleric spell list. You learn additional cleric cantrips of your choice at higher levels, as shown in the Cantrips Known column of the Cleric table.\n\n**Preparing and Casting Spells.** The Cleric table shows how many spell slots you have to cast your cleric spells|spells|class=cleric of 1st level and higher. To cast one of these spells, you must expend a slot of the spell's level or higher. You regain all expended spell slots when you finish a long rest.\n\nYou prepare the list of cleric spells that are available for you to cast, choosing from the cleric spell list. When you do so, choose a number of cleric spells equal to your Wisdom modifier + your cleric level (minimum of one spell). The spells must be of a level for which you have spell slots.\n\nFor example, if you are a 3rd-level cleric, you have four 1st-level and two 2nd-level spell slots. With a Wisdom of 16, your list of prepared spells can include six spells of 1st or 2nd level, in any combination. If you prepare the 1st-level spell cure wounds, you can cast it using a 1st-level or 2nd-level slot. Casting the spell doesn't remove it from your list of prepared spells.\n\nYou can change your list of prepared spells when you finish a long rest. Preparing a new list of cleric spells requires time spent in prayer and meditation: at least 1 minute per spell level for each spell on your list.\n\n**Spellcasting Ability.** Wisdom is your spellcasting ability for your cleric spells. The power of your spells comes from your devotion to your deity. You use your Wisdom whenever a cleric spell refers to your spellcasting ability. In addition, you use your Wisdom modifier when setting the saving throw DC for a cleric spell you cast and when making an attack roll with one.\n\nyour spellcasting ability modifier\n\n**Ritual Casting.** You can cast a cleric spell as a ritual if that spell has the ritual tag and you have the spell prepared.\n\n**Spellcasting Focus.** You can use a holy symbol|phb as a spellcasting focus for your cleric spells.",
+        "hasUses": false,
+        "usesCurrent": 0,
+        "source5eTools": "PHB"
+      },
+      {
+        "id": "a77a9422-066e-4051-b897-8fe33206e02d",
+        "name": "Divine Order",
+        "source": "Class: Cleric (Level 1)",
+        "description": "You have dedicated yourself to one of the following sacred roles of your choice.",
+        "hasUses": false,
+        "usesCurrent": 0,
+        "source5eTools": "XPHB"
+      },
+      {
+        "id": "7eb00ff8-ad94-46c0-abdb-075d7f616613",
+        "name": "Protector",
+        "source": "Class: Cleric (Level 1)",
+        "description": "Trained for battle, you gain proficiency with Martial weapons|items|type=martial weapon and training with Heavy armor|items|type=Heavy Armor.",
+        "hasUses": false,
+        "usesCurrent": 0,
+        "source5eTools": "XPHB"
+      },
+      {
+        "id": "cdad9c47-b1f7-43e3-8e63-8bb5d63fd496",
+        "name": "Spellcasting",
+        "source": "Class: Cleric (Level 1)",
+        "description": "You have learned to cast spells through prayer and meditation. See chapter 7|XPHB|7 for the rules on spellcasting. The information below details how you use those rules with Cleric spells, which appear on the Cleric spell list|spells|class=Cleric later in the class's description.\n\n**Cantrips.** You know three cantrips of your choice from the Cleric spell list|spells|class=Cleric. Guidance|XPHB, Sacred Flame|XPHB, and Thaumaturgy|XPHB are recommended.\n\nWhenever you gain a Cleric level, you can replace one of your cantrips with another cantrip of your choice from the Cleric spell list|spells|class=Cleric.\n\nWhen you reach Cleric levels 4 and 10, you learn another cantrip of your choice from the Cleric spell list|spells|class=Cleric, as shown in the Cantrips column of the Cleric Features table.\n\n**Spell Slots.** The Cleric Features table shows how many spell slots you have to cast your level 1+ spells. You regain all expended slots when you finish a Long Rest|XPHB.\n\n**Prepared Spells of Level 1+.** You prepare the list of level 1+ spells that are available for you to cast with this feature. To start, choose four level 1 spells from the Cleric spell list|spells|class=Cleric. Bless|XPHB, Cure Wounds|XPHB, Guiding Bolt|XPHB, and Shield of Faith|XPHB are recommended.\n\nThe number of spells on your list increases as you gain Cleric levels, as shown in the Prepared Spells column of the Cleric Features table. Whenever that number increases, choose additional spells from the Cleric spell list|spells|class=Cleric until the number of spells on your list matches the number on the table. The chosen spells must be of a level for which you have spell slots. For example, if you're a level 3 Cleric, your list of prepared spells can include six spells of levels 1 and 2 in any combination.\n\nIf another Cleric feature gives you spells that you always have prepared, those spells don't count against the number of spells you can prepare with this feature, but those spells otherwise count as Cleric spells for you.\n\n**Changing Your Prepared Spells.** Whenever you finish a Long Rest|XPHB, you can change your list of prepared spells, replacing any of the spells there with other Cleric spells for which you have spell slots.\n\n**Spellcasting Ability.** Wisdom is your spellcasting ability for your Cleric spells.\n\n**Spellcasting Focus.** You can use a Holy Symbol|XPHB as a Spellcasting Focus|XPHB for your Cleric spells.",
+        "hasUses": false,
+        "usesCurrent": 0,
+        "source5eTools": "XPHB"
+      },
+      {
+        "id": "0acbbad3-f4ed-4dda-8243-0122cb8131b2",
+        "name": "Thaumaturge",
+        "source": "Class: Cleric (Level 1)",
+        "description": "You know one extra cantrip from the Cleric spell list|spells|class=Cleric. In addition, your mystical connection to the divine gives you a bonus to your Intelligence (Arcana|XPHB or Religion|XPHB) checks. The bonus equals your Wisdom modifier (minimum of +1).",
+        "hasUses": false,
+        "usesCurrent": 0,
+        "source5eTools": "XPHB"
+      }
+    ],
+    "feats": [],
+    "racialTraits": [],
+    "conditions": [],
+    "deathSaves": {
+      "successes": 0,
+      "failures": 0
+    },
+    "exhaustion": 0,
+    "personalityTraits": "",
+    "ideals": "",
+    "bonds": "",
+    "flaws": "",
+    "backstory": "",
+    "notes": "",
+    "masteredWeapons": []
+  },
+  {
+    "id": "a2547cab-9637-4759-bade-a794d0b1f42b",
+    "name": "Dwarf Cleric",
+    "system": "dnd5e",
+    "playerName": "dxMourn",
+    "race": "Dwarf",
+    "className": "Cleric",
+    "subclass": "",
+    "level": 1,
+    "background": "Acolyte",
+    "alignment": "",
+    "experience": 0,
+    "abilityScores": {
+      "str": 14,
+      "dex": 8,
+      "con": 10,
+      "int": 12,
+      "wis": 15,
+      "cha": 13
+    },
+    "savingThrows": [
+      "str",
+      "dex",
+      "con",
+      "int",
+      "wis",
+      "cha"
+    ],
+    "skills": [
+      {
+        "name": "Acrobatics",
+        "stat": "dex",
+        "proficient": false,
+        "expertise": false,
+        "bonus": 0
+      },
+      {
+        "name": "Animal Handling",
+        "stat": "wis",
+        "proficient": false,
+        "expertise": false,
+        "bonus": 0
+      },
+      {
+        "name": "Arcana",
+        "stat": "int",
+        "proficient": false,
+        "expertise": false,
+        "bonus": 0
+      },
+      {
+        "name": "Athletics",
+        "stat": "str",
+        "proficient": false,
+        "expertise": false,
+        "bonus": 0
+      },
+      {
+        "name": "Deception",
+        "stat": "cha",
+        "proficient": false,
+        "expertise": false,
+        "bonus": 0
+      },
+      {
+        "name": "History",
+        "stat": "int",
+        "proficient": false,
+        "expertise": false,
+        "bonus": 0
+      },
+      {
+        "name": "Insight",
+        "stat": "wis",
+        "proficient": true,
+        "expertise": false,
+        "bonus": 0
+      },
+      {
+        "name": "Intimidation",
+        "stat": "cha",
+        "proficient": false,
+        "expertise": false,
+        "bonus": 0
+      },
+      {
+        "name": "Investigation",
+        "stat": "int",
+        "proficient": false,
+        "expertise": false,
+        "bonus": 0
+      },
+      {
+        "name": "Medicine",
+        "stat": "wis",
+        "proficient": true,
+        "expertise": false,
+        "bonus": 0
+      },
+      {
+        "name": "Nature",
+        "stat": "int",
+        "proficient": false,
+        "expertise": false,
+        "bonus": 0
+      },
+      {
+        "name": "Perception",
+        "stat": "wis",
+        "proficient": true,
+        "expertise": false,
+        "bonus": 0
+      },
+      {
+        "name": "Performance",
+        "stat": "cha",
+        "proficient": false,
+        "expertise": false,
+        "bonus": 0
+      },
+      {
+        "name": "Persuasion",
+        "stat": "cha",
+        "proficient": false,
+        "expertise": false,
+        "bonus": 0
+      },
+      {
+        "name": "Religion",
+        "stat": "int",
+        "proficient": true,
+        "expertise": false,
+        "bonus": 0
+      },
+      {
+        "name": "Sleight of Hand",
+        "stat": "dex",
+        "proficient": false,
+        "expertise": false,
+        "bonus": 0
+      },
+      {
+        "name": "Stealth",
+        "stat": "dex",
+        "proficient": false,
+        "expertise": false,
+        "bonus": 0
+      },
+      {
+        "name": "Survival",
+        "stat": "wis",
+        "proficient": false,
+        "expertise": false,
+        "bonus": 0
+      }
+    ],
+    "senses": "Darkvision 120 ft.",
+    "passivePerception": 14,
+    "passiveInvestigation": 14,
+    "passiveInsight": 11,
+    "languages": "Common, Dwarvish, Halfling",
+    "proficiencies": "=== ARMOR === \nLight Armor, Medium Armor, Shields \n\n=== WEAPONS === \nSimple Weapons \n\n=== TOOLS === \nCalligrapher's Supplies \n\n=== LANGUAGES === \nCommon, Dwarvish, Halfling",
+    "ac": 9,
+    "maxHp": 9,
+    "currentHp": 9,
+    "tempHp": 0,
+    "hitDice": "1d8",
+    "speed": "30 ft(Walking)",
+    "initiativeMod": -1,
+    "proficiencyBonus": 2,
+    "spellcastingAbility": "wis",
+    "spellSaveDc": 12,
+    "spellAttackMod": 0,
+    "spellSlots": [
+      {
+        "current": 0,
+        "max": 0
+      },
+      {
+        "current": 2,
+        "max": 2
+      },
+      {
+        "current": 0,
+        "max": 0
+      },
+      {
+        "current": 0,
+        "max": 0
+      },
+      {
+        "current": 0,
+        "max": 0
+      },
+      {
+        "current": 0,
+        "max": 0
+      },
+      {
+        "current": 0,
+        "max": 0
+      },
+      {
+        "current": 0,
+        "max": 0
+      },
+      {
+        "current": 0,
+        "max": 0
+      },
+      {
+        "current": 0,
+        "max": 0
+      }
+    ],
+    "spells": [
+      {
+        "id": "e1e96a90-b927-412b-9d0b-12f1c6afbbbc",
+        "name": "Light",
+        "level": 0,
+        "school": "Evocation",
+        "castingTime": "1 action",
+        "range": "Touch",
+        "components": {
+          "v": true,
+          "s": false,
+          "m": true,
+          "mDesc": "a firefly or phosphorescent moss"
+        },
+        "duration": "1 hour",
+        "concentration": false,
+        "ritual": false,
+        "description": "You touch one Large or smaller object that isn't being worn or carried by someone else. Until the spell ends, the object sheds Bright Light|XPHB in a 20-foot radius and Dim Light|XPHB for an additional 20 feet. The light can be colored as you like.\n\nCovering the object with something opaque blocks the light. The spell ends if you cast it again.",
+        "prepared": true,
+        "isHomebrew": false,
+        "source": "XPHB"
+      },
+      {
+        "id": "f932669a-77f7-4ff6-adf1-4c708f08985c",
+        "name": "Sacred Flame",
+        "level": 0,
+        "school": "Evocation",
+        "castingTime": "1 action",
+        "range": "60 feet",
+        "components": {
+          "v": true,
+          "s": true,
+          "m": false
+        },
+        "duration": "Instantaneous",
+        "concentration": false,
+        "ritual": false,
+        "description": "Flame-like radiance descends on a creature that you can see within range. The target must succeed on a Dexterity saving throw or take 1d8 Radiant damage. The target gains no benefit from Half Cover|XPHB or Three-Quarters Cover|XPHB for this save.",
+        "higherLevels": "**Cantrip Upgrade.** The damage increases by 1d8 when you reach levels 5 (2d8), 11 (3d8), and 17 (4d8).",
+        "prepared": true,
+        "isHomebrew": false,
+        "source": "XPHB"
+      },
+      {
+        "id": "3c774b5f-593f-4ca5-8e6d-24e3761fdbe2",
+        "name": "Thaumaturgy",
+        "level": 0,
+        "school": "Transmutation",
+        "castingTime": "1 action",
+        "range": "30 feet",
+        "components": {
+          "v": true,
+          "s": false,
+          "m": false
+        },
+        "duration": "1 minute",
+        "concentration": false,
+        "ritual": false,
+        "description": "You manifest a minor wonder within range. You create one of the effects below within range. If you cast this spell multiple times, you can have up to three of its 1-minute effects active at a time.\n\n**Altered Eyes.** You alter the appearance of your eyes for 1 minute.\n\n**Booming Voice.** Your voice booms up to three times as loud as normal for 1 minute. For the duration, you have Advantage|XPHB on Charisma (Intimidation|XPHB) checks.\n\n**Fire Play.** You cause flames to flicker, brighten, dim, or change color for 1 minute.\n\n**Invisible Hand.** You instantaneously cause an unlocked door or window to fly open or slam shut.\n\n**Phantom Sound.** You create an instantaneous sound that originates from a point of your choice within range, such as a rumble of thunder, the cry of a raven, or ominous whispers.\n\n**Tremors.** You cause harmless tremors in the ground for 1 minute.",
+        "prepared": true,
+        "isHomebrew": false,
+        "source": "XPHB"
+      },
+      {
+        "id": "b66b2da3-983e-4e87-9c3a-ce31cf3bfc07",
+        "name": "Toll the Dead",
+        "level": 0,
+        "school": "Necromancy",
+        "castingTime": "1 action",
+        "range": "60 feet",
+        "components": {
+          "v": true,
+          "s": true,
+          "m": false
+        },
+        "duration": "Instantaneous",
+        "concentration": false,
+        "ritual": false,
+        "description": "You point at one creature you can see within range, and the single chime of a dolorous bell is audible within 10 feet of the target. The target must succeed on a Wisdom saving throw or take 1d8 Necrotic damage. If the target is missing any of its Hit Points|XPHB, it instead takes 1d12 Necrotic damage.",
+        "higherLevels": "**Cantrip Upgrade.** The damage increases by one die when you reach levels 5 (2d8 or 2d12), 11 (3d8 or 3d12), and 17 (4d8 or 4d12).",
+        "prepared": true,
+        "isHomebrew": false,
+        "source": "XPHB"
+      },
+      {
+        "id": "cdf70ee4-2d2a-4eac-a5de-5808a17d5017",
+        "name": "Bless",
+        "level": 1,
+        "school": "Enchantment",
+        "castingTime": "1 action",
+        "range": "30 feet",
+        "components": {
+          "v": true,
+          "s": true,
+          "m": true,
+          "mDesc": "a Holy Symbol worth 5+ GP"
+        },
+        "duration": "Concentration, 1 minute",
+        "concentration": true,
+        "ritual": false,
+        "description": "You bless up to three creatures within range. Whenever a target makes an attack roll or a saving throw before the spell ends, the target adds 1d4 to the attack roll or save.",
+        "higherLevels": "**Using a Higher-Level Spell Slot.** You can target one additional creature for each spell slot level above 1.",
+        "prepared": true,
+        "isHomebrew": false,
+        "source": "XPHB"
+      },
+      {
+        "id": "11a7ce81-67a9-4408-a827-8756a887177a",
+        "name": "Cure Wounds",
+        "level": 1,
+        "school": "Abjuration",
+        "castingTime": "1 action",
+        "range": "Touch",
+        "components": {
+          "v": true,
+          "s": true,
+          "m": false
+        },
+        "duration": "Instantaneous",
+        "concentration": false,
+        "ritual": false,
+        "description": "A creature you touch regains a number of Hit Points|XPHB equal to 2d8 plus your spellcasting ability modifier.",
+        "higherLevels": "**Using a Higher-Level Spell Slot.** The healing increases by 2d8|1-9|2d8 for each spell slot level above 1.",
+        "prepared": true,
+        "isHomebrew": false,
+        "source": "XPHB"
+      },
+      {
+        "id": "ba53e05f-683f-4a24-9a40-73243f4c25df",
+        "name": "Guiding Bolt",
+        "level": 1,
+        "school": "Evocation",
+        "castingTime": "1 action",
+        "range": "120 feet",
+        "components": {
+          "v": true,
+          "s": true,
+          "m": false
+        },
+        "duration": "1 round",
+        "concentration": false,
+        "ritual": false,
+        "description": "You hurl a bolt of light toward a creature within range. Make a ranged spell attack against the target. On a hit, it takes 4d6 Radiant damage, and the next attack roll made against it before the end of your next turn has Advantage|XPHB.",
+        "higherLevels": "**Using a Higher-Level Spell Slot.** The damage increases by 4d6|1-9|1d6 for each spell slot level above 1.",
+        "prepared": true,
+        "isHomebrew": false,
+        "source": "XPHB"
+      },
+      {
+        "id": "a97941ea-7cf0-47e1-ba78-a9ff06277dca",
+        "name": "Shield of Faith",
+        "level": 1,
+        "school": "Abjuration",
+        "castingTime": "1 bonus",
+        "range": "60 feet",
+        "components": {
+          "v": true,
+          "s": true,
+          "m": true,
+          "mDesc": "a prayer scroll"
+        },
+        "duration": "Concentration, 10 minutes",
+        "concentration": true,
+        "ritual": false,
+        "description": "A shimmering field surrounds a creature of your choice within range, granting it a +2 bonus to AC for the duration.",
+        "prepared": true,
+        "isHomebrew": false,
+        "source": "XPHB"
+      },
+      {
+        "id": "1ead1569-f38a-41f2-b9bc-39217d966b97",
+        "name": "Bane",
+        "level": 1,
+        "school": "Enchantment",
+        "castingTime": "1 action",
+        "range": "30 feet",
+        "components": {
+          "v": true,
+          "s": true,
+          "m": true,
+          "mDesc": "a drop of blood"
+        },
+        "duration": "Concentration, 1 minute",
+        "concentration": true,
+        "ritual": false,
+        "description": "Up to three creatures of your choice that you can see within range must each make a Charisma saving throw. Whenever a target that fails this save makes an attack roll or a saving throw before the spell ends, the target must subtract 1d4 from the attack roll or save.",
+        "higherLevels": "**Using a Higher-Level Spell Slot.** You can target one additional creature for each spell slot level above 1.",
+        "prepared": true,
+        "isHomebrew": false,
+        "source": "XPHB"
+      },
+      {
+        "id": "dca9994e-7f68-4f25-93e7-c35cac8456ab",
+        "name": "Protection from Evil and Good",
+        "level": 1,
+        "school": "Abjuration",
+        "castingTime": "1 action",
+        "range": "Touch",
+        "components": {
+          "v": true,
+          "s": true,
+          "m": true,
+          "mDesc": "a flask of Holy Water worth 25+ GP, which the spell consumes"
+        },
+        "duration": "Concentration, 10 minutes",
+        "concentration": true,
+        "ritual": false,
+        "description": "Until the spell ends, one willing creature you touch is protected against creatures that are Aberrations, Celestials, Elementals, Fey, Fiends, or Undead. The protection grants several benefits. Creatures of those types have Disadvantage|XPHB on attack rolls against the target. The target also can't be possessed by or gain the Charmed|XPHB or Frightened|XPHB conditions from them. If the target is already possessed, Charmed|XPHB, or Frightened|XPHB by such a creature, the target has Advantage|XPHB on any new saving throw against the relevant effect.",
+        "prepared": true,
+        "isHomebrew": false,
+        "source": "XPHB"
+      },
+      {
+        "id": "c767e06f-b604-40ae-bac9-d0c2a6722a07",
+        "name": "Purify Food and Drink [R]",
+        "level": 0,
+        "school": "",
+        "castingTime": "",
+        "range": "",
+        "components": {
+          "v": false,
+          "s": false,
+          "m": false
+        },
+        "duration": "",
+        "concentration": false,
+        "ritual": false,
+        "description": "",
+        "prepared": true
+      },
+      {
+        "id": "f0ff21ec-661d-4ac0-bccf-4b7103b514d3",
+        "name": "Command",
+        "level": 1,
+        "school": "Enchantment",
+        "castingTime": "1 action",
+        "range": "60 feet",
+        "components": {
+          "v": true,
+          "s": false,
+          "m": false
+        },
+        "duration": "Instantaneous",
+        "concentration": false,
+        "ritual": false,
+        "description": "You speak a one-word command to a creature you can see within range. The target must succeed on a Wisdom saving throw or follow the command on its next turn. Choose the command from these options:\n\nThe target moves toward you by the shortest and most direct route, ending its turn if it moves within 5 feet of you.\nThe target drops whatever it is holding and then ends its turn.\nThe target spends its turn moving away from you by the fastest available means.\nThe target has the Prone|XPHB condition and then ends its turn.\nOn its turn, the target doesn't move and takes no action or Bonus Action|XPHB.",
+        "higherLevels": "**Using a Higher-Level Spell Slot.** You can affect one additional creature for each spell slot level above 1.",
+        "prepared": true,
+        "isHomebrew": false,
+        "source": "XPHB"
+      },
+      {
+        "id": "b29e51cc-0fd7-4210-9b29-06fee5cbd7ef",
+        "name": "Sanctuary",
+        "level": 1,
+        "school": "Abjuration",
+        "castingTime": "1 bonus",
+        "range": "30 feet",
+        "components": {
+          "v": true,
+          "s": true,
+          "m": true,
+          "mDesc": "a shard of glass from a mirror"
+        },
+        "duration": "1 minute",
+        "concentration": false,
+        "ritual": false,
+        "description": "You ward a creature within range. Until the spell ends, any creature who targets the warded creature with an attack roll or a damaging spell must succeed on a Wisdom saving throw or either choose a new target or lose the attack or spell. This spell doesn't protect the warded creature from areas of effect.\n\nThe spell ends if the warded creature makes an attack roll, casts a spell, or deals damage.",
+        "prepared": true,
+        "isHomebrew": false,
+        "source": "XPHB"
+      },
+      {
+        "id": "e9076eb5-2f92-43d6-8e14-f897a60a611e",
+        "name": "Create or Destroy Water",
+        "level": 1,
+        "school": "Transmutation",
+        "castingTime": "1 action",
+        "range": "30 feet",
+        "components": {
+          "v": true,
+          "s": true,
+          "m": true,
+          "mDesc": "a mix of water and sand"
+        },
+        "duration": "Instantaneous",
+        "concentration": false,
+        "ritual": false,
+        "description": "You do one of the following:\n\nYou create up to 10 gallons of clean water within range in an open container. Alternatively, the water falls as rain in a 30-foot Cube [Area of Effect]|XPHB|Cube within range, extinguishing exposed flames there.\nYou destroy up to 10 gallons of water in an open container within range. Alternatively, you destroy fog in a 30-foot Cube [Area of Effect]|XPHB|Cube within range.",
+        "higherLevels": "**Using a Higher-Level Spell Slot.** You create or destroy 10 additional gallons of water, or the size of the Cube [Area of Effect]|XPHB|Cube increases by 5 feet, for each spell slot level above 1.",
+        "prepared": true,
+        "isHomebrew": false,
+        "source": "XPHB"
+      },
+      {
+        "id": "262511dc-a1ee-4272-bc96-ec6ee8f0830f",
+        "name": "Detect Evil and Good",
+        "level": 1,
+        "school": "Divination",
+        "castingTime": "1 action",
+        "range": "Self",
+        "components": {
+          "v": true,
+          "s": true,
+          "m": false
+        },
+        "duration": "Concentration, 10 minutes",
+        "concentration": true,
+        "ritual": false,
+        "description": "For the duration, you sense the location of any Aberration, Celestial, Elemental, Fey, Fiend, or Undead within 30 feet of yourself. You also sense whether the Hallow|XPHB spell is active there and, if so, where.\n\nThe spell is blocked by 1 foot of stone, dirt, or wood; 1 inch of metal; or a thin sheet of lead.",
+        "prepared": true,
+        "isHomebrew": false,
+        "source": "XPHB"
+      },
+      {
+        "id": "b929e513-43b0-4f02-a571-d7b7a234a093",
+        "name": "Detect Poison and Disease [R]",
+        "level": 0,
+        "school": "",
+        "castingTime": "",
+        "range": "",
+        "components": {
+          "v": false,
+          "s": false,
+          "m": false
+        },
+        "duration": "",
+        "concentration": false,
+        "ritual": false,
+        "description": "",
+        "prepared": true
+      },
+      {
+        "id": "b8a9de25-bbd1-4290-9af3-7489dd6ac788",
+        "name": "Detect Magic [R]",
+        "level": 0,
+        "school": "",
+        "castingTime": "",
+        "range": "",
+        "components": {
+          "v": false,
+          "s": false,
+          "m": false
+        },
+        "duration": "",
+        "concentration": false,
+        "ritual": false,
+        "description": "",
+        "prepared": true
+      },
+      {
+        "id": "73b766d4-ad6c-466f-bffc-e720e71c45c2",
+        "name": "Healing Word",
+        "level": 1,
+        "school": "Abjuration",
+        "castingTime": "1 bonus",
+        "range": "60 feet",
+        "components": {
+          "v": true,
+          "s": false,
+          "m": false
+        },
+        "duration": "Instantaneous",
+        "concentration": false,
+        "ritual": false,
+        "description": "A creature of your choice that you can see within range regains Hit Points|XPHB equal to 2d4 plus your spellcasting ability modifier.",
+        "higherLevels": "**Using a Higher-Level Spell Slot.** The healing increases by 2d4|1-9|2d4 for each spell slot level above 1.",
+        "prepared": true,
+        "isHomebrew": false,
+        "source": "XPHB"
+      },
+      {
+        "id": "1c5322d1-cbeb-47c1-b5e1-c364410e5c09",
+        "name": "Inflict Wounds",
+        "level": 1,
+        "school": "Necromancy",
+        "castingTime": "1 action",
+        "range": "Touch",
+        "components": {
+          "v": true,
+          "s": true,
+          "m": false
+        },
+        "duration": "Instantaneous",
+        "concentration": false,
+        "ritual": false,
+        "description": "A creature you touch makes a Constitution saving throw, taking 2d10 Necrotic damage on a failed save or half as much damage on a successful one.",
+        "higherLevels": "**Using a Higher-Level Spell Slot.** The damage increases by 2d10|1-9|1d10 for each spell slot level above 1.",
+        "prepared": true,
+        "isHomebrew": false,
+        "source": "XPHB"
+      }
+    ],
+    "inventory": [
+      {
+        "id": "816ffa8a-e210-4211-b897-d2f2b284ec6a",
+        "name": "Chain Shirt",
+        "quantity": 1,
+        "weight": 20,
+        "isEquipped": true,
+        "isAttuned": false,
+        "description": "Made of interlocking metal rings, a chain shirt is worn between layers of clothing or leather. This armor offers modest protection to the wearer's upper body and allows the sound of the rings rubbing against one another to be muffled by outer layers.",
+        "type": "armor",
+        "acBonus": 13
+      },
+      {
+        "id": "f1b9fde1-7609-40b0-bc55-a1d187fe0933",
+        "name": "Mace",
+        "quantity": 1,
+        "weight": 4,
+        "isEquipped": true,
+        "isAttuned": false,
+        "description": "Simple, Sap",
+        "type": "weapon",
+        "damage": "1d6+2 Bludgeoning (Atk: +4)"
+      },
+      {
+        "id": "fd7392ea-e8ed-4fde-aae8-caa63f0db962",
+        "name": "Bedroll",
+        "quantity": 1,
+        "weight": 7,
+        "isEquipped": false,
+        "isAttuned": false,
+        "description": "",
+        "type": "magic"
+      },
+      {
+        "id": "af34302f-5b68-44da-a164-57adef725b30",
+        "name": "Mess Kit",
+        "quantity": 1,
+        "weight": 1,
+        "isEquipped": false,
+        "isAttuned": false,
+        "description": "This tin box contains a cup and simple cutlery. The box clamps together, and one side can be used as a cooking pan and the other as a plate or shallow bowl.",
+        "type": "magic"
+      },
+      {
+        "id": "ce83d4db-7b7d-46ff-a013-0c23ad8d3aed",
+        "name": "Rations (1 day)",
+        "quantity": 10,
+        "weight": 2,
+        "isEquipped": false,
+        "isAttuned": false,
+        "description": "Rations consist of travel-ready food, including jerky, dried fruit, hardtack, and nuts. See \"Malnutrition|XPHB\" for the risks of not eating.",
+        "type": "magic"
+      },
+      {
+        "id": "9eb24e70-1b0a-49ff-b9cc-802da7088578",
+        "name": "Rope, Hempen (50 feet)",
+        "quantity": 1,
+        "weight": 10,
+        "isEquipped": false,
+        "isAttuned": false,
+        "description": "",
+        "type": "gear"
+      },
+      {
+        "id": "d1bbc1ba-76d7-4cbd-98cd-920ef97618c9",
+        "name": "Tinderbox",
+        "quantity": 1,
+        "weight": 1,
+        "isEquipped": false,
+        "isAttuned": false,
+        "description": "This small container holds flint, fire steel, and tinder (usually dry cloth soaked in light oil) used to kindle a fire. Using it to light a torch—or anything else with abundant, exposed fuel—takes an action. Lighting any other fire takes 1 minute.",
+        "type": "magic"
+      },
+      {
+        "id": "7d4fdf56-58b2-4b45-b94b-c86624673184",
+        "name": "Torch",
+        "quantity": 10,
+        "weight": 1,
+        "isEquipped": false,
+        "isAttuned": false,
+        "description": "A torch burns for 1 hour, providing bright light in a 20-foot radius and dim light for an additional 20 feet. If you make a melee attack with a burning torch and hit, it deals 1 fire damage.",
+        "type": "magic"
+      },
+      {
+        "id": "f8b95ede-0a57-4fe8-a913-9c221abe5425",
+        "name": "Waterskin",
+        "quantity": 1,
+        "weight": 5,
+        "isEquipped": false,
+        "isAttuned": false,
+        "description": "A waterskin can hold up to 4 pints of liquid.",
+        "type": "magic"
+      }
+    ],
+    "currencies": {
+      "cp": 0,
+      "sp": 0,
+      "ep": 0,
+      "gp": 60,
+      "pp": 0
+    },
+    "resources": [],
+    "actions": [],
+    "features": [
+      {
+        "id": "f248c375-fd07-4f17-b0e0-b69abc57f0f7",
+        "name": "You know one extra cantrip from the Cleric spell list",
+        "source": "Class: Cleric",
+        "description": "You also have a +2 bonus to your Arcana and Religion checks. \n\n\n=== DWARF SPECIES TRAITS === \n\n* Creature Type • PHB-2024 188",
+        "hasUses": false
+      },
+      {
+        "id": "95bab6e7-0a93-492c-a322-ca553e333640",
+        "name": "You are a Humanoid",
+        "source": "Class: Cleric",
+        "description": "* Size • PHB-2024 188",
+        "hasUses": false
+      },
+      {
+        "id": "7c18569a-8636-4c36-9a38-bff7928a4cde",
+        "name": "You are Medium",
+        "source": "Class: Cleric",
+        "description": "* Speed • PHB-2024 188 \nYour speed is 30 ft. \n\n* Darkvision • PHB-2024 188 \nYou have Darkvision with a range of 120 ft. \n\n* Dwarven Resilience • PHB-2024 188",
+        "hasUses": false
+      },
+      {
+        "id": "43537b8e-d50a-4337-8c1f-3c53ead6d7d3",
+        "name": "You have Resistance to Poison damage",
+        "source": "Class: Cleric",
+        "description": "You also have Advantage on saving throws you make to avoid or end the Poisoned condition. \n\n* Dwarven Toughness • PHB-2024 188 \nYour HP maximum increases by 1. \n\n* Stonecunning • PHB-2024 188 \nAs a Bonus Action, you gain Tremorsense with a range of 60 ft. for 10 minutes. You must be on or touching a natural or worked stone surface to use this Tremorsense.\n\nYou can use this Bonus Action 2 times per Long Rest. \n\n   | Stonecunning (Tremorsense): 2 / Long Rest • 1 Bonus Action \n\n* Languages • PHB-2024 37 \nYour character knows at least three languages: Common plus two languages you roll or choose from the Standard Languages table. Knowledge of a language means your character can communicate in it, read it, and write it. \n\n\n=== FEATS === \n\n* Acolyte Ability Score Improvements • PHB-2024 178 \n\n* Magic Initiate (Cleric) • PHB-2024 201",
+        "hasUses": false
+      },
+      {
+        "id": "d5df24ed-f9f9-46a3-ac77-90eac190de8b",
+        "name": "Two Cantrips",
+        "source": "Class: Cleric",
+        "description": "You learn two cantrips of your choice from the Cleric spell list. Int., Wis., or Cha. is your spellcasting ability for this feat's spells. \n\nLevel 1 Spell. Choose a level 1 spell from the Cleric spell list. You always have that spell prepared. You can cast it once without a spell slot, and you regain the ability to cast it in that way when you finish a Long Rest. You can also cast the spell using any spell slots you have.",
+        "hasUses": false
+      },
+      {
+        "id": "b2abf7ff-e0f3-424a-a523-9a94724db42e",
+        "name": "Spell Change",
+        "source": "Class: Cleric",
+        "description": "Whenever you gain a new level, you can replace one of the spells you chose for this feat with a different spell of the same level from the chosen spell list.",
+        "hasUses": false
+      },
+      {
+        "id": "b2192d27-19d6-44ad-baa8-be953ef47e76",
+        "name": "Repeatable",
+        "source": "Class: Cleric",
+        "description": "You can take this feat more than once, but you must choose a different spell list each time.",
+        "hasUses": false
+      },
+      {
+        "id": "e6ac8108-d5a9-482f-ab19-0f5820737f75",
+        "name": "Divine Domain",
+        "source": "Class: Cleric (Level 1)",
+        "description": "Choose one domain related to your deity from the list of available domains. Each domain is detailed in their own feature, and each one provides examples of gods associated with it. Your choice grants you domain spells and other features when you choose it at 1st level. It also grants you additional ways to use Channel Divinity when you gain that feature at 2nd level, and additional benefits at 6th, 8th, and 17th levels.\n\n**Domain Spells.** Each domain has a list of spells—its domain spells—that you gain at the cleric levels noted in the domain description. Once you gain a domain spell, you always have it prepared, and it doesn't count against the number of spells you can prepare each day.\n\nIf you have a domain spell that doesn't appear on the cleric spell list, the spell is nonetheless a cleric spell for you.",
+        "hasUses": false,
+        "usesCurrent": 0,
+        "source5eTools": "PHB"
+      },
+      {
+        "id": "f11aec6d-07df-426f-a585-89d2774a8c29",
+        "name": "Spellcasting",
+        "source": "Class: Cleric (Level 1)",
+        "description": "As a conduit for divine power, you can cast cleric spells. See chapter 10|PHB|10 for the general rules of spellcasting and chapter 11|PHB|11 for a selection of cleric spells|spells|class=cleric.\n\n**Cantrips.** At 1st level, you know three cantrips of your choice from the cleric spell list. You learn additional cleric cantrips of your choice at higher levels, as shown in the Cantrips Known column of the Cleric table.\n\n**Preparing and Casting Spells.** The Cleric table shows how many spell slots you have to cast your cleric spells|spells|class=cleric of 1st level and higher. To cast one of these spells, you must expend a slot of the spell's level or higher. You regain all expended spell slots when you finish a long rest.\n\nYou prepare the list of cleric spells that are available for you to cast, choosing from the cleric spell list. When you do so, choose a number of cleric spells equal to your Wisdom modifier + your cleric level (minimum of one spell). The spells must be of a level for which you have spell slots.\n\nFor example, if you are a 3rd-level cleric, you have four 1st-level and two 2nd-level spell slots. With a Wisdom of 16, your list of prepared spells can include six spells of 1st or 2nd level, in any combination. If you prepare the 1st-level spell cure wounds, you can cast it using a 1st-level or 2nd-level slot. Casting the spell doesn't remove it from your list of prepared spells.\n\nYou can change your list of prepared spells when you finish a long rest. Preparing a new list of cleric spells requires time spent in prayer and meditation: at least 1 minute per spell level for each spell on your list.\n\n**Spellcasting Ability.** Wisdom is your spellcasting ability for your cleric spells. The power of your spells comes from your devotion to your deity. You use your Wisdom whenever a cleric spell refers to your spellcasting ability. In addition, you use your Wisdom modifier when setting the saving throw DC for a cleric spell you cast and when making an attack roll with one.\n\nyour spellcasting ability modifier\n\n**Ritual Casting.** You can cast a cleric spell as a ritual if that spell has the ritual tag and you have the spell prepared.\n\n**Spellcasting Focus.** You can use a holy symbol|phb as a spellcasting focus for your cleric spells.",
+        "hasUses": false,
+        "usesCurrent": 0,
+        "source5eTools": "PHB"
+      },
+      {
+        "id": "257c916c-2ec2-422a-b295-c03817be5dfc",
+        "name": "Divine Order",
+        "source": "Class: Cleric (Level 1)",
+        "description": "You have dedicated yourself to one of the following sacred roles of your choice.",
+        "hasUses": false,
+        "usesCurrent": 0,
+        "source5eTools": "XPHB"
+      },
+      {
+        "id": "cffc0473-ce10-42c5-bdbc-c21e66fd4a4b",
+        "name": "Protector",
+        "source": "Class: Cleric (Level 1)",
+        "description": "Trained for battle, you gain proficiency with Martial weapons|items|type=martial weapon and training with Heavy armor|items|type=Heavy Armor.",
+        "hasUses": false,
+        "usesCurrent": 0,
+        "source5eTools": "XPHB"
+      },
+      {
+        "id": "163691d2-8578-4bc1-b9f4-0a742252b52b",
+        "name": "Spellcasting",
+        "source": "Class: Cleric (Level 1)",
+        "description": "You have learned to cast spells through prayer and meditation. See chapter 7|XPHB|7 for the rules on spellcasting. The information below details how you use those rules with Cleric spells, which appear on the Cleric spell list|spells|class=Cleric later in the class's description.\n\n**Cantrips.** You know three cantrips of your choice from the Cleric spell list|spells|class=Cleric. Guidance|XPHB, Sacred Flame|XPHB, and Thaumaturgy|XPHB are recommended.\n\nWhenever you gain a Cleric level, you can replace one of your cantrips with another cantrip of your choice from the Cleric spell list|spells|class=Cleric.\n\nWhen you reach Cleric levels 4 and 10, you learn another cantrip of your choice from the Cleric spell list|spells|class=Cleric, as shown in the Cantrips column of the Cleric Features table.\n\n**Spell Slots.** The Cleric Features table shows how many spell slots you have to cast your level 1+ spells. You regain all expended slots when you finish a Long Rest|XPHB.\n\n**Prepared Spells of Level 1+.** You prepare the list of level 1+ spells that are available for you to cast with this feature. To start, choose four level 1 spells from the Cleric spell list|spells|class=Cleric. Bless|XPHB, Cure Wounds|XPHB, Guiding Bolt|XPHB, and Shield of Faith|XPHB are recommended.\n\nThe number of spells on your list increases as you gain Cleric levels, as shown in the Prepared Spells column of the Cleric Features table. Whenever that number increases, choose additional spells from the Cleric spell list|spells|class=Cleric until the number of spells on your list matches the number on the table. The chosen spells must be of a level for which you have spell slots. For example, if you're a level 3 Cleric, your list of prepared spells can include six spells of levels 1 and 2 in any combination.\n\nIf another Cleric feature gives you spells that you always have prepared, those spells don't count against the number of spells you can prepare with this feature, but those spells otherwise count as Cleric spells for you.\n\n**Changing Your Prepared Spells.** Whenever you finish a Long Rest|XPHB, you can change your list of prepared spells, replacing any of the spells there with other Cleric spells for which you have spell slots.\n\n**Spellcasting Ability.** Wisdom is your spellcasting ability for your Cleric spells.\n\n**Spellcasting Focus.** You can use a Holy Symbol|XPHB as a Spellcasting Focus|XPHB for your Cleric spells.",
+        "hasUses": false,
+        "usesCurrent": 0,
+        "source5eTools": "XPHB"
+      },
+      {
+        "id": "07e02601-fcca-452d-95b3-34da2eef8992",
+        "name": "Thaumaturge",
+        "source": "Class: Cleric (Level 1)",
+        "description": "You know one extra cantrip from the Cleric spell list|spells|class=Cleric. In addition, your mystical connection to the divine gives you a bonus to your Intelligence (Arcana|XPHB or Religion|XPHB) checks. The bonus equals your Wisdom modifier (minimum of +1).",
+        "hasUses": false,
+        "usesCurrent": 0,
+        "source5eTools": "XPHB"
+      }
+    ],
+    "feats": [],
+    "racialTraits": [],
+    "conditions": [],
+    "deathSaves": {
+      "successes": 0,
+      "failures": 0
+    },
+    "exhaustion": 0,
+    "personalityTraits": "",
+    "ideals": "",
+    "bonds": "",
+    "flaws": "",
+    "backstory": "",
+    "notes": "",
+    "customOverrides": {
+      "modifiers": {
+        "ac": 0
+      }
+    },
+    "masteredWeapons": []
+  }
+]

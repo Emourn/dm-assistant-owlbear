@@ -1,0 +1,67 @@
+{
+    "spells": [
+        {
+            "id": "cantrip_guidance_2024",
+            "name": "Guidance",
+            "level": 0,
+            "school": "Divination",
+            "castingTime": "1 action",
+            "range": "30 feet",
+            "components": {
+                "v": true,
+                "s": true
+            },
+            "duration": "Concentration, up to 1 minute",
+            "description": "You touch one willing creature. Once before the spell ends, the target can roll a d4 and add the number rolled to one ability check of its choice. It can roll the die before or after making the ability check.",
+            "source": "PHB 2024",
+            "is2024": true
+        },
+        {
+            "id": "spell_cure_wounds_2024",
+            "name": "Cure Wounds",
+            "level": 1,
+            "school": "Abjuration",
+            "castingTime": "1 action",
+            "range": "Touch",
+            "components": {
+                "v": true,
+                "s": true
+            },
+            "duration": "Instantaneous",
+            "description": "A creature you touch regains a number of hit points equal to 2d8 + your spellcasting ability modifier.",
+            "higherLevels": "The healing increases by 2d8 for each slot level above 1st.",
+            "source": "PHB 2024",
+            "is2024": true,
+            "effects": [
+                {
+                    "type": "heal",
+                    "dice": "2d8",
+                    "addAbilityModifier": true
+                }
+            ]
+        },
+        {
+            "id": "spell_healing_word_2024",
+            "name": "Healing Word",
+            "level": 1,
+            "school": "Abjuration",
+            "castingTime": "1 bonus action",
+            "range": "60 feet",
+            "components": {
+                "v": true
+            },
+            "duration": "Instantaneous",
+            "description": "A creature of your choice that you can see within range regains hit points equal to 2d4 + your spellcasting ability modifier.",
+            "higherLevels": "The healing increases by 2d4 for each slot level above 1st.",
+            "source": "PHB 2024",
+            "is2024": true,
+            "effects": [
+                {
+                    "type": "heal",
+                    "dice": "2d4",
+                    "addAbilityModifier": true
+                }
+            ]
+        }
+    ]
+}

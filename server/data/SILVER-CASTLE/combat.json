@@ -1,0 +1,299 @@
+{
+  "id": "b63b307b-64bb-4949-b7e8-d8a378b91097",
+  "title": "Tactical Combat - Death House - Third Floor",
+  "isActive": true,
+  "isSetupComplete": true,
+  "mapSetupComplete": true,
+  "round": 1,
+  "combatants": [
+    {
+      "id": "c2dccd8e-c710-4c9e-ac0b-f4e341f00be7",
+      "type": "monster",
+      "name": "Specter",
+      "ac": 12,
+      "maxHp": 22,
+      "currentHp": 22,
+      "tempHp": 0,
+      "speed": "walk 30 ft, fly 50 ft",
+      "initiativeMod": 2,
+      "initiativeScore": 11,
+      "dexterityScore": 14,
+      "abilityScores": {
+        "str": 1,
+        "dex": 14,
+        "con": 11,
+        "int": 10,
+        "wis": 10,
+        "cha": 11
+      },
+      "proficiencyBonus": 2,
+      "savingThrowProficiencies": [],
+      "legendaryActionsMax": 0,
+      "legendaryActionsRemaining": 0,
+      "conditions": [],
+      "monsterData": {
+        "name": "Specter",
+        "source": "XMM",
+        "page": 290,
+        "srd52": true,
+        "basicRules2024": true,
+        "referenceSources": [
+          "HBTD",
+          "DrDe",
+          "FRAiF"
+        ],
+        "size": [
+          "M"
+        ],
+        "type": "undead",
+        "alignment": [
+          "C",
+          "E"
+        ],
+        "ac": 12,
+        "hp": 22,
+        "speed": "walk 30 ft, fly 50 ft",
+        "str": 1,
+        "dex": 14,
+        "con": 11,
+        "int": 10,
+        "wis": 10,
+        "cha": 11,
+        "senses": [
+          "Darkvision 60 ft."
+        ],
+        "passive": 10,
+        "resist": [
+          "acid",
+          "bludgeoning",
+          "cold",
+          "fire",
+          "lightning",
+          "piercing",
+          "slashing",
+          "thunder"
+        ],
+        "immune": [
+          "necrotic",
+          "poison"
+        ],
+        "conditionImmune": [
+          "charmed",
+          "exhaustion",
+          "grappled",
+          "paralyzed",
+          "petrified",
+          "poisoned",
+          "prone",
+          "restrained",
+          "unconscious"
+        ],
+        "languages": [
+          "understands Common plus one other language but can't speak"
+        ],
+        "cr": "1",
+        "trait": [
+          {
+            "name": "Incorporeal Movement",
+            "entries": [
+              "The specter can move through other creatures and objects as if they were {@variantrule Difficult Terrain|XPHB}. It takes 5 ({@damage 1d10}) Force damage if it ends its turn inside an object."
+            ]
+          },
+          {
+            "name": "Sunlight Sensitivity",
+            "entries": [
+              "While in sunlight, the specter has {@variantrule Disadvantage|XPHB} on ability checks and attack rolls."
+            ]
+          }
+        ],
+        "action": [
+          {
+            "name": "Life Drain",
+            "entries": [
+              "{@atkr m} {@hit 4}, reach 5 ft. {@h}7 ({@damage 2d6}) Necrotic damage. If the target is a creature, its {@variantrule Hit Points|XPHB|Hit Point} maximum decreases by an amount equal to the damage taken."
+            ]
+          }
+        ],
+        "environment": [
+          "underdark",
+          "urban"
+        ],
+        "soundClip": {
+          "type": "internal",
+          "path": "bestiary/specter.mp3"
+        },
+        "traitTags": [
+          "Incorporeal Movement",
+          "Sunlight Sensitivity"
+        ],
+        "senseTags": [
+          "D"
+        ],
+        "languageTags": [
+          "C",
+          "CS",
+          "X"
+        ],
+        "damageTags": [
+          "N",
+          "O"
+        ],
+        "miscTags": [
+          "HPR",
+          "MA"
+        ],
+        "hasToken": true,
+        "hasFluff": true,
+        "hasFluffImages": true,
+        "description": "**Type:** undead | **CR:** 1\n**AC:** 12 | **HP:** 22 (5d8)\n**Res:** acid, bludgeoning, cold, fire, lightning, piercing, slashing, thunder\n**Imm:** necrotic, poison\n**Speed:** walk 30 ft, fly 50 ft\n**Stats:** STR 1 | DEX 14 | CON 11 | INT 10 | WIS 10 | CHA 11\n**Actions:** Life Drain",
+        "resistances": [
+          "acid",
+          "bludgeoning",
+          "cold",
+          "fire",
+          "lightning",
+          "piercing",
+          "slashing",
+          "thunder"
+        ],
+        "immunities": [
+          "necrotic",
+          "poison"
+        ],
+        "vulnerabilities": [],
+        "conditionImmunities": [
+          "charmed",
+          "exhaustion",
+          "grappled",
+          "paralyzed",
+          "petrified",
+          "poisoned",
+          "prone",
+          "restrained",
+          "unconscious"
+        ],
+        "damageNotes": "",
+        "isHomebrew": false,
+        "is2024": true
+      },
+      "cr": "1",
+      "resistances": [
+        "acid",
+        "bludgeoning",
+        "cold",
+        "fire",
+        "lightning",
+        "piercing",
+        "slashing",
+        "thunder"
+      ],
+      "immunities": [
+        "necrotic",
+        "poison"
+      ],
+      "conditionImmunities": [
+        "charmed",
+        "exhaustion",
+        "grappled",
+        "paralyzed",
+        "petrified",
+        "poisoned",
+        "prone",
+        "restrained",
+        "unconscious"
+      ],
+      "damageNotes": "",
+      "isConcentrating": false,
+      "exhaustion": 0,
+      "portraitUrl": "https://raw.githubusercontent.com/5etools-mirror-3/5etools-img/main/bestiary/tokens/XMM/Specter.webp",
+      "hasAction": true,
+      "hasBonusAction": true,
+      "hasReaction": true
+    }
+  ],
+  "activeCombatantId": "c2dccd8e-c710-4c9e-ac0b-f4e341f00be7",
+  "battleMap": {
+    "gridWidth": 20,
+    "gridHeight": 20,
+    "cellSizePx": 40,
+    "gridColor": "rgba(255,255,255,0.12)",
+    "backgroundColor": "#1a1a2e",
+    "tokens": [
+      {
+        "id": "cd2eaa03-c8d5-4c40-bb17-161643dfedee",
+        "combatantId": "c2dccd8e-c710-4c9e-ac0b-f4e341f00be7",
+        "name": "Specter",
+        "faction": "enemy",
+        "position": {
+          "col": 0,
+          "row": 0
+        },
+        "size": 1,
+        "elevation": 0,
+        "color": "#ef4444",
+        "showHealthBar": true,
+        "showNameLabel": true
+      }
+    ],
+    "shapes": [],
+    "freehandPaths": [],
+    "fogOfWar": [],
+    "fogOfWarFreehand": []
+  },
+  "turnState": {
+    "hasAction": true,
+    "hasBonusAction": true,
+    "hasReaction": true,
+    "extraActions": 0,
+    "hasHasteAction": false,
+    "hasCastLeveledSpell": false,
+    "hasCastBonusActionSpell": false,
+    "hasUsedHasteAction": false,
+    "movementRemaining": 30,
+    "movementUsedFt": 0,
+    "notes": ""
+  },
+  "log": [
+    {
+      "id": "076da4f0-f185-4841-aea0-79b1123e593a",
+      "timestamp": 1773354821988,
+      "round": 0,
+      "message": "Tactical engagement initiated from Death House - Third Floor.",
+      "type": "system"
+    },
+    {
+      "id": "255f785d-0147-4188-b5da-161ffe098924",
+      "round": 0,
+      "timestamp": 1773354834866,
+      "message": "Specter rolled Initiative: 11 (Roll: 9, Mod: 2)",
+      "type": "roll",
+      "combatantId": "c2dccd8e-c710-4c9e-ac0b-f4e341f00be7",
+      "details": {
+        "total": 11,
+        "rolls": [
+          9
+        ],
+        "modifier": 2,
+        "notation": "1d20+2",
+        "isCrit": false,
+        "isFumble": false,
+        "advantageMode": "normal"
+      }
+    },
+    {
+      "id": "ab0f0a5e-3451-4fe2-a445-13be3f1f4bc6",
+      "timestamp": 1773354845743,
+      "round": 1,
+      "message": "Combat started! Round 1 begins.",
+      "type": "system"
+    },
+    {
+      "id": "3116385e-0774-4fb4-bdec-e67402b6321c",
+      "timestamp": 1773354845743,
+      "round": 1,
+      "message": "Specter's turn.",
+      "type": "system",
+      "combatantId": "c2dccd8e-c710-4c9e-ac0b-f4e341f00be7"
+    }
+  ]
+}

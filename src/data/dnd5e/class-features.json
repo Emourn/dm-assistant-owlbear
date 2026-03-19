@@ -1,0 +1,419 @@
+[
+    {
+        "id": "fighter-second-wind",
+        "name": "Second Wind",
+        "type": "bonus",
+        "source": "Fighter 1",
+        "description": "On your turn, you can use a bonus action to regain hit points equal to 1d10 + your fighter level. Once you use this feature, you must finish a short or long rest before you can use it again.",
+        "icon": "heart",
+        "costs": [
+            {
+                "resource": "bonus",
+                "amount": 1
+            },
+            {
+                "resource": "featureUse",
+                "featureId": "fighter-second-wind",
+                "amount": 1
+            }
+        ],
+        "prerequisites": [
+            {
+                "type": "hasResource",
+                "resource": "featureUse",
+                "itemId": "fighter-second-wind"
+            }
+        ],
+        "effects": [
+            {
+                "type": "heal",
+                "dice": "1d10+@level"
+            }
+        ]
+    },
+    {
+        "id": "fighter-action-surge",
+        "name": "Action Surge",
+        "type": "free",
+        "source": "Fighter 2",
+        "description": "On your turn, you can take one additional action. Once you use this feature, you must finish a short or long rest before you can use it again.",
+        "icon": "zap",
+        "costs": [
+            {
+                "resource": "featureUse",
+                "featureId": "fighter-action-surge",
+                "amount": 1
+            }
+        ],
+        "prerequisites": [
+            {
+                "type": "hasResource",
+                "resource": "featureUse",
+                "itemId": "fighter-action-surge"
+            }
+        ],
+        "effects": []
+    },
+    {
+        "id": "rogue-cunning-action-dash",
+        "name": "Cunning Action: Dash",
+        "type": "bonus",
+        "source": "Rogue 2",
+        "description": "You can take a bonus action on each of your turns in combat. This action can be used only to take the Dash, Disengage, or Hide action.",
+        "icon": "fast-forward",
+        "costs": [
+            {
+                "resource": "bonus",
+                "amount": 1
+            }
+        ]
+    },
+    {
+        "id": "rogue-cunning-action-disengage",
+        "name": "Cunning Action: Disengage",
+        "type": "bonus",
+        "source": "Rogue 2",
+        "description": "You can take a bonus action on each of your turns in combat. This action can be used only to take the Dash, Disengage, or Hide action.",
+        "icon": "shield-off",
+        "costs": [
+            {
+                "resource": "bonus",
+                "amount": 1
+            }
+        ]
+    },
+    {
+        "id": "rogue-cunning-action-hide",
+        "name": "Cunning Action: Hide",
+        "type": "bonus",
+        "source": "Rogue 2",
+        "description": "You can take a bonus action on each of your turns in combat. This action can be used only to take the Dash, Disengage, or Hide action.",
+        "icon": "eye-off",
+        "costs": [
+            {
+                "resource": "bonus",
+                "amount": 1
+            }
+        ]
+    },
+    {
+        "id": "rogue-uncanny-dodge",
+        "name": "Uncanny Dodge",
+        "type": "reaction",
+        "source": "Rogue 5",
+        "description": "When an attacker that you can see hits you with an attack, you can use your reaction to halve the attack's damage against you.",
+        "icon": "shield",
+        "costs": [
+            {
+                "resource": "reaction",
+                "amount": 1
+            }
+        ]
+    },
+    {
+        "id": "barbarian-rage",
+        "name": "Rage",
+        "type": "bonus",
+        "source": "Barbarian 1",
+        "description": "On your turn, you can enter a rage as a bonus action. While raging, you gain advantage on Strength checks and Strength saving throws, a bonus to melee weapon damage rolls (+2 at 1st level, +3 at 9th, +4 at 16th), and resistance to bludgeoning, piercing, and slashing damage. You can't cast spells while raging. Rage lasts for 1 minute, ending early if you are knocked unconscious, or if your turn ends and you haven't attacked or taken damage since your last turn.",
+        "icon": "flame",
+        "costs": [
+            {
+                "resource": "bonus",
+                "amount": 1
+            },
+            {
+                "resource": "featureUse",
+                "featureId": "barbarian-rage",
+                "amount": 1
+            }
+        ],
+        "prerequisites": [
+            {
+                "type": "hasResource",
+                "resource": "featureUse",
+                "itemId": "barbarian-rage"
+            }
+        ]
+    },
+    {
+        "id": "barbarian-reckless-attack",
+        "name": "Reckless Attack",
+        "type": "free",
+        "source": "Barbarian 2",
+        "description": "When you make your first attack on your turn, you can decide to attack recklessly. Doing so gives you advantage on melee weapon attack rolls using Strength during this turn, but attack rolls against you have advantage until your next turn.",
+        "icon": "swords",
+        "costs": []
+    },
+    {
+        "id": "paladin-lay-on-hands",
+        "name": "Lay on Hands",
+        "type": "action",
+        "source": "Paladin 1",
+        "description": "Your blessed touch can heal wounds. You have a pool of healing power that replenishes when you take a long rest. With that pool, you can restore a total number of hit points equal to your paladin level × 5. As an action, you can touch a creature and draw power from the pool to restore a number of hit points to that creature, up to the maximum amount remaining in your pool. Alternatively, you can expend 5 hit points from your pool of healing to cure one disease or neutralize one poison.",
+        "icon": "hand",
+        "costs": [
+            {
+                "resource": "action",
+                "amount": 1
+            }
+        ]
+    },
+    {
+        "id": "paladin-divine-smite",
+        "name": "Divine Smite",
+        "type": "free",
+        "source": "Paladin 2",
+        "description": "When you hit a creature with a melee weapon attack, you can expend one spell slot to deal radiant damage to the target, in addition to the weapon's damage. The extra damage is 2d8 for a 1st-level spell slot, plus 1d8 for each spell level higher than 1st, to a maximum of 5d8. The damage increases by 1d8 if the target is an undead or a fiend, to a maximum of 6d8.",
+        "icon": "sun",
+        "costs": [
+            {
+                "resource": "spellSlot",
+                "amount": 1,
+                "level": 1
+            }
+        ]
+    },
+    {
+        "id": "bard-bardic-inspiration",
+        "name": "Bardic Inspiration",
+        "type": "bonus",
+        "source": "Bard 1",
+        "description": "You can inspire others through stirring words or music. To do so, you use a bonus action on your turn to choose one creature other than yourself within 60 feet of you who can hear you. That creature gains one Bardic Inspiration die, a d6. Once within the next 10 minutes, the creature can roll the die and add the number rolled to one ability check, attack roll, or saving throw it makes. The die increases at higher levels (d8 at 5th, d10 at 10th, d12 at 15th).",
+        "icon": "music",
+        "costs": [
+            {
+                "resource": "bonus",
+                "amount": 1
+            },
+            {
+                "resource": "featureUse",
+                "featureId": "bard-bardic-inspiration",
+                "amount": 1
+            }
+        ],
+        "prerequisites": [
+            {
+                "type": "hasResource",
+                "resource": "featureUse",
+                "itemId": "bard-bardic-inspiration"
+            }
+        ]
+    },
+    {
+        "id": "monk-flurry-of-blows",
+        "name": "Flurry of Blows",
+        "type": "bonus",
+        "source": "Monk 2",
+        "description": "Immediately after you take the Attack action on your turn, you can spend 1 ki point to make two unarmed strikes as a bonus action.",
+        "icon": "activity",
+        "costs": [
+            {
+                "resource": "bonus",
+                "amount": 1
+            },
+            {
+                "resource": "featureUse",
+                "featureId": "monk-ki",
+                "amount": 1
+            }
+        ]
+    },
+    {
+        "id": "monk-patient-defense",
+        "name": "Patient Defense",
+        "type": "bonus",
+        "source": "Monk 2",
+        "description": "You can spend 1 ki point to take the Dodge action as a bonus action on your turn.",
+        "icon": "shield",
+        "costs": [
+            {
+                "resource": "bonus",
+                "amount": 1
+            },
+            {
+                "resource": "featureUse",
+                "featureId": "monk-ki",
+                "amount": 1
+            }
+        ]
+    },
+    {
+        "id": "monk-step-of-the-wind",
+        "name": "Step of the Wind",
+        "type": "bonus",
+        "source": "Monk 2",
+        "description": "You can spend 1 ki point to take the Disengage or Dash action as a bonus action on your turn, and your jump distance is doubled for the turn.",
+        "icon": "wind",
+        "costs": [
+            {
+                "resource": "bonus",
+                "amount": 1
+            },
+            {
+                "resource": "featureUse",
+                "featureId": "monk-ki",
+                "amount": 1
+            }
+        ]
+    },
+    {
+        "id": "monk-stunning-strike",
+        "name": "Stunning Strike",
+        "type": "free",
+        "source": "Monk 5",
+        "description": "When you hit another creature with a melee weapon attack, you can spend 1 ki point to attempt a stunning strike. The target must succeed on a Constitution saving throw or be stunned until the end of your next turn.",
+        "icon": "zap",
+        "costs": [
+            {
+                "resource": "featureUse",
+                "featureId": "monk-ki",
+                "amount": 1
+            }
+        ]
+    },
+    {
+        "id": "cleric-channel-divinity",
+        "name": "Channel Divinity",
+        "type": "action",
+        "source": "Cleric 2",
+        "description": "You gain the ability to channel divine energy directly from your deity, using that energy to fuel magical effects. You start with two such effects: Turn Undead and an effect determined by your domain. When you use your Channel Divinity, you choose which effect to create. You must then finish a short or long rest to use your Channel Divinity again.",
+        "icon": "sun",
+        "costs": [
+            {
+                "resource": "action",
+                "amount": 1
+            },
+            {
+                "resource": "featureUse",
+                "featureId": "cleric-channel-divinity",
+                "amount": 1
+            }
+        ],
+        "prerequisites": [
+            {
+                "type": "hasResource",
+                "resource": "featureUse",
+                "itemId": "cleric-channel-divinity"
+            }
+        ]
+    },
+    {
+        "id": "druid-wild-shape",
+        "name": "Wild Shape",
+        "type": "action",
+        "source": "Druid 2",
+        "description": "You can use your action to magically assume the shape of a beast that you have seen before. You can use this feature twice per short or long rest. Your druid level determines the beasts you can transform into (CR 1/4 at 2nd level, CR 1/2 at 4th, CR 1 at 8th). You can stay in beast shape for a number of hours equal to half your druid level (rounded down). You then revert to your normal form unless you expend another use.",
+        "icon": "paw-print",
+        "costs": [
+            {
+                "resource": "action",
+                "amount": 1
+            },
+            {
+                "resource": "featureUse",
+                "featureId": "druid-wild-shape",
+                "amount": 1
+            }
+        ],
+        "prerequisites": [
+            {
+                "type": "hasResource",
+                "resource": "featureUse",
+                "itemId": "druid-wild-shape"
+            }
+        ]
+    },
+    {
+        "id": "sorcerer-font-of-magic",
+        "name": "Font of Magic: Create Spell Slot",
+        "type": "bonus",
+        "source": "Sorcerer 2",
+        "description": "You can use your sorcery points to gain additional spell slots, or sacrifice spell slots to gain additional sorcery points, as a bonus action on your turn. Creating a spell slot costs sorcery points: 2 for 1st, 3 for 2nd, 5 for 3rd, 6 for 4th, 7 for 5th.",
+        "icon": "sparkles",
+        "costs": [
+            {
+                "resource": "bonus",
+                "amount": 1
+            }
+        ]
+    },
+    {
+        "id": "warlock-eldritch-blast",
+        "name": "Eldritch Blast",
+        "type": "action",
+        "source": "Warlock",
+        "description": "A beam of crackling energy streaks toward a creature within range. Make a ranged spell attack against the target. On a hit, the target takes 1d10 force damage. The spell creates more than one beam when you reach higher levels: two beams at 5th level, three beams at 11th level, and four beams at 17th level. You can direct the beams at the same target or at different ones. Make a separate attack roll for each beam.",
+        "icon": "zap",
+        "costs": [
+            {
+                "resource": "action",
+                "amount": 1
+            }
+        ]
+    },
+    {
+        "id": "wizard-arcane-recovery",
+        "name": "Arcane Recovery",
+        "type": "free",
+        "source": "Wizard 1",
+        "description": "You have learned to regain some of your magical energy by studying your spellbook. Once per day when you finish a short rest, you can choose expended spell slots to recover. The spell slots can have a combined level that is equal to or less than half your wizard level (rounded up), and none of the slots can be 6th level or higher.",
+        "icon": "book-open",
+        "costs": [
+            {
+                "resource": "featureUse",
+                "featureId": "wizard-arcane-recovery",
+                "amount": 1
+            }
+        ],
+        "prerequisites": [
+            {
+                "type": "hasResource",
+                "resource": "featureUse",
+                "itemId": "wizard-arcane-recovery"
+            }
+        ]
+    },
+    {
+        "id": "ranger-favored-foe",
+        "name": "Favored Foe",
+        "type": "free",
+        "source": "Ranger 1",
+        "description": "When you hit a creature with an attack roll, you can call on your mystical bond with nature to mark the target as your favored enemy for 1 minute or until you lose your concentration (as if concentrating on a spell). The first time on each of your turns that you hit the favored enemy and deal damage to it, including when you mark it, you can increase that damage by 1d4. This damage increases to 1d6 at 6th level and 1d8 at 14th level. You can use this feature a number of times equal to your proficiency bonus, and you regain all expended uses when you finish a long rest.",
+        "icon": "crosshair",
+        "costs": [
+            {
+                "resource": "featureUse",
+                "featureId": "ranger-favored-foe",
+                "amount": 1
+            }
+        ]
+    },
+    {
+        "id": "rogue-sneak-attack",
+        "name": "Sneak Attack",
+        "type": "free",
+        "source": "Rogue 1",
+        "description": "Once per turn, you can deal extra damage to one creature you hit with an attack if you have advantage on the attack roll. The attack must use a finesse or ranged weapon. You don't need advantage if another enemy of the target is within 5 feet of it (like an ally standing next to the monster). The extra damage is 1d6 at level 1, and increases by 1d6 every two Rogue levels (2d6 at 3, 3d6 at 5, etc.). COACHING: This is probably the most important Rogue rule! It triggers almost EVERY turn when an ally is near the target. Don't forget it — it's the Rogue's main source of damage. The Rogue does NOT need to be hidden. They just need advantage OR an ally within 5 feet of the target.",
+        "icon": "🗡️",
+        "costs": []
+    },
+    {
+        "id": "barbarian-unarmored-defense",
+        "name": "Unarmored Defense",
+        "type": "trait",
+        "source": "Barbarian 1",
+        "description": "While you are not wearing any armor, your Armor Class equals 10 + your Dexterity modifier + your Constitution modifier. You can use a shield and still gain this benefit. COACHING: This only works when the Barbarian has NO armor equipped. A shield is fine! Their AC = 10 + DEX mod + CON mod. For a Barbarian with 14 DEX (+2) and 16 CON (+3), that's AC 15 — as good as chain mail!",
+        "icon": "🛡️",
+        "costs": []
+    },
+    {
+        "id": "monk-unarmored-defense",
+        "name": "Unarmored Defense",
+        "type": "trait",
+        "source": "Monk 1",
+        "description": "While you are not wearing any armor and not wielding a shield, your AC equals 10 + your Dexterity modifier + your Wisdom modifier. COACHING: Unlike the Barbarian version, Monks cannot use a shield. Their AC = 10 + DEX mod + WIS mod. For a Monk with 16 DEX (+3) and 16 WIS (+3), that's AC 16 — better than most medium armor!",
+        "icon": "🥋",
+        "costs": []
+    }
+]
